@@ -1,0 +1,104 @@
+{
+    "gene_mods": {
+        "gene_mod_adaptive_bone_marrow": {
+            "perk": "perk_adaptive_bone_marrow",
+            "added_fatigue_hours": 6,
+            "body_part": "legs",
+            "cost_meld": 20,
+            "cost_money": 30,
+            "cost_time_days": 6,
+            "research_prerequisite": "research_chryssalid_autopsy",
+            "ui_side": "right"
+        },
+        "gene_mod_adrenal_neurosympathy": {
+            "perk": "perk_adrenal_neurosympathy",
+            "added_fatigue_hours": 9,
+            "body_part": "chest",
+            "cost_meld": 16,
+            "cost_money": 20,
+            "cost_time_days": 6,
+            "research_prerequisite": "research_muton_autopsy",
+            "ui_side": "right"
+        },
+        "gene_mod_bioelectric_skin": {
+            "perk": "perk_bioelectric_skin",
+            "added_fatigue_hours": 6,
+            "body_part": "skin",
+            "cost_meld": 20,
+            "cost_money": 25,
+            "cost_time_days": 6,
+            "research_prerequisite": "research_seeker_autopsy",
+            "ui_side": "left"
+        },
+        "gene_mod_depth_perception": {
+            "perk": "perk_depth_perception",
+            "added_fatigue_hours": 3,
+            "body_part": "eyes",
+            "cost_meld": 6,
+            "cost_money": 10,
+            "cost_time_days": 3,
+            "research_prerequisite": "research_xenogenetics",
+            "ui_side": "right"
+        },
+        "gene_mod_hyper_reactive_pupils": {
+            "perk": "perk_hyper_reactive_pupils",
+            "added_fatigue_hours": 3,
+            "body_part": "eyes",
+            "cost_meld": 6,
+            "cost_money": 10,
+            "cost_time_days": 3,
+            "research_prerequisite": "research_xenogenetics",
+            "ui_side": "left"
+        },
+        "gene_mod_iron_skin": {
+            "perk": "perk_iron_skin",
+            "added_fatigue_hours": 12,
+            "body_part": "skin",
+            "cost_meld": 24,
+            "cost_money": 20,
+            "cost_time_days": 10,
+            "research_prerequisite": "research_cyberdisc_autopsy",
+            "ui_side": "right"
+        },
+        "gene_mod_muscle_fiber_density": {
+            "perk": "perk_muscle_fiber_density",
+            "added_fatigue_hours": 9,
+            "body_part": "legs",
+            "cost_meld": 24,
+            "cost_money": 20,
+            "cost_time_days": 7,
+            "research_prerequisite": "research_thin_man_autopsy",
+            "ui_side": "left"
+        },
+        "gene_mod_neural_damping": {
+            "perk": "perk_neural_damping",
+            "added_fatigue_hours": 6,
+            "body_part": "brain",
+            "cost_meld": 20,
+            "cost_money": 20,
+            "cost_time_days": 10,
+            "research_prerequisite": "research_muton_berserker_autopsy",
+            "ui_side": "left"
+        },
+        "gene_mod_smart_macrophages": {
+            "perk": "perk_smart_macrophages",
+            "added_fatigue_hours": 3,
+            "body_part": "brain",
+            "cost_meld": 12,
+            "cost_money": 15,
+            "cost_time_days": 4,
+            "research_prerequisite": "research_sectoid_autopsy",
+            "ui_side": "right"
+        },
+        "gene_mod_secondary_heart": {
+            "perk": "perk_secondary_heart",
+            "added_fatigue_hours": 6,
+            "body_part": "chest",
+            "cost_meld": 20,
+            "cost_money": 30,
+            "cost_time_days": 10,
+            "research_prerequisite": "research_muton_elite_autopsy",
+            "ui_side": "left"
+        }
+    }
+}

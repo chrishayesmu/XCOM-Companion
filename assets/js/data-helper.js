@@ -1,0 +1,423 @@
+// Load all the JSON data at once
+const baseFacilityData = require("../data/base-facilities");
+const councilRequestData = require("../data/council-requests");
+const foundryProjectData = require("../data/foundry-projects");
+const geneModData = require("../data/gene-mods");
+const itemData = require("../data/items");
+const perkData = require("../data/perks");
+const psiAbilityData = require("../data/psi-abilities");
+const soldierClassData = require("../data/soldier-classes");
+const techTreeData = require("../data/tech-tree");
+
+// ------------------------------------------------------------------
+// Process the data into a form we can readily use throughout the app
+// ------------------------------------------------------------------
+
+// --------------- Perks ------------------
+for (let perkId in perkData.perks) {
+    perkData.perks[perkId].id = perkId;
+}
+
+// --------------- Soldier classes ------------------
+const soldierClasses = {};
+
+for (let i = 0; i < soldierClassData.classes.length; i++) {
+    const soldierClass = soldierClassData.classes[i];
+
+    const convertedClass = {
+        "id": soldierClass.id,
+        "name": soldierClass.name,
+        "icon": soldierClass.icon,
+        "perks": {},
+        "perkStatBonuses": soldierClass.perk_stat_bonuses,
+        "statProgression": soldierClass.stat_progression
+    };
+
+    // Pull in the perk data
+    for (let rank in soldierClass.perks) {
+        const perkOptions = soldierClass.perks[rank];
+        convertedClass.perks[rank] = [];
+
+        for (let i = 0; i < perkOptions.length; i++) {
+            const perkId = perkOptions[i];
+
+            if (!(perkId in perkData.perks)) {
+                console.error("Unrecognized perk ID: " + perkId + ". It may have been missed in the perks.json data file.");
+                continue;
+            }
+
+            convertedClass.perks[rank].push(perkData.perks[perkId]);
+        }
+    }
+
+    soldierClasses[soldierClass.id] = convertedClass;
+}
+
+// --------------- Council requests ------------------
+const councilRequests = {};
+
+for (let i = 0; i < councilRequestData.requests.length; i++) {
+    const request = councilRequestData.requests[i];
+    request.id = "council_request_" + request.requested_item.substring(5);
+    request.prerequisite = techTreeData.technologies[request.prerequisite];
+    request.requested_item = itemData.items[request.requested_item];
+
+    councilRequests[request.id] = request;
+}
+
+// --------------- Facilities ------------------
+for (let key in baseFacilityData.facilities) {
+    const facility = baseFacilityData.facilities[key];
+    facility.id = key;
+
+    if (facility.prerequisites && facility.prerequisites.research) {
+        for (let i = 0; i < facility.prerequisites.research.length; i++) {
+            const techId = facility.prerequisites.research[i];
+            facility.prerequisites.research[i] = techTreeData.technologies[techId];
+        }
+    }
+}
+
+// --------------- Foundry projects ------------------
+for (let id in foundryProjectData.foundry_projects) {
+    const project = foundryProjectData.foundry_projects[id];
+    project.id = id;
+    project.unlocks = {};
+
+    // Foundry icons weren't originally included and this is way easier than adding them in the data file
+    project.icon = "assets/img/foundry-icons/" + id.substring(8) + ".png";
+
+    if (project.research_prerequisites) {
+        for (let i = 0; i < project.research_prerequisites.length; i++) {
+            const prereqId = project.research_prerequisites[i];
+            project.research_prerequisites[i] = techTreeData.technologies[prereqId];
+        }
+    }
+}
+
+// --------------- Gene mods ------------------
+for (let id in geneModData.gene_mods) {
+    const mod = geneModData.gene_mods[id];
+    const perk = perkData.perks[mod.perk];
+    const prereqTech = techTreeData.technologies[mod.research_prerequisite];
+
+    mod.id = id;
+    mod.name = perk.name;
+    mod.perk = perk;
+    mod.research_prerequisite = prereqTech;
+
+    // Gene mod perks shouldn't show in search separately from the mods themselves
+    perk.hideInSearch = true;
+}
+
+// --------------- Items ------------------
+for (let id in itemData.items) {
+    const item = itemData.items[id];
+    item.id = id;
+    item.icon = "assets/img/item-icons/" + id.substring(5) + ".png";
+
+    if (item.type_specific_data && item.type_specific_data.grants_perks) {
+        for (let i = 0; i < item.type_specific_data.grants_perks.length; i++) {
+            const perkId = item.type_specific_data.grants_perks[i];
+            item.type_specific_data.grants_perks[i] = perkData.perks[perkId];
+
+            if (!perkData.perks[perkId]) {
+                console.error(`Item ${item.id} references non-existent perk ${perkId}`);
+            }
+        }
+    }
+
+    if (item.research_prerequisites) {
+        for (let i = 0; i < item.research_prerequisites.length; i++) {
+            const prereqId = item.research_prerequisites[i];
+            item.research_prerequisites[i] = techTreeData.technologies[prereqId];
+        }
+    }
+
+    if (item.foundry_prerequisites) {
+        for (let i = 0; i < item.foundry_prerequisites.length; i++) {
+            const prereqId = item.foundry_prerequisites[i];
+            item.foundry_prerequisites[i] = foundryProjectData.foundry_projects[prereqId];
+        }
+    }
+
+    // TODO check for perks granted by items
+}
+
+// --------------- Psi abilities ------------------
+for (let id in psiAbilityData.abilities) {
+    const ability = psiAbilityData.abilities[id];
+    ability.id = id;
+
+    if (ability.research_prerequisite) {
+        ability.research_prerequisite = techTreeData.technologies[ability.research_prerequisite];
+    }
+}
+
+// --------------- Research ------------------
+for (let techId in techTreeData.technologies) {
+    const tech = techTreeData.technologies[techId];
+
+    // Assign the ID as a field for convenience, and make sure they all have an 'unlocks' field for later
+    tech.id = techId;
+    tech.unlocks = {};
+
+    // Replace each prereq by the corresponding object
+    if (tech.prerequisites && tech.prerequisites.research) {
+        for (let i = 0; i < tech.prerequisites.research.length; i++) {
+            const prereqTechId = tech.prerequisites.research[i];
+            const prereqTech = techTreeData.technologies[prereqTechId];
+
+            tech.prerequisites.research[i] = prereqTech;
+
+            // Also populate a list of "leading to" techs on the other side of the prereq relationship
+            if (!prereqTech.leadsTo) {
+                prereqTech.leadsTo = {};
+            }
+
+            prereqTech.leadsTo[techId] = tech;
+        }
+    }
+}
+
+// ----------------------------------------------------------------------------------------------------
+//
+// Go through various types of content and figure out which other content they're connected to
+//
+// ----------------------------------------------------------------------------------------------------
+
+for (let i = 0; i < councilRequestData.requests.length; i++) {
+    const request = councilRequestData.requests[i];
+    const prereqTech = request.prerequisite;
+
+    if (!prereqTech.unlocks.councilRequests) {
+        prereqTech.unlocks.councilRequests = [];
+    }
+
+    prereqTech.unlocks.councilRequests.push(request);
+
+    const requestedItem = request.requested_item;
+
+    if (!requestedItem.usedIn) {
+        requestedItem.usedIn = [];
+    }
+
+    // TODO add quantity (not sure what?)
+    requestedItem.usedIn.push({
+        outcome: request
+    });
+}
+
+// --------------- Gene mods ------------------
+
+for (let key in geneModData.gene_mods) {
+    const geneMod = geneModData.gene_mods[key];
+    const prereqTech = geneMod.research_prerequisite;
+
+    if (!prereqTech.unlocks.geneMods) {
+        prereqTech.unlocks.geneMods = [];
+    }
+
+    prereqTech.unlocks.geneMods.push(geneMod);
+}
+
+// --------------- Facilities ------------------
+
+for (let key in baseFacilityData.facilities) {
+    const facility = baseFacilityData.facilities[key];
+
+    for (let itemId in facility.normal_build.cost) {
+        if (itemId === "money") {
+            continue;
+        }
+
+        const item = itemData.items[itemId];
+
+        if (!item.usedIn) {
+            item.usedIn = [];
+        }
+
+        item.usedIn.push({
+            outcome: facility,
+            quantity: facility.normal_build.cost[itemId]
+        });
+    }
+
+    if (facility.prerequisites && facility.prerequisites.research) {
+        for (let i = 0; i < facility.prerequisites.research.length; i++) {
+            const prereqTech = facility.prerequisites.research[i];
+
+            if (!prereqTech.unlocks.facilities) {
+                prereqTech.unlocks.facilities = [];
+            }
+
+            prereqTech.unlocks.facilities.push(facility);
+        }
+    }
+}
+
+// --------------- Foundry projects ------------------
+
+for (let id in foundryProjectData.foundry_projects) {
+    const project = foundryProjectData.foundry_projects[id];
+
+    for (let itemId in project.cost) {
+        if (itemId === "money") {
+            continue;
+        }
+
+        const item = itemData.items[itemId];
+
+        if (!item.usedIn) {
+            item.usedIn = [];
+        }
+
+        item.usedIn.push({
+            outcome: project,
+            quantity: project.cost[itemId]
+        });
+    }
+
+    if (project.research_prerequisites) {
+        for (let i = 0; i < project.research_prerequisites.length; i++) {
+            const prereq = project.research_prerequisites[i];
+
+            if (!prereq.unlocks.foundryProjects) {
+                prereq.unlocks.foundryProjects = [];
+            }
+
+            prereq.unlocks.foundryProjects.push(project);
+        }
+    }
+}
+
+// --------------- Items ------------------
+
+for (let itemId in itemData.items) {
+    const item = itemData.items[itemId];
+
+    if (item.normal_build) {
+        for (let otherItemId in item.normal_build.cost) {
+            if (otherItemId === "money") {
+                continue;
+            }
+
+            const otherItem = itemData.items[otherItemId];
+
+            if (!otherItem.usedIn) {
+                otherItem.usedIn = [];
+            }
+
+            otherItem.usedIn.push({
+                outcome: item,
+                quantity: item.normal_build.cost[otherItemId]
+            });
+        }
+    }
+
+    if (item.research_prerequisites) {
+        for (let i = 0; i < item.research_prerequisites.length; i++) {
+            const tech = item.research_prerequisites[i];
+
+            if (!tech.unlocks.items) {
+                tech.unlocks.items = [];
+            }
+
+            tech.unlocks.items.push(item);
+        }
+    }
+
+    if (item.foundry_prerequisites) {
+        for (let i = 0; i < item.foundry_prerequisites.length; i++) {
+            const project = item.foundry_prerequisites[i];
+
+            if (!project.unlocks.items) {
+                project.unlocks.items = [];
+            }
+
+            project.unlocks.items.push(item);
+        }
+    }
+}
+
+// --------------- Psi abilities ------------------
+
+for (let id in psiAbilityData.abilities) {
+    const ability = psiAbilityData.abilities[id];
+    const prereqTech = ability.research_prerequisite;
+
+    if (!prereqTech) {
+        continue;
+    }
+
+    if (!prereqTech.unlocks.psiAbilities) {
+        prereqTech.unlocks.psiAbilities = [];
+    }
+
+    prereqTech.unlocks.psiAbilities.push(ability);
+}
+
+// --------------- Research ------------------
+for (let techId in techTreeData.technologies) {
+    const tech = techTreeData.technologies[techId];
+
+    if (tech.cost) {
+        for (let itemId in tech.cost) {
+            if (itemId === "money") {
+                continue;
+            }
+
+            const item = itemData.items[itemId];
+
+            if (!item.usedIn) {
+                item.usedIn = [];
+            }
+
+            item.usedIn.push({
+                outcome: tech,
+                quantity: tech.cost[itemId]
+            });
+        }
+    }
+}
+
+function getInfantryClasses() {
+    const classes = [];
+
+    for (let classId in soldierClasses) {
+        if (!classId.startsWith("infantry")) {
+            continue;
+        }
+
+        classes.push(soldierClasses[classId]);
+    }
+
+    return classes;
+}
+
+function getMecClasses() {
+    const classes = [];
+
+    for (let classId in soldierClasses) {
+        if (!classId.startsWith("mec")) {
+            continue;
+        }
+
+        classes.push(soldierClasses[classId]);
+    }
+
+    return classes;
+}
+
+
+module.exports.baseFacilities = baseFacilityData.facilities;
+module.exports.councilRequests = councilRequests;
+module.exports.foundryProjects = foundryProjectData.foundry_projects;
+module.exports.geneMods = geneModData.gene_mods;
+module.exports.getInfantryClasses = getInfantryClasses;
+module.exports.getMecClasses = getMecClasses;
+module.exports.items = itemData.items;
+module.exports.perks = perkData.perks;
+module.exports.psiAbilities = psiAbilityData.abilities;
+module.exports.soldierClasses = soldierClasses;
+module.exports.technologies = techTreeData.technologies;

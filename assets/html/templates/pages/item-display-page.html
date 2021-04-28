@@ -1,0 +1,219 @@
+<template id="template-item-preview">
+    <div id="item-preview-container">
+        <div id="item-preview-header-row">
+            <div id="item-preview-icon"><img /></div>
+            <div id="item-preview-name">Item</div>
+        </div>
+        <div id="item-preview-description"></div>
+    </div>
+</template>
+
+<template id="template-item-armor-stats-grid">
+    <table id="item-armor-stats-grid" class="item-stats-grid">
+        <tr>
+            <th title="Damage Reduction" id="armor-stats-damage-reduction-header">
+                <img class="item-stats-header-img" src="assets/img/item-stat-icons/damage_reduction.png" />
+             </th>
+             <th title="Defense Bonus" id="armor-stats-defense-header">
+                <img class="item-stats-header-img" src="assets/img/item-stat-icons/defense.png" />
+            </th>
+             <th title="HP" id="armor-stats-hp-header">
+                <img class="item-stats-header-img" src="assets/img/item-stat-icons/hp.png" />
+             </th>
+            <th title="HP from Extra Conditioning" id="armor-stats-hp-extra-con-header">
+                <img class="item-stats-header-img" src="assets/img/item-stat-icons/hp-extra-con.png" />
+             </th>
+             <th title="Mobility Bonus" id="armor-stats-mobility-header">
+                <img class="item-stats-header-img" src="assets/img/item-stat-icons/mobility.png" />
+             </th>
+             <th title="Will Bonus" id="armor-stats-will-header">
+                <img class="item-stats-header-img" src="assets/img/item-stat-icons/will.png" />
+             </th>
+             <th title="Number of Secondary Weapons" id="armor-stats-secondary-weapons-header">
+                <img class="item-stats-header-img" src="assets/img/item-stat-icons/num_secondary_weapons.png" />
+             </th>
+             <th title="Number of Equipment Slots" id="armor-stats-equipment-slots-header">
+                <img class="item-stats-header-img" src="assets/img/item-stat-icons/num_equipment_slots.png" />
+             </th>
+        </tr>
+        <tr>
+            <td id="armor-stats-damage-reduction"></td>
+            <td id="armor-stats-defense"></td>
+            <td id="armor-stats-hp"></td>
+            <td id="armor-stats-hp-extra-con"></td>
+            <td id="armor-stats-mobility"></td>
+            <td id="armor-stats-will"></td>
+            <td id="armor-stats-secondary-weapons"></td>
+            <td id="armor-stats-equipment-slots"></td>
+        </tr>
+    </table>
+</template>
+
+<template id="template-item-interceptor-stats-grid">
+    <table id="item-interceptor-stats-grid" class="item-stats-grid">
+        <tr>
+            <th title="Armor" id="interceptor-stats-armor-header">
+                <img class="item-stats-header-img" src="assets/img/item-stat-icons/defense.png" />
+             </th>
+             <th title="HP" id="interceptor-stats-hp-header">
+                <img class="item-stats-header-img" src="assets/img/item-stat-icons/hp.png" />
+             </th>
+             <th title="Penetration" id="interceptor-stats-penetration-header">
+                <img class="item-stats-header-img" src="assets/img/item-stat-icons/penetration.png" />
+             </th>
+             <th title="Speed" id="interceptor-stats-speed-header">
+                <img class="item-stats-header-img" src="assets/img/item-stat-icons/speed.png" />
+             </th>
+        </tr>
+        <tr>
+            <td id="interceptor-stats-armor"></td>
+            <td id="interceptor-stats-hp"></td>
+            <td id="interceptor-stats-penetration"></td>
+            <td id="interceptor-stats-speed"></td>
+        </tr>
+    </table>
+</template>
+
+<template id="template-item-interceptor-weapon-stats-grid">
+    <table id="item-interceptor-weapon-stats-grid" class="item-stats-grid">
+        <tr>
+            <th title="Damage Per Shot" id="interceptor-weapon-stats-damage-header">
+                <img class="item-stats-header-img" src="assets/img/item-stat-icons/damage.png" />
+             </th>
+             <th title="Time Between Shots" id="interceptor-weapon-stats-time-between-shots-header">
+                <img class="item-stats-header-img" src="assets/img/misc-icons/time.png" />
+             </th>
+             <th title="Penetration" id="interceptor-weapon-stats-penetration-header">
+                <img class="item-stats-header-img" src="assets/img/item-stat-icons/penetration.png" />
+            </th>
+            <th title="Hit Chance (Defensive)" id="interceptor-weapon-stats-hit-chance-defensive-header">
+                <img class="item-stats-header-img" src="assets/img/item-stat-icons/aim_defensive.png" />
+             </th>
+             <th title="Hit Chance (Balanced)" id="interceptor-weapon-stats-hit-chance-balanced-header">
+                <img class="item-stats-header-img" src="assets/img/item-stat-icons/aim.png" />
+             </th>
+             <th title="Hit Chance (Aggressive)" id="interceptor-weapon-stats-hit-chance-aggressive-header">
+                <img class="item-stats-header-img" src="assets/img/item-stat-icons/aim_aggressive.png" />
+             </th>
+        </tr>
+        <tr>
+            <td id="interceptor-weapon-stats-damage"></td>
+            <td id="interceptor-weapon-stats-time-between-shots"></td>
+            <td id="interceptor-weapon-stats-penetration"></td>
+            <td id="interceptor-weapon-stats-hit-chance-defensive"></td>
+            <td id="interceptor-weapon-stats-hit-chance-balanced"></td>
+            <td id="interceptor-weapon-stats-hit-chance-aggressive"></td>
+        </tr>
+    </table>
+</template>
+
+<template id="template-item-weapon-stats-grid">
+    <table id="item-weapon-stats-grid" class="item-stats-grid">
+        <tr>
+            <th title="Damage" id="weapon-stats-damage-header">
+                <img class="item-stats-header-img" src="assets/img/item-stat-icons/damage.png" />
+             </th>
+             <th title="Damage on Critical" id="weapon-stats-crit-damage-header">
+                <img class="item-stats-header-img" src="assets/img/item-stat-icons/crit_damage.png" />
+             </th>
+            <th title="Aim Bonus" id="weapon-stats-aim-header">
+                <img class="item-stats-header-img" src="assets/img/item-stat-icons/aim.png" />
+             </th>
+             <th title="Critical Chance Bonus" id="weapon-stats-crit-chance-header">
+                <img class="item-stats-header-img" src="assets/img/item-stat-icons/crit_chance.png" />
+             </th>
+            <th title="Mobility Bonus" id="weapon-stats-mobility-header">
+                <img class="item-stats-header-img" src="assets/img/item-stat-icons/mobility.png" />
+             </th>
+            <th title="Defense Bonus" id="weapon-stats-defense-header">
+                <img class="item-stats-header-img" src="assets/img/item-stat-icons/defense.png" />
+            </th>
+            <th title="Base Ammo" id="weapon-stats-ammo-header">
+                <img class="item-stats-header-img" src="assets/img/item-stat-icons/ammo.png" />
+            </th>
+            <th title="Range" id="weapon-stats-range-header">
+                <img class="item-stats-header-img" src="assets/img/item-stat-icons/range.png" />
+            </th>
+            <th title="Overwatch Range" id="weapon-stats-range-overwatch-header">
+                <img class="item-stats-header-img" src="assets/img/item-stat-icons/range_overwatch.png" />
+            </th>
+            <th title="Squadsight Range" id="weapon-stats-range-squadsight-header">
+                <img class="item-stats-header-img" src="assets/img/item-stat-icons/range_squadsight.png" />
+            </th>
+            <th title="Squadsight Overwatch Range" id="weapon-stats-range-squadsight-overwatch-header">
+                <img class="item-stats-header-img" src="assets/img/item-stat-icons/range_squadsight_overwatch.png" />
+            </th>
+            <th title="Effect Radius" id="weapon-stats-effect-radius-header">
+                <img class="item-stats-header-img" src="assets/img/item-stat-icons/effect_radius.png" />
+            </th>
+        </tr>
+        <tr>
+            <td id="weapon-stats-damage"></td>
+            <td id="weapon-stats-crit-damage"></td>
+            <td id="weapon-stats-aim"></td>
+            <td id="weapon-stats-crit-chance"></td>
+            <td id="weapon-stats-mobility"></td>
+            <td id="weapon-stats-defense"></td>
+            <td id="weapon-stats-ammo"></td>
+            <td id="weapon-stats-range"></td>
+            <td id="weapon-stats-range-overwatch"></td>
+            <td id="weapon-stats-range-squadsight"></td>
+            <td id="weapon-stats-range-squadsight-overwatch"></td>
+            <td id="weapon-stats-effect-radius"></td>
+        </tr>
+    </table>
+</template>
+
+<template id="template-item-display-page">
+    <section class="section js-section">
+        <header class="section-header">
+            <div class="section-wrapper">
+                Item Details
+            </div>
+        </header>
+
+        <div id="item-details-content-section" class="section-content">
+            <div id="item-details-header-row" class="flex-single-row">
+                <div id="item-details-image-container">
+                    <img />
+                </div>
+                <div id="item-details-description-container">
+                    <div id="item-details-name"></div>
+                    <div id="item-details-description"></div>
+                    <div id="item-details-last-row">
+                        <div id="item-details-type"></div>
+                        <div id="item-details-sell-value">Sell value: </div>
+                    </div>
+                </div>
+            </div>
+            <div id="item-details-build" class="flex-single-row">
+                <div id="item-details-build-normal" class="item-details-left-column">
+                    <div class="item-details-heading">Normal Build</div>
+                    <div class="item-details-build-content">
+                        <div class="item-details-column-body" id="item-details-normal-build-cost-container"></div>
+                    </div>
+                </div>
+                <div id="item-details-build-quick" class="item-details-right-column">
+                    <div class="item-details-heading">Quick Build</div>
+                    <div class="item-details-build-content">
+                        <div class="item-details-column-body" id="item-details-quick-build-cost-container"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex-single-row">
+                <div id="item-details-prerequisites-container">
+                    <div class="item-details-heading">Prerequisites</div>
+                    <div class="item-details-column-body" id="item-details-prerequisites"></div>
+                </div>
+                <div id="item-details-used-in-container">
+                    <div class="item-details-heading">Used In</div>
+                    <div class="item-details-column-body" id="item-details-used-in"></div>
+                </div>
+            </div>
+            <div id="item-details-tactical-text-container">
+                <div class="item-details-heading">Details</div>
+                <div class="item-details-column-body" id="item-details-tactical-text"></div>
+            </div>
+        </div>
+    </section>
+</template>

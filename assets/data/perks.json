@@ -1,0 +1,451 @@
+{
+    "perks":
+        {
+            "perk_absorption_fields": {
+                "name": "Absorption Fields",
+                "icon": "assets/img/perk-icons/absorption_fields.png",
+                "description": "Reduces most incoming damage to this unit, scaling up as damage increases. Specifically: reduces 40% of any damage taken after 2; after all other damage reduction has been applied."
+            },
+            "perk_adaptive_bone_marrow": {
+                "name": "Adaptive Bone Marrow",
+                "icon": "assets/img/perk-icons/adaptive_bone_marrow.png",
+                "description": "Regenerate wounds. For humans, wound recovery time is reduced by 66% (stacks with Advanced Surgery), and unit regenerates 2 hp every turn up to the HP max without armor."
+            },
+            "perk_adrenaline_surge": {
+                "name": "Adrenaline Surge",
+                "icon": "assets/img/perk-icons/adrenaline_surge.png",
+                "description": "Confers +10 Aim and +10% critical chance if this unit is wounded. The effects last for the remainder of the mission even if the unit is healed."
+            },
+            "perk_adrenal_neurosympathy": {
+                "name": "Adrenal Neurosympathy",
+                "icon": "assets/img/perk-icons/adrenal_neurosympathy.png",
+                "description": "Overloads the soldiers adrenal glands: when a kill is confirmed the soldier emits pheromones that grant offensive benefits to all nearby squad mates. Cannot be used more than once every 5 turns."
+            },
+            "perk_advanced_fire_control": {
+                "name": "Advanced Fire Control",
+                "icon": "assets/img/perk-icons/advanced_fire_control.png",
+                "description": "Shots from Overwatch no longer suffer any Aim penalty."
+            },
+            "perk_aggression": {
+                "name": "Aggression",
+                "icon": "assets/img/perk-icons/aggression.png",
+                "description": "Confers +10% critical chance per enemy in sight (max +30%). Aliens visible via squadsight are not counted for bonus."
+            },
+            "perk_automated_threat_assessment": {
+                "name": "Automated Threat Assessment",
+                "icon": "assets/img/perk-icons/automated_threat_assessment.png",
+                "description": "Confers 0.5 DR (50% chance to absorb one point of damage) at all times, and confers +15 defense when in overwatch until the unit takes an overwatch shot."
+            },
+            "perk_battle_scanner": {
+                "name": "Battle Scanner",
+                "icon": "assets/img/perk-icons/battle_scanner.png",
+                "description": "Scanning device that, when thrown, creates a new source of vision for 2 turns. Grants 2 uses. Increases throw range for battle scanners by 70% (does not stack with other perks)."
+            },
+            "perk_bioelectric_skin": {
+                "name": "Bioelectric Skin",
+                "icon": "assets/img/perk-icons/bioelectric_skin.png",
+                "description": "The soldier projects an electric field from his or her skin, revealing but not alerting nearby enemies, and is immune to strangulation."
+            },
+            "perk_body_shield": {
+                "name": "Body Shield",
+                "icon": "assets/img/perk-icons/body_shield.png",
+                "description": "The nearest visible enemy suffers -20 Aim against this unit and cannot critically hit it."
+            },
+            "perk_bombard": {
+                "name": "Bombard",
+                "icon": "assets/img/perk-icons/bombard.png",
+                "description": "Throw or launch grenades over exceptionally long distances (+50%)."
+            },
+            "perk_bring_em_on": {
+                "name": "Bring 'Em On",
+                "icon": "assets/img/perk-icons/bring_em_on.png",
+                "description": "Confers 1-4 bonus damage during critical hits (which is then multiplied by 50% due to the critical hit). The damage is higher when more enemies are in view (including squad sight vision). This results in +1.5 dmg for 1-2 enemies, +3 dmg for 3-4 enemies, +4.5 dmg for 5-6 enemies, +6 dmg for 7 or more enemies."
+            },
+            "perk_close_combat_specialist": {
+                "name": "Close Combat Specialist",
+                "icon": "assets/img/perk-icons/close_combat_specialist.png",
+                "description": "Confers a reaction shot against any enemy who closes to within 4 tiles. Does not require Overwatch. Warning: Will activate even if unit is concealed."
+            },
+            "perk_close_encounters": {
+                "name": "Close Encounters",
+                "icon": "assets/img/perk-icons/close_encounters.png",
+                "description": "The first standard shot made within 4 tiles of the target does not cost an action. Cannot combine with Run And Gun."
+            },
+            "perk_collateral_damage": {
+                "name": "Collateral Damage",
+                "icon": "assets/img/perk-icons/collateral_damage.png",
+                "description": "Area of effect attack that destroys most cover and hits all eligible targets for 1/3rd damage. Unlike most abilities, damage increasing items and perks also only apply 1/3rd damage (note: HEAT and flak cannot be reduced below +2 damage though). This attack cannot critically hit. Shredder ammo and holo-targeting are NOT applied."
+            },
+            "perk_combat_drugs": {
+                "name": "Combat Drugs",
+                "icon": "assets/img/perk-icons/combat_drugs.png",
+                "description": "Smoke grenades confer +20 Will and +20% critical chance in addition to the original 20 defense. The area of effect is also increased by 25%."
+            },
+            "perk_combined_arms": {
+                "name": "Combined Arms",
+                "icon": "assets/img/perk-icons/combined_arms.png",
+                "description": "Ignore one point of the enemy's damage reduction. For officers, this ability is provided to the entire squad."
+            },
+            "perk_concealment": {
+                "name": "Concealment",
+                "icon": "assets/img/perk-icons/concealment.png",
+                "description": "When the soldier moves to high cover, enemies without special capabilities will not target the soldier (but CAN sense him/her). Does not work if any enemies have line of sight to the soldier's starting position. Leaving cover, being flanked, firing, hacking arrays, and capturing meld will break this concealment. Low Profile units will not gain this bonus by occupying low cover. Firing from concealment grants +30% crit."
+            },
+            "perk_covering_fire": {
+                "name": "Covering Fire",
+                "icon": "assets/img/perk-icons/covering_fire.png",
+                "description": "Allows certain reaction shots to trigger on many enemy actions, not just movement (excludes reload, overwatch, and hunker down actions)."
+            },
+            "perk_damage_control": {
+                "name": "Damage Control",
+                "icon": "assets/img/perk-icons/damage_control.png",
+                "description": "When this unit takes damage, all further damage will be reduced by 1 or 2 points (1.5 DR) for the next 2 turns."
+            },
+            "perk_damn_good_ground": {
+                "name": "Damn Good Ground",
+                "icon": "assets/img/perk-icons/damn_good_ground.png",
+                "description": "Confers +10 Aim and +10 Defense against enemies at lower elevation, in addition to the usual elevation bonuses."
+            },
+            "perk_danger_zone": {
+                "name": "Danger Zone",
+                "icon": "assets/img/perk-icons/danger_zone.png",
+                "description": "Increases area of effect of Suppression, rockets, grenade launchers and proximity mine launchers."
+            },
+            "perk_deadeye": {
+                "name": "Deadeye",
+                "icon": "assets/img/perk-icons/deadeye.png",
+                "description": "Confers +15 aim against flying targets."
+            },
+            "perk_dense_smoke": {
+                "name": "Dense Smoke",
+                "icon": "assets/img/perk-icons/dense_smoke.png",
+                "description": "Increases the defense bonus from smoke grenade from 20 to 40."
+            },
+            "perk_depth_perception": {
+                "name": "Depth Perception",
+                "icon": "assets/img/perk-icons/depth_perception.png",
+                "description": "Height Advantage confers an additional +5 Aim and +5 critical chance."
+            },
+            "perk_disabling_shot": {
+                "name": "Disabling Shot",
+                "icon": "assets/img/perk-icons/disabling_shot.png",
+                "description": "Allows sniper rifles to fire a shot that causes the target's main weapon to malfunction. The target may use Reload to fix the weapon. 2 turn cooldown. Cannot cause critical hits."
+            },
+            "perk_double_tap": {
+                "name": "Double Tap",
+                "icon": "assets/img/perk-icons/double_tap.png",
+                "description": "Allows a second action restricted to Standard Shot, Precision Shot, or Disabling Shot as long as the first action was a Standard Shot, Precision Shot, Disabling Shot, or Flush provided no costly actions were taken. 1 turn cooldown. (Note: Double Tap is cancelled in the following cases: (1) the first shot results in a kill, and no more enemies are visible to the unit, or (2) for gunners only, the first shot depletes the ammo.)"
+            },
+            "perk_executioner": {
+                "name": "Executioner",
+                "icon": "assets/img/perk-icons/executioner.png",
+                "description": "Confers +10 aim and +10 critical chance against targets at or below 50% health."
+            },
+            "perk_extra_conditioning": {
+                "name": "Extra Conditioning",
+                "icon": "assets/img/perk-icons/extra_conditioning.png",
+                "description": "Confers 1-4 bonus health based on which type of armor is equipped. Heavier armor increases the bonus."
+            },
+            "perk_field_medic": {
+                "name": "Field Medic",
+                "icon": "assets/img/perk-icons/field_medic.png",
+                "description": "For soldiers, grants one free use of a medikit per mission and allows additional medikit items to be used two times per battle instead of one. Also allows Restorative Mist items to be used three times per battle instead of once."
+            },
+            "perk_field_surgeon": {
+                "name": "Field Surgeon",
+                "icon": "assets/img/perk-icons/field_surgeon.png",
+                "description": "Reduces (or, for 1 HP flesh wounds, eliminates) Wounded timer on soldiers who sustained HP damage but were not Critically Wounded. Does not affect wound sustained by sending fatigued soldier on a mission."
+            },
+            "perk_fire_in_the_hole": {
+                "name": "Fire in the Hole",
+                "icon": "assets/img/perk-icons/fire_in_the_hole.png",
+                "description": "Grants +10 aim for purposes of reducing scatter if the soldier has not moved this turn. Increases range of Blaster Launcher (which does not scatter)."
+            },
+            "perk_fire_rocket": {
+                "name": "Fire Rocket",
+                "icon": "assets/img/perk-icons/fire_rocket.png",
+                "description": "Fire a high explosive rocket using an equipped launcher."
+            },
+            "perk_flush": {
+                "name": "Flush",
+                "icon": "assets/img/perk-icons/flush.png",
+                "description": "Fire a shot that may cause non-flying enemies to run to new cover. The shot is easy to hit with (+30 aim), but does reduced damage (-50% base weapon damage), and consumes extra ammo (2 ammo). Hunkered units will not relocate."
+            },
+            "perk_grenadier": {
+                "name": "Grenadier",
+                "icon": "assets/img/perk-icons/grenadier.png",
+                "description": "Allows 2 destructive grenades in a single inventory slot, and the soldier may throw grenades 20 percent further."
+            },
+            "perk_heat_ammo": {
+                "name": "HEAT Ammo",
+                "icon": "assets/img/perk-icons/heat_ammo.png",
+                "description": "Your primary weapon, not including shotguns, does an additional 50% of its base weapon damage to robotic enemies after any damage reduction is assessed."
+            },
+            "perk_heat_warheads": {
+                "name": "HEAT Warheads",
+                "icon": "assets/img/perk-icons/heat_warheads.png",
+                "description": "Your rockets and grenades do an additional 50% damage to robotic enemies after damage reduction is assessed."
+            },
+            "perk_hit_and_run": {
+                "name": "Hit and Run",
+                "icon": "assets/img/perk-icons/hit_and_run.png",
+                "description": "Your first standard shot of each turn against an uncovered or flanked target does not cost an action. Does not work against flying units, and cannot be used if Run N' Gun activated."
+            },
+            "perk_holo_targeting": {
+                "name": "Holo-Targeting",
+                "icon": "assets/img/perk-icons/holo_targeting.png",
+                "description": "Shooting at or suppressing enemies confers +10 Aim to allies' attacks on those enemies until end of turn."
+            },
+            "perk_hyper_reactive_pupils": {
+                "name": "Hyper-Reactive Pupils",
+                "icon": "assets/img/perk-icons/hyper_reactive_pupils.png",
+                "description": "Confers +10 Aim on any shot after a miss."
+            },
+            "perk_in_the_zone": {
+                "name": "In the Zone",
+                "icon": "assets/img/perk-icons/in_the_zone.png",
+                "description": "Killing a flanked or uncovered target does not cost an action. Confers a -1 base damage and -10% critical hit chance penalty for each successive In The Zone kill."
+            },
+            "perk_iron_skin": {
+                "name": "Iron Skin",
+                "icon": "assets/img/perk-icons/iron_skin.png",
+                "description": "Confers 1.0 damage reduction."
+            },
+            "perk_javelin_rockets": {
+                "name": "Javelin Rockets",
+                "icon": "assets/img/perk-icons/javelin_rockets.png",
+                "description": "Your rockets now travel much further(+33%) and can hit targets beyond your visual range."
+            },
+            "perk_jetboot_module": {
+                "name": "Jetboot Module",
+                "icon": "assets/img/perk-icons/jetboot_module.png",
+                "description": "When activated, confers the ability to jump to normally inaccessible heights for the rest of the turn."
+            },
+            "perk_killer_instinct": {
+                "name": "Killer Instinct",
+                "icon": "assets/img/perk-icons/killer_instinct.png",
+                "description": "Activating Run and Gun grants +50% critical damage for the rest of the turn."
+            },
+            "perk_light_em_up": {
+                "name": "Light 'Em Up",
+                "icon": "assets/img/perk-icons/light_em_up.png",
+                "description": "Standard shots no longer end the turn, if taken as the first action."
+            },
+            "perk_lightning_reflexes": {
+                "name": "Lightning Reflexes",
+                "icon": "assets/img/perk-icons/lightning_reflexes.png",
+                "description": "The hit chance of reaction fire against this unit is reduced by 90 percent for the first shot, and by 70 percent for additional shots."
+            },
+            "perk_lock_and_load": {
+                "name": "Lock N' Load",
+                "icon": "assets/img/perk-icons/lock_and_load.png",
+                "description": "Primary weapons receive one additional shot or burst before a reload is required, and you may reload your primary weapon as the first action of your turn without ending the turn."
+            },
+            "perk_lone_wolf": {
+                "name": "Lone Wolf",
+                "icon": "assets/img/perk-icons/lone_wolf.png",
+                "description": "+10 Aim and Critical Chance if not within 7 tiles of an allied unit."
+            },
+            "perk_low_profile": {
+                "name": "Low Profile",
+                "icon": "assets/img/perk-icons/low_profile.png",
+                "description": "Makes partial cover grant the defense bonus of full cover."
+            },
+            "perk_mayhem": {
+                "name": "Mayhem",
+                "icon": "assets/img/perk-icons/mayhem.png",
+                "description": "Confers +2 damage for suppression, SAWs, LMGs, explosive grenades, proximity mines and rocket launchers. Confers +4 damage for sniper and long rifles, marksman's, strike and reflex rifles using Standard Shot or Precision Shot."
+            },
+            "perk_muscle_fiber_density": {
+                "name": "Muscle-fiber Density",
+                "icon": "assets/img/perk-icons/muscle_fiber_density.png",
+                "description": "Confers superhuman leg strength, enabling the soldier to reach high positions without the need for ladders or other climbing aids."
+            },
+            "perk_neural_damping": {
+                "name": "Neural Damping",
+                "icon": "assets/img/perk-icons/neural_damping.png",
+                "description": "Confers +20 will when defending against Psi attacks and immunity to panic. If the soldier is mind controlled, the control is cancelled and the soldier is stunned for 1 turn instead. Neural damped soldiers cannot learn psionic skills and psionic soldiers cannot be neural damped."
+            },
+            "perk_one_for_all": {
+                "name": "One For All",
+                "icon": "assets/img/perk-icons/one_for_all.png",
+                "description": "When activated, the MEC becomes a high cover element and gains 1 Damage Reduction. Moving or using an arm-based weapon will return the MEC to standard posture."
+            },
+            "perk_opportunist": {
+                "name": "Opportunist",
+                "icon": "assets/img/perk-icons/opportunist.png",
+                "description": "Eliminates the Aim penalty on reaction shots, and allows reaction shots to cause critical hits."
+            },
+            "perk_packmaster": {
+                "name": "Packmaster",
+                "icon": "assets/img/perk-icons/packmaster.png",
+                "description": "Limited-use small items (including those from perks) receive 1 additional use."
+            },
+            "perk_paramedic": {
+                "name": "Paramedic",
+                "icon": "assets/img/perk-icons/paramedic.png",
+                "description": "Once per turn, this unit may use a medikit without spending an action."
+            },
+            "perk_platform_stability": {
+                "name": "Platform Stability",
+                "icon": "assets/img/perk-icons/platform_stability.png",
+                "description": "Shots taken before any costly actions have +10 Aim and +10% critical chance. Also grants +10 aim for purposes of reducing scatter if the soldier has not moved this turn, and increases range of Blaster Launcher (which does not scatter)."
+            },
+            "perk_precision_shot": {
+                "name": "Precision Shot",
+                "icon": "assets/img/perk-icons/precision_shot.png",
+                "description": "With sniper/long rifles, fire a shot that ignores squadsight critical penalties, has an additional +30% critical chance, and provides extra damage on critical hits based on the soldier's weapon tech level (+2 for ballistic/laser/gauss, +3 for pulse, +4 for plasma). With marksman's and strike rifles, allows an unlimited range shot with no other bonuses. 2 turn cooldown."
+            },
+            "perk_ranger": {
+                "name": "Ranger",
+                "icon": "assets/img/perk-icons/ranger.png",
+                "description": "Confers +1 damage with primary weapons, rocket launchers, MEC secondary weapons and sidearms. Negates the long-range accuracy penalty with sidearms when shooting beyond 14 meters."
+            },
+            "perk_rapid_fire": {
+                "name": "Rapid Fire",
+                "icon": "assets/img/perk-icons/rapid_fire.png",
+                "description": "Take two shots against a single target in quick succession. Each shot carries a -15 penalty to Aim."
+            },
+            "perk_rapid_reaction": {
+                "name": "Rapid Reaction",
+                "icon": "assets/img/perk-icons/rapid_reaction.png",
+                "description": "If on Overwatch, confers a bonus reaction shot (to a maximum three shots total) for every reaction shot that is a hit."
+            },
+            "perk_reactive_targeting_sensors": {
+                "name": "Reactive Targeting Sensors",
+                "icon": "assets/img/perk-icons/reactive_targeting_sensors.png",
+                "description": "Unit gets a free shot back at the first enemy who attacks the MEC each turn, provided there's enough ammo to do so."
+            },
+            "perk_ready_for_anything": {
+                "name": "Ready for Anything",
+                "icon": "assets/img/perk-icons/ready_for_anything.png",
+                "description": "If the unit fires without taking any other costly action, it automatically enters overwatch at the end of its turn."
+            },
+            "perk_repair": {
+                "name": "Repair",
+                "icon": "assets/img/perk-icons/repair.png",
+                "description": "For X-Com, grants +2 Arc Thrower charges. On drones, allows repair of robotic units."
+            },
+            "perk_repair_servos": {
+                "name": "Repair Servos",
+                "icon": "assets/img/perk-icons/repair_servos.png",
+                "description": "Repairs up to 50% of damage taken (max 2 per turn). Value on icon represents repairs remaining at 2 points per hp. Additional damage taken before repairs are complete reduces how much can be repaired."
+            },
+            "perk_resilience": {
+                "name": "Resilience",
+                "icon": "assets/img/perk-icons/resilience.png",
+                "description": "Confers immunity to critical hits."
+            },
+            "perk_revive": {
+                "name": "Revive",
+                "icon": "assets/img/perk-icons/revive.png",
+                "description": "Allows Medikits to revive critically wounded Soldiers at 33% of maximum health instead of just stabilizing them."
+            },
+            "perk_run_and_gun": {
+                "name": "Run & Gun",
+                "icon": "assets/img/perk-icons/run_and_gun.png",
+                "description": "Allows firing or Overwatch after Dashing on the turn Run and Gun is activated. 2 turn cooldown."
+            },
+            "perk_sapper": {
+                "name": "Sapper",
+                "icon": "assets/img/perk-icons/sapper.png",
+                "description": "Increases grenade and proximity mine damage by +1. Also triples damage to the environment."
+            },
+            "perk_savior": {
+                "name": "Savior",
+                "icon": "assets/img/perk-icons/savior.png",
+                "description": "Provides 2 item-free medikit charges and +4 healing bonus to medikits. Restorative Mist units restore three more health per use."
+            },
+            "perk_sentinel": {
+                "name": "Sentinel",
+                "icon": "assets/img/perk-icons/sentinel.png",
+                "description": "Allows two reaction shots during Overwatch, instead of only one."
+            },
+            "perk_sharpshooter": {
+                "name": "Sharpshooter",
+                "icon": "assets/img/perk-icons/sharpshooter.png",
+                "description": "+10 critical chance in all situations, +10 Aim against enemies in full cover."
+            },
+            "perk_shock_absorbent_armor": {
+                "name": "Shock-Absorbent Armor",
+                "icon": "assets/img/perk-icons/shock_absorbent_armor.png",
+                "description": "Damage received from enemies within 4 tiles is reduced by 33%."
+            },
+            "perk_shock_and_awe": {
+                "name": "Shock & Awe",
+                "icon": "assets/img/perk-icons/shock_and_awe.png",
+                "description": "Allows 1 additional standard rocket to be fired per battle."
+            },
+            "perk_shredder_ammo": {
+                "name": "Shredder Ammo",
+                "icon": "assets/img/perk-icons/shredder_ammo.png",
+                "description": "The Shredder debuff causes any unit hit to take 40% additional damage (after DR, rounded down) from all sources. Gunners and MECs apply the Shredder debuff for the remainder of the current turn to any target struck by their primary weapon. Rocketeers get an extra rocket that is weaker than a standard rocket (60% rounded down), cannot penetrate cover, has a +50% larger blast radius, and applies the Shredder debuff to all targets struck by the rocket for the next 3 turns."
+            },
+            "perk_smart_macrophages": {
+                "name": "Smart Macrophages",
+                "icon": "assets/img/perk-icons/smart_macrophages.png",
+                "description": "Medikits and Restorative Mist heal 2 HP more when used on the soldier. Confers complete immunity to poison and acid."
+            },
+            "perk_secondary_heart": {
+                "name": "Secondary Heart",
+                "icon": "assets/img/perk-icons/secondary_heart.png",
+                "description": "Causes soldiers to bleed out instead of dying the first time they go to zero health in a mission. The bleed-out timer is extended by 2 turns. Prevents loss of Will from critical wounds."
+            },
+            "perk_smoke_and_mirrors": {
+                "name": "Smoke & Mirrors",
+                "icon": "assets/img/perk-icons/smoke_and_mirrors.png",
+                "description": "Allows one additional use of all support grenades during each mission. It also increases charges from Smoke Grenade and Battlescanner perks by 1."
+            },
+            "perk_smoke_grenade": {
+                "name": "Smoke Grenade",
+                "icon": "assets/img/perk-icons/smoke_grenade.png",
+                "description": "Deploy a smoke grenade once per mission. The smoke confers +20 defense and prevents flanking for all enemy and allied units. Lasts 2 turns. Taking the perk on level up also allows an additional action after deploying a smoke grenade."
+            },
+            "perk_snapshot": {
+                "name": "Snapshot",
+                "icon": "assets/img/perk-icons/snapshot.png",
+                "description": "For snipers, removes the sniper rifle's restriction on firing and Overwatch after taking a costly action. Any shots taken after using any costly action suffer a -10 Aim penalty. For rocketeers, reduces the aim and range penalty for launching a rocket after taking a costly action to 25% (from 50%)."
+            },
+            "perk_sprinter": {
+                "name": "Sprinter",
+                "icon": "assets/img/perk-icons/sprinter.png",
+                "description": "Grants +4 mobility (roughly 3 tiles movement)."
+            },
+            "perk_squadsight": {
+                "name": "Squadsight",
+                "icon": "assets/img/perk-icons/squadsight.png",
+                "description": "Allows firing at targets in any ally's sight radius within weapon range, but critical chance suffers a -20% penalty. Extended range weapons (MEC primary weapons, Marksman and Strike Rifles, and LMGs) gain roughly five extra tiles range. Sniper rifles have infinite range. Overwatch fire does not extend to squadsight ranges, except with Marksman's and Strike Rifles."
+            },
+            "perk_steadfast": {
+                "name": "Steadfast",
+                "icon": "assets/img/perk-icons/steadfast.png",
+                "description": "Never panic as a result of getting wounded, allies panicking, allies getting wounded or killed, or the intimidation ability."
+            },
+            "perk_suppression": {
+                "name": "Suppression",
+                "icon": "assets/img/perk-icons/suppression.png",
+                "description": "Fire a barrage that pins down a target, granting Opportunist reaction fire against it if it moves. Imposes a -30 penalty to aim and reduces range of many area-of-effect attacks, including grenades. Also negates overwatch from the target while suppression is active. Lastly, enemy AI prioritizes breaking the suppression by shooting the suppressor, so it functions as a mini-taunt. Not possible with shotguns, sniper rifles, or strike rifles."
+            },
+            "perk_tactical_sense": {
+                "name": "Tactical Sense",
+                "icon": "assets/img/perk-icons/tactical_sense.png",
+                "description": "Confers +5 Defense per enemy in sight (max +20)."
+            },
+            "perk_tandem_warheads": {
+                "name": "Tandem Warheads",
+                "icon": "assets/img/perk-icons/tandem_warheads.png",
+                "description": "Explosives employed by this soldier do full damage to the maximum extent of their area of effect."
+            },
+            "perk_vital_point_targeting": {
+                "name": "Vital Point Targeting",
+                "icon": "assets/img/perk-icons/vital_point_targeting.png",
+                "description": "Confers 2 bonus damage with primary guns, and +1 damage with sidearms, against humans and alien targets whose species have been autopsied."
+            },
+            "perk_will_to_survive": {
+                "name": "Will to Survive",
+                "icon": "assets/img/perk-icons/will_to_survive.png",
+                "description": "Gain 1.5 Damage Reduction (DR) if in cover and not flanked."
+            }
+        }
+
+}

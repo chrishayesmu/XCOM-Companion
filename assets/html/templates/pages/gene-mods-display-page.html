@@ -1,0 +1,66 @@
+<template id="template-gene-mods-display-page">
+    <section id="perk-tree-header-section" class="section js-section">
+        <header class="section-header">
+            <div id="perk-tree-header-text" class="section-wrapper">
+                Perk Tree - {{class}}
+            </div>
+        </header>
+
+        <div id="perk-tree-content-section" class="section-content">
+            <div>
+                <div class="perk-tree-row">
+                    <div class="gene-mods-body-part">
+                        <span>Brain</span>
+                    </div>
+                    <div class="perk-icon gene-mod-icon" id="gene-mod-icon-brain-left"><img /></div>
+                    <div class="perk-icon gene-mod-icon" id="gene-mod-icon-brain-right"><img /></div>
+                </div>
+                <div class="perk-tree-row">
+                    <div class="gene-mods-body-part">
+                        <span>Eyes</span>
+                    </div>
+                    <div class="perk-icon gene-mod-icon" id="gene-mod-icon-eyes-left"><img /></div>
+                    <div class="perk-icon gene-mod-icon" id="gene-mod-icon-eyes-right"><img /></div>
+                </div>
+                <div class="perk-tree-row">
+                    <div class="gene-mods-body-part">
+                        <span>Chest</span>
+                    </div>
+                    <div class="perk-icon gene-mod-icon" id="gene-mod-icon-chest-left"><img /></div>
+                    <div class="perk-icon gene-mod-icon" id="gene-mod-icon-chest-right"><img /></div>
+                </div>
+                <div class="perk-tree-row">
+                    <div class="gene-mods-body-part">
+                        <span>Skin</span>
+                    </div>
+                    <div class="perk-icon gene-mod-icon" id="gene-mod-icon-skin-left"><img /></div>
+                    <div class="perk-icon gene-mod-icon" id="gene-mod-icon-skin-right"><img /></div>
+                </div>
+                <div class="perk-tree-row">
+                    <div class="gene-mods-body-part">
+                        <span>Legs</span>
+                    </div>
+                    <div class="perk-icon gene-mod-icon" id="gene-mod-icon-legs-left"><img /></div>
+                    <div class="perk-icon gene-mod-icon" id="gene-mod-icon-legs-right"><img /></div>
+                </div>
+            </div>
+            <div id="perk-tree-details" class="hidden">
+                <div id="perk-tree-details-name"></div>
+                <div id="gene-mod-costs">
+                    <div>
+                        §<span id="gene-mod-costs-money"></span>
+                    </div>
+                    <div>
+                        <img src="assets/img/misc-icons/meld.png" /><span id="gene-mod-costs-meld"></span>
+                    </div>
+                    <div>
+                        <img src="assets/img/misc-icons/time.png" /><span id="gene-mod-costs-time-days"></span>&nbsp;days
+                    </div>
+                </div>
+                <div id="perk-tree-details-description"></div>
+                <div id="gene-mod-added-fatigue"></div>
+                <div id="gene-mod-required-research"></div>
+            </div>
+        </div>
+    </section>
+</template>

@@ -1,0 +1,176 @@
+#tech-details-content-section {
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+#tech-details-leads-to-research,
+#tech-details-prerequisites {
+    display: flex;
+    flex-flow: column wrap;
+    max-height: calc(20em - 1.2em - 8px);
+}
+
+#tech-details-cost-container {
+    height: 130px;
+}
+
+#tech-details-time-container {
+    align-items: center;
+    display: flex;
+    flex-flow: row nowrap;
+    font-size: 1.2em;
+    justify-content: center;
+}
+
+.tech-details-cost-quantity {
+    margin-right: 5px;
+    text-align: right;
+    width: 36px;
+}
+
+.tech-details-cost-type {
+    display: flex;
+    flex-flow: row nowrap;
+    margin-bottom: 2px;
+    justify-content: right;
+    width: 50%;
+}
+
+/**
+ * Generalized styles for use in the main body of the page
+ */
+
+.tech-details-column-body {
+    display: flex;
+    flex-flow: column wrap;
+    flex-grow: 1;
+    padding: 10px 13px 15px 13px;
+}
+
+.tech-details-left-column {
+    border-right: 1px solid var(--color-subtle);
+    flex-shrink: 0;
+    width: 50%;
+}
+
+.tech-details-right-column {
+    display: flex;
+    flex-flow: column nowrap;
+    flex-grow: 1;
+}
+
+.tech-details-inline-icon {
+    margin-right: 6px;
+    width: 20px;
+}
+
+.tech-details-heading {
+    background-color: var(--color-bg-subtle);
+    border-bottom: 1px solid var(--color-subtle);
+    border-top: 1px solid var(--color-subtle);
+    color: var(--color);
+    padding: 4px 0px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+/**
+ * Styles for header row contents
+ */
+
+#tech-details-description {
+    height: calc(12em - 40px - 10px); /* Entire row height, minus the research name, minus this element's padding */
+    padding: 5px 10px;
+    margin-right: 18px;
+    overflow: auto;
+}
+
+#tech-details-description-container {
+    flex-grow: 1;
+    text-align: center;
+}
+
+#tech-details-image-container {
+    display: flex;
+    flex-shrink: 0;
+    justify-content: center;
+    width: 40%;
+}
+
+#tech-details-image-container img {
+    margin: auto 0;
+    max-width: 100%;
+}
+
+#tech-details-name {
+    font-size: 2em;
+    height: 40px;
+    width: 100%;
+}
+
+/**
+ * Sizing/styles for each individual row
+ */
+
+#tech-details-header-row {
+    margin-bottom: 15px;
+    height: 12em;
+}
+
+#tech-details-second-row {
+    height: 12em;
+}
+
+#tech-details-main-row {
+    display: flex;
+    flex-flow: column wrap;
+    flex-grow: 1;
+    min-height: 200px;
+}
+
+#tech-details-bottom-row {
+    height: 20em;
+}
+
+#tech-details-unlocks {
+    height: calc(100% - 3 * 12em - 1em);
+}
+
+#tech-details-unlocks ul {
+    margin-block-start: 0;
+}
+
+/***************************
+ * Styles for preview rendering
+ ***************************/
+
+#tech-preview-container {
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+#tech-preview-description {
+    padding-left: 5px;
+    margin-top: 13px;
+    word-wrap: normal;
+}
+
+#tech-preview-header-row {
+     display: flex;
+     flex-flow: row nowrap;
+     height: 48px;
+}
+
+#tech-preview-icon img {
+    background-color: var(--color-bg-schematic);
+    outline: 1px solid var(--color-border-schematic);
+    padding: 4px 2px;
+    width: 96px;
+}
+
+#tech-preview-name {
+    display: flex;
+    align-items: center;
+    font-size: 24px;
+    margin-left: 10px;
+}

@@ -1,0 +1,48 @@
+/* Section ------------------ */
+
+.section {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow-x: auto;
+  overflow-y: auto;
+  color: var(--color-accent);
+
+  pointer-events: auto;
+  visibility: visible;
+  opacity: 1;
+  transition: visibility 0s .12s linear , opacity .12s ease-in, transform .12s ease-in;
+}
+.section.is-shown {
+  pointer-events: auto;
+  visibility: visible;
+  opacity: 1;
+  transition: visibility 0s 0s linear , opacity .36s ease-out, transform .36s ease-out;
+}
+
+.section h3,
+.section p {
+  color: var(--color);
+}
+
+.section-header {
+    border-bottom: 1px solid var(--color-border);
+    font-size: 2em;
+    height: 6rem;
+    line-height: 1;
+    padding: 2rem 2rem 1rem 2rem;
+}
+
+.section-content {
+    height: calc(100% - 6em);
+    padding-top: 10px;
+}
+
+.section-icon {
+  width: 32px;
+  height: 32px;
+  vertical-align: middle;
+  margin-right: .5em;
+}

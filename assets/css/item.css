@@ -1,0 +1,255 @@
+#item-details-content-section {
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+#item-details-normal-build-cost-container,
+#item-details-quick-build-cost-container {
+    max-height: 120px;
+}
+
+#item-details-prerequisites-container {
+    border-right: 1px solid var(--color);
+    flex-grow: 1;
+    min-width: 50%;
+}
+
+#item-details-prerequisites {
+    display: flex;
+    flex-flow: column wrap;
+    max-height: calc(20em - 1.2em - 8px);
+}
+
+#item-details-tactical-text {
+    padding: 0px;
+}
+
+.item-details-build-content {
+    display: flex;
+    flex-flow: row nowrap;
+    height: calc(100% - 31px); /* magic to make sure normal and quick build are the same height even if one is naturally longer */
+}
+
+#item-details-cost-container {
+    height: 130px;
+    align-items: center;
+}
+
+.item-details-cost-quantity {
+    margin-right: 5px;
+    text-align: right;
+    width: 36px;
+}
+
+.item-details-cost-type {
+    display: flex;
+    flex-flow: row nowrap;
+    margin-bottom: 2px;
+    width: 45%;
+}
+
+#item-details-description-container {
+    padding-bottom: 10px;
+}
+
+table.item-stats-grid {
+    border-collapse: collapse;
+    margin: 15px auto 0 auto;
+    table-layout: fixed;
+    width: 95%;
+}
+
+table.item-stats-grid th {
+    border: 1px solid var(--color-border-subtle);
+    padding-top: 4px;
+    text-align: center;
+}
+
+table.item-stats-grid td {
+    border: 1px solid var(--color-border-subtle);
+    padding: 3px 0px;
+    text-align: center;
+}
+
+.item-details-time-container {
+    border-left: 1px solid var(--color-border-subtle);
+    display: flex;
+    flex-flow: column nowrap;
+    padding: 10px 13px 15px 13px;
+
+    width: 121px;
+}
+
+.item-stats-header-img {
+    height: 24px;
+    width: 24px;
+}
+
+/**
+ * Generalized styles for use in the main body of the page
+ */
+
+.item-details-column-body {
+    display: flex;
+    flex-flow: column wrap;
+    flex-grow: 1;
+    padding: 10px 13px 15px 13px;
+}
+
+.item-details-left-column {
+    border-right: 1px solid var(--color-subtle);
+    flex-shrink: 0;
+    width: 50%;
+}
+
+.item-details-right-column {
+    display: flex;
+    flex-flow: column nowrap;
+    flex-grow: 1;
+}
+
+.item-details-inline-icon {
+    margin-right: 6px;
+    width: 20px;
+}
+
+.item-details-heading {
+    background-color: var(--color-bg-subtle);
+    border-bottom: 1px solid var(--color-subtle);
+    border-top: 1px solid var(--color-subtle);
+    color: var(--color);
+    padding: 4px 0px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+/**
+ * Styles for header row contents
+ */
+
+#item-details-description {
+    height: calc(12em - 40px - 10px - 21px); /* Entire row height, minus the item name, minus this element's padding */
+    padding: 5px 10px;
+    overflow: auto;
+}
+
+#item-details-description-container {
+    flex-grow: 1;
+    padding-right: 18px;
+    text-align: center;
+}
+
+#item-details-image-container {
+    display: flex;
+    flex-shrink: 0;
+    justify-content: center;
+    width: 40%;
+}
+
+#item-details-image-container img {
+    margin: auto 0;
+    max-width: 100%;
+}
+
+#item-details-last-row {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+}
+
+#item-details-name {
+    font-size: 2em;
+    height: 40px;
+    width: 100%;
+}
+
+#item-details-type {
+    height: 21px;
+}
+
+/**
+ * Sizing/styles for each individual row
+ */
+
+#item-details-header-row {
+    margin-bottom: 15px;
+    height: 12em;
+}
+
+#item-details-second-row {
+    height: 12em;
+}
+
+#item-details-used-in-container {
+    display: flex;
+    flex-flow: column wrap;
+    flex-grow: 1;
+    min-height: 80px;
+    min-width: 50%;
+}
+
+#item-details-used-in {
+    min-height: calc(100% - 12em - 1em);
+
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: minmax(50%, max-content) max-content;
+}
+
+#item-details-used-in div {
+    margin-right: 16px;
+}
+
+/***************************
+ * Styles for preview rendering
+ ***************************/
+
+ #item-preview-container {
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+#item-preview-cost {
+    align-items: flex-start;
+    display: flex;
+    flex-flow: row nowrap;
+    flex-grow: 1;
+    justify-content: flex-end;
+    margin-left: 25px;
+    min-width: 40px;
+}
+
+#item-preview-cost > div {
+    align-items: center;
+    display: flex;
+    flex-flow: row nowrap;
+    height: 21px;
+    justify-content: center;
+    margin-left: 10px;
+    width: 35px;
+}
+
+#item-preview-description {
+    padding-left: 5px;
+    margin-top: 8px;
+}
+
+#item-preview-header-row {
+     display: flex;
+     flex-flow: row nowrap;
+     height: 48px;
+}
+
+#item-preview-icon img {
+    background-color: var(--color-bg-schematic);
+    outline: 1px solid var(--color-border-schematic);
+    padding: 4px 2px;
+    width: 88px;
+}
+
+#item-preview-name {
+    display: flex;
+    align-items: center;
+    font-size: 24px;
+    margin-left: 10px;
+}

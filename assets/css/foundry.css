@@ -1,0 +1,53 @@
+/***************************
+ * Styles for preview rendering
+ ***************************/
+
+ #foundry-preview-container {
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+#foundry-preview-cost {
+    align-items: flex-start;
+    display: flex;
+    flex-flow: row nowrap;
+    flex-grow: 1;
+    justify-content: flex-end;
+    margin-left: 25px;
+    min-width: 40px;
+}
+
+#foundry-preview-cost > div {
+    align-items: center;
+    display: flex;
+    flex-flow: row nowrap;
+    height: 21px;
+    justify-content: center;
+    margin-left: 10px;
+    width: 35px;
+}
+
+#foundry-preview-description {
+    padding-left: 5px;
+    margin-top: 13px;
+}
+
+#foundry-preview-header-row {
+     display: flex;
+     flex-flow: row nowrap;
+     height: 48px;
+}
+
+#foundry-preview-icon img {
+    background-color: var(--color-bg-schematic);
+    outline: 1px solid var(--color-border-schematic);
+    padding: 4px 2px;
+    width: 96px;
+}
+
+#foundry-preview-name {
+    display: flex;
+    align-items: center;
+    font-size: 24px;
+    margin-left: 10px;
+}

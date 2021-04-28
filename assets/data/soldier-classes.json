@@ -1,0 +1,1150 @@
+{
+    "classes": [
+        {
+            "id": "infantry_class_assault",
+            "name": "Assault",
+            "icon": "assets/img/soldier-class-icons/assault.png",
+            "perks": {
+                "0": [ "perk_run_and_gun" ],
+                "1": [ "perk_steadfast", "perk_close_combat_specialist", "perk_flush" ],
+                "2": [ "perk_will_to_survive", "perk_aggression", "perk_ranger" ],
+                "3": [ "perk_close_encounters", "perk_rapid_fire", "perk_hit_and_run" ],
+                "4": [ "perk_resilience", "perk_killer_instinct", "perk_executioner" ],
+                "5": [ "perk_tactical_sense", "perk_bring_em_on", "perk_sprinter" ],
+                "6": [ "perk_extra_conditioning", "perk_vital_point_targeting", "perk_lightning_reflexes" ]
+            },
+            "perk_stat_bonuses": {
+                "perk_close_encounters": {
+                    "will": 3
+                },
+                "perk_executioner": {
+                    "aim": 2,
+                    "will": 2
+                },
+                "perk_extra_conditioning": {
+                    "aim": 4,
+                    "mobility": 1,
+                    "will": 4
+                },
+                "perk_steadfast": {
+                    "will": 5
+                },
+                "perk_will_to_survive": {
+                    "will": 3
+                }
+            },
+            "stat_progression": {
+                "0": {
+                    "hp": 1,
+                    "aim": 3,
+                    "will": 5
+                },
+                "1": {
+                    "hp": 0,
+                    "aim": 2,
+                    "will": 5
+                },
+                "2": {
+                    "hp": 1,
+                    "aim": 3,
+                    "will": 3
+                },
+                "3": {
+                    "hp": 0,
+                    "aim": 2,
+                    "will": 3
+                },
+                "4": {
+                    "hp": 1,
+                    "aim": 3,
+                    "will": 3
+                },
+                "5": {
+                    "hp": 0,
+                    "aim": 2,
+                    "will": 3
+                },
+                "6": {
+                    "hp": 1,
+                    "aim": 3,
+                    "will": 3
+                }
+            }
+        },
+        {
+            "id": "infantry_class_engineer",
+            "name": "Engineer",
+            "icon": "assets/img/soldier-class-icons/engineer.png",
+            "perks": {
+                "0": [ "perk_grenadier" ],
+                "1": [ "perk_holo_targeting", "perk_smoke_grenade", "perk_sapper" ],
+                "2": [ "perk_ranger", "perk_smoke_and_mirrors", "perk_heat_warheads" ],
+                "3": [ "perk_will_to_survive", "perk_repair", "perk_suppression" ],
+                "4": [ "perk_battle_scanner", "perk_dense_smoke", "perk_mayhem" ],
+                "5": [ "perk_extra_conditioning", "perk_packmaster", "perk_heat_ammo" ],
+                "6": [ "perk_tandem_warheads", "perk_fire_rocket", "perk_bombard" ]
+            },
+            "perk_stat_bonuses": {
+                "perk_extra_conditioning": {
+                    "aim": 3,
+                    "mobility": 1,
+                    "will": 3
+                },
+                "perk_holo_targeting": {
+                    "aim": 1
+                },
+                "perk_ranger": {
+                    "aim": 2
+                },
+                "perk_will_to_survive": {
+                    "will": 3
+                }
+            },
+            "stat_progression": {
+                "0": {
+                    "hp": 1,
+                    "aim": 3,
+                    "will": 5
+                },
+                "1": {
+                    "hp": 0,
+                    "aim": 2,
+                    "will": 5
+                },
+                "2": {
+                    "hp": 1,
+                    "aim": 3,
+                    "will": 3
+                },
+                "3": {
+                    "hp": 0,
+                    "aim": 2,
+                    "will": 3
+                },
+                "4": {
+                    "hp": 1,
+                    "aim": 3,
+                    "will": 3
+                },
+                "5": {
+                    "hp": 0,
+                    "aim": 2,
+                    "will": 3
+                },
+                "6": {
+                    "hp": 1,
+                    "aim": 3,
+                    "will": 3
+                }
+            }
+        },
+        {
+            "id": "infantry_class_gunner",
+            "name": "Gunner",
+            "icon": "assets/img/soldier-class-icons/gunner.png",
+            "perks": {
+                "0": [ "perk_suppression" ],
+                "1": [ "perk_flush", "perk_covering_fire", "perk_holo_targeting" ],
+                "2": [ "perk_heat_ammo", "perk_opportunist", "perk_shredder_ammo" ],
+                "3": [ "perk_will_to_survive", "perk_executioner", "perk_ranger" ],
+                "4": [ "perk_rapid_fire", "perk_ready_for_anything", "perk_double_tap" ],
+                "5": [ "perk_resilience", "perk_platform_stability", "perk_danger_zone" ],
+                "6": [ "perk_extra_conditioning", "perk_sentinel", "perk_mayhem" ]
+            },
+            "perk_stat_bonuses": {
+                "perk_covering_fire": {
+                    "aim": 2
+                },
+                "perk_extra_conditioning": {
+                    "aim": 4,
+                    "mobility": 1,
+                    "will": 4
+                },
+                "perk_ready_for_anything": {
+                    "aim": 2
+                },
+                "perk_will_to_survive": {
+                    "will": 3
+                }
+            },
+            "stat_progression": {
+                "0": {
+                    "hp": 1,
+                    "aim": 3,
+                    "will": 5
+                },
+                "1": {
+                    "hp": 0,
+                    "aim": 2,
+                    "will": 5
+                },
+                "2": {
+                    "hp": 1,
+                    "aim": 3,
+                    "will": 3
+                },
+                "3": {
+                    "hp": 0,
+                    "aim": 2,
+                    "will": 3
+                },
+                "4": {
+                    "hp": 1,
+                    "aim": 3,
+                    "will": 3
+                },
+                "5": {
+                    "hp": 0,
+                    "aim": 2,
+                    "will": 3
+                },
+                "6": {
+                    "hp": 1,
+                    "aim": 3,
+                    "will": 3
+                }
+            }
+        },
+        {
+            "id": "infantry_class_infantry",
+            "name": "Infantry",
+            "icon": "assets/img/soldier-class-icons/infantry.png",
+            "perks": {
+                "0": [ "perk_light_em_up" ],
+                "1": [ "perk_steadfast", "perk_covering_fire", "perk_executioner" ],
+                "2": [ "perk_will_to_survive", "perk_opportunist", "perk_aggression" ],
+                "3": [ "perk_deadeye", "perk_suppression", "perk_ranger" ],
+                "4": [ "perk_tactical_sense", "perk_lock_and_load", "perk_sharpshooter" ],
+                "5": [ "perk_resilience", "perk_sentinel", "perk_bring_em_on" ],
+                "6": [ "perk_extra_conditioning", "perk_vital_point_targeting", "perk_rapid_fire" ]
+            },
+            "perk_stat_bonuses": {
+                "perk_extra_conditioning": {
+                    "aim": 4,
+                    "mobility": 1,
+                    "will": 4
+                },
+                "perk_sharpshooter": {
+                    "aim": 2
+                },
+                "perk_steadfast": {
+                    "will": 5
+                },
+                "perk_will_to_survive": {
+                    "will": 3
+                }
+            },
+            "stat_progression": {
+                "0": {
+                    "hp": 1,
+                    "aim": 3,
+                    "will": 5
+                },
+                "1": {
+                    "hp": 0,
+                    "aim": 3,
+                    "will": 5
+                },
+                "2": {
+                    "hp": 0,
+                    "aim": 3,
+                    "will": 3
+                },
+                "3": {
+                    "hp": 1,
+                    "aim": 3,
+                    "will": 3
+                },
+                "4": {
+                    "hp": 0,
+                    "aim": 3,
+                    "will": 3
+                },
+                "5": {
+                    "hp": 0,
+                    "aim": 3,
+                    "will": 3
+                },
+                "6": {
+                    "hp": 1,
+                    "aim": 3,
+                    "will": 3
+                }
+            }
+        },
+        {
+            "id": "infantry_class_medic",
+            "name": "Medic",
+            "icon": "assets/img/soldier-class-icons/medic.png",
+            "perks": {
+                "0": [ "perk_field_medic" ],
+                "1": [ "perk_suppression", "perk_steadfast", "perk_field_surgeon" ],
+                "2": [ "perk_rapid_reaction", "perk_smoke_and_mirrors", "perk_revive" ],
+                "3": [ "perk_ready_for_anything", "perk_smoke_grenade", "perk_paramedic" ],
+                "4": [ "perk_opportunist", "perk_dense_smoke", "perk_combat_drugs" ],
+                "5": [ "perk_lock_and_load", "perk_bombard", "perk_sprinter" ],
+                "6": [ "perk_extra_conditioning", "perk_packmaster", "perk_savior" ]
+            },
+            "perk_stat_bonuses": {
+                "perk_extra_conditioning": {
+                    "aim": 4,
+                    "mobility": 1,
+                    "will": 4
+                },
+                "perk_rapid_reaction": {
+                    "aim": 3
+                },
+                "perk_ready_for_anything": {
+                    "will": 3
+                },
+                "perk_revive": {
+                    "will": 2
+                },
+                "perk_steadfast": {
+                    "will": 5
+                }
+            },
+            "stat_progression": {
+                "0": {
+                    "hp": 1,
+                    "aim": 3,
+                    "will": 6
+                },
+                "1": {
+                    "hp": 0,
+                    "aim": 2,
+                    "will": 6
+                },
+                "2": {
+                    "hp": 0,
+                    "aim": 3,
+                    "will": 4
+                },
+                "3": {
+                    "hp": 1,
+                    "aim": 2,
+                    "will": 3
+                },
+                "4": {
+                    "hp": 0,
+                    "aim": 3,
+                    "will": 3
+                },
+                "5": {
+                    "hp": 0,
+                    "aim": 2,
+                    "will": 3
+                },
+                "6": {
+                    "hp": 1,
+                    "aim": 3,
+                    "will": 3
+                }
+            }
+        },
+        {
+            "id": "infantry_class_rocketeer",
+            "name": "Rocketeer",
+            "icon": "assets/img/soldier-class-icons/rocketeer.png",
+            "perks": {
+                "0": [ "perk_fire_rocket" ],
+                "1": [ "perk_will_to_survive", "perk_ranger", "perk_heat_warheads" ],
+                "2": [ "perk_rapid_reaction", "perk_fire_in_the_hole", "perk_snapshot" ],
+                "3": [ "perk_suppression", "perk_platform_stability", "perk_shredder_ammo" ],
+                "4": [ "perk_tactical_sense", "perk_opportunist", "perk_mayhem" ],
+                "5": [ "perk_extra_conditioning", "perk_double_tap", "perk_shock_and_awe" ],
+                "6": [ "perk_tandem_warheads", "perk_javelin_rockets", "perk_danger_zone" ]
+            },
+            "perk_stat_bonuses": {
+                "perk_extra_conditioning": {
+                    "aim": 3,
+                    "mobility": 1,
+                    "will": 3
+                },
+                "perk_rapid_reaction": {
+                    "aim": 2
+                },
+                "perk_will_to_survive": {
+                    "will": 3
+                }
+            },
+            "stat_progression": {
+                "0": {
+                    "hp": 1,
+                    "aim": 3,
+                    "will": 5
+                },
+                "1": {
+                    "hp": 0,
+                    "aim": 3,
+                    "will": 5
+                },
+                "2": {
+                    "hp": 0,
+                    "aim": 3,
+                    "will": 3
+                },
+                "3": {
+                    "hp": 1,
+                    "aim": 3,
+                    "will": 3
+                },
+                "4": {
+                    "hp": 0,
+                    "aim": 3,
+                    "will": 3
+                },
+                "5": {
+                    "hp": 0,
+                    "aim": 3,
+                    "will": 3
+                },
+                "6": {
+                    "hp": 1,
+                    "aim": 3,
+                    "will": 3
+                }
+            }
+        },
+        {
+            "id": "infantry_class_scout",
+            "name": "Scout",
+            "icon": "assets/img/soldier-class-icons/scout.png",
+            "perks": {
+                "0": [ "perk_lightning_reflexes" ],
+                "1": [ "perk_holo_targeting", "perk_damn_good_ground", "perk_lone_wolf" ],
+                "2": [ "perk_low_profile", "perk_ranger", "perk_deadeye" ],
+                "3": [ "perk_flush", "perk_aggression", "perk_battle_scanner" ],
+                "4": [ "perk_concealment", "perk_in_the_zone", "perk_hit_and_run" ],
+                "5": [ "perk_tactical_sense", "perk_bring_em_on", "perk_sprinter" ],
+                "6": [ "perk_extra_conditioning", "perk_vital_point_targeting", "perk_smoke_and_mirrors" ]
+            },
+            "perk_stat_bonuses": {
+                "perk_deadeye": {
+                    "aim": 1
+                },
+                "perk_extra_conditioning": {
+                    "aim": 4,
+                    "mobility": 1,
+                    "will": 4
+                },
+                "perk_lightning_reflexes": {
+                    "mobility": 1
+                },
+                "perk_ranger": {
+                    "aim": 1
+                }
+            },
+            "stat_progression": {
+                "0": {
+                    "hp": 0,
+                    "aim": 4,
+                    "will": 5
+                },
+                "1": {
+                    "hp": 0,
+                    "aim": 3,
+                    "will": 5
+                },
+                "2": {
+                    "hp": 1,
+                    "aim": 4,
+                    "will": 3
+                },
+                "3": {
+                    "hp": 0,
+                    "aim": 3,
+                    "will": 3
+                },
+                "4": {
+                    "hp": 0,
+                    "aim": 4,
+                    "will": 3
+                },
+                "5": {
+                    "hp": 0,
+                    "aim": 3,
+                    "will": 3
+                },
+                "6": {
+                    "hp": 1,
+                    "aim": 4,
+                    "will": 2
+                }
+            }
+        },
+        {
+            "id": "infantry_class_sniper",
+            "name": "Sniper",
+            "icon": "assets/img/soldier-class-icons/sniper.png",
+            "perks": {
+                "0": [ "perk_squadsight" ],
+                "1": [ "perk_low_profile", "perk_deadeye", "perk_lone_wolf" ],
+                "2": [ "perk_disabling_shot", "perk_precision_shot", "perk_snapshot" ],
+                "3": [ "perk_damn_good_ground", "perk_ranger", "perk_sharpshooter" ],
+                "4": [ "perk_executioner", "perk_vital_point_targeting", "perk_platform_stability" ],
+                "5": [ "perk_tactical_sense", "perk_bring_em_on", "perk_lock_and_load" ],
+                "6": [ "perk_in_the_zone", "perk_mayhem", "perk_double_tap" ]
+            },
+            "perk_stat_bonuses": {
+                "perk_damn_good_ground": {
+                    "will": 2
+                },
+                "perk_mayhem": {
+                    "aim": 2
+                }
+            },
+            "stat_progression": {
+                "0": {
+                    "hp": 0,
+                    "aim": 4,
+                    "will": 5
+                },
+                "1": {
+                    "hp": 0,
+                    "aim": 4,
+                    "will": 5
+                },
+                "2": {
+                    "hp": 1,
+                    "aim": 4,
+                    "will": 3
+                },
+                "3": {
+                    "hp": 0,
+                    "aim": 4,
+                    "will": 2
+                },
+                "4": {
+                    "hp": 0,
+                    "aim": 4,
+                    "will": 2
+                },
+                "5": {
+                    "hp": 0,
+                    "aim": 4,
+                    "will": 2
+                },
+                "6": {
+                    "hp": 1,
+                    "aim": 4,
+                    "will": 2
+                }
+            }
+        },
+        {
+            "id": "mec_class_archer",
+            "name": "Archer",
+            "icon": "assets/img/soldier-class-icons/mec-archer.png",
+            "perks": {
+                "0": [ "perk_bombard" ],
+                "1": [ "perk_heat_warheads", "perk_automated_threat_assessment", "perk_platform_stability" ],
+                "2": [ "perk_repair_servos", "perk_advanced_fire_control", "perk_mayhem" ],
+                "3": [ "perk_ranger", "perk_reactive_targeting_sensors", "perk_sapper" ],
+                "4": [ "perk_vital_point_targeting", "perk_packmaster", "perk_collateral_damage" ],
+                "5": [ "perk_danger_zone", "perk_double_tap", "perk_damage_control" ],
+                "6": [ "perk_grenadier", "perk_tandem_warheads", "perk_absorption_fields" ]
+            },
+            "perk_stat_bonuses": {
+                "perk_absorption_fields": {
+                    "mobility": -1
+                },
+                "perk_advanced_fire_control": {
+                    "aim": 2
+                },
+                "perk_automated_threat_assessment": {
+                    "will": 2
+                },
+                "perk_damage_control": {
+                    "aim": 3
+                },
+                "perk_reactive_targeting_sensors": {
+                    "aim": 2,
+                    "will": 2
+                }
+            },
+            "stat_progression": {
+                "0": {
+                    "hp": 1,
+                    "aim": 2,
+                    "will": 2
+                },
+                "1": {
+                    "hp": 0,
+                    "aim": 2,
+                    "will": 2
+                },
+                "2": {
+                    "hp": 0,
+                    "aim": 2,
+                    "will": 2
+                },
+                "3": {
+                    "hp": 1,
+                    "aim": 2,
+                    "will": 2
+                },
+                "4": {
+                    "hp": 0,
+                    "aim": 2,
+                    "will": 2
+                },
+                "5": {
+                    "hp": 0,
+                    "aim": 2,
+                    "will": 2
+                },
+                "6": {
+                    "hp": 1,
+                    "aim": 2,
+                    "will": 2
+                }
+            }
+        },
+        {
+            "id": "mec_class_goliath",
+            "name": "Goliath",
+            "icon": "assets/img/soldier-class-icons/mec-goliath.png",
+            "perks": {
+                "0": [ "perk_absorption_fields" ],
+                "1": [ "perk_steadfast", "perk_reactive_targeting_sensors", "perk_flush" ],
+                "2": [ "perk_covering_fire", "perk_automated_threat_assessment", "perk_ranger" ],
+                "3": [ "perk_mayhem", "perk_repair_servos", "perk_advanced_fire_control" ],
+                "4": [ "perk_packmaster", "perk_shock_absorbent_armor", "perk_vital_point_targeting" ],
+                "5": [ "perk_heat_ammo", "perk_damage_control", "perk_collateral_damage" ],
+                "6": [ "perk_close_combat_specialist", "perk_extra_conditioning", "perk_rapid_fire" ]
+            },
+            "perk_stat_bonuses": {
+                "perk_absorption_fields": {
+                    "mobility": -1
+                },
+                "perk_advanced_fire_control": {
+                    "aim": 2
+                },
+                "perk_automated_threat_assessment": {
+                    "will": 2
+                },
+                "perk_extra_conditioning": {
+                    "aim": 4,
+                    "mobility": 1,
+                    "will": 4
+                },
+                "perk_reactive_targeting_sensors": {
+                    "aim": 2,
+                    "will": 2
+                },
+                "perk_steadfast": {
+                    "will": 5
+                }
+            },
+            "stat_progression": {
+                "0": {
+                    "hp": 1,
+                    "aim": 2,
+                    "will": 2
+                },
+                "1": {
+                    "hp": 1,
+                    "aim": 1,
+                    "will": 2
+                },
+                "2": {
+                    "hp": 1,
+                    "aim": 2,
+                    "will": 2
+                },
+                "3": {
+                    "hp": 1,
+                    "aim": 1,
+                    "will": 2
+                },
+                "4": {
+                    "hp": 1,
+                    "aim": 2,
+                    "will": 2
+                },
+                "5": {
+                    "hp": 1,
+                    "aim": 1,
+                    "will": 2
+                },
+                "6": {
+                    "hp": 1,
+                    "aim": 2,
+                    "will": 2
+                }
+            }
+        },
+        {
+            "id": "mec_class_goliath",
+            "name": "Goliath",
+            "icon": "assets/img/soldier-class-icons/mec-goliath.png",
+            "perks": {
+                "0": [ "perk_absorption_fields" ],
+                "1": [ "perk_steadfast", "perk_reactive_targeting_sensors", "perk_flush" ],
+                "2": [ "perk_covering_fire", "perk_automated_threat_assessment", "perk_ranger" ],
+                "3": [ "perk_mayhem", "perk_repair_servos", "perk_advanced_fire_control" ],
+                "4": [ "perk_packmaster", "perk_shock_absorbent_armor", "perk_vital_point_targeting" ],
+                "5": [ "perk_heat_ammo", "perk_damage_control", "perk_collateral_damage" ],
+                "6": [ "perk_close_combat_specialist", "perk_extra_conditioning", "perk_rapid_fire" ]
+            },
+            "perk_stat_bonuses": {
+                "perk_absorption_fields": {
+                    "mobility": -1
+                },
+                "perk_advanced_fire_control": {
+                    "aim": 2
+                },
+                "perk_automated_threat_assessment": {
+                    "will": 2
+                },
+                "perk_extra_conditioning": {
+                    "aim": 4,
+                    "mobility": 1,
+                    "will": 4
+                },
+                "perk_reactive_targeting_sensors": {
+                    "aim": 2,
+                    "will": 2
+                },
+                "perk_steadfast": {
+                    "will": 5
+                }
+            },
+            "stat_progression": {
+                "0": {
+                    "hp": 1,
+                    "aim": 2,
+                    "will": 2
+                },
+                "1": {
+                    "hp": 1,
+                    "aim": 1,
+                    "will": 2
+                },
+                "2": {
+                    "hp": 1,
+                    "aim": 2,
+                    "will": 2
+                },
+                "3": {
+                    "hp": 1,
+                    "aim": 1,
+                    "will": 2
+                },
+                "4": {
+                    "hp": 1,
+                    "aim": 2,
+                    "will": 2
+                },
+                "5": {
+                    "hp": 1,
+                    "aim": 1,
+                    "will": 2
+                },
+                "6": {
+                    "hp": 1,
+                    "aim": 2,
+                    "will": 2
+                }
+            }
+        },
+        {
+            "id": "mec_class_guardian",
+            "name": "Guardian",
+            "icon": "assets/img/soldier-class-icons/mec-guardian.png",
+            "perks": {
+                "0": [ "perk_opportunist" ],
+                "1": [ "perk_field_medic", "perk_steadfast", "perk_ranger" ],
+                "2": [ "perk_platform_stability", "perk_automated_threat_assessment", "perk_covering_fire" ],
+                "3": [ "perk_packmaster", "perk_repair_servos", "perk_sentinel" ],
+                "4": [ "perk_savior", "perk_deadeye", "perk_reactive_targeting_sensors" ],
+                "5": [ "perk_vital_point_targeting", "perk_lock_and_load", "perk_absorption_fields" ],
+                "6": [ "perk_ready_for_anything", "perk_damage_control", "perk_double_tap" ]
+            },
+            "perk_stat_bonuses": {
+                "perk_absorption_fields": {
+                    "mobility": -1
+                },
+                "perk_automated_threat_assessment": {
+                    "will": 2
+                },
+                "perk_reactive_targeting_sensors": {
+                    "aim": 2,
+                    "will": 2
+                },
+                "perk_ready_for_anything": {
+                    "aim": 2,
+                    "will": 2
+                },
+                "perk_steadfast": {
+                    "will": 5
+                }
+            },
+            "stat_progression": {
+                "0": {
+                    "hp": 1,
+                    "aim": 3,
+                    "will": 2
+                },
+                "1": {
+                    "hp": 0,
+                    "aim": 3,
+                    "will": 2
+                },
+                "2": {
+                    "hp": 1,
+                    "aim": 3,
+                    "will": 2
+                },
+                "3": {
+                    "hp": 0,
+                    "aim": 3,
+                    "will": 2
+                },
+                "4": {
+                    "hp": 1,
+                    "aim": 3,
+                    "will": 2
+                },
+                "5": {
+                    "hp": 0,
+                    "aim": 3,
+                    "will": 2
+                },
+                "6": {
+                    "hp": 1,
+                    "aim": 3,
+                    "will": 2
+                }
+            }
+        },
+        {
+            "id": "mec_class_jaeger",
+            "name": "Jaeger",
+            "icon": "assets/img/soldier-class-icons/mec-jaeger.png",
+            "perks": {
+                "0": [ "perk_in_the_zone" ],
+                "1": [ "perk_damn_good_ground", "perk_platform_stability", "perk_sharpshooter" ],
+                "2": [ "perk_executioner", "perk_automated_threat_assessment", "perk_flush" ],
+                "3": [ "perk_lone_wolf", "perk_advanced_fire_control", "perk_ranger" ],
+                "4": [ "perk_aggression", "perk_damage_control", "perk_squadsight" ],
+                "5": [ "perk_repair_servos", "perk_bring_em_on", "perk_shredder_ammo" ],
+                "6": [ "perk_lock_and_load", "perk_absorption_fields", "perk_vital_point_targeting" ]
+            },
+            "perk_stat_bonuses": {
+                "perk_absorption_fields": {
+                    "mobility": -1
+                },
+                "perk_advanced_fire_control": {
+                    "aim": 2
+                },
+                "perk_automated_threat_assessment": {
+                    "will": 2
+                },
+                "perk_damage_control": {
+                    "will": 2
+                },
+                "perk_repair_servos": {
+                    "will": 2
+                }
+            },
+            "stat_progression": {
+                "0": {
+                    "hp": 1,
+                    "aim": 4,
+                    "will": 2
+                },
+                "1": {
+                    "hp": 0,
+                    "aim": 4,
+                    "will": 2
+                },
+                "2": {
+                    "hp": 0,
+                    "aim": 4,
+                    "will": 2
+                },
+                "3": {
+                    "hp": 1,
+                    "aim": 4,
+                    "will": 2
+                },
+                "4": {
+                    "hp": 0,
+                    "aim": 4,
+                    "will": 2
+                },
+                "5": {
+                    "hp": 0,
+                    "aim": 4,
+                    "will": 2
+                },
+                "6": {
+                    "hp": 1,
+                    "aim": 4,
+                    "will": 2
+                }
+            }
+        },
+        {
+            "id": "mec_class_marauder",
+            "name": "Marauder",
+            "icon": "assets/img/soldier-class-icons/mec-marauder.png",
+            "perks": {
+                "0": [ "perk_close_encounters" ],
+                "1": [ "perk_aggression", "perk_steadfast", "perk_shock_absorbent_armor" ],
+                "2": [ "perk_damage_control", "perk_close_combat_specialist", "perk_collateral_damage" ],
+                "3": [ "perk_automated_threat_assessment", "perk_executioner", "perk_ranger" ],
+                "4": [ "perk_repair_servos", "perk_flush", "perk_advanced_fire_control" ],
+                "5": [ "perk_bring_em_on", "perk_reactive_targeting_sensors", "perk_vital_point_targeting" ],
+                "6": [ "perk_run_and_gun", "perk_rapid_fire", "perk_absorption_fields" ]
+            },
+            "perk_stat_bonuses": {
+                "perk_absorption_fields": {
+                    "mobility": -1
+                },
+                "perk_advanced_fire_control": {
+                    "aim": 2
+                },
+                "perk_automated_threat_assessment": {
+                    "will": 2
+                },
+                "perk_close_encounters": {
+                    "mobility": 1
+                },
+                "perk_executioner": {
+                    "aim": 2
+                },
+                "perk_reactive_targeting_sensors": {
+                    "aim": 2,
+                    "will": 2
+                },
+                "perk_steadfast": {
+                    "will": 5
+                }
+            },
+            "stat_progression": {
+                "0": {
+                    "hp": 1,
+                    "aim": 2,
+                    "will": 2
+                },
+                "1": {
+                    "hp": 0,
+                    "aim": 2,
+                    "will": 2
+                },
+                "2": {
+                    "hp": 1,
+                    "aim": 2,
+                    "will": 2
+                },
+                "3": {
+                    "hp": 1,
+                    "aim": 2,
+                    "will": 2
+                },
+                "4": {
+                    "hp": 1,
+                    "aim": 2,
+                    "will": 2
+                },
+                "5": {
+                    "hp": 0,
+                    "aim": 2,
+                    "will": 2
+                },
+                "6": {
+                    "hp": 1,
+                    "aim": 2,
+                    "will": 2
+                }
+            }
+        },
+        {
+            "id": "mec_class_pathfinder",
+            "name": "Pathfinder",
+            "icon": "assets/img/soldier-class-icons/mec-pathfinder.png",
+            "perks": {
+                "0": [ "perk_hit_and_run" ],
+                "1": [ "perk_deadeye", "perk_advanced_fire_control", "perk_lone_wolf" ],
+                "2": [ "perk_damn_good_ground", "perk_sharpshooter", "perk_flush" ],
+                "3": [ "perk_ranger", "perk_executioner", "perk_repair_servos" ],
+                "4": [ "perk_damage_control", "perk_aggression", "perk_vital_point_targeting" ],
+                "5": [ "perk_bring_em_on", "perk_squadsight", "perk_lock_and_load" ],
+                "6": [ "perk_lightning_reflexes", "perk_rapid_fire", "perk_absorption_fields" ]
+            },
+            "perk_stat_bonuses": {
+                "perk_absorption_fields": {
+                    "mobility": -1
+                },
+                "perk_advanced_fire_control": {
+                    "aim": 2
+                },
+                "perk_hit_and_run": {
+                    "mobility": 1
+                }
+            },
+            "stat_progression": {
+                "0": {
+                    "hp": 1,
+                    "aim": 3,
+                    "will": 2
+                },
+                "1": {
+                    "hp": 0,
+                    "aim": 3,
+                    "will": 2
+                },
+                "2": {
+                    "hp": 1,
+                    "aim": 3,
+                    "will": 2
+                },
+                "3": {
+                    "hp": 0,
+                    "aim": 3,
+                    "will": 2
+                },
+                "4": {
+                    "hp": 1,
+                    "aim": 3,
+                    "will": 2
+                },
+                "5": {
+                    "hp": 0,
+                    "aim": 3,
+                    "will": 2
+                },
+                "6": {
+                    "hp": 1,
+                    "aim": 3,
+                    "will": 2
+                }
+            }
+        },
+        {
+            "id": "mec_class_shogun",
+            "name": "Shogun",
+            "icon": "assets/img/soldier-class-icons/mec-shogun.png",
+            "perks": {
+                "0": [ "perk_collateral_damage" ],
+                "1": [ "perk_packmaster", "perk_damage_control", "perk_heat_ammo" ],
+                "2": [ "perk_heat_warheads", "perk_automated_threat_assessment", "perk_deadeye" ],
+                "3": [ "perk_mayhem", "perk_repair_servos", "perk_flush" ],
+                "4": [ "perk_sapper", "perk_shock_absorbent_armor", "perk_ranger" ],
+                "5": [ "perk_tandem_warheads", "perk_rapid_fire", "perk_light_em_up" ],
+                "6": [ "perk_grenadier", "perk_absorption_fields", "perk_shredder_ammo" ]
+            },
+            "perk_stat_bonuses": {
+                "perk_absorption_fields": {
+                    "mobility": -1
+                },
+                "perk_automated_threat_assessment": {
+                    "will": 2
+                }
+            },
+            "stat_progression": {
+                "0": {
+                    "hp": 1,
+                    "aim": 3,
+                    "will": 2
+                },
+                "1": {
+                    "hp": 0,
+                    "aim": 2,
+                    "will": 2
+                },
+                "2": {
+                    "hp": 1,
+                    "aim": 2,
+                    "will": 2
+                },
+                "3": {
+                    "hp": 1,
+                    "aim": 3,
+                    "will": 2
+                },
+                "4": {
+                    "hp": 1,
+                    "aim": 2,
+                    "will": 2
+                },
+                "5": {
+                    "hp": 0,
+                    "aim": 2,
+                    "will": 2
+                },
+                "6": {
+                    "hp": 1,
+                    "aim": 3,
+                    "will": 2
+                }
+            }
+        },
+        {
+            "id": "mec_class_valkyrie",
+            "name": "Valkyrie",
+            "icon": "assets/img/soldier-class-icons/mec-valkyrie.png",
+            "perks": {
+                "0": [ "perk_light_em_up" ],
+                "1": [ "perk_ranger", "perk_automated_threat_assessment", "perk_flush" ],
+                "2": [ "perk_platform_stability", "perk_reactive_targeting_sensors", "perk_rapid_reaction" ],
+                "3": [ "perk_lock_and_load", "perk_heat_ammo", "perk_shredder_ammo" ],
+                "4": [ "perk_sharpshooter", "perk_opportunist", "perk_damage_control" ],
+                "5": [ "perk_collateral_damage", "perk_aggression", "perk_repair_servos" ],
+                "6": [ "perk_vital_point_targeting", "perk_rapid_fire", "perk_absorption_fields" ]
+            },
+            "perk_stat_bonuses": {
+                "perk_absorption_fields": {
+                    "mobility": -1
+                },
+                "perk_automated_threat_assessment": {
+                    "will": 2
+                },
+                "perk_reactive_targeting_sensors": {
+                    "aim": 2,
+                    "will": 2
+                }
+            },
+            "stat_progression": {
+                "0": {
+                    "hp": 1,
+                    "aim": 3,
+                    "will": 2
+                },
+                "1": {
+                    "hp": 0,
+                    "aim": 3,
+                    "will": 2
+                },
+                "2": {
+                    "hp": 1,
+                    "aim": 3,
+                    "will": 2
+                },
+                "3": {
+                    "hp": 0,
+                    "aim": 3,
+                    "will": 2
+                },
+                "4": {
+                    "hp": 1,
+                    "aim": 3,
+                    "will": 2
+                },
+                "5": {
+                    "hp": 0,
+                    "aim": 3,
+                    "will": 2
+                },
+                "6": {
+                    "hp": 1,
+                    "aim": 3,
+                    "will": 2
+                }
+            }
+        }
+    ]
+}

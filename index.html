@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+
+    <link rel="stylesheet" href="node_modules/vis-network/styles/vis-network.min.css" />
+
+    <link rel="stylesheet" href="assets/css/variables.css" />
+    <link rel="stylesheet" href="assets/css/nativize.css" />
+    <link rel="stylesheet" href="assets/css/item.css" />
+    <link rel="stylesheet" href="assets/css/foundry.css" />
+    <link rel="stylesheet" href="assets/css/global.css" />
+    <link rel="stylesheet" href="assets/css/nav.css" />
+    <link rel="stylesheet" href="assets/css/perks.css" />
+    <link rel="stylesheet" href="assets/css/search.css" />
+    <link rel="stylesheet" href="assets/css/section.css" />
+    <link rel="stylesheet" href="assets/css/soldiers-section.css" />
+    <link rel="stylesheet" href="assets/css/tech-details.css" />
+    <link rel="stylesheet" href="assets/css/tech-tree.css" />
+    <link rel="stylesheet" href="assets/css/widgets.css" />
+
+    <!-- Page templates -->
+    <link rel="import" href="assets/html/templates/pages/gene-mods-display-page.html" />
+    <link rel="import" href="assets/html/templates/pages/class-selection-page.html" />
+    <link rel="import" href="assets/html/templates/pages/foundry-project-display-page.html" />
+    <link rel="import" href="assets/html/templates/pages/item-display-page.html" />
+    <link rel="import" href="assets/html/templates/pages/perk-tree-display-page.html" />
+    <link rel="import" href="assets/html/templates/pages/psi-training-display-page.html" />
+    <link rel="import" href="assets/html/templates/pages/search-results-page.html" />
+    <link rel="import" href="assets/html/templates/pages/tech-details-page.html" />
+    <link rel="import" href="assets/html/templates/pages/tech-tree-display-page.html" />
+
+    <!-- Widget templates -->
+    <link rel="import" href="assets/html/templates/widgets/selectable-icon.html" data-template-id="selectable-icon" />
+    <link rel="import" href="assets/html/templates/widgets/tech-link.html" />
+</head>
+
+<body spellcheck="false">
+    <nav class="nav js-nav">
+        <header class="nav-header">
+            <h1 class="nav-title">XCOM Companion</h1>
+            <img class="nav-header-icon" src="assets/img/xcom-logo.png" />
+        </header>
+
+        <div class="nav-body">
+            <div class="nav-search-bar">
+                <input type="text" id="nav-search-input" placeholder="Search.." />
+            </div>
+
+            <div class="nav-item">
+                <h5 class="nav-category">
+                    <img class="nav-icon" src="assets/img/strategy-layer-icon.png" />
+                    Strategy Layer
+                </h5>
+
+                <div data-page-on-click="tech-tree-display-page" class="nav-button">
+                    Research Tree
+                </div>
+
+                <div class="nav-button nav-container not-implemented">
+                    Engineering
+
+                    <div class="nav-subsection-container">
+                        <button class="nav-button subnav-button">Infantry Gear</button>
+                        <button class="nav-button subnav-button">MEC Gear</button>
+                        <button class="nav-button subnav-button">Aircraft</button>
+                        <button class="nav-button subnav-button">Foundry Projects</button>
+                        <button class="nav-button subnav-button">Base Facilities</button>
+                    </div>
+                </div>
+
+                <div class="nav-button nav-container">
+                    Soldiers
+
+                    <div class="nav-subsection-container">
+                        <button data-page-on-click="class-selection-page" data-pagearg-class-pool="infantry" class="nav-button subnav-button">Infantry Perk Trees</a>
+                        <button data-page-on-click="class-selection-page" data-pagearg-class-pool="mec" class="nav-button subnav-button">MEC Perk Trees</button>
+                        <button data-page-on-click="perk-tree-display-page" data-pagearg-display-mode="gene-mods" class="nav-button subnav-button">Gene Mods</button>
+                        <button data-page-on-click="perk-tree-display-page" data-pagearg-display-mode="psi-training" class="nav-button subnav-button">Psi Training</button>
+                        <button class="nav-button subnav-button not-implemented">Officer Training School</button>
+                        <button class="nav-button subnav-button not-implemented">Flags</button>
+                    </div>
+                </div>
+
+                <button class="nav-button not-implemented">UFOs</button>
+                <button class="nav-button not-implemented">Air Combat Simulator</button>
+            </div>
+
+            <div class="nav-item">
+                <h5 class="nav-category">
+                    <svg class="nav-icon">
+                        <use xlink:href="assets/img/icons.svg#icon-menu"></use>
+                    </svg>
+                    Tactical Layer
+                </h5>
+
+                <button class="nav-button not-implemented">Enemies</button>
+                <button class="nav-button not-implemented">Enemy Tracker</button>
+                <button class="nav-button not-implemented">Maps</button>
+            </div>
+        </div>
+
+        <footer class="nav-footer">
+            Made by SwfDelicious<br />
+            <a href="https://www.github.com/chrishayesmu/">View on GitHub</a>
+        </footer>
+    </nav>
+
+    <main id="page-content" class="content js-content"></main>
+
+    <script>
+        require("./assets/js/nav");
+        require("./assets/js/page-manager");
+    </script>
+</body>
+
+</html>

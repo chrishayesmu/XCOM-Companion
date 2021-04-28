@@ -1,0 +1,366 @@
+{
+    "facilities": {
+        "facility_access_lift": {
+            "name": "Access Lift",
+            "description": "Access Lifts enable XCOM's subterranean base to expand deeper into the earth.",
+            "maintenance_cost": 5,
+            "power_usage": 1,
+            "normal_build": {
+                "cost": {
+                    "money": 100
+                },
+                "build_time_days": 7
+            },
+            "quick_build": {
+                "cost": {
+                    "item_meld": 10,
+                    "money": 150
+                },
+                "build_time_days": 4
+            }
+        },
+        "facility_alien_containment": {
+            "name": "Alien Containment",
+            "description": "This facility will provide a secure environment to house the alien captives, allowing you to interrogate them in the Labs.",
+            "maintenance_cost": 30,
+            "power_usage": 10,
+            "normal_build": {
+                "cost": {
+                    "item_alien_alloy": 20,
+                    "money": 200
+                },
+                "build_time_days": 14
+            },
+            "quick_build": {
+                "cost": {
+                    "item_alien_alloy": 30,
+                    "item_meld": 10,
+                    "money": 300
+                },
+                "build_time_days": 7
+            },
+            "prerequisites": {
+                "research": [ "research_xenobiology" ]
+            }
+        },
+        "facility_elerium_generator": {
+            "name": "Elerium Generator",
+            "description": "Elerium Power Generators supply 35 power.",
+            "adjacency_type": "power",
+            "maintenance_cost": 25,
+            "power_usage": 0,
+            "normal_build": {
+                "cost": {
+                    "item_alien_alloy": 60,
+                    "item_elerium": 60,
+                    "item_ufo_power_source": 2,
+                    "money": 200
+                },
+                "build_time_days": 25
+            },
+            "quick_build": {
+                "cost": {
+                    "item_alien_alloy": 90,
+                    "item_elerium": 90,
+                    "item_meld": 10,
+                    "item_ufo_power_source": 2,
+                    "money": 300
+                },
+                "build_time_days": 13
+            },
+            "prerequisites": {
+                "research": [ "research_alien_power_systems" ]
+            }
+        },
+        "facility_foundry": {
+            "name": "Foundry",
+            "description": "Develop new combat items or improve current items in the Foundry. This facility counts as a Workshop for adjacency benefits. Cannot be torn down once built.",
+            "adjacency_type": "workshop",
+            "maintenance_cost": 25,
+            "power_usage": 6,
+            "normal_build": {
+                "cost": {
+                    "money": 200
+                },
+                "build_time_days": 18
+            },
+            "quick_build": {
+                "cost": {
+                    "item_meld": 10,
+                    "money": 300
+                },
+                "build_time_days": 9
+            }
+        },
+        "facility_fission_generator": {
+            "name": "Fission Generator",
+            "description": "Power Generators supply the power needed to run new facilities. Each generator supplies 8 power.",
+            "adjacency_type": "power",
+            "maintenance_cost": 20,
+            "power_usage": 0,
+            "normal_build": {
+                "cost": {
+                    "money": 120
+                },
+                "build_time_days": 10
+            },
+            "quick_build": {
+                "cost": {
+                    "item_meld": 20,
+                    "money": 180
+                },
+                "build_time_days": 5
+            }
+        },
+        "facility_genetics_lab": {
+            "name": "Genetics Lab",
+            "description": "This annex to the Research Labs will allow us to genetically modify our soldiers.",
+            "adjacency_type": "laboratory",
+            "maintenance_cost": 30,
+            "power_usage": 4,
+            "normal_build": {
+                "cost": {
+                    "money": 200
+                },
+                "build_time_days": 18
+            },
+            "quick_build": {
+                "cost": {
+                    "item_meld": 10,
+                    "money": 300
+                },
+                "build_time_days": 9
+            },
+            "prerequisites": {
+                "research": [ "research_xenogenetics" ]
+            }
+        },
+        "facility_gollop_chamber": {
+            "name": "Gollop Chamber",
+            "description": "Once we build this facility, a psionically powerful soldier will be able to access the Ethereals' psychic net.",
+            "maintenance_cost": 200,
+            "power_usage": 35,
+            "normal_build": {
+                "cost": {
+                    "item_alien_alloy": 20,
+                    "item_elerium": 60,
+                    "money": 1000
+                },
+                "build_time_days": 14
+            },
+            "quick_build": {
+                "cost": {
+                    "item_alien_alloy": 30,
+                    "item_elerium": 90,
+                    "item_meld": 10,
+                    "money": 1500
+                },
+                "build_time_days": 7
+            },
+            "prerequisites": {
+                "items": [ "item_ethereal_device" ],
+                "research": [ "research_alien_command_and_control" ]
+            }
+        },
+        "facility_hyperwave_relay": {
+            "name": "Hyperwave Relay",
+            "description": "Alien communications rely on a supra-dimensional wave which travels almost instantaneously. This relay should allow us to trace the source of these communications.",
+            "maintenance_cost": 100,
+            "power_usage": 15,
+            "normal_build": {
+                "cost": {
+                    "item_alien_alloy": 100,
+                    "item_elerium": 60,
+                    "item_hyperwave_beacon": 1,
+                    "money": 600
+                },
+                "build_time_days": 28
+            },
+            "quick_build": {
+                "cost": {
+                    "item_alien_alloy": 150,
+                    "item_elerium": 90,
+                    "item_hyperwave_beacon": 1,
+                    "item_meld": 10,
+                    "money": 900
+                },
+                "build_time_days": 14
+            },
+            "prerequisites": {
+                "research": [ "research_alien_communications" ]
+            }
+        },
+        "facility_laboratory": {
+            "name": "Laboratory",
+            "description": "Each laboratory increases research speed by 20%.",
+            "adjacency_type": "laboratory",
+            "maintenance_cost": 30,
+            "power_usage": 4,
+            "normal_build": {
+                "cost": {
+                    "money": 200
+                },
+                "build_time_days": 21
+            },
+            "quick_build": {
+                "cost": {
+                    "item_meld": 10,
+                    "money": 300
+                },
+                "build_time_days": 11
+            }
+        },
+        "facility_officer_training_school": {
+            "name": "Officer Training School",
+            "description": "Increase XCOM squad size and unlock officers, a special class of soldiers with abilities that help the entire squad. Cannot be torn down once built.",
+            "maintenance_cost": 10,
+            "power_usage": 1,
+            "normal_build": {
+                "cost": {
+                    "money": 200
+                },
+                "build_time_days": 7
+            },
+            "quick_build": {
+                "cost": {
+                    "item_meld": 10,
+                    "money": 300
+                },
+                "build_time_days": 4
+            }
+        },
+        "facility_psionic_labs": {
+            "name": "Psionic Labs",
+            "description": "This facility will allow us to discover and develop the latent psionic abilities of our soldiers. If they have any such capabilities, using them in the field will increase their strength.",
+            "adjacency_type": "laboratory",
+            "maintenance_cost": 25,
+            "power_usage": 6,
+            "normal_build": {
+                "cost": {
+                    "item_elerium": 20,
+                    "money": 250
+                },
+                "build_time_days": 18
+            },
+            "quick_build": {
+                "cost": {
+                    "item_elerium": 30,
+                    "item_meld": 10,
+                    "money": 375
+                },
+                "build_time_days": 9
+            },
+            "prerequisites": {
+                "research": [ "research_xenopsionics" ]
+            }
+        },
+        "facility_repair_bay": {
+            "name": "Repair Bay",
+            "description": "This facility will allow us to repair items built in Engineering that are damaged in combat.",
+            "adjacency_type": "workshop",
+            "maintenance_cost": 10,
+            "power_usage": 4,
+            "normal_build": {
+                "cost": {
+                    "money": 50
+                },
+                "build_time_days": 10
+            },
+            "quick_build": {
+                "cost": {
+                    "item_meld": 10,
+                    "money": 75
+                },
+                "build_time_days": 5
+            }
+        },
+        "facility_satellite_nexus": {
+            "name": "Satellite Nexus",
+            "description": "With the signal monitored by a team of engineers, each Satellite Nexus is capable of receiving transmissions from 2 XCOM satellites.",
+            "adjacency_type": "satellite",
+            "maintenance_cost": 25,
+            "power_usage": 8,
+            "normal_build": {
+                "cost": {
+                    "item_alien_alloy": 50,
+                    "item_elerium": 20,
+                    "item_ufo_flight_computer": 2,
+                    "money": 300
+                },
+                "build_time_days": 21
+            },
+            "quick_build": {
+                "cost": {
+                    "item_alien_alloy": 75,
+                    "item_elerium": 30,
+                    "item_meld": 10,
+                    "money": 450
+                },
+                "build_time_days": 11
+            },
+            "prerequisites": {
+                "research": [ "research_alien_computers" ]
+            }
+        },
+        "facility_satellite_uplink": {
+            "name": "Satellite Uplink",
+            "description": "With the signal monitored by a team of engineers, each Satellite Uplink is capable of receiving transmissions from 1 XCOM satellite.",
+            "adjacency_type": "satellite",
+            "maintenance_cost": 20,
+            "power_usage": 8,
+            "normal_build": {
+                "cost": {
+                    "money": 200
+                },
+                "build_time_days": 21
+            },
+            "quick_build": {
+                "cost": {
+                    "item_meld": 20,
+                    "money": 300
+                },
+                "build_time_days": 11
+            }
+        },
+        "facility_thermo_generator": {
+            "name": "Thermo Generator",
+            "description": "Thermal Power Generators supply 25 power, but must be built over steam vents.",
+            "adjacency_type": "power",
+            "maintenance_cost": 35,
+            "power_usage": 0,
+            "normal_build": {
+                "cost": {
+                    "money": 350
+                },
+                "build_time_days": 21
+            },
+            "quick_build": {
+                "cost": {
+                    "item_meld": 10,
+                    "money": 525
+                },
+                "build_time_days": 11
+            }
+        },
+        "facility_workshop": {
+            "name": "Workshop",
+            "description": "Reduces item cost by 10% and gives a 10% refund on materials.<br />Multiple workshops have diminishing returns, and discounts and refunds cannot exceed 50%.",
+            "adjacency_type": "workshop",
+            "maintenance_cost": 30,
+            "power_usage": 4,
+            "normal_build": {
+                "cost": {
+                    "money": 200
+                },
+                "build_time_days": 21
+            },
+            "quick_build": {
+                "cost": {
+                    "item_meld": 10,
+                    "money": 300
+                },
+                "build_time_days": 11
+            }
+        }
+    }
+}

@@ -1,0 +1,174 @@
+/* Fonts ---------------------------- */
+
+@font-face {
+  font-family: 'Source Code Pro';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Source Code Pro'), local('SourceCodePro'), url(fonts/SourceCodePro-Regular.ttf) format('truetype');
+}
+
+
+/* Global ---------------------------- */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+  font-family: 'BlinkMacSystemFont', 'Lucida Grande', 'Segoe UI', Ubuntu, Cantarell, sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  overflow: hidden; /* Prevents rubber-band scrolling of the whole "page" */
+  color: var(--color);
+  background-color: #333;
+}
+
+body {
+  margin: 0;
+  height: 100%;
+  display: flex;
+}
+
+::-webkit-scrollbar {
+    width: 2px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--color-strong);
+}
+
+a {
+  color: var(--color-link);
+}
+
+h1,
+h2,
+h3 {
+  margin-top: 0;
+  line-height: 1.5;
+}
+
+h1 {
+  font-size: 1.5em;
+  font-weight: 600;
+}
+
+h2 {
+  font-size: 1.3em;
+  font-weight: normal;
+}
+
+h3 {
+  font-size: 1.12em;
+  font-weight: 600;
+}
+
+svg {
+  fill: currentColor;
+}
+
+
+/* Utilities ---------------------------- */
+
+.u-avoid-clicks {
+  pointer-events: none;
+}
+
+/* Visually hidden, but will be read by screen readers */
+.u-visible-to-screen-reader {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+.no-display {
+  display: none;
+}
+
+
+/* Content ------------------ */
+
+.content {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  visibility: hidden;
+  opacity: 0;
+}
+.content.is-shown {
+  visibility: visible;
+  opacity: 1;
+}
+
+.flex-column-bottom {
+    display: flex;
+    flex-flow: column;
+    justify-content: flex-end;
+}
+
+.flex-grow {
+    flex-grow: 1;
+}
+
+.flex-single-row {
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.hidden-collapse {
+    display: none !important;
+}
+
+.inline-help-icon {
+    background-color: var(--color-strong);
+    margin-left: 4px;
+    height: 20px;
+    width: 20px;
+}
+
+img.inline-resource-icon {
+    margin-right: 4px;
+    height: 16px;
+}
+
+input[type="text"] {
+    color: var(--color);
+}
+
+input[type="text"]:focus {
+    box-shadow: none;
+    outline: 1px solid var(--color-subtle);
+}
+
+input[type="text"]::placeholder {
+    color: var(--color-subtle);
+}
+
+span.inline-resource-icon {
+    font-size: 16px;
+    margin-right: 2px;
+    text-align: center;
+}
+
+.preview-tooltip {
+    position: absolute;
+
+    background-color: var(--color-bg-subtle);
+    border: 1px solid white;
+    box-shadow: 0px 0px 6px 1px var(--color-subtle);
+    font-size: 14px;
+    max-width: 550px;
+    padding: 10px 15px 10px 9px;
+    pointer-events: none;
+}

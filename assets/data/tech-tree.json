@@ -1,0 +1,1577 @@
+{
+    "technologies": {
+        "research_advanced_aerospace_concepts": {
+            "name": "Advanced Aerospace Concepts",
+            "icon": "assets/img/research/advanced_aerospace_concepts.png",
+            "description": "Our growing understanding of the aliens' fantastic new materials has given us several ideas on ways to improve our capabilities in the skies. Our intelligence indicates the aliens are continually improving their UFOs, so research in this direction should enable us to develop systems that will allow us to keep up.",
+            "base_time_in_days": 22,
+            "prerequisites": {
+                "research": [
+                    "research_alien_materials",
+                    "research_experimental_warfare"
+                ]
+            },
+            "cost": {
+                "item_alien_alloy": 10,
+                "item_weapon_fragment": 50
+            },
+            "benefits_from_research_credit_types": [
+                "aerospace"
+            ],
+            "ui": {
+                "group": "aerospace",
+                "level": 0
+            }
+        },
+        "research_advanced_beam_lasers": {
+            "name": "Advanced Beam Lasers",
+            "icon": "assets/img/research/advanced_beam_lasers.png",
+            "description": "We believe we should be able to develop some more specialized beam weaponry for some of the troops. Our early experiments with oversized coolant coils and double lensing have shown the potential to greatly increase their firepower.",
+            "base_time_in_days": 14,
+            "prerequisites": {
+                "research": [
+                    "research_beam_lasers"
+                ]
+            },
+            "cost": {
+                "item_alien_alloy": 10,
+                "item_weapon_fragment": 50
+            },
+            "benefits_from_research_credit_types": [
+                "laser_weapons",
+                "weapons"
+            ],
+            "ui": {
+                "group": "laser_weapons",
+                "level": 0
+            }
+        },
+        "research_advanced_body_armor": {
+            "name": "Advanced Body Armor",
+            "icon": "assets/img/research/advanced_body_armor.png",
+            "description": "Now that we have established the foundations of building improved armor for our troops, we believe can develop even better protection and add a climbing grapple that we've been prototyping to one type of armor.",
+            "base_time_in_days": 20,
+            "prerequisites": {
+                "research": [
+                    "research_improved_body_armor"
+                ]
+            },
+            "cost": {
+                "item_alien_alloy": 12
+            },
+            "benefits_from_research_credit_types": [
+                "armor"
+            ],
+            "ui": {
+                "group": "armor",
+                "level": 0
+            }
+        },
+        "research_advanced_gauss_weapons": {
+            "name": "Advanced Gauss Weapons",
+            "icon": "assets/img/research/advanced_gauss_weapons.png",
+            "description": "Now that we have perfected some basic weaponry employing electromagnetic coils and rails, we believe we can move forward with several advanced designs.",
+            "base_time_in_days": 38,
+            "prerequisites": {
+                "research": [
+                    "research_gauss_weapons"
+                ]
+            },
+            "cost": {
+                "item_alien_alloy": 20,
+                "item_elerium": 10,
+                "item_weapon_fragment": 100
+            },
+            "benefits_from_research_credit_types": [
+                "gauss_weapons",
+                "weapons"
+            ],
+            "ui": {
+                "group": "gauss_weapons",
+                "level": 0
+            }
+        },
+        "research_advanced_plasma_weapons": {
+            "name": "Advanced Plasma Weapons",
+            "icon": "assets/img/research/advanced_plasma_weapons.png",
+            "description": "An amazing piece of technology - this rifle maintains a seemingly normal form factor while housing a fully functional plasma generator inside. Even the most modern of our current power generation facilities on Earth are less efficient than this small device.",
+            "base_time_in_days": 90,
+            "prerequisites": {
+                "research": [
+                    "research_plasma_weapons"
+                ]
+            },
+            "cost": {
+                "item_alien_alloy": 20,
+                "item_alien_rifle": 3,
+                "item_elerium": 80,
+                "item_weapon_fragment": 200
+            },
+            "benefits_from_research_credit_types": [
+                "plasma_weapons",
+                "weapons"
+            ],
+            "ui": {
+                "group": "plasma_weapons",
+                "level": 0
+            }
+        },
+        "research_advanced_power_armor": {
+            "name": "Advanced Power Armor",
+            "icon": "assets/img/research/advanced_power_armor.png",
+            "description": "We've observed some of the alien combatants wearing a form of superheavy armor that still allows for full mobility in combat. This has been puzzling, to say the least, but with our new understanding of the alien energy sources and their materials, we could develop powered armor of our own, as well as further enhance our MECs' capabilities.",
+            "base_time_in_days": 68,
+            "prerequisites": {
+                "research": [
+                    "research_alien_power_systems",
+                    "research_mobile_power_armor"
+                ]
+            },
+            "cost": {
+                "item_alien_alloy": 20,
+                "item_elerium": 40
+            },
+            "benefits_from_research_credit_types": [
+                "armor"
+            ],
+            "ui": {
+                "group": "armor",
+                "level": 0
+            }
+        },
+        "research_advanced_pulse_lasers": {
+            "name": "Advanced Pulse Lasers",
+            "icon": "assets/img/research/advanced_pulse_lasers.png",
+            "description": "The alien weaponry appears to use a series of crystalline lenses to increase the power output of their weapons. While we can't recreate their materials, we can adapt their techniques to increase the range and power of our own laser weapons to create some specialized combat systems.",
+            "base_time_in_days": 65,
+            "prerequisites": {
+                "research": [
+                    "research_pulse_lasers"
+                ]
+            },
+            "cost": {
+                "item_alien_alloy": 20,
+                "item_elerium": 40,
+                "item_weapon_fragment": 150
+            },
+            "benefits_from_research_credit_types": [
+                "laser_weapons",
+                "weapons"
+            ],
+            "ui": {
+                "group": "laser_weapons",
+                "level": 0
+            }
+        },
+        "research_alien_biocybernetics": {
+            "name": "Alien Biocybernetics",
+            "icon": "assets/img/research/alien_biocybernetics.png",
+            "description": "Thanks to our research in seemingly diverse areas of alien computers and genetics, we've come to establish much greater control over how the Meld substance works. Pursuing a complete understanding of alien biocybernetics may provide us with the capability to combine humans and machines in extremely powerful ways.",
+            "base_time_in_days": 25,
+            "prerequisites": {
+                "research": [
+                    "research_alien_computers",
+                    "research_alien_materials",
+                    "research_xenogenetics"
+                ]
+            },
+            "cost": {
+                "item_alien_alloy": 5,
+                "item_elerium": 30,
+                "item_meld": 40,
+                "item_weapon_fragment": 50
+            },
+            "benefits_from_research_credit_types": [
+                "cybernetics"
+            ],
+            "ui": {
+                "group": "xenology",
+                "level": 0
+            }
+        },
+        "research_alien_command_and_control": {
+            "name": "Alien Command and Control",
+            "icon": "assets/img/research/alien_command_and_control.png",
+            "description": "The device we recovered from the Ethereal craft may be the final piece of the puzzle... the key to their psionic connection... and to the ultimate source of their power. With a better understanding of this technology, I believe we'll be on the brink of finding the source of this invasion.",
+            "base_time_in_days": 150,
+            "prerequisites": {
+                "items": [
+                    "item_ethereal_device"
+                ],
+                "research": [
+                    "research_ethereal_interrogation"
+                ]
+            },
+            "cost": {
+                "item_elerium": 100
+            },
+            "benefits_from_research_credit_types": [
+                "psionics"
+            ],
+            "ui": {
+                "group": "xenology",
+                "level": 0
+            }
+        },
+        "research_alien_communications": {
+            "name": "Alien Communications",
+            "icon": "assets/img/research/alien_communications.png",
+            "description": "The beacon that we recovered from the alien base appears to send and receive transmissions using a spectrum of energy unlike anything found on Earth. I can only imagine what we'll find after further study.",
+            "base_time_in_days": 60,
+            "prerequisites": {
+                "items": [
+                    "item_hyperwave_beacon"
+                ],
+                "research": [
+                    "research_xenoneurology"
+                ]
+            },
+            "cost": {
+                "item_elerium": 100
+            },
+            "benefits_from_research_credit_types": [
+                "psionics"
+            ],
+            "ui": {
+                "group": "xenology",
+                "level": 0
+            }
+        },
+        "research_alien_computers": {
+            "name": "Alien Computers",
+            "icon": "assets/img/research/alien_computers.png",
+            "description": "Computer hardware we have recovered from a crashed UFO offers the opportunity to advance our understanding of alien machinery and information systems, both large and small.",
+            "base_time_in_days": 10,
+            "prerequisites": {},
+            "cost": {
+                "item_ufo_flight_computer": 4
+            },
+            "ui": {
+                "group": "none",
+                "level": 0
+            }
+        },
+        "research_alien_materials": {
+            "name": "Alien Materials",
+            "icon": "assets/img/research/alien_materials.png",
+            "description": "The aliens appear to be using materials that are lighter and stronger than anything we've ever seen. A cursory examination has already given us ideas for ways to improve the soldiers' current body armor, but more research is required.",
+            "base_time_in_days": 6,
+            "prerequisites": {},
+            "cost": {
+                "item_alien_alloy": 4,
+                "item_elerium": 4,
+                "item_meld": 1,
+                "item_weapon_fragment": 10
+            },
+            "ui": {
+                "group": "none",
+                "level": 0
+            }
+        },
+        "research_alien_operations": {
+            "name": "Alien Operations",
+            "icon": "assets/img/research/alien_operations.png",
+            "description": "This shard is all that is left of the Outsider alien after it was stunned. Based on our interrogation of the alien captive, we know that the Outsiders are the key to finding their base. We should begin research on this item immediately.",
+            "base_time_in_days": 20,
+            "prerequisites": {
+                "items": [
+                    "item_outsider_shard"
+                ],
+                "research": [
+                    "research_xenopsionics"
+                ]
+            },
+            "benefits_from_research_credit_types": [
+                "psionics"
+            ],
+            "ui": {
+                "group": "xenology",
+                "level": 0
+            }
+        },
+        "research_alien_power_systems": {
+            "name": "Alien Power Systems",
+            "icon": "assets/img/research/alien_power_systems.png",
+            "description": "With the element known as \"Elerium\" housed within, this compact device is somehow responsible for generating the enormous amounts of power consumed by the alien vessels. We can use this technology to increase the capabilities not just of our fighter craft, but of MECs.",
+            "base_time_in_days": 40,
+            "prerequisites": {
+                "research": [
+                    "research_alien_computers",
+                    "research_elerium"
+                ]
+            },
+            "cost": {
+                "item_elerium": 60,
+                "item_ufo_power_source": 6
+            },
+            "ui": {
+                "group": "aerospace",
+                "level": 0
+            }
+        },
+        "research_alien_propulsion": {
+            "name": "Alien Propulsion",
+            "icon": "assets/img/research/alien_propulsion.png",
+            "description": "After extensive study of the alien gravity wave drive, as well as their power and navigational systems, we believe it should be possible to incorporate aspects of their design into a craft of our own.",
+            "base_time_in_days": 92,
+            "prerequisites": {
+                "research": [
+                    "research_advanced_aerospace_concepts",
+                    "research_alien_power_systems"
+                ]
+            },
+            "cost": {
+                "item_alien_alloy": 20,
+                "item_elerium": 100,
+                "item_ufo_power_source": 6,
+                "item_weapon_fragment": 160
+            },
+            "benefits_from_research_credit_types": [
+                "aerospace"
+            ],
+            "ui": {
+                "group": "aerospace",
+                "level": 0
+            }
+        },
+        "research_alien_weaponry": {
+            "name": "Alien Weaponry",
+            "icon": "assets/img/research/alien_weaponry.png",
+            "description": "These fragments are all that remain of the powerful alien weaponry we've encountered so far. Further study could lead to advances in our own weapons development programs.",
+            "base_time_in_days": 6,
+            "prerequisites": {},
+            "cost": {
+                "item_weapon_fragment": 5
+            },
+            "benefits_from_research_credit_types": [
+                "weapons"
+            ],
+            "ui": {
+                "group": "none",
+                "level": 0
+            }
+        },
+        "research_antigrav_systems": {
+            "name": "Antigrav Systems",
+            "icon": "assets/img/research/antigrav_systems.png",
+            "description": "With our unique access to the aliens super-efficient power systems, we believe it should be possible to fabricate a suit of armor that permits sustained flight on the battlefield.",
+            "base_time_in_days": 70,
+            "prerequisites": {
+                "research": [
+                    "research_advanced_power_armor",
+                    "research_alien_propulsion"
+                ]
+            },
+            "cost": {
+                "item_alien_alloy": 5,
+                "item_elerium": 100
+            },
+            "benefits_from_research_credit_types": [
+                "aerospace"
+            ],
+            "ui": {
+                "group": "aerospace",
+                "level": 0
+            }
+        },
+        "research_beam_lasers": {
+            "name": "Beam Lasers",
+            "icon": "assets/img/research/beam_lasers.png",
+            "description": "Our research into alien weapon fragments led to the idea of portable laser weaponry. Our early prototypes have been encouraging, but we continue to struggle with issues related to heat dispersion.",
+            "base_time_in_days": 8,
+            "prerequisites": {
+                "research": [
+                    "research_alien_weaponry"
+                ]
+            },
+            "cost": {
+                "item_alien_alloy": 10,
+                "item_weapon_fragment": 40
+            },
+            "benefits_from_research_credit_types": [
+                "laser_weapons",
+                "weapons"
+            ],
+            "ui": {
+                "group": "laser_weapons",
+                "level": 0
+            }
+        },
+        "research_chryssalid_autopsy": {
+            "name": "Chryssalid Autopsy",
+            "icon": "assets/img/research/chryssalid_autopsy.png",
+            "description": "A cursory examination of this creature reveals that it is similar in form to several insect species found on Earth. The multilayered structure of the specimen's exoskeleton appears to harbor some form of fluid that enables rapid growth and healing.",
+            "base_time_in_days": 9,
+            "prerequisites": {
+                "research": [
+                    "research_xenogenetics"
+                ]
+            },
+            "cost": {
+                "item_chryssalid_corpse": 5
+            },
+            "ui": {
+                "group": "autopsy",
+                "level": 1
+            }
+        },
+        "research_compact_plasma_weapons": {
+            "name": "Compact Plasma Weapons",
+            "icon": "assets/img/research/compact_plasma_weapons.png",
+            "description": "Our understanding of plasma-based weaponry comes entirely from the alien materials recovered so far. The intact plasma-generating weapon recovered from the field has provided some incredible insights, and it's quite possible we could create a version suited for our own soldiers' use.",
+            "base_time_in_days": 50,
+            "prerequisites": {
+                "research": [
+                    "research_plasma_weapons"
+                ]
+            },
+            "cost": {
+                "item_alien_alloy": 10,
+                "item_alien_pistol": 2,
+                "item_elerium": 40,
+                "item_weapon_fragment": 150
+            },
+            "benefits_from_research_credit_types": [
+                "plasma_weapons",
+                "weapons"
+            ],
+            "ui": {
+                "group": "plasma_weapons",
+                "level": 0
+            }
+        },
+        "research_cyberdisc_autopsy": {
+            "name": "Cyberdisc Autopsy",
+            "icon": "assets/img/research/cyberdisc_autopsy.png",
+            "description": "On the surface this object appears to be purely robotic in nature, but we still suspect there may be an organic component lurking within. It appears to have a number of redundant systems that give it extraordinary survivability in combat.",
+            "base_time_in_days": 7,
+            "prerequisites": {
+                "research": [
+                    "research_alien_biocybernetics"
+                ]
+            },
+            "cost": {
+                "item_cyberdisc_corpse": 3
+            },
+            "ui": {
+                "group": "autopsy",
+                "level": 1
+            }
+        },
+        "research_drone_autopsy": {
+            "name": "Drone Autopsy",
+            "icon": "assets/img/research/drone_autopsy.png",
+            "description": "This small robot appears to fill some sort of support role. We might be able to interface with its circuitry... and possibly subvert it in the field.",
+            "base_time_in_days": 3,
+            "prerequisites": {
+                "research": [
+                    "research_alien_computers"
+                ]
+            },
+            "cost": {
+                "item_drone_corpse": 5
+            },
+            "ui": {
+                "group": "autopsy",
+                "level": 1
+            }
+        },
+        "research_elerium": {
+            "name": "Elerium",
+            "icon": "assets/img/research/elerium.png",
+            "description": "Our initial observations of this this element indicate that it is used by the aliens to generate anti-matter energy when bombarded with certain particles - providing them with a nearly inexhaustible source of power generation.",
+            "base_time_in_days": 30,
+            "prerequisites": {
+                "research": [
+                    "research_alien_materials"
+                ]
+            },
+            "cost": {
+                "item_elerium": 60
+            },
+            "ui": {
+                "group": "none",
+                "level": 0
+            }
+        },
+        "research_emp_weapons": {
+            "name": "Electromagnetic Pulse Weapons",
+            "icon": "assets/img/research/emp_weapons.png",
+            "description": "We've conceived of several weapons capable of disabling electronic systems without destroying them... if we were to equip our Interceptors with this technology, while also shielding them from the overall effect, this could greatly improve our odds of recovering the alien technology intact.",
+            "base_time_in_days": 95,
+            "prerequisites": {
+                "research": [
+                    "research_advanced_gauss_weapons",
+                    "research_advanced_pulse_lasers"
+                ]
+            },
+            "cost": {
+                "item_elerium": 200,
+                "item_meld": 40,
+                "item_weapon_fragment": 300
+            },
+            "benefits_from_research_credit_types": [
+                "weapons"
+            ],
+            "ui": {
+                "group": "aerospace",
+                "level": 0
+            }
+        },
+        "research_ethereal_autopsy": {
+            "name": "Ethereal Autopsy",
+            "icon": "assets/img/research/ethereal_autopsy.png",
+            "description": "This alien appears physically weak, even frail... but appearances can be deceiving. It is a remarkably hardy specimen, with a brain chemistry and structure utterly unknown to our science.",
+            "base_time_in_days": 50,
+            "prerequisites": {
+                "research": [
+                    "research_xenopsionics"
+                ]
+            },
+            "cost": {
+                "item_ethereal_corpse": 3
+            },
+            "ui": {
+                "group": "autopsy",
+                "level": 1
+            }
+        },
+        "research_ethereal_interrogation": {
+            "name": "Ethereal Interrogation",
+            "icon": "assets/img/research/ethereal_interrogation.png",
+            "description": "We know this captive is harboring an incredible pool of psionic energy, a fact that is not lost on our staff, who are quite concerned about working in close proximity to the creature. In any case, we have no choice but to conduct a thorough interrogation of the subject if we hope to gain anything of value from it.",
+            "base_time_in_days": 50,
+            "grants_research_credit": "all",
+            "prerequisites": {
+                "research": [
+                    "research_ethereal_autopsy"
+                ]
+            },
+            "cost": {
+                "item_ethereal_captive": 1
+            },
+            "ui": {
+                "group": "interrogation",
+                "level": 2
+            }
+        },
+        "research_experimental_warfare": {
+            "name": "Experimental Warfare",
+            "icon": "assets/img/research/experimental_warfare.png",
+            "description": "Although our understanding of the alien technology is still limited, what we've seen so far is enough to revolutionize combat as we know it. If we are to level the playing field, we must adapt the alien technology for our own use.",
+            "base_time_in_days": 8,
+            "prerequisites": {
+                "research": [
+                    "research_alien_weaponry"
+                ]
+            },
+            "cost": {
+                "item_weapon_fragment": 20
+            },
+            "ui": {
+                "group": "none",
+                "level": 0
+            }
+        },
+        "research_floater_autopsy": {
+            "name": "Floater Autopsy",
+            "icon": "assets/img/research/floater_autopsy.png",
+            "description": "A torturous mass of flesh and machinery, the mere existence of this creature implies a cruelty that is difficult to comprehend.",
+            "base_time_in_days": 5,
+            "prerequisites": {
+                "research": [
+                    "research_alien_biocybernetics"
+                ]
+            },
+            "cost": {
+                "item_floater_corpse": 10
+            },
+            "ui": {
+                "group": "autopsy",
+                "level": 1
+            }
+        },
+        "research_floater_interrogation": {
+            "name": "Floater Interrogation",
+            "icon": "assets/img/research/floater_interrogation.png",
+            "description": "Although this captive seems to be feeble of mind... clouded by rage... we might nonetheless be able to derive some benefit from a full interrogation.",
+            "base_time_in_days": 9,
+            "grants_research_credit": "aerospace",
+            "prerequisites": {
+                "research": [
+                    "research_floater_autopsy"
+                ]
+            },
+            "cost": {
+                "item_floater_captive": 1
+            },
+            "ui": {
+                "group": "interrogation",
+                "level": 2
+            }
+        },
+        "research_fusion_weapons": {
+            "name": "Fusion Weapons",
+            "icon": "assets/img/research/fusion_weapons.png",
+            "description": "We've recovered a number of interesting materials from the wreckage of the battleship-class UFO. If we can gain a better understanding of the alien fusion core, I believe further research on this path may lead us to the development of an immensely powerful air-to-air weapon. We should also be able to prototype a new projectile launcher with a uniquely powerful explosive shell.",
+            "base_time_in_days": 120,
+            "prerequisites": {
+                "items": [
+                    "item_fusion_core"
+                ],
+                "research": [
+                    "research_emp_weapons",
+                    "research_heavy_plasma_weapons"
+                ]
+            },
+            "cost": {
+                "item_alien_alloy": 40,
+                "item_elerium": 200,
+                "item_weapon_fragment": 300
+            },
+            "benefits_from_research_credit_types": [
+                "weapons"
+            ],
+            "ui": {
+                "group": "aerospace",
+                "level": 0
+            }
+        },
+        "research_gauss_weapons": {
+            "name": "Gauss Weapons",
+            "icon": "assets/img/research/gauss_weapons.png",
+            "description": "The density of the alien alloys we've been studying has precluded their use as ammunition; all of our experiments have resulted in the destruction of the weapon itself during firing tests, as the alloys tear the barrel apart. However, we've devised a way to break the alloys into micro-shards, and using the magnetic containment field derived from the alien plasma weapons should allow for their safe discharge.",
+            "base_time_in_days": 32,
+            "prerequisites": {
+                "research": [
+                    "research_alien_materials",
+                    "research_experimental_warfare"
+                ]
+            },
+            "cost": {
+                "item_alien_alloy": 20,
+                "item_elerium": 10,
+                "item_weapon_fragment": 80
+            },
+            "benefits_from_research_credit_types": [
+                "gauss_weapons",
+                "weapons"
+            ],
+            "ui": {
+                "group": "gauss_weapons",
+                "level": 0
+            }
+        },
+        "research_heavy_combat_exoskeletons": {
+            "name": "Heavy Combat Exoskeletons",
+            "icon": "assets/img/research/heavy_combat_exoskeletons.png",
+            "description": "We can further develop our combat exoskeletons with a premium on survivability against sustained enemy fire, although mobility will be limited.",
+            "base_time_in_days": 90,
+            "prerequisites": {
+                "research": [
+                    "research_advanced_power_armor",
+                    "research_improved_combat_exoskeletons"
+                ]
+            },
+            "cost": {
+                "item_alien_alloy": 20,
+                "item_elerium": 75,
+                "item_meld": 10,
+                "item_weapon_fragment": 50
+            },
+            "benefits_from_research_credit_types": [
+                "armor"
+            ],
+            "ui": {
+                "group": "armor",
+                "level": 0
+            }
+        },
+        "research_heavy_floater_autopsy": {
+            "name": "Heavy Floater Autopsy",
+            "icon": "assets/img/research/heavy_floater_autopsy.png",
+            "description": "This horrifying machine-flesh hybrid suggests the invaders are willing to stop at little, or nothing, to achieve their goals. Assessing its battle damage may give us some insight into repair techniques on our aircraft, however.",
+            "base_time_in_days": 10,
+            "prerequisites": {
+                "research": [
+                    "research_floater_autopsy"
+                ]
+            },
+            "cost": {
+                "item_heavy_floater_corpse": 5
+            },
+            "ui": {
+                "group": "autopsy",
+                "level": 1
+            }
+        },
+        "research_heavy_floater_interrogation": {
+            "name": "Heavy Floater Interrogation",
+            "icon": "assets/img/research/heavy_floater_interrogation.png",
+            "description": "The nature of this specimen's cybernetic implants precludes us from most attempts at interaction, but a thorough analysis of its movements and reactions to stimuli could provide crucial information about the alien's implementation of these systems.",
+            "base_time_in_days": 18,
+            "grants_research_credit": "plasma_weapons",
+            "prerequisites": {
+                "research": [
+                    "research_heavy_floater_autopsy"
+                ]
+            },
+            "cost": {
+                "item_heavy_floater_captive": 1
+            },
+            "ui": {
+                "group": "interrogation",
+                "level": 2
+            }
+        },
+        "research_heavy_plasma_weapons": {
+            "name": "Heavy Plasma Weapons",
+            "icon": "assets/img/research/heavy_plasma_weapons.png",
+            "description": "Despite a number of impressive advances, I am still in awe of the alien's mastery of plasma-based weapons. This particular configuration seems to contain an even more complex magnetic plasma containment chamber, allowing for nearly continuous projection of plasma blasts. The heat dispersal systems will permit MEC-scale energy projection weapons as well.",
+            "base_time_in_days": 90,
+            "prerequisites": {
+                "research": [
+                    "research_advanced_plasma_weapons"
+                ]
+            },
+            "cost": {
+                "item_alien_alloy": 20,
+                "item_alien_heavy_weapon": 2,
+                "item_elerium": 90,
+                "item_weapon_fragment": 200
+            },
+            "benefits_from_research_credit_types": [
+                "plasma_weapons",
+                "weapons"
+            ],
+            "ui": {
+                "group": "plasma_weapons",
+                "level": 0
+            }
+        },
+        "research_improved_body_armor": {
+            "name": "Improved Body Armor",
+            "icon": "assets/img/research/improved_body_armor.png",
+            "description": "We've continued our experiments on the alien alloys, and one of the proposed applications is a lighter, stronger form of body armor. Our early tests are very encouraging.",
+            "base_time_in_days": 8,
+            "prerequisites": {
+                "research": [
+                    "research_alien_materials"
+                ]
+            },
+            "cost": {
+                "item_alien_alloy": 8
+            },
+            "benefits_from_research_credit_types": [
+                "armor"
+            ],
+            "ui": {
+                "group": "armor",
+                "level": 0
+            }
+        },
+        "research_improved_combat_exoskeletons": {
+            "name": "Improved Combat Exoskeletons",
+            "icon": "assets/img/research/improved_combat_exoskeletons.png",
+            "description": "Our ever-improving understanding of alien materials should allow us to develop some new MEC suits for our soldiers.",
+            "base_time_in_days": 50,
+            "prerequisites": {
+                "research": [
+                    "research_alien_biocybernetics",
+                    "research_mobile_power_armor"
+                ]
+            },
+            "cost": {
+                "item_alien_alloy": 10,
+                "item_elerium": 100,
+                "item_meld": 10,
+                "item_weapon_fragment": 50
+            },
+            "benefits_from_research_credit_types": [
+                "armor"
+            ],
+            "ui": {
+                "group": "armor",
+                "level": 0
+            }
+        },
+        "research_mechtoid_autopsy": {
+            "name": "Mechtoid Autopsy",
+            "icon": "assets/img/research/mechtoid_autopsy.png",
+            "description": "This robotic cybersuit is designed for a Sectoid pilot. It appears that the suit's cybernetics interfere somehow with the Sectoids' innate mental powers. We should consider this if we decide to apply this type of technology to our own soldiers.",
+            "base_time_in_days": 18,
+            "prerequisites": {
+                "research": [
+                    "research_alien_biocybernetics",
+                    "research_sectoid_autopsy"
+                ]
+            },
+            "cost": {
+                "item_mechtoid_corpse": 3
+            },
+            "ui": {
+                "group": "autopsy",
+                "level": 1
+            }
+        },
+        "research_mind_and_machine": {
+            "name": "Mind and Machine",
+            "icon": "assets/img/research/mind_and_machine.png",
+            "description": "Analysis of the Psionic alien's implants indicates that we might be able to integrate these components into an armor kit... although this would be of no use to a soldier without psionic potential, it could greatly improve the abilities of those who do show promise in this area.",
+            "base_time_in_days": 150,
+            "prerequisites": {
+                "research": [
+                    "research_alien_biocybernetics",
+                    "research_alien_command_and_control"
+                ]
+            },
+            "cost": {
+                "item_alien_alloy": 20,
+                "item_elerium": 100,
+                "item_meld": 5
+            },
+            "benefits_from_research_credit_types": [
+                "psionics"
+            ],
+            "ui": {
+                "group": "armor",
+                "level": 0
+            }
+        },
+        "research_mobile_combat_exoskeletons": {
+            "name": "Mobile Combat Exoskeletons",
+            "icon": "assets/img/research/mobile_combat_exoskeletons.png",
+            "description": "Our studies of mechanized warfare have taken us along two paths, mobility and survivability. Pursing this path, we believe can develop fast, capable combat suits that specialize in scouting, flanking and quick reaction on the battlefield.",
+            "base_time_in_days": 90,
+            "prerequisites": {
+                "research": [
+                    "research_advanced_power_armor",
+                    "research_improved_combat_exoskeletons"
+                ]
+            },
+            "cost": {
+                "item_alien_alloy": 15,
+                "item_elerium": 100,
+                "item_meld": 10,
+                "item_weapon_fragment": 50
+            },
+            "benefits_from_research_credit_types": [
+                "armor"
+            ],
+            "ui": {
+                "group": "armor",
+                "level": 0
+            }
+        },
+        "research_mobile_power_armor": {
+            "name": "Mobile Power Armor",
+            "icon": "assets/img/research/mobile_power_armor.png",
+            "description": "Although the weight of our armors have been substantially reduced, their defensive capabilities are still intact.",
+            "base_time_in_days": 40,
+            "prerequisites": {
+                "research": [
+                    "research_advanced_body_armor",
+                    "research_elerium"
+                ]
+            },
+            "cost": {
+                "item_alien_alloy": 20,
+                "item_elerium": 20
+            },
+            "benefits_from_research_credit_types": [
+                "armor"
+            ],
+            "ui": {
+                "group": "armor",
+                "level": 0
+            }
+        },
+        "research_muton_autopsy": {
+            "name": "Muton Autopsy",
+            "icon": "assets/img/research/muton_autopsy.png",
+            "description": "Weighing in at over 275 kilograms, the majority of which is simply muscle and bone, this creature appears well suited for the rigors of front-line combat. The specimen's natural ability to manage adrenaline levels could prove useful if we can study it further.",
+            "base_time_in_days": 8,
+            "prerequisites": {
+                "research": [
+                    "research_xenobiology"
+                ]
+            },
+            "cost": {
+                "item_muton_corpse": 10
+            },
+            "ui": {
+                "group": "autopsy",
+                "level": 1
+            }
+        },
+        "research_muton_interrogation": {
+            "name": "Muton Interrogation",
+            "icon": "assets/img/research/muton_interrogation.png",
+            "description": "This captive is very aggressive, clearly having been intended to serve in a front-line combat role. With the appropriate drug therapy and... encouragement... we may be able to coax some useful intel on the alien weaponry and their tactics.",
+            "base_time_in_days": 14,
+            "grants_research_credit": "gauss_weapons",
+            "prerequisites": {
+                "research": [
+                    "research_muton_autopsy"
+                ]
+            },
+            "cost": {
+                "item_muton_captive": 1
+            },
+            "ui": {
+                "group": "interrogation",
+                "level": 2
+            }
+        },
+        "research_muton_berserker_autopsy": {
+            "name": "Berserker Autopsy",
+            "icon": "assets/img/research/muton_berserker_autopsy.png",
+            "description": "The body of this creature still remains warm to the touch several hours after being terminated. A chemical analysis of the alien's tissue will likely provide insights into this strange phenomenon. Its brain also appears to have an almost modular structure, able to rapidly section off disrupted brain structures.",
+            "base_time_in_days": 10,
+            "prerequisites": {
+                "research": [
+                    "research_muton_autopsy",
+                    "research_xenoneurology"
+                ]
+            },
+            "cost": {
+                "item_muton_berserker_corpse": 5
+            },
+            "ui": {
+                "group": "autopsy",
+                "level": 1
+            }
+        },
+        "research_muton_berserker_interrogation": {
+            "name": "Berserker Interrogation",
+            "icon": "assets/img/research/muton_berserker_interrogation.png",
+            "description": "It's going to take our most powerful sedatives to keep this captive under control... but I feel it's worth the risk, as we may glean valuable intel from a successful interrogation.",
+            "base_time_in_days": 20,
+            "grants_research_credit": "armor",
+            "prerequisites": {
+                "research": [
+                    "research_muton_berserker_autopsy"
+                ]
+            },
+            "cost": {
+                "item_muton_berserker_captive": 1
+            },
+            "ui": {
+                "group": "interrogation",
+                "level": 2
+            }
+        },
+        "research_muton_elite_autopsy": {
+            "name": "Muton Elite Autopsy",
+            "icon": "assets/img/research/muton_elite_autopsy.png",
+            "description": "As if its heightened muscle density, hardened skin, and redundant organs weren't enough, this alien appears to have neural implants that facilitate command and control functions. Given the circumstances, this specimen would appear ideal for guard duty.",
+            "base_time_in_days": 10,
+            "prerequisites": {
+                "research": [
+                    "research_muton_autopsy"
+                ]
+            },
+            "cost": {
+                "item_muton_elite_corpse": 5
+            },
+            "ui": {
+                "group": "autopsy",
+                "level": 1
+            }
+        },
+        "research_muton_elite_interrogation": {
+            "name": "Muton Elite Interrogation",
+            "icon": "assets/img/research/muton_elite_interrogation.png",
+            "description": "I'm amazed we were able to capture one of the master aliens' bodyguards alive... It probably has a broad understanding of the invaders' weapon systems and tactics.",
+            "base_time_in_days": 25,
+            "grants_research_credit": "weapons",
+            "prerequisites": {
+                "research": [
+                    "research_muton_elite_autopsy"
+                ]
+            },
+            "cost": {
+                "item_muton_elite_captive": 1
+            },
+            "ui": {
+                "group": "interrogation",
+                "level": 2
+            }
+        },
+        "research_plasma_weapons": {
+            "name": "Plasma Weapons",
+            "icon": "assets/img/research/plasma_weapons.png",
+            "description": "This carbine-style weapon is capable of generating a direct, superheated charge of plasma - an intriguing and dangerous prospect. Further research could allow for this technology to work in our favor",
+            "base_time_in_days": 75,
+            "prerequisites": {
+                "research": [
+                    "research_alien_biocybernetics",
+                    "research_alien_power_systems",
+                    "research_alien_weaponry"
+                ]
+            },
+            "cost": {
+                "item_alien_alloy": 20,
+                "item_alien_carbine": 5,
+                "item_elerium": 60,
+                "item_weapon_fragment": 175
+            },
+            "benefits_from_research_credit_types": [
+                "plasma_weapons",
+                "weapons"
+            ],
+            "ui": {
+                "group": "plasma_weapons",
+                "level": 0
+            }
+        },
+        "research_precision_plasma_weapons": {
+            "name": "Precision Plasma Weapons",
+            "icon": "assets/img/research/precision_plasma_weapons.png",
+            "description": "Our continued research into the alien's plasma weaponry has finally uncovered a fault in the design - the plasma bolt itself begins to dissipate at extreme range. We have several theories as to how this issue might be overcome, and if successful, the result would be a sniper rifle of unparalleled power.",
+            "base_time_in_days": 90,
+            "prerequisites": {
+                "research": [
+                    "research_advanced_plasma_weapons"
+                ]
+            },
+            "cost": {
+                "item_alien_alloy": 20,
+                "item_elerium": 90,
+                "item_weapon_fragment": 200
+            },
+            "benefits_from_research_credit_types": [
+                "plasma_weapons",
+                "weapons"
+            ],
+            "ui": {
+                "group": "plasma_weapons",
+                "level": 0
+            }
+        },
+        "research_pulse_lasers": {
+            "name": "Pulse Lasers",
+            "icon": "assets/img/research/pulse_lasers.png",
+            "description": "Our studies of alien power systems have enabled us to develop ideas for a second generation of 'pulse' laser weaponry that should be able to do significantly greater damage to alien targets than our existing beam weapons.",
+            "base_time_in_days": 60,
+            "prerequisites": {
+                "research": [
+                    "research_advanced_beam_lasers",
+                    "research_alien_power_systems"
+                ]
+            },
+            "cost": {
+                "item_alien_alloy": 20,
+                "item_elerium": 40,
+                "item_weapon_fragment": 125
+            },
+            "benefits_from_research_credit_types": [
+                "laser_weapons",
+                "weapons"
+            ],
+            "ui": {
+                "group": "laser_weapons",
+                "level": 0
+            }
+        },
+        "research_sectoid_autopsy": {
+            "name": "Sectoid Autopsy",
+            "icon": "assets/img/research/sectoid_autopsy.png",
+            "description": "Our initial scans of the small humanoid aliens recovered so far have revealed something quite remarkable. We're detecting components of non-biological matter embedded within their internal structure. Could these be implants of some kind?",
+            "base_time_in_days": 4,
+            "prerequisites": {
+                "research": [
+                    "research_xenobiology"
+                ]
+            },
+            "cost": {
+                "item_sectoid_corpse": 10
+            },
+            "ui": {
+                "group": "autopsy",
+                "level": 1
+            }
+        },
+        "research_sectoid_interrogation": {
+            "name": "Sectoid Interrogation",
+            "description": "We've taken one of the smaller aliens captive - hopefully we can develop a thorough interrogation process to overcome any language barriers we might encounter.",
+            "base_time_in_days": 9,
+            "grants_research_credit": "cybernetics",
+            "prerequisites": {
+                "research": [
+                    "research_sectoid_autopsy"
+                ]
+            },
+            "cost": {
+                "item_sectoid_captive": 1
+            },
+            "ui": {
+                "group": "interrogation",
+                "level": 2
+            },
+            "icon": "assets/img/research/sectoid_interrogation.png"
+        },
+        "research_sectoid_commander_autopsy": {
+            "name": "Sectoid Commander Autopsy",
+            "description": "The enlarged central nervous system and supplementary neural implants found in this Sectoid variant suggests capabilities unlike anything we've previously encountered. Further study may reveal ways in which we can use these capabilities to enhance our soldiers' protection against their attacks.",
+            "base_time_in_days": 35,
+            "prerequisites": {
+                "research": [
+                    "research_sectoid_autopsy",
+                    "research_xenogenetics"
+                ]
+            },
+            "cost": {
+                "item_sectoid_commander_corpse": 5
+            },
+            "ui": {
+                "group": "autopsy",
+                "level": 1
+            },
+            "icon": "assets/img/research/sectoid_commander_autopsy.png"
+        },
+        "research_sectoid_commander_interrogation": {
+            "name": "Sectoid Commander Interrogation",
+            "description": "This captive is clearly a rare and dangerous specimen. We've already seen evidence of its unique mental abilities in the field.... We should tread carefully, but we certainly cannot pass up the insights it might be able to provide during interrogation.",
+            "base_time_in_days": 35,
+            "grants_research_credit": "psionics",
+            "prerequisites": {
+                "research": [
+                    "research_sectoid_commander_autopsy"
+                ]
+            },
+            "cost": {
+                "item_sectoid_commander_captive": 1
+            },
+            "ui": {
+                "group": "interrogation",
+                "level": 2
+            },
+            "icon": "assets/img/research/sectoid_commander_interrogation.png"
+        },
+        "research_sectopod_autopsy": {
+            "name": "Sectopod Autopsy",
+            "description": "The engineering advancements found in this machine are remarkable - the joint articulation, weapons systems and targeting capabilities in particular are well beyond current military developments on Earth. The practical applications are staggering.",
+            "base_time_in_days": 25,
+            "prerequisites": {
+                "research": [
+                    "research_alien_computers"
+                ]
+            },
+            "cost": {
+                "item_sectopod_corpse": 3
+            },
+            "ui": {
+                "group": "autopsy",
+                "level": 1
+            },
+            "icon": "assets/img/research/sectopod_autopsy.png"
+        },
+        "research_seeker_autopsy": {
+            "name": "Seeker Autopsy",
+            "description": "This is one of the invaders' most intricately engineered battlefield devices. The combination of concealment systems, artificial intelligence, and articulation on the appendages makes for a technological treasure trove. In particular, we've uncovered some sensory devices that we believe allow the robots to keep from colliding while they are stealthed.",
+            "base_time_in_days": 6,
+            "prerequisites": {
+                "research": [
+                    "research_alien_computers"
+                ]
+            },
+            "cost": {
+                "item_seeker_corpse": 5
+            },
+            "ui": {
+                "group": "autopsy",
+                "level": 1
+            },
+            "icon": "assets/img/research/seeker_autopsy.png"
+        },
+        "research_stealth_systems": {
+            "name": "Stealth Systems",
+            "description": "Based on our continued study of the hyperwave \"phasing\" phenomena we've witnessed in the labs, we believe it should be possible to develop an armor kit mirroring these unusual properties. If successful, anyone wearing this suit would be extremely difficult to detect.",
+            "base_time_in_days": 80,
+            "prerequisites": {
+                "research": [
+                    "research_advanced_power_armor",
+                    "research_alien_communications"
+                ]
+            },
+            "cost": {
+                "item_alien_alloy": 30,
+                "item_elerium": 100
+            },
+            "ui": {
+                "group": "armor",
+                "level": 0
+            },
+            "icon": "assets/img/research/stealth_systems.png"
+        },
+        "research_thin_man_autopsy": {
+            "name": "Thin Man Autopsy",
+            "description": "These aliens were clearly intended to be used as infiltrators, moving among us and observing without raising an alarm. Their incredible range of motion is of particular interest to our own genetic research program.",
+            "base_time_in_days": 6,
+            "prerequisites": {
+                "research": [
+                    "research_xenobiology"
+                ]
+            },
+            "cost": {
+                "item_thin_man_corpse": 10
+            },
+            "ui": {
+                "group": "autopsy",
+                "level": 1
+            },
+            "icon": "assets/img/research/thin_man_autopsy.png"
+        },
+        "research_thin_man_interrogation": {
+            "name": "Thin Man Interrogation",
+            "description": "It seems unlikely that this particular species will break under interrogation as quickly as the other captives, as we believe it was specifically intended to serve as an infiltrator. Still, perhaps if we use more aggressive techniques, we can...coax...it into revealing additional information about how the aliens arrived here.",
+            "base_time_in_days": 10,
+            "grants_research_credit": "laser_weapons",
+            "prerequisites": {
+                "research": [
+                    "research_thin_man_autopsy"
+                ]
+            },
+            "cost": {
+                "item_thin_man_captive": 1
+            },
+            "ui": {
+                "group": "interrogation",
+                "level": 2
+            },
+            "icon": "assets/img/research/thin_man_interrogation.png"
+        },
+        "research_ufo_analysis_abductor": {
+            "name": "UFO Analysis: Abductor",
+            "description": "The aliens appear to use this large vessel for their research on humanity in general and XCOM in particular.",
+            "base_time_in_days": 5,
+            "prerequisites": {
+                "missions": [
+                    "mission_abductor_downed"
+                ],
+                "research": [
+                    "research_alien_materials"
+                ]
+            },
+            "benefits_from_research_credit_types": [
+                "aerospace"
+            ],
+            "ui": {
+                "group": "ufo",
+                "level": 0
+            },
+            "icon": "assets/img/research/ufo_analysis_abductor.png"
+        },
+        "research_ufo_analysis_assault_carrier": {
+            "name": "UFO Analysis: Assault Carrier",
+            "description": "This beast, built on a battleship hull, forgoes some direct combat power in favor of a huge troop capacity.",
+            "base_time_in_days": 7,
+            "prerequisites": {
+                "missions": [
+                    "mission_assault_carrier_downed"
+                ],
+                "research": [
+                    "research_alien_materials"
+                ]
+            },
+            "benefits_from_research_credit_types": [
+                "aerospace"
+            ],
+            "ui": {
+                "group": "ufo",
+                "level": 0
+            },
+            "icon": "assets/img/research/ufo_analysis_assault_carrier.png"
+        },
+        "research_ufo_analysis_battleship": {
+            "name": "UFO Analysis: Battleship",
+            "description": "A truly terrifying ship, this alien dreadnought has unmatched combat power.",
+            "base_time_in_days": 7,
+            "prerequisites": {
+                "missions": [
+                    "mission_battleship_downed"
+                ],
+                "research": [
+                    "research_alien_materials"
+                ]
+            },
+            "benefits_from_research_credit_types": [
+                "aerospace"
+            ],
+            "ui": {
+                "group": "ufo",
+                "level": 0
+            },
+            "icon": "assets/img/research/ufo_analysis_battleship.png"
+        },
+        "research_ufo_analysis_destroyer": {
+            "name": "UFO Analysis: Destroyer",
+            "description": "The relatively small size of this UFO class belies its combat power.",
+            "base_time_in_days": 4,
+            "prerequisites": {
+                "missions": [
+                    "mission_destroyer_downed"
+                ],
+                "research": [
+                    "research_alien_materials"
+                ]
+            },
+            "benefits_from_research_credit_types": [
+                "aerospace"
+            ],
+            "ui": {
+                "group": "ufo",
+                "level": 0
+            },
+            "icon": "assets/img/research/ufo_analysis_destroyer.png"
+        },
+        "research_ufo_analysis_fighter": {
+            "name": "UFO Analysis: Fighter",
+            "description": "This small but tough UFO appears to be built with air-to-air combat in mind.",
+            "base_time_in_days": 3,
+            "prerequisites": {
+                "missions": [
+                    "mission_fighter_downed"
+                ],
+                "research": [
+                    "research_alien_materials"
+                ]
+            },
+            "benefits_from_research_credit_types": [
+                "aerospace"
+            ],
+            "ui": {
+                "group": "ufo",
+                "level": 0
+            },
+            "icon": "assets/img/research/ufo_analysis_fighter.png"
+        },
+        "research_ufo_analysis_harvester": {
+            "name": "UFO Analysis: Harvester",
+            "description": "While similar in design to the abductor, the harvester class of UFO contains an array of resource-extraction equipment.",
+            "base_time_in_days": 5,
+            "prerequisites": {
+                "missions": [
+                    "mission_harvester_downed"
+                ],
+                "research": [
+                    "research_alien_materials"
+                ]
+            },
+            "benefits_from_research_credit_types": [
+                "aerospace"
+            ],
+            "ui": {
+                "group": "ufo",
+                "level": 0
+            },
+            "icon": "assets/img/research/ufo_analysis_harvester.png"
+        },
+        "research_ufo_analysis_overseer": {
+            "name": "UFO Analysis: Overseer",
+            "description": "This appears to be some kind of command and control ship for the aliens.",
+            "base_time_in_days": 7,
+            "prerequisites": {
+                "missions": [
+                    "mission_overseer_downed"
+                ],
+                "research": [
+                    "research_alien_materials"
+                ]
+            },
+            "benefits_from_research_credit_types": [
+                "aerospace"
+            ],
+            "ui": {
+                "group": "ufo",
+                "level": 0
+            },
+            "icon": "assets/img/research/ufo_analysis_overseer.png"
+        },
+        "research_ufo_analysis_raider": {
+            "name": "UFO Analysis: Raider",
+            "description": "The aliens appear to use this UFO for resource-gathering, scouting and research operations.",
+            "base_time_in_days": 4,
+            "prerequisites": {
+                "missions": [
+                    "mission_raider_downed"
+                ],
+                "research": [
+                    "research_alien_materials"
+                ]
+            },
+            "benefits_from_research_credit_types": [
+                "aerospace"
+            ],
+            "ui": {
+                "group": "ufo",
+                "level": 0
+            },
+            "icon": "assets/img/research/ufo_analysis_raider.png"
+        },
+        "research_ufo_analysis_scout": {
+            "name": "UFO Analysis: Scout",
+            "description": "Now that our salvage teams have been over a generally intact UFO of this class, we are able to conduct a detailed analysis of the craft's capabilities and missions, and we may be able to identify some weak points.",
+            "base_time_in_days": 3,
+            "prerequisites": {
+                "missions": [
+                    "mission_scout_downed"
+                ],
+                "research": [
+                    "research_alien_materials"
+                ]
+            },
+            "benefits_from_research_credit_types": [
+                "aerospace"
+            ],
+            "ui": {
+                "group": "ufo",
+                "level": 0
+            },
+            "icon": "assets/img/research/ufo_analysis_scout.png"
+        },
+        "research_ufo_analysis_terror_ship": {
+            "name": "UFO Analysis: Terror Ship",
+            "description": "The alien terror ship is a variant on the transport design, with the capability to fast-drop troops into a combat area.",
+            "base_time_in_days": 6,
+            "prerequisites": {
+                "missions": [
+                    "mission_terror_ship_downed"
+                ],
+                "research": [
+                    "research_alien_materials"
+                ]
+            },
+            "benefits_from_research_credit_types": [
+                "aerospace"
+            ],
+            "ui": {
+                "group": "ufo",
+                "level": 0
+            },
+            "icon": "assets/img/research/ufo_analysis_terror_ship.png"
+        },
+        "research_ufo_analysis_transport": {
+            "name": "UFO Analysis: Transport",
+            "description": "This UFO is used to transport both troops and war materiel.",
+            "base_time_in_days": 6,
+            "prerequisites": {
+                "missions": [
+                    "mission_transport_downed"
+                ],
+                "research": [
+                    "research_alien_materials"
+                ]
+            },
+            "benefits_from_research_credit_types": [
+                "aerospace"
+            ],
+            "ui": {
+                "group": "ufo",
+                "level": 0
+            },
+            "icon": "assets/img/research/ufo_analysis_transport.png"
+        },
+        "research_vehicular_plasma_weapons": {
+            "name": "Vehicular Plasma Weapons",
+            "description": "With additional insulation to protect their computers, it should be possible to equip our Interceptors and SHIVs with plasma weapons. By integrating a larger version of the containment housing developed for our other plasma weaponry, the end result would be extremely effective vehicle-based plasma cannon.",
+            "base_time_in_days": 90,
+            "prerequisites": {
+                "research": [
+                    "research_advanced_plasma_weapons"
+                ]
+            },
+            "cost": {
+                "item_alien_alloy": 20,
+                "item_elerium": 90,
+                "item_weapon_fragment": 200
+            },
+            "benefits_from_research_credit_types": [
+                "plasma_weapons",
+                "weapons"
+            ],
+            "ui": {
+                "group": "plasma_weapons",
+                "level": 0
+            },
+            "icon": "assets/img/research/vehicular_plasma_weapons.png"
+        },
+        "research_xenobiology": {
+            "name": "Xenobiology",
+            "description": "It is crucial that we gain a thorough understanding of the alien physiology in order to develop weapons and tactics better suited to combating them.",
+            "base_time_in_days": 6,
+            "cost": {
+                "item_sectoid_corpse": 5
+            },
+            "ui": {
+                "group": "xenology",
+                "level": 0
+            },
+            "icon": "assets/img/research/xenobiology.png"
+        },
+        "research_xenogenetics": {
+            "name": "Xenogenetics",
+            "description": "A deeper analysis of the aliens' genetic code has revealed that their cells are rife with the substance we call Meld. We believe we may be able to use it on our own soldiers. The invaders appear to have deployed canisters of this strange substance in human-populated areas, perhaps as an experiment, and we have also been able to extract some from alien tissues. It might also be a weapon of some kind. Further analysis could shed light on its potential dangers and applications.",
+            "base_time_in_days": 10,
+            "prerequisites": {
+                "research": [
+                    "research_xenobiology"
+                ]
+            },
+            "cost": {
+                "item_meld": 20
+            },
+            "benefits_from_research_credit_types": [
+                "cybernetics"
+            ],
+            "ui": {
+                "group": "xenology",
+                "level": 0
+            },
+            "icon": "assets/img/research/xenogenetics.png"
+        },
+        "research_xenoneurology": {
+            "name": "Xenoneurology",
+            "description": "With our recent insights into the alien biological makeup, we now wish to study the aliens' nervous systems. If successful, we believe it should be possible to create a device capable of incapacitating an alien subject without killing it. If our troops could capture an alien alive, perhaps we could interrogate it.",
+            "base_time_in_days": 8,
+            "prerequisites": {
+                "research": [
+                    "research_xenobiology"
+                ]
+            },
+            "cost": {
+                "item_sectoid_corpse": 10,
+                "item_weapon_fragment": 10
+            },
+            "ui": {
+                "group": "xenology",
+                "level": 0
+            },
+            "icon": "assets/img/research/xenoneurology.png"
+        },
+        "research_xenopsionics": {
+            "name": "Xenopsionics",
+            "description": "Our studies of the Sectoid's abilities to manipulate reality by thought alone has yielded a surprising result: Humans, with the proper training and technological aids, should be able to do the same. Pursuing this project may open an entirely new world of human experience.",
+            "base_time_in_days": 14,
+            "prerequisites": {
+                "research": [
+                    "research_sectoid_autopsy",
+                    "research_xenogenetics",
+                    "research_xenoneurology"
+                ]
+            },
+            "cost": {
+                "item_meld": 15
+            },
+            "benefits_from_research_credit_types": [
+                "psionics"
+            ],
+            "ui": {
+                "group": "xenology",
+                "level": 0
+            },
+            "icon": "assets/img/research/xenopsionics.png"
+        }
+    }
+}

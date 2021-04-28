@@ -1,0 +1,97 @@
+{
+    "abilities": {
+        "psi_distortion_field": {
+            "name": "Distortion Field",
+            "description": "Provides +10 Defense to all units within 4 tiles of the Psionic soldier, excluding the Psionic soldier. It is always on.",
+            "icon": "assets/img/perk-icons/psi_distortion_field.png",
+            "rank": 1,
+            "column": 0,
+            "research_prerequisite": "research_muton_interrogation"
+        },
+        "psi_mind_control": {
+            "name": "Mind Control",
+            "description": "Difficult psi technique that, if successful, grants control of the target for 3 turns. Does not work on robotic enemies. 5 turn cooldown. Imposes +12 hours fatigue after missions.",
+            "icon": "assets/img/perk-icons/psi_mind_control.png",
+            "rank": 4,
+            "column": 1,
+            "research_prerequisite": "research_ethereal_interrogation"
+        },
+        "psi_mindfray": {
+            "name": "Mindfray",
+            "description": "Causes the target to lose grip on reality, causing -25 aim/stack, -25 will/stack, a reduced area-of-effect attack range, reduced mobility, and doing one base damage. Robotic units are immune. Lasts 3 turns. 2 turn cooldown. Imposes +24 hours fatigue after missions.",
+            "icon": "assets/img/perk-icons/psi_mindfray.png",
+            "rank": 0,
+            "column": 0
+        },
+        "psi_mind_merge": {
+            "name": "Mind Merge",
+            "description": "Merge minds with the target, granting the target +25% critical chance, bonus will, and temporary health (for aliens) or damage reduction (for humans: DR=caster_will/60). Imposes +6 hours postmission fatigue for psi soldiers.",
+            "icon": "assets/img/perk-icons/psi_mind_merge.png",
+            "rank": 2,
+            "column": 2,
+            "research_prerequisite": "research_sectoid_commander_autopsy"
+        },
+        "psi_neural_feedback": {
+            "name": "Neural Feedback",
+            "description": "Causes damage to psi attackers and puts all of their psi attacks on cooldown. Does not reduce the attacks' chance of success. Protects the psion and nearby allies who pass a will check. Imposes +24 hours fatigue after missions.",
+            "icon": "assets/img/perk-icons/psi_neural_feedback.png",
+            "rank": 0,
+            "column": 1
+        },
+        "psi_psi_inspiration": {
+            "name": "Psi Inspiration",
+            "description": "Removes Mindfray and panic from all allies within 3 tiles, and strengthen their Will by +30 for 3 turns, 4 turn cooldown. Imposes +6 hours fatigue after missions.",
+            "icon": "assets/img/perk-icons/psi_psi_inspiration.png",
+            "rank": 1,
+            "column": 2,
+            "research_prerequisite": "research_sectoid_interrogation"
+        },
+        "psi_psi_panic": {
+            "name": "Psi Panic",
+            "description": "Cause target to panic on its following turn, if the target's Will is overcome. The duration is (caster Will / 50) turns; fractional results have a chance to be rounded up, the chance is proportional to the distance to the next integer. Robotic enemies are immune, 2 turn cooldown. Imposes +6 hours fatigue after missions.",
+            "icon": "assets/img/perk-icons/psi_psi_panic.png",
+            "rank": 2,
+            "column": 0,
+            "research_prerequisite": "research_muton_berserker_interrogation"
+        },
+        "psi_psychokinetic_strike": {
+            "name": "Psychokinetic Strike",
+            "description": "Project a bolt of pure psi force that destroys cover but does not harm units. 4 turn cooldown. Imposes 12 hours additional post-mission fatigue.",
+            "icon": "assets/img/perk-icons/psi_psychokinetic_strike.png",
+            "rank": 3,
+            "column": 0,
+            "research_prerequisite": "research_sectoid_commander_interrogation"
+        },
+        "psi_pyrokinesis": {
+            "name": "Pyrokinesis",
+            "description": "Ignite fires at the target location. Does not cause injuries. Imposes +12 hours postmission fatigue for psi soldiers.",
+            "icon": "assets/img/perk-icons/psi_pyrokinesis.png",
+            "rank": 3,
+            "column": 1,
+            "research_prerequisite": "research_muton_elite_interrogation"
+        },
+        "psi_regen_biofield": {
+            "name": "Regen Biofield",
+            "description": "Nearby allies are healed for 1 health each turn, and has a 100% chance to remove acid effects. This does not repair damage to body armor or other hp-granting items. Imposes +24 hours postmission fatigue for psi soldiers. (Passive ability)",
+            "icon": "assets/img/perk-icons/psi_regen_biofield.png",
+            "rank": 0,
+            "column": 0,
+            "research_prerequisite": "research_thin_man_interrogation"
+        },
+        "psi_rift": {
+            "name": "Rift",
+            "description": "Devastate an area with a storm of psi energy. The rift does more damage against targets with low Will, and reduced damage against targets with high Will. 4 turn cooldown. Requires special armor designed for psionic beings. Imposes +12 hours fatigue after missions.",
+            "icon": "assets/img/perk-icons/psi_rift.png",
+            "rank": 5,
+            "column": 1
+        },
+        "psi_telekinetic_field": {
+            "name": "Telekinetic Field",
+            "description": "Create an immobile telekinetic field that lasts through the enemy turn. The field distorts and deflects incoming attacks, granting +40 Defense to allies within the field, 4 turn cooldown. Imposes +12 hours fatigue after missions.",
+            "icon": "assets/img/perk-icons/psi_telekinetic_field.png",
+            "rank": 3,
+            "column": 2,
+            "research_prerequisite": "research_ethereal_autopsy"
+        }
+    }
+}

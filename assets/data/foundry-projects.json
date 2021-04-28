@@ -1,0 +1,642 @@
+{
+    "foundry_projects": {
+        "foundry_advanced_flight": {
+            "name": "Advanced Flight",
+            "description": "We believe that we can improve the small system flight capabilities of our flying armor and the Hover SHIV designs, considerably increasing their maximum flight time in combat.",
+            "cost": {
+                "item_alien_alloy": 40,
+                "item_cyberdisc_corpse": 5,
+                "item_drone_corpse": 5,
+                "item_elerium": 40,
+                "item_heavy_floater_corpse": 5,
+                "money": 325
+            },
+            "base_time_days": 14,
+            "base_engineers": 50,
+            "benefits_from_credits": [ "aerospace" ],
+            "research_prerequisites": [ "research_antigrav_systems" ]
+        },
+        "foundry_advanced_repair": {
+            "name": "Advanced Repair",
+            "description": "As our understanding of alien materials grows, we believe that we can develop processes that would reduce the repair times of our fighter craft, MECs, SHIV units and damaged soldier gear by about one-third.",
+            "cost": {
+                "item_alien_alloy": 100,
+                "item_heavy_floater_corpse": 4,
+                "item_meld": 80,
+                "money": 500
+            },
+            "base_time_days": 21,
+            "base_engineers": 45,
+            "benefits_from_credits": [ "cybernetics" ],
+            "research_prerequisites": [ "research_heavy_floater_autopsy" ]
+        },
+        "foundry_advanced_servomotors": {
+            "name": "Advanced Servomotors",
+            "description": "After a thorough examination, we've been able to replicate the articulated joints of the Mechtoid. We have some designs for gear that will improve mobility for our soldiers and mechanized units, although they may require we understand some other technologies first.",
+            "cost": {
+                "item_alien_alloy": 60,
+                "item_elerium": 40,
+                "item_mechtoid_corpse": 8,
+                "item_meld": 70,
+                "money": 300
+            },
+            "base_time_days": 14,
+            "base_engineers": 45,
+            "benefits_from_credits": [ "cybernetics" ],
+            "research_prerequisites": [ "research_mechtoid_autopsy" ]
+        },
+        "foundry_advanced_surgery": {
+            "name": "Advanced Surgery",
+            "description": "We think we can adapt some of the aliens' biological research systems into designs that will aid the rapid healing of our personnel.",
+            "cost": {
+                "item_alien_stasis_tank": 12,
+                "item_alien_surgery": 12,
+                "money": 600
+            },
+            "base_time_days": 21,
+            "base_engineers": 45,
+            "benefits_from_credits": [ "cybernetics" ],
+            "research_prerequisites": [ "research_alien_biocybernetics" ]
+        },
+        "foundry_aircraft_boosters": {
+            "name": "Aircraft Boosters",
+            "description": "Our initial investigations into alien materials have given us some ideas to build some one-time 'boosters' for our combat aircraft.",
+            "cost": {
+                "item_meld": 10,
+                "item_weapon_fragment": 10,
+                "money": 50
+            },
+            "base_time_days": 7,
+            "base_engineers": 10,
+            "benefits_from_credits": [ "aerospace", "laser_weapons" ],
+            "research_prerequisites": [ "research_alien_materials" ]
+        },
+        "foundry_alien_grenades": {
+            "name": "Alien Grenades",
+            "description": "We've had a look at an intact alien grenade you recovered, and with a small investment of resources and time we believe that we can upgrade some of our current HE grenades to this new, deadlier version. We should also be able to apply some alloy shards to our current stock of AP grenades, rendering them even more lethal than alien grenades, and to another batch of HE grenades, increasing their area of effect by 40%.",
+            "cost": {
+                "item_alien_alloy": 20,
+                "item_alien_grenade": 1,
+                "item_elerium": 50,
+                "item_weapon_fragment": 20,
+                "money": 100
+            },
+            "base_time_days": 7,
+            "base_engineers": 35,
+            "research_prerequisites": [ "research_muton_autopsy" ]
+        },
+        "foundry_alien_metallurgy": {
+            "name": "Alien Metallurgy",
+            "description": "Now that we have some understanding of these wonderous alien materials, we believe we can use Meld to develop techniques to extract an additional 20 percent more alien alloys from what our salvage teams bring back from ground missions and UFO debris fields.",
+            "cost": {
+                "item_alien_alloy": 30,
+                "item_elerium": 10,
+                "item_meld": 100,
+                "money": 300
+            },
+            "base_time_days": 14,
+            "base_engineers": 20,
+            "research_prerequisites": [ "research_alien_materials" ]
+        },
+        "foundry_alien_nucleonics": {
+            "name": "Alien Nucleonics",
+            "description": "Based on our studies of the alien power systems, we believe we can use meld to increase the efficiency by which we extract elerium from alien power sources and wrecks by 20 percent. Unfortunately, this will be a very resource-intensive project that threatens to deplete our stores of other artifacts.",
+            "cost": {
+                "item_alien_alloy": 120,
+                "item_elerium": 40,
+                "item_meld": 150,
+                "money": 500
+            },
+            "base_time_days": 14,
+            "base_engineers": 45,
+            "research_prerequisites": [ "research_alien_power_systems" ]
+        },
+        "foundry_ammo_conservation": {
+            "name": "Ammo Conservation",
+            "description": "Muton armor contains servomotors that function as automatic weapon loaders, allowing their weapons to carry more ammunition without requiring the soldier to pause for a full reload. We could apply some of the same techniques to our own weapons.",
+            "cost": {
+                "item_alien_alloy": 80,
+                "item_meld": 50,
+                "item_muton_corpse": 20,
+                "item_weapon_fragment": 100,
+                "money": 500
+            },
+            "base_time_days": 14,
+            "base_engineers": 60,
+            "benefits_from_credits": [ "weapons" ],
+            "research_prerequisites": [ "research_muton_autopsy" ]
+        },
+        "foundry_armored_fighters": {
+            "name": "Armored Fighters",
+            "description": "We have learned techniques to convert alien alloys into thin, malleable sheets that we can apply to all of our fighter aircraft without reducing their performance. These should give our aircraft significantly more durability in combat.",
+            "cost": {
+                "item_alien_alloy": 200,
+                "item_elerium": 60,
+                "item_floater_corpse": 30,
+                "item_meld": 70,
+                "money": 400
+            },
+            "base_time_days": 14,
+            "base_engineers": 30,
+            "benefits_from_credits": [ "aerospace", "armor" ],
+            "research_prerequisites": [ "research_advanced_aerospace_concepts" ]
+        },
+        "foundry_base_security_armor": {
+            "name": "Base Security: Armor",
+            "description": "For a small investment, we can train XCOM HQ's security detail to employ our Phalanx armor suits, improving our personnel's survivability in case of an attack. During a battle, they will automatically equip any unused suits of Phalanx armor in our inventory.",
+            "cost": {
+                "money": 20
+            },
+            "base_time_days": 3,
+            "base_engineers": 25,
+            "research_prerequisites": [ "research_improved_body_armor" ]
+        },
+        "foundry_base_security_weapons": {
+            "name": "Base Security: Weapons",
+            "description": "With a minimum of funding, we can train XCOM HQ's security detail on our new laser rifles, improving our ability to defend ourselves in case the worst occurs. During a battle, they will automatically equip any spare laser rifles in our inventory.",
+            "cost": {
+                "money": 40
+            },
+            "base_time_days": 3,
+            "base_engineers": 25,
+            "research_prerequisites": [ "research_beam_lasers" ]
+        },
+        "foundry_drone_capture": {
+            "name": "Drone Capture",
+            "description": "We're confident that our Arc Throwers could be upgraded to allow the capture of enemy drones, giving us control of the flying units for the remainder of the combat mission. However, we have not been able to take control of their repair function, which will be disabled.",
+            "cost": {
+                "item_drone_corpse": 30,
+                "item_elerium": 10,
+                "item_weapon_fragment": 50,
+                "money": 100
+            },
+            "base_time_days": 14,
+            "base_engineers": 75,
+            "benefits_from_credits": [ "cybernetics" ],
+            "research_prerequisites": [ "research_emp_weapons" ]
+        },
+        "foundry_elerium_afterburners": {
+            "name": "Elerium Afterburners",
+            "description": "By directly injecting an Elerium particle stream into the exhaust of our aircraft engines, we can give short bursts of speed that will increase our engagement times with alien craft.",
+            "cost": {
+                "item_alien_alloy": 30,
+                "item_elerium": 30,
+                "item_ufo_power_source": 2,
+                "money": 200
+            },
+            "base_time_days": 14,
+            "base_engineers": 45,
+            "benefits_from_credits": [ "aerospace" ],
+            "research_prerequisites": [ "research_alien_propulsion" ]
+        },
+        "foundry_enhanced_ballistics": {
+            "name": "Enhanced Ballistics",
+            "description": "We believe we can upgrade our ballistic small arms through combining alien materials with our own technologies.",
+            "cost": {
+                "item_alien_alloy": 10,
+                "item_weapon_fragment": 20,
+                "money": 80
+            },
+            "base_time_days": 7,
+            "base_engineers": 10,
+            "benefits_from_credits": [ "weapons" ],
+            "research_prerequisites": [ "research_alien_materials" ]
+        },
+        "foundry_enhanced_lasers": {
+            "name": "Enhanced Lasers",
+            "description": "Now that we can produce high output laser weapons, we believe we can develop improvements to those weapons.",
+            "cost": {
+                "item_alien_alloy": 40,
+                "item_weapon_fragment": 15,
+                "money": 150
+            },
+            "base_time_days": 14,
+            "base_engineers": 30,
+            "benefits_from_credits": [ "laser_weapons", "weapons" ],
+            "research_prerequisites": [ "research_advanced_beam_lasers" ]
+        },
+        "foundry_enhanced_plasma": {
+            "name": "Enhanced Plasma",
+            "description": "Now that we understand the challenges of controlling plasma weaponry, we should be able to develop enhancements through investigating various plasma confinement ideas. We expect to be able to make all our plasma, reflex and particle weapons do more damage to enemies, and build optional weapon addons that enhance the weapons' damage capabilities even further.",
+            "cost": {
+                "item_alien_alloy": 100,
+                "item_elerium": 100,
+                "item_plasma_dragon": 1,
+                "item_weapon_fragment": 100,
+                "money": 500
+            },
+            "base_time_days": 21,
+            "base_engineers": 120,
+            "benefits_from_credits": [ "plasma_weapons", "weapons" ],
+            "research_prerequisites": [ "research_precision_plasma_weapons" ]
+        },
+        "foundry_field_repairs": {
+            "name": "Field Repairs",
+            "description": "After studying one of the small alien drone units, we believe that we could upgrade our Arc Throwers with the drone's 'robotic repair' ability, allowing our soldiers to repair mechanized units in combat.",
+            "cost": {
+                "item_alien_alloy": 10,
+                "item_drone_corpse": 10,
+                "item_elerium": 10,
+                "item_meld": 10,
+                "item_weapon_fragment": 10,
+                "money": 100
+            },
+            "base_time_days": 14,
+            "base_engineers": 15,
+            "research_prerequisites": [ "research_drone_autopsy" ]
+        },
+        "foundry_improved_arc_thrower": {
+            "name": "Improved Arc Thrower",
+            "description": "By increasing the power of our Arc Throwers, we should increase the successful stun rate in combat.",
+            "cost": {
+                "item_alien_alloy": 40,
+                "item_drone_corpse": 10,
+                "item_elerium": 40,
+                "item_weapon_fragment": 30,
+                "money": 100
+            },
+            "base_time_days": 14,
+            "base_engineers": 30,
+            "research_prerequisites": [ "research_alien_power_systems" ]
+        },
+        "foundry_improved_avionics": {
+            "name": "Improved Avionics",
+            "description": "Based on our analysis of UFO behavior, we think we've identified some signatures that our aircraft can track when in weapons range. We believe we can improve all our aircraft weapons' accuracy.",
+            "cost": {
+                "item_alien_alloy": 10,
+                "item_ufo_flight_computer": 3,
+                "item_weapon_fragment": 50,
+                "money": 400
+            },
+            "base_time_days": 14,
+            "base_engineers": 40,
+            "benefits_from_credits": [ "aerospace" ],
+            "research_prerequisites": [ "research_advanced_aerospace_concepts" ]
+        },
+        "foundry_improved_medikit": {
+            "name": "Improved Medikit",
+            "description": "The flexible physiology of the Thin Men has given us new ideas for improving our Medikits and Restorative Mist units. We now believe we can increase the amount of healing delivered in a single charge by three for medikits and two for restorative mist units.",
+            "cost": {
+                "item_meld": 20,
+                "item_thin_man_corpse": 20,
+                "money": 180
+            },
+            "base_time_days": 7,
+            "base_engineers": 12,
+            "benefits_from_credits": [ "cybernetics" ],
+            "research_prerequisites": [ "research_thin_man_autopsy" ]
+        },
+        "foundry_improved_salvage": {
+            "name": "Improved Salvage",
+            "description": "As the demand for more and more alien materials grows, our engineers are proposing more precise techniques of using meld to repair battlefield debris and turn it into salvageable items. We believe we can increase the number of weapon fragments recovered after combat by 20 percent.",
+            "cost": {
+                "item_alien_alloy": 40,
+                "item_elerium": 20,
+                "item_meld": 40,
+                "money": 200
+            },
+            "base_time_days": 14,
+            "base_engineers": 20,
+            "research_prerequisites": [ "research_alien_materials" ]
+        },
+        "foundry_jellied_elerium": {
+            "name": "Jellied Elerium",
+            "description": "Using Elerium in tactical situations is quite risky; in the absence of a full sized craft's regulator and fuel management systems, adding it to our flamethrowers would be too dangerous. With some additional investment, though, we could devise a formula to increase flamethrower effectiveness in inducing panic without risking our soldiers, and design an addon item that would increase damage.",
+            "cost": {
+                "item_alien_alloy": 40,
+                "item_elerium": 80,
+                "item_meld": 40,
+                "item_weapon_fragment": 50,
+                "money": 100
+            },
+            "base_time_days": 10,
+            "base_engineers": 45,
+            "benefits_from_credits": [ "cybernetics" ],
+            "research_prerequisites": [ "research_elerium" ]
+        },
+        "foundry_mag_pistols": {
+            "name": "Mag Pistols",
+            "description": "One of our earliest developments in the Foundry, the Magnetic Ordnance Reduction System greatly reduces the recoil of our entire range of sidearms. Utilizing the latest in composite materials, this upgrade will significantly improve the odds of our soldiers scoring a critical hit on their targets.",
+            "cost": {
+                "item_weapon_fragment": 5,
+                "money": 35
+            },
+            "base_time_days": 7,
+            "base_engineers": 10,
+            "benefits_from_credits": [ "weapons" ],
+            "research_prerequisites": [ "research_alien_weaponry" ]
+        },
+        "foundry_mec_close_combat": {
+            "name": "MEC Close Combat",
+            "description": "Our advancements in heavy armor technology have enabled us to install better actuators and support structures in the Kinetic Strike Module. This should increase its force output significantly and allow multiple strikes in some cases.",
+            "cost": {
+                "item_alien_alloy": 60,
+                "item_elerium": 30,
+                "item_meld": 40,
+                "item_muton_berserker_corpse": 8,
+                "item_weapon_fragment": 30,
+                "money": 300
+            },
+            "base_time_days": 7,
+            "base_engineers": 50,
+            "benefits_from_credits": [ "cybernetics" ],
+            "research_prerequisites": [ "research_muton_berserker_autopsy" ]
+        },
+        "foundry_mec_warfare_systems": {
+            "name": "MEC Warfare Systems",
+            "description": "Our engineering teams are proposing a number of exciting concepts to expand our MEC capabilities beyond that of a simple exoskeleton.",
+            "cost": {
+                "money": 25
+            },
+            "base_time_days": 7,
+            "base_engineers": 20,
+            "benefits_from_credits": [ "cybernetics" ],
+            "research_prerequisites": [ "research_alien_biocybernetics" ]
+        },
+        "foundry_mechanized_unit_defenses": {
+            "name": "Mechanized Unit Defenses",
+            "description": "Our engineers have proposed some new systems that should increase mechanized unit survivability in increasingly dangerous battlefields.",
+            "cost": {
+                "item_alien_alloy": 60,
+                "item_cyberdisc_corpse": 2,
+                "item_weapon_fragment": 25,
+                "money": 150
+            },
+            "base_time_days": 10,
+            "base_engineers": 60,
+            "benefits_from_credits": [ "armor" ],
+            "research_prerequisites": [ "research_advanced_body_armor" ]
+        },
+        "foundry_new_combat_systems": {
+            "name": "New Combat Systems",
+            "description": "Some of our troops are asking for specialized equipment to combat the alien threat. We believe we can produce some new accessories to increase their effectiveness on the battlefield.",
+            "cost": {
+                "item_alien_alloy": 30,
+                "item_elerium": 20,
+                "item_weapon_fragment": 50,
+                "money": 100
+            },
+            "base_time_days": 14,
+            "base_engineers": 30,
+            "research_prerequisites": [ "research_experimental_warfare" ]
+        },
+        "foundry_penetrator_weapons": {
+            "name": "Penetrator Weapons",
+            "description": "We've noticed that some alien combat robot units bear similarities in design to alien UFOs. We've identified some weaknesses in the designs that we believe we can exploit by upgrading our interceptor weapon systems to penetrate alien armor.",
+            "cost": {
+                "item_alien_alloy": 80,
+                "item_cyberdisc_corpse": 3,
+                "item_ufo_flight_computer": 3,
+                "item_weapon_fragment": 45,
+                "money": 300
+            },
+            "base_time_days": 14,
+            "base_engineers": 35,
+            "benefits_from_credits": [ "aerospace" ],
+            "research_prerequisites": [ "research_advanced_aerospace_concepts" ]
+        },
+        "foundry_phoenix_coilguns": {
+            "name": "Phoenix Coilguns",
+            "description": "We believe we can significantly upgrade our Phoenix Cannon into advanced coilgun designs, significantly increasing its damage output and more than tripling its armor-piercing capabilities.",
+            "cost": {
+                "item_alien_alloy": 120,
+                "item_elerium": 60,
+                "item_meld": 40,
+                "item_ufo_power_source": 2,
+                "item_weapon_fragment": 100,
+                "money": 300
+            },
+            "base_time_days": 14,
+            "base_engineers": 50,
+            "benefits_from_credits": [ "gauss_weapons" ],
+            "research_prerequisites": [ "research_gauss_weapons" ]
+        },
+        "foundry_psi_warfare_systems": {
+            "name": "Psi Warfare Systems",
+            "description": "Our breakthroughs in human psionics can extend beyond the realm of the mind alone. With your go-ahead, we can begin development of several specialized pieces of gear that can enhance our psi troopers battlefield capabilities.",
+            "cost": {
+                "item_elerium": 20,
+                "item_meld": 40,
+                "item_sectoid_corpse": 12,
+                "item_weapon_fragment": 30,
+                "money": 100
+            },
+            "base_time_days": 14,
+            "base_engineers": 40,
+            "benefits_from_credits": [ "psionics" ],
+            "research_prerequisites": [ "research_xenopsionics" ]
+        },
+        "foundry_quenchguns": {
+            "name": "Quenchguns",
+            "description": "By adding superconductors and increasing the magnetic field strength in our gauss weaponry, we believe we can double the armor-piercing capabilities of our existing arsenal.",
+            "cost": {
+                "item_alien_alloy": 40,
+                "item_alien_carbine": 2,
+                "item_elerium": 50,
+                "item_meld": 25,
+                "item_weapon_fragment": 80,
+                "money": 250
+            },
+            "base_time_days": 14,
+            "base_engineers": 60,
+            "benefits_from_credits": [ "gauss_weapons", "weapons" ],
+            "research_prerequisites": [ "research_advanced_gauss_weapons" ]
+        },
+        "foundry_rail_pistols": {
+            "name": "Rail Pistols",
+            "description": "We've started testing an experimental cryogenic treatment for the barrels of our existing sidearm designs. This process will greatly reduce heat distortions caused by repeated firing, which should increase the aim of all soldiers using a pistol.",
+            "cost": {
+                "item_alien_alloy": 10,
+                "item_weapon_fragment": 35,
+                "money": 90
+            },
+            "base_time_days": 10,
+            "base_engineers": 20,
+            "benefits_from_credits": [ "gauss_weapons", "weapons" ],
+            "research_prerequisites": [ "research_gauss_weapons" ]
+        },
+        "foundry_reflex_pistols": {
+            "name": "Reflex Pistols",
+            "description": "Having learned a great deal from the alien weapons recovered from the field, we think it should be possible to implement improvements across our entire range of side arms. At the very least, we can expect an increase in the maximum damage output of all of our pistols.",
+            "cost": {
+                "item_alien_alloy": 30,
+                "item_alien_pistol": 1,
+                "item_elerium": 30,
+                "item_weapon_fragment": 60,
+                "money": 145
+            },
+            "base_time_days": 14,
+            "base_engineers": 35,
+            "benefits_from_credits": [ "plasma_weapons", "weapons" ],
+            "research_prerequisites": [ "research_compact_plasma_weapons" ]
+        },
+        "foundry_scope_upgrade": {
+            "name": "SCOPE Upgrade",
+            "description": "Our Laser Sights and the portable targeting module called 'SCOPE' could be upgraded to highlight sensitive points on the enemy targets. We believe that the chance of critical shots would increase accordingly.",
+            "cost": {
+                "item_scope": 1,
+                "item_weapon_fragment": 35,
+                "money": 100
+            },
+            "base_time_days": 7,
+            "base_engineers": 25,
+            "benefits_from_credits": [ "weapons" ],
+            "research_prerequisites": [ "research_experimental_warfare" ]
+        },
+        "foundry_sentinel_drone": {
+            "name": "Sentinel Drone",
+            "description": "With an investment of resources, we will be able to adapt some alien technology into a defensive module for the SHIV. We've been able to add a self-repair capability and use its spare AI cycles to improve the SHIV's situational firing heuristics.",
+            "cost": {
+                "item_alien_alloy": 40,
+                "item_drone_corpse": 1,
+                "item_elerium": 20,
+                "item_ufo_flight_computer": 1,
+                "money": 150
+            },
+            "base_time_days": 21,
+            "base_engineers": 50,
+            "research_prerequisites": [ "research_cyberdisc_autopsy" ]
+        },
+        "foundry_shaped_armor": {
+            "name": "Shaped Armor",
+            "description": "The invaders' mechanized cybersuits are of course somewhat more advanced than our own; by examining the interfaces between the armored shells and the cores, we could improve our overall armor design. This has the potential to increase tactical survivability for all of our mechanized forces.",
+            "cost": {
+                "item_alien_alloy": 80,
+                "item_elerium": 40,
+                "item_floater_corpse": 25,
+                "item_meld": 40,
+                "money": 300
+            },
+            "base_time_days": 21,
+            "base_engineers": 35,
+            "benefits_from_credits": [ "armor" ],
+            "research_prerequisites": [ "research_floater_autopsy" ]
+        },
+        "foundry_shiv_suppression": {
+            "name": "SHIV Suppression",
+            "description": "With a fairly extensive hardware and software upgrade, our SHIV units would be capable of suppressive fire, letting them pin enemy targets down under a hail of bullets.",
+            "cost": {
+                "item_weapon_fragment": 5,
+                "money": 40
+            },
+            "base_time_days": 7,
+            "base_engineers": 15,
+            "benefits_from_credits": [ "weapons" ],
+            "research_prerequisites": [ "research_alien_weaponry" ]
+        },
+        "foundry_stealth_satellites": {
+            "name": "Stealth Satellites",
+            "description": "By studying the communication signatures of the UFO nav computers we've recovered, we could update our satellite network to mimic the alien communications. This would make the satellites much harder to detect if the aliens were to go looking for them.",
+            "cost": {
+                "item_alien_alloy": 200,
+                "item_elerium": 200,
+                "item_ufo_flight_computer": 10,
+                "money": 1200
+            },
+            "base_time_days": 28,
+            "base_engineers": 115,
+            "research_prerequisites": [ "research_stealth_systems" ]
+        },
+        "foundry_supercapacitors": {
+            "name": "Supercapacitors",
+            "description": "By increasing our ability to burst energy through our laser weapon optics, we can make these weapons far more dangerous to our alien foe. This will upgrade all of our aircraft laser cannon by increasing their firing rate and armor piercing capabilities, and will also allow us to construct a weapon addon for our personal laser weapons that will increase their chances of scoring a critical hit.",
+            "cost": {
+                "item_alien_alloy": 150,
+                "item_elerium": 200,
+                "item_meld": 80,
+                "item_ufo_power_source": 6,
+                "item_weapon_fragment": 100,
+                "money": 800
+            },
+            "base_time_days": 21,
+            "base_engineers": 70,
+            "benefits_from_credits": [ "laser_weapons" ],
+            "research_prerequisites": [ "research_advanced_pulse_lasers" ]
+        },
+        "foundry_super_skyranger": {
+            "name": "Super Skyranger",
+            "description": "While our unique Skyranger craft is incredibly versatile, it is hampered by its limited range if loaded with more than a small squad. Using some alien alloys, we believe we can mount some external drop tanks to enable the craft to reach targets all over the world while carrying additional soldiers. Unfortunately, we will need to schedule mid-air refueling with allied governments, so we can only carry extra soldiers on preplanned strikes on immobile enemy bases, and not on time-sensitive responses to recent enemy activity or other targets of opportunity.",
+            "cost": {
+                "item_alien_alloy": 60,
+                "money": 200
+            },
+            "base_time_days": 14,
+            "base_engineers": 35,
+            "benefits_from_credits": [ "aerospace" ],
+            "research_prerequisites": [ "research_advanced_aerospace_concepts" ]
+        },
+        "foundry_tactical_rigging": {
+            "name": "Tactical Rigging",
+            "description": "Increasing need for tactical flexibility has driven us to develop tactical rigs that apply to all of XCOM's individual soldier protection systems. These will enable soldiers to bring an additional item into battle.",
+            "cost": {
+                "item_alien_alloy": 100,
+                "item_meld": 60,
+                "item_muton_elite_corpse": 20,
+                "item_weapon_fragment": 100,
+                "money": 500
+            },
+            "base_time_days": 21,
+            "base_engineers": 80,
+            "benefits_from_credits": [ "armor" ],
+            "research_prerequisites": [ "research_muton_elite_autopsy" ]
+        },
+        "foundry_ufo_countermeasures": {
+            "name": "UFO Countermeasures",
+            "description": "Now that we have a handle on alien weapon systems and computers, we believe we can develop some countermeasures that will make our aircraft significantly harder to hit by alien UFO weaponry.",
+            "cost": {
+                "item_alien_alloy": 10,
+                "item_elerium": 60,
+                "item_seeker_corpse": 4,
+                "item_ufo_flight_computer": 4,
+                "item_weapon_fragment": 40,
+                "money": 350
+            },
+            "base_time_days": 14,
+            "base_engineers": 50,
+            "benefits_from_credits": [ "aerospace" ],
+            "research_prerequisites": [ "research_seeker_autopsy" ]
+        },
+        "foundry_ufo_scanners": {
+            "name": "UFO Scanners",
+            "description": "Our ongoing studies of the alien UFO types has led us to develop some ideas on how we can give our pilots precise information on alien UFO classes that our research team has already performed analyses on. With your approval, we can install air combat scanners on all our current and future combat aircraft that will tell precisely how much damage a UFO has sustained.",
+            "cost": {
+                "item_alien_alloy": 10,
+                "item_elerium": 10,
+                "item_ufo_flight_computer": 2,
+                "money": 65
+            },
+            "base_time_days": 14,
+            "base_engineers": 40,
+            "research_prerequisites": [ "research_advanced_aerospace_concepts" ]
+        },
+        "foundry_ufo_tracking": {
+            "name": "UFO Tracking",
+            "description": "We've studied the enemy UFOs to the point that we believe we can improve our jets' ability to detect and track them at long ranges. Going forward with this project will double our interceptors' chances of detecting alien craft on the same continent absent satellite coverage over a given country.",
+            "cost": {
+                "item_alien_alloy": 20,
+                "item_elerium": 40,
+                "item_ufo_flight_computer": 2,
+                "money": 300
+            },
+            "base_time_days": 28,
+            "base_engineers": 40,
+            "benefits_from_credits": [ "aerospace" ],
+            "research_prerequisites": [ "research_alien_power_systems" ]
+        },
+        "foundry_wingtip_sparrowhawks": {
+            "name": "Wingtip Sparrowhawks",
+            "description": "Because of the fuel needed to attain the high speeds and altitudes necessary to engage the alien UFOs, we have been unable to mount multiple weapons systems on our interceptors. We believe that by employing alien alloys and meld to construct some lightweight weapon hard points, we should be able to mount pods of Sparrowhawk missiles, which are similar to our Stingrays but with smaller warheads, on our fighters. These can be employed in addition to whatever swappable weapon you choose to mount. This requires significant and costly modifications to all our airframes.",
+            "cost": {
+                "item_alien_alloy": 80,
+                "item_elerium": 20,
+                "item_meld": 40,
+                "item_weapon_fragment": 40,
+                "money": 400
+            },
+            "base_time_days": 21,
+            "base_engineers": 50,
+            "benefits_from_credits": [ "aerospace", "gauss_weapons" ],
+            "research_prerequisites": [ "research_advanced_aerospace_concepts" ]
+        }
+    }
+}

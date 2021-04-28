@@ -1,0 +1,29 @@
+
+/* Custom Properties */
+
+:root {
+  --color:          #9aeaef;
+  --color-link:     #9aeaef;
+  --color-strong:   #00e1ef;
+  --color-subtle:   #aad7da;
+
+  --color-border:   hsl(0, 0%, 88%);
+  --color-border-subtle:   hsl(0, 0%, 50%);
+  --color-border-schematic: #34696e;
+
+  --color-bg:       #333;
+  --color-bg-schematic: #172e30;
+  --color-bg-subtle:#444;
+
+  --color-accent:   #00f0ff;
+  --color-highlight: #888;
+  --color-highlight-subtle: #555;
+
+  --color-meld: #f7931d;
+
+  --color-psi: #a19ed8;
+  --color-psi-strong: #6861d8;
+  --color-psi-subtle: #cbcad8;
+
+  --nav-width: 250px;
+}

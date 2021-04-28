@@ -1,0 +1,141 @@
+<template id="template-perk-preview">
+    <div id="perk-preview-container">
+        <div id="perk-preview-header-row">
+            <div id="perk-preview-icon"><img /></div>
+            <div id="perk-preview-name"></div>
+            <div id="perk-preview-cost" class="hidden-collapse">
+                <div>
+                    <span class="inline-resource-icon">§</span>
+                    <span id="perk-preview-cost-money"></span>
+                </div>
+                <div>
+                    <img class="inline-resource-icon" src="assets/img/misc-icons/meld.png" />
+                    <span id="perk-preview-cost-meld"></span>
+                </div>
+                <div>
+                    <img class="inline-resource-icon" src="assets/img/misc-icons/time.png" />
+                    <span id="perk-preview-cost-time"></span>
+                </div>
+            </div>
+        </div>
+        <div id="perk-preview-description"></div>
+    </div>
+</template>
+
+<template id="template-perk-tree-display-page">
+    <section id="perk-tree-header-section" class="section js-section">
+        <header class="section-header">
+            <div id="perk-tree-header-text" class="section-wrapper">
+                Perk Tree - {{class}}
+            </div>
+        </header>
+
+        <div id="perk-tree-content-section" class="section-content">
+            <div>
+                <div class="perk-tree-row">
+                    <div class="perk-tree-rank-icon"><img src="assets/img/soldier-rank-icons/specialist.png" /></div>
+                    <div class="perk-tree-rank-name">
+                        <div>Specialist</div>
+                        <div class="flex-single-row">
+                            <div class="stat-hp"></div>
+                            <div class="stat-aim"></div>
+                            <div class="stat-will"></div>
+                        </div>
+                    </div>
+                    <div class="perk-slot-empty" ><div></div></div>
+                    <div class="perk-icon selected" id="perk_icon_0_0"><img /></div>
+                    <div class="perk-slot-empty" ><div></div></div>
+                </div>
+                <div class="perk-tree-row">
+                    <div class="perk-tree-rank-icon"><img src="assets/img/soldier-rank-icons/lance_corporal.png" /></div>
+                    <div class="perk-tree-rank-name">
+                        <div>Lance Corporal</div>
+                        <div class="flex-single-row">
+                            <div class="stat-hp"></div>
+                            <div class="stat-aim"></div>
+                            <div class="stat-will"></div>
+                        </div>
+                    </div>
+                    <div class="perk-icon" id="perk_icon_1_0"><img /></div>
+                    <div class="perk-icon" id="perk_icon_1_1"><img /></div>
+                    <div class="perk-icon" id="perk_icon_1_2"><img /></div>
+                </div>
+                <div class="perk-tree-row">
+                    <div class="perk-tree-rank-icon"><img src="assets/img/soldier-rank-icons/corporal.png" /></div>
+                    <div class="perk-tree-rank-name">
+                        <div>Corporal</div>
+                        <div class="flex-single-row">
+                            <div class="stat-hp"></div>
+                            <div class="stat-aim"></div>
+                            <div class="stat-will"></div>
+                        </div>
+                    </div>
+                    <div class="perk-icon" id="perk_icon_2_0"><img /></div>
+                    <div class="perk-icon" id="perk_icon_2_1"><img /></div>
+                    <div class="perk-icon" id="perk_icon_2_2"><img /></div>
+                </div>
+                <div class="perk-tree-row">
+                    <div class="perk-tree-rank-icon"><img src="assets/img/soldier-rank-icons/sergeant.png" /></div>
+                    <div class="perk-tree-rank-name">
+                        <div>Sergeant</div>
+                        <div class="flex-single-row">
+                            <div class="stat-hp"></div>
+                            <div class="stat-aim"></div>
+                            <div class="stat-will"></div>
+                        </div>
+                    </div>
+                    <div class="perk-icon" id="perk_icon_3_0"><img /></div>
+                    <div class="perk-icon" id="perk_icon_3_1"><img /></div>
+                    <div class="perk-icon" id="perk_icon_3_2"><img /></div>
+                </div>
+                <div class="perk-tree-row">
+                    <div class="perk-tree-rank-icon"><img src="assets/img/soldier-rank-icons/tech_sergeant.png" /></div>
+                    <div class="perk-tree-rank-name">
+                        <div>Tech Sergeant</div>
+                        <div class="flex-single-row">
+                            <div class="stat-hp"></div>
+                            <div class="stat-aim"></div>
+                            <div class="stat-will"></div>
+                        </div>
+                    </div>
+                    <div class="perk-icon" id="perk_icon_4_0"><img /></div>
+                    <div class="perk-icon" id="perk_icon_4_1"><img /></div>
+                    <div class="perk-icon" id="perk_icon_4_2"><img /></div>
+                </div>
+                <div class="perk-tree-row">
+                    <div class="perk-tree-rank-icon"><img src="assets/img/soldier-rank-icons/gunnery_sergeant.png" /></div>
+                    <div class="perk-tree-rank-name">
+                        <div>Gunnery Sergeant</div>
+                        <div class="flex-single-row">
+                            <div class="stat-hp"></div>
+                            <div class="stat-aim"></div>
+                            <div class="stat-will"></div>
+                        </div>
+                    </div>
+                    <div class="perk-icon" id="perk_icon_5_0"><img /></div>
+                    <div class="perk-icon" id="perk_icon_5_1"><img /></div>
+                    <div class="perk-icon" id="perk_icon_5_2"><img /></div>
+                </div>
+                <div class="perk-tree-row">
+                    <div class="perk-tree-rank-icon"><img src="assets/img/soldier-rank-icons/master_sergeant.png" /></div>
+                    <div class="perk-tree-rank-name">
+                        <div>Master Sergeant</div>
+                        <div class="flex-single-row">
+                            <div class="stat-hp"></div>
+                            <div class="stat-aim"></div>
+                            <div class="stat-will"></div>
+                        </div>
+                    </div>
+                    <div class="perk-icon" id="perk_icon_6_0"><img /></div>
+                    <div class="perk-icon" id="perk_icon_6_1"><img /></div>
+                    <div class="perk-icon" id="perk_icon_6_2"><img /></div>
+                </div>
+            </div>
+            <div id="perk-tree-details" class="hidden">
+                <div id="perk-tree-details-name"></div>
+                <div id="perk-tree-details-stat-bonuses">Stat bonuses: Aim: <span id="perk-stat-aim"></span>, Will: <span id="perk-stat-will"></span>, Mobility: <span id="perk-stat-mobility"></span></div>
+                <div id="perk-tree-details-description"></div>
+            </div>
+        </div>
+    </section>
+</template>

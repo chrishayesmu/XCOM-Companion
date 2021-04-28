@@ -1,0 +1,296 @@
+.perk-icon {
+    display: flex; /* to vertically align img inside */
+    pointer-events: none;
+}
+
+.perk-icon > img {
+    margin-left: 25px;
+    margin-right: 25px;
+
+    background-color: var(--color-subtle);
+    pointer-events: all;
+    width: 64px;
+    height: 64px;
+}
+
+.perk-icon.unselected > img {
+    background-color: rgba(0, 150, 150, .25);
+}
+
+.perk-icon.selected > img {
+    background-color: var(--color-strong);
+}
+
+.perk-slot-empty > div {
+    margin-left: 25px;
+    margin-right: 25px;
+
+    width: 64px;
+    height: 64px;
+}
+
+.perk-icon:hover > img {
+    background-color: var(--color-strong);
+
+    outline: 1px solid var(--color-strong);
+}
+
+.perk-icon-active > img {
+    background-color: var(--color-strong);
+}
+
+.perk-icon-inactive > img {
+    background-color: var(--color-subtle);
+}
+
+.perk-tree-rank-icon > img {
+    transform: translateY(10%);
+}
+
+.perk-tree-rank-name {
+    display: flex;
+    flex-flow: column;
+    justify-content: space-evenly;
+
+    flex-grow: 1;
+    font-size: 20px;
+    text-align: left;
+    text-transform: uppercase;
+    width: 40%;
+}
+
+.perk-tree-row {
+    border: 1px solid var(--color-subtle);
+    border-top-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+
+    display: flex;
+    justify-content: space-between;
+
+    margin-bottom: 11px;
+    max-width: 650px;
+    min-width: 600px;
+    padding: 8px;
+}
+
+#perk-tree-content-section {
+    display: flex;
+    flex-flow: column nowrap;
+    padding-left: 20px;
+}
+
+#perk-tree-details {
+    border-top: 1px solid var(--color-subtle);
+    border-top-left-radius: 30px;
+
+    flex-grow: 1;
+    line-height: 1.2;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    padding: 10px;
+    text-align: center;
+
+    min-height: 300px;
+    max-height: 500px;
+    overflow-y: auto;
+
+    max-width: 650px;
+    min-width: 600px;
+}
+
+#perk-tree-details-name {
+    color: var(--color-strong);
+    font-size: 3em;
+}
+
+#perk-tree-details-stat-bonuses {
+    color: var(--color-subtle);
+    margin-top: 5px;
+}
+
+#perk-tree-details-description {
+    font-size: 1.5em;
+    margin-top: 15px;
+}
+
+/***************************
+ * Soldier-rank-specific styles
+ ***************************/
+
+ .stat-aim,
+ .stat-hp,
+ .stat-will {
+     font-size: 15px;
+     margin-right: 8px;
+     text-transform: none;
+ }
+
+ .stat-aim::before {
+     content: "Aim: +";
+ }
+
+ .stat-hp::before {
+     content: "HP: +";
+ }
+
+ .stat-will::before {
+     content: "Will: +";
+ }
+
+/***************************
+ * Gene-mod-specific styles
+ ***************************/
+
+.gene-mods-body-part {
+    display: flex;
+    flex-flow: column;
+    justify-content: space-evenly;
+
+    flex-grow: 1;
+    font-size: 20px;
+    text-align: left;
+    text-transform: uppercase;
+    width: 40%;
+}
+
+.gene-mod-icon.selected > img {
+    background-color: var(--color-meld);
+}
+
+.gene-mod-icon.selected:hover > img {
+    background-color: var(--color-meld);
+
+    outline: 1px solid var(--color-meld);
+}
+
+#gene-mod-added-fatigue {
+    font-size: 1.2em;
+    margin-top: 18px;
+}
+
+#gene-mod-added-fatigue::before {
+    content: "Added post-mission fatigue: +";
+}
+
+#gene-mod-added-fatigue::after {
+    content: " hours";
+}
+
+#gene-mod-costs {
+    display: flex;
+    flex-flow: row nowrap;
+    font-size: 1.2em;
+    justify-content: center;
+    margin-bottom: 6px;
+    margin-top: 6px;
+}
+
+#gene-mod-costs > div {
+    display: flex;
+    flex-flow: row;
+    line-height: 1;
+    margin: 0 15px;
+    justify-content: space-evenly;
+}
+
+#gene-mod-costs img {
+    height: 20px;
+    width: 20px;
+    margin-right: 5px;
+}
+
+div > #gene-mod-required-research,
+#gene-mod-required-research {
+    font-size: 1.2em;
+    margin-top: 8px;
+}
+
+/***************************
+ * Psionics-specific styles
+ ***************************/
+
+.psi-ability-fatigue {
+    font-size: 15px;
+    text-transform: none;
+}
+
+.psi-ability-icon > img {
+    background-color: var(--color-psi);
+}
+
+.psi-ability-icon.selected > img {
+    background-color: var(--color-psi-strong);
+    outline: 2px solid var(--color-psi-strong);
+}
+
+.psi-ability-icon.unselected > img {
+    background-color: var(--color-psi-subtle);
+}
+
+.psi-ability-icon > img:hover {
+    background-color: var(--color-psi-strong);
+    outline-color: var(--color-psi);
+}
+
+/***************************
+ * Styles for preview rendering
+ ***************************/
+
+#perk-preview-container {
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+#perk-preview-cost {
+    align-items: flex-start;
+    display: flex;
+    flex-flow: row nowrap;
+    flex-grow: 1;
+    justify-content: flex-end;
+    margin-left: 25px;
+    min-width: 40px;
+}
+
+#perk-preview-cost > div {
+    align-items: center;
+    display: flex;
+    flex-flow: row nowrap;
+    height: 21px;
+    justify-content: center;
+    margin-left: 10px;
+    width: 35px;
+}
+
+#perk-preview-description {
+    padding-left: 5px;
+    margin-top: 7px;
+}
+
+#perk-preview-header-row {
+     display: flex;
+     flex-flow: row nowrap;
+     height: 48px;
+}
+
+#perk-preview-icon img {
+    width: 48px;
+}
+
+#perk-preview-name {
+    display: flex;
+    align-items: center;
+    font-size: 24px;
+    margin-left: 10px;
+}
+
+.preview-gene-mod-icon {
+    background-color: var(--color-meld);
+}
+
+.preview-perk-icon {
+    background-color: var(--color-strong);
+}
+
+.preview-psi-ability-icon {
+    background-color: var(--color-psi);
+}

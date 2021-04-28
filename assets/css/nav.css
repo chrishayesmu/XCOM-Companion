@@ -1,0 +1,232 @@
+/* Nav */
+
+.nav {
+  width: var(--nav-width);
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  background-color: var(--color-bg);
+  border-right: 1px solid var(--color-border);
+  color: var(--color-subtle);
+
+  visibility: hidden;
+  opacity: 0;
+
+  display: flex;
+  flex-flow: column nowrap;
+}
+.nav.is-shown {
+  visibility: visible;
+  opacity: 1;
+}
+
+.nav-header {
+  position: relative;
+  padding: 2rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid var(--color-border);
+  height: 6em;
+  flex-grow: 0;
+}
+
+.nav-title {
+  color: var(--color);
+  text-transform: uppercase;
+  font-weight: 400;
+  line-height: 1;
+  margin: 0;
+}
+
+.nav-title strong {
+  font-weight: 600;
+  color: var(--color-strong);
+}
+
+.nav-header-icon {
+  position: absolute;
+  height: 46px;
+  top: 1.5rem; /* magic */
+  right: 1.75rem; /* magic */
+
+  visibility: hidden; /* TODO, fix logo to be inline with text */
+}
+
+.nav-body {
+  flex-grow: 1;
+}
+
+.nav-item {
+  padding: 0.5em 0;
+}
+
+.nav-icon {
+  width: 16px;
+  height: 16px;
+  vertical-align: top;
+  margin-right: 0.25rem;
+}
+
+.nav-category {
+  margin: 0.2em 0;
+  padding-left: 2rem;
+  font-size: 11px;
+  font-weight: normal;
+  text-transform: uppercase;
+}
+
+.nav-button {
+  display: block;
+  width: 100%;
+  padding: 0.3rem;
+  padding-left: calc(2rem + 16px + 0.5rem); /* padding + icon + magic */
+  line-height: 2;
+  text-align: left;
+  font: inherit;
+  font-size: 13px;
+  color: inherit;
+  border: none;
+  background-color: transparent;
+  cursor: default;
+  outline: none;
+}
+.nav-button:hover,
+.nav-button:focus:not(.is-selected) {
+  background-color: hsla(0, 0%, 0%, 0.1);
+}
+.nav-button.is-selected {
+  background-color: var(--color-highlight);
+}
+.nav-button.is-selected.nav-container {
+  background: var(--color-highlight);
+}
+.nav-button.is-selected,
+.nav-button.is-selected em {
+  color: #fff;
+}
+.nav-button.is-selected:focus {
+  opacity: 0.8;
+}
+
+.nav-button em {
+  font-style: normal;
+  font-weight: 600;
+  color: var(--color-strong);
+  pointer-events: none; /* makes it invisible to clicks */
+}
+
+.subnav-button {
+  padding-left: 1.5rem;
+}
+
+.nav-footer {
+  color: var(--color-subtle);
+  margin-top: 1rem;
+  padding: 2rem;
+  border-top: 1px solid var(--color-border);
+  text-align: center;
+  flex-grow: 0;
+}
+
+.nav-footer-icon {
+  width: calc(770px / 6.5);
+  height: calc(88px / 6.5);
+}
+
+.nav-footer a {
+  outline: none;
+}
+
+.nav-footer-button {
+  display: block;
+  width: 100%;
+  padding: 0;
+  margin-bottom: 0.75rem;
+  line-height: 2;
+  text-align: left;
+  font: inherit;
+  font-size: 13px;
+  color: inherit;
+  border: none;
+  background-color: transparent;
+  cursor: default;
+  outline: none;
+  text-align: center;
+}
+.nav-footer-button:focus {
+  color: var(--color-strong);
+}
+
+.nav-footer-logo {
+  color: hsl(0, 0%, 66%);
+}
+.nav-footer-logo:focus {
+  color: hsl(0, 0%, 33%);
+}
+
+/* Remove border on the logo */
+.nav-footer-logo.nav-footer-logo {
+  border-bottom: none;
+}
+
+.nav-subsection-container {
+  padding-top: 0.25rem;
+  display: none;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.nav-subsection-container.is-expanded {
+  display: inherit;
+  visibility: visible;
+  opacity: 1;
+}
+
+.nav-button.not-implemented,
+.nav-container.not-implemented,
+.nav-subsection-container.not-implemented {
+    color: #c23434;
+    position: relative;
+}
+
+.nav-button.not-implemented:before,
+.nav-container.not-implemented:before,
+.nav-subsection-container.not-implemented:before {
+    content: "This functionality is not yet available.";
+    position: absolute;
+
+    top: 50%;
+    transform: translateY(-50%);
+
+    right: 0%;
+    margin-right: 15px;
+
+    background-color: white;
+    color: black;
+    font-size: 1em;
+    max-width: 125px;
+    padding: 5px;
+    pointer-events: none;
+    text-align: center;
+    z-index: 100;
+
+    opacity: 0;
+    transition: 0.2s opacity;
+}
+
+.nav-button.not-implemented:hover:before,
+.nav-container.not-implemented:hover:before,
+.nav-subsection-container.not-implemented:hover:before {
+    opacity: 1;
+}
+
+.nav-search-bar {
+    padding-left: 2rem;
+    padding-right: 2rem;
+    width: 100%;
+}
+
+#nav-search-input {
+    background-color: #777;
+    padding: 2px 5px;
+    width: 100%;
+}

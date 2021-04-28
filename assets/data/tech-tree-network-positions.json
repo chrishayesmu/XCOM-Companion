@@ -1,0 +1,1267 @@
+[
+    {
+        "x": -375,
+        "y": -90,
+        "id": "research_advanced_aerospace_concepts",
+        "edges": [
+            "840f251b-8a51-479c-a5c8-11f4689695d0"
+        ]
+    },
+    {
+        "x": 125,
+        "y": -225,
+        "id": "research_advanced_beam_lasers",
+        "edges": [
+            "research_pulse_lasers"
+        ]
+    },
+    {
+        "x": -1100,
+        "y": 129,
+        "id": "research_advanced_body_armor",
+        "edges": [
+            "research_mobile_power_armor"
+        ]
+    },
+    {
+        "x": -215,
+        "y": 325,
+        "id": "research_advanced_gauss_weapons",
+        "edges": [
+            "research_emp_weapons"
+        ]
+    },
+    {
+        "x": -505,
+        "y": 450,
+        "id": "research_advanced_plasma_weapons",
+        "edges": [
+            "e66c6c94-1255-46fa-ba21-f5109c2f9a21"
+        ]
+    },
+    {
+        "x": -900,
+        "y": 300,
+        "id": "research_advanced_power_armor",
+        "edges": [
+            "dcb6f920-8b3c-4d27-9f0a-acc04955ab8a"
+        ]
+    },
+    {
+        "x": 125,
+        "y": 400,
+        "id": "research_advanced_pulse_lasers",
+        "edges": [
+            "research_emp_weapons"
+        ]
+    },
+    {
+        "x": -950,
+        "y": -20,
+        "id": "research_alien_biocybernetics",
+        "edges": [
+            "f2a58801-25c4-4c5e-b569-2b4543280c5b",
+            "6f8fbd1b-bb60-481d-b28a-bd96d87eb553"
+        ]
+    },
+    {
+        "x": -1950,
+        "y": 255,
+        "id": "research_alien_command_and_control",
+        "edges": [
+            "research_mind_and_machine"
+        ]
+    },
+    {
+        "x": -1745,
+        "y": 105,
+        "id": "research_alien_communications",
+        "edges": [
+            "64d60340-88f8-401b-a4b3-4ee91a543be4"
+        ]
+    },
+    {
+        "x": -810,
+        "y": -410,
+        "id": "research_alien_computers",
+        "edges": [
+            "1d47c258-0c12-4a73-8f81-b6cf0e838c79",
+            "03dd8e4a-b597-492e-b26c-2515971b77fd"
+        ]
+    },
+    {
+        "x": -375,
+        "y": -410,
+        "id": "research_alien_materials",
+        "edges": [
+            "research_advanced_aerospace_concepts",
+            "29c9e270-f395-4588-bb32-37038d62a981",
+            "45929c1a-6a1d-4dc4-875c-eedfc4329aec",
+            "f1364246-bd5b-4d67-938f-ac945ed7adb0"
+        ]
+    },
+    {
+        "x": -1326,
+        "y": -59,
+        "id": "research_alien_operations",
+        "edges": []
+    },
+    {
+        "x": -635,
+        "y": 30,
+        "id": "research_alien_power_systems",
+        "edges": [
+            "8d2add55-de49-4bc5-a7a0-8834b545fe30",
+            "3cd969ed-5465-46b9-97ab-72e6fb093af4"
+        ]
+    },
+    {
+        "x": -756,
+        "y": 112,
+        "id": "research_alien_propulsion",
+        "edges": [
+            "research_antigrav_systems"
+        ]
+    },
+    {
+        "x": -50,
+        "y": -410,
+        "id": "research_alien_weaponry",
+        "edges": [
+            "research_experimental_warfare",
+            "d22e2bac-b7f4-4e0d-bf73-c91bda31f3b5",
+            "13437bed-a577-4cf9-acfd-d07e328d69a0"
+        ]
+    },
+    {
+        "x": -753,
+        "y": 400,
+        "id": "research_antigrav_systems",
+        "edges": []
+    },
+    {
+        "x": 125,
+        "y": -300,
+        "id": "research_beam_lasers",
+        "edges": [
+            "research_advanced_beam_lasers"
+        ]
+    },
+    {
+        "x": -1291,
+        "y": -200,
+        "id": "research_chryssalid_autopsy",
+        "edges": []
+    },
+    {
+        "x": -505,
+        "y": 400,
+        "id": "research_compact_plasma_weapons",
+        "edges": []
+    },
+    {
+        "x": -1720,
+        "y": 348,
+        "id": "research_cyberdisc_autopsy",
+        "edges": []
+    },
+    {
+        "x": -1335,
+        "y": -320,
+        "id": "research_drone_autopsy",
+        "edges": []
+    },
+    {
+        "x": -635,
+        "y": -85,
+        "id": "research_elerium",
+        "edges": [
+            "research_alien_power_systems",
+            "77ea2f9f-0bcf-45a6-8bc4-5889309d9bc3"
+        ]
+    },
+    {
+        "x": -215,
+        "y": 400,
+        "id": "research_emp_weapons",
+        "edges": [
+            "research_fusion_weapons"
+        ]
+    },
+    {
+        "x": -1950,
+        "y": 105,
+        "id": "research_ethereal_autopsy",
+        "edges": [
+            "research_ethereal_interrogation"
+        ]
+    },
+    {
+        "x": -1950,
+        "y": 180,
+        "id": "research_ethereal_interrogation",
+        "edges": [
+            "research_alien_command_and_control"
+        ]
+    },
+    {
+        "x": -50,
+        "y": -300,
+        "id": "research_experimental_warfare",
+        "edges": [
+            "69b48455-4dfe-4f89-94a2-182e8e142808"
+        ]
+    },
+    {
+        "x": -1720,
+        "y": 403,
+        "id": "research_floater_autopsy",
+        "edges": [
+            "research_floater_interrogation",
+            "research_heavy_floater_autopsy"
+        ]
+    },
+    {
+        "x": -1950,
+        "y": 403,
+        "id": "research_floater_interrogation",
+        "edges": []
+    },
+    {
+        "x": -215,
+        "y": 675,
+        "id": "research_fusion_weapons",
+        "edges": []
+    },
+    {
+        "x": -215,
+        "y": 250,
+        "id": "research_gauss_weapons",
+        "edges": [
+            "research_advanced_gauss_weapons"
+        ]
+    },
+    {
+        "x": -1083,
+        "y": 450,
+        "id": "research_heavy_combat_exoskeletons",
+        "edges": []
+    },
+    {
+        "x": -1720,
+        "y": 463,
+        "id": "research_heavy_floater_autopsy",
+        "edges": [
+            "research_heavy_floater_interrogation"
+        ]
+    },
+    {
+        "x": -1950,
+        "y": 463,
+        "id": "research_heavy_floater_interrogation",
+        "edges": []
+    },
+    {
+        "x": -375,
+        "y": 625,
+        "id": "research_heavy_plasma_weapons",
+        "edges": [
+            "6230b8ec-b07c-45e5-b666-42e34be868a3"
+        ]
+    },
+    {
+        "x": -1100,
+        "y": 69,
+        "id": "research_improved_body_armor",
+        "edges": [
+            "research_advanced_body_armor"
+        ]
+    },
+    {
+        "x": -1300,
+        "y": 300,
+        "id": "research_improved_combat_exoskeletons",
+        "edges": [
+            "5590643b-aa9c-49d1-b397-40877c4ab6f8"
+        ]
+    },
+    {
+        "x": -2400,
+        "y": -90,
+        "id": "research_mechtoid_autopsy",
+        "edges": []
+    },
+    {
+        "x": -1720,
+        "y": 255,
+        "id": "research_mind_and_machine",
+        "edges": []
+    },
+    {
+        "x": -1083,
+        "y": 510,
+        "id": "research_mobile_combat_exoskeletons",
+        "edges": []
+    },
+    {
+        "x": -1100,
+        "y": 189,
+        "id": "research_mobile_power_armor",
+        "edges": [
+            "20dd24ee-7027-4e9a-8783-2de823131b20"
+        ]
+    },
+    {
+        "x": -2225,
+        "y": 15,
+        "id": "research_muton_autopsy",
+        "edges": [
+            "research_muton_interrogation",
+            "311d11f5-841f-4a0a-8a6c-1ba35da2685f"
+        ]
+    },
+    {
+        "x": -2554,
+        "y": 15,
+        "id": "research_muton_interrogation",
+        "edges": []
+    },
+    {
+        "x": -2359,
+        "y": 120,
+        "id": "research_muton_berserker_autopsy",
+        "edges": [
+            "research_muton_berserker_interrogation"
+        ]
+    },
+    {
+        "x": -2554,
+        "y": 120,
+        "id": "research_muton_berserker_interrogation",
+        "edges": []
+    },
+    {
+        "x": -2359,
+        "y": 170,
+        "id": "research_muton_elite_autopsy",
+        "edges": [
+            "research_muton_elite_interrogation"
+        ]
+    },
+    {
+        "x": -2554,
+        "y": 170,
+        "id": "research_muton_elite_interrogation",
+        "edges": []
+    },
+    {
+        "x": -634,
+        "y": 330,
+        "id": "research_plasma_weapons",
+        "edges": [
+            "ed93b6f8-838e-472b-b2ba-dd0dc1395d6f"
+        ]
+    },
+    {
+        "x": -375,
+        "y": 575,
+        "id": "research_precision_plasma_weapons",
+        "edges": []
+    },
+    {
+        "x": 125,
+        "y": 250,
+        "id": "research_pulse_lasers",
+        "edges": [
+            "research_advanced_pulse_lasers"
+        ]
+    },
+    {
+        "x": -2200,
+        "y": -275,
+        "id": "research_sectoid_autopsy",
+        "edges": [
+            "research_sectoid_interrogation",
+            "6290263a-486e-4c5f-ba22-4f438c395c8b"
+        ]
+    },
+    {
+        "x": -2400,
+        "y": -275,
+        "id": "research_sectoid_interrogation",
+        "edges": []
+    },
+    {
+        "x": -2400,
+        "y": -140,
+        "id": "research_sectoid_commander_autopsy",
+        "edges": [
+            "research_sectoid_commander_interrogation"
+        ]
+    },
+    {
+        "x": -2680,
+        "y": -140,
+        "id": "research_sectoid_commander_interrogation",
+        "edges": []
+    },
+    {
+        "x": -1065,
+        "y": -320,
+        "id": "research_sectopod_autopsy",
+        "edges": []
+    },
+    {
+        "x": -1205,
+        "y": -320,
+        "id": "research_seeker_autopsy",
+        "edges": []
+    },
+    {
+        "x": -1083,
+        "y": 570,
+        "id": "research_stealth_systems",
+        "edges": []
+    },
+    {
+        "x": -2200,
+        "y": -325,
+        "id": "research_thin_man_autopsy",
+        "edges": [
+            "research_thin_man_interrogation"
+        ]
+    },
+    {
+        "x": -2400,
+        "y": -325,
+        "id": "research_thin_man_interrogation",
+        "edges": []
+    },
+    {
+        "x": 495,
+        "y": -400,
+        "id": "research_ufo_analysis_abductor",
+        "edges": []
+    },
+    {
+        "x": 495,
+        "y": -350,
+        "id": "research_ufo_analysis_assault_carrier",
+        "edges": []
+    },
+    {
+        "x": 495,
+        "y": -300,
+        "id": "research_ufo_analysis_battleship",
+        "edges": []
+    },
+    {
+        "x": 495,
+        "y": -250,
+        "id": "research_ufo_analysis_destroyer",
+        "edges": []
+    },
+    {
+        "x": 495,
+        "y": -200,
+        "id": "research_ufo_analysis_fighter",
+        "edges": []
+    },
+    {
+        "x": 495,
+        "y": -150,
+        "id": "research_ufo_analysis_harvester",
+        "edges": []
+    },
+    {
+        "x": 495,
+        "y": -100,
+        "id": "research_ufo_analysis_overseer",
+        "edges": []
+    },
+    {
+        "x": 495,
+        "y": -50,
+        "id": "research_ufo_analysis_raider",
+        "edges": []
+    },
+    {
+        "x": 495,
+        "y": 0,
+        "id": "research_ufo_analysis_scout",
+        "edges": []
+    },
+    {
+        "x": 495,
+        "y": 50,
+        "id": "research_ufo_analysis_terror_ship",
+        "edges": []
+    },
+    {
+        "x": 495,
+        "y": 100,
+        "id": "research_ufo_analysis_transport",
+        "edges": []
+    },
+    {
+        "x": -375,
+        "y": 525,
+        "id": "research_vehicular_plasma_weapons",
+        "edges": []
+    },
+    {
+        "x": -1635,
+        "y": -410,
+        "id": "research_xenobiology",
+        "edges": [
+            "bcc83c62-553f-42f0-9563-e99604a73032",
+            "4cb64752-a3c9-4680-9904-164280f59361",
+            "391ceda2-d5f2-42ee-9c0e-eecd10415625"
+        ]
+    },
+    {
+        "x": -1520,
+        "y": -200,
+        "id": "research_xenogenetics",
+        "edges": [
+            "9535ec9b-fd8d-489b-8b88-4b961940c4e2",
+            "research_xenopsionics",
+            "2be47baa-c578-4e03-92d2-5ac569e383c0"
+        ]
+    },
+    {
+        "x": -1745,
+        "y": -140,
+        "id": "research_xenoneurology",
+        "edges": [
+            "research_alien_communications",
+            "research_xenopsionics",
+            "95239ba3-1381-4500-bc87-f4dc2798c276"
+        ]
+    },
+    {
+        "x": -1519,
+        "y": -60,
+        "id": "research_xenopsionics",
+        "edges": [
+            "research_alien_operations",
+            "b11bfcf5-afa1-4601-b332-46856f7a5286"
+        ]
+    },
+    {
+        "x": 125,
+        "y": -410,
+        "id": "d22e2bac-b7f4-4e0d-bf73-c91bda31f3b5",
+        "edges": [
+            "research_beam_lasers"
+        ]
+    },
+    {
+        "x": -50,
+        "y": 250,
+        "id": "cfcc3e85-ceee-4c9f-be9c-4e91694dbff0",
+        "edges": [
+            "research_gauss_weapons"
+        ]
+    },
+    {
+        "x": -634,
+        "y": 400,
+        "id": "ed93b6f8-838e-472b-b2ba-dd0dc1395d6f",
+        "edges": [
+            "research_compact_plasma_weapons",
+            "58604de4-ca2c-4366-b6d5-2edc841e713b"
+        ]
+    },
+    {
+        "x": -634,
+        "y": 450,
+        "id": "58604de4-ca2c-4366-b6d5-2edc841e713b",
+        "edges": [
+            "research_advanced_plasma_weapons"
+        ]
+    },
+    {
+        "x": -505,
+        "y": 525,
+        "id": "e66c6c94-1255-46fa-ba21-f5109c2f9a21",
+        "edges": [
+            "4fdb3490-2005-4f07-a4d3-49c53294995f",
+            "research_vehicular_plasma_weapons"
+        ]
+    },
+    {
+        "x": -505,
+        "y": 575,
+        "id": "4fdb3490-2005-4f07-a4d3-49c53294995f",
+        "edges": [
+            "a5c2d47d-c9b9-4b68-b4de-d97de085e5b0",
+            "research_precision_plasma_weapons"
+        ]
+    },
+    {
+        "x": -505,
+        "y": 625,
+        "id": "a5c2d47d-c9b9-4b68-b4de-d97de085e5b0",
+        "edges": [
+            "research_heavy_plasma_weapons"
+        ]
+    },
+    {
+        "x": -375,
+        "y": -445,
+        "id": "29c9e270-f395-4588-bb32-37038d62a981",
+        "edges": [
+            "de424bfe-e24c-4f0f-ba2a-0e1476af2499"
+        ]
+    },
+    {
+        "x": 350,
+        "y": -400,
+        "id": "0f879fa7-4db4-4461-a34b-0bdc63726d48",
+        "edges": [
+            "research_ufo_analysis_abductor",
+            "0b3d3fd0-56e5-4404-afee-0d208ab6a11c"
+        ]
+    },
+    {
+        "x": 350,
+        "y": -350,
+        "id": "0b3d3fd0-56e5-4404-afee-0d208ab6a11c",
+        "edges": [
+            "e252ebb4-949d-4d3b-814f-fcbca055a974",
+            "research_ufo_analysis_assault_carrier"
+        ]
+    },
+    {
+        "x": 350,
+        "y": -300,
+        "id": "e252ebb4-949d-4d3b-814f-fcbca055a974",
+        "edges": [
+            "1601d3b0-25e9-4b99-b420-0be4c2d70ad8",
+            "research_ufo_analysis_battleship"
+        ]
+    },
+    {
+        "x": 350,
+        "y": -250,
+        "id": "1601d3b0-25e9-4b99-b420-0be4c2d70ad8",
+        "edges": [
+            "6b89e1ff-0398-427f-b182-791156af49da",
+            "research_ufo_analysis_destroyer"
+        ]
+    },
+    {
+        "x": 350,
+        "y": -200,
+        "id": "6b89e1ff-0398-427f-b182-791156af49da",
+        "edges": [
+            "b40bde73-951d-44fa-86e3-e19627fcc6cb",
+            "research_ufo_analysis_fighter"
+        ]
+    },
+    {
+        "x": 350,
+        "y": -150,
+        "id": "b40bde73-951d-44fa-86e3-e19627fcc6cb",
+        "edges": [
+            "4dde8db0-ca1d-425a-9422-6e0536ea9094",
+            "research_ufo_analysis_harvester"
+        ]
+    },
+    {
+        "x": 350,
+        "y": -100,
+        "id": "4dde8db0-ca1d-425a-9422-6e0536ea9094",
+        "edges": [
+            "5dd3d897-9480-4c34-bfe3-b923acb91eba",
+            "research_ufo_analysis_overseer"
+        ]
+    },
+    {
+        "x": 350,
+        "y": -50,
+        "id": "5dd3d897-9480-4c34-bfe3-b923acb91eba",
+        "edges": [
+            "8442b96e-97e1-4561-9292-18a29bab8790",
+            "research_ufo_analysis_raider"
+        ]
+    },
+    {
+        "x": 350,
+        "y": 0,
+        "id": "8442b96e-97e1-4561-9292-18a29bab8790",
+        "edges": [
+            "3ef87717-9347-4da2-b360-f68d64193059",
+            "research_ufo_analysis_scout"
+        ]
+    },
+    {
+        "x": 350,
+        "y": 50,
+        "id": "3ef87717-9347-4da2-b360-f68d64193059",
+        "edges": [
+            "6bd83bd4-e1b6-4630-bbc9-8a2ef3e85283",
+            "research_ufo_analysis_terror_ship"
+        ]
+    },
+    {
+        "x": 350,
+        "y": 100,
+        "id": "6bd83bd4-e1b6-4630-bbc9-8a2ef3e85283",
+        "edges": [
+            "research_ufo_analysis_transport"
+        ]
+    },
+    {
+        "x": -900,
+        "y": 450,
+        "id": "3b998110-b5b9-4c50-9842-3f0a80a4124c",
+        "edges": [
+            "944a23c5-1df7-444f-9a77-3687d82a0124",
+            "research_heavy_combat_exoskeletons"
+        ]
+    },
+    {
+        "x": -900,
+        "y": 510,
+        "id": "944a23c5-1df7-444f-9a77-3687d82a0124",
+        "edges": [
+            "research_mobile_combat_exoskeletons",
+            "34336c90-6f69-44e1-b8ef-1c33f9eb9f71"
+        ]
+    },
+    {
+        "x": -1300,
+        "y": 450,
+        "id": "5590643b-aa9c-49d1-b397-40877c4ab6f8",
+        "edges": [
+            "research_heavy_combat_exoskeletons",
+            "33db785a-f4f2-467c-9550-3eb03d1f4df6"
+        ]
+    },
+    {
+        "x": -1300,
+        "y": 510,
+        "id": "33db785a-f4f2-467c-9550-3eb03d1f4df6",
+        "edges": [
+            "research_mobile_combat_exoskeletons"
+        ]
+    },
+    {
+        "x": -5,
+        "y": 30,
+        "id": "8d2add55-de49-4bc5-a7a0-8834b545fe30",
+        "edges": [
+            "fa9c513e-fbca-4766-a255-b1b20cc9d100"
+        ]
+    },
+    {
+        "x": -5,
+        "y": 250,
+        "id": "fa9c513e-fbca-4766-a255-b1b20cc9d100",
+        "edges": [
+            "research_pulse_lasers"
+        ]
+    },
+    {
+        "x": -215,
+        "y": -410,
+        "id": "45929c1a-6a1d-4dc4-875c-eedfc4329aec",
+        "edges": [
+            "research_gauss_weapons"
+        ]
+    },
+    {
+        "x": -810,
+        "y": 30,
+        "id": "6e9713e1-4353-4e4d-be6b-fa6adf2c0f1c",
+        "edges": [
+            "research_alien_power_systems"
+        ]
+    },
+    {
+        "x": -50,
+        "y": -90,
+        "id": "69b48455-4dfe-4f89-94a2-182e8e142808",
+        "edges": [
+            "research_advanced_aerospace_concepts",
+            "cfcc3e85-ceee-4c9f-be9c-4e91694dbff0"
+        ]
+    },
+    {
+        "x": -635,
+        "y": -410,
+        "id": "f1364246-bd5b-4d67-938f-ac945ed7adb0",
+        "edges": [
+            "db238fe9-2f37-4796-8c9a-7e8dee1573bf"
+        ]
+    },
+    {
+        "x": -1065,
+        "y": -365,
+        "id": "b08826b2-1505-46f4-918c-4218e69ce843",
+        "edges": [
+            "71a7891c-87e6-49b6-ab4b-ed868c46a785",
+            "research_sectopod_autopsy"
+        ]
+    },
+    {
+        "x": -1205,
+        "y": -365,
+        "id": "71a7891c-87e6-49b6-ab4b-ed868c46a785",
+        "edges": [
+            "b1969059-9367-4962-a661-4f4e647994d5",
+            "research_seeker_autopsy"
+        ]
+    },
+    {
+        "x": -1335,
+        "y": -365,
+        "id": "b1969059-9367-4962-a661-4f4e647994d5",
+        "edges": [
+            "research_drone_autopsy"
+        ]
+    },
+    {
+        "x": -1065,
+        "y": -410,
+        "id": "1d47c258-0c12-4a73-8f81-b6cf0e838c79",
+        "edges": [
+            "b08826b2-1505-46f4-918c-4218e69ce843"
+        ]
+    },
+    {
+        "x": -2200,
+        "y": -60,
+        "id": "eec3fbcb-3024-422a-b684-3c46a359c53b",
+        "edges": [
+            "research_xenopsionics"
+        ]
+    },
+    {
+        "x": -2400,
+        "y": -20,
+        "id": "01ffcdae-c29a-47ce-902f-8b86cf88594d",
+        "edges": [
+            "research_mechtoid_autopsy"
+        ]
+    },
+    {
+        "x": -2200,
+        "y": -140,
+        "id": "6290263a-486e-4c5f-ba22-4f438c395c8b",
+        "edges": [
+            "research_sectoid_commander_autopsy",
+            "961f5dc7-4a8a-4b27-91db-d709f0046f37"
+        ]
+    },
+    {
+        "x": -2027,
+        "y": 58,
+        "id": "13117047-5321-45e5-8b75-cd6c2afeebf4",
+        "edges": [
+            "8eb483ca-ef0b-45e3-bf9e-9ada15a095ce"
+        ]
+    },
+    {
+        "x": -2025,
+        "y": -140,
+        "id": "95239ba3-1381-4500-bc87-f4dc2798c276",
+        "edges": [
+            "13117047-5321-45e5-8b75-cd6c2afeebf4"
+        ]
+    },
+    {
+        "x": -1745,
+        "y": -410,
+        "id": "4cb64752-a3c9-4680-9904-164280f59361",
+        "edges": [
+            "research_xenoneurology",
+            "d8413ac8-be64-4669-84fd-6219709d6aee"
+        ]
+    },
+    {
+        "x": -1522,
+        "y": -410,
+        "id": "bcc83c62-553f-42f0-9563-e99604a73032",
+        "edges": [
+            "research_xenogenetics"
+        ]
+    },
+    {
+        "x": -635,
+        "y": -319,
+        "id": "db238fe9-2f37-4796-8c9a-7e8dee1573bf",
+        "edges": [
+            "research_elerium",
+            "751f69af-9d75-4260-b6d8-c80a3930b244"
+        ]
+    },
+    {
+        "x": -950,
+        "y": -320,
+        "id": "fa4094e6-06bc-4984-8ad9-68434cb53fad",
+        "edges": [
+            "research_alien_biocybernetics"
+        ]
+    },
+    {
+        "x": -845,
+        "y": 69,
+        "id": "35a0c297-de69-45d0-9aa3-24c513d5c9fa",
+        "edges": [
+            "research_improved_body_armor"
+        ]
+    },
+    {
+        "x": -810,
+        "y": -20,
+        "id": "03dd8e4a-b597-492e-b26c-2515971b77fd",
+        "edges": [
+            "research_alien_biocybernetics",
+            "6e9713e1-4353-4e4d-be6b-fa6adf2c0f1c"
+        ]
+    },
+    {
+        "x": -2057,
+        "y": -410,
+        "id": "d8413ac8-be64-4669-84fd-6219709d6aee",
+        "edges": [
+            "c37487f0-29b5-4ba1-8e18-e6f886d3f1b9"
+        ]
+    },
+    {
+        "x": -2056,
+        "y": -275,
+        "id": "53b7d355-015a-4e84-a427-0b463982e2c8",
+        "edges": [
+            "research_sectoid_autopsy"
+        ]
+    },
+    {
+        "x": -424,
+        "y": 180,
+        "id": "fa6bf734-0160-42e4-9d37-2f4d0f2bef63",
+        "edges": [
+            "8e45db16-d660-4f6b-9c28-9d43edf493c0"
+        ]
+    },
+    {
+        "x": -150,
+        "y": -410,
+        "id": "13437bed-a577-4cf9-acfd-d07e328d69a0",
+        "edges": [
+            "0df4a942-d18f-4ab7-b17c-3bf76e66ed48"
+        ]
+    },
+    {
+        "x": -150,
+        "y": 180,
+        "id": "0df4a942-d18f-4ab7-b17c-3bf76e66ed48",
+        "edges": [
+            "fa6bf734-0160-42e4-9d37-2f4d0f2bef63"
+        ]
+    },
+    {
+        "x": -424,
+        "y": 330,
+        "id": "8e45db16-d660-4f6b-9c28-9d43edf493c0",
+        "edges": [
+            "research_plasma_weapons"
+        ]
+    },
+    {
+        "x": -635,
+        "y": 189,
+        "id": "dcd5c276-3aef-4303-a19f-9a7fb8aaa5ba",
+        "edges": [
+            "research_plasma_weapons",
+            "6247b4b9-5da5-4743-8372-42e7a5744759"
+        ]
+    },
+    {
+        "x": -900,
+        "y": 189,
+        "id": "6247b4b9-5da5-4743-8372-42e7a5744759",
+        "edges": [
+            "research_advanced_power_armor"
+        ]
+    },
+    {
+        "x": -845,
+        "y": -320,
+        "id": "751f69af-9d75-4260-b6d8-c80a3930b244",
+        "edges": [
+            "35a0c297-de69-45d0-9aa3-24c513d5c9fa",
+            "fa4094e6-06bc-4984-8ad9-68434cb53fad"
+        ]
+    },
+    {
+        "x": -1635,
+        "y": 15,
+        "id": "391ceda2-d5f2-42ee-9c0e-eecd10415625",
+        "edges": [
+            "research_muton_autopsy"
+        ]
+    },
+    {
+        "x": -664,
+        "y": 230,
+        "id": "354af426-ca87-4541-a906-2d372f784526",
+        "edges": [
+            "research_plasma_weapons"
+        ]
+    },
+    {
+        "x": -1580,
+        "y": -20,
+        "id": "f2a58801-25c4-4c5e-b569-2b4543280c5b",
+        "edges": [
+            "420df279-a9fd-4bf2-b913-8eba6177fd62",
+            "01ffcdae-c29a-47ce-902f-8b86cf88594d"
+        ]
+    },
+    {
+        "x": -1580,
+        "y": 255,
+        "id": "420df279-a9fd-4bf2-b913-8eba6177fd62",
+        "edges": [
+            "research_mind_and_machine",
+            "57abb93b-7891-410b-8e37-3fca44dd198a"
+        ]
+    },
+    {
+        "x": -1465,
+        "y": 570,
+        "id": "7e395bf5-dbf3-4dbd-b547-aca42f84b302",
+        "edges": [
+            "research_stealth_systems"
+        ]
+    },
+    {
+        "x": -1745,
+        "y": 209,
+        "id": "64d60340-88f8-401b-a4b3-4ee91a543be4",
+        "edges": [
+            "3c14d4ed-a405-4cc5-bc83-e7ec1e3b1759"
+        ]
+    },
+    {
+        "x": -1465,
+        "y": 210,
+        "id": "3c14d4ed-a405-4cc5-bc83-e7ec1e3b1759",
+        "edges": [
+            "7e395bf5-dbf3-4dbd-b547-aca42f84b302"
+        ]
+    },
+    {
+        "x": -2360,
+        "y": 57,
+        "id": "8eb483ca-ef0b-45e3-bf9e-9ada15a095ce",
+        "edges": [
+            "research_muton_berserker_autopsy"
+        ]
+    },
+    {
+        "x": -2225,
+        "y": 120,
+        "id": "311d11f5-841f-4a0a-8a6c-1ba35da2685f",
+        "edges": [
+            "research_muton_berserker_autopsy",
+            "b4592401-c4fa-4c50-905b-1ce371de70a8"
+        ]
+    },
+    {
+        "x": -2225,
+        "y": 170,
+        "id": "b4592401-c4fa-4c50-905b-1ce371de70a8",
+        "edges": [
+            "research_muton_elite_autopsy"
+        ]
+    },
+    {
+        "x": -2400,
+        "y": -200,
+        "id": "9535ec9b-fd8d-489b-8b88-4b961940c4e2",
+        "edges": [
+            "research_sectoid_commander_autopsy"
+        ]
+    },
+    {
+        "x": -2057,
+        "y": -325,
+        "id": "c37487f0-29b5-4ba1-8e18-e6f886d3f1b9",
+        "edges": [
+            "53b7d355-015a-4e84-a427-0b463982e2c8",
+            "research_thin_man_autopsy"
+        ]
+    },
+    {
+        "x": -375,
+        "y": 675,
+        "id": "6230b8ec-b07c-45e5-b666-42e34be868a3",
+        "edges": [
+            "research_fusion_weapons"
+        ]
+    },
+    {
+        "x": -1580,
+        "y": 348,
+        "id": "57abb93b-7891-410b-8e37-3fca44dd198a",
+        "edges": [
+            "research_cyberdisc_autopsy",
+            "6e0fb33b-9344-4ee3-98a2-20afdfff2ff0"
+        ]
+    },
+    {
+        "x": -1580,
+        "y": 403,
+        "id": "6e0fb33b-9344-4ee3-98a2-20afdfff2ff0",
+        "edges": [
+            "research_floater_autopsy"
+        ]
+    },
+    {
+        "x": -1300,
+        "y": 230,
+        "id": "f096e46b-6a38-4069-9376-fc347e3818f7",
+        "edges": [
+            "research_improved_combat_exoskeletons"
+        ]
+    },
+    {
+        "x": -1519,
+        "y": 50,
+        "id": "b11bfcf5-afa1-4601-b332-46856f7a5286",
+        "edges": [
+            "f977d0ed-0129-4c18-8556-cc5ee096e452"
+        ]
+    },
+    {
+        "x": -1950,
+        "y": 50,
+        "id": "f977d0ed-0129-4c18-8556-cc5ee096e452",
+        "edges": [
+            "research_ethereal_autopsy"
+        ]
+    },
+    {
+        "x": -375,
+        "y": 112,
+        "id": "840f251b-8a51-479c-a5c8-11f4689695d0",
+        "edges": [
+            "research_alien_propulsion"
+        ]
+    },
+    {
+        "x": 350,
+        "y": -445,
+        "id": "de424bfe-e24c-4f0f-ba2a-0e1476af2499",
+        "edges": [
+            "0f879fa7-4db4-4461-a34b-0bdc63726d48"
+        ]
+    },
+    {
+        "x": -1416,
+        "y": -200,
+        "id": "2be47baa-c578-4e03-92d2-5ac569e383c0",
+        "edges": [
+            "research_chryssalid_autopsy",
+            "4765a40d-aad7-4706-b240-87f2e4524955"
+        ]
+    },
+    {
+        "x": -1416,
+        "y": -125,
+        "id": "4765a40d-aad7-4706-b240-87f2e4524955",
+        "edges": [
+            "b814f6ee-b49f-433e-8bfc-598534f5b910"
+        ]
+    },
+    {
+        "x": -980,
+        "y": -125,
+        "id": "b814f6ee-b49f-433e-8bfc-598534f5b910",
+        "edges": [
+            "research_alien_biocybernetics"
+        ]
+    },
+    {
+        "x": -755,
+        "y": 65,
+        "id": "b50ea5f3-e775-47b8-9fa9-f33b6dc9c9bf",
+        "edges": [
+            "research_alien_propulsion"
+        ]
+    },
+    {
+        "x": -635,
+        "y": 65,
+        "id": "3cd969ed-5465-46b9-97ab-72e6fb093af4",
+        "edges": [
+            "dcd5c276-3aef-4303-a19f-9a7fb8aaa5ba",
+            "b50ea5f3-e775-47b8-9fa9-f33b6dc9c9bf"
+        ]
+    },
+    {
+        "x": -1100,
+        "y": 300,
+        "id": "20dd24ee-7027-4e9a-8783-2de823131b20",
+        "edges": [
+            "research_advanced_power_armor",
+            "research_improved_combat_exoskeletons"
+        ]
+    },
+    {
+        "x": -950,
+        "y": 230,
+        "id": "6f8fbd1b-bb60-481d-b28a-bd96d87eb553",
+        "edges": [
+            "354af426-ca87-4541-a906-2d372f784526",
+            "f096e46b-6a38-4069-9376-fc347e3818f7"
+        ]
+    },
+    {
+        "x": -1200,
+        "y": -85,
+        "id": "77ea2f9f-0bcf-45a6-8bc4-5889309d9bc3",
+        "edges": [
+            "e4f1f53f-3116-4dd1-9a83-f93b7ae9ce20"
+        ]
+    },
+    {
+        "x": -1200,
+        "y": 189,
+        "id": "e4f1f53f-3116-4dd1-9a83-f93b7ae9ce20",
+        "edges": [
+            "research_mobile_power_armor"
+        ]
+    },
+    {
+        "x": -2200,
+        "y": -90,
+        "id": "961f5dc7-4a8a-4b27-91db-d709f0046f37",
+        "edges": [
+            "eec3fbcb-3024-422a-b684-3c46a359c53b",
+            "research_mechtoid_autopsy"
+        ]
+    },
+    {
+        "x": -900,
+        "y": 570,
+        "id": "34336c90-6f69-44e1-b8ef-1c33f9eb9f71",
+        "edges": [
+            "research_stealth_systems"
+        ]
+    },
+    {
+        "x": -900,
+        "y": 400,
+        "id": "dcb6f920-8b3c-4d27-9f0a-acc04955ab8a",
+        "edges": [
+            "research_antigrav_systems",
+            "3b998110-b5b9-4c50-9842-3f0a80a4124c"
+        ]
+    }
+]

@@ -1,0 +1,59 @@
+/*
+** nativize.css
+** Makes the UI feel more native
+*/
+
+html {
+  font-family: sans-serif;
+  user-select: none; /* disable selection */
+  -webkit-user-drag: none; /* disable dragging */
+  cursor: default; /* use default cursor */
+}
+
+body {
+  margin: 0; /* remove default margin */
+}
+
+
+/* enable text selection */
+
+.is-selectable,
+pre,
+code {
+  user-select: text;
+  cursor: auto;
+}
+
+
+/* Buttons and links */
+
+button{
+  cursor: default;
+}
+
+/* Internal links */
+a {
+  cursor: pointer;
+  text-decoration: underline dashed;
+  outline: none;
+}
+
+/* New window (target) + external links */
+a[target],
+a[href^="https://"],
+a[href^="http://"] {
+  text-decoration: underline solid;
+}
+
+a:hover,
+a:focus {
+    text-decoration: none;
+    text-underline-position: unset;
+}
+
+
+/* Images */
+
+img {
+  -webkit-user-drag: none; /* disable dragging */
+}
