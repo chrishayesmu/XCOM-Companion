@@ -1,17 +1,20 @@
-function instantiateTemplate(templateId) {
-    const links = document.querySelectorAll('link[rel="import"]')
+const loadedFiles = {};
 
-    for (let i = 0; i < links.length; i++) {
-        const template = links[i].import.querySelector("#" + templateId);
+async function instantiateTemplate(filepath, templateId) {
+    let fileContents = null;
 
-        if (!template) {
-            continue;
-        }
-
-        return document.importNode(template.content, true).firstElementChild;
+    if (filepath in loadedFiles) {
+        fileContents = loadedFiles[filepath];
+    }
+    else {
+        fileContents = await fetch(filepath).then(response => response.text());
+        loadedFiles[filepath] = fileContents;
     }
 
-    return null;
+    const htmlDoc = new DOMParser().parseFromString(fileContents, "text/html");
+    const template = htmlDoc.querySelector("#" + templateId);
+
+    return document.importNode(template.content, true).firstElementChild;
 }
 
-module.exports.instantiateTemplate = instantiateTemplate;
+export { instantiateTemplate };

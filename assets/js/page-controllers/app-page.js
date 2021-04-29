@@ -9,7 +9,7 @@ class AppPage {
      * @param {*} data Page data to use for the preview.
      * @returns {Element} An element which can be displayed in a tooltip as a preview of the page, or null if not supported.
      */
-     generatePreview(data) {
+     async generatePreview(data) {
         return null;
     }
 
@@ -21,7 +21,7 @@ class AppPage {
      * @param {*} data Data to use while loading, which may come from history or from the caller asking to load the page.
      * @returns {Element} A single element to be inserted into the hosting element.
      */
-    load(hostingElement, event, data) {
+    async load(hostingElement, event, data) {
         return null;
     }
 
@@ -31,7 +31,7 @@ class AppPage {
      * @param {*} dataObj
      * @returns {Element} A single element representing the loaded page.
      */
-    loadFromDataObject(dataObj) {
+     async loadFromDataObject(dataObj) {
         return null;
     }
 
@@ -64,5 +64,4 @@ class PageHistoryState {
     }
 }
 
-module.exports.AppPage = AppPage;
-module.exports.PageHistoryState = PageHistoryState;
+export { AppPage, PageHistoryState };

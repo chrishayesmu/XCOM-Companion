@@ -1,5 +1,3 @@
-const settings = require("electron-settings");
-
 document.body.addEventListener("click", (event) => {
     if (event.target.classList.contains("nav-container")) {
         handleSectionTrigger(event);
@@ -23,14 +21,4 @@ function handleSectionTrigger(event) {
     }
 }
 
-// Default to the view that was active the last time the app was open
-const sectionId = settings.get("activeSectionButtonId");
-if (sectionId) {
-    showMainContent();
-    const section = document.getElementById(sectionId);
-    if (section) {
-        section.click();
-    }
-} else {
-    showMainContent();
-}
+showMainContent();

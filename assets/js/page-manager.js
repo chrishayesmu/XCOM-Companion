@@ -1,16 +1,16 @@
-const remote = require("electron").remote;
+const { ipcRenderer } = require('electron');
 
-const searchProvider = require("./search-provider");
+import * as Search from "./search-provider.js";
 
-const ClassSelectionPage = require("./page-controllers/class-selection-page").ClassSelectionPage;
-const FoundryProjectDisplayPage = require("./page-controllers/foundry-project-display-page").FoundryProjectDisplayPage;
-const ItemDisplayPage = require("./page-controllers/item-display-page").ItemDisplayPage;
-const PerkTreeDisplayPage = require("./page-controllers/perk-tree-display-page").PerkTreeDisplayPage;
-const SearchResultsPage = require("./page-controllers/search-results-page").SearchResultsPage;
-const TechDetailsPage = require("./page-controllers/tech-details-page").TechDetailsPage;
-const TechTreeDisplayPage = require("./page-controllers/tech-tree-display-page").TechTreeDisplayPage;
+import ClassSelectionPage from "./page-controllers/class-selection-page.js";
+import FoundryProjectDisplayPage from "./page-controllers/foundry-project-display-page.js";
+import ItemDisplayPage from "./page-controllers/item-display-page.js";
+import PerkTreeDisplayPage from "./page-controllers/perk-tree-display-page.js";
+import SearchResultsPage from "./page-controllers/search-results-page.js";
+import TechDetailsPage from "./page-controllers/tech-details-page.js";
+import TechTreeDisplayPage from "./page-controllers/tech-tree-display-page.js";
 
-appPages = [
+const appPages = [
     new ClassSelectionPage(),
     new FoundryProjectDisplayPage(),
     new ItemDisplayPage(),
@@ -20,7 +20,7 @@ appPages = [
     new TechTreeDisplayPage()
 ];
 
-pagesById = {}
+const pagesById = {};
 
 for (let i = 0; i < appPages.length; i++) {
     const page = appPages[i];
@@ -49,12 +49,17 @@ class PageManager {
         document.body.addEventListener("mouseover", this._handleElementMouseover.bind(this));
     }
 
-    getPagePreview(pageId, data) {
+    async getPagePreview(pageId, data) {
         if (data.noPreview) {
             return;
         }
 
+        if (!(pageId in pagesById)) {
+            return null;
+        }
+
         const targetPage = pagesById[pageId];
+
         return targetPage.generatePreview(data);
     }
 
@@ -63,21 +68,15 @@ class PageManager {
         this.pagePreviewTooltip.classList.add("hidden-collapse");
     }
 
-    loadPage(pageId, event, data) {
+    async loadPage(pageId, event, data) {
         if (!(pageId in pagesById)) {
             throw new Error(`Could not find a page with the ID "${pageId}"`);
         }
 
-        const page = pagesById[pageId];
-        const pageDocument = page.load(this.pageContentHolder, event, data);
-
-        if (!pageDocument) {
-            return;
-        }
-
-        this.hidePagePreviewTooltip();
         this._unloadCurrentPage();
-        this.currentPage = page;
+        this.hidePagePreviewTooltip();
+        this.currentPage = pagesById[pageId];
+        const pageDocument = await this.currentPage.load(this.pageContentHolder, event, data);
 
         // Clear out the contents of the hosting element and replace them with this page
         this.pageContentHolder.innerHTML = "";
@@ -88,19 +87,19 @@ class PageManager {
         for (let i = 0; i < appPages.length; i++) {
             if (appPages[i].ownsDataObject(data)) {
                 const page = appPages[i];
-                const pageDocument = page.loadFromDataObject(data);
+                page.loadFromDataObject(data).then(pageDocument => {
+                    if (!pageDocument) {
+                        return;
+                    }
 
-                if (!pageDocument) {
-                    return;
-                }
+                    this.hidePagePreviewTooltip();
+                    this._unloadCurrentPage();
+                    this.currentPage = page;
 
-                this.hidePagePreviewTooltip();
-                this._unloadCurrentPage();
-                this.currentPage = page;
-
-                // Clear out the contents of the hosting element and replace them with this page
-                this.pageContentHolder.innerHTML = "";
-                this.pageContentHolder.appendChild(pageDocument);
+                    // Clear out the contents of the hosting element and replace them with this page
+                    this.pageContentHolder.innerHTML = "";
+                    this.pageContentHolder.appendChild(pageDocument);
+                })
 
                 return;
             }
@@ -115,15 +114,17 @@ class PageManager {
      * @param {DOMRect} targetElementRect A DOMRect for the element that the tooltip should be positioned relative to
      */
     showPagePreviewTooltip(pageId, pageData, targetElementRect) {
-        const preview = this.getPagePreview(pageId, pageData);
+        const previewPromise = this.getPagePreview(pageId, pageData);
 
-        if (preview) {
-            this.pagePreviewTooltip.appendChild(preview);
-            this.pagePreviewTooltip.classList.remove("hidden-collapse");
+        previewPromise.then(preview => {
+            if (preview) {
+                this.pagePreviewTooltip.appendChild(preview);
+                this.pagePreviewTooltip.classList.remove("hidden-collapse");
 
-            // tooltip doesn't have a rect until it's part of the DOM, so now we can reposition it
-            this._repositionTooltip(targetElementRect);
-        }
+                // tooltip doesn't have a rect until it's part of the DOM, so now we can reposition it
+                this._repositionTooltip(targetElementRect);
+            }
+        });
     }
 
     _extractPageDataArgs(element) {
@@ -181,13 +182,13 @@ class PageManager {
         }
     }
 
-    _repositionTooltip(targetElementRect) {
+    async _repositionTooltip(targetElementRect) {
         const horizontalMargin = 20;
         const verticalMargin = 10;
 
         const tooltipRect = this.pagePreviewTooltip.getBoundingClientRect();
 
-        const windowBounds = remote.getCurrentWindow().getContentBounds();
+        let windowBounds = await ipcRenderer.invoke("get-window-size");
 
         // For horizontal placement, just make sure the tooltip isn't too close to the edge of the window
         let tooltipLeft = targetElementRect.left + (targetElementRect.width / 2) - (tooltipRect.width / 2);
@@ -220,8 +221,7 @@ class PageManager {
 const pageContentHolder = document.getElementById("page-content");
 PageManager.instance = new PageManager(pageContentHolder);
 
-module.exports.PageManager = PageManager;
-module.exports.instance = PageManager.instance;
-
-searchProvider.onDomReady();
+Search.onDomReady();
 PageManager.instance.loadPage("item-display-page", null, { itemId: "item_titan_armor" });
+
+export default PageManager;

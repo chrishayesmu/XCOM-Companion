@@ -1,6 +1,6 @@
-const dataHelper = require("./data-helper");
-const templates = require("./templates");
-const utils = require("./utils");
+import * as DataHelper from "./data-helper.js";
+import * as Templates from "./templates.js";
+import * as Utils from "./utils.js";
 
 function createHelpIcon(helpText) {
     const img = document.createElement("img");
@@ -83,11 +83,11 @@ function createInAppLink(data, options) {
     return link;
 }
 
-function createSelectableIcon(imgSrc, label, size) {
+async function createSelectableIcon(imgSrc, label, size) {
     imgSrc = imgSrc || "assets/img/xcom-logo.png";
     size = size || "medium";
 
-    const icon = templates.instantiateTemplate("selectable-icon-template");
+    const icon = await Templates.instantiateTemplate("assets/html/templates/widgets/selectable-icon.html", "selectable-icon-template");
 
     icon.classList.add(`selectable-icon-${size}`);
     icon.querySelector(".selectable-icon-image").src = imgSrc;
@@ -100,7 +100,7 @@ function createSelectableIcon(imgSrc, label, size) {
 }
 
 function _createBaseFacilityLink(facilityId, options) {
-    const facility = dataHelper.baseFacilities[facilityId];
+    const facility = DataHelper.baseFacilities[facilityId];
     const link = document.createElement("a");
 
     link.textContent = facility.name;
@@ -112,7 +112,7 @@ function _createBaseFacilityLink(facilityId, options) {
 }
 
 function _createClassLink(classId, options) {
-    const soldierClass = dataHelper.soldierClasses[classId];
+    const soldierClass = DataHelper.soldierClasses[classId];
     const link = document.createElement("a");
 
     link.textContent = soldierClass.name;
@@ -125,7 +125,7 @@ function _createClassLink(classId, options) {
 }
 
 function _createCouncilRequestLink(requestId, options) {
-    const request = dataHelper.councilRequests[requestId];
+    const request = DataHelper.councilRequests[requestId];
     const span = document.createElement("span");
 
     const link = createInAppLink(request.requested_item);
@@ -134,7 +134,7 @@ function _createCouncilRequestLink(requestId, options) {
 
     let rewardString = "";
     for (let i = 0; i < request.rewards.length; i++) {
-        rewardString += utils.capitalizeEachWord(request.rewards[i]) + " / "; // TODO capitalize
+        rewardString += Utils.capitalizeEachWord(request.rewards[i]) + " / "; // TODO capitalize
     }
 
     rewardString = rewardString.substring(0, rewardString.length - 3);
@@ -144,7 +144,7 @@ function _createCouncilRequestLink(requestId, options) {
 }
 
 function _createFoundryProjectLink(projectId, options) {
-    const project = dataHelper.foundryProjects[projectId];
+    const project = DataHelper.foundryProjects[projectId];
     const link = document.createElement("a");
 
     link.textContent = project.name;
@@ -156,7 +156,7 @@ function _createFoundryProjectLink(projectId, options) {
 }
 
 function _createGeneModLink(geneModId, options) {
-    const geneMod = dataHelper.geneMods[geneModId];
+    const geneMod = DataHelper.geneMods[geneModId];
     const link = document.createElement("a");
 
     link.textContent = geneMod.perk.name;
@@ -169,7 +169,7 @@ function _createGeneModLink(geneModId, options) {
 }
 
 function _createItemLink(itemId, options) {
-    const item = dataHelper.items[itemId];
+    const item = DataHelper.items[itemId];
     const link = document.createElement("a");
 
     link.textContent = item.name;
@@ -181,7 +181,7 @@ function _createItemLink(itemId, options) {
 }
 
 function _createPerkLink(perkId, options) {
-    const perk = dataHelper.perks[perkId];
+    const perk = DataHelper.perks[perkId];
     const link = document.createElement("a");
 
     link.textContent = perk.name;
@@ -194,7 +194,7 @@ function _createPerkLink(perkId, options) {
 }
 
 function _createPsiAbilityLink(abilityId, options) {
-    const ability = dataHelper.psiAbilities[abilityId];
+    const ability = DataHelper.psiAbilities[abilityId];
     const link = document.createElement("a");
 
     link.textContent = ability.name;
@@ -207,7 +207,7 @@ function _createPsiAbilityLink(abilityId, options) {
 }
 
 function _createTechLink(techId) {
-    const tech = dataHelper.technologies[techId];
+    const tech = DataHelper.technologies[techId];
     const link = document.createElement("a");
 
     link.textContent = tech.name;
@@ -218,6 +218,4 @@ function _createTechLink(techId) {
     return link;
 }
 
-module.exports.createInAppLink = createInAppLink;
-module.exports.createHelpIcon = createHelpIcon;
-module.exports.createSelectableIcon = createSelectableIcon;
+export { createInAppLink, createHelpIcon, createSelectableIcon };

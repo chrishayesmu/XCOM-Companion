@@ -1,10 +1,6 @@
-const appPageModule = require("./app-page");
-const dataHelper = require("../data-helper");
-const templates = require("../templates");
-const widgets = require("../widgets");
-
-const AppPage = appPageModule.AppPage;
-const PageHistoryState = appPageModule.PageHistoryState;
+import { AppPage, PageHistoryState } from "./app-page.js";
+import * as Templates from "../templates.js";
+import * as Widgets from "../widgets.js";
 
 class SearchResultsPage extends AppPage {
     constructor() {
@@ -25,18 +21,18 @@ class SearchResultsPage extends AppPage {
         this.query = null;
     }
 
-    generatePreview(data) {
+    async generatePreview(data) {
         // no need for previews for this page
         return null;
     }
 
-    load(hostingElement, event, data) {
+    async load(hostingElement, event, data) {
         // there shouldn't be any direct links here most likely
         return null;
     }
 
-    loadFromDataObject(searchResults) {
-        const template = templates.instantiateTemplate("template-search-results-page");
+    async loadFromDataObject(searchResults) {
+        const template = await Templates.instantiateTemplate("assets/html/templates/pages/search-results-page.html", "template-search-results-page");
 
         template.querySelector("#search-results-query").textContent = searchResults.query;
         template.querySelector("#search-results-count").textContent = searchResults.results.length;
@@ -78,7 +74,7 @@ class SearchResultsPage extends AppPage {
 
                 const div = document.createElement("div");
                 div.textContent = key + ": ";
-                div.appendChild(widgets.createInAppLink(result));
+                div.appendChild(Widgets.createInAppLink(result));
 
                 groupContainer.appendChild(div);
             }
@@ -129,4 +125,4 @@ class SearchResultsPage extends AppPage {
     }
 }
 
-module.exports.SearchResultsPage = SearchResultsPage;
+export default SearchResultsPage;

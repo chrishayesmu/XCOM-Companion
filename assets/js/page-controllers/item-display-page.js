@@ -1,10 +1,7 @@
-const appPageModule = require("./app-page");
-const dataHelper = require("../data-helper");
-const templates = require("../templates");
-const widgets = require("../widgets");
-
-const AppPage = appPageModule.AppPage;
-const PageHistoryState = appPageModule.PageHistoryState;
+import { AppPage, PageHistoryState } from "./app-page.js";
+import * as DataHelper from "../data-helper.js";
+import * as Templates from "../templates.js";
+import * as Widgets from "../widgets.js";
 
 class ItemDisplayPage extends AppPage {
     constructor() {
@@ -75,53 +72,53 @@ class ItemDisplayPage extends AppPage {
         };
     }
 
-    generatePreview(data) {
+    async generatePreview(data) {
         if (!data.itemId) {
             return null;
         }
 
-        const item = dataHelper.items[data.itemId];
+        const item = DataHelper.items[data.itemId];
 
         if (!item) {
             return null;
         }
 
-        const template = templates.instantiateTemplate("template-item-preview");
+        const template = await Templates.instantiateTemplate("assets/html/templates/pages/item-display-page.html", "template-item-preview");
         template.querySelector("#item-preview-icon img").src = item.icon;
         template.querySelector("#item-preview-name").textContent = item.name;
         template.querySelector("#item-preview-description").textContent = item.description;
 
         if (item.type === "loadout_primary" || item.type === "loadout_secondary") {
-            template.appendChild(this._createWeaponStatsGrid(item));
+            template.appendChild(await this._createWeaponStatsGrid(item));
         }
         else if (item.type === "loadout_armor" || item.type === "loadout_mec_exoskeleton") {
-            template.appendChild(this._createArmorStatsGrid(item));
+            template.appendChild(await this._createArmorStatsGrid(item));
         }
         else if (item.type === "aircraft") {
-            template.appendChild(this._createInterceptorStatsGrid(item));
+            template.appendChild(await this._createInterceptorStatsGrid(item));
         }
         else if (item.type === "aircraft_weapon") {
-            template.appendChild(this._createInterceptorWeaponStatsGrid(item));
+            template.appendChild(await this._createInterceptorWeaponStatsGrid(item));
         }
 
         return template;
     }
 
-    load(hostingElement, event, data) {
+    async load(hostingElement, event, data) {
         if (!data.itemId) {
             return null;
         }
 
-        const item = dataHelper.items[data.itemId];
+        const item = DataHelper.items[data.itemId];
 
         return this.loadFromDataObject(item);
     }
 
-    loadFromDataObject(item) {
+    async loadFromDataObject(item) {
         this.itemId = item.id;
         const itemTypeConfig = this._configurationByItemType[item.type];
 
-        const template = templates.instantiateTemplate("template-item-display-page");
+        const template = await Templates.instantiateTemplate("assets/html/templates/pages/item-display-page.html", "template-item-display-page");
 
         template.querySelector("#item-details-name").textContent = item.name;
         template.querySelector("#item-details-description").innerHTML = item.description;
@@ -189,9 +186,9 @@ class ItemDisplayPage extends AppPage {
         return dataObj.id.startsWith("item_");
     }
 
-    _createArmorStatsGrid(item) {
+    async _createArmorStatsGrid(item) {
         const armorData = item.type_specific_data;
-        const gridTemplate = templates.instantiateTemplate("template-item-armor-stats-grid");
+        const gridTemplate = await Templates.instantiateTemplate("assets/html/templates/pages/item-display-page.html", "template-item-armor-stats-grid");
 
         gridTemplate.querySelector("#armor-stats-damage-reduction").textContent = armorData.damage_reduction || 0;
         gridTemplate.querySelector("#armor-stats-defense").textContent = armorData.defense || 0;
@@ -212,9 +209,9 @@ class ItemDisplayPage extends AppPage {
         return gridTemplate;
     }
 
-    _createInterceptorStatsGrid(item) {
+    async _createInterceptorStatsGrid(item) {
         const interceptorData = item.type_specific_data;
-        const gridTemplate = templates.instantiateTemplate("template-item-interceptor-stats-grid");
+        const gridTemplate = await Templates.instantiateTemplate("assets/html/templates/pages/item-display-page.html", "template-item-interceptor-stats-grid");
 
         gridTemplate.querySelector("#interceptor-stats-armor").textContent = interceptorData.armor;
         gridTemplate.querySelector("#interceptor-stats-hp").textContent = interceptorData.hp;
@@ -224,9 +221,9 @@ class ItemDisplayPage extends AppPage {
         return gridTemplate;
     }
 
-    _createInterceptorWeaponStatsGrid(item) {
+    async _createInterceptorWeaponStatsGrid(item) {
         const weaponData = item.type_specific_data;
-        const gridTemplate = templates.instantiateTemplate("template-item-interceptor-weapon-stats-grid");
+        const gridTemplate = await Templates.instantiateTemplate("assets/html/templates/pages/item-display-page.html", "template-item-interceptor-weapon-stats-grid");
 
         gridTemplate.querySelector("#interceptor-weapon-stats-damage").textContent = weaponData.damage_per_hit;
         gridTemplate.querySelector("#interceptor-weapon-stats-time-between-shots").textContent = weaponData.seconds_between_attacks;
@@ -238,9 +235,9 @@ class ItemDisplayPage extends AppPage {
         return gridTemplate;
     }
 
-    _createWeaponStatsGrid(item) {
+    async _createWeaponStatsGrid(item) {
         const weaponData = item.type_specific_data;
-        const gridTemplate = templates.instantiateTemplate("template-item-weapon-stats-grid");
+        const gridTemplate = await Templates.instantiateTemplate("assets/html/templates/pages/item-display-page.html", "template-item-weapon-stats-grid");
 
         gridTemplate.querySelector("#weapon-stats-damage").textContent = weaponData.damage_min_normal + " - " + weaponData.damage_max_normal;
         gridTemplate.querySelector("#weapon-stats-crit-damage").textContent = weaponData.damage_min_crit + " - " + weaponData.damage_max_crit;
@@ -282,7 +279,7 @@ class ItemDisplayPage extends AppPage {
         return gridTemplate;
     }
 
-    _populateArmorStats(item, container) {
+    async _populateArmorStats(item, container) {
         let bulletPointContainer = container.querySelector("ul");
 
         if (!bulletPointContainer) {
@@ -299,7 +296,7 @@ class ItemDisplayPage extends AppPage {
         };
 
         if (item.type === "loadout_mec_exoskeleton") {
-            const link = widgets.createInAppLink(armorData.grants_perks[0]);
+            const link = Widgets.createInAppLink(armorData.grants_perks[0]);
             addBulletPoint("This exoskeleton grants the " + link.outerHTML + " perk");
         }
 
@@ -323,7 +320,7 @@ class ItemDisplayPage extends AppPage {
             addBulletPoint("Only usable by soldiers with Psionic abilities");
         }
 
-        container.appendChild(this._createArmorStatsGrid(item));
+        container.appendChild(await this._createArmorStatsGrid(item));
 
     }
 
@@ -370,15 +367,15 @@ class ItemDisplayPage extends AppPage {
                 continue;
             }
 
-            const requiredItem = dataHelper.items[requiredItemId];
-            const link = widgets.createInAppLink(requiredItem);
+            const requiredItem = DataHelper.items[requiredItemId];
+            const link = Widgets.createInAppLink(requiredItem);
 
             addCostRow(buildData.cost[requiredItemId] + "x", link);
         }
 
         // Add the number of engineers, and help text, at the very end
         if (numEngineersNeeded) {
-            const helpIcon = widgets.createHelpIcon("The time to build is based on having this many engineers. It will go quicker if you have more, and much slower if you have less.");
+            const helpIcon = Widgets.createHelpIcon("The time to build is based on having this many engineers. It will go quicker if you have more, and much slower if you have less.");
             const engineerContainer = addCostRow(numEngineersNeeded, "Engineers");
             engineerContainer.appendChild(helpIcon);
         }
@@ -397,7 +394,7 @@ class ItemDisplayPage extends AppPage {
             for (let i = 0; i < item.foundry_prerequisites.length; i++) {
                 const prereq = item.foundry_prerequisites[i];
                 const div = document.createElement("div");
-                div.appendChild(widgets.createInAppLink(prereq, { addPrefix: true }));
+                div.appendChild(Widgets.createInAppLink(prereq, { addPrefix: true }));
 
                 container.append(div);
             }
@@ -407,7 +404,7 @@ class ItemDisplayPage extends AppPage {
             for (let i = 0; i < item.research_prerequisites.length; i++) {
                 const prereq = item.research_prerequisites[i];
                 const div = document.createElement("div");
-                div.appendChild(widgets.createInAppLink(prereq, { addPrefix: true }));
+                div.appendChild(Widgets.createInAppLink(prereq, { addPrefix: true }));
 
                 container.append(div);
             }
@@ -423,7 +420,7 @@ class ItemDisplayPage extends AppPage {
 
         for (let i = 0; i < item.usedIn.length; i++) {
             // TODO include info about how many are needed for each use
-            const link = widgets.createInAppLink(item.usedIn[i].outcome, { addPrefix: true });
+            const link = Widgets.createInAppLink(item.usedIn[i].outcome, { addPrefix: true });
             const div = document.createElement("div");
             div.appendChild(link);
 
@@ -435,7 +432,7 @@ class ItemDisplayPage extends AppPage {
         }
     }
 
-    _populateWeaponStats(item, container) {
+    async _populateWeaponStats(item, container) {
         let bulletPointContainer = container.querySelector("ul");
 
         if (!bulletPointContainer) {
@@ -464,7 +461,7 @@ class ItemDisplayPage extends AppPage {
             let classText = "Usable by ";
 
             for (let i = 0; i < weaponData.class_restriction.length; i++) {
-                let classLink = widgets.createInAppLink(weaponData.class_restriction[i]);
+                let classLink = Widgets.createInAppLink(weaponData.class_restriction[i]);
 
                 if (weaponData.class_restriction.length > 1) {
                     if (i == weaponData.class_restriction.length - 1) {
@@ -508,8 +505,8 @@ class ItemDisplayPage extends AppPage {
         }
 
         // Populate the table with values
-        container.appendChild(this._createWeaponStatsGrid(item));
+        container.appendChild(await this._createWeaponStatsGrid(item));
     }
 }
 
-module.exports.ItemDisplayPage = ItemDisplayPage;
+export default ItemDisplayPage;

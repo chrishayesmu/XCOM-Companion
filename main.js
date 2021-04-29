@@ -3,7 +3,7 @@ require('update-electron-app')({
 });
 
 const path = require('path');
-const { app, BrowserWindow } = require('electron');
+const { app, BrowserWindow, ipcMain } = require('electron');
 
 const debug = /--debug/.test(process.argv[2]);
 
@@ -12,6 +12,11 @@ if (process.mas) {
 }
 
 let mainWindow = null;
+
+ipcMain.handle("get-window-size", event => {
+    console.log("get-window-size", event);
+    return mainWindow.getContentBounds();
+});
 
 function initialize() {
     makeSingleInstance();
@@ -24,6 +29,7 @@ function initialize() {
             minHeight: 1050,
             title: app.getName(),
             webPreferences: {
+                contextIsolation: false,
                 nodeIntegration: true
             }
         };

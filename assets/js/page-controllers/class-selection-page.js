@@ -1,10 +1,7 @@
-const appPageModule = require("./app-page");
-const dataHelper = require("../data-helper");
-const templates = require("../templates");
-const widgets = require("../widgets");
-
-AppPage = appPageModule.AppPage;
-PageHistoryState = appPageModule.PageHistoryState;
+import { AppPage, PageHistoryState } from "./app-page.js";
+import * as DataHelper from "../data-helper.js";
+import * as Templates from "../templates.js";
+import * as Widgets from "../widgets.js";
 
 class ClassSelectionPage extends AppPage {
     constructor() {
@@ -13,28 +10,28 @@ class ClassSelectionPage extends AppPage {
         this.classPool = null;
     }
 
-    load(_hostingElement, _event, _data) {
+    async load(_hostingElement, _event, _data) {
         this.classPool = _data.classPool;
 
-        const template = templates.instantiateTemplate("template-class-selection-page");
+        const template = await Templates.instantiateTemplate("assets/html/templates/pages/class-selection-page.html", "template-class-selection-page");
         const contentSection = template.querySelector("#class-selection-content");
 
         let classes = null;
         if (this.classPool == "infantry") {
-            classes = dataHelper.getInfantryClasses();
+            classes = DataHelper.getInfantryClasses();
         }
         else if (this.classPool == "mec") {
-            classes = dataHelper.getMecClasses();
+            classes = DataHelper.getMecClasses();
         }
         else {
             throw new Error(`Unrecognized class pool "${this.classPool}"`);
         }
 
-        for (let i  = 0; i < classes.length; i++) {
+        for (let i = 0; i < classes.length; i++) {
             const soldierClass = classes[i];
             const classId = soldierClass.id;
 
-            const icon = widgets.createSelectableIcon(soldierClass.icon, soldierClass.name, "grow");
+            const icon = await Widgets.createSelectableIcon(soldierClass.icon, soldierClass.name, "grow");
             icon.classList.add("soldier-grid-cell");
             icon.setAttribute("data-pagearg-class-id", classId);
             icon.setAttribute("data-pagearg-display-mode", "class-perks");
@@ -51,10 +48,8 @@ class ClassSelectionPage extends AppPage {
             classPool: this.classPool
         };
 
-        this.classPool = null;
-
         return new PageHistoryState(this, historyData);
     }
 }
 
-module.exports.ClassSelectionPage = ClassSelectionPage;
+export default ClassSelectionPage;

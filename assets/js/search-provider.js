@@ -1,5 +1,5 @@
-const dataHelper = require("./data-helper");
-const pageManager = require("./page-manager");
+import * as dataHelper from "./data-helper.js";
+import PageManager from "./page-manager.js";
 
 const dataSources = [
     Object.values(dataHelper.baseFacilities),
@@ -24,11 +24,11 @@ function onDomReady() {
             searchInput.value = "";
 
             if (searchResults.resultType === "exact") {
-                pageManager.instance.loadPageForData(searchResults.result);
+                PageManager.instance.loadPageForData(searchResults.result);
             }
             else {
                 searchResults.id = "search_results";
-                pageManager.instance.loadPageForData(searchResults);
+                PageManager.instance.loadPageForData(searchResults);
             }
         }
     });
@@ -84,5 +84,4 @@ function search(query) {
     }
 }
 
-module.exports.onDomReady = onDomReady;
-module.exports.search = search;
+export { onDomReady, search };

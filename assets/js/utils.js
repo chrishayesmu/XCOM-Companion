@@ -20,5 +20,4 @@ function truncateText(text, maxLength) {
     return text;
 }
 
-module.exports.capitalizeEachWord = capitalizeEachWord;
-module.exports.truncateText = truncateText;
+export { capitalizeEachWord, truncateText };

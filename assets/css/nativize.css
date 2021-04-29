@@ -27,7 +27,7 @@ code {
 
 /* Buttons and links */
 
-button{
+button {
   cursor: default;
 }
 
@@ -35,6 +35,7 @@ button{
 a {
   cursor: pointer;
   text-decoration: underline dashed;
+  text-underline-offset: 3px;
   outline: none;
 }
 
@@ -48,7 +49,6 @@ a[href^="http://"] {
 a:hover,
 a:focus {
     text-decoration: none;
-    text-underline-position: unset;
 }
 
 

@@ -22,6 +22,73 @@
     </div>
 </template>
 
+<template id="template-gene-mods-display-page">
+    <section id="perk-tree-header-section" class="section js-section">
+        <header class="section-header">
+            <div id="perk-tree-header-text" class="section-wrapper">
+                Perk Tree - {{class}}
+            </div>
+        </header>
+
+        <div id="perk-tree-content-section" class="section-content">
+            <div>
+                <div class="perk-tree-row">
+                    <div class="gene-mods-body-part">
+                        <span>Brain</span>
+                    </div>
+                    <div class="perk-icon gene-mod-icon" id="gene-mod-icon-brain-left"><img /></div>
+                    <div class="perk-icon gene-mod-icon" id="gene-mod-icon-brain-right"><img /></div>
+                </div>
+                <div class="perk-tree-row">
+                    <div class="gene-mods-body-part">
+                        <span>Eyes</span>
+                    </div>
+                    <div class="perk-icon gene-mod-icon" id="gene-mod-icon-eyes-left"><img /></div>
+                    <div class="perk-icon gene-mod-icon" id="gene-mod-icon-eyes-right"><img /></div>
+                </div>
+                <div class="perk-tree-row">
+                    <div class="gene-mods-body-part">
+                        <span>Chest</span>
+                    </div>
+                    <div class="perk-icon gene-mod-icon" id="gene-mod-icon-chest-left"><img /></div>
+                    <div class="perk-icon gene-mod-icon" id="gene-mod-icon-chest-right"><img /></div>
+                </div>
+                <div class="perk-tree-row">
+                    <div class="gene-mods-body-part">
+                        <span>Skin</span>
+                    </div>
+                    <div class="perk-icon gene-mod-icon" id="gene-mod-icon-skin-left"><img /></div>
+                    <div class="perk-icon gene-mod-icon" id="gene-mod-icon-skin-right"><img /></div>
+                </div>
+                <div class="perk-tree-row">
+                    <div class="gene-mods-body-part">
+                        <span>Legs</span>
+                    </div>
+                    <div class="perk-icon gene-mod-icon" id="gene-mod-icon-legs-left"><img /></div>
+                    <div class="perk-icon gene-mod-icon" id="gene-mod-icon-legs-right"><img /></div>
+                </div>
+            </div>
+            <div id="perk-tree-details" class="hidden">
+                <div id="perk-tree-details-name"></div>
+                <div id="gene-mod-costs">
+                    <div>
+                        §<span id="gene-mod-costs-money"></span>
+                    </div>
+                    <div>
+                        <img src="assets/img/misc-icons/meld.png" /><span id="gene-mod-costs-meld"></span>
+                    </div>
+                    <div>
+                        <img src="assets/img/misc-icons/time.png" /><span id="gene-mod-costs-time-days"></span>&nbsp;days
+                    </div>
+                </div>
+                <div id="perk-tree-details-description"></div>
+                <div id="gene-mod-added-fatigue"></div>
+                <div id="gene-mod-required-research"></div>
+            </div>
+        </div>
+    </section>
+</template>
+
 <template id="template-perk-tree-display-page">
     <section id="perk-tree-header-section" class="section js-section">
         <header class="section-header">
@@ -134,6 +201,92 @@
             <div id="perk-tree-details" class="hidden">
                 <div id="perk-tree-details-name"></div>
                 <div id="perk-tree-details-stat-bonuses">Stat bonuses: Aim: <span id="perk-stat-aim"></span>, Will: <span id="perk-stat-will"></span>, Mobility: <span id="perk-stat-mobility"></span></div>
+                <div id="perk-tree-details-description"></div>
+            </div>
+        </div>
+    </section>
+</template>
+
+<template id="template-psi-training-display-page">
+    <section id="perk-tree-header-section" class="section js-section">
+        <header class="section-header">
+            <div id="perk-tree-header-text" class="section-wrapper">
+                Psionic Training
+            </div>
+        </header>
+
+        <div id="perk-tree-content-section" class="section-content">
+            <div>
+                <div class="perk-tree-row">
+                    <div class="perk-tree-rank-name">
+                        <div>Awakened</div>
+                        <div class="flex-single-row">
+                            <div class="psi-ability-fatigue">+24 hours fatigue</div>
+                        </div>
+                    </div>
+                    <div class="perk-icon psi-ability-icon" data-psi-ability="psi_regen_biofield"><img src="assets/img/perk-icons/psi_regen_biofield.png" /></div>
+                    <div class="perk-icon psi-ability-icon" data-psi-ability="psi_neural_feedback"><img src="assets/img/perk-icons/psi_neural_feedback.png" /></div>
+                    <div class="perk-icon psi-ability-icon" data-psi-ability="psi_mindfray"><img src="assets/img/perk-icons/psi_mindfray.png" /></div>
+                </div>
+                <div class="perk-tree-row">
+                    <div class="perk-tree-rank-name">
+                        <div>Sensitive</div>
+                        <div class="flex-single-row">
+                            <div class="psi-ability-fatigue">+6 hours fatigue</div>
+                        </div>
+                    </div>
+                    <div class="perk-icon psi-ability-icon" data-psi-ability="psi_distortion_field"><img src="assets/img/perk-icons/psi_distortion_field.png" /></div>
+                    <div class="perk-slot-empty" ><div></div></div>
+                    <div class="perk-icon psi-ability-icon" data-psi-ability="psi_psi_inspiration"><img src="assets/img/perk-icons/psi_psi_inspiration.png" /></div>
+                </div>
+                <div class="perk-tree-row">
+                    <div class="perk-tree-rank-name">
+                        <div>Talent</div>
+                        <div class="flex-single-row">
+                            <div class="psi-ability-fatigue">+6 hours fatigue</div>
+                        </div>
+                    </div>
+                    <div class="perk-icon psi-ability-icon" data-psi-ability="psi_psi_panic"><img src="assets/img/perk-icons/psi_psi_panic.png" /></div>
+                    <div class="perk-slot-empty" ><div></div></div>
+                    <div class="perk-icon psi-ability-icon" data-psi-ability="psi_mind_merge"><img src="assets/img/perk-icons/psi_mind_merge.png" /></div>
+                </div>
+                <div class="perk-tree-row">
+                    <div class="perk-tree-rank-name">
+                        <div>Adept</div>
+                        <div class="flex-single-row">
+                            <div class="psi-ability-fatigue">+12 hours fatigue</div>
+                        </div>
+                    </div>
+                    <div class="perk-icon psi-ability-icon" data-psi-ability="psi_psychokinetic_strike"><img src="assets/img/perk-icons/psi_psychokinetic_strike.png" /></div>
+                    <div class="perk-icon psi-ability-icon" data-psi-ability="psi_pyrokinesis"><img src="assets/img/perk-icons/psi_pyrokinesis.png" /></div>
+                    <div class="perk-icon psi-ability-icon" data-psi-ability="psi_telekinetic_field"><img src="assets/img/perk-icons/psi_telekinetic_field.png" /></div>
+                </div>
+                <div class="perk-tree-row">
+                    <div class="perk-tree-rank-name">
+                        <div>Psion</div>
+                        <div class="flex-single-row">
+                            <div class="psi-ability-fatigue">+12 hours fatigue</div>
+                        </div>
+                    </div>
+                    <div class="perk-slot-empty" ><div></div></div>
+                    <div class="perk-icon psi-ability-icon" data-psi-ability="psi_mind_control"><img src="assets/img/perk-icons/psi_mind_control.png" /></div>
+                    <div class="perk-slot-empty" ><div></div></div>
+                </div>
+                <div class="perk-tree-row">
+                    <div class="perk-tree-rank-name">
+                        <div>Master</div>
+                        <div class="flex-single-row">
+                            <div class="psi-ability-fatigue">+12 hours fatigue</div>
+                        </div>
+                    </div>
+                    <div class="perk-slot-empty" ><div></div></div>
+                    <div class="perk-icon psi-ability-icon" data-psi-ability="psi_rift"><img src="assets/img/perk-icons/psi_rift.png" /></div>
+                    <div class="perk-slot-empty" ><div></div></div>
+                </div>
+            </div>
+            <div id="perk-tree-details" class="hidden">
+                <div id="perk-tree-details-name"></div>
+                <div id="perk-tree-details-prerequisite"></div>
                 <div id="perk-tree-details-description"></div>
             </div>
         </div>

@@ -1,16 +1,13 @@
-const clipboard = require("electron").clipboard;
+const { clipboard } = require("electron");
 const visData = require("vis-data");
 const visNetwork = require("vis-network");
 
-const dataHelper = require("../data-helper");
-const PageManager = require("../page-manager");
-const templates = require("../templates");
+import { AppPage, PageHistoryState } from "./app-page.js";
+import * as DataHelper from "../data-helper.js";
+import PageManager from "../page-manager.js";
+import * as Templates from "../templates.js";
 
-const appPageModule = require("./app-page");
-const AppPage = appPageModule.AppPage;
-const PageHistoryState = appPageModule.PageHistoryState;
-
-const techTreeNetworkData = require("../../data/tech-tree-network-positions");
+const techTreeNetworkData = await fetch("assets/data/tech-tree-network-positions.json").then(response => response.json());
 
 class TechTreeDisplayPage extends AppPage {
 
@@ -110,7 +107,7 @@ class TechTreeDisplayPage extends AppPage {
         }
     }
 
-    load(hostingElement, event, data) {
+    async load(hostingElement, event, data) {
         if (TechTreeDisplayPage.treePage) {
             // Need to redraw the network after a very short delay, because on the initial load
             // it doesn't understand the viewport size and won't draw all of the nodes
@@ -138,8 +135,7 @@ class TechTreeDisplayPage extends AppPage {
             }
         };
 
-        // TODO probably a good idea to preload the whole tree once and then just display that in future
-        const template = templates.instantiateTemplate("template-tech-tree-display-page");
+        const template = await Templates.instantiateTemplate("assets/html/templates/pages/tech-tree-display-page.html", "template-tech-tree-display-page");
         TechTreeDisplayPage.treePage = template;
 
         const treeContainer = template.querySelector("#tech-tree-content-section");
@@ -169,7 +165,7 @@ class TechTreeDisplayPage extends AppPage {
         for (let i = 0; i < techTreeNetworkData.length; i++) {
             const nodeData = techTreeNetworkData[i];
             const isResearchNode = nodeData.id.startsWith("research");
-            const tech = isResearchNode ? dataHelper.technologies[nodeData.id] : null;
+            const tech = isResearchNode ? DataHelper.technologies[nodeData.id] : null;
 
             const nodeDefinition = {
                 id: nodeData.id,
@@ -394,7 +390,7 @@ class TechTreeDisplayPage extends AppPage {
 
     _highlightConnectedEdgesToEdge(edgeId, network, controlRedraw) {
         const edgeData = this._findConnectedEdgeTree(edgeId, network);
-        const owningNodeGroup = dataHelper.technologies[edgeData.owningNode].ui.group;
+        const owningNodeGroup = DataHelper.technologies[edgeData.owningNode].ui.group;
         const targetColor = this._groupConfig[owningNodeGroup].color.edgeHover;
 
         // Disable redraw or else we suffer a huge performance hit as every edge update triggers a draw
@@ -441,7 +437,7 @@ class TechTreeDisplayPage extends AppPage {
 
     _restoreConnectedEdgesToEdge(edgeId, network, controlRedraw) {
         const edgeData = this._findConnectedEdgeTree(edgeId, network);
-        const owningNodeGroup = dataHelper.technologies[edgeData.owningNode].ui.group;
+        const owningNodeGroup = DataHelper.technologies[edgeData.owningNode].ui.group;
         const targetColor = this._groupConfig[owningNodeGroup].color.edgeNormal;
 
         if (controlRedraw) {
@@ -493,4 +489,4 @@ class TechTreeDisplayPage extends AppPage {
     }
 }
 
-module.exports.TechTreeDisplayPage = TechTreeDisplayPage;
+export default TechTreeDisplayPage;

@@ -1,10 +1,7 @@
-const appPageModule = require("./app-page");
-const dataHelper = require("../data-helper");
-const templates = require("../templates");
-const widgets = require("../widgets");
-
-const AppPage = appPageModule.AppPage;
-const PageHistoryState = appPageModule.PageHistoryState;
+import { AppPage, PageHistoryState } from "./app-page.js";
+import * as DataHelper from "../data-helper.js";
+import * as Templates from "../templates.js";
+import * as Widgets from "../widgets.js";
 
 class PerkTreeDisplayPage extends AppPage {
     constructor() {
@@ -15,18 +12,18 @@ class PerkTreeDisplayPage extends AppPage {
         this.soldierClass = null;
     }
 
-    generatePreview(data) {
+    async generatePreview(data) {
         if (!data.itemId) {
             return null;
         }
 
-        const template = templates.instantiateTemplate("template-perk-preview");
+        const template = await Templates.instantiateTemplate("assets/html/templates/pages/perk-tree-display-page.html", "template-perk-preview");
 
         // Perk and icon class are handled universally, but each type has the opportunity to inject its own logic too
         let perk = null, iconClass = null;
 
         if (data.itemId.startsWith("gene_mod")) {
-            const geneMod = dataHelper.geneMods[data.itemId];
+            const geneMod = DataHelper.geneMods[data.itemId];
             perk = geneMod.perk;
             iconClass = "preview-gene-mod-icon";
 
@@ -36,11 +33,11 @@ class PerkTreeDisplayPage extends AppPage {
             template.querySelector("#perk-preview-cost-time").textContent = geneMod.cost_time_days;
         }
         else if (data.itemId.startsWith("perk")) {
-            perk = dataHelper.perks[data.itemId];
+            perk = DataHelper.perks[data.itemId];
             iconClass = "preview-perk-icon";
         }
         else if (data.itemId.startsWith("psi")) {
-            perk = dataHelper.psiAbilities[data.itemId];
+            perk = DataHelper.psiAbilities[data.itemId];
             iconClass = "preview-psi-ability-icon";
         }
 
@@ -54,7 +51,7 @@ class PerkTreeDisplayPage extends AppPage {
         return template;
     }
 
-    load(hostingElement, event, data) {
+    async load(hostingElement, event, data) {
         this.highlightedItem = data.highlighted;
 
         if (data.displayMode == "class-perks") {
@@ -86,10 +83,10 @@ class PerkTreeDisplayPage extends AppPage {
         return new PageHistoryState(this, historyData);
     }
 
-    _loadClassPerksTree(data) {
-        this.soldierClass = dataHelper.soldierClasses[data.classId];
+    async _loadClassPerksTree(data) {
+        this.soldierClass = DataHelper.soldierClasses[data.classId];
 
-        const template = templates.instantiateTemplate("template-perk-tree-display-page");
+        const template = await Templates.instantiateTemplate("assets/html/templates/pages/perk-tree-display-page.html", "template-perk-tree-display-page");
 
         // Update the header with the name of the class
         const headerText = template.querySelector("#perk-tree-header-text");
@@ -123,7 +120,7 @@ class PerkTreeDisplayPage extends AppPage {
     }
 
     _loadGeneModDetails(geneModId, container) {
-        const geneMod = dataHelper.geneMods[geneModId];
+        const geneMod = DataHelper.geneMods[geneModId];
         const perk = geneMod.perk;
 
         container = container || document.body;
@@ -138,16 +135,16 @@ class PerkTreeDisplayPage extends AppPage {
 
         const researchElement = container.querySelector("#gene-mod-required-research");
         researchElement.textContent = "Required research: ";
-        researchElement.appendChild(widgets.createInAppLink(geneMod.research_prerequisite));
+        researchElement.appendChild(Widgets.createInAppLink(geneMod.research_prerequisite));
     }
 
-    _loadGeneModTree() {
-        const template = templates.instantiateTemplate("template-gene-mods-display-page");
+    async _loadGeneModTree() {
+        const template = await Templates.instantiateTemplate("assets/html/templates/pages/perk-tree-display-page.html", "template-gene-mods-display-page");
 
         template.querySelector("#perk-tree-header-text").textContent = "Gene Mods";
 
-        for (let id in dataHelper.geneMods) {
-            const mod = dataHelper.geneMods[id];
+        for (let id in DataHelper.geneMods) {
+            const mod = DataHelper.geneMods[id];
             const iconElement = template.querySelector(`#gene-mod-icon-${mod.body_part}-${mod.ui_side}`);
             const iconImage = iconElement.querySelector("img");
 
@@ -167,8 +164,8 @@ class PerkTreeDisplayPage extends AppPage {
         return template;
     }
 
-    _loadPsiTree() {
-        const template = templates.instantiateTemplate("template-psi-training-display-page");
+    async _loadPsiTree() {
+        const template = await Templates.instantiateTemplate("assets/html/templates/pages/perk-tree-display-page.html", "template-psi-training-display-page");
 
         template.querySelectorAll(".psi-ability-icon img").forEach(iconImage => {
             iconImage.addEventListener("click", this._onPsiAbilityClick.bind(this));
@@ -261,7 +258,7 @@ class PerkTreeDisplayPage extends AppPage {
         event.preventDefault();
 
         const perkId = event.target.dataset.perkId;
-        const perk = dataHelper.perks[perkId];
+        const perk = DataHelper.perks[perkId];
         document.getElementById("perk-tree-details").classList.remove("hidden");
         document.getElementById("perk-tree-details-name").textContent = perk.name;
         document.getElementById("perk-tree-details-description").textContent = perk.description;
@@ -308,7 +305,7 @@ class PerkTreeDisplayPage extends AppPage {
         event.preventDefault();
 
         const abilityId = event.target.parentElement.dataset.psiAbility;
-        const ability = dataHelper.psiAbilities[abilityId];
+        const ability = DataHelper.psiAbilities[abilityId];
 
         document.getElementById("perk-tree-details").classList.remove("hidden");
         document.getElementById("perk-tree-details-name").textContent = ability.name;
@@ -318,7 +315,7 @@ class PerkTreeDisplayPage extends AppPage {
         if (ability.research_prerequisite) {
             prerequisiteElement.classList.remove("hidden-collapse");
             prerequisiteElement.textContent = "Requires ";
-            prerequisiteElement.appendChild(widgets.createInAppLink(ability.research_prerequisite));
+            prerequisiteElement.appendChild(Widgets.createInAppLink(ability.research_prerequisite));
         }
         else if (abilityId == "psi_rift") {
             prerequisiteElement.classList.remove("hidden-collapse");
@@ -331,4 +328,4 @@ class PerkTreeDisplayPage extends AppPage {
     }
 }
 
-module.exports.PerkTreeDisplayPage = PerkTreeDisplayPage;
+export default PerkTreeDisplayPage;

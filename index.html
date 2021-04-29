@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8" />
 
@@ -19,17 +18,6 @@
     <link rel="stylesheet" href="assets/css/tech-details.css" />
     <link rel="stylesheet" href="assets/css/tech-tree.css" />
     <link rel="stylesheet" href="assets/css/widgets.css" />
-
-    <!-- Page templates -->
-    <link rel="import" href="assets/html/templates/pages/gene-mods-display-page.html" />
-    <link rel="import" href="assets/html/templates/pages/class-selection-page.html" />
-    <link rel="import" href="assets/html/templates/pages/foundry-project-display-page.html" />
-    <link rel="import" href="assets/html/templates/pages/item-display-page.html" />
-    <link rel="import" href="assets/html/templates/pages/perk-tree-display-page.html" />
-    <link rel="import" href="assets/html/templates/pages/psi-training-display-page.html" />
-    <link rel="import" href="assets/html/templates/pages/search-results-page.html" />
-    <link rel="import" href="assets/html/templates/pages/tech-details-page.html" />
-    <link rel="import" href="assets/html/templates/pages/tech-tree-display-page.html" />
 
     <!-- Widget templates -->
     <link rel="import" href="assets/html/templates/widgets/selectable-icon.html" data-template-id="selectable-icon" />
@@ -108,10 +96,8 @@
 
     <main id="page-content" class="content js-content"></main>
 
-    <script>
-        require("./assets/js/nav");
-        require("./assets/js/page-manager");
-    </script>
+    <script type="module" src="assets/js/nav.js"></script>
+    <script type="module" src="assets/js/page-manager.js"></script>
 </body>
 
 </html>

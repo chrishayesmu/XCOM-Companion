@@ -1,11 +1,8 @@
-const appPageModule = require("./app-page");
-const dataHelper = require("../data-helper");
-const templates = require("../templates");
-const utils = require("../utils");
-const widgets = require("../widgets");
-
-const AppPage = appPageModule.AppPage;
-const PageHistoryState = appPageModule.PageHistoryState;
+import { AppPage, PageHistoryState } from "./app-page.js";
+import * as DataHelper from "../data-helper.js";
+import * as Templates from "../templates.js";
+import * as Widgets from "../widgets.js";
+import * as Utils from "../utils.js";
 
 class TechDetailsPage extends AppPage {
     constructor() {
@@ -14,35 +11,35 @@ class TechDetailsPage extends AppPage {
         this.techId = null;
     }
 
-    generatePreview(data) {
+    async generatePreview(data) {
         if (!data.techId) {
             return null;
         }
 
-        const tech = dataHelper.technologies[data.techId];
+        const tech = DataHelper.technologies[data.techId];
 
         if (!tech) {
             return null;
         }
 
-        const template = templates.instantiateTemplate("template-tech-preview");
+        const template = await Templates.instantiateTemplate("assets/html/templates/pages/tech-details-page.html", "template-tech-preview");
         template.querySelector("#tech-preview-icon img").src = tech.icon;
         template.querySelector("#tech-preview-name").textContent = tech.name;
-        template.querySelector("#tech-preview-description").textContent = utils.truncateText(tech.description, 300);
+        template.querySelector("#tech-preview-description").textContent = Utils.truncateText(tech.description, 300);
 
         return template;
     }
 
-    load(hostingElement, event, data) {
-        const tech = dataHelper.technologies[data.techId];
+    async load(hostingElement, event, data) {
+        const tech = DataHelper.technologies[data.techId];
 
         return this.loadFromDataObject(tech);
     }
 
-    loadFromDataObject(tech) {
+    async loadFromDataObject(tech) {
         this.techId = tech.id;
 
-        const template = templates.instantiateTemplate("template-tech-details-page");
+        const template = await Templates.instantiateTemplate("assets/html/templates/pages/tech-details-page.html", "template-tech-details-page");
 
         template.querySelector("#tech-details-name").textContent = tech.name;
         template.querySelector("#tech-details-description").textContent = tech.description;
@@ -91,7 +88,7 @@ class TechDetailsPage extends AppPage {
             span.textContent = tech.cost[costType] + "x";
             div.appendChild(span);
 
-            const itemLink = widgets.createInAppLink(costType);
+            const itemLink = Widgets.createInAppLink(costType);
             div.appendChild(itemLink);
             container.appendChild(div);
         }
@@ -110,7 +107,7 @@ class TechDetailsPage extends AppPage {
 
         for (let techId in tech.leadsTo) {
             const div = document.createElement("div");
-            const link = widgets.createInAppLink(techId);
+            const link = Widgets.createInAppLink(techId);
 
             div.appendChild(link);
             leadsToContainer.appendChild(div);
@@ -128,7 +125,7 @@ class TechDetailsPage extends AppPage {
                 const prereq = tech.prerequisites.research[i];
 
                 const div = document.createElement("div");
-                const link = widgets.createInAppLink(prereq);
+                const link = Widgets.createInAppLink(prereq);
 
                 div.appendChild(link);
                 prereqsContainer.appendChild(div);
@@ -144,7 +141,7 @@ class TechDetailsPage extends AppPage {
 
                 const div = document.createElement("div");
                 div.textContent = "XCOM must possess ";
-                const link = widgets.createInAppLink(prereq);
+                const link = Widgets.createInAppLink(prereq);
 
                 div.appendChild(link);
                 prereqsContainer.appendChild(div);
@@ -156,7 +153,7 @@ class TechDetailsPage extends AppPage {
                 hasPrereqs = true;
 
                 let missionName = tech.prerequisites.missions[i].replace("mission_", "").replace("_downed", "");
-                missionName = utils.capitalizeEachWord(missionName);
+                missionName = Utils.capitalizeEachWord(missionName);
 
                 prereqsContainer.appendChild(document.createElement("br"));
 
@@ -203,11 +200,11 @@ class TechDetailsPage extends AppPage {
             ul.appendChild(li);
 
             li = document.createElement("li");
-            li.innerHTML = "20% more " + widgets.createInAppLink("item_alien_alloy").outerHTML + " and " + widgets.createInAppLink("item_elerium").outerHTML + " salvaged from UFOs of this type";
+            li.innerHTML = "20% more " + Widgets.createInAppLink("item_alien_alloy").outerHTML + " and " + Widgets.createInAppLink("item_elerium").outerHTML + " salvaged from UFOs of this type";
             ul.appendChild(li);
 
             li = document.createElement("li");
-            li.innerHTML = "If the " + widgets.createInAppLink("foundry_ufo_scanners").outerHTML + " Foundry project is complete, the health of UFOs of this type is visible during interception";
+            li.innerHTML = "If the " + Widgets.createInAppLink("foundry_ufo_scanners").outerHTML + " Foundry project is complete, the health of UFOs of this type is visible during interception";
             ul.appendChild(li);
 
             unlocksContainer.appendChild(div);
@@ -222,7 +219,7 @@ class TechDetailsPage extends AppPage {
                 const request = tech.unlocks.councilRequests[i];
 
                 const div = document.createElement("div");
-                div.appendChild(widgets.createInAppLink(request, { addPrefix: true }));
+                div.appendChild(Widgets.createInAppLink(request, { addPrefix: true }));
 
                 unlocksContainer.appendChild(div);
             }
@@ -231,7 +228,7 @@ class TechDetailsPage extends AppPage {
         if (tech.unlocks.facilities) {
             for (let i = 0; i < tech.unlocks.facilities.length; i++) {
                 const div = document.createElement("div");
-                div.appendChild(widgets.createInAppLink(tech.unlocks.facilities[i], { addPrefix: true }));
+                div.appendChild(Widgets.createInAppLink(tech.unlocks.facilities[i], { addPrefix: true }));
 
                 unlocksContainer.appendChild(div);
             }
@@ -240,7 +237,7 @@ class TechDetailsPage extends AppPage {
         if (tech.unlocks.geneMods) {
             for (let i = 0; i < tech.unlocks.geneMods.length; i++) {
                 const div = document.createElement("div");
-                div.appendChild(widgets.createInAppLink(tech.unlocks.geneMods[i], { addPrefix: true }));
+                div.appendChild(Widgets.createInAppLink(tech.unlocks.geneMods[i], { addPrefix: true }));
 
                 unlocksContainer.appendChild(div);
             }
@@ -249,7 +246,7 @@ class TechDetailsPage extends AppPage {
         if (tech.unlocks.foundryProjects) {
             for (let i = 0; i < tech.unlocks.foundryProjects.length; i++) {
                 const div = document.createElement("div");
-                div.appendChild(widgets.createInAppLink(tech.unlocks.foundryProjects[i], { addPrefix: true }));
+                div.appendChild(Widgets.createInAppLink(tech.unlocks.foundryProjects[i], { addPrefix: true }));
 
                 unlocksContainer.appendChild(div);
             }
@@ -258,7 +255,7 @@ class TechDetailsPage extends AppPage {
         if (tech.unlocks.items) {
             for (let i = 0; i < tech.unlocks.items.length; i++) {
                 const div = document.createElement("div");
-                div.appendChild(widgets.createInAppLink(tech.unlocks.items[i], { addPrefix: true }));
+                div.appendChild(Widgets.createInAppLink(tech.unlocks.items[i], { addPrefix: true }));
 
                 unlocksContainer.appendChild(div);
             }
@@ -267,14 +264,14 @@ class TechDetailsPage extends AppPage {
         if (tech.unlocks.psiAbilities) {
             for (let i = 0; i < tech.unlocks.psiAbilities.length; i++) {
                 const div = document.createElement("div");
-                div.appendChild(widgets.createInAppLink(tech.unlocks.psiAbilities[i], { addPrefix: true }));
+                div.appendChild(Widgets.createInAppLink(tech.unlocks.psiAbilities[i], { addPrefix: true }));
 
                 unlocksContainer.appendChild(div);
             }
         }
 
         if (tech.grants_research_credit) {
-            const credit = utils.capitalizeEachWord(tech.grants_research_credit);
+            const credit = Utils.capitalizeEachWord(tech.grants_research_credit);
 
             const div = document.createElement("div");
             div.textContent = "Research and Foundry Credit: " + credit;
@@ -283,4 +280,4 @@ class TechDetailsPage extends AppPage {
     }
 }
 
-module.exports.TechDetailsPage = TechDetailsPage;
+export default TechDetailsPage;

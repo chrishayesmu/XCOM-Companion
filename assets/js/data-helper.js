@@ -1,13 +1,13 @@
 // Load all the JSON data at once
-const baseFacilityData = require("../data/base-facilities");
-const councilRequestData = require("../data/council-requests");
-const foundryProjectData = require("../data/foundry-projects");
-const geneModData = require("../data/gene-mods");
-const itemData = require("../data/items");
-const perkData = require("../data/perks");
-const psiAbilityData = require("../data/psi-abilities");
-const soldierClassData = require("../data/soldier-classes");
-const techTreeData = require("../data/tech-tree");
+const baseFacilityData = await fetch("assets/data/base-facilities.json").then(response => response.json());
+const councilRequestData = await fetch("assets/data/council-requests.json").then(response => response.json());
+const foundryProjectData = await fetch("assets/data/foundry-projects.json").then(response => response.json());
+const geneModData = await fetch("assets/data/gene-mods.json").then(response => response.json());
+const itemData = await fetch("assets/data/items.json").then(response => response.json());
+const perkData = await fetch("assets/data/perks.json").then(response => response.json());
+const psiAbilityData = await fetch("assets/data/psi-abilities.json").then(response => response.json());
+const soldierClassData = await fetch("assets/data/soldier-classes.json").then(response => response.json());
+const techTreeData = await fetch("assets/data/tech-tree.json").then(response => response.json());
 
 // ------------------------------------------------------------------
 // Process the data into a form we can readily use throughout the app
@@ -409,15 +409,24 @@ function getMecClasses() {
     return classes;
 }
 
+const baseFacilities = baseFacilityData.facilities;
+const foundryProjects = foundryProjectData.foundry_projects;
+const geneMods = geneModData.gene_mods;
+const items = itemData.items;
+const perks = perkData.perks;
+const psiAbilities = psiAbilityData.abilities;
+const technologies = techTreeData.technologies;
 
-module.exports.baseFacilities = baseFacilityData.facilities;
-module.exports.councilRequests = councilRequests;
-module.exports.foundryProjects = foundryProjectData.foundry_projects;
-module.exports.geneMods = geneModData.gene_mods;
-module.exports.getInfantryClasses = getInfantryClasses;
-module.exports.getMecClasses = getMecClasses;
-module.exports.items = itemData.items;
-module.exports.perks = perkData.perks;
-module.exports.psiAbilities = psiAbilityData.abilities;
-module.exports.soldierClasses = soldierClasses;
-module.exports.technologies = techTreeData.technologies;
+export {
+    baseFacilities,
+    councilRequests,
+    foundryProjects,
+    geneMods,
+    getInfantryClasses,
+    getMecClasses,
+    items,
+    perks,
+    psiAbilities,
+    soldierClasses,
+    technologies
+};
