@@ -127,12 +127,14 @@
         "item_alien_entertainment": {
             "name": "Alien Entertainment",
             "description": "<font color='#32CD32'>This item has no research benefit, and can be sold freely or transferred to council countries.</font> We can only assume this bizarre device is some form of entertainment for the aliens. It appears to induce a euphoric state in the user.",
+            "tactical_text": "<ul><li>Obtained from raids on alien bases</li></ul>",
             "type": "alien_device",
             "sell_value": 250
         },
         "item_alien_entertainment_damaged": {
             "name": "Alien Entertainment (damaged)",
             "description": "<font color='#32CD32'>This item has no research benefit, and can be sold freely.</font> Although interesting, this device is too heavily damaged for us to conduct any research of value on.",
+            "tactical_text": "<ul><li>Obtained from raids on alien bases</li></ul>",
             "type": "alien_device",
             "sell_only": true,
             "sell_value": 5
@@ -140,6 +142,7 @@
         "item_alien_food": {
             "name": "Alien Food",
             "description": "<font color='#32CD32'>This item has no research benefit, and can be sold freely.</font> This...slurry...of varying genetic material has a considerable nutrient content, and could be used to provide sustenance to the aliens. Unfortunately, this mixture also contains several key markers indicating the presence of human DNA.",
+            "tactical_text": "<ul><li>Obtained from raids on alien bases and large UFOs</li><li>Has a 50% chance to be damaged in a UFO shot down with conventional weaponry</li><li>20% less likely to be damaged in a UFO shot down with an <a data-page-on-click='item-display-page' data-pagearg-item-id='item_emp_cannon'>EMP Cannon</a></li></ul>",
             "type": "alien_device",
             "sell_only": true,
             "sell_value": 10
@@ -147,6 +150,7 @@
         "item_alien_food_damaged": {
             "name": "Alien Food (damaged)",
             "description": "<font color='#32CD32'>This item has no research benefit, and can be sold freely.</font> The composition of the alien food supply is intriguing, but this equipment is too damaged to risk transporting it.",
+            "tactical_text": "<ul><li>Obtained from raids on alien bases and large UFOs</li><li>Has a 50% chance to be damaged in a UFO shot down with conventional weaponry</li><li>20% less likely to be damaged in a UFO shot down with an <a data-page-on-click='item-display-page' data-pagearg-item-id='item_emp_cannon'>EMP Cannon</a></li></ul>",
             "type": "alien_device",
             "sell_only": true,
             "sell_value": 5
@@ -196,12 +200,14 @@
         "item_alien_stasis_tank": {
             "name": "Alien Stasis Tank",
             "description": "These tanks appear to hold the alien's captives in a comatose state until they are ready for further experimentation.",
+            "tactical_text": "<ul><li>Obtained from raids on alien bases and large UFOs</li><li>Has a 70% chance to be damaged in a UFO shot down with conventional weaponry</li><li>20% less likely to be damaged in a UFO shot down with an <a data-page-on-click='item-display-page' data-pagearg-item-id='item_emp_cannon'>EMP Cannon</a></li></ul>",
             "type": "alien_device",
             "sell_value": 15
         },
         "item_alien_stasis_tank_damaged": {
             "name": "Alien Stasis Tank (damaged)",
             "description": "<font color='#32CD32'>This item has no research benefit, and can be sold freely.</font> The technology used in these tanks would surely be of value to our research, but these examples are too heavily damaged for us to study.",
+            "tactical_text": "<ul><li>Obtained from raids on alien bases and large UFOs</li><li>Has a 70% chance to be damaged in a UFO shot down with conventional weaponry</li><li>20% less likely to be damaged in a UFO shot down with an <a data-page-on-click='item-display-page' data-pagearg-item-id='item_emp_cannon'>EMP Cannon</a></li></ul>",
             "type": "alien_device",
             "sell_only": true,
             "sell_value": 5
@@ -209,12 +215,14 @@
         "item_alien_surgery": {
             "name": "Alien Surgery",
             "description": "Although rudimentary in appearance, this device must play some role in the alien's unconscionable experiments on the human captives housed here.",
+            "tactical_text": "<ul><li>Obtained from raids on alien bases and large UFOs</li><li>Has a 70% chance to be damaged in a UFO shot down with conventional weaponry</li><li>20% less likely to be damaged in a UFO shot down with an <a data-page-on-click='item-display-page' data-pagearg-item-id='item_emp_cannon'>EMP Cannon</a></li></ul>",
             "type": "alien_device",
             "sell_value": 45
         },
         "item_alien_surgery_damaged": {
             "name": "Alien Surgery (damaged)",
             "description": "<font color='#32CD32'>This item has no research benefit, and can be sold freely.</font> Discovering the purpose of this bizarre equipment would surely be beneficial, but it's of no value to us after sustaining so much damage.",
+            "tactical_text": "<ul><li>Obtained from raids on alien bases and large UFOs</li><li>Has a 70% chance to be damaged in a UFO shot down with conventional weaponry</li><li>20% less likely to be damaged in a UFO shot down with an <a data-page-on-click='item-display-page' data-pagearg-item-id='item_emp_cannon'>EMP Cannon</a></li></ul>",
             "type": "alien_device",
             "sell_only": true,
             "sell_value": 15
@@ -2025,6 +2033,7 @@
         "item_fusion_core": {
             "name": "Fusion Core",
             "description": "This equipment is part of the fusion core recovered from the largest class of the alien UFOs. We may be able to harness its capabilities for use in an advanced weapon prototype.",
+            "tactical_text": "<ul><li>Obtained from very large UFOs</li><li>Will explode if damaged</li></ul>",
             "type": "alien_device",
             "sell_value": 200
         },
@@ -6539,12 +6548,14 @@
         "item_ufo_flight_computer": {
             "name": "UFO Flight Computer",
             "description": "This system appears to be primarily focused on navigation and celestial mapping, while also providing high-speed collision avoidance during flight.",
+            "tactical_text": "<ul><li>Obtained from crashed or landed UFOs</li><li>Has a 75% chance to be damaged in a UFO shot down with conventional weaponry</li><li>20% less likely to be damaged in a UFO shot down with an <a data-page-on-click='item-display-page' data-pagearg-item-id='item_emp_cannon'>EMP Cannon</a></li></ul>",
             "type": "alien_device",
             "sell_value": 30
         },
         "item_ufo_flight_computer_damaged": {
             "name": "UFO Flight Computer (damaged)",
             "description": "<font color='#32CD32'>This item has no research benefit, and can be sold freely.</font> Although the alien navigational systems are highly advanced, this equipment has taken too much damage for us to study.",
+            "tactical_text": "<ul><li>Obtained from crashed or landed UFOs</li><li>Has a 75% chance to be damaged in a UFO shot down with conventional weaponry</li><li>20% less likely to be damaged in a UFO shot down with an <a data-page-on-click='item-display-page' data-pagearg-item-id='item_emp_cannon'>EMP Cannon</a></li></ul>",
             "type": "alien_device",
             "sell_only": true,
             "sell_value": 15
@@ -6552,12 +6563,14 @@
         "item_ufo_power_source": {
             "name": "UFO Power Source",
             "description": "This power cell is apparently capable of generating enough energy to power the alien craft and its requisite systems. The Elerium core must be the key to its amazing efficiency.",
+            "tactical_text": "<ul><li>Obtained from raids on alien bases and crashed or landed UFOs</li><li>Has a 80% chance to be damaged in a UFO shot down with conventional weaponry</li><li>20% less likely to be damaged in a UFO shot down with an <a data-page-on-click='item-display-page' data-pagearg-item-id='item_emp_cannon'>EMP Cannon</a></li></ul>",
             "type": "alien_device",
             "sell_value": 60
         },
         "item_ufo_power_source_damaged": {
             "name": "UFO Power Source (damaged)",
             "description": "<font color='#32CD32'>This item has no research benefit, and can be sold freely.</font> Researching the alien power source is crucial to our own advances, but this particular example is too far gone to be of any use.",
+            "tactical_text": "<ul><li>Obtained from raids on alien bases and crashed or landed UFOs</li><li>Has a 80% chance to be damaged in a UFO shot down with conventional weaponry</li><li>20% less likely to be damaged in a UFO shot down with an <a data-page-on-click='item-display-page' data-pagearg-item-id='item_emp_cannon'>EMP Cannon</a></li></ul>",
             "type": "alien_device",
             "sell_only": true,
             "sell_value": 30
