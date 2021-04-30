@@ -14,7 +14,6 @@ if (process.mas) {
 let mainWindow = null;
 
 ipcMain.handle("get-window-size", event => {
-    console.log("get-window-size", event);
     return mainWindow.getContentBounds();
 });
 

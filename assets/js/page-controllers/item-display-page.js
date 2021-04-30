@@ -23,7 +23,8 @@ class ItemDisplayPage extends AppPage {
                 showTacticalText: true
             },
             alien_device: {
-                friendlyName: "Alien Device"
+                friendlyName: "Alien Device",
+                showTacticalText: true
             },
             alien_weapon: {
                 friendlyName: "Recovered Alien Weapon"
@@ -164,10 +165,10 @@ class ItemDisplayPage extends AppPage {
             this._populateArmorStats(item, template.querySelector("#item-details-tactical-text"));
         }
         else if (item.type === "aircraft") {
-            template.querySelector("#item-details-tactical-text").appendChild(this._createInterceptorStatsGrid(item));
+            template.querySelector("#item-details-tactical-text").appendChild(await this._createInterceptorStatsGrid(item));
         }
         else if (item.type === "aircraft_weapon") {
-            template.querySelector("#item-details-tactical-text").appendChild(this._createInterceptorWeaponStatsGrid(item));
+            template.querySelector("#item-details-tactical-text").appendChild(await this._createInterceptorWeaponStatsGrid(item));
         }
 
         return template;

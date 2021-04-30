@@ -119,10 +119,9 @@ class PageManager {
         previewPromise.then(preview => {
             if (preview) {
                 this.pagePreviewTooltip.appendChild(preview);
-                this.pagePreviewTooltip.classList.remove("hidden-collapse");
 
                 // tooltip doesn't have a rect until it's part of the DOM, so now we can reposition it
-                this._repositionTooltip(targetElementRect);
+                this._repositionTooltip(targetElementRect).then( () => this.pagePreviewTooltip.classList.remove("hidden-collapse") );
             }
         });
     }
