@@ -45,6 +45,7 @@ class TechDetailsPage extends AppPage {
         template.querySelector("#tech-details-description").textContent = tech.description;
         template.querySelector("#tech-details-image-container img").src = tech.icon;
 
+        this._populateBeneficialCredits(template, tech);
         this._populateCost(template, tech);
         this._populateLeadsTo(template, tech);
         this._populatePrerequisites(template, tech);
@@ -66,6 +67,31 @@ class TechDetailsPage extends AppPage {
         this.techId = null;
 
         return new PageHistoryState(this, historyData);
+    }
+
+    _populateBeneficialCredits(template, tech) {
+        const container = template.querySelector("#tech-details-research-credits");
+
+        if (!tech.benefits_from_research_credit_types) {
+            container.classList.add("hidden-collapse");
+            return;
+        }
+
+        const creditNames = tech.benefits_from_research_credit_types.map(credit => Utils.capitalizeEachWord(credit, "_", " "));
+
+        const creditLinks = tech.benefits_from_research_credit_types.map(creditType => {
+            const sourceTech = DataHelper.getResearchCreditSource(creditType);
+            return Widgets.createInAppLink(sourceTech, {
+                disablePreview: true,
+                linkText: Utils.capitalizeEachWord(creditType, "_", " ")
+            }).outerHTML;
+        });
+
+        container.innerHTML = "Benefits from " + creditLinks.join(", ") + " research credit";
+
+        if (creditLinks.length > 1) {
+            container.innerHTML += "s";
+        }
     }
 
     _populateCost(template, tech) {
@@ -212,19 +238,7 @@ class TechDetailsPage extends AppPage {
             return;
         }
 
-
         // TODO make all unlocks into links
-        if (tech.unlocks.councilRequests) {
-            for (let i = 0; i < tech.unlocks.councilRequests.length; i++) {
-                const request = tech.unlocks.councilRequests[i];
-
-                const div = document.createElement("div");
-                div.appendChild(Widgets.createInAppLink(request, { addPrefix: true }));
-
-                unlocksContainer.appendChild(div);
-            }
-        }
-
         if (tech.unlocks.facilities) {
             for (let i = 0; i < tech.unlocks.facilities.length; i++) {
                 const div = document.createElement("div");
@@ -265,6 +279,17 @@ class TechDetailsPage extends AppPage {
             for (let i = 0; i < tech.unlocks.psiAbilities.length; i++) {
                 const div = document.createElement("div");
                 div.appendChild(Widgets.createInAppLink(tech.unlocks.psiAbilities[i], { addPrefix: true }));
+
+                unlocksContainer.appendChild(div);
+            }
+        }
+
+        if (tech.unlocks.councilRequests) {
+            for (let i = 0; i < tech.unlocks.councilRequests.length; i++) {
+                const request = tech.unlocks.councilRequests[i];
+
+                const div = document.createElement("div");
+                div.appendChild(Widgets.createInAppLink(request, { addPrefix: true }));
 
                 unlocksContainer.appendChild(div);
             }

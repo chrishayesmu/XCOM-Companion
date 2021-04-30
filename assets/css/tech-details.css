@@ -79,7 +79,7 @@
  */
 
 #tech-details-description {
-    height: calc(12em - 40px - 10px); /* Entire row height, minus the research name, minus this element's padding */
+    height: calc(13em - 40px - 10px - 1em); /* Entire row height, minus the research name, minus this element's padding, minus the research credit section */
     padding: 5px 10px;
     margin-right: 18px;
     overflow: auto;
@@ -114,7 +114,7 @@
 
 #tech-details-header-row {
     margin-bottom: 15px;
-    height: 12em;
+    height: 13em;
 }
 
 #tech-details-second-row {

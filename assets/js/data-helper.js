@@ -409,6 +409,18 @@ function getMecClasses() {
     return classes;
 }
 
+function getResearchCreditSource(creditType) {
+    for (let techId in techTreeData.technologies) {
+        const tech = techTreeData.technologies[techId];
+
+        if (tech.grants_research_credit === creditType) {
+            return tech;
+        }
+    }
+
+    return null;
+}
+
 const baseFacilities = baseFacilityData.facilities;
 const foundryProjects = foundryProjectData.foundry_projects;
 const geneMods = geneModData.gene_mods;
@@ -424,6 +436,7 @@ export {
     geneMods,
     getInfantryClasses,
     getMecClasses,
+    getResearchCreditSource,
     items,
     perks,
     psiAbilities,

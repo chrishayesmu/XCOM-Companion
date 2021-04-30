@@ -62,7 +62,7 @@ function createInAppLink(data, options) {
     }
     else if (dataId.startsWith("psi")) {
         link = _createPsiAbilityLink(dataId, options);
-        prefix = "Psi: ";
+        prefix = "Psi Ability: ";
     }
     else if (dataId.startsWith("research")) {
         link = _createTechLink(dataId, options);
@@ -70,6 +70,15 @@ function createInAppLink(data, options) {
     }
     else {
         console.error("Don't know how to create in-app link for ID " + dataId);
+        return null;
+    }
+
+    if (options.disablePreview) {
+        link.setAttribute("data-pagearg-no-preview", true);
+    }
+
+    if (options.linkText) {
+        link.textContent = options.linkText;
     }
 
     if (options.addPrefix) {
