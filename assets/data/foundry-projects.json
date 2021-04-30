@@ -3,6 +3,7 @@
         "foundry_advanced_flight": {
             "name": "Advanced Flight",
             "description": "We believe that we can improve the small system flight capabilities of our flying armor and the Hover SHIV designs, considerably increasing their maximum flight time in combat.",
+            "tactical_text": "<ul><li>Increases the maximum fuel (and therefore flight time) for the <a data-page-on-click='item-display-page' data-pagearg-item-id='item_archangel_armor'>Archangel Armor</a>, <a data-page-on-click='item-display-page' data-pagearg-item-id='item_seraph_armor'>Seraph Armor</a>, and <a data-page-on-click='item-display-page' data-pagearg-item-id='item_hover_shiv'>Hover SHIV</a></li></ul>",
             "cost": {
                 "item_alien_alloy": 40,
                 "item_cyberdisc_corpse": 5,
@@ -19,6 +20,7 @@
         "foundry_advanced_repair": {
             "name": "Advanced Repair",
             "description": "As our understanding of alien materials grows, we believe that we can develop processes that would reduce the repair times of our fighter craft, MECs, SHIV units and damaged soldier gear by about one-third.",
+            "tactical_text": "<ul><li>Reduces the repair time of XCOM's aircraft, MECs, SHIVs, and items by roughly one third</li></ul>",
             "cost": {
                 "item_alien_alloy": 100,
                 "item_heavy_floater_corpse": 4,
@@ -33,6 +35,7 @@
         "foundry_advanced_servomotors": {
             "name": "Advanced Servomotors",
             "description": "After a thorough examination, we've been able to replicate the articulated joints of the Mechtoid. We have some designs for gear that will improve mobility for our soldiers and mechanized units, although they may require we understand some other technologies first.",
+            "tactical_text": "<ul><li>All of XCOM's MEC and SHIV units gain the <a data-page-on-click='perk-tree-display-page' data-pagearg-display-mode='single-perk' data-pagearg-item-id='perk_sprinter'>Sprinter</a> perk</li></ul>",
             "cost": {
                 "item_alien_alloy": 60,
                 "item_elerium": 40,
@@ -48,6 +51,7 @@
         "foundry_advanced_surgery": {
             "name": "Advanced Surgery",
             "description": "We think we can adapt some of the aliens' biological research systems into designs that will aid the rapid healing of our personnel.",
+            "tactical_text": "<ul><li>Decreases the time wounded soldiers spend in the infirmary by 30%</li></ul>",
             "cost": {
                 "item_alien_stasis_tank": 12,
                 "item_alien_surgery": 12,
@@ -74,6 +78,7 @@
         "foundry_alien_grenades": {
             "name": "Alien Grenades",
             "description": "We've had a look at an intact alien grenade you recovered, and with a small investment of resources and time we believe that we can upgrade some of our current HE grenades to this new, deadlier version. We should also be able to apply some alloy shards to our current stock of AP grenades, rendering them even more lethal than alien grenades, and to another batch of HE grenades, increasing their area of effect by 40%.",
+            "tactical_text": "<ul><li>XCOM soldiers can use <a data-page-on-click='item-display-page' data-pagearg-item-id='item_alien_grenade'>Alien Grenades</a> as a superior replacement for <a data-page-on-click='item-display-page' data-pagearg-item-id='item_he_grenade'>HE Grenades</a></li><li><a data-page-on-click='item-display-page' data-pagearg-item-id='item_ap_grenade'>AP Grenades</a> gain +2 damage</li><li>HE Grenades gain 40% increased blast radius</li><li>The MEC <a data-page-on-click='item-display-page' data-pagearg-item-id='item_grenade_launcher'>Grenade Launcher</a> is automatically upgraded to fire Alien Grenades</li></ul>",
             "cost": {
                 "item_alien_alloy": 20,
                 "item_alien_grenade": 1,
@@ -88,6 +93,7 @@
         "foundry_alien_metallurgy": {
             "name": "Alien Metallurgy",
             "description": "Now that we have some understanding of these wonderous alien materials, we believe we can use Meld to develop techniques to extract an additional 20 percent more alien alloys from what our salvage teams bring back from ground missions and UFO debris fields.",
+            "tactical_text": "<ul><li>Increases the number of <a data-page-on-click='item-display-page' data-pagearg-item-id='item_alien_alloy'>Alien Alloys</a> recovered during missions by 20%</li></ul>",
             "cost": {
                 "item_alien_alloy": 30,
                 "item_elerium": 10,
@@ -101,6 +107,7 @@
         "foundry_alien_nucleonics": {
             "name": "Alien Nucleonics",
             "description": "Based on our studies of the alien power systems, we believe we can use meld to increase the efficiency by which we extract elerium from alien power sources and wrecks by 20 percent. Unfortunately, this will be a very resource-intensive project that threatens to deplete our stores of other artifacts.",
+            "tactical_text": "<ul><li>Increases the amount of <a data-page-on-click='item-display-page' data-pagearg-item-id='item_elerium'>Elerium</a> recovered during missions by 20%</li></ul>",
             "cost": {
                 "item_alien_alloy": 120,
                 "item_elerium": 40,
@@ -114,6 +121,7 @@
         "foundry_ammo_conservation": {
             "name": "Ammo Conservation",
             "description": "Muton armor contains servomotors that function as automatic weapon loaders, allowing their weapons to carry more ammunition without requiring the soldier to pause for a full reload. We could apply some of the same techniques to our own weapons.",
+            "tactical_text": "<ul><li>All reloadable weapons used by XCOM gain +1 ammo per reload</li><li>Effect does not include items with limited charges per mission, such as <a data-page-on-click='item-display-page' data-pagearg-item-id='item_medikit'>Medikits</a> or the <a data-page-on-click='item-display-page' data-pagearg-item-id='item_grenade_launcher'>Grenade Launcher</a></li></ul>",
             "cost": {
                 "item_alien_alloy": 80,
                 "item_meld": 50,
@@ -129,6 +137,7 @@
         "foundry_armored_fighters": {
             "name": "Armored Fighters",
             "description": "We have learned techniques to convert alien alloys into thin, malleable sheets that we can apply to all of our fighter aircraft without reducing their performance. These should give our aircraft significantly more durability in combat.",
+            "tactical_text": "<ul><li>XCOM's <a data-page-on-click='item-display-page' data-pagearg-item-id='item_interceptor'>Interceptors</a> and <a data-page-on-click='item-display-page' data-pagearg-item-id='item_firestorm'>Firestorms</a> gain +1000 HP</li></ul>",
             "cost": {
                 "item_alien_alloy": 200,
                 "item_elerium": 60,
@@ -144,6 +153,7 @@
         "foundry_base_security_armor": {
             "name": "Base Security: Armor",
             "description": "For a small investment, we can train XCOM HQ's security detail to employ our Phalanx armor suits, improving our personnel's survivability in case of an attack. During a battle, they will automatically equip any unused suits of Phalanx armor in our inventory.",
+            "tactical_text": "<ul><li>Any spare <a data-page-on-click='item-display-page' data-pagearg-item-id='item_phalanx_armor'>Phalanx Armor</a> in XCOM's storage will be equipped by base security personnel during Base Defense missions</li><li>Base personnel are distributed throughout HQ, and the personnel who receive the armor may not be the ones who arrive to aid the Commander</li></ul>",
             "cost": {
                 "money": 20
             },
@@ -154,6 +164,7 @@
         "foundry_base_security_weapons": {
             "name": "Base Security: Weapons",
             "description": "With a minimum of funding, we can train XCOM HQ's security detail on our new laser rifles, improving our ability to defend ourselves in case the worst occurs. During a battle, they will automatically equip any spare laser rifles in our inventory.",
+            "tactical_text": "<ul><li>Any spare <a data-page-on-click='item-display-page' data-pagearg-item-id='item_laser_rifle'>Laser Rifle</a> in XCOM's storage will be equipped by base security personnel during Base Defense missions</li><li>Base personnel are distributed throughout HQ, and the personnel who receive the rifles may not be the ones who arrive to aid the Commander</li></ul>",
             "cost": {
                 "money": 40
             },
@@ -164,6 +175,7 @@
         "foundry_drone_capture": {
             "name": "Drone Capture",
             "description": "We're confident that our Arc Throwers could be upgraded to allow the capture of enemy drones, giving us control of the flying units for the remainder of the combat mission. However, we have not been able to take control of their repair function, which will be disabled.",
+            "tactical_text": "<ul><li>Using the <a data-page-on-click='item-display-page' data-pagearg-item-id='item_arc_thrower'>Arc Thrower</a> on enemy Drones has a 100% chance to capture them for the duration of the mission</li><li>Captured Drones cannot use the Repair skill</li></ul>",
             "cost": {
                 "item_drone_corpse": 30,
                 "item_elerium": 10,
@@ -178,6 +190,7 @@
         "foundry_elerium_afterburners": {
             "name": "Elerium Afterburners",
             "description": "By directly injecting an Elerium particle stream into the exhaust of our aircraft engines, we can give short bursts of speed that will increase our engagement times with alien craft.",
+            "tactical_text": "<ul><li>Increases the time <a data-page-on-click='item-display-page' data-pagearg-item-id='item_interceptor'>Interceptors</a> and <a data-page-on-click='item-display-page' data-pagearg-item-id='item_firestorm'>Firestorms</a> can remain engaged with UFOs by 5 seconds</li></ul>",
             "cost": {
                 "item_alien_alloy": 30,
                 "item_elerium": 30,
@@ -192,6 +205,7 @@
         "foundry_enhanced_ballistics": {
             "name": "Enhanced Ballistics",
             "description": "We believe we can upgrade our ballistic small arms through combining alien materials with our own technologies.",
+            "tactical_text": "<ul><li></li></ul>",
             "cost": {
                 "item_alien_alloy": 10,
                 "item_weapon_fragment": 20,
@@ -218,6 +232,7 @@
         "foundry_enhanced_plasma": {
             "name": "Enhanced Plasma",
             "description": "Now that we understand the challenges of controlling plasma weaponry, we should be able to develop enhancements through investigating various plasma confinement ideas. We expect to be able to make all our plasma, reflex and particle weapons do more damage to enemies, and build optional weapon addons that enhance the weapons' damage capabilities even further.",
+            "tactical_text": "<ul><li>All tactical plasma-based weaponry gains +1 base damage</li><li>No effect for plasma weaponry used by XCOM's aircraft</li></ul>",
             "cost": {
                 "item_alien_alloy": 100,
                 "item_elerium": 100,
@@ -233,6 +248,7 @@
         "foundry_field_repairs": {
             "name": "Field Repairs",
             "description": "After studying one of the small alien drone units, we believe that we could upgrade our Arc Throwers with the drone's 'robotic repair' ability, allowing our soldiers to repair mechanized units in combat.",
+            "tactical_text": "<ul><li><a data-page-on-click='item-display-page' data-pagearg-item-id='item_arc_thrower'>Arc Throwers</a> can be used to repair MECs and SHIVs during missions</li><li>Using the Arc Thrower in this way restores 6 HP</li><li>Like <a data-page-on-click='item-display-page' data-pagearg-item-id='item_medikit'>Medikits</a> and <a data-page-on-click='item-display-page' data-pagearg-item-id='item_restorative_mist'>Restorative Mist</a>, this healing does not prevent a soldier from being wounded after the mission</li></ul>",
             "cost": {
                 "item_alien_alloy": 10,
                 "item_drone_corpse": 10,
@@ -248,6 +264,7 @@
         "foundry_improved_arc_thrower": {
             "name": "Improved Arc Thrower",
             "description": "By increasing the power of our Arc Throwers, we should increase the successful stun rate in combat.",
+            "tactical_text": "<ul><li>Improves the likelihood that the <a data-page-on-click='item-display-page' data-pagearg-item-id='item_arc_thrower'>Arc Thrower</a> will stun enemies</li></ul>",
             "cost": {
                 "item_alien_alloy": 40,
                 "item_drone_corpse": 10,
@@ -262,6 +279,7 @@
         "foundry_improved_avionics": {
             "name": "Improved Avionics",
             "description": "Based on our analysis of UFO behavior, we think we've identified some signatures that our aircraft can track when in weapons range. We believe we can improve all our aircraft weapons' accuracy.",
+            "tactical_text": "<ul><li>XCOM's <a data-page-on-click='item-display-page' data-pagearg-item-id='item_interceptor'>Interceptors</a> and <a data-page-on-click='item-display-page' data-pagearg-item-id='item_firestorm'>Firestorms</a> gain +10 Aim</li></ul>",
             "cost": {
                 "item_alien_alloy": 10,
                 "item_ufo_flight_computer": 3,
@@ -276,6 +294,7 @@
         "foundry_improved_medikit": {
             "name": "Improved Medikit",
             "description": "The flexible physiology of the Thin Men has given us new ideas for improving our Medikits and Restorative Mist units. We now believe we can increase the amount of healing delivered in a single charge by three for medikits and two for restorative mist units.",
+            "tactical_text": "<ul><li>Each charge of the <a data-page-on-click='item-display-page' data-pagearg-item-id='item_medikit'>Medikit</a> heals +3 HP</li><li>Each charge of <a data-page-on-click='item-display-page' data-pagearg-item-id='item_restorative_mist'>Restorative Mist</a> heals +2 HP</li></ul>",
             "cost": {
                 "item_meld": 20,
                 "item_thin_man_corpse": 20,
@@ -289,6 +308,7 @@
         "foundry_improved_salvage": {
             "name": "Improved Salvage",
             "description": "As the demand for more and more alien materials grows, our engineers are proposing more precise techniques of using meld to repair battlefield debris and turn it into salvageable items. We believe we can increase the number of weapon fragments recovered after combat by 20 percent.",
+            "tactical_text": "<ul><li>Increases the number of <a data-page-on-click='item-display-page' data-pagearg-item-id='item_weapon_fragment'>Weapon Fragments</a> recovered during missions by 20%</li></ul>",
             "cost": {
                 "item_alien_alloy": 40,
                 "item_elerium": 20,
@@ -302,6 +322,7 @@
         "foundry_jellied_elerium": {
             "name": "Jellied Elerium",
             "description": "Using Elerium in tactical situations is quite risky; in the absence of a full sized craft's regulator and fuel management systems, adding it to our flamethrowers would be too dangerous. With some additional investment, though, we could devise a formula to increase flamethrower effectiveness in inducing panic without risking our soldiers, and design an addon item that would increase damage.",
+            "tactical_text": "<ul><li>Increases the will check requirement for targets damaged by the <a data-page-on-click='item-display-page' data-pagearg-item-id='item_flamethrower'>Flamethrower</a> to 80 (from 50)</li></ul>",
             "cost": {
                 "item_alien_alloy": 40,
                 "item_elerium": 80,
@@ -317,6 +338,7 @@
         "foundry_mag_pistols": {
             "name": "Mag Pistols",
             "description": "One of our earliest developments in the Foundry, the Magnetic Ordnance Reduction System greatly reduces the recoil of our entire range of sidearms. Utilizing the latest in composite materials, this upgrade will significantly improve the odds of our soldiers scoring a critical hit on their targets.",
+            "tactical_text": "<ul><li>All pistols gain +8 critical chance</li></ul>",
             "cost": {
                 "item_weapon_fragment": 5,
                 "money": 35
@@ -329,6 +351,7 @@
         "foundry_mec_close_combat": {
             "name": "MEC Close Combat",
             "description": "Our advancements in heavy armor technology have enabled us to install better actuators and support structures in the Kinetic Strike Module. This should increase its force output significantly and allow multiple strikes in some cases.",
+            "tactical_text": "<ul><li>All of XCOM's MEC units gain the <a data-page-on-click='perk-tree-display-page' data-pagearg-display-mode='single-perk' data-pagearg-item-id='perk_mec_close_combat'>MEC Close Combat</a> perk</li><li>Using the <a data-page-on-click='item-display-page' data-pagearg-item-id='item_kinetic_strike_module'>Kinetic Strike Module</a> as the first action no longer ends the MEC's turn</li></ul>",
             "cost": {
                 "item_alien_alloy": 60,
                 "item_elerium": 30,
@@ -383,6 +406,7 @@
         "foundry_penetrator_weapons": {
             "name": "Penetrator Weapons",
             "description": "We've noticed that some alien combat robot units bear similarities in design to alien UFOs. We've identified some weaknesses in the designs that we believe we can exploit by upgrading our interceptor weapon systems to penetrate alien armor.",
+            "tactical_text": "<ul><li>All of XCOM's aircraft weaponry gain +25% armor penetration</li></ul>",
             "cost": {
                 "item_alien_alloy": 80,
                 "item_cyberdisc_corpse": 3,
@@ -398,6 +422,7 @@
         "foundry_phoenix_coilguns": {
             "name": "Phoenix Coilguns",
             "description": "We believe we can significantly upgrade our Phoenix Cannon into advanced coilgun designs, significantly increasing its damage output and more than tripling its armor-piercing capabilities.",
+            "tactical_text": "<ul><li>All <a data-page-on-click='item-display-page' data-pagearg-item-id='item_phoenix_cannon'>Phoenix Cannons</a> in XCOM's arsenal are upgraded to <a data-page-on-click='item-display-page' data-pagearg-item-id='item_phoenix_coilgun'>Phoenix Coilguns</a></li><li>Coilguns have +90 damage and +65% armor penetration compared to Cannons</li></ul>",
             "cost": {
                 "item_alien_alloy": 120,
                 "item_elerium": 60,
@@ -429,6 +454,7 @@
         "foundry_quenchguns": {
             "name": "Quenchguns",
             "description": "By adding superconductors and increasing the magnetic field strength in our gauss weaponry, we believe we can double the armor-piercing capabilities of our existing arsenal.",
+            "tactical_text": "<ul><li>All tactical gauss-based weaponry receives double damage penetration (from 0.33 to 0.67)</li><li>No effect for gauss weaponry used by XCOM's aircraft</li></ul>",
             "cost": {
                 "item_alien_alloy": 40,
                 "item_alien_carbine": 2,
@@ -445,6 +471,7 @@
         "foundry_rail_pistols": {
             "name": "Rail Pistols",
             "description": "We've started testing an experimental cryogenic treatment for the barrels of our existing sidearm designs. This process will greatly reduce heat distortions caused by repeated firing, which should increase the aim of all soldiers using a pistol.",
+            "tactical_text": "<ul><li>All pistols gain +8 aim</li></ul>",
             "cost": {
                 "item_alien_alloy": 10,
                 "item_weapon_fragment": 35,
@@ -458,6 +485,7 @@
         "foundry_reflex_pistols": {
             "name": "Reflex Pistols",
             "description": "Having learned a great deal from the alien weapons recovered from the field, we think it should be possible to implement improvements across our entire range of side arms. At the very least, we can expect an increase in the maximum damage output of all of our pistols.",
+            "tactical_text": "<ul><li>All pistols gain +1 base damage</li></ul>",
             "cost": {
                 "item_alien_alloy": 30,
                 "item_alien_pistol": 1,
@@ -473,6 +501,7 @@
         "foundry_scope_upgrade": {
             "name": "SCOPE Upgrade",
             "description": "Our Laser Sights and the portable targeting module called 'SCOPE' could be upgraded to highlight sensitive points on the enemy targets. We believe that the chance of critical shots would increase accordingly.",
+            "tactical_text": "<ul><li>Causes the <a data-page-on-click='item-display-page' data-pagearg-item-id='item_scope'>SCOPE</a> to grant +8 critical chance in addition to its usual benefits</li><li>Causes the <a data-page-on-click='item-display-page' data-pagearg-item-id='item_laser_sight'>Laser Sight</a> to grant +4 critical chance in addition to its usual benefits</li></ul>",
             "cost": {
                 "item_scope": 1,
                 "item_weapon_fragment": 35,
@@ -486,6 +515,7 @@
         "foundry_sentinel_drone": {
             "name": "Sentinel Drone",
             "description": "With an investment of resources, we will be able to adapt some alien technology into a defensive module for the SHIV. We've been able to add a self-repair capability and use its spare AI cycles to improve the SHIV's situational firing heuristics.",
+            "tactical_text": "<ul><li>All of XCOM's SHIV units gain the <a data-page-on-click='perk-tree-display-page' data-pagearg-display-mode='single-perk' data-pagearg-item-id='perk_repair_servos'>Repair Servos</a> perk</li><li>All of XCOM's SHIV units gain the <a data-page-on-click='perk-tree-display-page' data-pagearg-display-mode='single-perk' data-pagearg-item-id='perk_close_combat_specialist'>Close Combat Specialist</a> perk</li></ul>",
             "cost": {
                 "item_alien_alloy": 40,
                 "item_drone_corpse": 1,
@@ -500,6 +530,7 @@
         "foundry_shaped_armor": {
             "name": "Shaped Armor",
             "description": "The invaders' mechanized cybersuits are of course somewhat more advanced than our own; by examining the interfaces between the armored shells and the cores, we could improve our overall armor design. This has the potential to increase tactical survivability for all of our mechanized forces.",
+            "tactical_text": "<ul><li>All of XCOM's MEC and SHIV units gain +3 HP</li></ul>",
             "cost": {
                 "item_alien_alloy": 80,
                 "item_elerium": 40,
@@ -515,6 +546,7 @@
         "foundry_shiv_suppression": {
             "name": "SHIV Suppression",
             "description": "With a fairly extensive hardware and software upgrade, our SHIV units would be capable of suppressive fire, letting them pin enemy targets down under a hail of bullets.",
+            "tactical_text": "<ul><li><li>All of XCOM's SHIV units gain the <a data-page-on-click='perk-tree-display-page' data-pagearg-display-mode='single-perk' data-pagearg-item-id='perk_suppression'>Suppression</a> perk</li></li></ul>",
             "cost": {
                 "item_weapon_fragment": 5,
                 "money": 40
@@ -527,6 +559,7 @@
         "foundry_stealth_satellites": {
             "name": "Stealth Satellites",
             "description": "By studying the communication signatures of the UFO nav computers we've recovered, we could update our satellite network to mimic the alien communications. This would make the satellites much harder to detect if the aliens were to go looking for them.",
+            "tactical_text": "<ul><li>Reduces the chance of satellites being detected by alien scouting missions (by 30% on their first pass and 60% on second)</li><li>Scouting missions also have a chance to fail if the UFO is damaged</li><li>Scouting missons also have a chance to fail (up to 50%) based on the defense of the nation with the satellite</li></ul>",
             "cost": {
                 "item_alien_alloy": 200,
                 "item_elerium": 200,
@@ -540,6 +573,7 @@
         "foundry_supercapacitors": {
             "name": "Supercapacitors",
             "description": "By increasing our ability to burst energy through our laser weapon optics, we can make these weapons far more dangerous to our alien foe. This will upgrade all of our aircraft laser cannon by increasing their firing rate and armor piercing capabilities, and will also allow us to construct a weapon addon for our personal laser weapons that will increase their chances of scoring a critical hit.",
+            "tactical_text": "<ul><li>All <a data-page-on-click='item-display-page' data-pagearg-item-id='item_laser_cannon'>Laser Cannons</a> in XCOM's arsenal are upgraded to <a data-page-on-click='item-display-page' data-pagearg-item-id='item_pulse_cannon'>Pulse Cannons</a></li><li>Pulse Cannons have +10 damage, +30% armor penetration, and 25% increased rate of fire compared to Laser Cannons</li></ul>",
             "cost": {
                 "item_alien_alloy": 150,
                 "item_elerium": 200,
@@ -556,6 +590,7 @@
         "foundry_super_skyranger": {
             "name": "Super Skyranger",
             "description": "While our unique Skyranger craft is incredibly versatile, it is hampered by its limited range if loaded with more than a small squad. Using some alien alloys, we believe we can mount some external drop tanks to enable the craft to reach targets all over the world while carrying additional soldiers. Unfortunately, we will need to schedule mid-air refueling with allied governments, so we can only carry extra soldiers on preplanned strikes on immobile enemy bases, and not on time-sensitive responses to recent enemy activity or other targets of opportunity.",
+            "tactical_text": "<ul><li>Increases XCOM's roster size by 2 soldiers when assaulting alien bases and EXALT HQ</li><li>Increases XCOM's roster size by 4 soldiers when assaulting the alien Temple Ship</li></ul>",
             "cost": {
                 "item_alien_alloy": 60,
                 "money": 200
@@ -568,6 +603,7 @@
         "foundry_tactical_rigging": {
             "name": "Tactical Rigging",
             "description": "Increasing need for tactical flexibility has driven us to develop tactical rigs that apply to all of XCOM's individual soldier protection systems. These will enable soldiers to bring an additional item into battle.",
+            "tactical_text": "<ul><li>Grants XCOM's soldiers an extra item slot, allowing them to bring 3 items into battle</li></ul>",
             "cost": {
                 "item_alien_alloy": 100,
                 "item_meld": 60,
@@ -583,6 +619,7 @@
         "foundry_ufo_countermeasures": {
             "name": "UFO Countermeasures",
             "description": "Now that we have a handle on alien weapon systems and computers, we believe we can develop some countermeasures that will make our aircraft significantly harder to hit by alien UFO weaponry.",
+            "tactical_text": "<ul><li></li></ul>",
             "cost": {
                 "item_alien_alloy": 10,
                 "item_elerium": 60,
@@ -599,6 +636,7 @@
         "foundry_ufo_scanners": {
             "name": "UFO Scanners",
             "description": "Our ongoing studies of the alien UFO types has led us to develop some ideas on how we can give our pilots precise information on alien UFO classes that our research team has already performed analyses on. With your approval, we can install air combat scanners on all our current and future combat aircraft that will tell precisely how much damage a UFO has sustained.",
+            "tactical_text": "<ul><li>UFO HP is visible when engaging UFOs for which the corresponding Analysis research is complete</li></ul>",
             "cost": {
                 "item_alien_alloy": 10,
                 "item_elerium": 10,
@@ -612,6 +650,7 @@
         "foundry_ufo_tracking": {
             "name": "UFO Tracking",
             "description": "We've studied the enemy UFOs to the point that we believe we can improve our jets' ability to detect and track them at long ranges. Going forward with this project will double our interceptors' chances of detecting alien craft on the same continent absent satellite coverage over a given country.",
+            "tactical_text": "<ul><li>Increases the likelihood that XCOM's aircraft will detect UFOs in countries which don't have <a data-page-on-click='item-display-page' data-pagearg-item-id='item_satellite'>Satellites</a></li><li>Guarantees that UFOs will be detected if they are scouting for <a data-page-on-click='item-display-page' data-pagearg-item-id='item_satellite'>Satellites</a></li></ul>",
             "cost": {
                 "item_alien_alloy": 20,
                 "item_elerium": 40,
@@ -626,6 +665,7 @@
         "foundry_wingtip_sparrowhawks": {
             "name": "Wingtip Sparrowhawks",
             "description": "Because of the fuel needed to attain the high speeds and altitudes necessary to engage the alien UFOs, we have been unable to mount multiple weapons systems on our interceptors. We believe that by employing alien alloys and meld to construct some lightweight weapon hard points, we should be able to mount pods of Sparrowhawk missiles, which are similar to our Stingrays but with smaller warheads, on our fighters. These can be employed in addition to whatever swappable weapon you choose to mount. This requires significant and costly modifications to all our airframes.",
+            "tactical_text": "<ul><li>XCOM's <a data-page-on-click='item-display-page' data-pagearg-item-id='item_interceptor'>Interceptors</a> and <a data-page-on-click='item-display-page' data-pagearg-item-id='item_firestorm'>Firestorms</a> gain armor-piercing missiles in addition to their normal armament</li><li>Missiles have half the damage of conventional <a data-page-on-click='item-display-page' data-pagearg-item-id='item_stingray_missiles'>Stingray Missiles</a></li></ul>",
             "cost": {
                 "item_alien_alloy": 80,
                 "item_elerium": 20,

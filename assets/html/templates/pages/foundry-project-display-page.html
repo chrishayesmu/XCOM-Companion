@@ -7,3 +7,61 @@
         <div id="foundry-preview-description"></div>
     </div>
 </template>
+
+<template id="template-foundry-project-display-page">
+    <section class="section js-section">
+        <header class="section-header">
+            <div class="section-wrapper">
+                Foundry Project
+            </div>
+        </header>
+
+        <div id="foundry-project-content-section" class="section-content">
+            <div id="foundry-project-header-row" class="flex-single-row">
+                <div id="foundry-project-image-container">
+                    <img src="" />
+                </div>
+                <div id="foundry-project-description-container">
+                    <div id="foundry-project-name"></div>
+                    <div id="foundry-project-description"></div>
+                    <div id="foundry-project-research-credits"></div>
+                </div>
+            </div>
+            <div id="foundry-project-second-row" class="flex-single-row">
+                <div class="foundry-project-left-column">
+                    <div class="foundry-project-heading">Cost</div>
+                    <div class="foundry-project-column-body" id="foundry-project-cost-container">
+                    </div>
+                </div>
+                <div class="foundry-project-right-column">
+                    <div class="foundry-project-heading">Project Duration</div>
+                    <div class="foundry-project-column-body">
+                        <div id="foundry-project-time-container">
+                            <img class="foundry-project-inline-icon" src="assets/img/misc-icons/time.png" />
+                            <span id="foundry-project-time"></span>&nbsp;days
+                        </div>
+                        <div class="flex-column-bottom flex-grow">
+                            <div>
+                                Displayed project time is based on having <span id="foundry-project-num-engineers"></span> engineers, 0 <a>Workshops</a> and 0 adjacency bonuses.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex-single-row">
+                <div class="foundry-project-left-column">
+                    <div class="foundry-project-heading">Research Prerequisite</div>
+                    <div class="foundry-project-column-body" id="foundry-project-prerequisites"></div>
+                </div>
+                <div class="foundry-project-right-column">
+                    <div class="foundry-project-heading">Unlocked Items</div>
+                    <div class="foundry-project-column-body" id="foundry-project-unlocks"></div>
+                </div>
+            </div>
+            <div id="foundry-project-main-row" class="flex-single-row">
+                <div class="foundry-project-heading" id="foundry-project-benefits-heading">Project Benefits</div>
+                <div id="foundry-project-benefits"></div>
+            </div>
+        </div>
+    </section>
+</template>

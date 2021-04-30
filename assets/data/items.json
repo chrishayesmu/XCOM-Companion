@@ -4298,7 +4298,7 @@
         },
         "item_phoenix_coilgun": {
             "name": "Phoenix Coilgun",
-            "description": "The Phoenix Coilgun is capable of delivering massive burst damage with armor-piercing alloy-based rounds.",
+            "description": "The Phoenix Coilgun improves on its predecessor with even more destructive capability and armor penetration.",
             "tactical_text": "<ul><li>All <a data-page-on-click='item-display-page' data-pagearg-item-id='item_phoenix_cannon'>Phoenix Cannons</a> are automatically upgraded to Phoenix Coilguns upon completion of the required foundry project</li></ul>",
             "type": "aircraft_weapon",
             "sell_value": 48,
@@ -4946,6 +4946,7 @@
         "item_pulse_cannon": {
             "name": "Pulse Cannon",
             "description": "A marked upgrade from the Laser Cannon, these supercooled weapons are unparalleled in their ability to quickly and precisely strike UFOs.",
+            "tactical_text": "<ul><li>All <a data-page-on-click='item-display-page' data-pagearg-item-id='item_laser_cannon'>Laser Cannons</a> are automatically upgraded to Pulse Cannons upon completion of the required foundry project</li></ul>",
             "type": "aircraft_weapon",
             "sell_value": 64,
             "type_specific_data": {

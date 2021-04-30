@@ -55,10 +55,6 @@ class TechDetailsPage extends AppPage {
         return template;
     }
 
-    ownsDataObject(dataObj) {
-        return dataObj.id.startsWith("research_");
-    }
-
     onUnloadBeginning(_event) {
         const historyData = {
             techId: this.techId
@@ -69,6 +65,10 @@ class TechDetailsPage extends AppPage {
         return new PageHistoryState(this, historyData);
     }
 
+    ownsDataObject(dataObj) {
+        return dataObj.id.startsWith("research_");
+    }
+
     _populateBeneficialCredits(template, tech) {
         const container = template.querySelector("#tech-details-research-credits");
 
@@ -76,8 +76,6 @@ class TechDetailsPage extends AppPage {
             container.classList.add("hidden-collapse");
             return;
         }
-
-        const creditNames = tech.benefits_from_research_credit_types.map(credit => Utils.capitalizeEachWord(credit, "_", " "));
 
         const creditLinks = tech.benefits_from_research_credit_types.map(creditType => {
             const sourceTech = DataHelper.getResearchCreditSource(creditType);

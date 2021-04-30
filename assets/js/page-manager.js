@@ -221,6 +221,6 @@ const pageContentHolder = document.getElementById("page-content");
 PageManager.instance = new PageManager(pageContentHolder);
 
 Search.onDomReady();
-PageManager.instance.loadPage("item-display-page", null, { itemId: "item_titan_armor" });
+PageManager.instance.loadPage("tech-details-page", null, { techId: "research_gauss_weapons" });
 
 export default PageManager;

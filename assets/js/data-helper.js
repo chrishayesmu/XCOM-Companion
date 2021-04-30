@@ -82,7 +82,6 @@ for (let key in baseFacilityData.facilities) {
 for (let id in foundryProjectData.foundry_projects) {
     const project = foundryProjectData.foundry_projects[id];
     project.id = id;
-    project.unlocks = {};
 
     // Foundry icons weren't originally included and this is way easier than adding them in the data file
     project.icon = "assets/img/foundry-icons/" + id.substring(8) + ".png";
@@ -331,11 +330,11 @@ for (let itemId in itemData.items) {
         for (let i = 0; i < item.foundry_prerequisites.length; i++) {
             const project = item.foundry_prerequisites[i];
 
-            if (!project.unlocks.items) {
-                project.unlocks.items = [];
+            if (!project.unlocks) {
+                project.unlocks = [];
             }
 
-            project.unlocks.items.push(item);
+            project.unlocks.push(item);
         }
     }
 }

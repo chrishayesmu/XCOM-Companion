@@ -256,6 +256,11 @@
                 "icon": "assets/img/perk-icons/mayhem.png",
                 "description": "Confers +2 damage for suppression, SAWs, LMGs, explosive grenades, proximity mines and rocket launchers. Confers +4 damage for sniper and long rifles, marksman's, strike and reflex rifles using Standard Shot or Precision Shot."
             },
+            "perk_mec_close_combat": {
+                "name": "MEC Close Combat",
+                "icon": "assets/img/perk-icons/mec_close_combat.png",
+                "description": "Kinetic Strike no longer ends the MEC's turn, although it still costs an action. It also deals 50% more damage."
+            },
             "perk_muscle_fiber_density": {
                 "name": "Muscle-fiber Density",
                 "icon": "assets/img/perk-icons/muscle_fiber_density.png",
