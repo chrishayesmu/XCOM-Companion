@@ -158,7 +158,7 @@
         "item_alien_grenade": {
             "name": "Alien Grenade",
             "description": "Although similar in function to the standard HE grenade, the alien variant uses a more powerful explosive compound. Any artifacts caught in the blast radius will not be recoverable.",
-            "tactical_text": "<ul><li>The Alien Grenade does heavy damage and destroys cover</li><li>Destroys alien artifacts, preventing their recovery and exploitation</li><li>Friendly targets in the blast area are affected</li><li>Damage is reduced based on distance from point of detonation</li></ul>",
+            "tactical_text": "<ul><li>The Alien Grenade does heavy damage and destroys cover</li><li>Destroys alien artifacts, preventing their recovery and exploitation</li><li>Friendly targets in the blast area are affected</li><li>Damage is reduced based on distance from point of detonation</li><li>Must be recovered by stunning aliens with the <a data-page-on-click='item-display-page' data-pagearg-item-id='item_arc_thrower'>Arc Thrower</a></li><li>Not usable by XCOM until the Alien Grenades Foundry project is complete</li></ul>",
             "type": "loadout_equipment",
             "type_specific_data": {
                 "usable_by_infantry": true,
@@ -176,8 +176,7 @@
                 "hp": 0,
                 "mobility": -1,
                 "will": 0
-            },
-            "foundry_prerequisites": [ "foundry_alien_grenades" ]
+            }
         },
         "item_alien_heavy_weapon": {
             "name": "Alien Heavy Weapon",
@@ -545,7 +544,7 @@
         "item_ap_grenade": {
             "name": "AP Grenade",
             "description": "A variant on the HE Grenade, this weapon does equivalent damage over a larger area, but the projectiles cannot penetrate cover. Thus, units in cover relative to the center of the blast area will be unaffected.",
-            "tactical_text": "<ul><li>The Antipersonnel grenade does more damage compared to HE grenade</li><li>Units in cover relative to center of blast radius will not take damage </li><li>Explosives may leave our researchers unable to exploit enemy artifacts</li><li>Damage is reduced based on distance from point of detonation</li></ul>",
+            "tactical_text": "<ul><li>The Antipersonnel grenade does more damage compared to HE grenade</li><li>Units in cover relative to center of blast radius will not take damage </li><li>Cover objects in radius will not take damage</li><li>Explosives may leave our researchers unable to exploit enemy artifacts</li><li>Damage is reduced based on distance from point of detonation</li></ul>",
             "type": "loadout_equipment",
             "type_specific_data": {
                 "usable_by_infantry": true,
@@ -1032,7 +1031,7 @@
         },
         "item_battle_rifle": {
             "name": "Battle Rifle",
-            "description": "",
+            "description": "A heavier version of the standard ballistic assault rifle, this weapon is more powerful, but will suffer an aim penalty if not given time to set up properly.",
             "tactical_text": "<ul><li>A heavy assault rifle variant</li><li>Confers +1 damage over assault rifle, but moving or taking any costly (blue) actions will reduce aim by 10 until the beginning of the next turn</li></ul>",
             "type": "loadout_primary",
             "type_specific_data": {
@@ -1056,8 +1055,8 @@
         },
         "item_battle_scanner": {
             "name": "Battle Scanner",
-            "description": "",
-            "tactical_text": "<ul><li>Combined motion, heat and sonic tracking device that relays target information back to user</li><li>Support grenade</li></ul>",
+            "description": "A long-range scanner that can be thrown to provide reconnaissance without risking enemy contact. Due to the heavy energy usage this requirements, visibility can only be maintained for a short time.",
+            "tactical_text": "<ul><li>Combined motion, heat and sonic tracking device that relays target information back to user</li><li>Reveals cloaked units within its radius</li><li>Provides vision in its radius for 2 turns</li><li>Support grenade</li></ul>",
             "type": "loadout_equipment",
             "type_specific_data": {
                 "class_restriction": [ "infantry_class_engineer", "infantry_class_scout" ],
@@ -1453,7 +1452,7 @@
         "item_combat_stims": {
             "name": "Combat Stims",
             "description": "This powerful stimulant cocktail derived from a chemical found in the glands of a Muton Berserker provides a temporary boost to several of our soldier's vital statistics.",
-            "tactical_text": "<ul><li>Grants Adrenaline Surge perk for duration of battle, granting +10 aim and critical chance, if soldier is wounded<li>When its single charge is applied to soldier, it strengthens the user's Will against panic</li><li>Reduces incoming damage by 40% and provides immunity to critical hits if not flanked or exposed during the next 2 enemy turns</li><li>Increases mobility for 2 turns</li></ul>",
+            "tactical_text": "<ul><li>Grants <a data-page-on-click='perk-tree-display-page' data-pagearg-display-mode='single-perk' data-pagearg-item-id='perk_adrenaline_surge'>Adrenaline Surge</a> perk for duration of battle<li>When its single charge is applied to soldier, it strengthens the user's Will against panic</li><li>Reduces incoming damage by 40% and provides immunity to critical hits if not flanked or exposed during the next 2 enemy turns</li><li>Increases mobility for 2 turns</li></ul>",
             "type": "loadout_equipment",
             "sell_value": 48,
             "type_specific_data": {
@@ -1926,7 +1925,7 @@
         "item_flamethrower": {
             "name": "Flamethrower",
             "description": "Allows the MEC to lay waste to a cone-shaped area. Flame can spill outside the aiming area.",
-            "tactical_text": "<ul><li>Allows the MEC to lay waste to a cone-shaped area. Flame can spill outside the aiming area.</li></ul>",
+            "tactical_text": "<ul><li>Allows the MEC to lay waste to a cone-shaped area. Flame can spill outside the aiming area.</li><li>Effect area is a 60-degree cone extending 8 tiles from the MEC</li><li>Limited uses per mission; can be equipped multiple times per soldier</li></ul>",
             "type": "loadout_secondary",
             "sell_value": 60,
             "type_specific_data": {
@@ -2040,6 +2039,7 @@
         "item_fusion_lance": {
             "name": "Fusion Lance",
             "description": "The Fusion Lance is the most powerful anti-aircraft weapon available to XCOM. It should be capable of taking down any UFO.",
+            "tactical_text": "<ul><li>XCOM's most devastating anti-UFO weapon</li><li>Can only be mounted on the <a data-page-on-click='item-display-page' data-pagearg-item-id='item_firestorm'>Firestorm</a></li></ul>",
             "type": "aircraft_weapon",
             "sell_value": 320,
             "type_specific_data": {
@@ -2503,7 +2503,7 @@
         },
         "item_he_grenade": {
             "name": "HE Grenade",
-            "description": "",
+            "description": "A standard issue High Explosive Grenade, specialized for destroying cover in a small radius.",
             "tactical_text": "<ul><li>The High Explosive Grenade damages enemies and their cover in blast radius</li><li>Destroys alien artifacts, preventing their recovery and exploitation</li><li>Friendly targets in the blast area are affected</li><li>Damage is reduced based on distance from point of detonation</li></ul>",
             "type": "loadout_equipment",
             "type_specific_data": {
@@ -3471,7 +3471,7 @@
         },
         "item_lmg": {
             "name": "LMG",
-            "description": "",
+            "description": "The ballistic Light Machine Gun is the largest man-portable gun available to XCOM. Its size confers a great deal of firepower, but also makes it impossible to relocate and fire in the same turn. Careful planning is required to make the most of this weapon.",
             "tactical_text": "<ul><li>The largest man-portable gun in our inventory</li><li>Confers increased damage relative to our SAWs at a -2 mobility penalty</li><li>Operator cannot take costly actions and fire in the same turn</li><li>Grants <a data-page-on-click='perk-tree-display-page' data-pagearg-display-mode='single-perk' data-pagearg-item-id='perk_squadsight'>Squadsight</a> and may fire five tiles beyond normal visual range</li></ul>",
             "type": "loadout_primary",
             "type_specific_data": {
@@ -3495,7 +3495,7 @@
         },
         "item_machine_pistol": {
             "name": "Machine Pistol",
-            "description": "",
+            "description": "A rapid-fire ballistic sidearm that offers more firepower than a conventional pistol. Its increased weight slows soldiers down slightly and makes the weapon somewhat unwieldy.",
             "tactical_text": "<ul><li>Sidearm that is more powerful than a pistol but confers -1 mobility</li><li>-8 accuracy penalty when drawn, accuracy degrades at long range</li></ul>",
             "type": "loadout_secondary",
             "type_specific_data": {
@@ -3516,7 +3516,7 @@
         },
         "item_marksman_rifle": {
             "name": "Marksman's Rifle",
-            "description": "",
+            "description": "The Marksman's Rifle is a medium-to-long range rifle, ideal for hit-and-run tactics or sniper operations where the soldier may need to relocate quickly.",
             "tactical_text": "<ul><li>Bolt-action, medium-range rifle</li><li>Severe aim penalty when used at short range</li><li>Soldiers with <a data-page-on-click='perk-tree-display-page' data-pagearg-display-mode='single-perk' data-pagearg-item-id='perk_squadsight'>Squadsight</a> can target enemies and conduct reaction fire at up to five tiles beyond visual range</li></ul>",
             "type": "loadout_primary",
             "type_specific_data": {
@@ -4017,7 +4017,7 @@
         },
         "item_minigun": {
             "name": "Minigun",
-            "description": "",
+            "description": "Ordinarily a weapon of this size would have to be mounted on hardware too large to feasibly respond to alien strikes. With the development of MEC technology, we've been able to combine its firepower with the mobility and versatility of infantry.",
             "tactical_text": "<ul><li>Risk of catastrophic overheating precludes suppression with this weapon</li></ul>",
             "type": "loadout_primary",
             "type_specific_data": {
@@ -4299,6 +4299,7 @@
         "item_phoenix_coilgun": {
             "name": "Phoenix Coilgun",
             "description": "The Phoenix Coilgun is capable of delivering massive burst damage with armor-piercing alloy-based rounds.",
+            "tactical_text": "<ul><li>All <a data-page-on-click='item-display-page' data-pagearg-item-id='item_phoenix_cannon'>Phoenix Cannons</a> are automatically upgraded to Phoenix Coilguns upon completion of the required foundry project</li></ul>",
             "type": "aircraft_weapon",
             "sell_value": 48,
             "type_specific_data": {
@@ -4313,7 +4314,7 @@
         },
         "item_pistol": {
             "name": "Pistol",
-            "description": "",
+            "description": "A weapon of last resort, the simple ballistic pistol is a close-range gun that doesn't pack much of a punch. Still, carrying this sidearm may save the life of a soldier whose primary weapon is out of ammo.",
             "tactical_text": "<ul><li>A sidearm with limited tactical value</li><li>Useful for when a soldier's main weapon is out of ammo, or otherwise unusable</li><li>Accuracy degrades at long range</li></ul>",
             "type": "loadout_secondary",
             "type_specific_data": {
@@ -4944,7 +4945,7 @@
         },
         "item_pulse_cannon": {
             "name": "Pulse Cannon",
-            "description": "",
+            "description": "A marked upgrade from the Laser Cannon, these supercooled weapons are unparalleled in their ability to quickly and precisely strike UFOs.",
             "type": "aircraft_weapon",
             "sell_value": 64,
             "type_specific_data": {
@@ -5516,7 +5517,7 @@
         },
         "item_rocket_launcher": {
             "name": "Rocket Launcher",
-            "description": "",
+            "description": "A man-portable rocket launcher that can be fired for devastating effect on both enemies and terrain. Due to the extreme weight of its ammunition, can only be fired a limited number of times per mission.",
             "tactical_text": "<ul><li>Rockets do significant damage and have a large blast radius </li><li>Destroys alien artifacts, preventing their recovery and exploitation</li><li>Friendly targets in the blast area are affected</li><li>During targeting, rocket scatter figure is expected (average) number of tiles rocket will be off-target by</li><li>Rocket has 68% chance to be at scatter distance or less from target and 95% chance of being twice scatter distance or less</li><li>Use Steady Weapon ability to increase accuracy for the next turn</li><li>Damage is reduced based on distance from point of detonation</li><li>Each rocket fired confers +1 mobility for the rest of the mission</li></ul>",
             "type": "loadout_secondary",
             "type_specific_data": {
@@ -5555,7 +5556,7 @@
         },
         "item_saw": {
             "name": "SAW",
-            "description": "",
+            "description": "The ballistic Squad Automatic Weapon, with its increased ammo capacity relative to an assault rifle, provides a balance between mobility and firepower.",
             "tactical_text": "<ul><li>Automatic Rifle designed to serve in squad automatic weapon role</li></ul>",
             "type": "loadout_primary",
             "type_specific_data": {
@@ -5985,7 +5986,7 @@
         },
         "item_shotgun": {
             "name": "Shotgun",
-            "description": "",
+            "description": "A close-range solution for close-range problems, the ballistic shotgun is extremely effective against soft targets, though it has difficulty with armored or well-covered enemies.",
             "tactical_text": "<ul><li>The shotgun has a high base critical chance, but extremely limited range</li></ul>",
             "type": "loadout_primary",
             "type_specific_data": {
@@ -6132,7 +6133,7 @@
         },
         "item_smg": {
             "name": "SMG",
-            "description": "",
+            "description": "The ballistic submachine gun doesn't have the firepower of the assault rifle or its larger variants, but it makes up for it in letting soldiers cover a lot of ground quickly.",
             "tactical_text": "<ul><li>Lightweight primary weapon</li><li>Confers +3 mobility, at a cost of damage and critical hit chances relative to rifles</li></ul>",
             "type": "loadout_primary",
             "type_specific_data": {
@@ -6154,8 +6155,8 @@
         },
         "item_smoke_grenade": {
             "name": "Smoke Grenade",
-            "description": "",
-            "tactical_text": "<ul><li>Confers defense bonus to all units within smoke cloud</li><li>Support grenade</li></ul>",
+            "description": "A popular utility device for keeping soldiers safe during conventional warfare on Earth, we have found the alien threat to be equally stymied by the smoke cloud produced by this grenade.",
+            "tactical_text": "<ul><li>Confers +20 defense bonus to all units within smoke cloud</li><li>Smoke cloud lasts for 2 turns</li><li>Units at the edge of the effect radius may not be affected</li><li>Units in smoke do not suffer an increased chance to be critically hit due to being exposed or flanked</li><li>Support grenade</li></ul>",
             "type": "loadout_equipment",
             "type_specific_data": {
                 "usable_by_infantry": true,
@@ -6175,7 +6176,7 @@
         },
         "item_sniper_rifle": {
             "name": "Sniper Rifle",
-            "description": "",
+            "description": "A ballistic rifle designed for precision marksmanship at long range. Extremely unwieldy in close combat, but excellent for disabling or killing enemies from a safe distance.",
             "tactical_text": "<ul><li>A long rifle version of the Assault Rifle</li><li>Unlike other weapons, Sniper Rifles are less accurate as the shooter's range to target decreases</li><li>Snipers cannot use any costly actions (like moving) and fire in the same turn, unless trained appropriately</li></ul>",
             "type": "loadout_primary",
             "type_specific_data": {
@@ -6337,7 +6338,7 @@
         },
         "item_tac_armor": {
             "name": "Tac Armor",
-            "description": "",
+            "description": "A simple tactical armor designed for use against conventional weaponry. It is unlikely to stand up well against the advanced technology we have witnessed from the aliens thus far.",
             "tactical_text": "<ul><li>Light armor</li><li>XCOM soldiers will appreciate it if better armor development is given a high priority</li></ul>",
             "type": "loadout_armor",
             "type_specific_data": {
@@ -6357,7 +6358,7 @@
         },
         "item_tac_vest": {
             "name": "Tac Vest",
-            "description": "",
+            "description": "Even more lightly armored than the Tac Armor, this vest is best used by soldiers who need to move quickly and aren't likely to get shot at.",
             "type": "loadout_armor",
             "type_specific_data": {
                 "grants_flight": false,
