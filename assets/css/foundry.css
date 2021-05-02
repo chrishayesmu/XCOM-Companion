@@ -141,6 +141,70 @@
 }
 
 /***************************
+ * Foundry browse page
+ ***************************/
+
+#foundry-project-browse-content-section summary {
+    font-size: 1.6em;
+    padding-bottom: 8px;
+    padding-left: 10px;
+}
+
+#foundry-project-browse-content-section details {
+    margin-bottom: 15px;
+}
+
+.foundry-browse-container {
+    display: grid;
+    grid-template-columns: 130px auto 100px repeat(5, 50px) 160px;
+    margin: 0px 20px;
+}
+
+.foundry-browse-container > div {
+    border: 1px solid var(--color-border-subtle);
+    padding: 5px 6px;
+
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    /* to combine adjacent borders */
+    margin-top: -1px;
+    margin-left: -1px;
+}
+
+.foundry-browse-container img {
+    margin: 0 auto;
+    height: 20px;
+    width: 40px;
+}
+
+.img-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.foundry-browse-container img.meld-icon {
+    width: 25px;
+}
+
+div.foundry-browse-money-icon {
+    font-size: 1.5em;
+    padding-bottom: 10px;
+}
+
+#foundry-browse-cost-money,
+#foundry-browse-cost-alien-alloys,
+#foundry-browse-cost-weapon-fragments,
+#foundry-browse-cost-elerium,
+#foundry-browse-cost-meld {
+    text-align: right;
+}
+
+/***************************
  * Styles for preview rendering
  ***************************/
 

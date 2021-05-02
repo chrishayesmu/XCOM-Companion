@@ -82,6 +82,8 @@ function createInAppLink(data, options) {
     }
 
     if (options.addPrefix) {
+        prefix = options.prefixText || prefix;
+
         const span = document.createElement("span");
         span.textContent = prefix;
         span.appendChild(link);
