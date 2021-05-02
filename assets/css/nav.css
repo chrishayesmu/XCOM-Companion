@@ -9,15 +9,8 @@
   border-right: 1px solid var(--color-border);
   color: var(--color-subtle);
 
-  visibility: hidden;
-  opacity: 0;
-
   display: flex;
   flex-flow: column nowrap;
-}
-.nav.is-shown {
-  visibility: visible;
-  opacity: 1;
 }
 
 .nav-header {
@@ -170,15 +163,6 @@
 
 .nav-subsection-container {
   padding-top: 0.25rem;
-  display: none;
-  visibility: hidden;
-  opacity: 0;
-}
-
-.nav-subsection-container.is-expanded {
-  display: inherit;
-  visibility: visible;
-  opacity: 1;
 }
 
 .nav-button.not-implemented,
