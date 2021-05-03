@@ -1937,6 +1937,7 @@
                 "damage_max_normal": 6,
                 "damage_min_crit": 6,
                 "damage_max_crit": 9,
+                "num_charges": 2,
                 "range_normal": 8
             },
             "normal_build": {
@@ -2479,6 +2480,7 @@
                 "mobility": -1,
                 "damage_min_normal": 2,
                 "damage_max_normal": 6,
+                "num_charges": 2,
                 "range_normal": 17
             },
             "normal_build": {
@@ -4788,6 +4790,7 @@
                 "mobility": -1,
                 "damage_min_normal": 6,
                 "damage_max_normal": 14,
+                "num_charges": 3,
                 "range_normal": 17
             },
             "normal_build": {
@@ -5468,7 +5471,7 @@
         "item_restorative_mist": {
             "name": "Restorative Mist",
             "description": "Medikits require fine motor control; instead, the MEC can spray Restorative Mist to heal all nearby allies.",
-            "tactical_text": "<ul><li>Medikits require fine motor control; instead, the MEC can spray Restorative Mist to heal all nearby allies.</li></ul>",
+            "tactical_text": "<ul><li>Medikits require fine motor control; instead, the MEC can spray Restorative Mist to heal all nearby allies.</li><li>Healing increased by +2 HP with the <a data-page-on-click='foundry-project-display-page' data-pagearg-project-id='foundry_improved_medikit'>Improved Medikit</a> Foundry project</li><li>Healing increased by +3 HP with the <a data-page-on-click='perk-tree-display-page' data-pagearg-display-mode='single-perk' data-pagearg-item-id='perk_savior'>Savior</a> perk</li></ul>",
             "type": "loadout_secondary",
             "sell_value": 48,
             "type_specific_data": {
@@ -5476,7 +5479,9 @@
 
                 "base_ammo": 1,
                 "effect_radius": 5,
-                "mobility": -1
+                "healing": 3,
+                "mobility": -1,
+                "num_charges": 1
             },
             "normal_build": {
                 "cost": {

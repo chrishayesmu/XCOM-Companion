@@ -89,7 +89,10 @@ class ItemDisplayPage extends AppPage {
         template.querySelector("#item-preview-name").textContent = item.name;
         template.querySelector("#item-preview-description").textContent = item.description;
 
-        if (item.type === "loadout_primary" || item.type === "loadout_secondary") {
+        if (item.type === "loadout_secondary" && item.type_specific_data.category === "mec") {
+            template.appendChild(await this._createMecSecondaryStatsGrid(item));
+        }
+        else if (item.type === "loadout_primary" || item.type === "loadout_secondary") {
             template.appendChild(await this._createWeaponStatsGrid(item));
         }
         else if (item.type === "loadout_armor" || item.type === "loadout_mec_exoskeleton") {
@@ -158,7 +161,10 @@ class ItemDisplayPage extends AppPage {
             template.querySelector("#item-details-used-in-container").classList.add("hidden-collapse");
         }
 
-        if (item.type === "loadout_primary" || item.type === "loadout_secondary") {
+        if (item.type === "loadout_secondary" && item.type_specific_data.category === "mec") {
+            template.querySelector("#item-details-tactical-text").appendChild(await this._createMecSecondaryStatsGrid(item));
+        }
+        else if (item.type === "loadout_primary" || item.type === "loadout_secondary") {
             this._populateWeaponStats(item, template.querySelector("#item-details-tactical-text"));
         }
         else if (item.type === "loadout_armor" || item.type === "loadout_mec_exoskeleton") {
@@ -169,6 +175,10 @@ class ItemDisplayPage extends AppPage {
         }
         else if (item.type === "aircraft_weapon") {
             template.querySelector("#item-details-tactical-text").appendChild(await this._createInterceptorWeaponStatsGrid(item));
+        }
+
+        if (item.id === "item_arc_thrower") {
+            template.querySelector("#item-details-tactical-text").appendChild(await Templates.instantiateTemplate("assets/html/templates/pages/item-display-page.html", "template-arc-thrower-stats-grid"));
         }
 
         return template;
@@ -232,6 +242,46 @@ class ItemDisplayPage extends AppPage {
         gridTemplate.querySelector("#interceptor-weapon-stats-hit-chance-balanced").textContent = weaponData.hit_chance_balanced;
         gridTemplate.querySelector("#interceptor-weapon-stats-hit-chance-aggressive").textContent = weaponData.hit_chance_aggressive;
         gridTemplate.querySelector("#interceptor-weapon-stats-penetration").textContent = weaponData.penetration;
+
+        return gridTemplate;
+    }
+
+    async _createMecSecondaryStatsGrid(item) {
+        const data = item.type_specific_data;
+        const gridTemplate = await Templates.instantiateTemplate("assets/html/templates/pages/item-display-page.html", "template-item-mec-secondary-stats-grid");
+
+        gridTemplate.querySelector("#mec-secondary-stats-mobility").textContent = data.mobility;
+        gridTemplate.querySelector("#mec-secondary-stats-healing").textContent = data.healing;
+        gridTemplate.querySelector("#mec-secondary-stats-damage").textContent = data.damage_min_normal + " - " + data.damage_max_normal;
+        gridTemplate.querySelector("#mec-secondary-stats-crit-damage").textContent = data.damage_min_crit + " - " + data.damage_max_crit;
+        gridTemplate.querySelector("#mec-secondary-stats-range").textContent = data.range;
+        gridTemplate.querySelector("#mec-secondary-stats-effect-radius").textContent = data.effect_radius;
+        gridTemplate.querySelector("#mec-secondary-stats-num-charges").textContent = data.num_charges || "∞";
+
+        if (!data.healing) {
+            gridTemplate.querySelector("#mec-secondary-stats-healing").classList.add("hidden-collapse");
+            gridTemplate.querySelector("#mec-secondary-stats-healing-header").classList.add("hidden-collapse");
+        }
+
+        if (!data.damage_min_normal || !data.damage_max_normal) {
+            gridTemplate.querySelector("#mec-secondary-stats-damage").classList.add("hidden-collapse");
+            gridTemplate.querySelector("#mec-secondary-stats-damage-header").classList.add("hidden-collapse");
+        }
+
+        if (!data.damage_min_crit || !data.damage_max_crit) {
+            gridTemplate.querySelector("#mec-secondary-stats-crit-damage").classList.add("hidden-collapse");
+            gridTemplate.querySelector("#mec-secondary-stats-crit-damage-header").classList.add("hidden-collapse");
+        }
+
+        if (!data.range) {
+            gridTemplate.querySelector("#mec-secondary-stats-range").classList.add("hidden-collapse");
+            gridTemplate.querySelector("#mec-secondary-stats-range-header").classList.add("hidden-collapse");
+        }
+
+        if (!data.effect_radius) {
+            gridTemplate.querySelector("#mec-secondary-stats-effect-radius").classList.add("hidden-collapse");
+            gridTemplate.querySelector("#mec-secondary-stats-effect-radius-header").classList.add("hidden-collapse");
+        }
 
         return gridTemplate;
     }

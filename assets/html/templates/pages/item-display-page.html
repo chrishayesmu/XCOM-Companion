@@ -74,6 +74,43 @@
     </table>
 </template>
 
+<template id="template-item-mec-secondary-stats-grid">
+    <table id="item-mec-secondary-stats-grid" class="item-stats-grid">
+        <tr>
+            <th title="Mobility Bonus" id="mec-secondary-stats-mobility-header">
+                <img class="item-stats-header-img" src="assets/img/item-stat-icons/mobility.png" />
+             </th>
+             <th title="Healing" id="mec-secondary-stats-healing-header">
+                <img class="item-stats-header-img" src="assets/img/item-stat-icons/healing.png" />
+             </th>
+             <th title="Damage" id="mec-secondary-stats-damage-header">
+                <img class="item-stats-header-img" src="assets/img/item-stat-icons/damage.png" />
+             </th>
+             <th title="Damage on Critical" id="mec-secondary-stats-crit-damage-header">
+                <img class="item-stats-header-img" src="assets/img/item-stat-icons/crit_damage.png" />
+             </th>
+             <th title="Range" id="mec-secondary-stats-range-header">
+                <img class="item-stats-header-img" src="assets/img/item-stat-icons/range.png" />
+            </th>
+            <th title="Effect Radius" id="mec-secondary-stats-effect-radius-header">
+                <img class="item-stats-header-img" src="assets/img/item-stat-icons/effect_radius.png" />
+            </th>
+            <th title="Number of Charges" id="mec-secondary-stats-num-charges-header">
+                <img class="item-stats-header-img" src="assets/img/item-stat-icons/ammo.png" />
+            </th>
+        </tr>
+        <tr>
+            <td id="mec-secondary-stats-mobility"></td>
+            <td id="mec-secondary-stats-healing"></td>
+            <td id="mec-secondary-stats-damage"></td>
+            <td id="mec-secondary-stats-crit-damage"></td>
+            <td id="mec-secondary-stats-range"></td>
+            <td id="mec-secondary-stats-effect-radius"></td>
+            <td id="mec-secondary-stats-num-charges"></td>
+        </tr>
+    </table>
+</template>
+
 <template id="template-item-interceptor-weapon-stats-grid">
     <table id="item-interceptor-weapon-stats-grid" class="item-stats-grid">
         <tr>
@@ -216,4 +253,43 @@
             </div>
         </div>
     </section>
+</template>
+
+<template id="template-arc-thrower-stats-grid">
+    <table class="item-stats-grid">
+        <tr>
+            <th></th>
+            <th colspan="7">Capture Chance by Enemy HP</th>
+        </tr>
+        <tr>
+            <th>--</th>
+            <th>1</th>
+            <th>2</th>
+            <th>3</th>
+            <th>4</th>
+            <th>5</th>
+            <th>6</th>
+            <th>7+</th>
+        </tr>
+        <tr>
+            <td>Default</td>
+            <td>54%</td>
+            <td>48%</td>
+            <td>42%</td>
+            <td>29%</td>
+            <td>29%</td>
+            <td>29%</td>
+            <td>29%</td>
+        </tr>
+        <tr>
+            <td style="padding: 5px">With <a data-page-on-click="foundry-project-display-page" data-pagearg-project-id="foundry_improved_arc_thrower">Improved Arc Thrower</a></td>
+            <td>57%</td>
+            <td>57%</td>
+            <td>57%</td>
+            <td>54%</td>
+            <td>48%</td>
+            <td>42%</td>
+            <td>29%</td>
+        </tr>
+    </table>
 </template>
