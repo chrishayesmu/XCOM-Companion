@@ -39,6 +39,7 @@ class PageManager {
         this.pageContentHolder = pageContentHolder;
         this.pageHistory = [];
         this.pagePreview = null;
+        this._showTooltip = false;
 
         // Create the tooltip container and make sure it's outside of all other DOM so it always appears on top
         this.pagePreviewTooltip = document.createElement("div");
@@ -66,6 +67,7 @@ class PageManager {
     }
 
     hidePagePreviewTooltip() {
+        this._showTooltip = false;
         this.pagePreviewTooltip.innerHTML = "";
         this.pagePreviewTooltip.classList.add("hidden-collapse");
     }
@@ -116,6 +118,7 @@ class PageManager {
      * @param {DOMRect} targetElementRect A DOMRect for the element that the tooltip should be positioned relative to
      */
     showPagePreviewTooltip(pageId, pageData, targetElementRect) {
+        this._showTooltip = true;
         const previewPromise = this.getPagePreview(pageId, pageData);
 
         previewPromise.then(preview => {
@@ -123,7 +126,11 @@ class PageManager {
                 this.pagePreviewTooltip.appendChild(preview);
 
                 // tooltip doesn't have a rect until it's part of the DOM, so now we can reposition it
-                this._repositionTooltip(targetElementRect).then( () => this.pagePreviewTooltip.classList.remove("hidden-collapse") );
+                this._repositionTooltip(targetElementRect).then( () => {
+                    if (this._showTooltip) {
+                        this.pagePreviewTooltip.classList.remove("hidden-collapse")
+                    }
+                });
             }
         });
     }
@@ -187,7 +194,11 @@ class PageManager {
         const horizontalMargin = 20;
         const verticalMargin = 10;
 
+        // Tooltip needs to be briefly visible so its size can be calculated in the DOM, but then hidden
+        // again so it's not visible in the wrong place while we use IPC
+        this.pagePreviewTooltip.classList.remove("hidden-collapse")
         const tooltipRect = this.pagePreviewTooltip.getBoundingClientRect();
+        this.pagePreviewTooltip.classList.add("hidden-collapse")
 
         let windowBounds = await ipcRenderer.invoke("get-window-size");
 
