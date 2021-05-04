@@ -5,6 +5,39 @@ function capitalizeEachWord(str, originalSeparator, newSeparator) {
     return str.split(originalSeparator).map( word => word[0].toUpperCase() + word.substring(1) ).join(newSeparator);
 }
 
+function join(strings, joinWord, encodeSpaces) {
+    joinWord = joinWord || "and";
+
+    const space = encodeSpaces ? "&nbsp;" : " ";
+
+    if (strings.length == 0) {
+        return "";
+    }
+
+    if (strings.length == 1) {
+        return strings[0];
+    }
+
+    if (strings.length == 2) {
+        return strings[0] + space + joinWord + space + strings[1];
+    }
+
+    let output = "";
+    for (let i = 0; i < strings.length; i++) {
+        output += strings[i];
+
+        if (i != strings.length - 1) {
+            output += "," + space;
+        }
+
+        if (i == strings.length - 2) {
+            output += space + joinWord + space;
+        }
+    }
+
+    return output;
+}
+
 function truncateText(text, maxLength) {
     if (text.length <= maxLength) {
         return text;
@@ -20,4 +53,4 @@ function truncateText(text, maxLength) {
     return text;
 }
 
-export { capitalizeEachWord, truncateText };
+export { capitalizeEachWord, join, truncateText };

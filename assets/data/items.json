@@ -3,7 +3,7 @@
         "item_adaptive_tracking_pod": {
             "name": "Adaptive Tracking Pod",
             "description": "Equipping a SHIV with Adaptive Tracking Pods removes its aim penalty for overwatch fire.",
-            "tactical_text": "<ul><li>Confers Advanced Fire Control perk, cancelling aim penalty for SHIV reaction fire</li></ul>",
+            "tactical_text": "<ul><li>Confers <a data-page-on-click='perk-tree-display-page' data-pagearg-display-mode='single-perk' data-pagearg-item-id='perk_advanced_fire_control'>Advanced Fire Control</a> perk, cancelling aim penalty for SHIV reaction fire</li></ul>",
             "type": "loadout_equipment",
             "sell_value": 16,
             "type_specific_data": {
@@ -39,7 +39,7 @@
         "item_advanced_suppression_module": {
             "name": "Advanced Suppression Module",
             "description": "This SHIV module will allow it to suppress multiple targets at once.",
-            "tactical_text": "<ul><li>Confers Danger Zone perk, which allows Suppression to affect multiple enemy units</li></ul>",
+            "tactical_text": "<ul><li>Confers <a data-page-on-click='perk-tree-display-page' data-pagearg-display-mode='single-perk' data-pagearg-item-id='perk_danger_zone'>Danger Zone</a> perk, which allows Suppression to affect multiple enemy units</li></ul>",
             "type": "loadout_equipment",
             "sell_value": 14,
             "type_specific_data": {
@@ -164,7 +164,7 @@
                 "usable_by_infantry": true,
                 "usable_by_mec": false,
                 "usable_by_shiv": false,
-                "use_range": 15,
+                "range": 15,
 
                 "aim": 0,
                 "effect_radius": 5.6,
@@ -229,7 +229,7 @@
         "item_alien_trophy": {
             "name": "Alien Trophy",
             "description": "One of the engineers has fashioned an alien trophy out of the remains of some alien hardware and hard organs. They serve as a reminder to the soldiers that the aliens are, in fact, mortal, and can be beaten.",
-            "tactical_text": "<ul><li>One of the engineers fashioned these out of the remains of some alien hardware and hard organs. They serve as a reminder that the aliens are, in fact, mortal, and can be beaten.</li><li>Confers Steadfast perk, preventing panic when you are wounded, when an ally is killed, wounded or panicking, or when an alien roars loudly to intimidate you</li><li>Equippable by regular soldiers and MECs</li></ul>",
+            "tactical_text": "<ul><li>One of the engineers fashioned these out of the remains of some alien hardware and hard organs. They serve as a reminder that the aliens are, in fact, mortal, and can be beaten.</li><li>Confers <a data-page-on-click='perk-tree-display-page' data-pagearg-display-mode='single-perk' data-pagearg-item-id='perk_steadfast'>Steadfast</a> perk, preventing panic when you are wounded, when an ally is killed, wounded or panicking, or when an alien roars loudly to intimidate you</li></ul>",
             "type": "loadout_equipment",
             "type_specific_data": {
                 "grants_perks": [ "perk_steadfast" ],
@@ -452,7 +452,6 @@
                 "negates_acid": true,
                 "negates_fire": true,
                 "prevents_strangulation": true,
-                "provides_half_cover": true,
 
                 "aim": 70,
                 "damage_reduction": 2.5,
@@ -550,7 +549,7 @@
                 "usable_by_infantry": true,
                 "usable_by_mec": false,
                 "usable_by_shiv": false,
-                "use_range": 15,
+                "range": 15,
 
                 "aim": 0,
                 "effect_radius": 5.6,
@@ -619,7 +618,7 @@
                 "usable_by_infantry": true,
                 "usable_by_mec": false,
                 "usable_by_shiv": false,
-                "use_range": 5,
+                "range": 5,
 
                 "aim": 0,
                 "crit_chance": 0,
@@ -691,7 +690,7 @@
         "item_armor_piercing_ammo": {
             "name": "Armor Piercing Ammo",
             "description": "This ammo will overcome a measure of enemy damage reduction and hardening against critical hits. It may be equipped by our gunners and mechanized units.",
-            "tactical_text": "<ul><li>Reduces enemy Damage Reduction by 2</li><li>Does not work with sidearms or shotguns</li><li>Can't stack with some other specialized ammo</li></ul>",
+            "tactical_text": "<ul><li>Reduces enemy Damage Reduction by 2</li><li>Does not work with sidearms or shotguns</li></ul>",
             "type": "loadout_equipment",
             "sell_value": 20,
             "type_specific_data": {
@@ -971,6 +970,7 @@
         "item_base_augments": {
             "name": "Base Augments",
             "description": "MEC Troopers wear their cybernetic base augments when not in combat. The arms and legs lack the necessary flexibility for use in the field; hence their removal when the MEC Trooper interfaces with a MEC cybersuit. Ideally, they will permit MEC Troopers to resume normal lives should XCOM defeat the invaders.",
+            "tactical_text": "<ul><li>Cannot be worn into battle</li></ul>",
             "type": "loadout_mec_exoskeleton",
             "type_specific_data": {
                 "negates_acid": false,
@@ -1063,7 +1063,7 @@
                 "usable_by_infantry": true,
                 "usable_by_mec": false,
                 "usable_by_shiv": false,
-                "use_range": 27,
+                "range": 27,
 
                 "aim": 0,
                 "effect_radius": 30,
@@ -1303,7 +1303,7 @@
         "item_chameleon_suit": {
             "name": "Chameleon Suit",
             "description": "This suit will make our Scouts harder to hit on the battlefield.",
-            "tactical_text": "<ul><li>This is a kind of enhanced camouflage we believe interferes with alien tracking, communications and targeting systems.</li><li>Gives Scouts bonus protection when using Lightning Reflexes and makes them immune to criticals from enemy Overwatch fire</li></ul>",
+            "tactical_text": "<ul><li>This is a kind of enhanced camouflage we believe interferes with alien tracking, communications and targeting systems.</li><li>Gives Scouts bonus protection when using <a data-page-on-click='perk-tree-display-page' data-pagearg-display-mode='single-perk' data-pagearg-item-id='perk_lightning_reflexes'>Lightning Reflexes</a> and makes them immune to criticals from enemy Overwatch fire</li><li>Chance to be hit by first reaction fire shot reduced by 95% (instead of 90%)</li><li>Chance to be hit by further reaction fire shots reduced by 85% (instead of 70%)</li></ul>",
             "type": "loadout_equipment",
             "sell_value": 26,
             "type_specific_data": {
@@ -1350,7 +1350,7 @@
                 "usable_by_infantry": true,
                 "usable_by_mec": false,
                 "usable_by_shiv": false,
-                "use_range": 15,
+                "range": 15,
 
                 "aim": 0,
                 "effect_radius": 4,
@@ -1437,7 +1437,7 @@
                 "usable_by_infantry": true,
                 "usable_by_mec": true,
                 "usable_by_shiv": false,
-                "use_range": 0,
+                "range": 0,
 
                 "aim": 0,
                 "crit_chance": 0,
@@ -1886,7 +1886,7 @@
         "item_flak_ammo": {
             "name": "Flak Ammo",
             "description": "Confers bonus damage against airborne enemies and allows MECs to use Collateral Damage ability against them.",
-            "tactical_text": "<ul><li>Confers greater of +2 or 20% bonus base weapon damage against flying units that are aloft when using primary gun or rockets</li><li>Can be equipped by all units, but cannot stack with some other special ammo types</li><li>On MECs, also allows Collateral Damage ability to target airborne enemies and does bonus damage with all collateral damage attacks</li><li>Damage bonus is conferred after any damage reduction is applied</li></ul>",
+            "tactical_text": "<ul><li>Confers greater of +2 or 20% bonus base weapon damage against flying units that are aloft when using primary gun or rockets</li><li>On MECs, also allows Collateral Damage ability to target airborne enemies and does bonus damage with all collateral damage attacks</li><li>Damage bonus is conferred after any damage reduction is applied</li></ul>",
             "type": "loadout_equipment",
             "sell_value": 24,
             "type_specific_data": {
@@ -1967,7 +1967,7 @@
                 "usable_by_infantry": true,
                 "usable_by_mec": false,
                 "usable_by_shiv": false,
-                "use_range": 15,
+                "range": 15,
 
                 "aim": 0,
                 "effect_radius": 4,
@@ -2512,7 +2512,7 @@
                 "usable_by_infantry": true,
                 "usable_by_mec": false,
                 "usable_by_shiv": false,
-                "use_range": 15,
+                "range": 15,
 
                 "aim": 0,
                 "effect_radius": 5.6,
@@ -3908,7 +3908,6 @@
                 "usable_by_infantry": true,
                 "usable_by_mec": false,
                 "usable_by_shiv": false,
-                "use_range": 3,
 
                 "aim": 0,
                 "crit_chance": 0,
@@ -3936,7 +3935,7 @@
                 "usable_by_infantry": true,
                 "usable_by_mec": false,
                 "usable_by_shiv": false,
-                "use_range": 27,
+                "range": 27,
 
                 "aim": 0,
                 "effect_radius": 28.8,
@@ -4826,7 +4825,7 @@
                 "usable_by_infantry": true,
                 "usable_by_mec": false,
                 "usable_by_shiv": false,
-                "use_range": 15,
+                "range": 15,
 
                 "aim": 0,
                 "effect_radius": 6.4,
@@ -4863,6 +4862,7 @@
         "item_psi_screen": {
             "name": "Psi Screen",
             "description": "Psionic device that absorbs a measure of incoming damage to the soldier.",
+            "tactical_text": "<ul><li>Provides protection, but requires a measure of the user's willpower to maintain</li></ul>",
             "type": "loadout_equipment",
             "sell_value": 26,
             "type_specific_data": {
@@ -5437,7 +5437,7 @@
             "sell_value": 16,
             "type_specific_data": {
                 "grants_perks": [ ],
-                "negates_acid": false,
+                "negates_acid": true,
                 "prevents_strangulation": true,
                 "usable_by_infantry": true,
                 "usable_by_mec": false,
@@ -5899,7 +5899,7 @@
         "item_shadow_device": {
             "name": "Shadow Device",
             "description": "This psionic device contains elerium-infused particles that, when diffused onto our soldiers, causes them to become invisible. The particles will lose their elerium charge after a brief time, and competing energy sources - such as weapons fire - will disrupt them.",
-            "tactical_text": "<ul><li>Confers temporary stealth on all friendly units in blast radius</li><li>Stealth lasts until the start of the unit's next turn</li><li>Attacks from stealth receive a substantial bonus to critical chance</li><li>Does not affect panicking units, Seekers or units with Concealment</li><li>Psionic strain of use only allows equipping one of these items, and it does not gain charge bonuses from perks</li></ul>",
+            "tactical_text": "<ul><li>Confers temporary stealth on all friendly units in blast radius</li><li>Stealth lasts until the start of the unit's next turn</li><li>Attacks from stealth receive a substantial bonus to critical chance</li><li>Does not affect panicking units, Seekers or units with <a data-page-on-click='perk-tree-display-page' data-pagearg-display-mode='single-perk' data-pagearg-item-id='perk_concealment'>Concealment</a></li><li>Psionic strain of use only allows equipping one of these items, and it does not gain charge bonuses from perks</li></ul>",
             "type": "loadout_equipment",
             "sell_value": 60,
             "type_specific_data": {
@@ -5907,7 +5907,7 @@
                 "usable_by_infantry": true,
                 "usable_by_mec": false,
                 "usable_by_shiv": false,
-                "use_range": 15,
+                "range": 15,
 
                 "aim": 0,
                 "crit_chance": 0,
@@ -6016,7 +6016,7 @@
         "item_shredder_ammo": {
             "name": "Shredder Ammo",
             "description": "Special ammo that briefly leaves target susceptible to increased damage from additional hits.",
-            "tactical_text": "<ul><li>Using your primary weapon to hit an enemy when equipped with this ammo confers the 'shredded' effect for one turn, meaning the enemy takes extra damage from additional hits</li><li>Can't stack with some other special ammo</li></ul>",
+            "tactical_text": "<ul><li>Using your primary weapon to hit an enemy when equipped with this ammo confers the 'shredded' effect for one turn, meaning the enemy takes extra damage from additional hits</li></ul>",
             "type": "loadout_equipment",
             "sell_value": 12,
             "type_specific_data": {
@@ -6168,7 +6168,7 @@
                 "usable_by_infantry": true,
                 "usable_by_mec": false,
                 "usable_by_shiv": false,
-                "use_range": 15,
+                "range": 15,
 
                 "aim": 0,
                 "effect_radius": 5.6,

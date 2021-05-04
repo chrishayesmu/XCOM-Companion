@@ -10,36 +10,37 @@
 
 <template id="template-item-armor-stats-grid">
     <table id="item-armor-stats-grid" class="item-stats-grid">
+        <caption>Stats</caption>
         <tr>
-             <th title="HP" id="armor-stats-hp-header">
+            <th title="Mobility Bonus" id="armor-stats-mobility-header">
+                <img class="item-stats-header-img" src="assets/img/item-stat-icons/mobility.png" />
+            </th>
+            <th title="HP" id="armor-stats-hp-header">
                 <img class="item-stats-header-img" src="assets/img/item-stat-icons/hp.png" />
-             </th>
+            </th>
             <th title="HP from Extra Conditioning" id="armor-stats-hp-extra-con-header">
                 <img class="item-stats-header-img" src="assets/img/item-stat-icons/hp-extra-con.png" />
-             </th>
-             <th title="Mobility Bonus" id="armor-stats-mobility-header">
-                <img class="item-stats-header-img" src="assets/img/item-stat-icons/mobility.png" />
-             </th>
-             <th title="Damage Reduction" id="armor-stats-damage-reduction-header">
+            </th>
+            <th title="Damage Reduction" id="armor-stats-damage-reduction-header">
                 <img class="item-stats-header-img" src="assets/img/item-stat-icons/damage_reduction.png" />
-             </th>
-             <th title="Defense Bonus" id="armor-stats-defense-header">
+            </th>
+            <th title="Defense Bonus" id="armor-stats-defense-header">
                 <img class="item-stats-header-img" src="assets/img/item-stat-icons/defense.png" />
             </th>
-             <th title="Will Bonus" id="armor-stats-will-header">
+            <th title="Will Bonus" id="armor-stats-will-header">
                 <img class="item-stats-header-img" src="assets/img/item-stat-icons/will.png" />
-             </th>
-             <th title="Number of Secondary Weapons" id="armor-stats-secondary-weapons-header">
+            </th>
+            <th title="Number of Secondary Weapons" id="armor-stats-secondary-weapons-header">
                 <img class="item-stats-header-img" src="assets/img/item-stat-icons/num_secondary_weapons.png" />
-             </th>
-             <th title="Number of Equipment Slots" id="armor-stats-equipment-slots-header">
+            </th>
+            <th title="Number of Equipment Slots" id="armor-stats-equipment-slots-header">
                 <img class="item-stats-header-img" src="assets/img/item-stat-icons/num_equipment_slots.png" />
-             </th>
+            </th>
         </tr>
         <tr>
+            <td id="armor-stats-mobility"></td>
             <td id="armor-stats-hp"></td>
             <td id="armor-stats-hp-extra-con"></td>
-            <td id="armor-stats-mobility"></td>
             <td id="armor-stats-damage-reduction"></td>
             <td id="armor-stats-defense"></td>
             <td id="armor-stats-will"></td>
@@ -49,8 +50,67 @@
     </table>
 </template>
 
+<template id="template-item-equipment-stats-grid">
+    <table id="item-equipment-stats-grid" class="item-stats-grid">
+        <caption>Stats</caption>
+        <tr>
+            <th title="Mobility Bonus" id="mobility-header">
+                <img class="item-stats-header-img" src="assets/img/item-stat-icons/mobility.png" />
+             </th>
+             <th title="HP" id="hp-header">
+                <img class="item-stats-header-img" src="assets/img/item-stat-icons/hp.png" />
+             </th>
+             <th title="Damage Reduction" id="damage-reduction-header">
+                <img class="item-stats-header-img" src="assets/img/item-stat-icons/damage_reduction.png" />
+             </th>
+             <th title="Damage Penetration" id="dr-penetration-header">
+                <img class="item-stats-header-img" src="assets/img/item-stat-icons/penetration.png" />
+             </th>
+             <th title="Damage" id="damage-header">
+                <img class="item-stats-header-img" src="assets/img/item-stat-icons/damage.png" />
+             </th>
+             <th title="Damage on Critical" id="crit-damage-header">
+                <img class="item-stats-header-img" src="assets/img/item-stat-icons/crit_damage.png" />
+             </th>
+            <th title="Aim Bonus" id="aim-header">
+                <img class="item-stats-header-img" src="assets/img/item-stat-icons/aim.png" />
+             </th>
+             <th title="Critical Chance Bonus" id="crit-chance-header">
+                <img class="item-stats-header-img" src="assets/img/item-stat-icons/crit_chance.png" />
+             </th>
+            <th title="Defense Bonus" id="defense-header">
+                <img class="item-stats-header-img" src="assets/img/item-stat-icons/defense.png" />
+            </th>
+            <th title="Will Bonus" id="will-header">
+                <img class="item-stats-header-img" src="assets/img/item-stat-icons/will.png" />
+             </th>
+            <th title="Range" id="range-header">
+                <img class="item-stats-header-img" src="assets/img/item-stat-icons/range.png" />
+            </th>
+            <th title="Effect Radius" id="effect-radius-header">
+                <img class="item-stats-header-img" src="assets/img/item-stat-icons/effect_radius.png" />
+            </th>
+        </tr>
+        <tr>
+            <td id="mobility"></td>
+            <td id="hp"></td>
+            <td id="damage-reduction"></td>
+            <td id="dr-penetration"></td>
+            <td id="damage"></td>
+            <td id="crit-damage"></td>
+            <td id="aim"></td>
+            <td id="crit-chance"></td>
+            <td id="defense"></td>
+            <td id="will"></td>
+            <td id="range"></td>
+            <td id="effect-radius"></td>
+        </tr>
+    </table>
+</template>
+
 <template id="template-item-interceptor-stats-grid">
     <table id="item-interceptor-stats-grid" class="item-stats-grid">
+        <caption>Stats</caption>
         <tr>
             <th title="Armor" id="interceptor-stats-armor-header">
                 <img class="item-stats-header-img" src="assets/img/item-stat-icons/defense.png" />
@@ -74,8 +134,43 @@
     </table>
 </template>
 
+<template id="template-item-interceptor-weapon-stats-grid">
+    <table id="item-interceptor-weapon-stats-grid" class="item-stats-grid">
+        <caption>Stats</caption>
+        <tr>
+            <th title="Damage Per Shot" id="interceptor-weapon-stats-damage-header">
+                <img class="item-stats-header-img" src="assets/img/item-stat-icons/damage.png" />
+             </th>
+             <th title="Time Between Shots" id="interceptor-weapon-stats-time-between-shots-header">
+                <img class="item-stats-header-img" src="assets/img/misc-icons/time.png" />
+             </th>
+             <th title="Penetration" id="interceptor-weapon-stats-penetration-header">
+                <img class="item-stats-header-img" src="assets/img/item-stat-icons/penetration.png" />
+            </th>
+            <th title="Hit Chance (Defensive)" id="interceptor-weapon-stats-hit-chance-defensive-header">
+                <img class="item-stats-header-img" src="assets/img/item-stat-icons/aim_defensive.png" />
+             </th>
+             <th title="Hit Chance (Balanced)" id="interceptor-weapon-stats-hit-chance-balanced-header">
+                <img class="item-stats-header-img" src="assets/img/item-stat-icons/aim.png" />
+             </th>
+             <th title="Hit Chance (Aggressive)" id="interceptor-weapon-stats-hit-chance-aggressive-header">
+                <img class="item-stats-header-img" src="assets/img/item-stat-icons/aim_aggressive.png" />
+             </th>
+        </tr>
+        <tr>
+            <td id="interceptor-weapon-stats-damage"></td>
+            <td id="interceptor-weapon-stats-time-between-shots"></td>
+            <td id="interceptor-weapon-stats-penetration"></td>
+            <td id="interceptor-weapon-stats-hit-chance-defensive"></td>
+            <td id="interceptor-weapon-stats-hit-chance-balanced"></td>
+            <td id="interceptor-weapon-stats-hit-chance-aggressive"></td>
+        </tr>
+    </table>
+</template>
+
 <template id="template-item-mec-secondary-stats-grid">
     <table id="item-mec-secondary-stats-grid" class="item-stats-grid">
+        <caption>Stats</caption>
         <tr>
             <th title="Mobility Bonus" id="mec-secondary-stats-mobility-header">
                 <img class="item-stats-header-img" src="assets/img/item-stat-icons/mobility.png" />
@@ -111,41 +206,43 @@
     </table>
 </template>
 
-<template id="template-item-interceptor-weapon-stats-grid">
-    <table id="item-interceptor-weapon-stats-grid" class="item-stats-grid">
+<template id="template-item-shiv-stats-grid">
+    <table id="item-shiv-stats-grid" class="item-stats-grid">
+        <caption>Stats</caption>
         <tr>
-            <th title="Damage Per Shot" id="interceptor-weapon-stats-damage-header">
-                <img class="item-stats-header-img" src="assets/img/item-stat-icons/damage.png" />
-             </th>
-             <th title="Time Between Shots" id="interceptor-weapon-stats-time-between-shots-header">
-                <img class="item-stats-header-img" src="assets/img/misc-icons/time.png" />
-             </th>
-             <th title="Penetration" id="interceptor-weapon-stats-penetration-header">
-                <img class="item-stats-header-img" src="assets/img/item-stat-icons/penetration.png" />
+            <th title="Mobility" id="shiv-stats-mobility-header">
+                <img class="item-stats-header-img" src="assets/img/item-stat-icons/mobility.png" />
             </th>
-            <th title="Hit Chance (Defensive)" id="interceptor-weapon-stats-hit-chance-defensive-header">
-                <img class="item-stats-header-img" src="assets/img/item-stat-icons/aim_defensive.png" />
-             </th>
-             <th title="Hit Chance (Balanced)" id="interceptor-weapon-stats-hit-chance-balanced-header">
+            <th title="HP (Base + Armor)" id="shiv-stats-hp-header">
+                <img class="item-stats-header-img" src="assets/img/item-stat-icons/hp.png" />
+            </th>
+            <th title="Aim" id="shiv-stats-aim-header">
                 <img class="item-stats-header-img" src="assets/img/item-stat-icons/aim.png" />
              </th>
-             <th title="Hit Chance (Aggressive)" id="interceptor-weapon-stats-hit-chance-aggressive-header">
-                <img class="item-stats-header-img" src="assets/img/item-stat-icons/aim_aggressive.png" />
-             </th>
+            <th title="Damage Reduction" id="shiv-stats-damage-reduction-header">
+                <img class="item-stats-header-img" src="assets/img/item-stat-icons/damage_reduction.png" />
+            </th>
+            <th title="Defense" id="shiv-stats-defense-header">
+                <img class="item-stats-header-img" src="assets/img/item-stat-icons/defense.png" />
+            </th>
+            <th title="Number of Equipment Slots" id="shiv-stats-equipment-slots-header">
+                <img class="item-stats-header-img" src="assets/img/item-stat-icons/num_equipment_slots.png" />
+            </th>
         </tr>
         <tr>
-            <td id="interceptor-weapon-stats-damage"></td>
-            <td id="interceptor-weapon-stats-time-between-shots"></td>
-            <td id="interceptor-weapon-stats-penetration"></td>
-            <td id="interceptor-weapon-stats-hit-chance-defensive"></td>
-            <td id="interceptor-weapon-stats-hit-chance-balanced"></td>
-            <td id="interceptor-weapon-stats-hit-chance-aggressive"></td>
+            <td id="shiv-stats-mobility"></td>
+            <td id="shiv-stats-hp"></td>
+            <td id="shiv-stats-aim"></td>
+            <td id="shiv-stats-damage-reduction"></td>
+            <td id="shiv-stats-defense"></td>
+            <td id="shiv-stats-equipment-slots"></td>
         </tr>
     </table>
 </template>
 
 <template id="template-item-weapon-stats-grid">
     <table id="item-weapon-stats-grid" class="item-stats-grid">
+        <caption>Stats</caption>
         <tr>
             <th title="Damage" id="weapon-stats-damage-header">
                 <img class="item-stats-header-img" src="assets/img/item-stat-icons/damage.png" />
@@ -161,6 +258,9 @@
              </th>
             <th title="Mobility Bonus" id="weapon-stats-mobility-header">
                 <img class="item-stats-header-img" src="assets/img/item-stat-icons/mobility.png" />
+             </th>
+             <th title="DR Penetration" id="weapon-stats-dr-penetration-header">
+                <img class="item-stats-header-img" src="assets/img/item-stat-icons/penetration.png" />
              </th>
             <th title="Defense Bonus" id="weapon-stats-defense-header">
                 <img class="item-stats-header-img" src="assets/img/item-stat-icons/defense.png" />
@@ -190,6 +290,7 @@
             <td id="weapon-stats-aim"></td>
             <td id="weapon-stats-crit-chance"></td>
             <td id="weapon-stats-mobility"></td>
+            <td id="weapon-stats-dr-penetration"></td>
             <td id="weapon-stats-defense"></td>
             <td id="weapon-stats-ammo"></td>
             <td id="weapon-stats-range"></td>
@@ -257,10 +358,7 @@
 
 <template id="template-arc-thrower-stats-grid">
     <table class="item-stats-grid">
-        <tr>
-            <th></th>
-            <th colspan="7">Capture Chance by Enemy HP</th>
-        </tr>
+        <caption>Capture Chance by Enemy HP</caption>
         <tr>
             <th>--</th>
             <th>1</th>

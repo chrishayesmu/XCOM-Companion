@@ -65,6 +65,7 @@ function search(query) {
     }
     else {
         // Check if any of the results matches the query exactly
+        // TODO: might be multiple exact matches (some perks/items share names)
         for (let i = 0; i < matches.length; i++) {
             if (matches[i].name.toLowerCase() === queryLower) {
                 return {

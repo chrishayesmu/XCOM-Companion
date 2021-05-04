@@ -1,6 +1,7 @@
 import { AppPage, PageHistoryState } from "./app-page.js";
 import * as DataHelper from "../data-helper.js";
 import * as Templates from "../templates.js";
+import * as Utils from "../utils.js";
 import * as Widgets from "../widgets.js";
 
 class ItemDisplayPage extends AppPage {
@@ -161,24 +162,33 @@ class ItemDisplayPage extends AppPage {
             template.querySelector("#item-details-used-in-container").classList.add("hidden-collapse");
         }
 
+        const tacticalTextContainer = template.querySelector("#item-details-tactical-text");
+        this._addSpecialBulletPoints(item, tacticalTextContainer);
+
         if (item.type === "loadout_secondary" && item.type_specific_data.category === "mec") {
-            template.querySelector("#item-details-tactical-text").appendChild(await this._createMecSecondaryStatsGrid(item));
+            tacticalTextContainer.appendChild(await this._createMecSecondaryStatsGrid(item));
         }
         else if (item.type === "loadout_primary" || item.type === "loadout_secondary") {
-            this._populateWeaponStats(item, template.querySelector("#item-details-tactical-text"));
+            tacticalTextContainer.appendChild(await this._createWeaponStatsGrid(item));
         }
         else if (item.type === "loadout_armor" || item.type === "loadout_mec_exoskeleton") {
-            this._populateArmorStats(item, template.querySelector("#item-details-tactical-text"));
+            tacticalTextContainer.appendChild(await this._createArmorStatsGrid(item));
+        }
+        else if (item.type === "loadout_equipment") {
+            tacticalTextContainer.appendChild(await this._createEquipmentStatsGrid(item));
         }
         else if (item.type === "aircraft") {
-            template.querySelector("#item-details-tactical-text").appendChild(await this._createInterceptorStatsGrid(item));
+            tacticalTextContainer.appendChild(await this._createInterceptorStatsGrid(item));
         }
         else if (item.type === "aircraft_weapon") {
-            template.querySelector("#item-details-tactical-text").appendChild(await this._createInterceptorWeaponStatsGrid(item));
+            tacticalTextContainer.appendChild(await this._createInterceptorWeaponStatsGrid(item));
+        }
+        else if (item.type === "shiv") {
+            tacticalTextContainer.appendChild(await this._createShivStatsGrid(item));
         }
 
         if (item.id === "item_arc_thrower") {
-            template.querySelector("#item-details-tactical-text").appendChild(await Templates.instantiateTemplate("assets/html/templates/pages/item-display-page.html", "template-arc-thrower-stats-grid"));
+            tacticalTextContainer.appendChild(await Templates.instantiateTemplate("assets/html/templates/pages/item-display-page.html", "template-arc-thrower-stats-grid"));
         }
 
         return template;
@@ -195,6 +205,96 @@ class ItemDisplayPage extends AppPage {
 
     ownsDataObject(dataObj) {
         return dataObj.id.startsWith("item_");
+    }
+
+    _addSpecialBulletPoints(item, tacticalTextContainer) {
+        const typeData = item.type_specific_data;
+
+        if (!typeData) {
+            return;
+        }
+
+        let bulletPointContainer = tacticalTextContainer.querySelector("ul");
+
+        if (!bulletPointContainer) {
+            bulletPointContainer = document.createElement("ul");
+            tacticalTextContainer.appendChild(bulletPointContainer);
+        }
+
+        const addBulletPoint = function(text) {
+            const listItem = document.createElement("li");
+            listItem.innerHTML = text;
+            bulletPointContainer.appendChild(listItem);
+        };
+
+        if (item.type === "loadout_mec_exoskeleton" && typeData.grants_perks) {
+            const link = Widgets.createInAppLink(typeData.grants_perks[0]);
+            addBulletPoint("This exoskeleton grants the " + link.outerHTML + " perk");
+        }
+
+        if (typeData.has_grapple) {
+            addBulletPoint("Includes a grapple to hoist soldiers to higher terrain");
+        }
+
+        if (typeData.negates_fire) {
+            addBulletPoint(item.type === "shiv" ? "Immune to environmental fire damage" : "Provides immunity to environmental fire damage");
+        }
+
+        if (typeData.negates_acid) {
+            addBulletPoint(item.type === "shiv" ? "Does not suffer mobility penalty or damage from acid" : "Prevents mobility penalty and damage from acid");
+        }
+
+        if (typeData.prevents_strangulation) {
+            addBulletPoint(item.type === "shiv" ? "Cannot be strangled by Seekers" : "Prevents strangulation by Seekers");
+        }
+
+        if (typeData.requires_psionic) {
+            addBulletPoint("Only usable by soldiers with Psionic abilities");
+        }
+
+        if (typeData.can_steady) {
+            addBulletPoint("Can be steadied for additional accuracy on the following shot");
+        }
+
+        if (typeData.category === "shotgun") {
+            addBulletPoint("Shotguns gain double the aim bonus from being close to the target");
+            addBulletPoint("Enemy damage reduction is 50% more effective vs shotguns");
+        }
+
+        if (typeData.exclusive_with) {
+            const itemLinks = typeData.exclusive_with.map(otherItem => Widgets.createInAppLink(otherItem).outerHTML);
+            const otherItems = Utils.join(itemLinks, "or");
+            addBulletPoint("Does not stack with " + otherItems);
+        }
+
+        if (typeData.class_restriction) {
+            const classLinks = typeData.class_restriction.map(c => Widgets.createInAppLink(c).outerHTML);
+
+            addBulletPoint("Usable by " + Utils.join(classLinks));
+        }
+
+        // Add text for if MECs and SHIVs can use
+        const usableBySoldier = typeData.usable_by_infantry;
+        const usableByMec = typeData.category == "mec" || typeData.usable_by_mec;
+        const usableByShiv = typeData.category == "shiv" || typeData.usable_by_shiv;
+        const useCategories = [];
+
+        if (usableBySoldier) {
+            useCategories.push("regular (non-MEC) soldiers");
+        }
+
+        if (usableByMec) {
+            useCategories.push("MEC Troopers");
+        }
+
+        if (usableByShiv) {
+            useCategories.push("SHIVs");
+        }
+
+        if (useCategories.length > 0) {
+            const text = "Usable by " + Utils.join(useCategories);
+            addBulletPoint(text);
+        }
     }
 
     async _createArmorStatsGrid(item) {
@@ -215,6 +315,43 @@ class ItemDisplayPage extends AppPage {
             gridTemplate.querySelector("#armor-stats-secondary-weapons").classList.add("hidden-collapse");
             gridTemplate.querySelector("#armor-stats-equipment-slots-header").classList.add("hidden-collapse");
             gridTemplate.querySelector("#armor-stats-equipment-slots").classList.add("hidden-collapse");
+        }
+
+        return gridTemplate;
+    }
+
+    async _createEquipmentStatsGrid(item) {
+        const equipmentData = item.type_specific_data;
+        const gridTemplate = await Templates.instantiateTemplate("assets/html/templates/pages/item-display-page.html", "template-item-equipment-stats-grid");
+
+        const stats = [ "hp", "damage-reduction", "dr-penetration", "aim", "crit-chance", "mobility", "defense", "will", "range", "effect-radius" ];
+
+        for (let i = 0; i < stats.length; i++) {
+            const stat = stats[i];
+            const dataKey = stat.replace("-", "_");
+
+            // Mobility should always be shown, since it's pretty much universal; it'll be confusing if it's missing for a few items
+            if (equipmentData[dataKey] || stat == "mobility") {
+                gridTemplate.querySelector("#" + stat).textContent = equipmentData[dataKey] || 0;
+            }
+            else {
+                this._hideGridStat(gridTemplate, stat);
+            }
+        }
+
+        // Damage/crit damage are handled separately since they don't display the same way
+        if (equipmentData.damage_min_normal && equipmentData.damage_max_normal) {
+            gridTemplate.querySelector("#damage").textContent = equipmentData.damage_min_normal + " - " + equipmentData.damage_max_normal;
+        }
+        else {
+            this._hideGridStat(gridTemplate, "damage");
+        }
+
+        if (equipmentData.damage_min_crit && equipmentData.damage_max_crit) {
+            gridTemplate.querySelector("#crit-damage").textContent = equipmentData.damage_min_crit + " - " + equipmentData.damage_max_crit;
+        }
+        else {
+            this._hideGridStat(gridTemplate, "crit-damage");
         }
 
         return gridTemplate;
@@ -286,6 +423,20 @@ class ItemDisplayPage extends AppPage {
         return gridTemplate;
     }
 
+    async _createShivStatsGrid(item) {
+        const shivData = item.type_specific_data;
+        const gridTemplate = await Templates.instantiateTemplate("assets/html/templates/pages/item-display-page.html", "template-item-shiv-stats-grid");
+
+        gridTemplate.querySelector("#shiv-stats-mobility").textContent = shivData.mobility;
+        gridTemplate.querySelector("#shiv-stats-hp").textContent = shivData.hp_base + " + " + shivData.hp_armor;
+        gridTemplate.querySelector("#shiv-stats-aim").textContent = shivData.aim;
+        gridTemplate.querySelector("#shiv-stats-damage-reduction").textContent = shivData.damage_reduction;
+        gridTemplate.querySelector("#shiv-stats-defense").textContent = shivData.defense;
+        gridTemplate.querySelector("#shiv-stats-equipment-slots").textContent = 3;
+
+        return gridTemplate;
+    }
+
     async _createWeaponStatsGrid(item) {
         const weaponData = item.type_specific_data;
         const gridTemplate = await Templates.instantiateTemplate("assets/html/templates/pages/item-display-page.html", "template-item-weapon-stats-grid");
@@ -295,6 +446,7 @@ class ItemDisplayPage extends AppPage {
         gridTemplate.querySelector("#weapon-stats-aim").textContent = weaponData.aim || 0;
         gridTemplate.querySelector("#weapon-stats-crit-chance").textContent = weaponData.crit_chance || 0;
         gridTemplate.querySelector("#weapon-stats-mobility").textContent = weaponData.mobility || 0;
+        gridTemplate.querySelector("#weapon-stats-dr-penetration").textContent = weaponData.dr_penetration || 0;
         gridTemplate.querySelector("#weapon-stats-defense").textContent = weaponData.defense || 0;
         gridTemplate.querySelector("#weapon-stats-ammo").textContent = weaponData.base_ammo;
         gridTemplate.querySelector("#weapon-stats-range").textContent = weaponData.range_normal;
@@ -308,6 +460,11 @@ class ItemDisplayPage extends AppPage {
             gridTemplate.querySelector("#weapon-stats-crit-damage-header").classList.add("hidden-collapse");
             gridTemplate.querySelector("#weapon-stats-crit-chance").classList.add("hidden-collapse");
             gridTemplate.querySelector("#weapon-stats-crit-chance-header").classList.add("hidden-collapse");
+        }
+
+        if (!weaponData.dr_penetration) {
+            gridTemplate.querySelector("#weapon-stats-dr-penetration").classList.add("hidden-collapse");
+            gridTemplate.querySelector("#weapon-stats-dr-penetration-header").classList.add("hidden-collapse");
         }
 
         if (!weaponData.range_overwatch) {
@@ -330,49 +487,9 @@ class ItemDisplayPage extends AppPage {
         return gridTemplate;
     }
 
-    async _populateArmorStats(item, container) {
-        let bulletPointContainer = container.querySelector("ul");
-
-        if (!bulletPointContainer) {
-            bulletPointContainer = document.createElement("ul");
-            container.appendChild(bulletPointContainer);
-        }
-
-        const armorData = item.type_specific_data;
-
-        const addBulletPoint = function(text) {
-            const listItem = document.createElement("li");
-            listItem.innerHTML = text;
-            bulletPointContainer.appendChild(listItem);
-        };
-
-        if (item.type === "loadout_mec_exoskeleton") {
-            const link = Widgets.createInAppLink(armorData.grants_perks[0]);
-            addBulletPoint("This exoskeleton grants the " + link.outerHTML + " perk");
-        }
-
-        if (armorData.has_grapple) {
-            addBulletPoint("Includes a grapple to hoist soldiers to higher terrain");
-        }
-
-        if (armorData.negates_fire) {
-            addBulletPoint("Provides immunity to environmental fire damage");
-        }
-
-        if (armorData.negates_acid) {
-            addBulletPoint("Prevents mobility penalty and damage from acid");
-        }
-
-        if (armorData.prevents_strangulation) {
-            addBulletPoint("Prevents strangulation by Seekers");
-        }
-
-        if (armorData.requires_psionic) {
-            addBulletPoint("Only usable by soldiers with Psionic abilities");
-        }
-
-        container.appendChild(await this._createArmorStatsGrid(item));
-
+    _hideGridStat(grid, stat) {
+        grid.querySelector(`#${stat}`).classList.add("hidden-collapse");
+        grid.querySelector(`#${stat}-header`).classList.add("hidden-collapse");
     }
 
     _populateBuildSection(buildData, numEngineersNeeded, containerElement) {
@@ -481,82 +598,6 @@ class ItemDisplayPage extends AppPage {
 
             section.appendChild(div);
         }
-    }
-
-    async _populateWeaponStats(item, container) {
-        let bulletPointContainer = container.querySelector("ul");
-
-        if (!bulletPointContainer) {
-            bulletPointContainer = document.createElement("ul");
-            container.appendChild(bulletPointContainer);
-        }
-
-        const weaponData = item.type_specific_data;
-
-        const addBulletPoint = function(text) {
-            const listItem = document.createElement("li");
-            listItem.innerHTML = text;
-            bulletPointContainer.appendChild(listItem);
-        };
-
-        if (weaponData.can_steady) {
-            addBulletPoint("Can be steadied for additional accuracy on the following shot");
-        }
-
-        if (weaponData.category === "shotgun") {
-            addBulletPoint("Shotguns gain double the aim bonus from being close to the target");
-            addBulletPoint("Enemy damage reduction is 50% more effective vs shotguns");
-        }
-
-        if (weaponData.class_restriction) {
-            let classText = "Usable by ";
-
-            for (let i = 0; i < weaponData.class_restriction.length; i++) {
-                let classLink = Widgets.createInAppLink(weaponData.class_restriction[i]);
-
-                if (weaponData.class_restriction.length > 1) {
-                    if (i == weaponData.class_restriction.length - 1) {
-                        classText += " and " + classLink.outerHTML;
-                    }
-                    else if (i == weaponData.class_restriction.length - 2) {
-                        classText += classLink.outerHTML + " ";
-                    }
-                    else {
-                        classText += classLink.outerHTML + ", ";
-                    }
-                }
-                else {
-                    // Only one class can use this
-                    classText += classLink.outerHTML;
-                }
-            }
-
-            addBulletPoint(classText);
-        }
-
-        // Add text for if MECs and SHIVs can use
-        const usableByMec = weaponData.category == "mec" || weaponData.usable_by_mec;
-        const usableByShiv = weaponData.category == "shiv" || weaponData.usable_by_shiv;
-        if (usableByMec || usableByShiv) {
-            let text = "Usable by ";
-
-            if (usableByMec) {
-                text += "MEC Troopers ";
-            }
-
-            if (usableByShiv) {
-                if (usableByMec) {
-                    text += "and ";
-                }
-
-                text += "SHIVs";
-            }
-
-            addBulletPoint(text);
-        }
-
-        // Populate the table with values
-        container.appendChild(await this._createWeaponStatsGrid(item));
     }
 }
 

@@ -54,21 +54,31 @@
 
 table.item-stats-grid {
     border-collapse: collapse;
-    margin: 15px auto 0 auto;
+    margin: 15px;
     table-layout: fixed;
-    width: 95%;
+    width: 1px; /* hack to make sure the width of individual cells is actually used */
+}
+
+table.item-stats-grid th,
+table.item-stats-grid td {
+    border: 1px solid var(--color-border-subtle);
+    width: 80px;
+    text-align: center;
 }
 
 table.item-stats-grid th {
-    border: 1px solid var(--color-border-subtle);
     padding-top: 4px;
-    text-align: center;
 }
 
 table.item-stats-grid td {
-    border: 1px solid var(--color-border-subtle);
     padding: 3px 0px;
-    text-align: center;
+}
+
+table.item-stats-grid caption {
+    border: 1px solid var(--color-border-subtle);
+    font-weight: bold;
+    margin-bottom: -1px;
+    padding: 2px;
 }
 
 .item-details-time-container {
