@@ -90,7 +90,7 @@ class PerkTreeDisplayPage extends AppPage {
 
         // Update the header with the name of the class
         const headerText = template.querySelector("#perk-tree-header-text");
-        headerText.textContent = headerText.textContent.replace("{{class}}", this.soldierClass.name);
+        headerText.innerHTML = headerText.innerHTML.replace("{{class}}", this.soldierClass.name);
 
         const rows = template.querySelectorAll(".perk-tree-row"); // 7 rows, one per rank
 
@@ -140,8 +140,6 @@ class PerkTreeDisplayPage extends AppPage {
 
     async _loadGeneModTree() {
         const template = await Templates.instantiateTemplate("assets/html/templates/pages/perk-tree-display-page.html", "template-gene-mods-display-page");
-
-        template.querySelector("#perk-tree-header-text").textContent = "Gene Mods";
 
         for (let id in DataHelper.geneMods) {
             const mod = DataHelper.geneMods[id];

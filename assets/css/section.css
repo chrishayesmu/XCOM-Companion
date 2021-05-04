@@ -24,6 +24,16 @@
     padding: 2rem 2rem 1rem 2rem;
 }
 
+.section-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.section-wrapper img {
+    height: 1.2em;
+    margin-right: 12px;
+}
+
 .section-content {
     height: calc(100% - 6em);
     padding-top: 10px;
