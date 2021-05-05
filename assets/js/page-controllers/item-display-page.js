@@ -99,11 +99,17 @@ class ItemDisplayPage extends AppPage {
         else if (item.type === "loadout_armor" || item.type === "loadout_mec_exoskeleton") {
             template.querySelector("#item-preview-stats-table").appendChild(await this._createArmorStatsGrid(item));
         }
+        else if (item.type === "loadout_equipment") {
+            template.querySelector("#item-preview-stats-table").appendChild(await this._createEquipmentStatsGrid(item));
+        }
         else if (item.type === "aircraft") {
             template.querySelector("#item-preview-stats-table").appendChild(await this._createInterceptorStatsGrid(item));
         }
         else if (item.type === "aircraft_weapon") {
             template.querySelector("#item-preview-stats-table").appendChild(await this._createInterceptorWeaponStatsGrid(item));
+        }
+        else if (item.type === "shiv") {
+            template.querySelector("#item-preview-stats-table").appendChild(await this._createShivStatsGrid(item));
         }
 
         return template;
