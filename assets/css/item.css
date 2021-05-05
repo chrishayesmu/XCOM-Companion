@@ -36,6 +36,7 @@
 }
 
 .item-details-cost-quantity {
+    flex-shrink: 0;
     margin-right: 5px;
     text-align: right;
     width: 36px;
