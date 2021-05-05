@@ -213,26 +213,6 @@ div.foundry-browse-money-icon {
     flex-flow: column nowrap;
 }
 
-#foundry-preview-cost {
-    align-items: flex-start;
-    display: flex;
-    flex-flow: row nowrap;
-    flex-grow: 1;
-    justify-content: flex-end;
-    margin-left: 25px;
-    min-width: 40px;
-}
-
-#foundry-preview-cost > div {
-    align-items: center;
-    display: flex;
-    flex-flow: row nowrap;
-    height: 21px;
-    justify-content: center;
-    margin-left: 10px;
-    width: 35px;
-}
-
 #foundry-preview-description {
     padding-left: 5px;
     margin-top: 13px;

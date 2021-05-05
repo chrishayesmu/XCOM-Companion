@@ -63,7 +63,7 @@ table.item-stats-grid {
 table.item-stats-grid th,
 table.item-stats-grid td {
     border: 1px solid var(--color-border-subtle);
-    width: 80px;
+    width: 54px;
     text-align: center;
 }
 
@@ -220,29 +220,14 @@ table.item-stats-grid caption {
     flex-flow: column nowrap;
 }
 
-#item-preview-cost {
-    align-items: flex-start;
-    display: flex;
-    flex-flow: row nowrap;
-    flex-grow: 1;
-    justify-content: flex-end;
-    margin-left: 25px;
-    min-width: 40px;
-}
-
-#item-preview-cost > div {
-    align-items: center;
-    display: flex;
-    flex-flow: row nowrap;
-    height: 21px;
-    justify-content: center;
-    margin-left: 10px;
-    width: 35px;
-}
-
 #item-preview-description {
     padding-left: 5px;
     margin-top: 8px;
+}
+
+#item-preview-stats-table .item-stats-grid {
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #item-preview-header-row {

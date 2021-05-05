@@ -91,19 +91,19 @@ class ItemDisplayPage extends AppPage {
         template.querySelector("#item-preview-description").textContent = item.description;
 
         if (item.type === "loadout_secondary" && item.type_specific_data.category === "mec") {
-            template.appendChild(await this._createMecSecondaryStatsGrid(item));
+            template.querySelector("#item-preview-stats-table").appendChild(await this._createMecSecondaryStatsGrid(item));
         }
         else if (item.type === "loadout_primary" || item.type === "loadout_secondary") {
-            template.appendChild(await this._createWeaponStatsGrid(item));
+            template.querySelector("#item-preview-stats-table").appendChild(await this._createWeaponStatsGrid(item));
         }
         else if (item.type === "loadout_armor" || item.type === "loadout_mec_exoskeleton") {
-            template.appendChild(await this._createArmorStatsGrid(item));
+            template.querySelector("#item-preview-stats-table").appendChild(await this._createArmorStatsGrid(item));
         }
         else if (item.type === "aircraft") {
-            template.appendChild(await this._createInterceptorStatsGrid(item));
+            template.querySelector("#item-preview-stats-table").appendChild(await this._createInterceptorStatsGrid(item));
         }
         else if (item.type === "aircraft_weapon") {
-            template.appendChild(await this._createInterceptorWeaponStatsGrid(item));
+            template.querySelector("#item-preview-stats-table").appendChild(await this._createInterceptorWeaponStatsGrid(item));
         }
 
         return template;
