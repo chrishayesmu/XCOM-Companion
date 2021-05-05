@@ -15,7 +15,7 @@
 
 .nav-header {
   position: relative;
-  padding: 2rem;
+  padding: 1rem 2rem;
   margin-bottom: 1rem;
   border-bottom: 1px solid var(--color-border);
   height: 6em;
@@ -42,32 +42,51 @@
 
 .nav-body {
   flex-grow: 1;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 .nav-item {
   padding: 0.5em 0;
+  margin-bottom: 5px;
 }
 
 .nav-icon {
-  width: 16px;
-  height: 16px;
+  width: 24px;
+  height: 24px;
   vertical-align: top;
-  margin-right: 0.25rem;
+  margin-right: 6px;
 }
 
 .nav-category {
-  margin: 0.2em 0;
-  padding-left: 2rem;
-  font-size: 11px;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+
+  font-size: 14px;
   font-weight: normal;
+  margin: 0.2em 0;
+  padding-bottom: 3px;
+  position: relative;
   text-transform: uppercase;
+}
+
+/* Style to apply a partial border on nav categories */
+.nav-category::before {
+  content: "";
+  border-bottom: 1px solid var(--color-border-subtle);
+  position: absolute;
+  bottom: 0px;
+  left: 30px;
+  right: 0px;
+  height: 1px;
 }
 
 .nav-button {
   display: block;
   width: 100%;
   padding: 0.3rem;
-  padding-left: calc(2rem + 16px + 0.5rem); /* padding + icon + magic */
+  padding-left: 36px;
   line-height: 2;
   text-align: left;
   font: inherit;
@@ -200,8 +219,7 @@
 }
 
 .nav-search-bar {
-    padding-left: 2rem;
-    padding-right: 2rem;
+    margin-bottom: 5px;
     width: 100%;
 }
 

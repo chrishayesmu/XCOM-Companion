@@ -52,12 +52,15 @@ function initialize() {
         };
 
         mainWindow = new BrowserWindow(windowOptions);
-        mainWindow.removeMenu();
         mainWindow.loadURL(path.join('file://', __dirname, '/index.html'));
 
         // Launch with DevTools open, usage: npm run dev
         if (debug) {
             mainWindow.webContents.openDevTools();
+        }
+        else {
+            // Leave menu bar in debug mode because it lets you do things like refresh
+            mainWindow.removeMenu();
         }
 
         mainWindow.on('closed', () => {
