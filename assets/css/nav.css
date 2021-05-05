@@ -22,6 +22,11 @@
   flex-grow: 0;
 }
 
+.nav-header-version {
+    margin-block-start: 0;
+    text-align: right;
+}
+
 .nav-title {
   color: var(--color);
   text-transform: uppercase;
@@ -33,15 +38,6 @@
 .nav-title strong {
   font-weight: 600;
   color: var(--color-strong);
-}
-
-.nav-header-icon {
-  position: absolute;
-  height: 46px;
-  top: 1.5rem; /* magic */
-  right: 1.75rem; /* magic */
-
-  visibility: hidden; /* TODO, fix logo to be inline with text */
 }
 
 .nav-body {

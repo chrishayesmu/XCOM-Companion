@@ -19,15 +19,14 @@
     <link rel="stylesheet" href="assets/css/tech-tree.css" />
     <link rel="stylesheet" href="assets/css/widgets.css" />
 
-    <!-- Widget templates -->
-    <link rel="import" href="assets/html/templates/widgets/selectable-icon.html" data-template-id="selectable-icon" />
+    <script type="module" src="assets/js/app-update-notifier.js"></script>
 </head>
 
 <body spellcheck="false">
     <nav class="nav js-nav">
         <header class="nav-header">
             <h1 class="nav-title">XCOM Companion</h1>
-            <img class="nav-header-icon" src="assets/img/xcom-logo.png" />
+            <h4 id="appVersion" class="nav-header-version"></h4>
         </header>
 
         <div class="nav-body">
@@ -93,8 +92,18 @@
     </nav>
 
     <main id="page-content" class="content js-content"></main>
+    <app-update-notifier></app-update-notifier>
 
     <script type="module" src="assets/js/page-manager.js"></script>
+    <script>
+        // Small script to populate app version in the nav header
+        const { ipcRenderer } = require('electron');
+        const versionContainer = document.getElementById("appVersion");
+
+        ipcRenderer.invoke("get-app-version").then( arg => {
+            versionContainer.textContent = "v" + arg.version;
+        });
+    </script>
 </body>
 
 </html>

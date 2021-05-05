@@ -23,7 +23,7 @@ TBD
 
 ## Upcoming features
 
-Disclaimer: None of these features are guaranteed to be added, and they all depend on how much free time I have to work on the app, and the availability of the data needed to make them work properly.
+Disclaimer: None of these features are guaranteed to be added; they all depend on how much free time I have to work on the app, and the availability of the data needed to make them work properly.
 
 * **Page history:** Navigate backwards and forwards between pages like in a browser, making it easier to keep your place.
 * **Enemy database:** Long War makes a number of changes to enemies, including introducing Leaders and Navigators with access to many more perks than before. A proper enemy database will help you find out if it's possible for that Floater to have Covering Fire before you take the shot.
@@ -35,3 +35,4 @@ Disclaimer: None of these features are guaranteed to be added, and they all depe
 ## Known issues
 
 * Some items and Foundry Projects have intentionally vague wording due to lack of clarity around how they function. For example, it's not clear if the dodge chance granted by UFO Countermeasures is a flat chance on any shot, a flat decrease to enemy aim, or something else.
+* If you open the app and very quickly switch to the Research Tree and mouse over something, you might see the entire tree scramble. This is a really low priority to fix; just don't do that.

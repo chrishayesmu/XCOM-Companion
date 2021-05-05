@@ -17,13 +17,13 @@ function getInstallerConfig () {
   const outPath = path.join(rootPath, 'out')
 
   return Promise.resolve({
-    appDirectory: path.join(outPath, 'Electron API Demos-win32-ia32'),
-    exe: 'Electron API Demos.exe',
+    appDirectory: path.join(outPath, 'XCOM Companion-win32-ia32'),
+    exe: 'XCOM Companion.exe',
     iconUrl: 'https://raw.githubusercontent.com/electron/electron-api-demos/master/assets/app-icon/win/app.ico',
     loadingGif: path.join(rootPath, 'assets', 'img', 'loading.gif'),
     noMsi: true,
     outputDirectory: path.join(outPath, 'windows-installer'),
-    setupExe: 'ElectronAPIDemosSetup.exe',
+    setupExe: 'XCOMCompanionSetup.exe',
     setupIcon: path.join(rootPath, 'assets', 'app-icon', 'win', 'app.ico'),
     skipUpdateIcon: true
   })

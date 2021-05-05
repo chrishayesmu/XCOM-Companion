@@ -1,6 +1,4 @@
-require('update-electron-app')({
-    logger: require('electron-log')
-});
+const { autoUpdater } = require("electron-updater");
 
 const path = require('path');
 const { app, BrowserWindow, ipcMain } = require('electron');
@@ -13,8 +11,28 @@ if (process.mas) {
 
 let mainWindow = null;
 
-ipcMain.handle("get-window-size", event => {
+ipcMain.handle("get-window-size", () => {
     return mainWindow.getContentBounds();
+});
+
+ipcMain.handle("get-app-version", event => {
+    return { version : app.getVersion() };
+});
+
+ipcMain.on("app-update-accepted", event => {
+    autoUpdater.quitAndInstall();
+});
+
+autoUpdater.on("download-progress", (progress) => {
+    mainWindow.webContents.send("app-update-download-progress", progress);
+});
+
+autoUpdater.on("update-available", (updateInfo) => {
+    mainWindow.webContents.send("app-update-available", updateInfo);
+});
+
+autoUpdater.on("update-downloaded", (updateInfo) => {
+    mainWindow.webContents.send("app-update-downloaded", updateInfo);
 });
 
 function initialize() {
@@ -34,6 +52,7 @@ function initialize() {
         };
 
         mainWindow = new BrowserWindow(windowOptions);
+        mainWindow.removeMenu();
         mainWindow.loadURL(path.join('file://', __dirname, '/index.html'));
 
         // Launch with DevTools open, usage: npm run dev
@@ -43,6 +62,10 @@ function initialize() {
 
         mainWindow.on('closed', () => {
             mainWindow = null;
+        });
+
+        mainWindow.once('ready-to-show', () => {
+            autoUpdater.checkForUpdatesAndNotify();
         });
     }
 

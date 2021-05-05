@@ -1,0 +1,12 @@
+appId: com.swfdelicious.xcomcompanion
+productName: XCOM Companion
+publish:
+  provider: github
+
+win:
+  icon: build/icon.png
+
+nsis:
+  oneClick: false
+  perMachine: false
+  allowToChangeInstallationDirectory: true

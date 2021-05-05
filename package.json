@@ -1,30 +1,29 @@
 {
   "name": "xcom-companion",
   "productName": "XCOM Companion",
+  "description": "An application to use alongside XCOM: Enemy Within's Long War 1.0 mod.",
   "version": "0.0.1",
-  "description": "TBD",
   "main": "main.js",
   "bin": "cli.js",
   "scripts": {
     "start": "electron .",
     "dev": "electron . --debug",
-    "package": "npm-run-all package:*",
-    "package:win": "electron-packager . --overwrite --platform=win32 --arch=ia32 --out=out --icon=assets/app-icon/win/app.ico",
-    "package:installer": "node ./script/installer.js",
-    "release": "node ./script/release.js",
+    "build": "electron-builder build --win --publish never",
+    "publish": "electron-builder build --win --publish always",
     "prepack": "check-for-leaks",
     "prepush": "check-for-leaks"
   },
-  "repository": "https://github.com/chrishayesmu/XCOM-Companion",
-  "keywords": [
-    "XCOM"
-  ],
+  "repository": {
+      "type": "git",
+      "url": "https://github.com/chrishayesmu/XCOM-Companion.git"
+  },
   "author": "Chris Hayes",
   "devDependencies": {
     "@octokit/rest": "^16.3.2",
     "check-for-leaks": "^1.2.1",
     "devtron": "^1.3.0",
-    "electron-packager": "^12.1.0",
+    "electron": "^12.0.5",
+    "electron-builder": "^22.10.5",
     "electron-winstaller": "^2.2.0",
     "husky": "^0.14.3",
     "npm-run-all": "^4.0.2",
@@ -36,11 +35,11 @@
     "tap": "^14.10.6"
   },
   "dependencies": {
-    "component-emitter": "^1.3.0",
     "@egjs/hammerjs": "^2.0.0",
-    "electron": "^12.0.5",
+    "component-emitter": "^1.3.0",
     "electron-log": "^4.3.4",
     "electron-settings": "^4.0.2",
+    "electron-updater": "^4.3.8",
     "glob": "^7.1.0",
     "highlight.js": "^10.4.1",
     "keycharm": "^0.2.0 || ^0.3.0 || ^0.4.0",
