@@ -11,17 +11,12 @@
   color: var(--color-accent);
 }
 
-.section h3,
-.section p {
-  color: var(--color);
-}
-
 .section-header {
     border-bottom: 1px solid var(--color-border);
     font-size: 2em;
     height: 6rem;
     line-height: 1;
-    padding: 2rem 2rem 1rem 2rem;
+    padding: 2rem 1.25rem 1rem 1.25rem;
 }
 
 .section-wrapper {

@@ -40,6 +40,10 @@
   color: var(--color-strong);
 }
 
+.nav-title a {
+  text-decoration: none !important;
+}
+
 .nav-body {
   flex-grow: 1;
   padding-left: 1rem;

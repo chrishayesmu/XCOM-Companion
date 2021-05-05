@@ -1,10 +1,11 @@
-const { ipcRenderer } = require('electron');
+const { ipcRenderer, shell } = require('electron');
 
 import * as Search from "./search-provider.js";
 
 import ClassSelectionPage from "./page-controllers/class-selection-page.js";
 import FoundryProjectsBrowsePage from "./page-controllers/foundry-projects-browse-page.js";
 import FoundryProjectDisplayPage from "./page-controllers/foundry-project-display-page.js";
+import HomePage from "./page-controllers/home-page.js";
 import ItemDisplayPage from "./page-controllers/item-display-page.js";
 import PerkTreeDisplayPage from "./page-controllers/perk-tree-display-page.js";
 import SearchResultsPage from "./page-controllers/search-results-page.js";
@@ -15,6 +16,7 @@ const appPages = [
     new ClassSelectionPage(),
     new FoundryProjectsBrowsePage(),
     new FoundryProjectDisplayPage(),
+    new HomePage(),
     new ItemDisplayPage(),
     new PerkTreeDisplayPage(),
     new SearchResultsPage(),
@@ -152,6 +154,13 @@ class PageManager {
     }
 
     _handleDocumentClick(event) {
+        // For http links, open in an external browser
+        if (event.target.href && event.target.href.startsWith("http")) {
+            event.preventDefault();
+            shell.openExternal(event.target.href);
+            return;
+        }
+
         if (!event.target.dataset.pageOnClick) {
             return;
         }
@@ -234,6 +243,6 @@ const pageContentHolder = document.getElementById("page-content");
 PageManager.instance = new PageManager(pageContentHolder);
 
 Search.onDomReady();
-PageManager.instance.loadPage("foundry-projects-browse-page", null, { techId: "research_gauss_weapons" });
+PageManager.instance.loadPage("home-page", null, { });
 
 export default PageManager;
