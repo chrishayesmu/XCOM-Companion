@@ -30,7 +30,7 @@ class FoundryProjectDisplayPage extends AppPage {
         return template;
     }
 
-    async load(hostingElement, event, data) {
+    async load(data) {
         if (!data.projectId) {
             return null;
         }

@@ -74,7 +74,7 @@ class PageManager {
         this.pagePreviewTooltip.classList.add("hidden-collapse");
     }
 
-    async loadPage(pageId, event, data) {
+    async loadPage(pageId, data) {
         if (!(pageId in pagesById)) {
             throw new Error(`Could not find a page with the ID "${pageId}"`);
         }
@@ -82,7 +82,7 @@ class PageManager {
         this._unloadCurrentPage();
         this.hidePagePreviewTooltip();
         this.currentPage = pagesById[pageId];
-        const pageDocument = await this.currentPage.load(this.pageContentHolder, event, data);
+        const pageDocument = await this.currentPage.load(data);
 
         // Clear out the contents of the hosting element and replace them with this page
         this.pageContentHolder.innerHTML = "";
@@ -170,7 +170,7 @@ class PageManager {
         const requestedPageId = event.target.dataset.pageOnClick;
         const data = this._extractPageDataArgs(event.target);
 
-        this.loadPage(requestedPageId, event, data);
+        this.loadPage(requestedPageId, data);
     }
 
     _handleElementMouseover(event) {
@@ -243,6 +243,6 @@ const pageContentHolder = document.getElementById("page-content");
 PageManager.instance = new PageManager(pageContentHolder);
 
 Search.onDomReady();
-PageManager.instance.loadPage("home-page", null, { });
+PageManager.instance.loadPage("home-page", { });
 
 export default PageManager;

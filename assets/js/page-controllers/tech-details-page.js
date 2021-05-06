@@ -30,7 +30,7 @@ class TechDetailsPage extends AppPage {
         return template;
     }
 
-    async load(hostingElement, event, data) {
+    async load(data) {
         const tech = DataHelper.technologies[data.techId];
 
         return this.loadFromDataObject(tech);

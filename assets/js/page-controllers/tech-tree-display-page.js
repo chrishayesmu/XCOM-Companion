@@ -107,7 +107,7 @@ class TechTreeDisplayPage extends AppPage {
         }
     }
 
-    async load(hostingElement, event, data) {
+    async load(_data) {
         if (TechTreeDisplayPage.treePage) {
             // Need to redraw the network after a very short delay, because on the initial load
             // it doesn't understand the viewport size and won't draw all of the nodes
@@ -432,7 +432,7 @@ class TechTreeDisplayPage extends AppPage {
             return;
         }
 
-        PageManager.instance.loadPage("tech-details-page", null, { techId: techId });
+        PageManager.instance.loadPage("tech-details-page", { techId: techId });
     }
 
     _restoreConnectedEdgesToEdge(edgeId, network, controlRedraw) {

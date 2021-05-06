@@ -16,12 +16,10 @@ class AppPage {
     /**
      * Called when this page should load itself so it can be added to the DOM.
      *
-     * @param {Element} hostingElement The Element which will be hosting this page's content.
-     * @param {Event} event The event causing this page to load, if any.
-     * @param {*} data Data to use while loading, which may come from history or from the caller asking to load the page.
-     * @returns {Element} A single element to be inserted into the hosting element.
+     * @param {Object} dataArgs Data to use while loading, which may come from history or from the caller asking to load the page.
+     * @returns {Element} A single element to be inserted into the application DOM
      */
-    async load(hostingElement, event, data) {
+    async load(dataArgs) {
         return null;
     }
 

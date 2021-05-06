@@ -26,7 +26,7 @@ class SearchResultsPage extends AppPage {
         return null;
     }
 
-    async load(hostingElement, event, data) {
+    async load() {
         // there shouldn't be any direct links here most likely
         return null;
     }

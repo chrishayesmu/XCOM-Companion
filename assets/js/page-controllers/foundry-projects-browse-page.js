@@ -8,7 +8,7 @@ class FoundryProjectsBrowsePage extends AppPage {
         super("foundry-projects-browse-page");
     }
 
-    async load(_hostingElement, _event, _data) {
+    async load(_data) {
         const template = await Templates.instantiateTemplate("assets/html/templates/pages/foundry-projects-browse-page.html", "template-foundry-projects-browse-page");
 
         return template;

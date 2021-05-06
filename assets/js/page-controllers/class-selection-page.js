@@ -10,7 +10,7 @@ class ClassSelectionPage extends AppPage {
         this.classPool = null;
     }
 
-    async load(_hostingElement, _event, _data) {
+    async load(_data) {
         this.classPool = _data.classPool;
 
         const template = await Templates.instantiateTemplate("assets/html/templates/pages/class-selection-page.html", "template-class-selection-page");

@@ -115,7 +115,7 @@ class ItemDisplayPage extends AppPage {
         return template;
     }
 
-    async load(hostingElement, event, data) {
+    async load(data) {
         if (!data.itemId) {
             return null;
         }

@@ -51,7 +51,7 @@ class PerkTreeDisplayPage extends AppPage {
         return template;
     }
 
-    async load(hostingElement, event, data) {
+    async load(data) {
         this.highlightedItem = data.highlighted;
 
         if (data.displayMode == "class-perks") {

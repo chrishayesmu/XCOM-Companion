@@ -6,7 +6,7 @@ class HomePage extends AppPage {
         super("home-page");
     }
 
-    async load(_hostingElement, _event, _data) {
+    async load(_data) {
         return Templates.instantiateTemplate("assets/html/templates/pages/home-page.html", "template-home-page");
     }
 
