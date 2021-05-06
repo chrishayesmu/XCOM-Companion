@@ -17,7 +17,7 @@ class AppPage {
      * Called when this page should load itself so it can be added to the DOM.
      *
      * @param {Object} dataArgs Data to use while loading, which may come from history or from the caller asking to load the page.
-     * @returns {Element} A single element to be inserted into the application DOM
+     * @returns {Object} An object with two keys, in the form { body: <Element>, title: { icon: <String>, text: <String> } }
      */
     async load(dataArgs) {
         return null;
@@ -27,7 +27,7 @@ class AppPage {
      * Called to load the page from a supported data object directly.
      *
      * @param {*} dataObj
-     * @returns {Element} A single element representing the loaded page.
+     * @returns {Object} An object with two keys, in the form { body: <Element>, title: { icon: <String?>, text: <String> } }
      */
      async loadFromDataObject(dataObj) {
         return null;

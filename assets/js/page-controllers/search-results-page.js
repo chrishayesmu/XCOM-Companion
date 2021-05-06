@@ -80,7 +80,13 @@ class SearchResultsPage extends AppPage {
             }
         }
 
-        return template;
+        return {
+            body: template,
+            title: {
+                icon: null,
+                text: "Search Results"
+            }
+        };
     }
 
     ownsDataObject(dataObj) {

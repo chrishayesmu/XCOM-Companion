@@ -34,11 +34,12 @@ for (let i = 0; i < appPages.length; i++) {
 class PageManager {
     static instance = null;
 
-    constructor(pageContentHolder) {
+    constructor(pageContentHolder, pageTitleHolder) {
         this.currentPage = null;
         this.currentTooltipTarget = null;
         this.maxPageHistorySize = 50;
-        this.pageContentHolder = pageContentHolder;
+        this._pageContentHolder = pageContentHolder;
+        this._pageTitleHolder = pageTitleHolder;
         this.pageHistory = [];
         this.pagePreview = null;
         this._showTooltip = false;
@@ -82,11 +83,9 @@ class PageManager {
         this._unloadCurrentPage();
         this.hidePagePreviewTooltip();
         this.currentPage = pagesById[pageId];
-        const pageDocument = await this.currentPage.load(data);
 
-        // Clear out the contents of the hosting element and replace them with this page
-        this.pageContentHolder.innerHTML = "";
-        this.pageContentHolder.appendChild(pageDocument);
+        const pageDocument = await this.currentPage.load(data);
+        this._loadPageIntoDom(pageDocument);
     }
 
     loadPageForData(data) {
@@ -100,11 +99,9 @@ class PageManager {
 
                     this.hidePagePreviewTooltip();
                     this._unloadCurrentPage();
-                    this.currentPage = page;
 
-                    // Clear out the contents of the hosting element and replace them with this page
-                    this.pageContentHolder.innerHTML = "";
-                    this.pageContentHolder.appendChild(pageDocument);
+                    this.currentPage = page;
+                    this._loadPageIntoDom(pageDocument);
                 })
 
                 return;
@@ -188,6 +185,25 @@ class PageManager {
         this.showPagePreviewTooltip(event.target.dataset.pageOnClick, data, targetElementRect);
     }
 
+    async _loadPageIntoDom(pageDocument) {
+        const documentBody = await pageDocument.body;
+
+        // Replace the header content entirely
+        this._pageTitleHolder.innerHTML = "";
+
+        if (pageDocument.title.icon) {
+            const img = document.createElement("img");
+            img.src = pageDocument.title.icon;
+
+            this._pageTitleHolder.appendChild(img);
+        }
+
+        this._pageTitleHolder.innerHTML += pageDocument.title.text;
+
+        // Clear out the contents of the hosting element and replace them with this page
+        this._pageContentHolder.innerHTML = documentBody.outerHTML;
+    }
+
     _pushToHistory(historyState) {
         while (this.pageHistory.length >= this.maxPageHistorySize) {
             // Remove the oldest entries until the history is small enough
@@ -239,8 +255,9 @@ class PageManager {
     }
 }
 
-const pageContentHolder = document.getElementById("page-content");
-PageManager.instance = new PageManager(pageContentHolder);
+const pageContentHolder = document.getElementById("page-body-container");
+const pageTitleHolder = document.getElementById("page-title-container");
+PageManager.instance = new PageManager(pageContentHolder, pageTitleHolder);
 
 Search.onDomReady();
 PageManager.instance.loadPage("home-page", { });

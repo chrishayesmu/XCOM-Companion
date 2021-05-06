@@ -9,59 +9,51 @@
 </template>
 
 <template id="template-tech-details-page">
-    <section class="section js-section">
-        <header class="section-header">
-            <div class="section-wrapper">
-                <img src="assets/img/misc-icons/research.png" /> Research Details
+    <div id="tech-details-content-section" class="section-content">
+        <div id="tech-details-header-row" class="flex-single-row">
+            <div id="tech-details-image-container">
+                <img src="assets/img/research/improved_combat_exoskeletons.png" />
             </div>
-        </header>
-
-        <div id="tech-details-content-section" class="section-content">
-            <div id="tech-details-header-row" class="flex-single-row">
-                <div id="tech-details-image-container">
-                    <img src="assets/img/research/improved_combat_exoskeletons.png" />
-                </div>
-                <div id="tech-details-description-container">
-                    <div id="tech-details-name"></div>
-                    <div id="tech-details-description"></div>
-                    <div id="tech-details-research-credits"></div>
+            <div id="tech-details-description-container">
+                <div id="tech-details-name"></div>
+                <div id="tech-details-description"></div>
+                <div id="tech-details-research-credits"></div>
+            </div>
+        </div>
+        <div id="tech-details-second-row" class="flex-single-row">
+            <div class="tech-details-left-column">
+                <div class="tech-details-heading">Cost</div>
+                <div class="tech-details-column-body" id="tech-details-cost-container">
                 </div>
             </div>
-            <div id="tech-details-second-row" class="flex-single-row">
-                <div class="tech-details-left-column">
-                    <div class="tech-details-heading">Cost</div>
-                    <div class="tech-details-column-body" id="tech-details-cost-container">
+            <div class="tech-details-right-column">
+                <div class="tech-details-heading">Time to Research</div>
+                <div class="tech-details-column-body">
+                    <div id="tech-details-time-container">
+                        <img class="tech-details-inline-icon" src="assets/img/misc-icons/time.png" />
+                        <span id="tech-details-time">7</span>&nbsp;days
                     </div>
-                </div>
-                <div class="tech-details-right-column">
-                    <div class="tech-details-heading">Time to Research</div>
-                    <div class="tech-details-column-body">
-                        <div id="tech-details-time-container">
-                            <img class="tech-details-inline-icon" src="assets/img/misc-icons/time.png" />
-                            <span id="tech-details-time">7</span>&nbsp;days
-                        </div>
-                        <div class="flex-column-bottom flex-grow">
-                            <div>
-                                Displayed research time is based on having 30 scientists, 0 <a>Laboratories</a> and 0 adjacency bonuses.
-                            </div>
+                    <div class="flex-column-bottom flex-grow">
+                        <div>
+                            Displayed research time is based on having 30 scientists, 0 <a>Laboratories</a> and 0 adjacency bonuses.
                         </div>
                     </div>
-                </div>
-            </div>
-            <div id="tech-details-main-row">
-                <div class="tech-details-heading" id="tech-details-unlocks-heading">Required For</div>
-                <div class="tech-details-column-body" id="tech-details-unlocks"></div>
-            </div>
-            <div id="tech-details-bottom-row" class="flex-single-row">
-                <div class="tech-details-left-column">
-                    <div class="tech-details-heading">Prerequisites</div>
-                    <div class="tech-details-column-body" id="tech-details-prerequisites"></div>
-                </div>
-                <div class="tech-details-right-column">
-                    <div class="tech-details-heading">Leads to</div>
-                    <div class="tech-details-column-body" id="tech-details-leads-to-research"></div>
                 </div>
             </div>
         </div>
-    </section>
+        <div id="tech-details-main-row">
+            <div class="tech-details-heading" id="tech-details-unlocks-heading">Required For</div>
+            <div class="tech-details-column-body" id="tech-details-unlocks"></div>
+        </div>
+        <div id="tech-details-bottom-row" class="flex-single-row">
+            <div class="tech-details-left-column">
+                <div class="tech-details-heading">Prerequisites</div>
+                <div class="tech-details-column-body" id="tech-details-prerequisites"></div>
+            </div>
+            <div class="tech-details-right-column">
+                <div class="tech-details-heading">Leads to</div>
+                <div class="tech-details-column-body" id="tech-details-leads-to-research"></div>
+            </div>
+        </div>
+    </div>
 </template>

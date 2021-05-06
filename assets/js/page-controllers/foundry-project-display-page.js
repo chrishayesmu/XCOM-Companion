@@ -55,7 +55,13 @@ class FoundryProjectDisplayPage extends AppPage {
         this._populateProjectTime(template, project);
         this._populateUnlocks(template, project);
 
-        return template;
+        return {
+            body: template,
+            title: {
+                icon: "assets/img/misc-icons/foundry.png",
+                text: "Foundry Project"
+            }
+        };
     }
 
     onUnloadBeginning(_event) {

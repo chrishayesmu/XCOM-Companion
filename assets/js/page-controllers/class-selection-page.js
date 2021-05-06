@@ -17,11 +17,14 @@ class ClassSelectionPage extends AppPage {
         const contentSection = template.querySelector("#class-selection-content");
 
         let classes = null;
+        let titlePrefix = null;
         if (this.classPool == "infantry") {
             classes = DataHelper.getInfantryClasses();
+            titlePrefix = "Infantry";
         }
         else if (this.classPool == "mec") {
             classes = DataHelper.getMecClasses();
+            titlePrefix = "MEC";
         }
         else {
             throw new Error(`Unrecognized class pool "${this.classPool}"`);
@@ -40,7 +43,13 @@ class ClassSelectionPage extends AppPage {
             contentSection.appendChild(icon);
         }
 
-        return template;
+        return {
+            body: template,
+            title: {
+                icon: "assets/img/misc-icons/xcom_logo.png",
+                text: titlePrefix + " Perk Trees"
+            }
+        };
     }
 
     onUnloadBeginning(_event) {

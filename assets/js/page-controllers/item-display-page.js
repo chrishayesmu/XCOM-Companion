@@ -197,7 +197,13 @@ class ItemDisplayPage extends AppPage {
             tacticalTextContainer.appendChild(await Templates.instantiateTemplate("assets/html/templates/pages/item-display-page.html", "template-arc-thrower-stats-grid"));
         }
 
-        return template;
+        return {
+            body: template,
+            title: {
+                icon: "assets/img/misc-icons/engineering.png",
+                text: "Item Details"
+            }
+        };
     }
 
     onUnloadBeginning(_event) {

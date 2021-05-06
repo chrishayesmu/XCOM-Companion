@@ -52,7 +52,13 @@ class TechDetailsPage extends AppPage {
         this._populateResearchTime(template, tech);
         this._populateUnlocks(template, tech);
 
-        return template;
+        return {
+            body: template,
+            title: {
+                icon: "assets/img/misc-icons/research.png",
+                text: "Research Details"
+            }
+        };
     }
 
     onUnloadBeginning(_event) {

@@ -11,7 +11,13 @@ class FoundryProjectsBrowsePage extends AppPage {
     async load(_data) {
         const template = await Templates.instantiateTemplate("assets/html/templates/pages/foundry-projects-browse-page.html", "template-foundry-projects-browse-page");
 
-        return template;
+        return {
+            body: template,
+            title: {
+                icon: "assets/img/misc-icons/foundry.png",
+                text: "Available Foundry Projects"
+            }
+        };
     }
 
     onUnloadBeginning(_event) {

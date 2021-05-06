@@ -7,7 +7,13 @@ class HomePage extends AppPage {
     }
 
     async load(_data) {
-        return Templates.instantiateTemplate("assets/html/templates/pages/home-page.html", "template-home-page");
+        return {
+            body: Templates.instantiateTemplate("assets/html/templates/pages/home-page.html", "template-home-page"),
+            title: {
+                "icon": null,
+                "text": "Home Page"
+            }
+        };
     }
 
     onUnloadBeginning(_event) {

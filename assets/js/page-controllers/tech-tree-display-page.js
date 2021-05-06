@@ -136,9 +136,8 @@ class TechTreeDisplayPage extends AppPage {
         };
 
         const template = await Templates.instantiateTemplate("assets/html/templates/pages/tech-tree-display-page.html", "template-tech-tree-display-page");
-        TechTreeDisplayPage.treePage = template;
 
-        const treeContainer = template.querySelector("#tech-tree-content-section");
+        const treeContainer = template;
 
         if (isDebugMode) {
             template.querySelector("#tech-tree-debug-controls").classList.remove("hidden-collapse");
@@ -317,7 +316,15 @@ class TechTreeDisplayPage extends AppPage {
             }).bind(this));
         }
 
-        return template;
+        TechTreeDisplayPage.treePage = {
+            body: template,
+            title: {
+                icon: "assets/img/misc-icons/research.png",
+                text: "Research Tree"
+            }
+        };
+
+        return TechTreeDisplayPage.treePage;
     }
 
     onUnloadBeginning(_event) {

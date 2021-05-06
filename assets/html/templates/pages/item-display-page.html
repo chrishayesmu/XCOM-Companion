@@ -304,57 +304,49 @@
 </template>
 
 <template id="template-item-display-page">
-    <section class="section js-section">
-        <header class="section-header">
-            <div class="section-wrapper">
-                <img src="assets/img/misc-icons/engineering.png" /> Item Details
+    <div id="item-details-content-section" class="section-content">
+        <div id="item-details-header-row" class="flex-single-row">
+            <div id="item-details-image-container">
+                <img />
             </div>
-        </header>
-
-        <div id="item-details-content-section" class="section-content">
-            <div id="item-details-header-row" class="flex-single-row">
-                <div id="item-details-image-container">
-                    <img />
+            <div id="item-details-description-container">
+                <div id="item-details-name"></div>
+                <div id="item-details-description"></div>
+                <div id="item-details-last-row">
+                    <div id="item-details-type"></div>
+                    <div id="item-details-sell-value">Sell value: §</div>
                 </div>
-                <div id="item-details-description-container">
-                    <div id="item-details-name"></div>
-                    <div id="item-details-description"></div>
-                    <div id="item-details-last-row">
-                        <div id="item-details-type"></div>
-                        <div id="item-details-sell-value">Sell value: §</div>
-                    </div>
-                </div>
-            </div>
-            <div id="item-details-build" class="flex-single-row">
-                <div id="item-details-build-normal" class="item-details-left-column">
-                    <div class="item-details-heading">Normal Build</div>
-                    <div class="item-details-build-content">
-                        <div class="item-details-column-body" id="item-details-normal-build-cost-container"></div>
-                    </div>
-                </div>
-                <div id="item-details-build-quick" class="item-details-right-column">
-                    <div class="item-details-heading">Quick Build</div>
-                    <div class="item-details-build-content">
-                        <div class="item-details-column-body" id="item-details-quick-build-cost-container"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="flex-single-row">
-                <div id="item-details-prerequisites-container">
-                    <div class="item-details-heading">Prerequisites</div>
-                    <div class="item-details-column-body" id="item-details-prerequisites"></div>
-                </div>
-                <div id="item-details-used-in-container">
-                    <div class="item-details-heading">Used In</div>
-                    <div class="item-details-column-body" id="item-details-used-in"></div>
-                </div>
-            </div>
-            <div id="item-details-tactical-text-container">
-                <div class="item-details-heading">Details</div>
-                <div class="item-details-column-body" id="item-details-tactical-text"></div>
             </div>
         </div>
-    </section>
+        <div id="item-details-build" class="flex-single-row">
+            <div id="item-details-build-normal" class="item-details-left-column">
+                <div class="item-details-heading">Normal Build</div>
+                <div class="item-details-build-content">
+                    <div class="item-details-column-body" id="item-details-normal-build-cost-container"></div>
+                </div>
+            </div>
+            <div id="item-details-build-quick" class="item-details-right-column">
+                <div class="item-details-heading">Quick Build</div>
+                <div class="item-details-build-content">
+                    <div class="item-details-column-body" id="item-details-quick-build-cost-container"></div>
+                </div>
+            </div>
+        </div>
+        <div class="flex-single-row">
+            <div id="item-details-prerequisites-container">
+                <div class="item-details-heading">Prerequisites</div>
+                <div class="item-details-column-body" id="item-details-prerequisites"></div>
+            </div>
+            <div id="item-details-used-in-container">
+                <div class="item-details-heading">Used In</div>
+                <div class="item-details-column-body" id="item-details-used-in"></div>
+            </div>
+        </div>
+        <div id="item-details-tactical-text-container">
+            <div class="item-details-heading">Details</div>
+            <div class="item-details-column-body" id="item-details-tactical-text"></div>
+        </div>
+    </div>
 </template>
 
 <template id="template-arc-thrower-stats-grid">

@@ -88,10 +88,6 @@ class PerkTreeDisplayPage extends AppPage {
 
         const template = await Templates.instantiateTemplate("assets/html/templates/pages/perk-tree-display-page.html", "template-perk-tree-display-page");
 
-        // Update the header with the name of the class
-        const headerText = template.querySelector("#perk-tree-header-text");
-        headerText.innerHTML = headerText.innerHTML.replace("{{class}}", this.soldierClass.name);
-
         const rows = template.querySelectorAll(".perk-tree-row"); // 7 rows, one per rank
 
         for (let rank = 0; rank < 7; rank++) {
@@ -116,7 +112,13 @@ class PerkTreeDisplayPage extends AppPage {
             }
         }
 
-        return template;
+        return {
+            body: template,
+            title: {
+                icon: "assets/img/misc-icons/xcom_logo.png",
+                text: "Perk Tree - " + this.soldierClass.name
+            }
+        };
     }
 
     _loadGeneModDetails(geneModId, container) {
@@ -159,7 +161,13 @@ class PerkTreeDisplayPage extends AppPage {
             // TODO it would be nice to make it selected as though it had been clicked, too
         }
 
-        return template;
+        return {
+            body: template,
+            title: {
+                icon: "assets/img/misc-icons/gene_mods_2.png",
+                text: "Gene Mods"
+            }
+        };
     }
 
     async _loadPsiTree() {
@@ -170,7 +178,13 @@ class PerkTreeDisplayPage extends AppPage {
             iconImage.addEventListener("mouseenter", this._onPsiAbilityMouseenter.bind(this));
         });
 
-        return template;
+        return {
+            body: template,
+            title: {
+                icon: "assets/img/misc-icons/psionic.png",
+                text: "Psionic Training"
+            }
+        };
     }
 
     _onGeneModClick(event) {
