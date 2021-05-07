@@ -9,7 +9,7 @@ class FoundryProjectsBrowsePage extends AppPage {
     }
 
     async load(_data) {
-        const template = await Templates.instantiateTemplate("assets/html/templates/pages/foundry-projects-browse-page.html", "template-foundry-projects-browse-page");
+        const template = Templates.instantiateTemplate("assets/html/templates/pages/foundry-projects-browse-page.html", "template-foundry-projects-browse-page");
 
         return {
             body: template,
@@ -50,7 +50,7 @@ customElements.define('foundry-project-browse-preview',
 
                 this._populateOtherCosts(project, template);
 
-                container.appendChild(template);
+                container.innerHTML = template.outerHTML;
             });
         }
 
@@ -93,7 +93,7 @@ customElements.define('foundry-project-browse-preview-header',
             const container = this;
 
             Templates.instantiateTemplate("assets/html/templates/pages/foundry-projects-browse-page.html", "template-foundry-projects-browse-preview-header").then(template => {
-                container.appendChild(template);
+                container.innerHTML = template.outerHTML;
             });
         }
     }

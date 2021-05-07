@@ -116,7 +116,7 @@ function _createBaseFacilityLink(facilityId, options) {
 
     link.textContent = facility.name;
 
-    link.setAttribute("data-page-on-click", "facility-display-page");
+    link.setAttribute("data-page-on-click", "base-facility-page");
     link.setAttribute("data-pagearg-facility-id", facilityId);
 
     return link;

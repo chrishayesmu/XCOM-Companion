@@ -156,7 +156,7 @@
 
 .foundry-browse-container {
     display: grid;
-    grid-template-columns: 130px auto 100px repeat(5, 50px) 160px;
+    grid-template-columns: 130px auto 110px repeat(5, 50px) 160px;
     margin: 0px 20px;
 }
 

@@ -1,0 +1,199 @@
+#base-facility-content-section {
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+#base-facility-leads-to-research,
+#base-facility-prerequisites {
+    display: flex;
+    flex-flow: column wrap;
+    max-height: calc(20em - 1.2em - 8px);
+}
+
+#base-facility-cost-container {
+    max-height: 160px;
+}
+
+.base-facility-cost-quantity {
+    flex-shrink: 0;
+    margin-right: 5px;
+    text-align: right;
+    width: 36px;
+}
+
+.base-facility-cost-type {
+    display: flex;
+    flex-flow: row nowrap;
+    margin-bottom: 2px;
+    justify-content: right;
+    width: 100%;
+}
+
+#base-facility-build-normal {
+    border-right: 1px solid var(--color-subtle);
+    flex-shrink: 0;
+    width: 29%;
+}
+
+#base-facility-build-quick {
+    display: flex;
+    flex-flow: column nowrap;
+    flex-shrink: 0;
+    width: 29%;
+}
+
+#base-facility-stats-container {
+    display: flex;
+    flex-flow: column nowrap;
+    flex-grow: 1;
+
+    border-left: 1px solid var(--color-subtle);
+}
+
+/**
+ * Generalized styles for use in the main body of the page
+ */
+
+.base-facility-column-body {
+    display: flex;
+    flex-flow: column wrap;
+    flex-grow: 1;
+    padding: 10px 13px 15px 13px;
+}
+
+.base-facility-heading {
+    background-color: var(--color-bg-subtle);
+    border-bottom: 1px solid var(--color-subtle);
+    border-top: 1px solid var(--color-subtle);
+    color: var(--color);
+    height: 31px;
+    padding: 4px 0px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.base-facility-stats-heading {
+    background-color: var(--color-bg-subtle);
+    border-right: 1px solid var(--color-subtle);
+    color: var(--color);
+    height: 100%;
+    padding: 4px 4px;
+    margin-right: 8px;
+    text-align: center;
+    text-transform: uppercase;
+    width: 150px;
+
+    /* flex display to get text centered */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.base-facility-stats-row {
+    display: flex;
+    flex-flow: row nowrap;
+    flex-grow: 1;
+    align-items: center;
+
+    border-bottom: 1px solid var(--color-subtle);
+}
+
+.base-facility-stats-value {
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+}
+
+/**
+ * Styles for header row contents
+ */
+
+#base-facility-description {
+    height: calc(13em - 40px - 10px - 1em); /* Entire row height, minus the research name, minus this element's padding, minus the research credit section */
+    padding: 5px 10px;
+    margin-right: 18px;
+    overflow: auto;
+}
+
+#base-facility-description-container {
+    flex-grow: 1;
+    text-align: center;
+}
+
+#base-facility-image-container {
+    display: flex;
+    flex-shrink: 0;
+    justify-content: center;
+    width: 40%;
+}
+
+#base-facility-image-container img {
+    margin: auto 0;
+    max-width: 100%;
+}
+
+#base-facility-name {
+    font-size: 2em;
+    height: 40px;
+    width: 100%;
+}
+
+/**
+ * Sizing/styles for each individual row
+ */
+
+#base-facility-header-row {
+    margin-bottom: 15px;
+    height: 13em;
+}
+
+#base-facility-second-row {
+    height: 12em;
+}
+
+#base-facility-details-row {
+    display: flex;
+    flex-flow: column wrap;
+    flex-grow: 1;
+    min-height: 200px;
+}
+
+#base-facility-details-row ul {
+    margin-block-start: 0;
+}
+
+/***************************
+ * Styles for preview rendering
+ ***************************/
+
+#base-facility-preview-container {
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+#base-facility-preview-description {
+    padding-left: 5px;
+    margin-top: 13px;
+    word-wrap: normal;
+}
+
+#base-facility-preview-header-row {
+     display: flex;
+     flex-flow: row nowrap;
+     height: 48px;
+}
+
+#base-facility-preview-icon img {
+    background-color: var(--color-bg-schematic);
+    outline: 1px solid var(--color-border-schematic);
+    padding: 4px 2px;
+    width: 96px;
+}
+
+#base-facility-preview-name {
+    display: flex;
+    align-items: center;
+    font-size: 24px;
+    margin-left: 10px;
+}
