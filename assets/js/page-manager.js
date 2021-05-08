@@ -3,6 +3,7 @@ const { ipcRenderer, shell } = require('electron');
 import * as Search from "./search-provider.js";
 
 import BaseFacilityPage from "./page-controllers/base-facility-page.js";
+import BaseFacilitiesBrowsePage from "./page-controllers/base-facilities-browse-page.js";
 import ClassSelectionPage from "./page-controllers/class-selection-page.js";
 import FoundryProjectsBrowsePage from "./page-controllers/foundry-projects-browse-page.js";
 import FoundryProjectDisplayPage from "./page-controllers/foundry-project-display-page.js";
@@ -15,6 +16,7 @@ import TechTreeDisplayPage from "./page-controllers/tech-tree-display-page.js";
 
 const appPages = [
     new BaseFacilityPage(),
+    new BaseFacilitiesBrowsePage(),
     new ClassSelectionPage(),
     new FoundryProjectsBrowsePage(),
     new FoundryProjectDisplayPage(),

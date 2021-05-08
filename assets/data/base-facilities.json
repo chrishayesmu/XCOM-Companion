@@ -77,29 +77,6 @@
             },
             "research_prerequisite": "research_alien_power_systems"
         },
-        "facility_foundry": {
-            "name": "Foundry",
-            "icon": "assets/img/facility-icons/foundry.png",
-            "description": "Develop new combat items or improve current items in the Foundry. This facility counts as a Workshop for adjacency benefits. Cannot be torn down once built.",
-            "tactical_text": "<ul><li>Allows XCOM to undertake special projects which enhance or unlock items</li><li>Each project has a minimum number of engineers; they can be started with less, but will take significantly longer</li></ul>",
-            "can_be_deconstructed": false,
-            "adjacency_type": "workshop",
-            "maintenance_cost": 25,
-            "power_usage": 6,
-            "normal_build": {
-                "cost": {
-                    "money": 200
-                },
-                "build_time_days": 18
-            },
-            "quick_build": {
-                "cost": {
-                    "item_meld": 10,
-                    "money": 300
-                },
-                "build_time_days": 9
-            }
-        },
         "facility_fission_generator": {
             "name": "Fission Generator",
             "icon": "assets/img/facility-icons/fission_generator.png",
@@ -121,6 +98,29 @@
                     "money": 180
                 },
                 "build_time_days": 5
+            }
+        },
+        "facility_foundry": {
+            "name": "Foundry",
+            "icon": "assets/img/facility-icons/foundry.png",
+            "description": "Develop new combat items or improve current items in the Foundry. This facility counts as a Workshop for adjacency benefits. Cannot be torn down once built.",
+            "tactical_text": "<ul><li>Allows XCOM to undertake special projects which enhance or unlock items</li><li>Each project has a minimum number of engineers; they can be started with less, but will take significantly longer</li></ul>",
+            "can_be_deconstructed": false,
+            "adjacency_type": "workshop",
+            "maintenance_cost": 25,
+            "power_usage": 6,
+            "normal_build": {
+                "cost": {
+                    "money": 200
+                },
+                "build_time_days": 18
+            },
+            "quick_build": {
+                "cost": {
+                    "item_meld": 10,
+                    "money": 300
+                },
+                "build_time_days": 9
             }
         },
         "facility_genetics_lab": {

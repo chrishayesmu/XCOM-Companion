@@ -1,0 +1,65 @@
+<template id="template-app-update-notifier">
+    <div class="notifier-container offscreen">
+        <style>
+            .info {
+                color: var(--color-strong);
+            }
+
+            .notifier-container {
+                position: absolute;
+                bottom: 0px;
+                left: 0;
+                right: 0;
+                height: 50px;
+
+                background-color: var(--color-bg-subtle);
+                border-top: 1px solid var(--color-border);
+
+                transition: bottom 0.75s;
+            }
+
+            #notifier-contents-download-in-progress,
+            #notifier-contents-ready-to-install {
+                display: flex;
+                flex-flow: row nowrap;
+                align-items: center;
+
+                height: 100%;
+                padding: 0 20px;
+            }
+
+            #notifier-contents-ready-to-install {
+                justify-content: space-between;
+            }
+
+            .hidden {
+                display: none !important;
+            }
+
+            .offscreen {
+                bottom: -51px !important;
+            }
+
+            #dismiss-button {
+                color: var(--color-subtle);
+                cursor: pointer;
+                margin-right: 5px;
+                text-decoration: underline;
+            }
+
+            #install-button {
+                margin-right: 15px;
+            }
+        </style>
+        <div id="notifier-contents-ready-to-install" class="hidden">
+            <div class="info">An update for XCOM Companion is available. It will be installed on restart.</div>
+            <div>
+                <button id="install-button">Restart and Install Now</button>
+                <a id="dismiss-button">Dismiss</a>
+            </div>
+        </div>
+        <div id="notifier-contents-download-in-progress" class="hidden">
+            An update for XCOM Companion has been found and is being downloaded. (<span id="download-percent"></span>% complete)
+        </div>
+    </div>
+</template>
