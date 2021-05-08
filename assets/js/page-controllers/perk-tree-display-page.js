@@ -291,7 +291,6 @@ class PerkTreeDisplayPage extends AppPage {
     _onPsiAbilityClick(event) {
         event.preventDefault();
 
-        const abilityId = event.target.parentElement.dataset.psiAbility;
         const allIconsInRow = event.target.parentElement.parentElement.querySelectorAll('.psi-ability-icon');
         const isSelecting = !event.target.parentElement.classList.contains("selected");
 
