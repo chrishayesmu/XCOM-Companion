@@ -203,7 +203,8 @@ class PageManager {
         this._pageTitleHolder.innerHTML += pageDocument.title.text;
 
         // Clear out the contents of the hosting element and replace them with this page
-        this._pageContentHolder.innerHTML = documentBody.outerHTML;
+        this._pageContentHolder.innerHTML = "";
+        this._pageContentHolder.appendChild(documentBody);
     }
 
     _pushToHistory(historyState) {
