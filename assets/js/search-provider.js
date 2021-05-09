@@ -6,6 +6,7 @@ const dataSources = [
     Object.values(dataHelper.foundryProjects),
     Object.values(dataHelper.geneMods),
     Object.values(dataHelper.items),
+    Object.values(dataHelper.maps),
     Object.values(dataHelper.perks),
     Object.values(dataHelper.psiAbilities),
     Object.values(dataHelper.soldierClasses),

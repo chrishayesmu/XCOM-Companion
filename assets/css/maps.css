@@ -1,0 +1,64 @@
+#map-details-content-section {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+
+    padding: 10px 20px;
+}
+
+#map-details-map-data-container,
+#map-details-mission-data-container {
+    border: 1px solid var(--color-border-subtle);
+    display: grid;
+    margin-top: 20px;
+    text-align: center;
+    width: 100%;
+}
+
+#map-details-map-data-container > div,
+#map-details-mission-data-container > div {
+    border: 1px solid var(--color-subtle);
+}
+
+#map-details-map-data-container {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+#map-details-mission-data-container {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+#map-details-name {
+    font-size: 2em;
+    text-align: center;
+    width: 100%;
+}
+
+#map-details-image {
+    display: block;
+    max-width: 800px;
+    width: 100%;
+}
+
+.map-details-data-column {
+    grid-row-start: 2;
+}
+
+.map-details-data-column > div {
+    padding: 5px 6px;
+}
+
+.map-details-mission-types-header {
+    grid-column-start: 1;
+    grid-column-end: 4;
+    grid-row-start: 1;
+    margin-bottom: -1px;
+    padding: 5px 6px;
+}
+
+.map-details-column-heading {
+    background-color: var(--color-bg-subtle);
+    border-bottom: 1px solid var(--color-subtle);
+    color: var(--color);
+    text-transform: uppercase;
+}

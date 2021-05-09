@@ -9,6 +9,7 @@ import FoundryProjectsBrowsePage from "./page-controllers/foundry-projects-brows
 import FoundryProjectDisplayPage from "./page-controllers/foundry-project-display-page.js";
 import HomePage from "./page-controllers/home-page.js";
 import ItemDisplayPage from "./page-controllers/item-display-page.js";
+import MapDetailsPage from "./page-controllers/map-details-page.js";
 import PerkTreeDisplayPage from "./page-controllers/perk-tree-display-page.js";
 import SearchResultsPage from "./page-controllers/search-results-page.js";
 import TechDetailsPage from "./page-controllers/tech-details-page.js";
@@ -22,6 +23,7 @@ const appPages = [
     new FoundryProjectDisplayPage(),
     new HomePage(),
     new ItemDisplayPage(),
+    new MapDetailsPage(),
     new PerkTreeDisplayPage(),
     new SearchResultsPage(),
     new TechDetailsPage(),

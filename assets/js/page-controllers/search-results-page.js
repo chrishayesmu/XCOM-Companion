@@ -13,6 +13,7 @@ class SearchResultsPage extends AppPage {
             "infantry_class": "Class",
             "item": "Item",
             "mec_class": "Class",
+            "map": "Map",
             "perk": "Perk",
             "psi": "Psi Ability",
             "research": "Research"
@@ -115,6 +116,9 @@ class SearchResultsPage extends AppPage {
         }
         else if (data.id.startsWith("item")) {
             return "item";
+        }
+        else if (data.id.startsWith("map")) {
+            return "map";
         }
         else if (data.id.startsWith("mec_class")) {
             return "mec_class";

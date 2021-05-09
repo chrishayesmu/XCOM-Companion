@@ -1,5 +1,657 @@
 {
     "maps": {
-
+        "map_bar": {
+            "name": "Bar",
+            "area_of_operations": "ao_urban_large_structure",
+            "alien_mission_types": [ "mission_abduction" ],
+            "size": {
+                "length": 52,
+                "width": 39
+            }
+        },
+        "map_bar_terror": {
+            "name": "Bar (Terror)",
+            "area_of_operations": "ao_urban_large_structure",
+            "alien_mission_types": [ "mission_terror" ],
+            "size": {
+                "length": 52,
+                "width": 39
+            }
+        },
+        "map_boulevard": {
+            "name": "Boulevard",
+            "area_of_operations": "ao_roadway",
+            "alien_mission_types": [ "mission_abduction" ],
+            "council_mission_types": [ "mission_bomb_disposal" ],
+            "exalt_mission_types": [ "mission_covert_data_recovery" ],
+            "size": {
+                "length": 56,
+                "width": 42
+            }
+        },
+        "map_boulevard_euro": {
+            "name": "Boulevard Euro",
+            "area_of_operations": "ao_roadway",
+            "alien_mission_types": [ "mission_abduction" ],
+            "size": {
+                "length": 56,
+                "width": 42
+            }
+        },
+        "map_cemetery_grand": {
+            "name": "Grand Cemetery",
+            "area_of_operations": "ao_settlement",
+            "alien_mission_types": [ "mission_abduction", "mission_terror" ],
+            "council_mission_types": [ "mission_asset_recovery", "mission_bomb_disposal" ],
+            "size": {
+                "length": 70,
+                "width": 54
+            }
+        },
+        "map_chryssalid_hive": {
+            "name": "Newfoundland",
+            "area_of_operations": "ao_waterfront",
+            "alien_mission_types": [ "mission_terror" ],
+            "council_mission_types": [ "mission_site_recon" ]
+        },
+        "map_commercial_alley": {
+            "name": "Commercial Alley",
+            "area_of_operations": "ao_urban_block",
+            "alien_mission_types": [ "mission_abduction" ],
+            "council_mission_types": [ "mission_target_escort" ],
+            "exalt_mission_types": [ "mission_covert_extraction" ],
+            "size": {
+                "length": 56,
+                "width": 56
+            }
+        },
+        "map_commercial_alley_terror": {
+            "name": "Commercial Alley (Terror)",
+            "area_of_operations": "ao_urban_block",
+            "alien_mission_types": [ "mission_terror" ],
+            "size": {
+                "length": 56,
+                "width": 56
+            }
+        },
+        "map_commercial_restaurant": {
+            "name": "Commercial Restaurant",
+            "area_of_operations": "ao_urban_block",
+            "alien_mission_types": [ "mission_abduction", "mission_terror" ],
+            "exalt_mission_types": [ "mission_covert_data_recovery" ],
+            "size": {
+                "length": 48,
+                "width": 44
+            }
+        },
+        "map_commercial_street": {
+            "name": "Commercial Street",
+            "area_of_operations": "ao_urban_block",
+            "alien_mission_types": [ "mission_abduction" ],
+            "size": {
+                "length": 54,
+                "width": 39
+            }
+        },
+        "map_commercial_street_terror": {
+            "name": "Commercial Street (Terror)",
+            "area_of_operations": "ao_urban_block",
+            "alien_mission_types": [ "mission_terror" ],
+            "size": {
+                "length": 54,
+                "width": 39
+            }
+        },
+        "map_confounding_light": {
+            "name": "Confounding Light",
+            "area_of_operations": "ao_urban_block",
+            "alien_mission_types": [ "mission_abduction" ],
+            "council_mission_types": [ "mission_slingshot_confounding_light" ]
+        },
+        "map_convenience_store": {
+            "name": "Convenience Store",
+            "area_of_operations": "ao_urban_block",
+            "alien_mission_types": [ "mission_abduction" ],
+            "exalt_mission_types": [ "mission_covert_extraction" ],
+            "size": {
+                "length": 50,
+                "width": 46
+            }
+        },
+        "map_convenience_store_terror": {
+            "name": "Convenience Store (Terror)",
+            "area_of_operations": "ao_urban_block",
+            "alien_mission_types": [ "mission_terror" ],
+            "size": {
+                "length": 50,
+                "width": 46
+            }
+        },
+        "map_deluge": {
+            "name": "Deluge",
+            "area_of_operations": "ao_roadway",
+            "alien_mission_types": [ "mission_abduction" ],
+            "council_mission_types": [ "mission_progeny_deluge" ]
+        },
+        "map_demolition": {
+            "name": "Demolition",
+            "area_of_operations": "ao_urban_close_quarters",
+            "alien_mission_types": [ "mission_abduction" ],
+            "exalt_mission_types": [ "mission_covert_data_recovery" ]
+        },
+        "map_fast_food": {
+            "name": "Fast Food",
+            "area_of_operations": "ao_urban_close_quarters",
+            "alien_mission_types": [ "mission_abduction" ],
+            "council_mission_types": [ "mission_bomb_disposal" ]
+        },
+        "map_gangplank": {
+            "name": "Gangplank",
+            "area_of_operations": "ao_alien_structure",
+            "council_mission_types": [ "mission_slingshot_gangplank" ]
+        },
+        "map_gas_station": {
+            "name": "Gas Station",
+            "area_of_operations": "ao_settlement",
+            "alien_mission_types": [ "mission_abduction", "mission_terror" ],
+            "exalt_mission_types": [ "mission_covert_data_recovery" ]
+        },
+        "map_highway": {
+            "name": "Highway",
+            "area_of_operations": "ao_roadway",
+            "alien_mission_types": [ "mission_abduction", "mission_terror" ],
+            "size": {
+                "length": 57,
+                "width": 50
+            }
+        },
+        "map_highway_bridge": {
+            "name": "Highway Bridge",
+            "area_of_operations": "ao_roadway",
+            "alien_mission_types": [ "mission_abduction" ],
+            "council_mission_types": [ "mission_bomb_disposal" ],
+            "size": {
+                "length": 76,
+                "width": 20
+            }
+        },
+        "map_highway_construction": {
+            "name": "Street Construction",
+            "area_of_operations": "ao_roadway",
+            "alien_mission_types": [ "mission_abduction" ],
+            "exalt_mission_types": [ "mission_covert_data_recovery", "mission_covert_extraction" ],
+            "size": {
+                "length": 66,
+                "width": 28
+            }
+        },
+        "map_highway_fallen": {
+            "name": "Highway (Fallen)",
+            "area_of_operations": "ao_roadway",
+            "alien_mission_types": [ "mission_abduction" ],
+            "council_mission_types": [ "mission_target_extraction" ],
+            "size": {
+                "length": 65,
+                "width": 20
+            }
+        },
+        "map_industrial_office": {
+            "name": "Industrial Office",
+            "area_of_operations": "ao_urban_large_structure",
+            "alien_mission_types": [ "mission_abduction" ],
+            "council_mission_types": [ "mission_asset_recovery" ],
+            "exalt_mission_types": [ "mission_covert_data_recovery" ],
+            "size": {
+                "length": 47,
+                "width": 43
+            }
+        },
+        "map_liquor_store": {
+            "name": "Liquor Store",
+            "area_of_operations": "ao_urban_large_structure",
+            "alien_mission_types": [ "mission_abduction" ],
+            "exalt_mission_types": [ "mission_covert_extraction" ],
+            "size": {
+                "length": 51,
+                "width": 48
+            }
+        },
+        "map_low_friends": {
+            "name": "Friends In Low Places",
+            "area_of_operations": "ao_urban_close_quarters",
+            "alien_mission_types": [ "mission_abduction" ],
+            "council_mission_types": [ "mission_slingshot_low_friends" ]
+        },
+        "map_meld_tutorial": {
+            "name": "Ice Cream Shop",
+            "area_of_operations": "ao_urban_block",
+            "alien_mission_types": [ "mission_abduction" ]
+        },
+        "map_military_ammo": {
+            "name": "Military Ammo",
+            "area_of_operations": "ao_settlement",
+            "alien_mission_types": [ "mission_abduction", "mission_terror" ],
+            "exalt_mission_types": [ "mission_covert_extraction" ],
+            "size": {
+                "length": 67,
+                "width": 56
+            }
+        },
+        "map_office_paper": {
+            "name": "Scranton Paper Company",
+            "area_of_operations": "ao_urban_large_structure",
+            "alien_mission_types": [ "mission_abduction" ],
+            "size": {
+                "length": 64,
+                "width": 48
+            }
+        },
+        "map_office_paper_terror": {
+            "name": "Scranton Paper Company (Terror)",
+            "area_of_operations": "ao_urban_large_structure",
+            "alien_mission_types": [ "mission_terror" ],
+            "size": {
+                "length": 64,
+                "width": 48
+            }
+        },
+        "map_pier_a": {
+            "name": "Pier A",
+            "area_of_operations": "ao_waterfront",
+            "alien_mission_types": [ "mission_abduction", "mission_terror" ],
+            "council_mission_types": [ "mission_asset_recovery", "mission_target_escort" ]
+        },
+        "map_pier_a_asia": {
+            "name": "Pier A (Asia)",
+            "area_of_operations": "ao_waterfront",
+            "alien_mission_types": [ "mission_abduction" ],
+            "size": {
+                "length": 62,
+                "width": 54
+            }
+        },
+        "map_pier_a_terror": {
+            "name": "Pier A (Terror)",
+            "area_of_operations": "ao_waterfront",
+            "alien_mission_types": [ "mission_abduction", "mission_terror" ],
+            "size": {
+                "length": 62,
+                "width": 54
+            }
+        },
+        "map_police_station": {
+            "name": "Police Station",
+            "area_of_operations": "ao_urban_large_structure",
+            "alien_mission_types": [ "mission_abduction", "mission_terror" ],
+            "exalt_mission_types": [ "mission_covert_data_recovery" ],
+            "size": {
+                "length": 49,
+                "width": 47
+            }
+        },
+        "map_portent": {
+            "name": "Portent",
+            "area_of_operations": "ao_urban_block",
+            "alien_mission_types": [ "mission_abduction", "mission_terror" ],
+            "council_mission_types": [ "mission_progeny_portent" ],
+            "exalt_mission_types": [ "mission_covert_extraction" ]
+        },
+        "map_research_outpost": {
+            "name": "Research Outpost",
+            "area_of_operations": "ao_settlement",
+            "alien_mission_types": [ "mission_abduction", "mission_terror" ],
+            "council_mission_types": [ "mission_asset_recovery", "mission_target_escort" ],
+            "exalt_mission_types": [ "mission_covert_extraction" ],
+            "size": {
+                "length": 62,
+                "width": 59
+            }
+        },
+        "map_rooftop_construction": {
+            "name": "Rooftop Construction",
+            "area_of_operations": "ao_urban_large_structure",
+            "alien_mission_types": [ "mission_abduction" ],
+            "exalt_mission_types": [ "mission_covert_data_recovery" ],
+            "size": {
+                "length": 42,
+                "width": 34
+            }
+        },
+        "map_slaughterhouse_a": {
+            "name": "Slaughterhouse A",
+            "area_of_operations": "ao_urban_block",
+            "alien_mission_types": [ "mission_abduction" ],
+            "council_mission_types": [ "mission_bomb_disposal" ],
+            "size": {
+                "length": 55,
+                "width": 28
+            }
+        },
+        "map_small_cemetery": {
+            "name": "Small Cemetery",
+            "area_of_operations": "ao_urban_close_quarters",
+            "alien_mission_types": [ "mission_abduction" ],
+            "size": {
+                "length": 46,
+                "width": 35
+            }
+        },
+        "map_small_scout_nuked_city": {
+            "name": "Small Scout Nuked City",
+            "area_of_operations": "ao_urban_block",
+            "alien_mission_types": [ "mission_terror" ],
+            "ufo_crashed_mission_types": [ "ufo_fighter", "ufo_scout" ]
+        },
+        "map_street_hurricane": {
+            "name": "Street Hurricane",
+            "area_of_operations": "ao_roadway",
+            "alien_mission_types": [ "mission_abduction" ],
+            "council_mission_types": [ "mission_bomb_disposal" ],
+            "size": {
+                "length": 62,
+                "width": 22
+            }
+        },
+        "map_street_hurricane_terror": {
+            "name": "Street Hurricane (Terror)",
+            "area_of_operations": "ao_roadway",
+            "alien_mission_types": [ "mission_terror" ],
+            "size": {
+                "length": 62,
+                "width": 22
+            }
+        },
+        "map_street_overpass": {
+            "name": "Street Overpass",
+            "area_of_operations": "ao_roadway",
+            "alien_mission_types": [ "mission_abduction", "mission_terror" ],
+            "council_mission_types": [ "mission_asset_recovery" ],
+            "exalt_mission_types": [ "mission_covert_extraction" ],
+            "size": {
+                "length": 62,
+                "width": 40
+            }
+        },
+        "map_train_station": {
+            "name": "Train Station",
+            "area_of_operations": "ao_urban_large_structure",
+            "alien_mission_types": [ "mission_abduction", "mission_terror" ],
+            "council_mission_types": [ "mission_bomb_disposal" ],
+            "size": {
+                "length": 78,
+                "width": 31
+            }
+        },
+        "map_trainyard": {
+            "name": "Trainyard",
+            "area_of_operations": "ao_settlement",
+            "alien_mission_types": [ "mission_abduction", "mission_terror" ],
+            "council_mission_types": [ "mission_bomb_disposal" ],
+            "exalt_mission_types": [ "mission_covert_extraction" ],
+            "size": {
+                "length": 54,
+                "width": 42
+            }
+        },
+        "map_truck_stop": {
+            "name": "Truck Stop",
+            "area_of_operations": "ao_urban_block",
+            "alien_mission_types": [ "mission_abduction" ],
+            "council_mission_types": [ "mission_asset_recovery" ],
+            "exalt_mission_types": [ "mission_covert_data_recovery" ],
+            "size": {
+                "length": 74,
+                "width": 36
+            }
+        },
+        "map_ufo_abductor_cliffside": {
+            "name": "Abductor - Cliffside",
+            "area_of_operations": "ao_plains",
+            "ufo_crashed_mission_types": [ "ufo_abductor", "ufo_harvester" ],
+            "size": {
+                "length": 75,
+                "width": 55
+            }
+        },
+        "map_ufo_abductor_farm_outskirts": {
+            "name": "Abductor - Farm Outskirts",
+            "area_of_operations": "ao_plains",
+            "ufo_landed_mission_types": [ "ufo_abductor", "ufo_harvester" ],
+            "size": {
+                "length": 98,
+                "width": 46
+            }
+        },
+        "map_ufo_abductor_scorched_earth": {
+            "name": "Abductor (Scorched Earth)",
+            "area_of_operations": "ao_forest",
+            "ufo_crashed_mission_types": [ "ufo_abductor", "ufo_harvester" ],
+            "size": {
+                "length": 85,
+                "width": 48
+            }
+        },
+        "map_ufo_abductor_winding_stream": {
+            "name": "Abductor (Winding Stream)",
+            "area_of_operations": "ao_riparian",
+            "ufo_landed_mission_types": [ "ufo_abductor", "ufo_harvester" ],
+            "size": {
+                "length": 103,
+                "width": 70
+            }
+        },
+        "map_ufo_battleship_01": {
+            "name": "Battleship 01",
+            "area_of_operations": "ao_alien_structure",
+            "ufo_crashed_mission_types": [ "ufo_assault_carrier", "ufo_battleship" ],
+            "ufo_landed_mission_types": [ "ufo_assault_carrier" ]
+        },
+        "map_ufo_battleship_02": {
+            "name": "Battleship 02",
+            "area_of_operations": "ao_alien_structure",
+            "ufo_crashed_mission_types": [ "ufo_assault_carrier", "ufo_battleship" ],
+            "ufo_landed_mission_types": [ "ufo_assault_carrier" ]
+        },
+        "map_ufo_furies": {
+            "name": "Furies",
+            "area_of_operations": "ao_settlement",
+            "council_mission_types": [ "mission_progeny_furies" ],
+            "ufo_landed_mission_types": [ "ufo_abductor", "ufo_harvester" ]
+        },
+        "map_ufo_large_scout_city": {
+            "name": "Raider - City",
+            "area_of_operations": "ao_urban_block",
+            "ufo_crashed_mission_types": [ "ufo_raider" ]
+        },
+        "map_ufo_large_scout_creepy_forest": {
+            "name": "Raider - Creepy Forest",
+            "area_of_operations": "ao_forest",
+            "ufo_landed_mission_types": [ "ufo_raider" ],
+            "size": {
+                "length": 88,
+                "width": 48
+            }
+        },
+        "map_ufo_large_scout_deep_woods": {
+            "name": "Raider - Deep Woods",
+            "area_of_operations": "ao_forest",
+            "ufo_crashed_mission_types": [ "ufo_raider" ],
+            "size": {
+                "length": 89,
+                "width": 73
+            }
+        },
+        "map_ufo_large_scout_forest_trench": {
+            "name": "Raider - Forest Trench",
+            "area_of_operations": "ao_forest",
+            "ufo_crashed_mission_types": [ "ufo_raider" ],
+            "size": {
+                "length": 100,
+                "width": 98
+            }
+        },
+        "map_ufo_large_scout_hillside": {
+            "name": "Raider - Hillside",
+            "area_of_operations": "ao_forest",
+            "ufo_landed_mission_types": [ "ufo_raider" ],
+            "size": {
+                "length": 70,
+                "width": 70
+            }
+        },
+        "map_ufo_large_scout_stonewall": {
+            "name": "Raider - Stonewall",
+            "area_of_operations": "ao_forest",
+            "ufo_crashed_mission_types": [ "ufo_raider" ],
+            "size": {
+                "length": 73,
+                "width": 54
+            }
+        },
+        "map_ufo_large_scout_the_barrens": {
+            "name": "Raider - The Barrens",
+            "area_of_operations": "ao_plains",
+            "ufo_crashed_mission_types": [ "ufo_raider" ],
+            "size": {
+                "length": 74,
+                "width": 72
+            }
+        },
+        "map_ufo_overseer_deep_woods": {
+            "name": "Overseer - Deep Woods",
+            "area_of_operations": "ao_forest",
+            "ufo_crashed_mission_types": [ "ufo_destroyer", "ufo_overseer" ],
+            "size": {
+                "length": 89,
+                "width": 73
+            }
+        },
+        "map_ufo_overseer_forest_trench": {
+            "name": "Overseer - Forest Trench",
+            "area_of_operations": "ao_forest",
+            "ufo_crashed_mission_types": [ "ufo_destroyer", "ufo_overseer" ],
+            "size": {
+                "length": 100,
+                "width": 98
+            }
+        },
+        "map_ufo_overseer_stonewall": {
+            "name": "Overseer - Stonewall",
+            "area_of_operations": "ao_forest",
+            "ufo_crashed_mission_types": [ "ufo_destroyer", "ufo_overseer" ],
+            "size": {
+                "length": 73,
+                "width": 54
+            }
+        },
+        "map_ufo_overseer_the_barrens": {
+            "name": "Overseer - The Barrens",
+            "area_of_operations": "ao_plains",
+            "ufo_crashed_mission_types": [ "ufo_destroyer", "ufo_overseer" ],
+            "size": {
+                "length": 74,
+                "width": 72
+            }
+        },
+        "map_ufo_small_scout_badlands": {
+            "name": "Scout - Badlands",
+            "area_of_operations": "ao_plains",
+            "ufo_crashed_mission_types": [ "ufo_fighter", "ufo_scout" ],
+            "size": {
+                "length": 74,
+                "width": 74
+            }
+        },
+        "map_ufo_small_scout_dirt_road": {
+            "name": "Scout - Dirt Road",
+            "area_of_operations": "ao_forest",
+            "ufo_crashed_mission_types": [ "ufo_fighter", "ufo_scout" ],
+            "size": {
+                "length": 71,
+                "width": 65
+            }
+        },
+        "map_ufo_small_scout_farm": {
+            "name": "Scout - Farm",
+            "area_of_operations": "ao_settlement",
+            "ufo_crashed_mission_types": [ "ufo_fighter", "ufo_scout" ]
+        },
+        "map_ufo_small_scout_marshlands": {
+            "name": "Scout - Marshlands",
+            "area_of_operations": "ao_riparian",
+            "ufo_crashed_mission_types": [ "ufo_fighter", "ufo_scout" ],
+            "size": {
+                "length": 74,
+                "width": 71
+            }
+        },
+        "map_ufo_small_scout_quagmire": {
+            "name": "Scout - Quagmire",
+            "area_of_operations": "ao_riparian",
+            "ufo_crashed_mission_types": [ "ufo_fighter", "ufo_scout" ],
+            "size": {
+                "length": 76,
+                "width": 72
+            }
+        },
+        "map_ufo_small_scout_river": {
+            "name": "Scout - River",
+            "area_of_operations": "ao_riparian",
+            "ufo_landed_mission_types": [ "ufo_scout" ],
+            "size": {
+                "length": 76,
+                "width": 46
+            }
+        },
+        "map_ufo_small_scout_river_valley": {
+            "name": "Scout - River Valley",
+            "area_of_operations": "ao_riparian",
+            "ufo_landed_mission_types": [ "ufo_scout" ],
+            "size": {
+                "length": 92,
+                "width": 57
+            }
+        },
+        "map_ufo_small_scout_roadhouse": {
+            "name": "Scout - Roadhouse",
+            "area_of_operations": "ao_settlement",
+            "ufo_crashed_mission_types": [ "ufo_fighter", "ufo_scout" ]
+        },
+        "map_ufo_supply_ship_forest_grove": {
+            "name": "Supply Ship - Forest Grove",
+            "area_of_operations": "ao_forest",
+            "ufo_landed_mission_types": [ "ufo_terror_ship", "ufo_transport" ],
+            "size": {
+                "length": 95,
+                "width": 60
+            }
+        },
+        "map_ufo_supply_ship_overlook_a": {
+            "name": "Supply Ship - Overlook A",
+            "area_of_operations": "ao_forest",
+            "ufo_crashed_mission_types": [ "ufo_terror_ship", "ufo_transport" ],
+            "size": {
+                "length": 108,
+                "width": 65
+            }
+        },
+        "map_ufo_supply_ship_rocky_gorge": {
+            "name": "Supply Ship - Rocky Gorge",
+            "area_of_operations": "ao_riparian",
+            "ufo_landed_mission_types": [ "ufo_terror_ship", "ufo_transport" ],
+            "size": {
+                "length": 118,
+                "width": 52
+            }
+        },
+        "map_ufo_supply_ship_wildfire": {
+            "name": "Supply Ship - Wildfire",
+            "area_of_operations": "ao_forest",
+            "ufo_crashed_mission_types": [ "ufo_terror_ship", "ufo_transport" ],
+            "size": {
+                "length": 108,
+                "width": 74
+            }
+        }
     }
 }

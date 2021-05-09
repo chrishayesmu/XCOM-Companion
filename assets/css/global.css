@@ -94,6 +94,14 @@ svg {
 
 /* Content ------------------ */
 
+.color-standard {
+    color: var(--color);
+}
+
+.color-subtle {
+    color: var(--color-subtle);
+}
+
 .content {
   flex: 1;
   position: relative;

@@ -56,6 +56,10 @@ function createInAppLink(data, options) {
         link = _createItemLink(dataId, options);
         prefix = "Item: ";
     }
+    else if (dataId.startsWith("map")) {
+        link = _createMapLink(dataId, options);
+        prefix = "Map: ";
+    }
     else if (dataId.startsWith("perk")) {
         link = _createPerkLink(dataId, options);
         prefix = "Perk: ";
@@ -187,6 +191,18 @@ function _createItemLink(itemId, options) {
 
     link.setAttribute("data-page-on-click", "item-display-page");
     link.setAttribute("data-pagearg-item-id", itemId);
+
+    return link;
+}
+
+function _createMapLink(mapId, options) {
+    const map = DataHelper.maps[mapId];
+    const link = document.createElement("a");
+
+    link.textContent = map.name;
+
+    link.setAttribute("data-page-on-click", "map-details-page");
+    link.setAttribute("data-pagearg-map-id", mapId);
 
     return link;
 }

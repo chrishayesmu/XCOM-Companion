@@ -4,6 +4,7 @@ const councilRequestData = await fetch("assets/data/council-requests.json").then
 const foundryProjectData = await fetch("assets/data/foundry-projects.json").then(response => response.json());
 const geneModData = await fetch("assets/data/gene-mods.json").then(response => response.json());
 const itemData = await fetch("assets/data/items.json").then(response => response.json());
+const mapData = await fetch("assets/data/maps.json").then(response => response.json());
 const perkData = await fetch("assets/data/perks.json").then(response => response.json());
 const psiAbilityData = await fetch("assets/data/psi-abilities.json").then(response => response.json());
 const soldierClassData = await fetch("assets/data/soldier-classes.json").then(response => response.json());
@@ -139,8 +140,13 @@ for (let id in itemData.items) {
             item.foundry_prerequisites[i] = foundryProjectData.foundry_projects[prereqId];
         }
     }
+}
 
-    // TODO check for perks granted by items
+// --------------- Maps ------------------
+for (let key in mapData.maps) {
+    const data = mapData.maps[key];
+    data.id = key;
+    data.image = "assets/img/maps/" + key.substring(4) + ".png";
 }
 
 // --------------- Psi abilities ------------------
@@ -424,6 +430,7 @@ const baseFacilities = baseFacilityData.facilities;
 const foundryProjects = foundryProjectData.foundry_projects;
 const geneMods = geneModData.gene_mods;
 const items = itemData.items;
+const maps = mapData.maps;
 const perks = perkData.perks;
 const psiAbilities = psiAbilityData.abilities;
 const technologies = techTreeData.technologies;
@@ -437,6 +444,7 @@ export {
     getMecClasses,
     getResearchCreditSource,
     items,
+    maps,
     perks,
     psiAbilities,
     soldierClasses,
