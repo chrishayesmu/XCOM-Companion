@@ -24,7 +24,7 @@ customElements.define('foundry-project-browse-preview',
 
                 this._populateOtherCosts(project, template);
 
-                container.innerHTML = template.outerHTML;
+                container.appendChild(template);
             });
         }
 
@@ -67,7 +67,7 @@ customElements.define('foundry-project-browse-preview-header',
             const container = this;
 
             Templates.instantiateTemplate("assets/html/templates/custom-elements/foundry-projects.html", "template-foundry-projects-browse-preview-header").then(template => {
-                container.innerHTML = template.outerHTML;
+                container.appendChild(template);
             });
         }
     }
