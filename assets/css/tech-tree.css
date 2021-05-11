@@ -5,6 +5,10 @@
     width: 400px;
 }
 
+#tech-tree-content-section {
+    height: calc(100% - 6em);
+}
+
 .tech-tree-tooltip {
     background-color: var(--color-bg-subtle);
     border: 1px solid white;
