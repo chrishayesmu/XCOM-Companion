@@ -1055,7 +1055,7 @@
         },
         "item_battle_scanner": {
             "name": "Battle Scanner",
-            "description": "A long-range scanner that can be thrown to provide reconnaissance without risking enemy contact. Due to the heavy energy usage this requirements, visibility can only be maintained for a short time.",
+            "description": "A long-range scanner that can be thrown to provide reconnaissance without risking enemy contact. Due to the heavy energy usage this requires, visibility can only be maintained for a short time.",
             "tactical_text": "<ul><li>Combined motion, heat and sonic tracking device that relays target information back to user</li><li>Reveals cloaked units within its radius</li><li>Provides vision in its radius for 2 turns</li><li>Support grenade</li></ul>",
             "type": "loadout_equipment",
             "type_specific_data": {
