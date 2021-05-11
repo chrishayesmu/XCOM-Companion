@@ -102,6 +102,7 @@ svg {
     color: var(--color-subtle);
 }
 
+
 .content {
   flex: 1;
   position: relative;
@@ -172,7 +173,7 @@ span.inline-resource-icon {
     font-size: 14px;
     min-width: 300px;
     max-width: 680px;
-    padding: 10px 15px 10px 9px;
+    padding: 10px 8px;
     pointer-events: none;
 }
 

@@ -64,6 +64,21 @@
 }
 
 /**
+ * map-details-page preview styles
+ */
+
+#map-preview-name {
+    font-size: 1.3em;
+    text-align: center;
+    width: 100%;
+}
+
+#map-preview-image {
+    height: 192px;
+    width: 384px;
+}
+
+/**
  * map-possibilities-page
  */
 

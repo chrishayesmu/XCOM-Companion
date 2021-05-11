@@ -39,6 +39,25 @@ class MapDetailsPage extends AppPage {
         super("map-details-page");
     }
 
+    async generatePreview(data) {
+        if (!data.mapId) {
+            return null;
+        }
+
+        const map = DataHelper.maps[data.mapId];
+
+        if (!map) {
+            return null;
+        }
+
+        const template = await Templates.instantiateTemplate("assets/html/templates/pages/map-details-page.html", "template-map-details-preview");
+
+        template.querySelector("#map-preview-name").textContent = "Map: " + map.name;
+        template.querySelector("#map-preview-image").src = map.image;
+
+        return template;
+    }
+
     async load(data) {
         if (!data.mapId) {
             return null;

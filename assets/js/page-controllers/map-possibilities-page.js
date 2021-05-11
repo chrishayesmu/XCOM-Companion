@@ -68,6 +68,7 @@ class MapPossibilitiesPage extends AppPage {
         const nameContainer = template.querySelector(".mpm-preview-name");
         nameContainer.textContent = map.name;
         nameContainer.setAttribute("data-pagearg-map-id", map.id);
+        nameContainer.setAttribute("data-pagearg-no-preview", true);
 
         if (map.size) {
             nameContainer.textContent += ` (${map.size.width}x${map.size.length} tiles)`;
@@ -76,6 +77,7 @@ class MapPossibilitiesPage extends AppPage {
         const imageContainer = template.querySelector(".mpm-preview-image");
         imageContainer.src = map.image;
         imageContainer.setAttribute("data-pagearg-map-id", map.id);
+        imageContainer.setAttribute("data-pagearg-no-preview", true);
 
         return template;
     }
