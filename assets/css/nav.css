@@ -5,7 +5,7 @@
   overflow-x: hidden;
   overflow-y: auto;
 
-  background-color: var(--color-bg);
+  background-color: var(--color-bg-nav);
   border-right: 1px solid var(--color-border);
   color: var(--color-subtle);
 
@@ -145,7 +145,7 @@
 .nav-button.not-implemented,
 .nav-container.not-implemented,
 .nav-subsection-container.not-implemented {
-    color: #c23434;
+    color: #D86E6E;
     position: relative;
 }
 
