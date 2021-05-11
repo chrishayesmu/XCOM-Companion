@@ -86,11 +86,10 @@
   height: 1px;
 }
 
-.nav-button {
+.nav-button,
+.nav-container,
+.nav-container-label {
   display: block;
-  width: 100%;
-  padding: 0.3rem;
-  padding-left: 36px;
   line-height: 2;
   text-align: left;
   font: inherit;
@@ -98,36 +97,31 @@
   color: inherit;
   border: none;
   background-color: transparent;
-  cursor: default;
   outline: none;
-}
-.nav-button:hover,
-.nav-button:focus:not(.is-selected) {
-  background-color: hsla(0, 0%, 0%, 0.1);
-}
-.nav-button.is-selected {
-  background-color: var(--color-highlight);
-}
-.nav-button.is-selected.nav-container {
-  background: var(--color-highlight);
-}
-.nav-button.is-selected,
-.nav-button.is-selected em {
-  color: #fff;
-}
-.nav-button.is-selected:focus {
-  opacity: 0.8;
+  width: 100%;
 }
 
-.nav-button em {
-  font-style: normal;
-  font-weight: 600;
-  color: var(--color-strong);
-  pointer-events: none; /* makes it invisible to clicks */
+.nav-container-label {
+  padding-left: 36px;
+}
+
+.nav-container {
+    padding: 0.3rem 0.3rem 0.3rem 0;
+}
+
+.nav-button {
+  cursor: pointer;
+  padding: 0.3rem;
+  padding-left: 36px;
+}
+
+.nav-button:hover {
+  background-color: hsla(0, 0%, 0%, 0.4);
+  color: var(--color);
 }
 
 .subnav-button {
-  padding-left: 1.5rem;
+  padding-left: calc(36px + 1.5rem);
 }
 
 .nav-footer {
@@ -142,42 +136,6 @@
 .nav-footer-icon {
   width: calc(770px / 6.5);
   height: calc(88px / 6.5);
-}
-
-.nav-footer a {
-  outline: none;
-}
-
-.nav-footer-button {
-  display: block;
-  width: 100%;
-  padding: 0;
-  margin-bottom: 0.75rem;
-  line-height: 2;
-  text-align: left;
-  font: inherit;
-  font-size: 13px;
-  color: inherit;
-  border: none;
-  background-color: transparent;
-  cursor: default;
-  outline: none;
-  text-align: center;
-}
-.nav-footer-button:focus {
-  color: var(--color-strong);
-}
-
-.nav-footer-logo {
-  color: hsl(0, 0%, 66%);
-}
-.nav-footer-logo:focus {
-  color: hsl(0, 0%, 33%);
-}
-
-/* Remove border on the logo */
-.nav-footer-logo.nav-footer-logo {
-  border-bottom: none;
 }
 
 .nav-subsection-container {
@@ -198,7 +156,7 @@
     position: absolute;
 
     top: 50%;
-    transform: translateY(-50%);
+    transform: translateY(-120%);
 
     right: 0%;
     margin-right: 15px;
@@ -213,7 +171,7 @@
     z-index: 100;
 
     opacity: 0;
-    transition: 0.2s opacity;
+    transition: 0.4s opacity;
 }
 
 .nav-button.not-implemented:hover:before,
