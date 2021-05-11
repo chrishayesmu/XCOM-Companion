@@ -180,3 +180,16 @@ span.inline-resource-icon {
 :not(input) {
     outline: none;
 }
+
+#changelog {
+    border-top: 1px solid var(--color-border);
+    padding-top: 25px;
+}
+
+.changelog-version {
+    margin-bottom: 40px;
+}
+
+#home-welcome-text {
+    padding-bottom: 25px;
+}
