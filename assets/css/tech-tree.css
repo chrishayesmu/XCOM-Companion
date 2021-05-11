@@ -6,7 +6,7 @@
 }
 
 #tech-tree-content-section {
-    height: calc(100% - 6em);
+    height: 100%;
 }
 
 .tech-tree-tooltip {
