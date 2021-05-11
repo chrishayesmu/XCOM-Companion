@@ -30,7 +30,7 @@
 }
 
 .section-content {
-    height: calc(100% - 6em);
+    min-height: calc(100% - 6em);
     padding-top: 10px;
 }
 

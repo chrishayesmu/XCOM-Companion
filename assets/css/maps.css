@@ -62,3 +62,67 @@
     color: var(--color);
     text-transform: uppercase;
 }
+
+/**
+ * map-possibilities-page
+ */
+
+ #map-possibilities-content-section {
+    padding: 20px 20px;
+ }
+
+ #map-possibilities-parameters {
+     display: grid;
+     grid-template-columns: repeat(3, 1fr);
+     column-gap: 25px;
+ }
+
+ .map-possibilities-parameters-column {
+     display: flex;
+     flex-flow: column nowrap;
+     align-items: center;
+ }
+
+.map-possibilities-parameters-column > single-select-list {
+    width: 100%;
+}
+
+#map-possibilities-preamble {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#map-possibilities-results {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+
+    margin-top: 20px;
+    width: 100%;
+}
+
+#map-possibilities-results-summary {
+    font-size: 1.3em;
+    margin-top: 60px;
+    text-align: center;
+}
+
+.map-possibilities-map-preview {
+    padding: 8px 15px;
+    text-decoration: none;
+}
+
+.map-possibilities-map-preview:hover {
+    background-color: var(--color-bg-subtle);
+}
+
+.mpm-preview-name,
+.mpm-preview-image {
+    cursor: pointer;
+}
+
+.mpm-preview-name {
+    font-size: 1.2em;
+    margin-bottom: 6px;
+    text-align: center;
+}

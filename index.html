@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="assets/css/maps.css" />
     <link rel="stylesheet" href="assets/css/perks.css" />
     <link rel="stylesheet" href="assets/css/search.css" />
+    <link rel="stylesheet" href="assets/css/single-select-list.css" />
     <link rel="stylesheet" href="assets/css/soldiers.css" />
     <link rel="stylesheet" href="assets/css/tech-details.css" />
     <link rel="stylesheet" href="assets/css/tech-tree.css" />
@@ -26,6 +27,7 @@
     <script type="module" src="assets/js/custom-elements/app-update-notifier.js"></script>
     <script type="module" src="assets/js/custom-elements/base-facilities.js"></script>
     <script type="module" src="assets/js/custom-elements/foundry-projects.js"></script>
+    <script type="module" src="assets/js/custom-elements/single-select-list.js"></script>
 </head>
 
 <body spellcheck="false">
@@ -84,7 +86,7 @@
 
                 <button class="nav-button not-implemented">Enemies</button>
                 <button class="nav-button not-implemented">Enemy Tracker</button>
-                <button class="nav-button not-implemented">Maps</button>
+                <button data-page-on-click="map-possibilities-page" class="nav-button">Maps</button>
             </div>
         </div>
 
