@@ -1,6 +1,8 @@
 #base-facility-content-section {
     display: flex;
     flex-flow: column nowrap;
+    padding-bottom: 30px;
+    padding-top: 20px;
 }
 
 #base-facility-leads-to-research,
