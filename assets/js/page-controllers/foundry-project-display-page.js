@@ -23,9 +23,9 @@ class FoundryProjectDisplayPage extends AppPage {
         }
 
         const template = await Templates.instantiateTemplate("assets/html/templates/pages/foundry-project-display-page.html", "template-foundry-preview");
-        template.querySelector("#foundry-preview-icon img").src = project.icon;
-        template.querySelector("#foundry-preview-name").textContent = project.name;
-        template.querySelector("#foundry-preview-description").textContent = Utils.truncateText(project.description, 300);
+        template.querySelector(".preview-img-schematic").src = project.icon;
+        template.querySelector(".preview-title").textContent = project.name;
+        template.querySelector(".preview-description").textContent = Utils.truncateText(project.description, 300);
 
         return template;
     }
@@ -44,9 +44,9 @@ class FoundryProjectDisplayPage extends AppPage {
 
         const template = await Templates.instantiateTemplate("assets/html/templates/pages/foundry-project-display-page.html", "template-foundry-project-display-page");
 
-        template.querySelector("#foundry-project-name").textContent = project.name;
-        template.querySelector("#foundry-project-description").textContent = project.description;
-        template.querySelector("#foundry-project-image-container img").src = project.icon;
+        template.querySelector(".details-header-title").textContent = project.name;
+        template.querySelector(".details-header-description").textContent = project.description;
+        template.querySelector(".details-header-img-container img").src = project.icon;
 
         this._populateBeneficialCredits(template, project);
         this._populateBenefits(template, project);
@@ -77,42 +77,35 @@ class FoundryProjectDisplayPage extends AppPage {
     }
 
     _populateBeneficialCredits(template, project) {
-        const container = template.querySelector("#foundry-project-research-credits");
+        const container = template.querySelector(".details-header-extra");
 
         if (!project.benefits_from_credits) {
             container.textContent = "No associated research credits";
-            //container.classList.add("hidden-collapse");
             return;
         }
 
         const creditLinks = project.benefits_from_credits.map(creditType => {
             const sourceTech = DataHelper.getResearchCreditSource(creditType);
             return Widgets.createInAppLink(sourceTech, {
-                disablePreview: true,
                 linkText: Utils.capitalizeEachWord(creditType, "_", " ")
             }).outerHTML;
         });
 
-        container.innerHTML = "Benefits from " + creditLinks.join(", ") + " research credit";
+        const div = document.createElement("div");
+        div.innerHTML = "Benefits from " + creditLinks.join(", ") + " research credit";
 
         if (creditLinks.length > 1) {
-            container.innerHTML += "s";
+            div.innerHTML += "s";
         }
+
+        container.append(div);
     }
 
     _populateBenefits(template, project) {
         const benefitsContainer = template.querySelector("#foundry-project-benefits");
 
         if (!project.tactical_text && !project.unlocks) {
-            const div = document.createElement("div");
-            const ul = document.createElement("ul");
-            const li = document.createElement("li");
-
-            li.innerHTML = "<font color='red'>ERROR:</font> benefit data is missing for this project";
-
-            ul.appendChild(li);
-            div.appendChild(ul);
-            benefitsContainer.appendChild(div);
+            benefitsContainer.innerHTML = "<font color='red'>ERROR:</font> benefit data is missing for this project";
 
             return;
         }
@@ -131,8 +124,12 @@ class FoundryProjectDisplayPage extends AppPage {
             ul.appendChild(li);
             div.appendChild(ul);
             benefitsContainer.appendChild(div);
+        }
 
-            return;
+        const ul = benefitsContainer.querySelector("ul");
+
+        if (ul) {
+            ul.classList.add("details-list");
         }
     }
 

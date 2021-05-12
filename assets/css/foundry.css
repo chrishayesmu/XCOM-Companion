@@ -1,8 +1,3 @@
-#foundry-project-content-section {
-    display: flex;
-    flex-flow: column nowrap;
-}
-
 #foundry-project-leads-to-research,
 #foundry-project-prerequisites {
     display: flex;
@@ -37,85 +32,8 @@
 }
 
 /**
- * Generalized styles for use in the main body of the page
- */
-
-.foundry-project-column-body {
-    display: flex;
-    flex-flow: column wrap;
-    flex-grow: 1;
-    padding: 10px 13px 15px 13px;
-}
-
-.foundry-project-left-column {
-    border-right: 1px solid var(--color-subtle);
-    flex-shrink: 0;
-    width: 50%;
-}
-
-.foundry-project-right-column {
-    display: flex;
-    flex-flow: column nowrap;
-    flex-grow: 1;
-}
-
-.foundry-project-inline-icon {
-    margin-right: 6px;
-    width: 20px;
-}
-
-.foundry-project-heading {
-    background-color: var(--color-bg-subtle);
-    border-bottom: 1px solid var(--color-subtle);
-    border-top: 1px solid var(--color-subtle);
-    color: var(--color);
-    padding: 4px 0px;
-    text-align: center;
-    text-transform: uppercase;
-}
-
-/**
- * Styles for header row contents
- */
-
-#foundry-project-description {
-    height: calc(13em - 40px - 10px - 1em); /* Entire row height, minus the research name, minus this element's padding, minus the research credit section */
-    padding: 5px 10px;
-    margin-right: 18px;
-    overflow: auto;
-}
-
-#foundry-project-description-container {
-    flex-grow: 1;
-    text-align: center;
-}
-
-#foundry-project-image-container {
-    display: flex;
-    flex-shrink: 0;
-    justify-content: center;
-    width: 40%;
-}
-
-#foundry-project-image-container img {
-    margin: auto 0;
-    max-width: 100%;
-}
-
-#foundry-project-name {
-    font-size: 2em;
-    height: 40px;
-    width: 100%;
-}
-
-/**
  * Sizing/styles for each individual row
  */
-
-#foundry-project-header-row {
-    margin-bottom: 15px;
-    height: 13em;
-}
 
 #foundry-project-second-row {
     height: 10.5em;
@@ -134,10 +52,6 @@
 
 #foundry-project-unlocks {
     max-height: 13em;
-}
-
-#foundry-project-unlocks ul {
-    margin-block-start: 0;
 }
 
 /***************************
@@ -202,38 +116,4 @@ div.foundry-browse-money-icon {
 #foundry-browse-cost-elerium,
 #foundry-browse-cost-meld {
     text-align: right;
-}
-
-/***************************
- * Styles for preview rendering
- ***************************/
-
- #foundry-preview-container {
-    display: flex;
-    flex-flow: column nowrap;
-}
-
-#foundry-preview-description {
-    padding-left: 5px;
-    margin-top: 13px;
-}
-
-#foundry-preview-header-row {
-     display: flex;
-     flex-flow: row nowrap;
-     height: 48px;
-}
-
-#foundry-preview-icon img {
-    background-color: var(--color-bg-schematic);
-    outline: 1px solid var(--color-border-schematic);
-    padding: 4px 2px;
-    width: 96px;
-}
-
-#foundry-preview-name {
-    display: flex;
-    align-items: center;
-    font-size: 24px;
-    margin-left: 10px;
 }

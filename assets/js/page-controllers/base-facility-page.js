@@ -23,9 +23,9 @@ class BaseFacilityPage extends AppPage {
         }
 
         const template = await Templates.instantiateTemplate("assets/html/templates/pages/base-facility-page.html", "template-base-facility-preview");
-        template.querySelector("#base-facility-preview-icon img").src = facility.icon;
-        template.querySelector("#base-facility-preview-name").textContent = facility.name;
-        template.querySelector("#base-facility-preview-description").textContent = Utils.truncateText(facility.description, 300);
+        template.querySelector(".preview-img-schematic").src = facility.icon;
+        template.querySelector(".preview-title").textContent = facility.name;
+        template.querySelector(".preview-description").textContent = Utils.truncateText(facility.description, 300);
 
         return template;
     }

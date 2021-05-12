@@ -86,9 +86,9 @@ class ItemDisplayPage extends AppPage {
         }
 
         const template = await Templates.instantiateTemplate("assets/html/templates/pages/item-display-page.html", "template-item-preview");
-        template.querySelector("#item-preview-icon img").src = item.icon;
-        template.querySelector("#item-preview-name").textContent = item.name;
-        template.querySelector("#item-preview-description").textContent = item.description;
+        template.querySelector(".preview-img-schematic").src = item.icon;
+        template.querySelector(".preview-title").textContent = item.name;
+        template.querySelector(".preview-description").innerHTML = item.description;
 
         if (item.type === "loadout_secondary" && item.type_specific_data.category === "mec") {
             template.querySelector("#item-preview-stats-table").appendChild(await this._createMecSecondaryStatsGrid(item));
@@ -131,10 +131,10 @@ class ItemDisplayPage extends AppPage {
 
         const template = await Templates.instantiateTemplate("assets/html/templates/pages/item-display-page.html", "template-item-display-page");
 
-        template.querySelector("#item-details-name").textContent = item.name;
-        template.querySelector("#item-details-description").innerHTML = item.description;
+        template.querySelector(".details-header-title").textContent = item.name;
+        template.querySelector(".details-header-description").innerHTML = item.description;
         template.querySelector("#item-details-type").textContent = itemTypeConfig.friendlyName;
-        template.querySelector("#item-details-image-container img").src = item.icon;
+        template.querySelector(".details-header-img-container img").src = item.icon;
 
         if (item.sell_value) {
             template.querySelector("#item-details-sell-value").innerHTML += item.sell_value;
@@ -166,6 +166,7 @@ class ItemDisplayPage extends AppPage {
         }
         else {
             template.querySelector("#item-details-used-in-container").classList.add("hidden-collapse");
+            template.querySelector("#item-details-prerequisites-container").classList.add("flex-grow");
         }
 
         const tacticalTextContainer = template.querySelector("#item-details-tactical-text");

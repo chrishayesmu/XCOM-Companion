@@ -1,0 +1,144 @@
+.centered-horiz {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.column-heading {
+    background-color: var(--color-bg-subtle);
+    border-bottom: 1px solid var(--color-subtle);
+    border-top: 1px solid var(--color-subtle);
+    color: var(--color);
+    padding: 4px 0px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.flex-column {
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+.flex-column-wrap {
+    display: flex;
+    flex-flow: column wrap;
+}
+
+.flex-grow {
+    flex-grow: 1;
+}
+
+.inline-icon {
+    margin-right: 6px;
+    width: 20px;
+}
+
+/**
+ * Styles commonly used for detail pages (e.g. tech-details-page, item-display-page)
+ */
+
+.details-column-body {
+    padding: 10px 13px 15px 13px;
+    flex-grow: 1;
+}
+
+.details-header-content-container {
+    display: flex;
+    flex-flow: column nowrap;
+
+    flex-grow: 1;
+    text-align: center;
+}
+
+.details-header-description {
+    flex-grow: 1;
+    padding: 5px 10px;
+    margin-right: 18px;
+    overflow: auto;
+}
+
+.details-header-extra {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+
+    height: 21px;
+}
+
+.details-header-img-container {
+    display: flex;
+    flex-shrink: 0;
+    justify-content: center;
+    width: 40%;
+}
+
+.details-header-img-container img {
+    margin: auto 0;
+    max-width: 100%;
+}
+
+.details-header-row {
+    display: flex;
+    flex-flow: row nowrap;
+
+    margin-bottom: 12px;
+    height: 12em;
+}
+
+.details-header-title {
+    font-size: 2em;
+    height: 40px;
+    width: 100%;
+}
+
+.details-list {
+    margin-block-start: 0;
+    padding-inline-start: 13px;
+}
+
+.details-left-column {
+    display: flex;
+    flex-flow: column nowrap;
+    flex-shrink: 0;
+    min-width: 50%;
+}
+
+.details-right-column {
+    border-left: 1px solid var(--color);
+    display: flex;
+    flex-flow: column nowrap;
+    flex-grow: 1;
+}
+
+.details-left-column.hidden-collapse + .details-right-column {
+    border-left: none;
+}
+
+/**
+ * Styles for page previews in tooltips
+ */
+
+.preview-description {
+    padding-left: 5px;
+    margin-top: 13px;
+    word-wrap: normal;
+}
+
+.preview-header {
+    display: flex;
+    flex-flow: row nowrap;
+    height: 48px;
+}
+
+.preview-img-schematic {
+    background-color: var(--color-bg-schematic);
+    outline: 1px solid var(--color-border-schematic);
+    padding: 4px 2px;
+    width: 88px;
+}
+
+.preview-title {
+    display: flex;
+    align-items: center;
+    font-size: 24px;
+    margin-left: 10px;
+}

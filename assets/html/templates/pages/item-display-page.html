@@ -1,11 +1,11 @@
 <template id="template-item-preview">
-    <div id="item-preview-container">
-        <div id="item-preview-header-row">
-            <div id="item-preview-icon"><img /></div>
-            <div id="item-preview-name">Item</div>
+    <div class="flex-column">
+        <div class="preview-header">
+            <img class="preview-img-schematic" />
+            <div class="preview-title">Item</div>
         </div>
-        <div id="item-preview-description"></div>
-        <div id="item-preview-stats-table"></div>
+        <div class="preview-description"></div>
+        <div id="item-preview-stats-table" class="centered-horiz"></div>
     </div>
 </template>
 
@@ -305,46 +305,46 @@
 
 <template id="template-item-display-page">
     <div id="item-details-content-section" class="section-content">
-        <div id="item-details-header-row" class="flex-single-row">
-            <div id="item-details-image-container">
+        <div class="details-header-row">
+            <div class="details-header-img-container">
                 <img />
             </div>
-            <div id="item-details-description-container">
-                <div id="item-details-name"></div>
-                <div id="item-details-description"></div>
-                <div id="item-details-last-row">
+            <div class="details-header-content-container">
+                <div class="details-header-title" id="item-details-name"></div>
+                <div class="details-header-description"></div>
+                <div class="details-header-extra">
                     <div id="item-details-type"></div>
                     <div id="item-details-sell-value">Sell value: §</div>
                 </div>
             </div>
         </div>
         <div id="item-details-build" class="flex-single-row">
-            <div id="item-details-build-normal" class="item-details-left-column">
-                <div class="item-details-heading">Normal Build</div>
+            <div class="details-left-column">
+                <div class="column-heading">Normal Build</div>
                 <div class="item-details-build-content">
-                    <div class="item-details-column-body" id="item-details-normal-build-cost-container"></div>
+                    <div class="details-column-body flex-column-wrap" id="item-details-normal-build-cost-container"></div>
                 </div>
             </div>
-            <div id="item-details-build-quick" class="item-details-right-column">
-                <div class="item-details-heading">Quick Build</div>
+            <div class="details-right-column">
+                <div class="column-heading">Quick Build</div>
                 <div class="item-details-build-content">
-                    <div class="item-details-column-body" id="item-details-quick-build-cost-container"></div>
+                    <div class="details-column-body flex-column-wrap" id="item-details-quick-build-cost-container"></div>
                 </div>
             </div>
         </div>
         <div class="flex-single-row">
-            <div id="item-details-prerequisites-container">
-                <div class="item-details-heading">Prerequisites</div>
-                <div class="item-details-column-body" id="item-details-prerequisites"></div>
+            <div id="item-details-prerequisites-container" class="details-left-column">
+                <div class="column-heading">Prerequisites</div>
+                <div class="details-column-body" id="item-details-prerequisites"></div>
             </div>
-            <div id="item-details-used-in-container">
-                <div class="item-details-heading">Used In</div>
-                <div class="item-details-column-body" id="item-details-used-in"></div>
+            <div id="item-details-used-in-container" class="details-right-column">
+                <div class="column-heading">Used In</div>
+                <div class="details-column-body" id="item-details-used-in"></div>
             </div>
         </div>
         <div id="item-details-tactical-text-container">
-            <div class="item-details-heading">Details</div>
-            <div class="item-details-column-body" id="item-details-tactical-text"></div>
+            <div class="column-heading">Details</div>
+            <div class="details-column-body" id="item-details-tactical-text"></div>
         </div>
     </div>
 </template>

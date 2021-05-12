@@ -1,36 +1,36 @@
 <template id="template-foundry-preview">
-    <div id="foundry-preview-container">
-        <div id="foundry-preview-header-row">
-            <div id="foundry-preview-icon"><img /></div>
-            <div id="foundry-preview-name"></div>
+    <div class="flex-column">
+        <div class="preview-header">
+            <img class="preview-img-schematic" />
+            <div class="preview-title"></div>
         </div>
-        <div id="foundry-preview-description"></div>
+        <div class="preview-description"></div>
     </div>
 </template>
 
 <template id="template-foundry-project-display-page">
-    <div id="foundry-project-content-section" class="section-content">
-        <div id="foundry-project-header-row" class="flex-single-row">
-            <div id="foundry-project-image-container">
+    <div class="section-content flex-column">
+        <div class="details-header-row">
+            <div class="details-header-img-container">
                 <img src="" />
             </div>
-            <div id="foundry-project-description-container">
-                <div id="foundry-project-name"></div>
-                <div id="foundry-project-description"></div>
-                <div id="foundry-project-research-credits"></div>
+            <div class="details-header-content-container">
+                <div class="details-header-title"></div>
+                <div class="details-header-description"></div>
+                <div class="details-header-extra"></div>
             </div>
         </div>
         <div id="foundry-project-second-row" class="flex-single-row">
-            <div class="foundry-project-left-column">
-                <div class="foundry-project-heading">Cost</div>
-                <div class="foundry-project-column-body" id="foundry-project-cost-container">
+            <div class="details-left-column">
+                <div class="column-heading">Cost</div>
+                <div class="details-column-body flex-column-wrap" id="foundry-project-cost-container">
                 </div>
             </div>
-            <div class="foundry-project-right-column">
-                <div class="foundry-project-heading">Project Duration</div>
-                <div class="foundry-project-column-body">
+            <div class="details-right-column">
+                <div class="column-heading">Project Duration</div>
+                <div class="details-column-body flex-column">
                     <div id="foundry-project-time-container">
-                        <img class="foundry-project-inline-icon" src="assets/img/misc-icons/time.png" />
+                        <img class="inline-icon" src="assets/img/misc-icons/time.png" />
                         <span id="foundry-project-time"></span>&nbsp;days
                     </div>
                     <div class="flex-column-bottom flex-grow">
@@ -42,18 +42,18 @@
             </div>
         </div>
         <div class="flex-single-row">
-            <div class="foundry-project-left-column">
-                <div class="foundry-project-heading">Research Prerequisite</div>
-                <div class="foundry-project-column-body" id="foundry-project-prerequisites"></div>
+            <div class="details-left-column">
+                <div class="column-heading">Research Prerequisite</div>
+                <div class="details-column-body flex-column-wrap" id="foundry-project-prerequisites"></div>
             </div>
-            <div class="foundry-project-right-column">
-                <div class="foundry-project-heading">Unlocked Items</div>
-                <div class="foundry-project-column-body" id="foundry-project-unlocks"></div>
+            <div class="details-right-column">
+                <div class="column-heading">Unlocked Items</div>
+                <div class="details-column-body flex-column-wrap" id="foundry-project-unlocks"></div>
             </div>
         </div>
         <div id="foundry-project-main-row" class="flex-single-row">
-            <div class="foundry-project-heading" id="foundry-project-benefits-heading">Project Benefits</div>
-            <div id="foundry-project-benefits"></div>
+            <div class="column-heading">Project Benefits</div>
+            <div class="details-column-body" id="foundry-project-benefits"></div>
         </div>
     </div>
 </template>

@@ -63,17 +63,6 @@
     padding: 10px 13px 15px 13px;
 }
 
-.base-facility-heading {
-    background-color: var(--color-bg-subtle);
-    border-bottom: 1px solid var(--color-subtle);
-    border-top: 1px solid var(--color-subtle);
-    color: var(--color);
-    height: 31px;
-    padding: 4px 0px;
-    text-align: center;
-    text-transform: uppercase;
-}
-
 .base-facility-stats-heading {
     background-color: var(--color-bg-subtle);
     border-right: 1px solid var(--color-subtle);
@@ -171,7 +160,7 @@
 
 .base-facility-browse-container {
     display: grid;
-    grid-template-columns: 130px auto 115px 70px 110px repeat(3, 50px) 160px;
+    grid-template-columns: 130px minmax(120px, auto) 115px 70px 110px repeat(3, 50px) 160px;
     margin: 0px 20px;
 }
 
@@ -213,39 +202,4 @@ div.base-facility-browse-money-icon {
 
 .facility-browse-cost-type {
     text-align: right;
-}
-
-/***************************
- * Styles for preview rendering
- ***************************/
-
-#base-facility-preview-container {
-    display: flex;
-    flex-flow: column nowrap;
-}
-
-#base-facility-preview-description {
-    padding-left: 5px;
-    margin-top: 13px;
-    word-wrap: normal;
-}
-
-#base-facility-preview-header-row {
-     display: flex;
-     flex-flow: row nowrap;
-     height: 48px;
-}
-
-#base-facility-preview-icon img {
-    background-color: var(--color-bg-schematic);
-    outline: 1px solid var(--color-border-schematic);
-    padding: 4px 2px;
-    width: 96px;
-}
-
-#base-facility-preview-name {
-    display: flex;
-    align-items: center;
-    font-size: 24px;
-    margin-left: 10px;
 }

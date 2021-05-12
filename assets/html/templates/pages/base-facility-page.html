@@ -1,10 +1,10 @@
 <template id="template-base-facility-preview">
-    <div id="base-facility-preview-container">
-        <div id="base-facility-preview-header-row">
-            <div id="base-facility-preview-icon"><img /></div>
-            <div id="base-facility-preview-name"></div>
+    <div class="flex-column">
+        <div class="preview-header">
+            <img class="preview-img-schematic" />
+            <div class="preview-title"></div>
         </div>
-        <div id="base-facility-preview-description"></div>
+        <div class="preview-description"></div>
     </div>
 </template>
 
@@ -21,19 +21,19 @@
         </div>
         <div id="base-facility-build" class="flex-single-row">
             <div id="base-facility-build-normal">
-                <div class="base-facility-heading">Normal Build</div>
+                <div class="column-heading">Normal Build</div>
                 <div class="base-facility-build-content">
                     <div class="base-facility-column-body" id="base-facility-normal-build-cost-container"></div>
                 </div>
             </div>
             <div id="base-facility-build-quick">
-                <div class="base-facility-heading">Quick Build</div>
+                <div class="column-heading">Quick Build</div>
                 <div class="base-facility-build-content">
                     <div class="base-facility-column-body" id="base-facility-quick-build-cost-container"></div>
                 </div>
             </div>
             <div id="base-facility-stats-container">
-                <div class="base-facility-heading">Facility Data</div>
+                <div class="column-heading">Facility Data</div>
                 <div class="base-facility-stats-row">
                     <div class="base-facility-stats-heading">Prerequisite</div>
                     <div id="base-facility-prerequisite" class="base-facility-stats-value"></div>
@@ -53,7 +53,7 @@
             </div>
         </div>
         <div id="base-facility-details-row">
-            <div class="base-facility-heading" id="base-facility-details-heading">Facility Information</div>
+            <div class="column-heading">Facility Information</div>
             <div class="base-facility-column-body" id="base-facility-details"></div>
         </div>
     </div>

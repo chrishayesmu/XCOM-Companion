@@ -236,11 +236,6 @@ div > #gene-mod-required-research,
  * Styles for preview rendering
  ***************************/
 
-#perk-preview-container {
-    display: flex;
-    flex-flow: column nowrap;
-}
-
 #perk-preview-cost {
     align-items: flex-start;
     display: flex;

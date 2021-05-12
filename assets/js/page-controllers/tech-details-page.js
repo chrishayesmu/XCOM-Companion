@@ -23,9 +23,9 @@ class TechDetailsPage extends AppPage {
         }
 
         const template = await Templates.instantiateTemplate("assets/html/templates/pages/tech-details-page.html", "template-tech-preview");
-        template.querySelector("#tech-preview-icon img").src = tech.icon;
-        template.querySelector("#tech-preview-name").textContent = tech.name;
-        template.querySelector("#tech-preview-description").textContent = Utils.truncateText(tech.description, 300);
+        template.querySelector(".preview-img-schematic").src = tech.icon;
+        template.querySelector(".preview-title").textContent = tech.name;
+        template.querySelector(".preview-description").textContent = Utils.truncateText(tech.description, 300);
 
         return template;
     }
@@ -41,9 +41,9 @@ class TechDetailsPage extends AppPage {
 
         const template = await Templates.instantiateTemplate("assets/html/templates/pages/tech-details-page.html", "template-tech-details-page");
 
-        template.querySelector("#tech-details-name").textContent = tech.name;
-        template.querySelector("#tech-details-description").textContent = tech.description;
-        template.querySelector("#tech-details-image-container img").src = tech.icon;
+        template.querySelector(".details-header-title").textContent = tech.name;
+        template.querySelector(".details-header-description").textContent = tech.description;
+        template.querySelector(".details-header-img-container img").src = tech.icon;
 
         this._populateBeneficialCredits(template, tech);
         this._populateCost(template, tech);
@@ -76,7 +76,7 @@ class TechDetailsPage extends AppPage {
     }
 
     _populateBeneficialCredits(template, tech) {
-        const container = template.querySelector("#tech-details-research-credits");
+        const container = template.querySelector(".details-header-extra");
 
         if (!tech.benefits_from_research_credit_types) {
             container.classList.add("hidden-collapse");
@@ -86,16 +86,18 @@ class TechDetailsPage extends AppPage {
         const creditLinks = tech.benefits_from_research_credit_types.map(creditType => {
             const sourceTech = DataHelper.getResearchCreditSource(creditType);
             return Widgets.createInAppLink(sourceTech, {
-                disablePreview: true,
                 linkText: Utils.capitalizeEachWord(creditType, "_", " ")
             }).outerHTML;
         });
 
-        container.innerHTML = "Benefits from " + creditLinks.join(", ") + " research credit";
+        const div = document.createElement("div");
+        div.innerHTML = "Benefits from " + creditLinks.join(", ") + " research credit";
 
         if (creditLinks.length > 1) {
-            container.innerHTML += "s";
+            div.innerHTML += "s";
         }
+
+        container.appendChild(div);
     }
 
     _populateCost(template, tech) {
@@ -223,6 +225,7 @@ class TechDetailsPage extends AppPage {
 
             const div = document.createElement("div");
             const ul = document.createElement("ul");
+            ul.classList.add("details-list");
             div.appendChild(ul);
 
             let li = document.createElement("li");
@@ -242,7 +245,6 @@ class TechDetailsPage extends AppPage {
             return;
         }
 
-        // TODO make all unlocks into links
         if (tech.unlocks.facilities) {
             for (let i = 0; i < tech.unlocks.facilities.length; i++) {
                 const div = document.createElement("div");

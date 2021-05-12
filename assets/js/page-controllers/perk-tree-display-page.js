@@ -45,8 +45,8 @@ class PerkTreeDisplayPage extends AppPage {
         iconImg.classList.add(iconClass);
         iconImg.src = perk.icon;
 
-        template.querySelector("#perk-preview-name").textContent = perk.name;
-        template.querySelector("#perk-preview-description").textContent = perk.description;
+        template.querySelector(".preview-title").textContent = perk.name;
+        template.querySelector(".preview-description").textContent = perk.description;
 
         return template;
     }
