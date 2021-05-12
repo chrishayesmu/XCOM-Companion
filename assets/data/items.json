@@ -1614,6 +1614,7 @@
         "item_defense_matrix_dodge": {
             "name": "Defense Matrix (Dodge)",
             "description": "Activate this module during interception to provide an immediate, temporary boost to our unit's evasive ability. The matrix will burn out after two uses. It will be unavailable if our fighter is in an aggressive posture.",
+            "tactical_text": "<ul><li>The next two attacks fired at this aircraft are guaranteed to miss</li></ul>",
             "type": "aircraft_module",
             "sell_value": 0,
             "normal_build": {
@@ -1994,7 +1995,7 @@
         "item_fuel_cell": {
             "name": "Fuel Cell",
             "description": "Equipping this allows our flight armors to stay aloft longer.",
-            "tactical_text": "<ul><li>Confers additional flight fuel for <a data-page-on-click='item-display-page' data-pagearg-item-id='item_archangel_armor'>Archangel</a> and <a data-page-on-click='item-display-page' data-pagearg-item-id='item_seraph_armor'>Seraph</a> armors and Hover SHIVs</li></ul>",
+            "tactical_text": "<ul><li>Confers additional flight fuel for <a data-page-on-click='item-display-page' data-pagearg-item-id='item_archangel_armor'>Archangel</a> and <a data-page-on-click='item-display-page' data-pagearg-item-id='item_seraph_armor'>Seraph</a> armors and <a data-page-on-click='item-display-page' data-pagearg-item-id='item_hover_shiv'>Hover SHIVs</a></li></ul>",
             "type": "loadout_equipment",
             "sell_value": 16,
             "type_specific_data": {
@@ -6612,6 +6613,7 @@
         "item_uplink_targeting_aim": {
             "name": "Uplink Targeting (Aim)",
             "description": "Activate this module during interception to provide an immediate, temporary boost to the accuracy of our aircraft's primary weapon. The module will burn out after correcting two misses with our primary weapon into hits, but it will be unavailable if our fighter is in a defensive posture.",
+            "tactical_text": "<ul><li>The next two attacks made by this aircraft are guaranteed to hit</li></ul>",
             "type": "aircraft_module",
             "sell_value": 8,
             "normal_build": {
