@@ -32,6 +32,22 @@
     width: 20px;
 }
 
+.row-heading {
+    background-color: var(--color-bg-subtle);
+    border-right: 1px solid var(--color-subtle);
+    color: var(--color);
+    height: 100%;
+    padding: 4px 4px;
+    margin-right: 8px;
+    text-align: center;
+    text-transform: uppercase;
+
+    /* flex display to get text centered */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 /**
  * Styles commonly used for detail pages (e.g. tech-details-page, item-display-page)
  */

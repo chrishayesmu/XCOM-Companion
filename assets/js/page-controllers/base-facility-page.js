@@ -41,10 +41,10 @@ class BaseFacilityPage extends AppPage {
 
         const template = await Templates.instantiateTemplate("assets/html/templates/pages/base-facility-page.html", "template-base-facility-page");
 
-        template.querySelector("#base-facility-name").textContent = facility.name;
-        template.querySelector("#base-facility-description").textContent = facility.description;
+        template.querySelector(".details-header-title").textContent = facility.name;
+        template.querySelector(".details-header-description").textContent = facility.description;
+        template.querySelector(".details-header-img-container img").src = facility.icon;
         template.querySelector("#base-facility-details").innerHTML = facility.tactical_text;
-        template.querySelector("#base-facility-image-container img").src = facility.icon;
         template.querySelector("#base-facility-maintenance-cost").textContent = "§" + facility.maintenance_cost;
 
         this._addBulletPoints(template, facility);
@@ -65,7 +65,7 @@ class BaseFacilityPage extends AppPage {
 
     onUnloadBeginning(_event) {
         const historyData = {
-            techId: this.facilityId
+            facilityId: this.facilityId
         };
 
         this.facilityId = null;
@@ -79,6 +79,7 @@ class BaseFacilityPage extends AppPage {
 
     _addBulletPoints(template, facility) {
         const ul = template.querySelector("#base-facility-details ul");
+        ul.classList.add("details-list");
 
         const addBulletPoint = function(html) {
             const listItem = document.createElement("li");

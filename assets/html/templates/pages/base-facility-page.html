@@ -10,51 +10,51 @@
 
 <template id="template-base-facility-page">
     <div class="section-content">
-        <div id="base-facility-header-row" class="flex-single-row">
-            <div id="base-facility-image-container">
+        <div class="details-header-row">
+            <div class="details-header-img-container">
                 <img />
             </div>
-            <div id="base-facility-description-container">
-                <div id="base-facility-name"></div>
-                <div id="base-facility-description"></div>
+            <div class="details-header-content-container">
+                <div class="details-header-title"></div>
+                <div class="details-header-description"></div>
             </div>
         </div>
         <div id="base-facility-build" class="flex-single-row">
             <div id="base-facility-build-normal">
                 <div class="column-heading">Normal Build</div>
                 <div class="base-facility-build-content">
-                    <div class="base-facility-column-body" id="base-facility-normal-build-cost-container"></div>
+                    <div class="details-column-body" id="base-facility-normal-build-cost-container"></div>
                 </div>
             </div>
             <div id="base-facility-build-quick">
                 <div class="column-heading">Quick Build</div>
                 <div class="base-facility-build-content">
-                    <div class="base-facility-column-body" id="base-facility-quick-build-cost-container"></div>
+                    <div class="details-column-body" id="base-facility-quick-build-cost-container"></div>
                 </div>
             </div>
             <div id="base-facility-stats-container">
                 <div class="column-heading">Facility Data</div>
                 <div class="base-facility-stats-row">
-                    <div class="base-facility-stats-heading">Prerequisite</div>
+                    <div class="row-heading base-facility-stats-heading">Prerequisite</div>
                     <div id="base-facility-prerequisite" class="base-facility-stats-value"></div>
                 </div>
                 <div class="base-facility-stats-row">
-                    <div id="base-facility-power-label" class="base-facility-stats-heading">Power Provided</div>
+                    <div id="base-facility-power-label" class="row-heading base-facility-stats-heading">Power Provided</div>
                     <div id="base-facility-power-value" class="base-facility-stats-value"></div>
                 </div>
                 <div class="base-facility-stats-row">
-                    <div class="base-facility-stats-heading">Maintenance</div>
+                    <div class="row-heading base-facility-stats-heading">Maintenance</div>
                     <div id="base-facility-maintenance-cost" class="base-facility-stats-value"></div>
                 </div>
                 <div class="base-facility-stats-row" style="border-bottom: none">
-                    <div class="base-facility-stats-heading">Adjacency Bonus</div>
+                    <div class="row-heading base-facility-stats-heading">Adjacency Bonus</div>
                     <div id="base-facility-adjacency-type" class="base-facility-stats-value"></div>
                 </div>
             </div>
         </div>
         <div id="base-facility-details-row">
             <div class="column-heading">Facility Information</div>
-            <div class="base-facility-column-body" id="base-facility-details"></div>
+            <div class="details-column-body" id="base-facility-details"></div>
         </div>
     </div>
 </template>

@@ -56,28 +56,8 @@
  * Generalized styles for use in the main body of the page
  */
 
-.base-facility-column-body {
-    display: flex;
-    flex-flow: column wrap;
-    flex-grow: 1;
-    padding: 10px 13px 15px 13px;
-}
-
 .base-facility-stats-heading {
-    background-color: var(--color-bg-subtle);
-    border-right: 1px solid var(--color-subtle);
-    color: var(--color);
-    height: 100%;
-    padding: 4px 4px;
-    margin-right: 8px;
-    text-align: center;
-    text-transform: uppercase;
     width: 150px;
-
-    /* flex display to get text centered */
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 .base-facility-stats-row {
@@ -94,40 +74,6 @@
 
     display: flex;
     align-items: center;
-}
-
-/**
- * Styles for header row contents
- */
-
-#base-facility-description {
-    height: calc(13em - 40px - 10px - 1em); /* Entire row height, minus the research name, minus this element's padding, minus the research credit section */
-    padding: 5px 10px;
-    margin-right: 18px;
-    overflow: auto;
-}
-
-#base-facility-description-container {
-    flex-grow: 1;
-    text-align: center;
-}
-
-#base-facility-image-container {
-    display: flex;
-    flex-shrink: 0;
-    justify-content: center;
-    width: 40%;
-}
-
-#base-facility-image-container img {
-    margin: auto 0;
-    max-width: 100%;
-}
-
-#base-facility-name {
-    font-size: 2em;
-    height: 40px;
-    width: 100%;
 }
 
 /**
