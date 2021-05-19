@@ -27,6 +27,7 @@ When you start XCOM Companion, it will automatically check for updates and notif
 * **Rich tooltips and links:** References to other game terms are links that you can click to view them instantly, and mousing over those links [shows you tooltips](screenshots/tooltip_perk_body_shield.png) in case you just need a quick refresher.
 * **Perk trees, gene mods, and psionics:** View what will be available to your soldiers and MECs before unlocking them.
 * **Map database:** Put in your mission type and area of operations (e.g. Urban Block) and get back a list of the maps you might be about to embark on.
+* **UFO database:** With maintaining a healthy Interceptor fleet being so important in Long War, the UFO database makes it easier to tell if it's worthwhile scrambling someone to shoot at that Raider, or if you're just adding more repair time to your fleet. Tells you how a UFO performs in the air, what to expect when assaulting one on the ground, and what missions they might be performing in your airspace.
 * **Automatic updates:** As more functionality is added to XCOM Companion, you can install it with a single click.
 
 ## Upcoming features
@@ -36,7 +37,6 @@ Disclaimer: None of these features are guaranteed to be added; they all depend o
 * **Page history:** Navigate backwards and forwards between pages like in a browser, making it easier to keep your place.
 * **Enemy database:** Long War makes a number of changes to enemies, including introducing Leaders and Navigators with access to many more perks than before. A proper enemy database will help you find out if it's possible for that Floater to have Covering Fire before you take the shot.
 * **Enemy tracker:** In extended engagements, it's easy to lose track of how many enemies you've revealed versus how many you've killed. The enemy tracker will make it easy to update the count as you run into them, with an optional streamer overlay mode so your viewers can follow along.
-* **UFO database:** With maintaining a healthy Interceptor fleet being so important in Long War, the UFO database will make it easier to tell if it's worthwhile scrambling someone to shoot at that Raider, or if you're just adding more repair time to your fleet.
 * **Air combat simulator:** A hopeful extension of the UFO database, simply choose your Interceptor's loadout (including Foundry project completion) and which UFO type you're up against. A [Monte Carlo simulation](https://en.wikipedia.org/wiki/Monte_Carlo_method) will show you the probability of different outcomes.
 * **Campaign planner:** With planning ahead being so critical in Long War, this tool will help you map out your research trajectory alongside your base facilities and item production.
 * **Save file integration:** Let XCOM Companion load your campaign data to make your experience more contextual. For example, instead of seeing how long a research takes under hypothetical conditions, check out how long it'll be for your exact crew.
@@ -44,4 +44,5 @@ Disclaimer: None of these features are guaranteed to be added; they all depend o
 ## Known issues
 
 * Some items and Foundry Projects have intentionally vague wording due to lack of clarity around how they function. For example, it's not clear if the dodge chance granted by UFO Countermeasures is a flat chance on any shot, a flat decrease to enemy aim, or something else. I will fill these in if and when I learn more.
+* Some specific pieces of data are missing for UFOs, especially the Overseer and the Assault Carrier.
 * If you open the app and very quickly switch to the Research Tree and mouse over something, you might see the entire tree scramble. This is a really low priority to fix; just don't do that. If it does happen, close and reopen XCOM Companion.
