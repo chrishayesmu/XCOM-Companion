@@ -109,7 +109,7 @@ class MapPossibilitiesPage extends AppPage {
                 summaryContainer.textContent = "There are no maps matching these mission parameters.";
             }
             else {
-                summaryContainer.textContent = `There are ${matchingMaps.length} maps possible for this mission.`;
+                summaryContainer.textContent = `There ${matchingMaps.length === 1 ? "is 1 map" : "are " + matchingMaps.length + " maps"} possible for this mission.`;
 
                 matchingMaps.forEach(async map => {
                     const preview = await this._createMapPreview(map);
