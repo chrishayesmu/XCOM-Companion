@@ -1,6 +1,7 @@
 const { ipcRenderer, shell } = require('electron');
 
 import * as Search from "./search-provider.js";
+import * as Templates from "./templates.js";
 
 import BaseFacilityPage from "./page-controllers/base-facility-page.js";
 import BaseFacilitiesBrowsePage from "./page-controllers/base-facilities-browse-page.js";
@@ -15,6 +16,8 @@ import PerkTreeDisplayPage from "./page-controllers/perk-tree-display-page.js";
 import SearchResultsPage from "./page-controllers/search-results-page.js";
 import TechDetailsPage from "./page-controllers/tech-details-page.js";
 import TechTreeDisplayPage from "./page-controllers/tech-tree-display-page.js";
+import UfoBrowsePage from "./page-controllers/ufo-browse-page.js";
+import UfoDetailsPage from "./page-controllers/ufo-details-page.js";
 
 const appPages = [
     new BaseFacilityPage(),
@@ -29,7 +32,9 @@ const appPages = [
     new PerkTreeDisplayPage(),
     new SearchResultsPage(),
     new TechDetailsPage(),
-    new TechTreeDisplayPage()
+    new TechTreeDisplayPage(),
+    new UfoBrowsePage(),
+    new UfoDetailsPage()
 ];
 
 const pagesById = {};
@@ -55,11 +60,11 @@ class PageManager {
         // Create the tooltip container and make sure it's outside of all other DOM so it always appears on top
         this.pagePreviewTooltip = document.createElement("div");
         this.pagePreviewTooltip.classList.add("hidden-collapse");
-        this.pagePreviewTooltip.classList.add("preview-tooltip");
+        this.pagePreviewTooltip.classList.add("tooltip");
         document.body.appendChild(this.pagePreviewTooltip);
 
         document.body.addEventListener("click", this._handleDocumentClick.bind(this));
-        document.body.addEventListener("mouseout", this.hidePagePreviewTooltip.bind(this));
+        document.body.addEventListener("mouseout", this.hideTooltip.bind(this));
         document.body.addEventListener("mouseover", this._handleElementMouseover.bind(this));
     }
 
@@ -77,7 +82,7 @@ class PageManager {
         return targetPage.generatePreview(data);
     }
 
-    hidePagePreviewTooltip() {
+    hideTooltip() {
         this._showTooltip = false;
         this.pagePreviewTooltip.innerHTML = "";
         this.pagePreviewTooltip.classList.add("hidden-collapse");
@@ -89,7 +94,7 @@ class PageManager {
         }
 
         this._unloadCurrentPage();
-        this.hidePagePreviewTooltip();
+        this.hideTooltip();
         this.currentPage = pagesById[pageId];
 
         const pageDocument = await this.currentPage.load(data);
@@ -105,7 +110,7 @@ class PageManager {
                         return;
                     }
 
-                    this.hidePagePreviewTooltip();
+                    this.hideTooltip();
                     this._unloadCurrentPage();
 
                     this.currentPage = page;
@@ -130,6 +135,8 @@ class PageManager {
 
         previewPromise.then(preview => {
             if (preview) {
+                this.pagePreviewTooltip.classList.remove("content-tooltip");
+                this.pagePreviewTooltip.classList.add("preview-tooltip");
                 this.pagePreviewTooltip.appendChild(preview);
 
                 // tooltip doesn't have a rect until it's part of the DOM, so now we can reposition it
@@ -138,6 +145,27 @@ class PageManager {
                         this.pagePreviewTooltip.classList.remove("hidden-collapse")
                     }
                 });
+            }
+        });
+    }
+
+    /**
+     * Shows a tooltip with arbitrary content, positioning it appropriately based on the rect provided.
+     *
+     * @param {DOMRect} targetElementRect A DOMRect for the element that the tooltip should be positioned relative to
+     * @param {Element} content An HTML element to use as the content of the tooltip
+     */
+    showTooltip(targetElementRect, content) {
+        this._showTooltip = true;
+
+        this.pagePreviewTooltip.classList.add("content-tooltip");
+        this.pagePreviewTooltip.classList.remove("preview-tooltip");
+        this.pagePreviewTooltip.appendChild(content);
+
+        // tooltip doesn't have a rect until it's part of the DOM, so now we can reposition it
+        this._repositionTooltip(targetElementRect).then( () => {
+            if (this._showTooltip) {
+                this.pagePreviewTooltip.classList.remove("hidden-collapse")
             }
         });
     }
@@ -178,19 +206,23 @@ class PageManager {
         this.loadPage(requestedPageId, data);
     }
 
-    _handleElementMouseover(event) {
-        if (!event.target.dataset.pageOnClick) {
-            return;
+    async _handleElementMouseover(event) {
+        if (event.target.dataset.tooltipTemplateFile && event.target.dataset.tooltipTemplateId) {
+            const template = await Templates.instantiateTemplate(event.target.dataset.tooltipTemplateFile, event.target.dataset.tooltipTemplateId);
+            const targetElementRect = event.target.getBoundingClientRect();
+
+            this.showTooltip(targetElementRect, template);
         }
+        else if (event.target.dataset.pageOnClick) {
+            const data = this._extractPageDataArgs(event.target);
 
-        const data = this._extractPageDataArgs(event.target);
+            if (data.noPreview) {
+                return;
+            }
 
-        if (data.noPreview) {
-            return;
+            const targetElementRect = event.target.getBoundingClientRect();
+            this.showPagePreviewTooltip(event.target.dataset.pageOnClick, data, targetElementRect);
         }
-
-        const targetElementRect = event.target.getBoundingClientRect();
-        this.showPagePreviewTooltip(event.target.dataset.pageOnClick, data, targetElementRect);
     }
 
     async _loadPageIntoDom(pageDocument) {

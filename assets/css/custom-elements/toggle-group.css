@@ -1,0 +1,32 @@
+toggle-group {
+    display: inline-block;
+}
+
+.toggle-group-container {
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+.toggle-group-container-rectangle {
+    border: 1px solid var(--color-border-subtle);
+}
+
+.toggle-group-container-rounded {
+    border: 1px solid var(--color-border-subtle);
+    border-radius: 20px; /* TODO probably need this to be more dynamic */
+}
+
+.toggle-group-option {
+    border-right: 1px solid var(--color-border-subtle);
+    cursor: pointer;
+    padding: 3px 8px;
+    text-align: center;
+}
+
+.toggle-group-option:last-child {
+    border-right: none;
+}
+
+.toggle-group-option.selected {
+    background-color: var(--color-bg-subtle);
+}

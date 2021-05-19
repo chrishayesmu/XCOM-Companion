@@ -1,3 +1,24 @@
+function appendElement(container, elementType, content, options) {
+    options = options || {};
+
+    const element = document.createElement(elementType);
+
+    if (content instanceof Element) {
+        element.appendChild(content);
+    }
+    else {
+        element.innerHTML = content;
+    }
+
+    if (options.classes && options.classes.length) {
+        for (let i = 0; i < options.classes.length; i++) {
+            element.classList.add(options.classes[i]);
+        }
+    }
+
+    container.appendChild(element);
+}
+
 function capitalizeEachWord(str, originalSeparator, newSeparator) {
     originalSeparator = originalSeparator || "_";
     newSeparator = newSeparator || " ";
@@ -53,4 +74,12 @@ function truncateText(text, maxLength) {
     return text;
 }
 
-export { capitalizeEachWord, join, truncateText };
+function xToY(x, y) {
+    if (x === y) {
+        return x;
+    }
+
+    return `${x} to ${y}`;
+}
+
+export { appendElement, capitalizeEachWord, join, truncateText, xToY };

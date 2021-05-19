@@ -260,7 +260,7 @@ class TechTreeDisplayPage extends AppPage {
 
         // Research preview functionality on hover
         network.on("hoverNode", ( event => this._showTechPreview(event.node, network) ).bind(this));
-        network.on("blurNode", ( _event => PageManager.instance.hidePagePreviewTooltip() ).bind(this));
+        network.on("blurNode", _event => PageManager.instance.hideTooltip() );
 
         // Highlight entire edge trees instead of individual edges by hooking into the hover events
         network.on("hoverNode", ( event => this._highlightConnectedEdgesToNode(event.node, network) ).bind(this));

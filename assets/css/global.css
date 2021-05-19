@@ -31,6 +31,8 @@ body {
 }
 
 ::-webkit-scrollbar {
+    /* depending on whether the scrollbar is horizontal/vertical, only one of height/width will be applied */
+    height: 2px;
     width: 2px;
 }
 
@@ -164,17 +166,21 @@ span.inline-resource-icon {
     text-align: center;
 }
 
-.preview-tooltip {
+.tooltip {
     position: absolute;
 
     background-color: var(--color-bg-subtle);
     border: 1px solid white;
     box-shadow: 0px 0px 6px 1px var(--color-subtle);
     font-size: 14px;
+
+    pointer-events: none;
+}
+
+.preview-tooltip {
     min-width: 300px;
     max-width: 680px;
     padding: 10px 8px;
-    pointer-events: none;
 }
 
 :not(input) {

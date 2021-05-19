@@ -1,0 +1,662 @@
+{
+    "ufos": {
+        "ufo_abductor": {
+            "name": "Abductor",
+            "description": "Abductors appear to be much better protected than other ships of this size. Perhaps the aliens particularly value the abduction and research missions they are used for.",
+            "base_armament": {
+                "double_plasma": 1
+            },
+            "upgraded_armament": {
+                "upgrade_threshold": 390,
+                "double_plasma": 1,
+                "single_plasma": 1
+            },
+            "base_hp": 4000,
+            "base_alloy_value": 56,
+            "armor_penetration": 10,
+            "armor": 150,
+            "size": "large",
+            "resource_value": 18,
+            "equipment": {
+                "item_alien_stasis_tank": 6,
+                "item_alien_surgery": 2,
+                "item_ufo_power_source": 2,
+                "item_ufo_flight_computer": 4
+            },
+            "missions": [
+                {
+                    "type": "abduction"
+                },
+                {
+                    "type": "research",
+                    "required_research": 0,
+                    "required_resources": 125,
+                    "grants_research": 8
+                }
+            ],
+            "crew_upgrade": {
+                "upgrade_threshold": 360,
+                "additional_crew": 5
+            },
+            "command_pod_before_aba": {
+                "enemy_outsider": 4
+            },
+            "command_pod_after_aba": {
+                "any_min": 3,
+                "any_max": 5
+            },
+            "crew_crashed": {
+                "min": 13,
+                "max": 20
+            },
+            "crew_landed": {
+                "min": 18,
+                "max": 25
+            },
+            "crew_trap": {
+                "min": 28,
+                "max": 45
+            },
+            "bounty": {
+                "money": 300,
+                "max_alloys_normal": 9,
+                "max_alloys_alien_metallurgy": 14
+            }
+        },
+        "ufo_assault_carrier": {
+            "name": "Assault Carrier",
+            "description": "The Assault Carrier, while built on a battleship hull, lacks some of its sister's firepower and may be easier to shoot down. Nevertheless, we expect to see the aliens use this craft only against high-value targets, so it should be taken seriously whenever it is detected.",
+            "base_armament": {
+                "double_plasma": 1,
+                "single_plasma": 1
+            },
+            "upgraded_armament": {
+                "upgrade_threshold": -2000,
+                "double_plasma": 2
+            },
+            "base_hp": 8000,
+            "base_alloy_value": 84,
+            "armor_penetration": 90,
+            "armor": 140,
+            "size": "very_large",
+            "resource_value": 35,
+            "equipment": {
+                "item_fusion_core": 2,
+                "item_ufo_power_source": 4,
+                "item_ufo_flight_computer": 6
+            },
+            "missions": [
+                {
+                    "type": "research",
+                    "required_research": 0,
+                    "required_resources": 300,
+                    "grants_research": 0
+                },
+                {
+                    "type": "retaliate"
+                },
+                {
+                    "type": "terrorize"
+                }
+            ],
+            "crew_upgrade": {
+                "upgrade_threshold": 360,
+                "additional_crew": 5
+            },
+            "command_pod_before_aba": {
+                "enemy_outsider": 7
+            },
+            "command_pod_after_aba": {
+                "any_min": 7,
+                "any_max": 7
+            },
+            "crew_crashed": {
+                "min": 26,
+                "max": 30
+            },
+            "crew_landed": {
+                "min": 38,
+                "max": 38
+            },
+            "bounty": {
+                "money": 750,
+                "max_alloys_normal": 13,
+                "max_alloys_alien_metallurgy": 21
+            }
+        },
+        "ufo_battleship": {
+            "name": "Battleship",
+            "description": "An unbelievably dangerous piece of hardware, these UFOs never appear to land but are used in bombing, anti-satellite and air superiority roles.",
+            "base_armament": {
+                "fusion_lance": 1
+            },
+            "base_hp": 9000,
+            "base_alloy_value": 84,
+            "armor_penetration": 125,
+            "armor": 180,
+            "size": "very_large",
+            "resource_value": 40,
+            "equipment": {
+                "item_fusion_core": 2,
+                "item_ufo_power_source": 4,
+                "item_ufo_flight_computer": 6
+            },
+            "missions": [
+                {
+                    "type": "bomb",
+                    "required_research": 0,
+                    "required_resources": 175
+                },
+                {
+                    "type": "hunt",
+                    "required_research": 75,
+                    "required_resources": 225
+                },
+                {
+                    "type": "infiltrate"
+                },
+                {
+                    "type": "scout",
+                    "required_research": 0,
+                    "required_resources": 300
+                }
+            ],
+            "crew_upgrade": {
+                "upgrade_threshold": 360,
+                "additional_crew": 5
+            },
+            "command_pod_before_aba": {
+                "enemy_outsider": 7
+            },
+            "command_pod_after_aba": {
+                "any_min": 7,
+                "any_max": 7
+            },
+            "crew_crashed": {
+                "min": 26,
+                "max": 30
+            },
+            "bounty": {
+                "money": 750,
+                "max_alloys_normal": 13,
+                "max_alloys_alien_metallurgy": 21
+            }
+        },
+        "ufo_destroyer": {
+            "name": "Destroyer",
+            "description": "The deadly Destroyer present a much greater threat to our aircraft than its sister class of ships. Armor-piercing weapons are required to defeat this craft. It appears to primarily be used for air raids and anti-satellite operations, although we may see it conduct reconnaissance missions as well. Our analysts note the presence of unused hardpoints on some images of this craft, so we should look out for upgraded versions with even more killing power.",
+            "base_armament": {
+                "single_plasma": 1
+            },
+            "upgraded_armament": {
+                "upgrade_threshold": 270,
+                "double_plasma": 1
+            },
+            "base_hp": 1600,
+            "base_alloy_value": 42,
+            "armor_penetration": 75,
+            "armor_penetration_upgraded": 100,
+            "armor_penetration_upgrade_threshold": 540,
+            "armor": 90,
+            "armor_upgraded": 160,
+            "armor_upgrade_threshold": 540,
+            "size": "medium",
+            "resource_value": 12,
+            "equipment": {
+                "item_ufo_power_source": 4,
+                "item_ufo_flight_computer": 4
+            },
+            "missions": [
+                {
+                    "type": "bomb",
+                    "required_research": 0,
+                    "required_resources": 75
+                },
+                {
+                    "type": "hunt",
+                    "required_research": 75,
+                    "required_resources": 100
+                },
+                {
+                    "type": "scout",
+                    "required_research": 0,
+                    "required_resources": 225
+                }
+             ],
+            "crew_upgrade": {
+                "upgrade_threshold": 360,
+                "additional_crew": 4
+            },
+            "command_pod_before_aba": {
+                "enemy_outsider": 3
+            },
+            "command_pod_after_aba": {
+                "any_min": 2,
+                "any_max": 3
+            },
+            "crew_crashed": {
+                "min": 11,
+                "max": 15
+            },
+            "bounty": {
+                "money": 200,
+                "max_alloys_normal": 7,
+                "max_alloys_alien_metallurgy": 11
+            }
+        },
+        "ufo_fighter": {
+            "name": "Fighter",
+            "description": "The alien Fighter, while similar in outward appearance to the Scout, is much better protected. Armor-piercing weapons like our Stingray Missiles will be helpful in bringing these craft down. This class of craft is used primarily for air raids and anti-satellite operations.",
+            "base_armament": {
+                "single_plasma": 1
+            },
+            "upgraded_armament": {
+                "upgrade_threshold": 330,
+                "single_plasma": 2
+            },
+            "base_hp": 850,
+            "base_alloy_value": 28,
+            "armor_penetration": 35,
+            "armor": 60,
+            "size": "small",
+            "resource_value": 6,
+            "equipment": {
+                "item_ufo_power_source": 1,
+                "item_ufo_flight_computer": 2
+            },
+            "missions": [
+                {
+                    "type": "bomb",
+                    "required_research": 0,
+                    "required_resources": 0
+                },
+                {
+                    "type": "hunt",
+                    "required_research": 0,
+                    "required_resources": 0
+                }
+            ],
+            "crew_upgrade": {
+                "upgrade_threshold": 360,
+                "additional_crew": 3
+            },
+            "command_pod_before_aba": {
+                "enemy_outsider": 1
+            },
+            "command_pod_after_aba": {
+                "enemy_outsider": 2
+            },
+            "crew_crashed": {
+                "min": 3,
+                "max": 9
+            },
+            "bounty": {
+                "money": 100,
+                "max_alloys_normal": 5,
+                "max_alloys_alien_metallurgy": 7
+            }
+        },
+        "ufo_harvester": {
+            "name": "Harvester",
+            "description": "The Harvester class of UFO seems to have one role - to recover important biological materials and minerals from Earth in support of other alien operations. We should try to interdict alien harvest operations whenever possible to slow the alien advance. These craft may be vulnerable to a concentrated attack.",
+            "base_armament": {
+                "double_plasma": 1
+            },
+            "base_hp": 6000,
+            "base_alloy_value": 56,
+            "armor_penetration": 15,
+            "armor": 100,
+            "size": "large",
+            "resource_value": 15,
+            "equipment": {
+                "item_alien_stasis_tank": 6,
+                "item_alien_surgery": 3,
+                "item_ufo_power_source": 2,
+                "item_ufo_flight_computer": 4
+            },
+            "missions": [
+                {
+                    "type": "harvest",
+                    "required_research": 0,
+                    "required_resources": 75,
+                    "grants_resources": {
+                        "min": 27,
+                        "max": 31
+                    }
+                }
+            ],
+            "crew_upgrade": {
+                "upgrade_threshold": 360,
+                "additional_crew": 5
+            },
+            "command_pod_before_aba": {
+                "enemy_outsider": 4
+            },
+            "command_pod_after_aba": {
+                "any_min": 3,
+                "any_max": 5
+            },
+            "crew_crashed": {
+                "min": 13,
+                "max": 20
+            },
+            "crew_landed": {
+                "min": 18,
+                "max": 25
+            },
+            "crew_trap": {
+                "min": 28,
+                "max": 45
+            },
+            "bounty": {
+                "money": 300,
+                "max_alloys_normal": 9,
+                "max_alloys_alien_metallurgy": 14
+            }
+        },
+        "ufo_overseer": {
+            "name": "Overseer",
+            "description": "This class of ship appears to be used as a airborne command center for the Ethereal race of alien. Only our strongest weapons will be able to penetrate its armor.",
+            "base_armament": {
+                "single_plasma": 1,
+                "double_plasma": 1
+            },
+            "base_hp": 2500,
+            "base_alloy_value": 48,
+            "armor_penetration": 125,
+            "armor": 200,
+            "size": "medium",
+            "resource_value": 25,
+            "equipment": {
+                "item_ufo_power_source": 4,
+                "item_ufo_flight_computer": 4
+            },
+            "missions": [
+                {
+                    "type": "command_overwatch"
+                },
+                {
+                    "type": "infiltrate"
+                },
+                {
+                    "type": "retaliate"
+                }
+            ],
+            "bounty": {
+                "money": 500,
+                "max_alloys_normal": 8,
+                "max_alloys_alien_metallurgy": 12
+            }
+        },
+        "ufo_raider": {
+            "name": "Raider",
+            "description": "The Raider class of UFO seems to be a multirole craft that thus suffers in combat power. The aliens appear to use it for reconnaissance, research and resource-gathering operations.",
+            "base_armament": {
+                "single_plasma": 1
+            },
+            "upgraded_armament": {
+                "upgrade_threshold": 570,
+                "single_plasma": 2
+            },
+            "base_hp": 1500,
+            "base_alloy_value": 42,
+            "armor_penetration": 35,
+            "armor": 25,
+            "size": "medium",
+            "resource_value": 10,
+            "equipment": {
+                "item_ufo_power_source": 2,
+                "item_ufo_flight_computer": 4
+            },
+            "missions": [
+                {
+                    "type": "harvest",
+                    "required_research": 0,
+                    "required_resources": 125,
+                    "grants_resources": {
+                        "min": 17,
+                        "max": 21
+                    }
+                },
+                {
+                    "type": "hunt",
+                    "required_research": 0,
+                    "required_resources": 100
+                },
+                {
+                    "type": "research",
+                    "required_research": 0,
+                    "required_resources": 75,
+                    "grants_research": 5
+                },
+                {
+                    "type": "scout",
+                    "required_research": 0,
+                    "required_resources": 50
+                }
+            ],
+            "crew_upgrade": {
+                "upgrade_threshold": 360,
+                "additional_crew": 4
+            },
+            "command_pod_before_aba": {
+                "enemy_outsider": 2
+            },
+            "command_pod_after_aba": {
+                "any_min": 2,
+                "any_max": 3
+            },
+            "crew_crashed": {
+                "min": 11,
+                "max": 15
+            },
+            "crew_landed": {
+                "min": 15,
+                "max": 20
+            },
+            "crew_trap": {
+                "min": 24,
+                "max": 36
+            },
+            "bounty": {
+                "money": 200,
+                "max_alloys_normal": 7,
+                "max_alloys_alien_metallurgy": 11
+            }
+        },
+        "ufo_scout": {
+            "name": "Scout",
+            "description": "The speedy Scout-class UFO is fortunately within Earth's native capabilities to shoot down ... on occasion. It appears to be used for general reconnaissance, resource-gathering and research.",
+            "base_armament": {
+                "single_plasma": 1
+            },
+            "base_hp": 750,
+            "base_alloy_value": 28,
+            "armor_penetration": 15,
+            "armor": 0,
+            "size": "small",
+            "resource_value": 5,
+            "equipment": {
+                "item_ufo_power_source": 1,
+                "item_ufo_flight_computer": 2
+            },
+            "missions": [
+                {
+                    "type": "harvest",
+                    "required_research": 0,
+                    "required_resources": 225,
+                    "grants_resources": {
+                        "min": 10,
+                        "max": 14
+                    }
+                },
+                {
+                    "type": "research",
+                    "required_research": 0,
+                    "required_resources": 0,
+                    "grants_research": 3
+                },
+                {
+                    "type": "scout",
+                    "required_research": 0,
+                    "required_resources": 0
+                }
+            ],
+            "crew_upgrade": {
+                "upgrade_threshold": 360,
+                "additional_crew": 3
+            },
+            "command_pod_before_aba": {
+                "enemy_outsider": 1
+            },
+            "command_pod_after_aba": {
+                "enemy_outsider": 2
+            },
+            "crew_crashed": {
+                "min": 5,
+                "max": 11
+            },
+            "crew_landed": {
+                "min": 9,
+                "max": 11
+            },
+            "crew_trap": {
+                "min": 20,
+                "max": 23
+            },
+            "bounty": {
+                "money": 100,
+                "max_alloys_normal": 5,
+                "max_alloys_alien_metallurgy": 7
+            }
+        },
+        "ufo_terror_ship": {
+            "name": "Terror Ship",
+            "description": "The rarely encountered Terror Ship appears suited for rapid deployment of alien shock troops. They appear to presage alien terror missions, but they may be used for alien research on XCOM as well.",
+            "base_armament": {
+                "double_plasma": 1
+            },
+            "upgraded_armament": {
+                "upgrade_threshold": 390,
+                "single_plasma": 1,
+                "double_plasma": 1
+            },
+            "base_hp": 6000,
+            "base_alloy_value": 70,
+            "armor_penetration": 0,
+            "armor": 125,
+            "size": "large",
+            "resource_value": 25,
+            "equipment": {
+                "item_alien_food": 10,
+                "item_alien_stasis_tank": 8,
+                "item_alien_surgery": 2,
+                "item_ufo_power_source": 4,
+                "item_ufo_flight_computer": 4
+            },
+            "missions": [
+                {
+                    "type": "research",
+                    "required_research": 0,
+                    "required_resources": 250,
+                    "grants_research": 10
+                },
+                {
+                    "type": "terrorize"
+                }
+            ],
+            "crew_upgrade": {
+                "upgrade_threshold": 360,
+                "additional_crew": 5
+            },
+            "command_pod_before_aba": {
+                "any_min": 3,
+                "any_max": 6
+            },
+            "command_pod_after_aba": {
+                "any_min": 3,
+                "any_max": 6
+            },
+            "crew_crashed": {
+                "min": 22,
+                "max": 39
+            },
+            "crew_landed": {
+                "min": 28,
+                "max": 39
+            },
+            "crew_trap": {
+                "min": 40,
+                "max": 40
+            },
+            "bounty": {
+                "money": 500,
+                "max_alloys_normal": 11,
+                "max_alloys_alien_metallurgy": 17
+            }
+        },
+        "ufo_transport": {
+            "name": "Transport",
+            "description": "This ponderously slow craft will be a tough nut to crack. It appears to be primarily used in alien terrestrial resource-gathering but could also be used in support of other major alien operations.",
+            "base_armament": {
+                "double_plasma": 1
+            },
+            "base_hp": 5000,
+            "base_alloy_value": 70,
+            "armor_penetration": 0,
+            "armor": 160,
+            "size": "large",
+            "resource_value": 24,
+            "equipment": {
+                "item_alien_food": 10,
+                "item_alien_stasis_tank": 8,
+                "item_alien_surgery": 2,
+                "item_ufo_power_source": 4,
+                "item_ufo_flight_computer": 4
+            },
+            "missions": [
+                {
+                    "type": "harvest",
+                    "required_research": 0,
+                    "required_resources": 0,
+                    "grants_resources": {
+                        "min": 37,
+                        "max": 41
+                    }
+                },
+                {
+                    "type": "infiltrate"
+                }
+            ],
+            "crew_upgrade": {
+                "upgrade_threshold": 360,
+                "additional_crew": 5
+            },
+            "command_pod_before_aba": {
+                "any_min": 3,
+                "any_max": 6
+            },
+            "command_pod_after_aba": {
+                "any_min": 3,
+                "any_max": 6
+            },
+            "crew_crashed": {
+                "min": 22,
+                "max": 39
+            },
+            "crew_landed": {
+                "min": 28,
+                "max": 39
+            },
+            "crew_trap": {
+                "min": 40,
+                "max": 40
+            },
+            "bounty": {
+                "money": 500,
+                "max_alloys_normal": 11,
+                "max_alloys_alien_metallurgy": 17
+            }
+        }
+    }
+}

@@ -18,16 +18,22 @@
     <link rel="stylesheet" href="assets/css/maps.css" />
     <link rel="stylesheet" href="assets/css/perks.css" />
     <link rel="stylesheet" href="assets/css/search.css" />
-    <link rel="stylesheet" href="assets/css/single-select-list.css" />
     <link rel="stylesheet" href="assets/css/soldiers.css" />
     <link rel="stylesheet" href="assets/css/tech-details.css" />
     <link rel="stylesheet" href="assets/css/tech-tree.css" />
+    <link rel="stylesheet" href="assets/css/ufos.css" />
     <link rel="stylesheet" href="assets/css/widgets.css" />
+
+    <link rel="stylesheet" href="assets/css/custom-elements/timeline.css" />
+    <link rel="stylesheet" href="assets/css/custom-elements/toggle-group.css" />
+    <link rel="stylesheet" href="assets/css/custom-elements/single-select-list.css" />
 
     <!-- Script files for custom elements -->
     <script type="module" src="assets/js/custom-elements/app-update-notifier.js"></script>
     <script type="module" src="assets/js/custom-elements/base-facilities.js"></script>
     <script type="module" src="assets/js/custom-elements/foundry-projects.js"></script>
+    <script type="module" src="assets/js/custom-elements/timeline.js"></script>
+    <script type="module" src="assets/js/custom-elements/toggle-group.js"></script>
     <script type="module" src="assets/js/custom-elements/single-select-list.js"></script>
 </head>
 
@@ -75,7 +81,7 @@
                     </div>
                 </div>
 
-                <button class="nav-button not-implemented">UFOs</button>
+                <button data-page-on-click="ufo-browse-page" class="nav-button">UFOs</button>
                 <button class="nav-button not-implemented">Air Combat Simulator</button>
             </div>
 

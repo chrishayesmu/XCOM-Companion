@@ -1,0 +1,226 @@
+/**
+ * Styles for ufo-browse-page
+ */
+
+#ufo-browse-entries-container {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+}
+
+.ufo-browse-entry {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+    padding: 10px;
+    margin: 40px 0;
+}
+
+.ufo-browse-entry:hover {
+    background-color: var(--color-bg-subtle);
+}
+
+.ufo-browse-entry-name {
+    font-size: 2em;
+    margin-bottom: 5px;
+    pointer-events: none;
+}
+
+.ufo-browse-entry-img-container {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+
+    height: 170px;
+    pointer-events: none;
+}
+
+.ufo-browse-entry-img {
+    margin: auto auto;
+    width: 340px;
+    pointer-events: none;
+}
+
+.ufo-browse-entry-size {
+    color: var(--color-subtle);
+    font-size: 1.3em;
+    margin-top: 5px;
+    pointer-events: none;
+}
+
+/**
+ * Styles for ufo-details-page
+ */
+
+#ufo-details-air-combat-stats {
+    flex-grow: 1;
+}
+
+#ufo-details-body {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+
+    border-top: 1px solid var(--color-border-subtle);
+    margin-top: 20px;
+    padding-top: 20px;
+}
+
+#ufo-details-content-container {
+    margin-top: 10px;
+    padding: 20px;
+    width: 100%;
+}
+
+#ufo-details-content-toggle {
+    flex-shrink: 0;
+    margin: 0 auto;
+}
+
+#ufo-details-content-air-combat {
+    display: flex;
+    flex-flow: column nowrap;
+    flex-grow: 1;
+}
+
+#ufo-details-air-combat-research-timeline {
+    margin-bottom: 30px;
+    margin-top: 20px;
+}
+
+#ufo-details-content-ground-assault details[open],
+#ufo-details-air-combat-stats details[open] {
+    margin-bottom: 20px;
+}
+
+#ufo-details-content-ground-assault details[open] > summary,
+#ufo-details-air-combat-stats details[open] > summary {
+    background-color: var(--color-bg-subtle);
+}
+
+#ufo-details-air-combat-stats pre {
+    margin-left: 175px;
+    white-space: normal
+}
+
+#ufo-details-air-combat-stats summary,
+#ufo-details-content-ground-assault summary,
+.ufo-details-mission-description summary {
+    cursor: pointer;
+    font-size: 1.1em;
+}
+
+.ufo-details-mission-container {
+    display: flex;
+    flex-flow: column nowrap;
+
+    border-bottom: 1px solid var(--color-border-subtle);
+    border-top: 1px solid var(--color-border-subtle);
+
+    /* use negative margin to negate the container's padding so the border extends to the edge;
+       -1 top margin collapses border with adjacent mission container
+    */
+    margin: -1px -20px 0 -20px;
+    padding: 0 20px;
+}
+
+.ufo-details-mission-container.alternating-bg {
+    background-color: var(--color-bg-nav);
+}
+
+.ufo-details-mission-container.first-visible {
+    border-top: none;
+}
+
+.ufo-details-mission-type {
+    font-size: 2em;
+    margin: 18px 0;
+    text-align: center;
+}
+
+#ufo-ac-stats-table {
+    display: grid;
+    grid-template-columns: 80px repeat(3, minmax(min-content, 200px)) 120px minmax(290px, auto);
+    margin: 0 auto 10px auto;
+    max-width: 1200px;
+}
+
+#ufo-ac-derived-stats-table {
+    display: grid;
+    grid-template-columns: 86px repeat(6, 1fr);
+    margin: 30px auto 50px auto;
+    max-width: 1200px;
+}
+
+#ufo-ac-stats-table .column-heading,
+#ufo-ac-derived-stats-table .column-heading {
+    text-transform: none;
+}
+
+#ufo-ac-derived-stats-table > div,
+#ufo-ac-stats-table > div {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: center;
+
+    border-left: 1px solid var(--color-subtle);
+}
+
+#ufo-ac-derived-stats-table > div:nth-child(7n),
+#ufo-ac-stats-table > div:nth-child(6n) {
+    border-right: 1px solid var(--color-subtle);
+}
+
+#ufo-ac-derived-stats-table > div:nth-child(7) ~ div,
+#ufo-ac-stats-table > div:nth-child(6) ~ div,
+.ufo-details-mission-stats-grid > div:nth-child(3) ~ div {
+    /* selects second row of stats table */
+    border-bottom: 1px solid var(--color-subtle);
+    padding: 4px 0;
+}
+
+#ufo-details-ac-timeline-container {
+    margin-top: 20px;
+}
+
+#ufo-details-ground-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(85px, max-content)) minmax(290px, max-content) minmax(135px, max-content) minmax(180px, max-content) minmax(115px, max-content);
+
+    border-bottom: 1px solid var(--color-subtle);
+    border-left: 1px solid var(--color-subtle);
+    margin: 0 auto 50px auto;
+    max-width: fit-content;
+    overflow: auto;
+    text-align: center;
+}
+
+.ufo-details-mission-stats-grid {
+    display: grid;
+    grid-template-columns: 0.5fr repeat(5, 1fr);
+
+    border-left: 1px solid var(--color-subtle);
+    margin-bottom: 10px;
+    width: 850px;
+}
+
+#ufo-details-ground-stats-grid > div,
+.ufo-details-mission-stats-grid > div {
+    border-right: 1px solid var(--color-subtle);
+    padding: 4px 8px;
+    text-transform: none;
+
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.ufo-weapon-tooltip {
+    display: grid;
+    grid-template-columns: 150px 120px;
+}

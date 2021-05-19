@@ -1,6 +1,3 @@
-import * as Templates from "../templates.js";
-import * as Widgets from "../widgets.js";
-
 const selectedItemClass = "ssl-selected";
 
 class SingleSelectList extends HTMLElement {

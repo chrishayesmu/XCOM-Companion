@@ -16,7 +16,8 @@ class SearchResultsPage extends AppPage {
             "map": "Map",
             "perk": "Perk",
             "psi": "Psi Ability",
-            "research": "Research"
+            "research": "Research",
+            "ufo": "UFO"
         };
 
         this.query = null;
@@ -131,6 +132,9 @@ class SearchResultsPage extends AppPage {
         }
         else if (data.id.startsWith("research")) {
             return "research";
+        }
+        else if (data.id.startsWith("ufo")) {
+            return "ufo";
         }
     }
 }

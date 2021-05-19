@@ -72,6 +72,10 @@ function createInAppLink(data, options) {
         link = _createTechLink(dataId, options);
         prefix = "Research: ";
     }
+    else if (dataId.startsWith("ufo")) {
+        link = _createUfoLink(dataId, options);
+        prefix = "UFO: ";
+    }
     else {
         console.error("Don't know how to create in-app link for ID " + dataId);
         return null;
@@ -241,6 +245,18 @@ function _createTechLink(techId) {
 
     link.setAttribute("data-page-on-click", "tech-details-page");
     link.setAttribute("data-pagearg-tech-id", techId);
+
+    return link;
+}
+
+function _createUfoLink(ufoId) {
+    const ufo = DataHelper.ufos[ufoId];
+    const link = document.createElement("a");
+
+    link.textContent = ufo.name;
+
+    link.setAttribute("data-page-on-click", "ufo-details-page");
+    link.setAttribute("data-pagearg-ufo-id", ufoId);
 
     return link;
 }

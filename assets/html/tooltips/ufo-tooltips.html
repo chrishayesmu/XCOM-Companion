@@ -1,0 +1,163 @@
+<template id="template-ufo-tooltip-bounty">
+    <div class="text-only-tooltip">
+        If the UFO is destroyed when shot down, the XCOM Council will award you a bounty. The amount of money is fixed; the number of alloys is uniformly chosen from the ranges below.
+        <br/>
+        <br/>
+        The chance for a UFO to be destroyed depends on the amount of damage dealt by the final hit against it.
+    </div>
+</template>
+
+<template id="template-ufo-tooltip-dps">
+    <div class="text-only-tooltip">
+        The damage-per-second (DPS) if this UFO is firing against the given aircraft.
+        <br/>
+        <br/>
+        DPS here is informative, but keep in mind that air combat in Long War is inherently very swingy. DPS can appear deceptively low because hit chances aren't very high in general. In the worst case,
+        a critical hit can deal up to 3 times the amount of damage listed in the weapon's stats (not including damage bonuses from Alien Research). Take these factors into consideration for your engagements.
+    </div>
+</template>
+
+<template id="template-ufo-tooltip-ground-assault-alloys">
+    <div class="text-only-tooltip">
+        The number of Alien Alloys which can be recovered by a ground assault. This can be increased by 20% with the corresponding UFO Analysis research, and a further 20% by the Alien Metallurgy project in the Foundry.
+    </div>
+</template>
+
+<template id="template-ufo-tooltip-ground-assault-command-pod">
+    <div class="text-only-tooltip">
+        A special pod unique to UFO missions, representing the commanding members of the UFO's crew. Typically this pod is located deep within the UFO, though this is not guaranteed.
+        <br />
+        <br />
+        In addition to generally containing powerful aliens, when the Command Pod is activated, every unactivated pod on the map will begin to converge on its location. For this reason, the Command Pod
+        is generally engaged last when possible.
+        <br />
+        <br />
+        For most UFOs, the Command Pod will upgrade after XCOM conducts its first assault on an Alien Base.
+    </div>
+</template>
+
+<template id="template-ufo-tooltip-ground-assault-crew-crashed">
+    <div class="text-only-tooltip">
+        How many aliens can be expected if assaulting this UFO after it has crashed (been shot down). This number does not include the Command Pod.
+        <br/>
+        <br/>
+        Note that, due to how pod mechanics work, there may be fewer enemies in the mission than this, especially early in a campaign.
+    </div>
+</template>
+
+<template id="template-ufo-tooltip-ground-assault-crew-landed">
+    <div class="text-only-tooltip">
+        How many aliens can be expected if assaulting this UFO after it has landed to perform its mission. This number does not include the Command Pod.
+        <br/>
+        <br/>
+        Note that, due to how pod mechanics work, there may be fewer enemies in the mission than this, especially early in a campaign.
+    </div>
+</template>
+
+<template id="template-ufo-tooltip-ground-assault-crew-trap">
+    <div class="text-only-tooltip">
+        How many aliens can be expected if assaulting this UFO when it is laying a trap. See below sections for help relating to trap UFOs. This number does not include the Command Pod.
+        <br/>
+        <br/>
+        Note that, due to how pod mechanics work, there may be fewer enemies in the mission than this, especially early in a campaign.
+    </div>
+</template>
+
+<template id="template-ufo-tooltip-ground-assault-crew-upgrade">
+    <div class="text-only-tooltip">
+        UFOs gain a set number of enemies after a certain amount of Alien Research is reached. These enemies may be split across existing pods, or may result in the creation of a new pod.
+    </div>
+</template>
+
+<template id="template-ufo-tooltip-ground-assault-equipment">
+    <div class="text-only-tooltip">
+        These items are part of the UFO, and appear in the mission. On a landed UFO, all of these will be present, and all will be recovered by XCOM if not damaged during the mission. On a crashed UFO,
+        some of these will already have been damaged in the crash. For more info on that, see "Crashed UFOs" under "Ground Assault General Info", below.
+    </div>
+</template>
+
+<template id="template-ufo-tooltip-missions-grants-research">
+    <div class="text-only-tooltip">
+        The amount of bonus research the aliens will gain if this mission is not stopped by XCOM.
+    </div>
+</template>
+
+<template id="template-ufo-tooltip-missions-grants-resources">
+    <div class="text-only-tooltip">
+        The amount of resources the aliens will gain if this mission is not stopped by XCOM.
+    </div>
+</template>
+
+<template id="template-ufo-tooltip-missions-required-research">
+    <div class="text-only-tooltip">
+        The minimum level of alien research required for the aliens to field this type of UFO on this mission.
+    </div>
+</template>
+
+<template id="template-ufo-tooltip-missions-required-resources">
+    <div class="text-only-tooltip">
+        The number of resources required for the aliens to field this type of UFO on this mission.
+        <br/><br />
+        Note that they don't actually have to spend those resources; they just won't field this UFO if they have less. Resources will only be lost if XCOM
+        damages or destroys the UFO, or assaults it while it is landed.
+    </div>
+</template>
+
+<template id="template-ufo-tooltip-resources">
+    <div class="text-only-tooltip">
+        The number of resources the aliens will lose if a UFO of this type is destroyed (either shot down, or landed and then successfully assaulted).
+        <br/>
+        <br/>
+        If a UFO is only damaged, it will cost the aliens resources to repair, proportional to the percentage of the UFO's health lost.
+    </div>
+</template>
+
+<template id="template-ufo-tooltip-ttk">
+    <div class="text-only-tooltip">
+        The time-to-kill (TTK) if this UFO is firing against the given aircraft. This is the time it would take the UFO to kill XCOM's aircraft.
+        <br/>
+        <br/>
+        TTK here is using a very basic model (aircraft health divided by UFO's DPS) and should not be regarded as authoritative in any way. It is only to illustrate the relative
+        power of different UFOs, and the power of the Firestorm over the Interceptor. Your Interceptor might still go down in a single crit shot, or it might dodge everything and solo
+        a Battleship.
+    </div>
+</template>
+
+<template id="template-ufo-tooltip-double-plasma">
+    <div class="ufo-weapon-tooltip">
+        <div class="tooltip-row-heading">Hit Chance</div>
+        <div class="tooltip-row-content">25% / 40% / 55%</div>
+        <div class="tooltip-row-heading">Shots Per Second</div>
+        <div class="tooltip-row-content">1.25</div>
+        <div class="tooltip-row-heading">Damage</div>
+        <div class="tooltip-row-content">800</div>
+        <div class="tooltip-row-heading">Armor Penetration</div>
+        <div class="tooltip-row-content">20%</div>
+    </div>
+</template>
+
+<template id="template-ufo-tooltip-fusion-lance">
+    <div class="ufo-weapon-tooltip">
+        <div class="tooltip-row-heading">Hit Chance</div>
+        <div class="tooltip-row-content">30% / 45% / 60%</div>
+        <div class="tooltip-row-heading">Shots Per Second</div>
+        <div class="tooltip-row-content">1.25</div>
+        <div class="tooltip-row-heading">Damage</div>
+        <div class="tooltip-row-content">1300</div>
+        <div class="tooltip-row-heading">Armor Penetration</div>
+        <div class="tooltip-row-content">50%</div>
+    </div>
+</template>
+
+<template id="template-ufo-tooltip-single-plasma">
+    <div class="ufo-weapon-tooltip">
+        <div class="tooltip-row-heading">Hit Chance</div>
+        <div class="tooltip-row-content">18% / 33% / 48%</div>
+        <div class="tooltip-row-heading">Shots Per Second</div>
+        <div class="tooltip-row-content">1.15</div>
+        <div class="tooltip-row-heading">Damage</div>
+        <div class="tooltip-row-content">450</div>
+        <div class="tooltip-row-heading">Armor Penetration</div>
+        <div class="tooltip-row-content">0%</div>
+    </div>
+</template>

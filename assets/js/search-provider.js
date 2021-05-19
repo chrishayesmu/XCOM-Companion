@@ -10,7 +10,8 @@ const dataSources = [
     Object.values(dataHelper.perks),
     Object.values(dataHelper.psiAbilities),
     Object.values(dataHelper.soldierClasses),
-    Object.values(dataHelper.technologies)
+    Object.values(dataHelper.technologies),
+    Object.values(dataHelper.ufos)
 ];
 
 function onDomReady() {

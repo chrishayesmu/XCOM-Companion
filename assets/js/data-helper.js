@@ -9,6 +9,7 @@ const perkData = await fetch("assets/data/perks.json").then(response => response
 const psiAbilityData = await fetch("assets/data/psi-abilities.json").then(response => response.json());
 const soldierClassData = await fetch("assets/data/soldier-classes.json").then(response => response.json());
 const techTreeData = await fetch("assets/data/tech-tree.json").then(response => response.json());
+const ufoData = await fetch("assets/data/ufos.json").then(response => response.json());
 
 // ------------------------------------------------------------------
 // Process the data into a form we can readily use throughout the app
@@ -183,6 +184,12 @@ for (let techId in techTreeData.technologies) {
             prereqTech.leadsTo[techId] = tech;
         }
     }
+}
+
+// --------------- UFOs ------------------
+for (let ufoId in ufoData.ufos) {
+    ufoData.ufos[ufoId].id = ufoId;
+    ufoData.ufos[ufoId].image = `assets/img/ufos/${ufoId}.png`;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -434,6 +441,7 @@ const maps = mapData.maps;
 const perks = perkData.perks;
 const psiAbilities = psiAbilityData.abilities;
 const technologies = techTreeData.technologies;
+const ufos = ufoData.ufos;
 
 export {
     baseFacilities,
@@ -448,5 +456,6 @@ export {
     perks,
     psiAbilities,
     soldierClasses,
-    technologies
+    technologies,
+    ufos
 };

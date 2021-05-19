@@ -1,0 +1,521 @@
+<template id="template-ufo-details-preview">
+    <div class="flex-column">
+        <div class="preview-header">
+            <img class="preview-img-schematic" />
+            <div class="preview-title"></div>
+        </div>
+        <div class="preview-description"></div>
+    </div>
+</template>
+
+<template id="template-ufo-details-page">
+    <div class="section-content flex-column">
+        <div class="details-header-row">
+            <div class="details-header-img-container">
+                <img />
+            </div>
+            <div class="details-header-content-container">
+                <div class="details-header-title"></div>
+                <div class="details-header-description"></div>
+                <div class="details-header-extra"></div>
+            </div>
+        </div>
+        <div id="ufo-details-body" class="flex-grow">
+            <toggle-group id="ufo-details-content-toggle" options="Air Combat, Ground Assault, Missions"></toggle-group>
+            <div id="ufo-details-content-container" class="flex-column flex-grow">
+                <div id="ufo-details-content-air-combat" class="flex-column flex-grow">
+                    <div id="ufo-details-air-combat-stats">
+                        <div id="ufo-ac-stats-table">
+                            <div class="column-heading">Health</div>
+                            <div class="column-heading">Armor</div>
+                            <div class="column-heading">Penetration</div>
+                            <div class="column-heading">Weaponry</div>
+                            <div class="column-heading" data-tooltip-template-file="assets/html/tooltips/ufo-tooltips.html" data-tooltip-template-id="template-ufo-tooltip-resources">Resources</div>
+                            <div class="column-heading" data-tooltip-template-file="assets/html/tooltips/ufo-tooltips.html" data-tooltip-template-id="template-ufo-tooltip-bounty">Bounty</div>
+                            <div id="ufo-ac-stats-hp"></div>
+                            <div id="ufo-ac-stats-armor"></div>
+                            <div id="ufo-ac-stats-armor-penetration"></div>
+                            <div id="ufo-ac-stats-weaponry"></div>
+                            <div id="ufo-ac-stats-resources"></div>
+                            <div id="ufo-ac-stats-bounty"></div>
+                        </div>
+                        <div id="ufo-ac-derived-stats-table">
+                            <div class="column-heading">Stance</div>
+                            <div class="column-heading" data-tooltip-template-file="assets/html/tooltips/ufo-tooltips.html" data-tooltip-template-id="template-ufo-tooltip-dps">DPS vs Interceptor</div>
+                            <div class="column-heading" data-tooltip-template-file="assets/html/tooltips/ufo-tooltips.html" data-tooltip-template-id="template-ufo-tooltip-dps">DPS vs Firestorm</div>
+                            <div class="column-heading" data-tooltip-template-file="assets/html/tooltips/ufo-tooltips.html" data-tooltip-template-id="template-ufo-tooltip-ttk">TTK vs Interceptor</div>
+                            <div class="column-heading" data-tooltip-template-file="assets/html/tooltips/ufo-tooltips.html" data-tooltip-template-id="template-ufo-tooltip-ttk">TTK vs Interceptor (Armored Fighters)</div>
+                            <div class="column-heading" data-tooltip-template-file="assets/html/tooltips/ufo-tooltips.html" data-tooltip-template-id="template-ufo-tooltip-ttk">TTK vs Firestorm</div>
+                            <div class="column-heading" data-tooltip-template-file="assets/html/tooltips/ufo-tooltips.html" data-tooltip-template-id="template-ufo-tooltip-ttk">TTK vs Firestorm (Armored Fighters)</div>
+                            <div>Defensive</div>
+                            <div id="ufo-ac-derived-stats-def-dps-interceptor"></div>
+                            <div id="ufo-ac-derived-stats-def-dps-firestorm"></div>
+                            <div id="ufo-ac-derived-stats-def-ttk-interceptor"></div>
+                            <div id="ufo-ac-derived-stats-def-ttk-armored-interceptor"></div>
+                            <div id="ufo-ac-derived-stats-def-ttk-firestorm"></div>
+                            <div id="ufo-ac-derived-stats-def-ttk-armored-firestorm"></div>
+                            <div>Balanced</div>
+                            <div id="ufo-ac-derived-stats-bal-dps-interceptor"></div>
+                            <div id="ufo-ac-derived-stats-bal-dps-firestorm"></div>
+                            <div id="ufo-ac-derived-stats-bal-ttk-interceptor"></div>
+                            <div id="ufo-ac-derived-stats-bal-ttk-armored-interceptor"></div>
+                            <div id="ufo-ac-derived-stats-bal-ttk-firestorm"></div>
+                            <div id="ufo-ac-derived-stats-bal-ttk-armored-firestorm"></div>
+                            <div>Aggressive</div>
+                            <div id="ufo-ac-derived-stats-agg-dps-interceptor"></div>
+                            <div id="ufo-ac-derived-stats-agg-dps-firestorm"></div>
+                            <div id="ufo-ac-derived-stats-agg-ttk-interceptor"></div>
+                            <div id="ufo-ac-derived-stats-agg-ttk-armored-interceptor"></div>
+                            <div id="ufo-ac-derived-stats-agg-ttk-firestorm"></div>
+                            <div id="ufo-ac-derived-stats-agg-ttk-armored-firestorm"></div>
+                        </div>
+                        <div> <!-- Help sections on various air combat topics -->
+                            <h2>Air Combat General Info</h2>
+                            <details>
+                                <summary>Armor Penetration mechanics</summary>
+                                <p>
+                                    <strong>Armor Penetration</strong> comes from both the ship and its weapons. These values are summed to produce the total penetration. The target's armor is then reduced by this amount, with the result being
+                                    clamped in the range [0%, 95%]. The damage per shot is multiplied by this final value.
+                                </p>
+                                <pre>
+                                    Total Penetration = Penetration <sub>Ship</sub> + Penetration <sub>Weapon</sub><br />
+                                    Effective Armor = 0% ≤ Target Armor - Total Penetration ≤ 95%<br />
+                                    Effective Damage = Weapon Damage Stat * (100 - Effective Armor)%<br />
+                                </pre>
+                                <p>
+                                For example, a <a data-page-on-click='item-display-page' data-pagearg-item-id='item_firestorm'>Firestorm</a> has 25% armor penetration, and the <a data-page-on-click='item-display-page' data-pagearg-item-id='item_emp_cannon'>EMP Cannon</a>
+                                has 150%, for a total of 175%. If it is shooting at a <a data-page-on-click='ufo-details-page' data-pagearg-ufo-id='ufo_battleship'>Battleship</a>, which has 180% armor, then the effective armor is <code>180% - 175% = 5%</code>.
+                                Thus the EMP Cannon's base damage of 310 will be multiplied by 95% for an effective damage of 295. If the Firestorm was instead using a <a data-page-on-click='item-display-page' data-pagearg-item-id='item_plasma_cannon'>Plasma Cannon</a>,
+                                which has a base damage of 650 but only 110% armor penetration, then the effective armor is <code>180% - 135% = 45%</code>, and the effective damage is <code>650 * 55% = 358</code>.
+                                </p>
+                                <p>Armor Penetration is also used when calculating critical chance; see below for more info.</p>
+                            </details>
+                            <details>
+                                <summary>Critical Hits</summary>
+                                <p>
+                                    <strong>Critical hits</strong> always deal double the damage of a normal hit. The chance to deal a critical hit depends on the attacker's armor penetration and the defender's armor:
+                                </p>
+                                <pre>
+                                    Critical Hit Chance = (Armor Penetration - Target Armor) / 2
+                                </pre>
+                                <p>
+                                    As with armor penetration calculations for damage mitigation, the total penetration between the ship and its weapon is used for this calculation.
+                                </p>
+                                <p>
+                                    <strong>Note:</strong> critical chance can never be less than 5% or more than 25%.
+                                </p>
+                            </details>
+                        </div>
+                    </div>
+                    <div id="ufo-details-ac-timeline-container">
+                        <h2>Research Timeline</h2>
+                        UFOs of all types gain 75 HP, 8 damage, and 2 aim per 30 points of Alien Research (capped at 960 points, for 2400 HP, 256 damage, and 64 aim). Aim is always capped at a 95% chance to hit. Some UFOs gain additional bonuses
+                        from research on top of this, represented by larger circles on the timeline below.
+                        <time-line id="ufo-details-air-combat-research-timeline" start="0" end="1000" unit="Alien Research"></time-line>
+                    </div>
+                </div>
+                <div id="ufo-details-content-ground-assault" class="hidden-collapse">
+                    <div id="ufo-details-ground-stats-grid">
+                        <div class="column-heading" data-tooltip-template-file="assets/html/tooltips/ufo-tooltips.html" data-tooltip-template-id="template-ufo-tooltip-ground-assault-crew-crashed">Crew (Crashed)</div>
+                        <div class="column-heading" data-tooltip-template-file="assets/html/tooltips/ufo-tooltips.html" data-tooltip-template-id="template-ufo-tooltip-ground-assault-crew-landed">Crew (Landed)</div>
+                        <div class="column-heading" data-tooltip-template-file="assets/html/tooltips/ufo-tooltips.html" data-tooltip-template-id="template-ufo-tooltip-ground-assault-crew-trap">Crew (Trap)</div>
+                        <div class="column-heading" data-tooltip-template-file="assets/html/tooltips/ufo-tooltips.html" data-tooltip-template-id="template-ufo-tooltip-ground-assault-command-pod">Command Pod</div>
+                        <div class="column-heading" data-tooltip-template-file="assets/html/tooltips/ufo-tooltips.html" data-tooltip-template-id="template-ufo-tooltip-ground-assault-crew-upgrade">Crew Upgrade</div>
+                        <div class="column-heading" data-tooltip-template-file="assets/html/tooltips/ufo-tooltips.html" data-tooltip-template-id="template-ufo-tooltip-ground-assault-equipment">Equipment</div>
+                        <div class="column-heading" data-tooltip-template-file="assets/html/tooltips/ufo-tooltips.html" data-tooltip-template-id="template-ufo-tooltip-ground-assault-alloys">Alloys</div>
+                        <div id="ufo-details-ground-stats-crew-crashed"></div>
+                        <div id="ufo-details-ground-stats-crew-landed"></div>
+                        <div id="ufo-details-ground-stats-crew-trap"></div>
+                        <div id="ufo-details-ground-stats-command-pod"></div>
+                        <div id="ufo-details-ground-stats-crew-upgrade"></div>
+                        <div id="ufo-details-ground-stats-equipment"></div>
+                        <div id="ufo-details-ground-stats-alloys"></div>
+                    </div>
+                    <div> <!-- Help sections on various ground assault topics -->
+                        <h2>Ground Assault General Info</h2>
+                        <details>
+                            <summary>Crashed UFOS</summary>
+                            <p>
+                                <strong>Crashed UFOs</strong> will only occur when XCOM's aircraft shoot down a UFO without destroying it outright (the chance of which depends on the damage of the weapon which lands the final blow). Assaulting
+                                them tends to be much simpler than with landed UFOs, as much of the UFO's crew dies in the crash. Additionally, some parts of the UFO may be damaged, creating additional ingress points to assault the craft.
+                            </p>
+                            <p>
+                                Due to the UFO's damaged condition, however, XCOM's potential gains are sizably reduced. The amount of <a data-page-on-click="item-display-page" data-pagearg-item-id="item_alien_alloy">Alien Alloys</a> recoverable
+                                is limited to 30-45% of the normal amount, and between 0-30% of <a data-page-on-click="item-display-page" data-pagearg-item-id="item_elerium">Elerium</a> is gained. On top of this, the craft's equipment has a high
+                                chance to be damaged as well:
+
+                                <ul>
+                                    <li><a data-page-on-click="item-display-page" data-pagearg-item-id="item_alien_food">Alien Food</a> has a 50% chance to be <a data-page-on-click="item-display-page" data-pagearg-item-id="item_alien_food_damaged">Alien Food (Damaged)</a></li>
+                                    <li><a data-page-on-click="item-display-page" data-pagearg-item-id="item_alien_stasis_tank">Alien Stasis Tank</a> has a 70% chance to be <a data-page-on-click="item-display-page" data-pagearg-item-id="item_alien_stasis_tank_damaged">Alien Stasis Tank (Damaged)</a></li>
+                                    <li><a data-page-on-click="item-display-page" data-pagearg-item-id="item_alien_surgery">Alien Surgery</a> has a 70% chance to be <a data-page-on-click="item-display-page" data-pagearg-item-id="item_alien_surgery_damaged">Alien Surgery (Damaged)</a></li>
+                                    <li><a data-page-on-click="item-display-page" data-pagearg-item-id="item_ufo_flight_computer">UFO Flight Computer</a> has a 75% chance to be <a data-page-on-click="item-display-page" data-pagearg-item-id="item_ufo_flight_computer_damaged">UFO Flight Computer (Damaged)</a></li>
+                                    <li><a data-page-on-click="item-display-page" data-pagearg-item-id="item_ufo_power_source">UFO Power Source</a> has a 80% chance to be <a data-page-on-click="item-display-page" data-pagearg-item-id="item_ufo_power_source_damaged">UFO Power Source (Damaged)</a></li>
+                                </ul>
+
+                                In addition, there is the usual chance for these items to become damaged during the mission itself, by explosives or stray fire.
+                            </p>
+                        </details>
+                        <details>
+                            <summary>Landed and Trap UFOS</summary>
+                            <p>
+                                <strong>Landed UFOs</strong> occur when UFOs need to land to conduct a mission; thus, some types of UFOs will never land, because they are never sent on missions which require it. They have substantially more
+                                enemies than crashed UFOs, with commensurately greater rewards. Successfully assaulting a landed UFO will cause the alien mission to fail.
+                            </p>
+                            <p>
+                                In addition to having more enemies, landed and trap UFOs spawn enemies as though the Alien Research was <strong>1 month more developed</strong> than it currently is. For example, if you are in the first month and
+                                assault a landed UFO, you may see Floaters and Thin Men on the mission, even though they can't normally spawn until the second month of the campaign. This makes landed UFOs substantially more dangerous than even
+                                their heightened numbers would imply.
+                            </p>
+                            <p>
+                                <strong>Trap UFOs</strong> are a special type of landed UFO. They follow the same rules as landed UFOs and are indistinguishable from them, but contain even more enemies. The likelihood that any given landed UFO
+                                will be a trap is proportional to XCOM's current Threat Level.
+                            </p>
+                            <p>
+                                While trap UFOs don't inherently have more resources than normal landed, the enemies themselves do drop small amounts of resources, so there is a slight increase in expected yield.
+                            </p>
+                        </details>
+                        <details>
+                            <summary>Pod Size Limitations</summary>
+                            <p>
+                                The maximum size of enemy pods depends on Alien Research, with pods initially having 2-4 enemies, upgrading to 3-6 at 120 Alien Research, and upgrading again to 4-8 at 240 Alien Research. Since the maximum number of
+                                pods in a mission is limited, this means situations can arise where a UFO should have more enemies than can actually fit in its available pods. If this occurs, some number of enemies will be dropped, hence why
+                                UFOs may contain less enemies than listed here, especially early in a campaign when the Alien Research value is low.
+                            </p>
+                        </details>
+                    </div>
+                </div>
+                <div id="ufo-details-content-missions" class="hidden-collapse">
+                    <div id="ufo-details-mission-type-abduction" class="ufo-details-mission-container hidden-collapse">
+                        <div class="ufo-details-mission-type">Abduction</div>
+                        <div class="ufo-details-mission-stats-grid centered-horiz">
+                            <div class="column-heading">Altitude</div>
+                            <div class="column-heading" data-tooltip-template-file="assets/html/tooltips/ufo-tooltips.html" data-tooltip-template-id="template-ufo-tooltip-missions-required-research">Required Research</div>
+                            <div class="column-heading" data-tooltip-template-file="assets/html/tooltips/ufo-tooltips.html" data-tooltip-template-id="template-ufo-tooltip-missions-required-resources">Required Resources</div>
+                            <div class="column-heading" data-tooltip-template-file="assets/html/tooltips/ufo-tooltips.html" data-tooltip-template-id="template-ufo-tooltip-missions-grants-research">Grants Research</div>
+                            <div class="column-heading" data-tooltip-template-file="assets/html/tooltips/ufo-tooltips.html" data-tooltip-template-id="template-ufo-tooltip-missions-grants-resources">Grants Resources</div>
+                            <div class="column-heading">Number Per Month</div>
+                            <div>NOE</div>
+                            <div>N/A</div>
+                            <div>N/A</div>
+                            <div>0</div>
+                            <div>0</div>
+                            <div>2 to 5</div>
+                        </div>
+                        <div class="ufo-details-mission-description">
+                            <p>
+                                The UFO will fly to a city and generate an Alien Abduction mission. If failed or ignored, panic will increase across the continent by 20, with an additional 25 panic in the targeted country.
+                                Completing the Abduction mission successfully will reduce panic in the country by 2.
+                            </p>
+                            <p>
+                                Shooting down the UFO will prevent the mission. Whether damaging the UFO has a chance to prevent the mission is unknown.
+                            </p>
+                        </div>
+                    </div>
+                    <div id="ufo-details-mission-type-bomb" class="ufo-details-mission-container hidden-collapse">
+                        <div class="ufo-details-mission-type">Bomb</div>
+                        <div class="ufo-details-mission-stats-grid centered-horiz">
+                            <div class="column-heading">Altitude</div>
+                            <div class="column-heading" data-tooltip-template-file="assets/html/tooltips/ufo-tooltips.html" data-tooltip-template-id="template-ufo-tooltip-missions-required-research">Required Research</div>
+                            <div class="column-heading" data-tooltip-template-file="assets/html/tooltips/ufo-tooltips.html" data-tooltip-template-id="template-ufo-tooltip-missions-required-resources">Required Resources</div>
+                            <div class="column-heading" data-tooltip-template-file="assets/html/tooltips/ufo-tooltips.html" data-tooltip-template-id="template-ufo-tooltip-missions-grants-research">Grants Research</div>
+                            <div class="column-heading" data-tooltip-template-file="assets/html/tooltips/ufo-tooltips.html" data-tooltip-template-id="template-ufo-tooltip-missions-grants-resources">Grants Resources</div>
+                            <div class="column-heading">Number Per Month</div>
+                            <div>NOE</div>
+                            <div class="ufo-details-required-research"></div>
+                            <div class="ufo-details-required-resources"></div>
+                            <div>0</div>
+                            <div>0</div>
+                            <div>0 to 4</div>
+                        </div>
+                        <div class="ufo-details-mission-description">
+                            <p>
+                                The UFO will fly around the area bombing civilian targets, causing 8 panic in the affected country. Panic is increased by an additional 2 if the UFO is ignored.
+                            </p>
+                            <p>
+                                Shooting down the UFO will prevent any panic increase. How damaging the UFO impacts the panic increase is unknown, except for negating the +2 for ignoring the UFO.
+                            </p>
+                        </div>
+                    </div>
+                    <div id="ufo-details-mission-type-command_overwatch" class="ufo-details-mission-container hidden-collapse">
+                        <div class="ufo-details-mission-type">Command Overwatch</div>
+                        <div class="ufo-details-mission-stats-grid centered-horiz">
+                            <div class="column-heading">Altitude</div>
+                            <div class="column-heading" data-tooltip-template-file="assets/html/tooltips/ufo-tooltips.html" data-tooltip-template-id="template-ufo-tooltip-missions-required-research">Required Research</div>
+                            <div class="column-heading" data-tooltip-template-file="assets/html/tooltips/ufo-tooltips.html" data-tooltip-template-id="template-ufo-tooltip-missions-required-resources">Required Resources</div>
+                            <div class="column-heading" data-tooltip-template-file="assets/html/tooltips/ufo-tooltips.html" data-tooltip-template-id="template-ufo-tooltip-missions-grants-research">Grants Research</div>
+                            <div class="column-heading" data-tooltip-template-file="assets/html/tooltips/ufo-tooltips.html" data-tooltip-template-id="template-ufo-tooltip-missions-grants-resources">Grants Resources</div>
+                            <div class="column-heading">Number Per Month</div>
+                            <div>Low</div>
+                            <div>N/A</div>
+                            <div>N/A</div>
+                            <div>0</div>
+                            <div>0</div>
+                            <div>2 to 3</div>
+                        </div>
+                        <div class="ufo-details-mission-description">
+                            <p>
+                                This is a special story mission. An <a data-page-on-click="ufo-details-page" data-pagearg-ufo-id="ufo_overseer">Overseer</a> will fly around for some time and then leave.
+                                This mission accomplishes nothing for the aliens, and only serves to provide XCOM an opportunity to shoot down an Overseer so they can recover an
+                                <a data-page-on-click="item-display-page" data-pagearg-item-id="item_ethereal_device">Ethereal Device</a> and continue the story.
+                            </p>
+                            <p>
+                                This mission will only appear after constructing the <a data-page-on-click="base-facility-page" data-pagearg-facility-id="facility_hyperwave_relay">Hyperwave Relay</a>.
+                            </p>
+                        </div>
+                    </div>
+                    <div id="ufo-details-mission-type-harvest" class="ufo-details-mission-container hidden-collapse">
+                        <div class="ufo-details-mission-type">Harvest</div>
+                        <div class="ufo-details-mission-stats-grid centered-horiz">
+                            <div class="column-heading">Altitude</div>
+                            <div class="column-heading" data-tooltip-template-file="assets/html/tooltips/ufo-tooltips.html" data-tooltip-template-id="template-ufo-tooltip-missions-required-research">Required Research</div>
+                            <div class="column-heading" data-tooltip-template-file="assets/html/tooltips/ufo-tooltips.html" data-tooltip-template-id="template-ufo-tooltip-missions-required-resources">Required Resources</div>
+                            <div class="column-heading" data-tooltip-template-file="assets/html/tooltips/ufo-tooltips.html" data-tooltip-template-id="template-ufo-tooltip-missions-grants-research">Grants Research</div>
+                            <div class="column-heading" data-tooltip-template-file="assets/html/tooltips/ufo-tooltips.html" data-tooltip-template-id="template-ufo-tooltip-missions-grants-resources">Grants Resources</div>
+                            <div class="column-heading">Number Per Month</div>
+                            <div>NOE</div>
+                            <div class="ufo-details-required-research"></div>
+                            <div class="ufo-details-required-resources"></div>
+                            <div>0</div>
+                            <div class="ufo-details-grants-resources"></div>
+                            <div>0 to 3</div>
+                        </div>
+                        <div class="ufo-details-mission-description">
+                            <p>
+                                The UFO will land in a random country, seeking to gather resources for the invasion. If not prevented, the alien resource pool will increase by the amount in the table above.
+                            </p>
+                            <p>
+                                The target country is chosen at random; if the selected country has satellite coverage, there is a chance that the UFO will have to reroll and choose another target. If this occurs,
+                                the aliens lose 5 resources.
+                            </p>
+                            <p>
+                                Shooting down the UFO, or successfully assaulting it once it has landed, will prevent the aliens from gaining any resources. How damaging the UFO impacts the resource increase is unknown.
+                            </p>
+                        </div>
+                    </div>
+                    <div id="ufo-details-mission-type-hunt" class="ufo-details-mission-container hidden-collapse">
+                        <div class="ufo-details-mission-type">Hunt</div>
+                        <div class="ufo-details-mission-stats-grid centered-horiz">
+                            <div class="column-heading">Altitude</div>
+                            <div class="column-heading" data-tooltip-template-file="assets/html/tooltips/ufo-tooltips.html" data-tooltip-template-id="template-ufo-tooltip-missions-required-research">Required Research</div>
+                            <div class="column-heading" data-tooltip-template-file="assets/html/tooltips/ufo-tooltips.html" data-tooltip-template-id="template-ufo-tooltip-missions-required-resources">Required Resources</div>
+                            <div class="column-heading" data-tooltip-template-file="assets/html/tooltips/ufo-tooltips.html" data-tooltip-template-id="template-ufo-tooltip-missions-grants-research">Grants Research</div>
+                            <div class="column-heading" data-tooltip-template-file="assets/html/tooltips/ufo-tooltips.html" data-tooltip-template-id="template-ufo-tooltip-missions-grants-resources">Grants Resources</div>
+                            <div class="column-heading">Number Per Month</div>
+                            <div>High</div>
+                            <div class="ufo-details-required-research"></div>
+                            <div class="ufo-details-required-resources"></div>
+                            <div>0</div>
+                            <div>0</div>
+                            <div>0 to 4</div>
+                        </div>
+                        <div class="ufo-details-mission-description">
+                            <p>
+                                The UFO will attempt to destroy an XCOM satellite over the target country. This mission type often, but not always, follows a Scouting mission from another UFO. If the hunt succeeds, XCOM's satellite
+                                will be destroyed, increasing panic in the target country by 25 and in the remainder of the continent by 5. XCOM will also lose any Council funding and country bonuses from the satellite's coverage.
+                            </p>
+                            <p>
+                                If not intercepted, Hunt missions have a 60% chance of succeeding on the first attempt, and a 90% chance of succeeding on the second attempt. (These chances are reduced to 30% and 50%, respectively, with
+                                the <a data-page-on-click="foundry-project-display-page" data-pagearg-project-id="foundry_stealth_satellites">Stealth Satellites</a> Foundry project.)
+                            </p>
+                            <p>
+                                Hunt missions will prioritize satellites in the following order:
+                                <ol>
+                                    <li><strong>Withdrawn countries:</strong> Aliens will destroy satellites over former council members in order to prevent XCOM from assaulting alien bases in those countries.</li>
+                                    <li><strong>Panicking nations:</strong> Countries with high panic will be targeted, potentially causing them to defect if the satellite is destroyed.</li>
+                                    <li><strong>Other countries:</strong> If the first two types of target aren't available, any satellite can be targeted.</li>
+                                </ol>
+                            </p>
+                            <p>
+                                Shooting down the UFO will prevent the loss of XCOM's satellite. Damaging the UFO gives a chance for the mission to fail, with the chance reaching 100% when the UFO is at 50% or less HP.
+                            </p>
+                        </div>
+                    </div>
+                    <div id="ufo-details-mission-type-infiltrate" class="ufo-details-mission-container hidden-collapse">
+                        <div class="ufo-details-mission-type">Infiltrate</div>
+                        <div class="ufo-details-mission-stats-grid centered-horiz">
+                            <div class="column-heading">Altitude</div>
+                            <div class="column-heading" data-tooltip-template-file="assets/html/tooltips/ufo-tooltips.html" data-tooltip-template-id="template-ufo-tooltip-missions-required-research">Required Research</div>
+                            <div class="column-heading" data-tooltip-template-file="assets/html/tooltips/ufo-tooltips.html" data-tooltip-template-id="template-ufo-tooltip-missions-required-resources">Required Resources</div>
+                            <div class="column-heading" data-tooltip-template-file="assets/html/tooltips/ufo-tooltips.html" data-tooltip-template-id="template-ufo-tooltip-missions-grants-research">Grants Research</div>
+                            <div class="column-heading" data-tooltip-template-file="assets/html/tooltips/ufo-tooltips.html" data-tooltip-template-id="template-ufo-tooltip-missions-grants-resources">Grants Resources</div>
+                            <div class="column-heading">Number Per Month</div>
+                            <div>Unknown</div>
+                            <div>0</div>
+                            <div>200</div>
+                            <div>0</div>
+                            <div>0</div>
+                            <div>0 to 1</div>
+                        </div>
+                        <div class="ufo-details-mission-description">
+                            <p>
+                                This mission consists of three UFOs. First, a <a data-page-on-click="ufo-details-page" data-pagearg-ufo-id="ufo_battleship">Battleship</a> and
+                                <a data-page-on-click="ufo-details-page" data-pagearg-ufo-id="ufo_transport">Transport</a> will both fly around the targeted country. Then, an
+                                <a data-page-on-click="ufo-details-page" data-pagearg-ufo-id="ufo_overseer">Overseer</a> will fly to the country. If the Overseer is not stopped,
+                                the targeted country will immediately leave the XCOM project.
+                            </p>
+                            <p>
+                                Note that, since Overseer UFOs cannot be detected without the <a data-page-on-click="base-facility-page" data-pagearg-facility-id="facility_hyperwave_relay">Hyperwave Relay</a>, this mission
+                                type may cause countries to leave XCOM for seemingly no reason.
+                            </p>
+                            <p>
+                                Shooting down the Overseer UFO will prevent the country from leaving XCOM. Whether damaging the Overseer, or engaging the Battleship or Transport, will prevent this is unknown.
+                            </p>
+                        </div>
+                    </div>
+                    <div id="ufo-details-mission-type-research" class="ufo-details-mission-container hidden-collapse">
+                        <div class="ufo-details-mission-type">Research</div>
+                        <div class="ufo-details-mission-stats-grid centered-horiz">
+                            <div class="column-heading">Altitude</div>
+                            <div class="column-heading" data-tooltip-template-file="assets/html/tooltips/ufo-tooltips.html" data-tooltip-template-id="template-ufo-tooltip-missions-required-research">Required Research</div>
+                            <div class="column-heading" data-tooltip-template-file="assets/html/tooltips/ufo-tooltips.html" data-tooltip-template-id="template-ufo-tooltip-missions-required-resources">Required Resources</div>
+                            <div class="column-heading" data-tooltip-template-file="assets/html/tooltips/ufo-tooltips.html" data-tooltip-template-id="template-ufo-tooltip-missions-grants-research">Grants Research</div>
+                            <div class="column-heading" data-tooltip-template-file="assets/html/tooltips/ufo-tooltips.html" data-tooltip-template-id="template-ufo-tooltip-missions-grants-resources">Grants Resources</div>
+                            <div class="column-heading">Number Per Month</div>
+                            <div>NOE</div>
+                            <div class="ufo-details-required-research"></div>
+                            <div class="ufo-details-required-resources"></div>
+                            <div class="ufo-details-grants-research"></div>
+                            <div>0</div>
+                            <div>0 to 3</div>
+                        </div>
+                        <div class="ufo-details-mission-description">
+                            <p>
+                                The UFO will land to conduct research. If not stopped, the aliens gain a permanent bonus to their research, increasing the strength of their UFOs and ground troops and potentially
+                                causing new alien types to appear in missions.
+                            </p>
+                            <p>
+                                Shooting down the UFO, or successfully assaulting it once it has landed, will prevent the aliens from gaining any research. How damaging the UFO impacts the research increase is unknown.
+                            </p>
+                        </div>
+                    </div>
+                    <div id="ufo-details-mission-type-retaliate" class="ufo-details-mission-container hidden-collapse">
+                        <div class="ufo-details-mission-type">Retaliate</div>
+                        <div class="ufo-details-mission-stats-grid centered-horiz">
+                            <div class="column-heading">Altitude</div>
+                            <div class="column-heading" data-tooltip-template-file="assets/html/tooltips/ufo-tooltips.html" data-tooltip-template-id="template-ufo-tooltip-missions-required-research">Required Research</div>
+                            <div class="column-heading" data-tooltip-template-file="assets/html/tooltips/ufo-tooltips.html" data-tooltip-template-id="template-ufo-tooltip-missions-required-resources">Required Resources</div>
+                            <div class="column-heading" data-tooltip-template-file="assets/html/tooltips/ufo-tooltips.html" data-tooltip-template-id="template-ufo-tooltip-missions-grants-research">Grants Research</div>
+                            <div class="column-heading" data-tooltip-template-file="assets/html/tooltips/ufo-tooltips.html" data-tooltip-template-id="template-ufo-tooltip-missions-grants-resources">Grants Resources</div>
+                            <div class="column-heading">Number Per Month</div>
+                            <div>NOE</div>
+                            <div class="ufo-details-required-research">N/A</div>
+                            <div class="ufo-details-required-resources">N/A</div>
+                            <div>Special</div>
+                            <div>0</div>
+                            <div>Special</div>
+                        </div>
+                        <div class="ufo-details-mission-description">
+                            <p>
+                                The UFO will fly to either XCOM HQ or to an Interceptor base and immediately begin an XCOM Base Defense or Air Base Defense mission, respectively.
+                            </p>
+                            <details>
+                                <summary>XCOM Base Defense</summary>
+                                <p>
+                                    For base defenses to occur, the aliens must be at maximum resource level (200+ resources) and maximum threat level for 3 months, which do not need to be consecutive. If XCOM fails to repel the assault,
+                                    then:
+
+                                    <ul>
+                                        <li>XCOM loses §450 to §550</li>
+                                        <li>XCOM loses 50 to 60 <a data-page-on-click="item-display-page" data-pagearg-item-id="item_alien_alloy">Alien Alloys</a></li>
+                                        <li>XCOM loses 50 to 60 <a data-page-on-click="item-display-page" data-pagearg-item-id="item_elerium">Elerium</a></li>
+                                        <li>XCOM loses 50 to 60 <a data-page-on-click="item-display-page" data-pagearg-item-id="item_meld">Meld</a></li>
+                                        <li>XCOM loses 20-30 scientists and 20-30 engineers (each capped at 1/3 of their respective staff)</li>
+                                        <li>All alien captives will be released</li>
+                                        <li>Interceptors stationed on this continent will be severely damaged or destroyed</li>
+                                        <li>The aliens will gain +20 research permanently</li>
+                                    </ul>
+
+                                    In addition, any soldiers involved in the base defense will die, severely setting back XCOM and possibly spelling the end of the campaign.
+                                </p>
+                                <p>
+                                    Shooting down the UFO will prevent the XCOM Base Defense mission from occurring.
+                                </p>
+                            </details>
+                            <details>
+                                <summary>Air Base Defense</summary>
+                                <p>
+                                    Air base defenses cannot occur until after XCOM builds their first <a data-page-on-click="item-display-page" data-pagearg-item-id="item_firestorm">Firestorm</a>. They have a chance to occur each month that
+                                    the aliens have 150+ resources and XCOM threat level is at least 3, with at most one air base defense per month.
+                                </p>
+                                <p>
+                                    The UFO sent to begin an air base defense will always be an <a data-page-on-click="ufo-details-page" data-pagearg-ufo-id="ufo_overseer">Overseer</a>. This means that if you don't yet have the
+                                    <a data-page-on-click="base-facility-page" data-pagearg-facility-id="facility_hyperwave_relay">Hyperwave Relay</a>, you will not see this mission coming.
+                                </p>
+                                <p>
+                                    Air base defenses are similar to XCOM Base Defenses, but much easier to defend. Failing the mission will result in Interceptors stationed on this continent being severely damaged or destroyed. It is unknown
+                                    whether the aliens gain a research bonus for assaulting air bases, like they do with XCOM HQ assaults.
+                                </p>
+                                <p>
+                                    Shooting down the UFO will prevent the Air Base Defense mission from occurring.
+                                </p>
+                            </details>
+                            <br />
+                        </div>
+                    </div>
+                    <div id="ufo-details-mission-type-scout" class="ufo-details-mission-container hidden-collapse">
+                        <div class="ufo-details-mission-type">Scout</div>
+                        <div class="ufo-details-mission-stats-grid centered-horiz">
+                            <div class="column-heading">Altitude</div>
+                            <div class="column-heading" data-tooltip-template-file="assets/html/tooltips/ufo-tooltips.html" data-tooltip-template-id="template-ufo-tooltip-missions-required-research">Required Research</div>
+                            <div class="column-heading" data-tooltip-template-file="assets/html/tooltips/ufo-tooltips.html" data-tooltip-template-id="template-ufo-tooltip-missions-required-resources">Required Resources</div>
+                            <div class="column-heading" data-tooltip-template-file="assets/html/tooltips/ufo-tooltips.html" data-tooltip-template-id="template-ufo-tooltip-missions-grants-research">Grants Research</div>
+                            <div class="column-heading" data-tooltip-template-file="assets/html/tooltips/ufo-tooltips.html" data-tooltip-template-id="template-ufo-tooltip-missions-grants-resources">Grants Resources</div>
+                            <div class="column-heading">Number Per Month</div>
+                            <div>Low</div>
+                            <div class="ufo-details-required-research"></div>
+                            <div class="ufo-details-required-resources"></div>
+                            <div>0</div>
+                            <div>0</div>
+                            <div>3 to 6</div>
+                        </div>
+                        <div class="ufo-details-mission-description">
+                            <p>
+                                The UFO will fly around the target country, searching for XCOM satellites. If successful, a follow-up Hunt mission will be conducted by a different UFO.
+                            </p>
+                            <p>
+                                There are 4 ways that a Scouting mission can fail:
+
+                                <ol>
+                                    <li><strong>Shooting down</strong> the UFO guarantees the mission will fail.</li>
+                                    <li><strong>Damaging</strong> the UFO gives the mission a failure chance equal to the percentage of lost HP, e.g. a UFO with 20% HP remaining has an 80% chance to fail the mission.</li>
+                                    <li>The <strong>target country's defense</strong> stat gives a 1% failure chance per 2 defense, maxxing out at 50% failure chance with 100 defense.</li>
+                                    <li><strong>Alien incompetence</strong> gives each scouting mission a 60% failure chance, reduced by 1% for each 15 alien research. This means that with 900 alien research, this chance drops to 0%.</li>
+                                </ol>
+                            </p>
+                        </div>
+                    </div>
+                    <div id="ufo-details-mission-type-terrorize" class="ufo-details-mission-container hidden-collapse">
+                        <div class="ufo-details-mission-type">Terrorize</div>
+                        <div class="ufo-details-mission-stats-grid centered-horiz">
+                            <div class="column-heading">Altitude</div>
+                            <div class="column-heading" data-tooltip-template-file="assets/html/tooltips/ufo-tooltips.html" data-tooltip-template-id="template-ufo-tooltip-missions-required-research">Required Research</div>
+                            <div class="column-heading" data-tooltip-template-file="assets/html/tooltips/ufo-tooltips.html" data-tooltip-template-id="template-ufo-tooltip-missions-required-resources">Required Resources</div>
+                            <div class="column-heading" data-tooltip-template-file="assets/html/tooltips/ufo-tooltips.html" data-tooltip-template-id="template-ufo-tooltip-missions-grants-research">Grants Research</div>
+                            <div class="column-heading" data-tooltip-template-file="assets/html/tooltips/ufo-tooltips.html" data-tooltip-template-id="template-ufo-tooltip-missions-grants-resources">Grants Resources</div>
+                            <div class="column-heading">Number Per Month</div>
+                            <div>NOE</div>
+                            <div>0</div>
+                            <div>50</div>
+                            <div>0</div>
+                            <div>0</div>
+                            <div>0 to 2</div>
+                        </div>
+                        <div class="ufo-details-mission-description">
+                            <p>
+                                This mission consists of two UFOs. First, a <a data-page-on-click="ufo-details-page" data-pagearg-ufo-id="ufo_terror_ship">Terror Ship</a> will fly over the target country, conducting scouting for the upcoming
+                                terror mission. Within 1 to 2 weeks, an <a data-page-on-click="ufo-details-page" data-pagearg-ufo-id="ufo_assault_carrier">Assault Carrier</a> will fly to the target and spawn a Terror mission.
+                            </p>
+                            <p>
+                                The aliens prefer to terrorize nations adjacent to alien bases, choosing the most panicked of those 85% of the time. For each civilian killed in the Terror mission, panic is increased by +3 in the target country
+                                and +1 in the remainder of the continent. If the Terror mission is ignored or failed, the target country will immediately leave the XCOM project, and the remainder of the continent will gain +20 panic.
+                            </p>
+                            <p>
+                                Shooting down the Terror Ship will not prevent the mission, but shooting down the Assault Carrier will. Whether damaging the Assault Carrier can prevent the mission is unknown.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

@@ -3922,6 +3922,7 @@
         "item_meld": {
             "name": "Meld",
             "description": "The nanites contained in this advanced alien material can be directed to fuse organic and physical structures in various ways, allowing powerful genetic and cybernetic modifications.",
+            "tactical_text": "<ul><li>The amount of Meld contained in a canister during missions is equal to the Alien Resources divided by ten, rounded to the nearest integer (minimum 5)</li></ul>",
             "type": "material",
             "sell_value": 4
         },
