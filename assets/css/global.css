@@ -192,6 +192,16 @@ span.inline-resource-icon {
     padding-top: 25px;
 }
 
+#changelog details[open] summary {
+    background-color: var(--color-bg-subtle);
+}
+
+#changelog summary {
+    cursor: pointer;
+    font-size: 1.12em;
+    font-weight: 600;
+}
+
 .changelog-version {
     margin-bottom: 40px;
 }

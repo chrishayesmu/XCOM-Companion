@@ -17,63 +17,89 @@
         <div id="changelog">
             <h2>Changelog</h2>
             <div class="changelog-version">
-                <h3>Version 0.4.0</h3>
-                <ul>
-                    <li>
-                        Added <strong>UFO</strong> data and pages
-                        <ul>
-                            <li>Accessing <a data-page-on-click="ufo-browse-page">UFOs</a> from the left nav shows all UFO types</li>
-                            <li>UFOs can be searched for by name</li>
-                            <li>
-                                Viewing <a data-page-on-click="ufo-details-page" data-pagearg-ufo-id="ufo_scout">a UFO's details</a> shows:
-                                <ul>
-                                    <li><strong>Air Combat</strong> stats, including how the UFO upgrades with Alien Research, and a simplistic comparison with Interceptors/Firestorms</li>
-                                    <li><strong>Ground Assault</strong> data, including the crew size, recoverable resources, and Command Pod</li>
-                                    <li><strong>Mission</strong> data, showing which missions a UFO can undertake, the requirements for that UFO type to be sent on that mission, and the benefits of that mission to the aliens</li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>Some small additional tweaks to improve consistency across the app</li>
-                    <li>Another couple of small updates to item text and links</li>
-                </ul>
+                <details>
+                    <summary>Version 0.4.1 (May 20, 2021)</summary>
+                    <ul>
+                        <li>
+                            Added page history navigation, to quickly return to previously-visited pages
+                            <ul>
+                                    <li>You can go back to the last page you looked at with <strong>Mouse 4</strong>, <strong>Alt + Left Arrow</strong>, or by clicking the back arrow near the page's title.</li>
+                                    <li>You can go forward after going back with <strong>Mouse 5</strong>, <strong>Alt + Right Arrow</strong>, or by clicking the forward arrow near the page's title.</li>
+                            </ul>
+                        </li>
+                        <li>Made the changelog entries prettier and added release dates</li>
+                        <li><strong><font color="#fc5c51">Critical fix:</font></strong> if only one map is possible for a mission's parameters, the <a data-page-on-click="map-possibilities-page">Maps</a> page will say "There is 1 map possible" instead of "There are 1 maps possible"</li>
+                    </ul>
+                </details>
             </div>
             <div class="changelog-version">
-                <h3>Version 0.3.0</h3>
-                <ul>
-                    <li>
-                        Added <strong>tactical map</strong> data and pages
-                        <ul>
-                            <li>Accessing <a data-page-on-click="map-possibilities-page">Maps</a> from the left nav lets you input a mission type and Area of Operations, and see which maps you might get</li>
-                            <li>Maps can be searched for by name; most map names match what's on the wiki, or are close</li>
-                            <li>Viewing <a data-page-on-click="map-details-page" data-pagearg-map-id="map_cemetery_grand">a map's details</a> will show you all of the missions that can occur there, and some maps have their size listed</li>
-                        </ul>
-                    </li>
-                    <li>Darkened the background of the left nav to be easier on the eyes</li>
-                    <li>Made a number of small tweaks to make appearances more consistent across the app</li>
-                    <li>Fixed some typos and broken links for various items</li>
-                </ul>
+                <details>
+                    <summary>Version 0.4.0 (May 18, 2021)</summary>
+                    <ul>
+                        <li>
+                            Added <strong>UFO</strong> data and pages
+                            <ul>
+                                <li>Accessing <a data-page-on-click="ufo-browse-page">UFOs</a> from the left nav shows all UFO types</li>
+                                <li>UFOs can be searched for by name</li>
+                                <li>
+                                    Viewing <a data-page-on-click="ufo-details-page" data-pagearg-ufo-id="ufo_scout">a UFO's details</a> shows:
+                                    <ul>
+                                        <li><strong>Air Combat</strong> stats, including how the UFO upgrades with Alien Research, and a simplistic comparison with Interceptors/Firestorms</li>
+                                        <li><strong>Ground Assault</strong> data, including the crew size, recoverable resources, and Command Pod</li>
+                                        <li><strong>Mission</strong> data, showing which missions a UFO can undertake, the requirements for that UFO type to be sent on that mission, and the benefits of that mission to the aliens</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>Some small additional tweaks to improve consistency across the app</li>
+                        <li>Another couple of small updates to item text and links</li>
+                    </ul>
+                </details>
             </div>
             <div class="changelog-version">
-                <h3>Version 0.2.0</h3>
-                <ul>
-                    <li>Added <strong>base facility</strong> data and pages; facilities can be accessed in the left nav or via search</li>
-                    <li>Added an image on the <a data-page-on-click='item-display-page' data-pagearg-item-id='item_smoke_grenade'>Smoke Grenade</a> page to show the tile pattern covered by the grenade</li>
-                    <li>[Internal] Some refactoring to facilitate future updates</li>
-                </ul>
+                <details>
+                    <summary>Version 0.3.0 (May 10, 2021)</summary>
+                    <ul>
+                        <li>
+                            Added <strong>tactical map</strong> data and pages
+                            <ul>
+                                <li>Accessing <a data-page-on-click="map-possibilities-page">Maps</a> from the left nav lets you input a mission type and Area of Operations, and see which maps you might get</li>
+                                <li>Maps can be searched for by name; most map names match what's on the wiki, or are close</li>
+                                <li>Viewing <a data-page-on-click="map-details-page" data-pagearg-map-id="map_cemetery_grand">a map's details</a> will show you all of the missions that can occur there, and some maps have their size listed</li>
+                            </ul>
+                        </li>
+                        <li>Darkened the background of the left nav to be easier on the eyes</li>
+                        <li>Made a number of small tweaks to make appearances more consistent across the app</li>
+                        <li>Fixed some typos and broken links for various items</li>
+                    </ul>
+                </details>
             </div>
             <div class="changelog-version">
-                <h3>Version 0.1.1</h3>
-                <ul>
-                    <li>Added stats tables in item tooltip for a few item types which were missing them</li>
-                    <li>Fixed an issue where stats tables in item tooltips could extend beyond the tooltip boundaries</li>
-                </ul>
+                <details>
+                    <summary>Version 0.2.0 (May 7, 2021)</summary>
+                    <ul>
+                        <li>Added <strong>base facility</strong> data and pages; facilities can be accessed in the left nav or via search</li>
+                        <li>Added an image on the <a data-page-on-click='item-display-page' data-pagearg-item-id='item_smoke_grenade'>Smoke Grenade</a> page to show the tile pattern covered by the grenade</li>
+                        <li>[Internal] Some refactoring to facilitate future updates</li>
+                    </ul>
+                </details>
             </div>
             <div class="changelog-version">
-                <h3>Version 0.1.0</h3>
-                <ul>
-                    <li>XCOM Companion first released</li>
-                </ul>
+                <details>
+                    <summary>Version 0.1.1 (May 5, 2021)</summary>
+                    <ul>
+                        <li>Added stats tables in item tooltip for a few item types which were missing them</li>
+                        <li>Fixed an issue where stats tables in item tooltips could extend beyond the tooltip boundaries</li>
+                    </ul>
+                </details>
+            </div>
+            <div class="changelog-version">
+                <details>
+                    <summary>Version 0.1.0 (May 4, 2021)</summary>
+                    <ul>
+                        <li>XCOM Companion first released</li>
+                    </ul>
+                </details>
             </div>
         </div>
     </div>
