@@ -26,8 +26,8 @@
             "name": "Alien Containment",
             "icon": "assets/img/facility-icons/alien_containment.png",
             "description": "This facility will provide a secure environment to house the alien captives, allowing you to interrogate them in the Labs.",
-            "tactical_text": "<ul><li>Required to capture aliens with the <a data-page-on-click='item-display-page' data-pagearg-item-id='item_arc_thrower'>Arc Thrower</a></li><li>Without an Alien Containment, aliens can be stunned to recover their weapons intact, but no captive will be gained</li><li>Alien Containment is not needed to capture Outsiders for <a data-page-on-click='item-display-page' data-pagearg-item-id='item_outsider_shard'>Outsider Shards</a></li><li>There is no limit to the number of captives XCOM can keep</li></ul>",
-            "can_be_deconstructed": false,
+            "tactical_text": "<ul><li>Required to capture aliens with the <a data-page-on-click='item-display-page' data-pagearg-item-id='item_arc_thrower'>Arc Thrower</a></li><li>Without an Alien Containment, aliens can be stunned to recover their weapons intact, but no captive will be gained</li><li>Alien Containment is not needed to capture Outsiders for <a data-page-on-click='item-display-page' data-pagearg-item-id='item_outsider_shard'>Outsider Shards</a></li><li>There is no limit to the number of captives XCOM can keep</li><li>If torn down, all captive aliens will be killed</li></ul>",
+            "can_be_deconstructed": true,
             "maintenance_cost": 30,
             "power_usage": 10,
             "normal_build": {
