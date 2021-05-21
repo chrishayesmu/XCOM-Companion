@@ -29,6 +29,10 @@ class BaseFacilityPage extends AppPage {
         return template;
     }
 
+    static ownsDataObject(dataObj) {
+        return dataObj.id.startsWith("facility_");
+    }
+
     async load(data) {
         const facility = DataHelper.baseFacilities[data.facilityId];
 
@@ -64,10 +68,6 @@ class BaseFacilityPage extends AppPage {
 
     makeHistoryState() {
         return new PageHistoryState(this, { facilityId: this.#facilityId });
-    }
-
-    ownsDataObject(dataObj) {
-        return dataObj.id.startsWith("facility_");
     }
 
     _addBulletPoints(template, facility) {

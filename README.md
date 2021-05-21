@@ -2,7 +2,7 @@
 
 **XCOM Companion** is a standalone desktop application, intended to be used while playing the [Long War 1.0](https://www.pavonisinteractive.com/xcomlongwareuew.htm) mod for 2013's [XCOM: Enemy Within](https://en.wikipedia.org/wiki/XCOM:_Enemy_Within). Long War adds new mechanics, items, abilities, and much more to the game. While this makes a great game, it can be a lot to keep track of at time, and being able to plan ahead is vitally important in Long War campaigns. The goal of XCOM Companion is to help keep all of that information organized, letting the player easily answer questions like "how many Muton corpses do I really need, and how many can I sell?".
 
-Note that XCOM Companion is **not accurate** for any other version of the game, including the base XCOM: Enemy Within, the Long War Rebalanced mod, or earlier versions of Long War.
+Note that XCOM Companion is **not accurate** for any other version of the game, including the base XCOM: Enemy Within, the Long War Rebalanced mod, or earlier versions of Long War. Furthermore, any data which is difficulty-dependent is based on **Impossible** difficulty.
 
 At this time, XCOM Companion contains enough data to replace various XCOM wikis for most scenarios, but there are still gaps being worked on. Check out the [current](#current-features) and [upcoming](#upcoming-features) features for details.
 
