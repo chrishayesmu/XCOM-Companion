@@ -5,76 +5,75 @@ import * as Utils from "../utils.js";
 import * as Widgets from "../widgets.js";
 
 class ItemDisplayPage extends AppPage {
-    constructor() {
-        super("item-display-page");
 
-        this.itemId = null;
+    static pageId = "item-display-page";
 
-        this._configurationByItemType = {
-            aircraft: {
-                friendlyName: "Aircraft",
-                showTacticalText: true
-            },
-            aircraft_module: {
-                friendlyName: "Interceptor Module",
-                showTacticalText: true
-            },
-            aircraft_weapon: {
-                friendlyName: "Interceptor Weapon",
-                showTacticalText: true
-            },
-            alien_device: {
-                friendlyName: "Alien Device",
-                showTacticalText: true
-            },
-            alien_weapon: {
-                friendlyName: "Recovered Alien Weapon"
-            },
-            captive: {
-                friendlyName: "Captured Alien"
-            },
-            corpse: {
-                friendlyName: "Alien Corpse"
-            },
-            loadout_armor: {
-                friendlyName: "Loadout: Armor",
-                showTacticalText: true
-            },
-            loadout_equipment: {
-                friendlyName: "Loadout: Equipment",
-                showTacticalText: true
-            },
-            loadout_mec_exoskeleton: {
-                friendlyName: "Loadout: MEC Exoskeleton",
-                showTacticalText: true
-            },
-            loadout_primary: {
-                friendlyName: "Loadout: Primary Weapon",
-                showTacticalText: true
-            },
-            loadout_secondary: {
-                friendlyName: "Loadout: Secondary Weapon",
-                showTacticalText: true
-            },
-            material: {
-                friendlyName: "Building Material"
-            },
-            other: {
-                friendlyName: "",
-                showTacticalText: true
-            },
-            shiv: {
-                friendlyName: "SHIV Chassis",
-                showTacticalText: true
-            },
-            story: {
-                friendlyName: "Story Item",
-                showTacticalText: true
-            },
-        };
-    }
+    #itemId = null;
 
-    async generatePreview(data) {
+    #configurationByItemType = {
+        aircraft: {
+            friendlyName: "Aircraft",
+            showTacticalText: true
+        },
+        aircraft_module: {
+            friendlyName: "Interceptor Module",
+            showTacticalText: true
+        },
+        aircraft_weapon: {
+            friendlyName: "Interceptor Weapon",
+            showTacticalText: true
+        },
+        alien_device: {
+            friendlyName: "Alien Device",
+            showTacticalText: true
+        },
+        alien_weapon: {
+            friendlyName: "Recovered Alien Weapon"
+        },
+        captive: {
+            friendlyName: "Captured Alien"
+        },
+        corpse: {
+            friendlyName: "Alien Corpse"
+        },
+        loadout_armor: {
+            friendlyName: "Loadout: Armor",
+            showTacticalText: true
+        },
+        loadout_equipment: {
+            friendlyName: "Loadout: Equipment",
+            showTacticalText: true
+        },
+        loadout_mec_exoskeleton: {
+            friendlyName: "Loadout: MEC Exoskeleton",
+            showTacticalText: true
+        },
+        loadout_primary: {
+            friendlyName: "Loadout: Primary Weapon",
+            showTacticalText: true
+        },
+        loadout_secondary: {
+            friendlyName: "Loadout: Secondary Weapon",
+            showTacticalText: true
+        },
+        material: {
+            friendlyName: "Building Material"
+        },
+        other: {
+            friendlyName: "",
+            showTacticalText: true
+        },
+        shiv: {
+            friendlyName: "SHIV Chassis",
+            showTacticalText: true
+        },
+        story: {
+            friendlyName: "Story Item",
+            showTacticalText: true
+        }
+    };
+
+    static async generatePreview(data) {
         if (!data.itemId) {
             return null;
         }
@@ -115,6 +114,10 @@ class ItemDisplayPage extends AppPage {
         return template;
     }
 
+    static ownsDataObject(dataObj) {
+        return dataObj.id.startsWith("item_");
+    }
+
     async load(data) {
         if (!data.itemId) {
             return null;
@@ -126,8 +129,8 @@ class ItemDisplayPage extends AppPage {
     }
 
     async loadFromDataObject(item) {
-        this.itemId = item.id;
-        const itemTypeConfig = this._configurationByItemType[item.type];
+        this.#itemId = item.id;
+        const itemTypeConfig = this.#configurationByItemType[item.type];
 
         const template = await Templates.instantiateTemplate("assets/html/templates/pages/item-display-page.html", "template-item-display-page");
 
@@ -170,28 +173,28 @@ class ItemDisplayPage extends AppPage {
         }
 
         const tacticalTextContainer = template.querySelector("#item-details-tactical-text");
-        this._addSpecialBulletPoints(item, tacticalTextContainer);
+        ItemDisplayPage._addSpecialBulletPoints(item, tacticalTextContainer);
 
         if (item.type === "loadout_secondary" && item.type_specific_data.category === "mec") {
-            tacticalTextContainer.appendChild(await this._createMecSecondaryStatsGrid(item));
+            tacticalTextContainer.appendChild(await ItemDisplayPage._createMecSecondaryStatsGrid(item));
         }
         else if (item.type === "loadout_primary" || item.type === "loadout_secondary") {
-            tacticalTextContainer.appendChild(await this._createWeaponStatsGrid(item));
+            tacticalTextContainer.appendChild(await ItemDisplayPage._createWeaponStatsGrid(item));
         }
         else if (item.type === "loadout_armor" || item.type === "loadout_mec_exoskeleton") {
-            tacticalTextContainer.appendChild(await this._createArmorStatsGrid(item));
+            tacticalTextContainer.appendChild(await ItemDisplayPage._createArmorStatsGrid(item));
         }
         else if (item.type === "loadout_equipment") {
-            tacticalTextContainer.appendChild(await this._createEquipmentStatsGrid(item));
+            tacticalTextContainer.appendChild(await ItemDisplayPage._createEquipmentStatsGrid(item));
         }
         else if (item.type === "aircraft") {
-            tacticalTextContainer.appendChild(await this._createInterceptorStatsGrid(item));
+            tacticalTextContainer.appendChild(await ItemDisplayPage._createInterceptorStatsGrid(item));
         }
         else if (item.type === "aircraft_weapon") {
-            tacticalTextContainer.appendChild(await this._createInterceptorWeaponStatsGrid(item));
+            tacticalTextContainer.appendChild(await ItemDisplayPage._createInterceptorWeaponStatsGrid(item));
         }
         else if (item.type === "shiv") {
-            tacticalTextContainer.appendChild(await this._createShivStatsGrid(item));
+            tacticalTextContainer.appendChild(await ItemDisplayPage._createShivStatsGrid(item));
         }
 
         if (item.id === "item_arc_thrower") {
@@ -207,20 +210,11 @@ class ItemDisplayPage extends AppPage {
         };
     }
 
-    onUnloadBeginning(_event) {
-        // TODO
-        const historyData = {
-            itemId: this.itemId
-        };
-
-        return new PageHistoryState(this, historyData);
+    makeHistoryState() {
+        return new PageHistoryState(this, { itemId: this.#itemId });
     }
 
-    ownsDataObject(dataObj) {
-        return dataObj.id.startsWith("item_");
-    }
-
-    _addSpecialBulletPoints(item, tacticalTextContainer) {
+    static _addSpecialBulletPoints(item, tacticalTextContainer) {
         const typeData = item.type_specific_data;
 
         if (!typeData) {
@@ -310,7 +304,7 @@ class ItemDisplayPage extends AppPage {
         }
     }
 
-    async _createArmorStatsGrid(item) {
+    static async _createArmorStatsGrid(item) {
         const armorData = item.type_specific_data;
         const gridTemplate = await Templates.instantiateTemplate("assets/html/templates/pages/item-display-page.html", "template-item-armor-stats-grid");
 
@@ -333,7 +327,7 @@ class ItemDisplayPage extends AppPage {
         return gridTemplate;
     }
 
-    async _createEquipmentStatsGrid(item) {
+    static async _createEquipmentStatsGrid(item) {
         const equipmentData = item.type_specific_data;
         const gridTemplate = await Templates.instantiateTemplate("assets/html/templates/pages/item-display-page.html", "template-item-equipment-stats-grid");
 
@@ -370,7 +364,7 @@ class ItemDisplayPage extends AppPage {
         return gridTemplate;
     }
 
-    async _createInterceptorStatsGrid(item) {
+    static async _createInterceptorStatsGrid(item) {
         const interceptorData = item.type_specific_data;
         const gridTemplate = await Templates.instantiateTemplate("assets/html/templates/pages/item-display-page.html", "template-item-interceptor-stats-grid");
 
@@ -382,7 +376,7 @@ class ItemDisplayPage extends AppPage {
         return gridTemplate;
     }
 
-    async _createInterceptorWeaponStatsGrid(item) {
+    static async _createInterceptorWeaponStatsGrid(item) {
         const weaponData = item.type_specific_data;
         const gridTemplate = await Templates.instantiateTemplate("assets/html/templates/pages/item-display-page.html", "template-item-interceptor-weapon-stats-grid");
 
@@ -396,7 +390,7 @@ class ItemDisplayPage extends AppPage {
         return gridTemplate;
     }
 
-    async _createMecSecondaryStatsGrid(item) {
+    static async _createMecSecondaryStatsGrid(item) {
         const data = item.type_specific_data;
         const gridTemplate = await Templates.instantiateTemplate("assets/html/templates/pages/item-display-page.html", "template-item-mec-secondary-stats-grid");
 
@@ -436,7 +430,7 @@ class ItemDisplayPage extends AppPage {
         return gridTemplate;
     }
 
-    async _createShivStatsGrid(item) {
+    static async _createShivStatsGrid(item) {
         const shivData = item.type_specific_data;
         const gridTemplate = await Templates.instantiateTemplate("assets/html/templates/pages/item-display-page.html", "template-item-shiv-stats-grid");
 
@@ -450,7 +444,7 @@ class ItemDisplayPage extends AppPage {
         return gridTemplate;
     }
 
-    async _createWeaponStatsGrid(item) {
+    static async _createWeaponStatsGrid(item) {
         const weaponData = item.type_specific_data;
         const gridTemplate = await Templates.instantiateTemplate("assets/html/templates/pages/item-display-page.html", "template-item-weapon-stats-grid");
 
@@ -500,17 +494,14 @@ class ItemDisplayPage extends AppPage {
         return gridTemplate;
     }
 
-    _hideGridStat(grid, stat) {
+    static _hideGridStat(grid, stat) {
         grid.querySelector(`#${stat}`).classList.add("hidden-collapse");
         grid.querySelector(`#${stat}-header`).classList.add("hidden-collapse");
     }
 
     _populateBuildSection(buildData, numEngineersNeeded, containerElement) {
         if (!buildData) {
-            const div = document.createElement("div");
-            div.textContent = "This item cannot be built quickly.";
-            containerElement.appendChild(div);
-
+            Utils.appendElement(containerElement, "div", "This item cannot be built quickly.");
             return;
         }
 
@@ -518,15 +509,10 @@ class ItemDisplayPage extends AppPage {
             const div = document.createElement("div");
             div.classList.add("item-details-cost-type");
 
-            const labelSpan = document.createElement("span");
-            labelSpan.classList.add("item-details-cost-quantity");
-            labelSpan.innerHTML = label;
-            div.appendChild(labelSpan);
+            Utils.appendElement(div, "span", label, { classes: [ "item-details-cost-quantity" ] });
 
             if (typeof(content) === "string") {
-                const contentSpan = document.createElement("span");
-                contentSpan.innerHTML = content;
-                div.appendChild(contentSpan);
+                Utils.appendElement(div, "span", content);
             }
             else {
                 div.appendChild(content);
@@ -560,7 +546,6 @@ class ItemDisplayPage extends AppPage {
             const engineerContainer = addCostRow(numEngineersNeeded, "Engineers");
             engineerContainer.appendChild(helpIcon);
         }
-
     }
 
     _populatePrerequisites(item, template) {

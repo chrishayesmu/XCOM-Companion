@@ -2,9 +2,8 @@ import { AppPage, PageHistoryState } from "./app-page.js";
 import * as Templates from "../templates.js";
 
 class HomePage extends AppPage {
-    constructor() {
-        super("home-page");
-    }
+
+    static pageId = "home-page";
 
     async load(_data) {
         return {
@@ -14,13 +13,6 @@ class HomePage extends AppPage {
                 "text": "Home Page"
             }
         };
-    }
-
-    onUnloadBeginning(_event) {
-        const historyData = {
-        };
-
-        return new PageHistoryState(this, historyData);
     }
 }
 

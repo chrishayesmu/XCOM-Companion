@@ -35,11 +35,10 @@ const missionTypes = {
 };
 
 class MapDetailsPage extends AppPage {
-    constructor() {
-        super("map-details-page");
-    }
 
-    async generatePreview(data) {
+    static pageId = "map-details-page";
+
+    static async generatePreview(data) {
         if (!data.mapId) {
             return null;
         }
@@ -56,6 +55,10 @@ class MapDetailsPage extends AppPage {
         template.querySelector("#map-preview-image").src = map.image;
 
         return template;
+    }
+
+    static ownsDataObject(dataObj) {
+        return dataObj.id.startsWith("map_");
     }
 
     async load(data) {
@@ -89,17 +92,6 @@ class MapDetailsPage extends AppPage {
                 "text": "Map Details"
             }
         };
-    }
-
-    onUnloadBeginning(_event) {
-        const historyData = {
-        };
-
-        return new PageHistoryState(this, historyData);
-    }
-
-    ownsDataObject(dataObj) {
-        return dataObj.id.startsWith("map_");
     }
 
     _populateSize(template, map) {

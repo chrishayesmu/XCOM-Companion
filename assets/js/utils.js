@@ -26,6 +26,45 @@ function capitalizeEachWord(str, originalSeparator, newSeparator) {
     return str.split(originalSeparator).map( word => word[0].toUpperCase() + word.substring(1) ).join(newSeparator);
 }
 
+function equals(first, second) {
+    if (typeof(first) !== typeof(second)) {
+        return false;
+    }
+
+    if (typeof(first) !== "object") {
+        return first === second;
+    }
+
+    if (Object.is(first, second)) {
+        return true;
+    }
+
+    const firstEntries = Object.entries(first);
+    const secondEntries = Object.entries(second);
+
+    if (firstEntries.length !== secondEntries.length) {
+        return false;
+    }
+
+    firstEntries.sort( ([key1, _v1], [key2, _v2]) => key1.localeCompare(key2));
+    secondEntries.sort( ([key1, _v1], [key2, _v2]) => key1.localeCompare(key2));
+
+    for (let i = 0; i < firstEntries.length; i++) {
+        const [firstKey, firstValue] = firstEntries[i];
+        const [secondKey, secondValue] = secondEntries[i];
+
+        if (firstKey !== secondKey) {
+            return false;
+        }
+
+        if (!equals(firstValue, secondValue)) {
+            return false;
+        }
+    }
+
+    return true;
+}
+
 function join(strings, joinWord, encodeSpaces) {
     joinWord = joinWord || "and";
 
@@ -82,4 +121,4 @@ function xToY(x, y) {
     return `${x} to ${y}`;
 }
 
-export { appendElement, capitalizeEachWord, join, truncateText, xToY };
+export { appendElement, capitalizeEachWord, equals, join, truncateText, xToY };

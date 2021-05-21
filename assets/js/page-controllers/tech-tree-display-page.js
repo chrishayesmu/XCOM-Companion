@@ -11,95 +11,94 @@ const techTreeNetworkData = await fetch("assets/data/tech-tree-network-positions
 
 class TechTreeDisplayPage extends AppPage {
 
+    static pageId = "tech-tree-display-page";
+
     static network;
     static treePage;
 
+    #groupConfig = {
+        aerospace: {
+            color: {
+                background: "#3333ff",
+                edgeNormal: "#4d6193",
+                edgeHover: "#9ba8ca"
+            },
+            font: { color: "white" }
+        },
+        armor: {
+            color: {
+                background: "#701c09",
+                edgeNormal: "#94260d",
+                edgeHover: "#d33612"
+            },
+            font: { color: "#eeeeee" }
+        },
+        autopsy: {
+            color: {
+                background: "#009999", // cyan
+                edgeNormal: "#009999",
+                edgeHover: "#66ffff"
+            },
+            font: { color: "white" }
+        },
+        gauss_weapons: {
+            color: {
+                background: "steelblue",
+                edgeNormal: "steelblue",
+                edgeHover: "skyblue"
+            },
+            font: { color: "white" }
+        },
+        interrogation: {
+            color: {
+                background: "#c74f23",
+                edgeNormal: "pink",
+                edgeHover: "salmon"
+            },
+            font: { color: "white" }
+        },
+        laser_weapons: {
+            color: {
+                background: "red",
+                edgeNormal: "red",
+                edgeHover: "firebrick"
+            },
+            font: { color: "white" }
+        },
+        none: {
+            color: {
+                background: "#666666",
+                edgeNormal: "gray",
+                edgeHover: "white"
+            },
+            font: { color: "white" }
+        },
+        plasma_weapons: {
+            color: {
+                background: "darkgreen",
+                edgeNormal: "green",
+                edgeHover: "lightgreen"
+            },
+            font: { color: "white" }
+        },
+        ufo: {
+            color: {
+                background: "darkgoldenrod" // UFO researches don't lead anywhere, so only one color needed
+            },
+            font: { color: "white" }
+        },
+        xenology: {
+            color: {
+                background: "#800080", // purple
+                edgeNormal: "#F000F0",
+                edgeHover: "#ffbdff"
+            },
+            font: { color: "white" }
+        }
+    };
+
     constructor() {
-        super("tech-tree-display-page");
-
-        this.displayMode = null;
-        this.soldierClass = null;
-
-        this._groupConfig = {
-            aerospace: {
-                color: {
-                    background: "#3333ff",
-                    edgeNormal: "#4d6193",
-                    edgeHover: "#9ba8ca"
-                },
-                font: { color: "white" }
-            },
-            armor: {
-                color: {
-                    background: "#701c09",
-                    edgeNormal: "#94260d",
-                    edgeHover: "#d33612"
-                },
-                font: { color: "#eeeeee" }
-            },
-            autopsy: {
-                color: {
-                    background: "#009999", // cyan
-                    edgeNormal: "#009999",
-                    edgeHover: "#66ffff"
-                },
-                font: { color: "white" }
-            },
-            gauss_weapons: {
-                color: {
-                    background: "steelblue",
-                    edgeNormal: "steelblue",
-                    edgeHover: "skyblue"
-                },
-                font: { color: "white" }
-            },
-            interrogation: {
-                color: {
-                    background: "#c74f23",
-                    edgeNormal: "pink",
-                    edgeHover: "salmon"
-                },
-                font: { color: "white" }
-            },
-            laser_weapons: {
-                color: {
-                    background: "red",
-                    edgeNormal: "red",
-                    edgeHover: "firebrick"
-                },
-                font: { color: "white" }
-            },
-            none: {
-                color: {
-                    background: "#666666",
-                    edgeNormal: "gray",
-                    edgeHover: "white"
-                },
-                font: { color: "white" }
-            },
-            plasma_weapons: {
-                color: {
-                    background: "darkgreen",
-                    edgeNormal: "green",
-                    edgeHover: "lightgreen"
-                },
-                font: { color: "white" }
-            },
-            ufo: {
-                color: {
-                    background: "darkgoldenrod" // UFO researches don't lead anywhere, so only one color needed
-                },
-                font: { color: "white" }
-            },
-            xenology: {
-                color: {
-                    background: "#800080", // purple
-                    edgeNormal: "#F000F0",
-                    edgeHover: "#ffbdff"
-                },
-                font: { color: "white" }
-            }
-        };
+        super();
 
         // Statically create a single instance of the tree so it can begin loading immediately, as vis.js takes a few seconds
         if (!TechTreeDisplayPage.treePage) {
@@ -118,7 +117,7 @@ class TechTreeDisplayPage extends AppPage {
         const isDebugMode = false;
 
         const graphOptions = {
-            groups: this._groupConfig,
+            groups: this.#groupConfig,
             interaction: {
                 dragNodes: isDebugMode,
                 multiselect: isDebugMode,
@@ -327,13 +326,6 @@ class TechTreeDisplayPage extends AppPage {
         return TechTreeDisplayPage.treePage;
     }
 
-    onUnloadBeginning(_event) {
-        const historyData = {
-        };
-
-        return new PageHistoryState(this, historyData);
-    }
-
     _exportNetwork(network) {
         const positions = network.getPositions();
         const positionsAsArray = [];
@@ -398,7 +390,7 @@ class TechTreeDisplayPage extends AppPage {
     _highlightConnectedEdgesToEdge(edgeId, network, controlRedraw) {
         const edgeData = this._findConnectedEdgeTree(edgeId, network);
         const owningNodeGroup = DataHelper.technologies[edgeData.owningNode].ui.group;
-        const targetColor = this._groupConfig[owningNodeGroup].color.edgeHover;
+        const targetColor = this.#groupConfig[owningNodeGroup].color.edgeHover;
 
         // Disable redraw or else we suffer a huge performance hit as every edge update triggers a draw
         if (controlRedraw) {
@@ -445,7 +437,7 @@ class TechTreeDisplayPage extends AppPage {
     _restoreConnectedEdgesToEdge(edgeId, network, controlRedraw) {
         const edgeData = this._findConnectedEdgeTree(edgeId, network);
         const owningNodeGroup = DataHelper.technologies[edgeData.owningNode].ui.group;
-        const targetColor = this._groupConfig[owningNodeGroup].color.edgeNormal;
+        const targetColor = this.#groupConfig[owningNodeGroup].color.edgeNormal;
 
         if (controlRedraw) {
             network.renderer.allowRedraw = false;

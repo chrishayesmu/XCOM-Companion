@@ -28,6 +28,8 @@
     <link rel="stylesheet" href="assets/css/custom-elements/toggle-group.css" />
     <link rel="stylesheet" href="assets/css/custom-elements/single-select-list.css" />
 
+    <script src="assets/js/prototype-changes.js"></script>
+
     <!-- Script files for custom elements -->
     <script type="module" src="assets/js/custom-elements/app-update-notifier.js"></script>
     <script type="module" src="assets/js/custom-elements/base-facilities.js"></script>
@@ -105,7 +107,10 @@
 
     <main class="content js-content">
         <header class="section-header">
-            <div id="page-title-container" class="section-wrapper">
+            <div id="page-title-container" class="section-wrapper"></div>
+            <div id="history-buttons-container">
+                <img id="history-button-back" src="assets/img/misc-icons/left_arrow.png" title="Previous page" />
+                <img id="history-button-forward" src="assets/img/misc-icons/right_arrow.png" title="Next page" />
             </div>
         </header>
 

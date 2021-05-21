@@ -5,13 +5,12 @@ import * as Widgets from "../widgets.js";
 import * as Utils from "../utils.js";
 
 class BaseFacilityPage extends AppPage {
-    constructor() {
-        super("base-facility-page");
 
-        this.facilityId = null;
-    }
+    static pageId = "base-facility-page";
 
-    async generatePreview(data) {
+    #facilityId = null;
+
+    static async generatePreview(data) {
         if (!data.facilityId) {
             return null;
         }
@@ -37,7 +36,7 @@ class BaseFacilityPage extends AppPage {
     }
 
     async loadFromDataObject(facility) {
-        this.facilityId = facility.id;
+        this.#facilityId = facility.id;
 
         const template = await Templates.instantiateTemplate("assets/html/templates/pages/base-facility-page.html", "template-base-facility-page");
 
@@ -63,14 +62,8 @@ class BaseFacilityPage extends AppPage {
         };
     }
 
-    onUnloadBeginning(_event) {
-        const historyData = {
-            facilityId: this.facilityId
-        };
-
-        this.facilityId = null;
-
-        return new PageHistoryState(this, historyData);
+    makeHistoryState() {
+        return new PageHistoryState(this, { facilityId: this.#facilityId });
     }
 
     ownsDataObject(dataObj) {

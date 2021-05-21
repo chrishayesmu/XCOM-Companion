@@ -1,43 +1,10 @@
 import { AppPage, PageHistoryState } from "./app-page.js";
 import * as DataHelper from "../data-helper.js";
 import * as Templates from "../templates.js";
-import * as Widgets from "../widgets.js";
-
-const areaOfOperations = {
-    "ao_alien_structure": "Alien Structure",
-    "ao_forest": "Forest",
-    "ao_plains": "Plains",
-    "ao_riparian": "Riparian",
-    "ao_roadway": "Roadway",
-    "ao_settlement": "Settlement",
-    "ao_urban_block": "Urban Block",
-    "ao_urban_close_quarters": "Urban Close Quarters",
-    "ao_urban_large_structure": "Urban Large Structure",
-    "ao_waterfront": "Waterfront"
-}
-
-const missionTypes = {
-    "mission_abduction": "Abductions",
-    "mission_asset_recovery": "Asset Recovery",
-    "mission_bomb_disposal": "Bomb Disposal",
-    "mission_covert_data_recovery": "Covert Data Recovery",
-    "mission_covert_extraction": "Covert Extraction",
-    "mission_progeny_deluge": "Deluge (Progeny #2)",
-    "mission_progeny_furies": "Furies (Progeny #3)",
-    "mission_progeny_portent": "Portent (Progeny #1)",
-    "mission_site_recon": "Site Recon",
-    "mission_slingshot_confounding_light": "Confounding Light (Slingshot #2)",
-    "mission_slingshot_gangplank": "Gangplank (Slingshot #3)",
-    "mission_slingshot_low_friends": "Friends In Low Places (Slingshot #1)",
-    "mission_target_escort": "Target Escort",
-    "mission_target_extraction": "Target Extraction",
-    "mission_terror": "Terror Site"
-};
 
 class MapPossibilitiesPage extends AppPage {
-    constructor() {
-        super("map-possibilities-page");
-    }
+
+    static pageId = "map-possibilities-page";
 
     async load(data) {
         const template = await Templates.instantiateTemplate("assets/html/templates/pages/map-possibilities-page.html", "template-map-possibilities-page");
@@ -53,13 +20,6 @@ class MapPossibilitiesPage extends AppPage {
                 "text": "Possible Maps"
             }
         };
-    }
-
-    onUnloadBeginning(_event) {
-        const historyData = {
-        };
-
-        return new PageHistoryState(this, historyData);
     }
 
     async _createMapPreview(map) {

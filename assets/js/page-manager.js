@@ -2,6 +2,7 @@ const { ipcRenderer, shell } = require('electron');
 
 import * as Search from "./search-provider.js";
 import * as Templates from "./templates.js";
+import * as Utils from "./utils.js";
 
 import BaseFacilityPage from "./page-controllers/base-facility-page.js";
 import BaseFacilitiesBrowsePage from "./page-controllers/base-facilities-browse-page.js";
@@ -20,52 +21,65 @@ import UfoBrowsePage from "./page-controllers/ufo-browse-page.js";
 import UfoDetailsPage from "./page-controllers/ufo-details-page.js";
 
 const appPages = [
-    new BaseFacilityPage(),
-    new BaseFacilitiesBrowsePage(),
-    new ClassSelectionPage(),
-    new FoundryProjectsBrowsePage(),
-    new FoundryProjectDisplayPage(),
-    new HomePage(),
-    new ItemDisplayPage(),
-    new MapDetailsPage(),
-    new MapPossibilitiesPage(),
-    new PerkTreeDisplayPage(),
-    new SearchResultsPage(),
-    new TechDetailsPage(),
-    new TechTreeDisplayPage(),
-    new UfoBrowsePage(),
-    new UfoDetailsPage()
+    BaseFacilityPage,
+    BaseFacilitiesBrowsePage,
+    ClassSelectionPage,
+    FoundryProjectsBrowsePage,
+    FoundryProjectDisplayPage,
+    HomePage,
+    ItemDisplayPage,
+    MapDetailsPage,
+    MapPossibilitiesPage,
+    PerkTreeDisplayPage,
+    SearchResultsPage,
+    TechDetailsPage,
+    TechTreeDisplayPage,
+    UfoBrowsePage,
+    UfoDetailsPage
 ];
 
 const pagesById = {};
 
 for (let i = 0; i < appPages.length; i++) {
     const page = appPages[i];
-    pagesById[page.id] = page;
+    pagesById[page.pageId] = page;
 }
 
 class PageManager {
     static instance = null;
 
+    /**
+     * currentHistoryIndex points to which history entry we're currently viewing. If the current page is
+     * not from the history (i.e. it's just from clicking a link) then this will point one past the end of
+     * the #pageHistory array.
+     */
+    #currentHistoryIndex = 0;
+
+    #currentPage = null;
+    #maxPageHistorySize = 50;
+    #pageContentHolder = null;
+    #pageHistory = [];
+    #pagePreviewTooltip = null;
+    #pageTitleHolder = null;
+    #showTooltip = false;
+
     constructor(pageContentHolder, pageTitleHolder) {
-        this.currentPage = null;
-        this.currentTooltipTarget = null;
-        this.maxPageHistorySize = 50;
-        this._pageContentHolder = pageContentHolder;
-        this._pageTitleHolder = pageTitleHolder;
-        this.pageHistory = [];
-        this.pagePreview = null;
-        this._showTooltip = false;
+        this.#pageContentHolder = pageContentHolder;
+        this.#pageTitleHolder = pageTitleHolder;
 
         // Create the tooltip container and make sure it's outside of all other DOM so it always appears on top
-        this.pagePreviewTooltip = document.createElement("div");
-        this.pagePreviewTooltip.classList.add("hidden-collapse");
-        this.pagePreviewTooltip.classList.add("tooltip");
-        document.body.appendChild(this.pagePreviewTooltip);
+        this.#pagePreviewTooltip = document.createElement("div");
+        this.#pagePreviewTooltip.classList.add("hidden-collapse");
+        this.#pagePreviewTooltip.classList.add("tooltip");
+        document.body.appendChild(this.#pagePreviewTooltip);
 
-        document.body.addEventListener("click", this._handleDocumentClick.bind(this));
+        document.body.addEventListener("keydown", this._handleKeyDown.bind(this));
+        document.body.addEventListener("mouseup", this._handleDocumentClick.bind(this));
         document.body.addEventListener("mouseout", this.hideTooltip.bind(this));
         document.body.addEventListener("mouseover", this._handleElementMouseover.bind(this));
+
+        document.getElementById("history-button-back").addEventListener("click", this.tryGoBack.bind(this));
+        document.getElementById("history-button-forward").addEventListener("click", this.tryGoForward.bind(this));
     }
 
     async getPagePreview(pageId, data) {
@@ -83,9 +97,9 @@ class PageManager {
     }
 
     hideTooltip() {
-        this._showTooltip = false;
-        this.pagePreviewTooltip.innerHTML = "";
-        this.pagePreviewTooltip.classList.add("hidden-collapse");
+        this.#showTooltip = false;
+        this.#pagePreviewTooltip.innerHTML = "";
+        this.#pagePreviewTooltip.classList.add("hidden-collapse");
     }
 
     async loadPage(pageId, data) {
@@ -93,28 +107,29 @@ class PageManager {
             throw new Error(`Could not find a page with the ID "${pageId}"`);
         }
 
-        this._unloadCurrentPage();
+        this._unloadCurrentPage(false);
         this.hideTooltip();
-        this.currentPage = pagesById[pageId];
 
-        const pageDocument = await this.currentPage.load(data);
-        this._loadPageIntoDom(pageDocument);
+        this.#currentPage = new pagesById[pageId]();
+
+        const pageDocument = await this.#currentPage.load(data);
+        this._loadPageDocument(pageDocument);
+        this._validateHistory();
+        this._updateHistoryButtons();
     }
 
     loadPageForData(data) {
         for (let i = 0; i < appPages.length; i++) {
             if (appPages[i].ownsDataObject(data)) {
-                const page = appPages[i];
+                this._unloadCurrentPage(false);
+                this.hideTooltip();
+
+                const page = new appPages[i]();
                 page.loadFromDataObject(data).then(pageDocument => {
-                    if (!pageDocument) {
-                        return;
-                    }
-
-                    this.hideTooltip();
-                    this._unloadCurrentPage();
-
-                    this.currentPage = page;
-                    this._loadPageIntoDom(pageDocument);
+                    this.#currentPage = page;
+                    this._loadPageDocument(pageDocument);
+                    this._validateHistory();
+                    this._updateHistoryButtons();
                 })
 
                 return;
@@ -130,19 +145,19 @@ class PageManager {
      * @param {DOMRect} targetElementRect A DOMRect for the element that the tooltip should be positioned relative to
      */
     showPagePreviewTooltip(pageId, pageData, targetElementRect) {
-        this._showTooltip = true;
+        this.#showTooltip = true;
         const previewPromise = this.getPagePreview(pageId, pageData);
 
         previewPromise.then(preview => {
             if (preview) {
-                this.pagePreviewTooltip.classList.remove("content-tooltip");
-                this.pagePreviewTooltip.classList.add("preview-tooltip");
-                this.pagePreviewTooltip.appendChild(preview);
+                this.#pagePreviewTooltip.classList.remove("content-tooltip");
+                this.#pagePreviewTooltip.classList.add("preview-tooltip");
+                this.#pagePreviewTooltip.appendChild(preview);
 
                 // tooltip doesn't have a rect until it's part of the DOM, so now we can reposition it
                 this._repositionTooltip(targetElementRect).then( () => {
-                    if (this._showTooltip) {
-                        this.pagePreviewTooltip.classList.remove("hidden-collapse")
+                    if (this.#showTooltip) {
+                        this.#pagePreviewTooltip.classList.remove("hidden-collapse")
                     }
                 });
             }
@@ -156,18 +171,38 @@ class PageManager {
      * @param {Element} content An HTML element to use as the content of the tooltip
      */
     showTooltip(targetElementRect, content) {
-        this._showTooltip = true;
+        this.#showTooltip = true;
 
-        this.pagePreviewTooltip.classList.add("content-tooltip");
-        this.pagePreviewTooltip.classList.remove("preview-tooltip");
-        this.pagePreviewTooltip.appendChild(content);
+        this.#pagePreviewTooltip.classList.add("content-tooltip");
+        this.#pagePreviewTooltip.classList.remove("preview-tooltip");
+        this.#pagePreviewTooltip.appendChild(content);
 
         // tooltip doesn't have a rect until it's part of the DOM, so now we can reposition it
         this._repositionTooltip(targetElementRect).then( () => {
-            if (this._showTooltip) {
-                this.pagePreviewTooltip.classList.remove("hidden-collapse")
+            if (this.#showTooltip) {
+                this.#pagePreviewTooltip.classList.remove("hidden-collapse")
             }
         });
+    }
+
+    tryGoBack() {
+        if (!this.canGoBack) {
+            return false;
+        }
+
+        this._loadPageFromHistory(this.#currentHistoryIndex - 1);
+
+        return true;
+    }
+
+    tryGoForward() {
+        if (!this.canGoForward) {
+            return false;
+        }
+
+        this._loadPageFromHistory(this.#currentHistoryIndex + 1);
+
+        return true;
     }
 
     _extractPageDataArgs(element) {
@@ -187,6 +222,23 @@ class PageManager {
     }
 
     _handleDocumentClick(event) {
+        if (event.button === 3) {
+            event.preventDefault();
+            this.tryGoBack();
+            return;
+        }
+
+        if (event.button === 4) {
+            event.preventDefault();
+            this.tryGoForward();
+            return;
+        }
+
+        // After this point, we only care about left clicks
+        if (event.button != 0) {
+            return;
+        }
+
         // For http links, open in an external browser
         if (event.target.href && event.target.href.startsWith("http")) {
             event.preventDefault();
@@ -225,35 +277,73 @@ class PageManager {
         }
     }
 
-    async _loadPageIntoDom(pageDocument) {
+    _handleKeyDown(event) {
+        if (event.altKey && event.key === "ArrowLeft" && !event.repeat) {
+            event.preventDefault();
+            this.tryGoBack();
+        }
+        else if (event.altKey && event.key === "ArrowRight" && !event.repeat) {
+            event.preventDefault();
+            this.tryGoForward();
+        }
+    }
+
+    async _loadPageFromHistory(historyIndex) {
+        this.hideTooltip();
+        this._unloadCurrentPage(true);
+
+        const historyState = this.#pageHistory[historyIndex];
+        this.#currentPage = new pagesById[historyState.pageId]();
+
+        const pageDocument = await this.#currentPage.load(historyState.data);
+        this._loadPageDocument(pageDocument);
+
+        this.#currentHistoryIndex = historyIndex;
+        this._updateHistoryButtons();
+    }
+
+    async _loadPageDocument(pageDocument) {
         const documentBody = await pageDocument.body;
 
         // Replace the header content entirely
-        this._pageTitleHolder.innerHTML = "";
+        this.#pageTitleHolder.innerHTML = "";
 
         if (pageDocument.title.icon) {
             const img = document.createElement("img");
             img.src = pageDocument.title.icon;
 
-            this._pageTitleHolder.appendChild(img);
+            this.#pageTitleHolder.appendChild(img);
         }
 
-        this._pageTitleHolder.innerHTML += pageDocument.title.text;
+        this.#pageTitleHolder.innerHTML += pageDocument.title.text;
 
         // Clear out the contents of the hosting element and replace them with this page
-        this._pageContentHolder.innerHTML = "";
-        this._pageContentHolder.appendChild(documentBody);
+        this.#pageContentHolder.innerHTML = "";
+        this.#pageContentHolder.appendChild(documentBody);
+        this.#pageContentHolder.scrollTo(0, 0);
     }
 
     _pushToHistory(historyState) {
-        while (this.pageHistory.length >= this.maxPageHistorySize) {
+        // Get rid of any history entries after our current position (e.g., if we've gone back a few times
+        // then click a link, the 'forward' history should be erased)
+        this.#pageHistory = this.#pageHistory.splice(0, this.#currentHistoryIndex);
+
+        while (this.#pageHistory.length >= this.#maxPageHistorySize) {
             // Remove the oldest entries until the history is small enough
-            this.pageHistory.shift();
+            this.#pageHistory.shift();
         }
 
         if (historyState) {
-            this.pageHistory.push(historyState);
+            // Compare with latest history state and don't add if they match
+            const latestHistoryState = this.#pageHistory.last;
+
+            if (!Utils.equals(historyState, latestHistoryState)) {
+                this.#pageHistory.push(historyState);
+            }
         }
+
+        this.#currentHistoryIndex = this.#pageHistory.length;
+        this._updateHistoryButtons();
     }
 
     async _repositionTooltip(targetElementRect) {
@@ -262,9 +352,9 @@ class PageManager {
 
         // Tooltip needs to be briefly visible so its size can be calculated in the DOM, but then hidden
         // again so it's not visible in the wrong place while we use IPC
-        this.pagePreviewTooltip.classList.remove("hidden-collapse")
-        const tooltipRect = this.pagePreviewTooltip.getBoundingClientRect();
-        this.pagePreviewTooltip.classList.add("hidden-collapse")
+        this.#pagePreviewTooltip.classList.remove("hidden-collapse")
+        const tooltipRect = this.#pagePreviewTooltip.getBoundingClientRect();
+        this.#pagePreviewTooltip.classList.add("hidden-collapse")
 
         let windowBounds = await ipcRenderer.invoke("get-window-size");
 
@@ -281,18 +371,64 @@ class PageManager {
             tooltipTop = targetElementRect.top + targetElementRect.height + verticalMargin;
         }
 
-        this.pagePreviewTooltip.style.top = tooltipTop + "px";
-        this.pagePreviewTooltip.style.left = tooltipLeft + "px";
+        this.#pagePreviewTooltip.style.top = tooltipTop + "px";
+        this.#pagePreviewTooltip.style.left = tooltipLeft + "px";
     }
 
-    _unloadCurrentPage() {
-        if (this.currentPage) {
-            const newHistoryState = this.currentPage.onUnloadBeginning(event);
-
-            if (newHistoryState) {
-                this._pushToHistory(newHistoryState);
-            }
+    _unloadCurrentPage(isHistoryNavigation) {
+        if (!this.#currentPage) {
+            return;
         }
+
+        const newHistoryState = this.#currentPage.makeHistoryState();
+
+        if (!newHistoryState) {
+            return;
+        }
+
+        if (isHistoryNavigation) {
+            // If navigating through history, just overwrite
+            this.#pageHistory[this.#currentHistoryIndex] = newHistoryState;
+        }
+        else {
+            this._pushToHistory(newHistoryState);
+        }
+    }
+
+    _updateHistoryButtons() {
+        if (this.canGoBack) {
+            document.getElementById("history-button-back").classList.remove("disabled");
+        }
+        else {
+            document.getElementById("history-button-back").classList.add("disabled");
+        }
+
+        if (this.canGoForward) {
+            document.getElementById("history-button-forward").classList.remove("disabled");
+        }
+        else {
+            document.getElementById("history-button-forward").classList.add("disabled");
+        }
+    }
+
+    _validateHistory() {
+        const currentState = this.#currentPage.makeHistoryState();
+        const latestHistoryState = this.#pageHistory.last;
+
+        if (Utils.equals(currentState, latestHistoryState)) {
+            // Just delete the latest entry if it matches the current page
+            this.#pageHistory.pop();
+            this.#currentHistoryIndex = Math.min(this.#currentHistoryIndex, this.#pageHistory.length);
+            this._updateHistoryButtons();
+        }
+    }
+
+    get canGoBack() {
+        return this.#currentHistoryIndex > 0;
+    }
+
+    get canGoForward() {
+        return this.#currentHistoryIndex < this.#pageHistory.length - 1;
     }
 }
 

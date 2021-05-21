@@ -4,30 +4,29 @@ import * as Templates from "../templates.js";
 import * as Widgets from "../widgets.js";
 
 class ClassSelectionPage extends AppPage {
-    constructor() {
-        super("class-selection-page");
 
-        this.classPool = null;
-    }
+    static pageId = "class-selection-page";
+
+    #classPool = null;
 
     async load(_data) {
-        this.classPool = _data.classPool;
+        this.#classPool = _data.classPool;
 
         const template = await Templates.instantiateTemplate("assets/html/templates/pages/class-selection-page.html", "template-class-selection-page");
         const contentSection = template.querySelector("#class-selection-content");
 
         let classes = null;
         let titlePrefix = null;
-        if (this.classPool == "infantry") {
+        if (this.#classPool == "infantry") {
             classes = DataHelper.getInfantryClasses();
             titlePrefix = "Infantry";
         }
-        else if (this.classPool == "mec") {
+        else if (this.#classPool == "mec") {
             classes = DataHelper.getMecClasses();
             titlePrefix = "MEC";
         }
         else {
-            throw new Error(`Unrecognized class pool "${this.classPool}"`);
+            throw new Error(`Unrecognized class pool "${this.#classPool}"`);
         }
 
         for (let i = 0; i < classes.length; i++) {
@@ -52,12 +51,8 @@ class ClassSelectionPage extends AppPage {
         };
     }
 
-    onUnloadBeginning(_event) {
-        const historyData = {
-            classPool: this.classPool
-        };
-
-        return new PageHistoryState(this, historyData);
+    makeHistoryState() {
+        return new PageHistoryState(this, { classPool: this.#classPool });
     }
 }
 

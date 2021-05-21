@@ -34,7 +34,6 @@ When you start XCOM Companion, it will automatically check for updates and notif
 
 Disclaimer: None of these features are guaranteed to be added; they all depend on how much free time I have to work on the app, and the availability of the data needed to make them work properly. They are listed here roughly in their order of likelihood to happen (most likely at top).
 
-* **Page history:** Navigate backwards and forwards between pages like in a browser, making it easier to keep your place.
 * **Enemy database:** Long War makes a number of changes to enemies, including introducing Leaders and Navigators with access to many more perks than before. A proper enemy database will help you find out if it's possible for that Floater to have Covering Fire before you take the shot.
 * **Enemy tracker:** In extended engagements, it's easy to lose track of how many enemies you've revealed versus how many you've killed. The enemy tracker will make it easy to update the count as you run into them, with an optional streamer overlay mode so your viewers can follow along.
 * **Air combat simulator:** A hopeful extension of the UFO database, simply choose your Interceptor's loadout (including Foundry project completion) and which UFO type you're up against. A [Monte Carlo simulation](https://en.wikipedia.org/wiki/Monte_Carlo_method) will show you the probability of different outcomes.

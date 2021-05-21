@@ -1,13 +1,11 @@
 import { AppPage, PageHistoryState } from "./app-page.js";
 import * as DataHelper from "../data-helper.js";
 import * as Templates from "../templates.js";
-import * as Widgets from "../widgets.js";
 import * as Utils from "../utils.js";
 
 class UfoBrowsePage extends AppPage {
-    constructor() {
-        super("ufo-browse-page");
-    }
+
+    static pageId = "ufo-browse-page";
 
     async load(data) {
         const template = await Templates.instantiateTemplate("assets/html/templates/pages/ufo-browse-page.html", "template-ufo-browse-page");
@@ -24,13 +22,6 @@ class UfoBrowsePage extends AppPage {
                 text: "UFOs"
             }
         };
-    }
-
-    onUnloadBeginning(_event) {
-        const historyData = {
-        };
-
-        return new PageHistoryState(this, historyData);
     }
 
     async _createUfoEntry(ufo) {

@@ -5,13 +5,12 @@ import * as Widgets from "../widgets.js";
 import * as Utils from "../utils.js";
 
 class TechDetailsPage extends AppPage {
-    constructor() {
-        super("tech-details-page");
 
-        this.techId = null;
-    }
+    static pageId = "tech-details-page";
 
-    async generatePreview(data) {
+    #techId = null;
+
+    static async generatePreview(data) {
         if (!data.techId) {
             return null;
         }
@@ -30,6 +29,10 @@ class TechDetailsPage extends AppPage {
         return template;
     }
 
+    static ownsDataObject(dataObj) {
+        return dataObj.id.startsWith("research_");
+    }
+
     async load(data) {
         const tech = DataHelper.technologies[data.techId];
 
@@ -37,7 +40,7 @@ class TechDetailsPage extends AppPage {
     }
 
     async loadFromDataObject(tech) {
-        this.techId = tech.id;
+        this.#techId = tech.id;
 
         const template = await Templates.instantiateTemplate("assets/html/templates/pages/tech-details-page.html", "template-tech-details-page");
 
@@ -61,18 +64,8 @@ class TechDetailsPage extends AppPage {
         };
     }
 
-    onUnloadBeginning(_event) {
-        const historyData = {
-            techId: this.techId
-        };
-
-        this.techId = null;
-
-        return new PageHistoryState(this, historyData);
-    }
-
-    ownsDataObject(dataObj) {
-        return dataObj.id.startsWith("research_");
+    makeHistoryState() {
+        return new PageHistoryState(this, { techId: this.#techId });
     }
 
     _populateBeneficialCredits(template, tech) {

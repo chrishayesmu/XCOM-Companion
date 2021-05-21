@@ -33,11 +33,12 @@ const ufoWeapons = {
 };
 
 class UfoDetailsPage extends AppPage {
-    constructor() {
-        super("ufo-details-page");
-    }
 
-    async generatePreview(data) {
+    static pageId = "ufo-details-page";
+
+    #ufoId = null;
+
+    static async generatePreview(data) {
         if (!data.ufoId) {
             return null;
         }
@@ -56,6 +57,10 @@ class UfoDetailsPage extends AppPage {
         return template;
     }
 
+    static ownsDataObject(dataObj) {
+        return dataObj.id.startsWith("ufo_");
+    }
+
     async load(data) {
         const ufo = DataHelper.ufos[data.ufoId];
 
@@ -63,7 +68,7 @@ class UfoDetailsPage extends AppPage {
     }
 
     async loadFromDataObject(ufo) {
-        this.ufoId = ufo.id;
+        this.#ufoId = ufo.id;
 
         const template = await Templates.instantiateTemplate("assets/html/templates/pages/ufo-details-page.html", "template-ufo-details-page");
 
@@ -86,18 +91,8 @@ class UfoDetailsPage extends AppPage {
         };
     }
 
-    onUnloadBeginning(_event) {
-        const historyData = {
-            ufoId: this.ufoId
-        };
-
-        this.ufoId = null;
-
-        return new PageHistoryState(this, historyData);
-    }
-
-    ownsDataObject(dataObj) {
-        return dataObj.id.startsWith("ufo_");
+    makeHistoryState() {
+        return new PageHistoryState(this, { ufoId: this.#ufoId });
     }
 
     _calculateDps(ufo, aimBonus, target, alienResearch) {

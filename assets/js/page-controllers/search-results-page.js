@@ -3,29 +3,32 @@ import * as Templates from "../templates.js";
 import * as Widgets from "../widgets.js";
 
 class SearchResultsPage extends AppPage {
-    constructor() {
-        super("search-results-page");
 
-        this._dataGroupByPrefix = {
-            "facility": "Base Facility",
-            "foundry": "Foundry Project",
-            "gene_mod": "Gene Mod",
-            "infantry_class": "Class",
-            "item": "Item",
-            "mec_class": "Class",
-            "map": "Map",
-            "perk": "Perk",
-            "psi": "Psi Ability",
-            "research": "Research",
-            "ufo": "UFO"
-        };
+    static pageId = "search-results-page";
 
-        this.query = null;
-    }
+    #dataGroupByPrefix = {
+        "facility": "Base Facility",
+        "foundry": "Foundry Project",
+        "gene_mod": "Gene Mod",
+        "infantry_class": "Class",
+        "item": "Item",
+        "mec_class": "Class",
+        "map": "Map",
+        "perk": "Perk",
+        "psi": "Psi Ability",
+        "research": "Research",
+        "ufo": "UFO"
+    };
 
-    async generatePreview(data) {
+    #query = null;
+
+    static async generatePreview(data) {
         // no need for previews for this page
         return null;
+    }
+
+    static ownsDataObject(dataObj) {
+        return dataObj.id === "search_results";
     }
 
     async load() {
@@ -44,7 +47,7 @@ class SearchResultsPage extends AppPage {
 
         for (let i = 0; i < searchResults.results.length; i++) {
             const result = searchResults.results[i];
-            const resultGroup = this._dataGroupByPrefix[this._getDataType(result)];
+            const resultGroup = this.#dataGroupByPrefix[this._getDataType(result)];
 
             if (!groups[resultGroup]) {
                 groups[resultGroup] = [];
@@ -89,17 +92,6 @@ class SearchResultsPage extends AppPage {
                 text: "Search Results"
             }
         };
-    }
-
-    ownsDataObject(dataObj) {
-        return dataObj.id === "search_results";
-    }
-
-    onUnloadBeginning(_event) {
-        const historyData = {
-        };
-
-        return new PageHistoryState(this, historyData);
     }
 
     _getDataType(data) {

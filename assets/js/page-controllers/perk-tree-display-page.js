@@ -4,15 +4,14 @@ import * as Templates from "../templates.js";
 import * as Widgets from "../widgets.js";
 
 class PerkTreeDisplayPage extends AppPage {
-    constructor() {
-        super("perk-tree-display-page");
 
-        this.displayMode = null;
-        this.highlightedItem = null;
-        this.soldierClass = null;
-    }
+    static pageId = "perk-tree-display-page";
 
-    async generatePreview(data) {
+    #displayMode = null;
+    #highlightedItem = null;
+    #soldierClass = null;
+
+    static async generatePreview(data) {
         if (!data.itemId) {
             return null;
         }
@@ -52,7 +51,8 @@ class PerkTreeDisplayPage extends AppPage {
     }
 
     async load(data) {
-        this.highlightedItem = data.highlighted;
+        this.#displayMode = data.displayMode;
+        this.#highlightedItem = data.highlighted;
 
         if (data.displayMode == "class-perks") {
             return this._loadClassPerksTree(data);
@@ -68,34 +68,33 @@ class PerkTreeDisplayPage extends AppPage {
         }
     }
 
-    onUnloadBeginning(_event) {
+    makeHistoryState() {
         // TODO: persist which perks have been selected
         const historyData = {
-            displayMode: this.displayMode,
-            highlightedItem: this.highlightedItem,
-            soldierClass: this.soldierClass
+            displayMode: this.#displayMode,
+            highlightedItem: this.#highlightedItem
         };
 
-        this.displayMode = null;
-        this.highlightedItem = null;
-        this.soldierClass = null;
+        if (this.#soldierClass) {
+            historyData.classId = this.#soldierClass.id;
+        }
 
         return new PageHistoryState(this, historyData);
     }
 
     async _loadClassPerksTree(data) {
-        this.soldierClass = DataHelper.soldierClasses[data.classId];
+        this.#soldierClass = DataHelper.soldierClasses[data.classId];
 
         const template = await Templates.instantiateTemplate("assets/html/templates/pages/perk-tree-display-page.html", "template-perk-tree-display-page");
 
         const rows = template.querySelectorAll(".perk-tree-row"); // 7 rows, one per rank
 
         for (let rank = 0; rank < 7; rank++) {
-            const perks = this.soldierClass.perks[rank];
+            const perks = this.#soldierClass.perks[rank];
 
             // Fill in the stat progression
             const currentRow = rows[rank];
-            const stats = this.soldierClass.statProgression[String(rank)];
+            const stats = this.#soldierClass.statProgression[String(rank)];
             currentRow.querySelector(".stat-aim").textContent = stats.aim;
             currentRow.querySelector(".stat-hp").textContent = stats.hp;
             currentRow.querySelector(".stat-will").textContent = stats.will;
@@ -116,7 +115,7 @@ class PerkTreeDisplayPage extends AppPage {
             body: template,
             title: {
                 icon: "assets/img/misc-icons/xcom_logo.png",
-                text: "Perk Tree - " + this.soldierClass.name
+                text: "Perk Tree - " + this.#soldierClass.name
             }
         };
     }
@@ -155,8 +154,8 @@ class PerkTreeDisplayPage extends AppPage {
             iconImage.addEventListener("mouseenter", this._onGeneModMouseenter.bind(this));
         }
 
-        if (this.highlightedItem) {
-            this._loadGeneModDetails(this.highlightedItem, template);
+        if (this.#highlightedItem) {
+            this._loadGeneModDetails(this.#highlightedItem, template);
 
             // TODO it would be nice to make it selected as though it had been clicked, too
         }
@@ -277,10 +276,10 @@ class PerkTreeDisplayPage extends AppPage {
 
         let perkAim = 0, perkMobility = 0, perkWill = 0;
 
-        if (perkId in this.soldierClass.perkStatBonuses) {
-            perkAim = this.soldierClass.perkStatBonuses[perkId].aim || 0;
-            perkMobility = this.soldierClass.perkStatBonuses[perkId].mobility || 0;
-            perkWill = this.soldierClass.perkStatBonuses[perkId].will || 0;
+        if (perkId in this.#soldierClass.perkStatBonuses) {
+            perkAim = this.#soldierClass.perkStatBonuses[perkId].aim || 0;
+            perkMobility = this.#soldierClass.perkStatBonuses[perkId].mobility || 0;
+            perkWill = this.#soldierClass.perkStatBonuses[perkId].will || 0;
         }
 
         document.getElementById("perk-stat-aim").textContent = perkAim;

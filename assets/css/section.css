@@ -17,6 +17,7 @@
     height: 6rem;
     line-height: 1;
     padding: 2rem 1.25rem 1rem 1.25rem;
+    position: relative;
 }
 
 .section-wrapper {
@@ -39,4 +40,30 @@
   height: 32px;
   vertical-align: middle;
   margin-right: .5em;
+}
+
+#history-buttons-container {
+    position: absolute;
+    left: 10px;
+    bottom: -1px;
+}
+
+#history-buttons-container img {
+    cursor: pointer;
+    filter: brightness(1.2);
+    height: 20px;
+}
+
+#history-buttons-container img.disabled {
+    opacity: 0.5;
+}
+
+#history-buttons-container img:not(.disabled):active {
+    filter: brightness(1.8);
+    opacity: 1;
+}
+
+#page-title-container {
+    margin-top: -12px;
+    margin-left: 0px;
 }

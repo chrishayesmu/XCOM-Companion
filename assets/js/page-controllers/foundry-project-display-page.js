@@ -5,13 +5,12 @@ import * as Widgets from "../widgets.js";
 import * as Utils from "../utils.js";
 
 class FoundryProjectDisplayPage extends AppPage {
-    constructor() {
-        super("foundry-project-display-page");
 
-        this.projectId = null;
-    }
+    static pageId = "foundry-project-display-page";
 
-    async generatePreview(data) {
+    #projectId = null;
+
+    static async generatePreview(data) {
         if (!data.projectId) {
             return null;
         }
@@ -30,6 +29,10 @@ class FoundryProjectDisplayPage extends AppPage {
         return template;
     }
 
+    static ownsDataObject(dataObj) {
+        return dataObj.id.startsWith("foundry_");
+    }
+
     async load(data) {
         if (!data.projectId) {
             return null;
@@ -40,7 +43,7 @@ class FoundryProjectDisplayPage extends AppPage {
     }
 
     async loadFromDataObject(project) {
-        this.projectId = project.id;
+        this.#projectId = project.id;
 
         const template = await Templates.instantiateTemplate("assets/html/templates/pages/foundry-project-display-page.html", "template-foundry-project-display-page");
 
@@ -64,16 +67,8 @@ class FoundryProjectDisplayPage extends AppPage {
         };
     }
 
-    onUnloadBeginning(_event) {
-        const historyData = {
-            projectId: this.projectId
-        };
-
-        return new PageHistoryState(this, historyData);
-    }
-
-    ownsDataObject(dataObj) {
-        return dataObj.id.startsWith("foundry_");
+    makeHistoryState() {
+        return new PageHistoryState(this, { projectId: this.#projectId });
     }
 
     _populateBeneficialCredits(template, project) {
