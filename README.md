@@ -45,3 +45,7 @@ Disclaimer: None of these features are guaranteed to be added; they all depend o
 * Some items and Foundry Projects have intentionally vague wording due to lack of clarity around how they function. For example, it's not clear if the dodge chance granted by UFO Countermeasures is a flat chance on any shot, a flat decrease to enemy aim, or something else. I will fill these in if and when I learn more.
 * Some specific pieces of data are missing for UFOs, especially the Overseer and the Assault Carrier.
 * If you open the app and very quickly switch to the Research Tree and mouse over something, you might see the entire tree scramble. This is a really low priority to fix; just don't do that. If it does happen, close and reopen XCOM Companion.
+
+## Feedback, bug reports, feature requests
+
+The best way to contact me is by [creating an issue](https://github.com/chrishayesmu/XCOM-Companion/issues/new) on GitHub, but if you don't have a GitHub account, I can also be reached via Discord DM at SwfDelicious#4905.
