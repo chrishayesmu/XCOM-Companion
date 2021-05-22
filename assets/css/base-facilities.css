@@ -149,3 +149,7 @@ div.base-facility-browse-money-icon {
 .facility-browse-cost-type {
     text-align: right;
 }
+
+base-facility-browse-preview-header div {
+    background-color: var(--color-bg-subtle);
+}

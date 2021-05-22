@@ -1,3 +1,5 @@
+import * as Utils from "./utils.js";
+
 // Load all the JSON data at once
 const baseFacilityData = await fetch("assets/data/base-facilities.json").then(response => response.json());
 const councilRequestData = await fetch("assets/data/council-requests.json").then(response => response.json());
@@ -14,6 +16,20 @@ const ufoData = await fetch("assets/data/ufos.json").then(response => response.j
 // ------------------------------------------------------------------
 // Process the data into a form we can readily use throughout the app
 // ------------------------------------------------------------------
+
+// --------------- Research credits ------------------
+// Research credits are entirely synthesized from other data
+const researchCredits = {};
+const creditTypes = [ "aerospace", "all", "armor", "cybernetics", "gauss_weapons", "laser_weapons", "plasma_weapons", "psionics", "weapons" ];
+
+for (let i = 0; i < creditTypes.length; i++) {
+    researchCredits[creditTypes[i]] = {
+        id: "research_credit_" + creditTypes[i],
+        name: Utils.capitalizeEachWord(creditTypes[i]),
+        benefitsFoundryProjects: [],
+        benefitsResearch: []
+    };
+}
 
 // --------------- Perks ------------------
 for (let perkId in perkData.perks) {
@@ -286,6 +302,14 @@ for (let id in foundryProjectData.foundry_projects) {
         });
     }
 
+    if (project.benefits_from_credits) {
+        for (let i = 0; i < project.benefits_from_credits.length; i++) {
+            const creditType = project.benefits_from_credits[i];
+
+            researchCredits[creditType].benefitsFoundryProjects.push(project);
+        }
+    }
+
     if (project.research_prerequisites) {
         for (let i = 0; i < project.research_prerequisites.length; i++) {
             const prereq = project.research_prerequisites[i];
@@ -387,6 +411,18 @@ for (let techId in techTreeData.technologies) {
             });
         }
     }
+
+    if (tech.benefits_from_research_credit_types) {
+        for (let i = 0; i < tech.benefits_from_research_credit_types.length; i++) {
+            const creditType = tech.benefits_from_research_credit_types[i];
+
+            researchCredits[creditType].benefitsResearch.push(tech);
+        }
+    }
+
+    if (tech.grants_research_credit) {
+        researchCredits[tech.grants_research_credit].grantedBy = tech;
+    }
 }
 
 function getInfantryClasses() {
@@ -451,6 +487,7 @@ export {
     maps,
     perks,
     psiAbilities,
+    researchCredits,
     soldierClasses,
     technologies,
     ufos

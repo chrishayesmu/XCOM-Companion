@@ -117,3 +117,7 @@ div.foundry-browse-money-icon {
 #foundry-browse-cost-meld {
     text-align: right;
 }
+
+foundry-project-browse-preview-header div {
+    background-color: var(--color-bg-subtle);
+}

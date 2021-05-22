@@ -1,0 +1,28 @@
+research-credit[isHeader] div {
+    background-color: var(--color-bg-subtle);
+}
+
+research-credit:not([isHeader]) .research-credit-container > div {
+    padding: 10px 0;
+}
+
+.research-credit-container {
+    display: grid;
+    grid-template-columns: 130px 240px 1fr 1fr;
+    margin: 0px 20px;
+}
+
+.research-credit-container > div {
+    border: 1px solid var(--color-border-subtle);
+    padding: 5px 6px;
+
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    /* to combine adjacent borders */
+    margin-top: -1px;
+    margin-left: -1px;
+}

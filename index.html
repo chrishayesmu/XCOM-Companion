@@ -24,9 +24,11 @@
     <link rel="stylesheet" href="assets/css/ufos.css" />
     <link rel="stylesheet" href="assets/css/widgets.css" />
 
+    <!-- CSS for custom elements -->
+    <link rel="stylesheet" href="assets/css/custom-elements/research-credit.css" />
+    <link rel="stylesheet" href="assets/css/custom-elements/single-select-list.css" />
     <link rel="stylesheet" href="assets/css/custom-elements/timeline.css" />
     <link rel="stylesheet" href="assets/css/custom-elements/toggle-group.css" />
-    <link rel="stylesheet" href="assets/css/custom-elements/single-select-list.css" />
 
     <script src="assets/js/prototype-changes.js"></script>
 
@@ -34,9 +36,10 @@
     <script type="module" src="assets/js/custom-elements/app-update-notifier.js"></script>
     <script type="module" src="assets/js/custom-elements/base-facilities.js"></script>
     <script type="module" src="assets/js/custom-elements/foundry-projects.js"></script>
+    <script type="module" src="assets/js/custom-elements/research-credit.js"></script>
+    <script type="module" src="assets/js/custom-elements/single-select-list.js"></script>
     <script type="module" src="assets/js/custom-elements/timeline.js"></script>
     <script type="module" src="assets/js/custom-elements/toggle-group.js"></script>
-    <script type="module" src="assets/js/custom-elements/single-select-list.js"></script>
 </head>
 
 <body spellcheck="false">
@@ -57,8 +60,13 @@
                     Strategy Layer
                 </h5>
 
-                <div data-page-on-click="tech-tree-display-page" class="nav-button">
-                    Research Tree
+                <div class="nav-container">
+                    <span class="nav-container-label">Research</span>
+
+                    <div class="nav-subsection-container">
+                        <button data-page-on-click="tech-tree-display-page" class="nav-button subnav-button">Tech Tree</button>
+                        <button data-page-on-click="research-credits-browse-page" class="nav-button subnav-button">Interrogation Credits</button>
+                    </div>
                 </div>
 
                 <div class="nav-container">
