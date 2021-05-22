@@ -97,15 +97,6 @@ class TechTreeDisplayPage extends AppPage {
         }
     };
 
-    constructor() {
-        super();
-
-        // Statically create a single instance of the tree so it can begin loading immediately, as vis.js takes a few seconds
-        if (!TechTreeDisplayPage.treePage) {
-            this.load();
-        }
-    }
-
     async load(_data) {
         if (TechTreeDisplayPage.treePage) {
             // Need to redraw the network after a very short delay, because on the initial load
@@ -486,6 +477,12 @@ class TechTreeDisplayPage extends AppPage {
         const elementRect = new DOMRect(networkContainerRect.left + rectTopLeftPosition.x, networkContainerRect.top + rectTopLeftPosition.y, rectWidth, rectHeight);
         PageManager.instance.showPagePreviewTooltip("tech-details-page", { techId: techId }, elementRect);
     }
+}
+
+// Statically create a single instance of the tree so it can begin loading immediately, as vis.js takes a few seconds
+if (!TechTreeDisplayPage.treePage) {
+    const page = new TechTreeDisplayPage();
+    page.load();
 }
 
 export default TechTreeDisplayPage;
