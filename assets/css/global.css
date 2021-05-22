@@ -209,3 +209,10 @@ span.inline-resource-icon {
 #home-welcome-text {
     padding-bottom: 25px;
 }
+
+#easter-egg-amongus-pizza {
+    position: absolute;
+    filter: brightness(0.5) opacity(0.25);
+    height: 100%;
+    width: 100%;
+}

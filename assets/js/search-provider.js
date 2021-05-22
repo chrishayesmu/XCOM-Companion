@@ -14,6 +14,8 @@ const dataSources = [
     Object.values(dataHelper.ufos)
 ];
 
+const amongUsPizzaTriggers = [ "amongus", "amogus", "among us", "pizza" ];
+
 function onDomReady() {
     const searchInput = document.getElementById("nav-search-input");
 
@@ -22,15 +24,28 @@ function onDomReady() {
         const searchString = searchInput.value.trim();
 
         if (event.key === "Enter" && searchString) {
-            const searchResults = search(searchString);
             searchInput.value = "";
 
-            if (searchResults.resultType === "exact") {
-                PageManager.instance.loadPageForData(searchResults.result);
+            if (amongUsPizzaTriggers.includes(searchString)) {
+                const img = document.getElementById("easter-egg-amongus-pizza");
+
+                if (img.classList.contains("hidden-collapse")) {
+                    img.classList.remove("hidden-collapse");
+                }
+                else {
+                    img.classList.add("hidden-collapse");
+                }
             }
             else {
-                searchResults.id = "search_results";
-                PageManager.instance.loadPageForData(searchResults);
+                const searchResults = search(searchString);
+
+                if (searchResults.resultType === "exact") {
+                    PageManager.instance.loadPageForData(searchResults.result);
+                }
+                else {
+                    searchResults.id = "search_results";
+                    PageManager.instance.loadPageForData(searchResults);
+                }
             }
         }
     });
