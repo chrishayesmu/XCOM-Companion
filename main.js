@@ -68,9 +68,14 @@ function initialize() {
         });
 
         mainWindow.once('ready-to-show', () => {
-            autoUpdater.checkForUpdatesAndNotify();
+            if (autoUpdater.isUpdaterActive()) {
+                autoUpdater.checkForUpdates();
 
-            setInterval(() => { autoUpdater.checkForUpdatesAndNotify() }, 30 * 60 * 1000);
+                setInterval(() => { autoUpdater.checkForUpdates() }, 30 * 60 * 1000);
+            }
+            else {
+                console.log("Updater is not active (probably because app is not packaged); not checking for updates");
+            }
         });
     }
 
