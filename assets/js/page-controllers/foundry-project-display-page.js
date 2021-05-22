@@ -131,6 +131,19 @@ class FoundryProjectDisplayPage extends AppPage {
     _populateCost(template, project) {
         const container = template.querySelector("#foundry-project-cost-container");
 
+        // Handle money first since it's displayed uniquely
+        if (project.cost.money) {
+            const div = document.createElement("div");
+            div.classList.add("foundry-project-cost-type");
+            div.textContent = "Cost: ";
+
+            const span = document.createElement("span");
+            span.classList.add("foundry-project-cost-quantity");
+            span.innerHTML = "<font color='#32CD32'>§" + project.cost.money + "</font>";
+            div.appendChild(span);
+            container.appendChild(div);
+        }
+
         for (const costType in project.cost) {
             if (costType === "money") {
                 continue;
