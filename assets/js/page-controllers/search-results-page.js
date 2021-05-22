@@ -1,4 +1,5 @@
 import { AppPage, PageHistoryState } from "./app-page.js";
+import { search } from "../search-provider.js";
 import * as Templates from "../templates.js";
 import * as Widgets from "../widgets.js";
 
@@ -31,12 +32,16 @@ class SearchResultsPage extends AppPage {
         return dataObj.id === "search_results";
     }
 
-    async load() {
-        // there shouldn't be any direct links here most likely
-        return null;
+    async load(data) {
+        const searchResults = search(data.query);
+
+        // There shouldn't be any direct links here most likely, but we need to be able to restore from history
+        return this.loadFromDataObject(searchResults);
     }
 
     async loadFromDataObject(searchResults) {
+        this.#query = searchResults.query;
+
         const template = await Templates.instantiateTemplate("assets/html/templates/pages/search-results-page.html", "template-search-results-page");
 
         template.querySelector("#search-results-query").textContent = searchResults.query;
@@ -92,6 +97,10 @@ class SearchResultsPage extends AppPage {
                 text: "Search Results"
             }
         };
+    }
+
+    makeHistoryState() {
+        return new PageHistoryState(this, { query: this.#query });
     }
 
     _getDataType(data) {
