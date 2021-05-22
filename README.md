@@ -16,7 +16,7 @@ Note that you may receive warnings from your browser and/or from Windows while d
 
 ### Updates
 
-When you start XCOM Companion, it will automatically check for updates and notify you if there are any. If for some reason this doesn't seem to be working, you can always return here and download the latest release manually.
+When you start XCOM Companion, it will automatically check for updates and notify you if there are any. It will also check again every 30 minutes afterwards. If for some reason this doesn't seem to be working, you can always return here and download the latest release manually.
 
 ## Current features
 
