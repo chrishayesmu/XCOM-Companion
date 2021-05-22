@@ -72,11 +72,9 @@ for (let key in baseFacilityData.facilities) {
     const facility = baseFacilityData.facilities[key];
     facility.id = key;
 
-    if (facility.prerequisites && facility.prerequisites.research) {
-        for (let i = 0; i < facility.prerequisites.research.length; i++) {
-            const techId = facility.prerequisites.research[i];
-            facility.prerequisites.research[i] = techTreeData.technologies[techId];
-        }
+    if (facility.research_prerequisite) {
+        const techId = facility.research_prerequisite;
+        facility.research_prerequisite = techTreeData.technologies[techId];
     }
 }
 
@@ -255,16 +253,14 @@ for (let key in baseFacilityData.facilities) {
         });
     }
 
-    if (facility.prerequisites && facility.prerequisites.research) {
-        for (let i = 0; i < facility.prerequisites.research.length; i++) {
-            const prereqTech = facility.prerequisites.research[i];
+    if (facility.research_prerequisite) {
+        const prereqTech = facility.research_prerequisite;
 
-            if (!prereqTech.unlocks.facilities) {
-                prereqTech.unlocks.facilities = [];
-            }
-
-            prereqTech.unlocks.facilities.push(facility);
+        if (!prereqTech.unlocks.facilities) {
+            prereqTech.unlocks.facilities = [];
         }
+
+        prereqTech.unlocks.facilities.push(facility);
     }
 }
 
