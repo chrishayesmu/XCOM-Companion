@@ -32,10 +32,14 @@
 
     <script src="assets/js/prototype-changes.js"></script>
 
+    <!-- page-manager needs to load before custom elements or there can be an import cycle -->
+    <script type="module" src="assets/js/page-manager.js"></script>
+
     <!-- Script files for custom elements -->
     <script type="module" src="assets/js/custom-elements/app-update-notifier.js"></script>
     <script type="module" src="assets/js/custom-elements/base-facilities.js"></script>
     <script type="module" src="assets/js/custom-elements/foundry-projects.js"></script>
+    <script type="module" src="assets/js/custom-elements/in-app-link.js"></script>
     <script type="module" src="assets/js/custom-elements/research-credit.js"></script>
     <script type="module" src="assets/js/custom-elements/single-select-list.js"></script>
     <script type="module" src="assets/js/custom-elements/timeline.js"></script>
@@ -129,7 +133,6 @@
     </main>
     <app-update-notifier></app-update-notifier>
 
-    <script type="module" src="assets/js/page-manager.js"></script>
     <script>
         // Small script to populate app version in the nav header
         const { ipcRenderer } = require('electron');

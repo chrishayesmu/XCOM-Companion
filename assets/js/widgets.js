@@ -17,10 +17,10 @@ function createHelpIcon(helpText) {
 function createInAppLink(data, options) {
     let dataId = null;
 
-    if (typeof(data) == "string") {
+    if (typeof(data) === "string") {
         dataId = data;
     }
-    else if (typeof(data) == "object") {
+    else if (typeof(data) === "object") {
         if (!data.id) {
             console.error("Cannot create link for unknown object", data);
             throw new Error("Cannot create link for unknown object");
@@ -30,76 +30,47 @@ function createInAppLink(data, options) {
     }
 
     options = options || {};
-    let link = null, prefix = null;
 
     if (dataId.startsWith("council_request")) {
-        link = _createCouncilRequestLink(dataId, options);
-        prefix = "Request: ";
-    }
-    else if (dataId.startsWith("facility")) {
-        link = _createBaseFacilityLink(dataId, options);
-        prefix = "Facility: ";
-    }
-    else if (dataId.startsWith("foundry")) {
-        link = _createFoundryProjectLink(dataId, options);
-        prefix = "Foundry: ";
-    }
-    else if (dataId.startsWith("gene_mod")) {
-        link = _createGeneModLink(dataId, options);
-        prefix = "Gene Mod: ";
-    }
-    else if (dataId.startsWith("infantry_class") || dataId.startsWith("mec_class")) {
-        link = _createClassLink(dataId, options);
-        prefix = "Class: ";
-    }
-    else if (dataId.startsWith("item")) {
-        link = _createItemLink(dataId, options);
-        prefix = "Item: ";
-    }
-    else if (dataId.startsWith("map")) {
-        link = _createMapLink(dataId, options);
-        prefix = "Map: ";
-    }
-    else if (dataId.startsWith("perk")) {
-        link = _createPerkLink(dataId, options);
-        prefix = "Perk: ";
-    }
-    else if (dataId.startsWith("psi")) {
-        link = _createPsiAbilityLink(dataId, options);
-        prefix = "Psi Ability: ";
-    }
-    else if (dataId.startsWith("research")) {
-        link = _createTechLink(dataId, options);
-        prefix = "Research: ";
-    }
-    else if (dataId.startsWith("ufo")) {
-        link = _createUfoLink(dataId, options);
-        prefix = "UFO: ";
+        const link = _createCouncilRequestLink(dataId, options);
+
+        if (options.disablePreview) {
+            link.setAttribute("data-pagearg-no-preview", true);
+        }
+
+        if (options.linkText) {
+            link.textContent = options.linkText;
+        }
+
+        if (options.addPrefix) {
+            const prefix = options.prefixText || "Request: ";
+
+            const span = document.createElement("span");
+            span.textContent = prefix;
+            span.appendChild(link);
+
+            return span;
+        }
     }
     else {
-        console.error("Don't know how to create in-app link for ID " + dataId);
-        return null;
+        const link = document.createElement("in-app-link");
+        link.to = dataId;
+        link.addPrefix = options.addPrefix;
+
+        if (options.disablePreview) {
+            link.noPreview = true;
+        }
+
+        if (options.linkText) {
+            link.linkText = options.linkText;
+        }
+
+        if (options.prefixText) {
+            link.prefixText = options.prefixText;
+        }
+
+        return link;
     }
-
-    if (options.disablePreview) {
-        link.setAttribute("data-pagearg-no-preview", true);
-    }
-
-    if (options.linkText) {
-        link.textContent = options.linkText;
-    }
-
-    if (options.addPrefix) {
-        prefix = options.prefixText || prefix;
-
-        const span = document.createElement("span");
-        span.textContent = prefix;
-        span.appendChild(link);
-
-        return span;
-    }
-
-    return link;
 }
 
 async function createSelectableIcon(imgSrc, label, size) {
@@ -116,31 +87,6 @@ async function createSelectableIcon(imgSrc, label, size) {
     }
 
     return icon;
-}
-
-function _createBaseFacilityLink(facilityId, options) {
-    const facility = DataHelper.baseFacilities[facilityId];
-    const link = document.createElement("a");
-
-    link.textContent = facility.name;
-
-    link.setAttribute("data-page-on-click", "base-facility-page");
-    link.setAttribute("data-pagearg-facility-id", facilityId);
-
-    return link;
-}
-
-function _createClassLink(classId, options) {
-    const soldierClass = DataHelper.soldierClasses[classId];
-    const link = document.createElement("a");
-
-    link.textContent = soldierClass.name;
-
-    link.setAttribute("data-page-on-click", "perk-tree-display-page");
-    link.setAttribute("data-pagearg-display-mode", "class-perks");
-    link.setAttribute("data-pagearg-class-id", classId);
-
-    return link;
 }
 
 function _createCouncilRequestLink(requestId, options) {
@@ -160,105 +106,6 @@ function _createCouncilRequestLink(requestId, options) {
     span.innerHTML += (rewardString);
 
     return span;
-}
-
-function _createFoundryProjectLink(projectId, options) {
-    const project = DataHelper.foundryProjects[projectId];
-    const link = document.createElement("a");
-
-    link.textContent = project.name;
-
-    link.setAttribute("data-page-on-click", "foundry-project-display-page");
-    link.setAttribute("data-pagearg-project-id", projectId);
-
-    return link;
-}
-
-function _createGeneModLink(geneModId, options) {
-    const geneMod = DataHelper.geneMods[geneModId];
-    const link = document.createElement("a");
-
-    link.textContent = geneMod.perk.name;
-
-    link.setAttribute("data-page-on-click", "perk-tree-display-page");
-    link.setAttribute("data-pagearg-display-mode", "gene-mods");
-    link.setAttribute("data-pagearg-item-id", geneModId);
-
-    return link;
-}
-
-function _createItemLink(itemId, options) {
-    const item = DataHelper.items[itemId];
-    const link = document.createElement("a");
-
-    link.textContent = item.name;
-
-    link.setAttribute("data-page-on-click", "item-display-page");
-    link.setAttribute("data-pagearg-item-id", itemId);
-
-    return link;
-}
-
-function _createMapLink(mapId, options) {
-    const map = DataHelper.maps[mapId];
-    const link = document.createElement("a");
-
-    link.textContent = map.name;
-
-    link.setAttribute("data-page-on-click", "map-details-page");
-    link.setAttribute("data-pagearg-map-id", mapId);
-
-    return link;
-}
-
-function _createPerkLink(perkId, options) {
-    const perk = DataHelper.perks[perkId];
-    const link = document.createElement("a");
-
-    link.textContent = perk.name;
-
-    link.setAttribute("data-page-on-click", "perk-tree-display-page");
-    link.setAttribute("data-pagearg-display-mode", "single-perk");
-    link.setAttribute("data-pagearg-item-id", perkId);
-
-    return link;
-}
-
-function _createPsiAbilityLink(abilityId, options) {
-    const ability = DataHelper.psiAbilities[abilityId];
-    const link = document.createElement("a");
-
-    link.textContent = ability.name;
-
-    link.setAttribute("data-page-on-click", "perk-tree-display-page");
-    link.setAttribute("data-pagearg-display-mode", "psi-training");
-    link.setAttribute("data-pagearg-item-id", abilityId);
-
-    return link;
-}
-
-function _createTechLink(techId) {
-    const tech = DataHelper.technologies[techId];
-    const link = document.createElement("a");
-
-    link.textContent = tech.name;
-
-    link.setAttribute("data-page-on-click", "tech-details-page");
-    link.setAttribute("data-pagearg-tech-id", techId);
-
-    return link;
-}
-
-function _createUfoLink(ufoId) {
-    const ufo = DataHelper.ufos[ufoId];
-    const link = document.createElement("a");
-
-    link.textContent = ufo.name;
-
-    link.setAttribute("data-page-on-click", "ufo-details-page");
-    link.setAttribute("data-pagearg-ufo-id", ufoId);
-
-    return link;
 }
 
 export { createInAppLink, createHelpIcon, createSelectableIcon };
