@@ -1,0 +1,187 @@
+<template id="template-enemy-display-preview">
+    <div class="flex-column">
+        <div class="preview-header">
+            <img class="preview-img-schematic" />
+            <div class="preview-title"></div>
+        </div>
+        <div class="preview-description"></div>
+    </div>
+</template>
+
+<template id="template-enemy-display-page">
+    <div class="section-content enemy-section-content">
+        <enemy-infobox id="enemy-base-infobox"></enemy-infobox>
+        <div class="enemy-details">
+            <toggle-group id="enemy-difficulty-toggle-group" options="Normal,Classic,Brutal,Impossible" defaultSelected="Impossible"></toggle-group>
+            <!-- <toggle-group options="Overview,Point-in-time"></toggle-group> -->
+            <div>
+                <div id="enemy-research-warning" class="flex-row">
+                        <span style="color: yellow; font-size: 3em; margin-right: 12px">⚠</span> Alien Research is partially dependent on difficulty (70% on Normal; 100% Classic; 110% Brutal; 130% Impossible). As best
+                        as I can determine, this only impacts the timing of Research Upgrades. It does not affect Navigator or Leader upgrades, or when an enemy first appears.
+                        <br /><br />
+                        Selecting a difficulty will automatically update the rest of the page.
+                </div>
+                <div id="enemy-description" class="hidden-collapse"></div>
+            </div>
+            <br />
+            <div>
+                <h3>Research Upgrades</h3>
+                <p>
+                    These upgrades will be applied to all units of this type once the associated Alien Research threshold is reached.
+                </p>
+                <details>
+                    <summary>Show/hide</summary>
+                    <br />
+                    <div id="enemy-general-upgrades-container"></div>
+                </details>
+            <br />
+            <div>
+                <h3>Navigator Upgrades</h3>
+                <p>
+                    These upgrades have a chance of being applied to each unit of this type. There is no limit on how many units in a pod can gain these upgrades, nor is there a limit to the number
+                    of upgrades an individual unit can receive. An enemy could have all of these upgrades, or none of them. It is purely up to chance. (Pod leaders are also eligible for these upgrades.)
+                </p>
+                <p>
+                    If a Navigator upgrade has a 100% chance to occur, then it is functionally identical to a Research upgrade (above), except that the timing of when it occurs will not be changed
+                    by the campaign's difficulty.
+                </p>
+                <span id="enemy-navigator-not-available" class="hidden-collapse" style="color: var(--color); font-weight: bold">
+                    This enemy type has no Navigator upgrades.
+                </span>
+                <details id="enemy-navigator-upgrade-section">
+                    <summary>Show/hide</summary>
+                    <br />
+                    <div id="enemy-navigator-upgrades-container"></div>
+                </details>
+            </div>
+            <br />
+            <div>
+                <h3>Pod Leaders</h3>
+                <p>
+                    One (and only one) unit per pod will be the <strong>pod leader</strong>. In addition to improved stats and more perks, squad leaders are visibly larger than their peers, making them
+                    easy to identify. The pod's leader will determine what other units can appear in the pod.
+                </p>
+                <p>
+                    Leader upgrades are cumulative, so a level 6 leader will also have the stat and perk bonuses of all prior levels. When multiple levels are possible, the leader has an equal chance of
+                    rolling any of the levels. For example, if levels 0-3 are available at the current Alien Research, a leader has a 25% chance of being level 0, 1, 2, or 3. For most enemy types, a level 0
+                    leader is identical to a non-leader.
+                </p>
+                <p>
+                    Level 8 leaders can only appear during the Temple Ship Assault (the final mission), and level 9 leaders can only appear in specially scripted situations, which include certain story missions,
+                    specific terror missions, late-game council missions, and alien base assaults. A detailed list will be added at a later date.
+                </p>
+                <p id="enemy-leader-not-available" class="hidden-collapse" style="color: var(--color); font-weight: bold">
+                    This enemy type cannot spawn leaders.
+                </p>
+                <details id="enemy-leader-upgrade-section">
+                    <summary>Show/hide</summary>
+                    <br />
+                    <div id="enemy-leader-upgrades-container"></div>
+                </details>
+            </div>
+        </div>
+    </div>
+</template>
+
+<template id="template-enemy-infobox">
+    <div class="enemy-infobox">
+        <div class="enemy-infobox-title"></div>
+        <div class="enemy-infobox-subtitle"></div>
+        <img class="enemy-infobox-img" />
+        <div class="enemy-infobox-content-container">
+            <div class="enemy-infobox-description"></div>
+        </div>
+        <div id="enemy-infobox-unit-types"></div>
+        <div class="enemy-infobox-column-heading">Stats</div>
+        <div class="enemy-infobox-stats-container">
+            <div class="enemy-infobox-stat-block">
+                <img src="assets/img/item-stat-icons/hp.png" data-tooltip-text="HP" />
+                <span id="stat-hp"></span>
+            </div>
+            <div class="enemy-infobox-stat-block">
+                <img src="assets/img/item-stat-icons/healing.png" data-tooltip-text="HP Regen Per Turn<br/><br/>This regen will only be applied if this unit has the Adaptive Bone Marrow perk. The +2 regen from that perk <strong>is</strong> included in this number." />
+                <span id="stat-regen"></span>
+            </div>
+            <div class="enemy-infobox-stat-block">
+                <img src="assets/img/item-stat-icons/mobility.png" data-tooltip-text="Mobility" />
+                <span id="stat-mobility"></span>
+            </div>
+            <div class="enemy-infobox-stat-block">
+                <img src="assets/img/item-stat-icons/defense.png" data-tooltip-text="Defense" />
+                <span id="stat-defense"></span>
+            </div>
+            <div class="enemy-infobox-stat-block">
+                <img src="assets/img/item-stat-icons/damage_reduction.png" data-tooltip-text="Damage Reduction" />
+                <span id="stat-dr"></span>
+            </div>
+            <div class="enemy-infobox-stat-block">
+                <img src="assets/img/item-stat-icons/will.png" data-tooltip-text="Will" />
+                <span id="stat-will"></span>
+            </div>
+            <div class="enemy-infobox-stat-block">
+                <img src="assets/img/item-stat-icons/damage.png" data-tooltip-text="Base Damage" />
+                <span id="stat-damage"></span>
+            </div>
+            <div class="enemy-infobox-stat-block">
+                <img src="assets/img/item-stat-icons/aim.png" data-tooltip-text="Aim" />
+                <span id="stat-aim"></span>
+            </div>
+            <div class="enemy-infobox-stat-block">
+                <img src="assets/img/item-stat-icons/crit_chance.png" data-tooltip-text="Bonus Crit Chance"/>
+                <span id="stat-crit-chance"></span>
+            </div>
+            <div id="enemy-infobox-shield-hp-block" class="enemy-infobox-stat-block">
+                <img src="assets/img/item-stat-icons/shield_hp.png" data-tooltip-text="Shield HP<br/><br/>This is the HP of the shield this unit gains when targeted by Mind Merge."/>
+                <span id="stat-shield-hp"></span>
+            </div>
+        </div>
+        <div class="enemy-infobox-column-body-two-column-even">
+            <div class="enemy-infobox-column-heading" data-tooltip-text="The damage dealt by this unit on a non-critical hit. Does not account for any perks.">Damage Range</div>
+            <div class="enemy-infobox-column-heading" data-tooltip-text="The damage dealt by this unit on a critical hit. Does not account for any perks.">Crit Range</div>
+            <div id="enemy-infobox-damage-range" class="enemy-infobox-column-body"></div>
+            <div id="enemy-infobox-crit-range" class="enemy-infobox-column-body"></div>
+        </div>
+        <div id="enemy-infobox-perks-heading" class="enemy-infobox-column-heading">Perks and Abilities</div>
+        <div id="enemy-infobox-perks-container" class="enemy-infobox-column-body"></div>
+        <div id="enemy-infobox-appearance-heading"
+             class="enemy-infobox-column-heading"
+             data-tooltip-template-file="assets/html/templates/pages/enemy-display-page.html"
+             data-tooltip-template-id="enemy-tooltip-latest-appearance">
+             Latest Appearance As Leader
+        </div>
+        <div id="enemy-infobox-appearance-body" class="enemy-infobox-column-body-two-column">
+            <div class="enemy-infobox-column-left" data-tooltip-text="'Normal' refers to pods on the majority of missions, such as Abductions. Only Terror Sites and Covert Operations do not contain Normal pods.">Normal:</div>
+            <alien-research id="research-needed-normal" class="enemy-infobox-column-right" showDate></alien-research>
+            <div class="enemy-infobox-column-left" data-tooltip-text="Terror pods appear in a limited number of missions: Terror Sites, large and very large UFOs, trap UFOs, alien base assaults, and XCOM base defenses.">Terror:</div>
+            <alien-research id="research-needed-terror" class="enemy-infobox-column-right" showDate></alien-research>
+            <div class="enemy-infobox-column-left" data-tooltip-text="Landed UFOs generate enemies as though the aliens had an additional month (+28) of research. This only affects alien types, not their stats.">Landed UFO:</div>
+            <alien-research id="research-needed-landed-ufo" class="enemy-infobox-column-right" showDate></alien-research>
+        </div>
+        <div id="kill-rewards-heading" class="enemy-infobox-column-heading" data-tooltip-text="What this enemy drops when killed. Killing them with explosives will prevent any drops, but injuring it with explosives and finishing it off with something else will not.">Rewards (Killed)</div>
+        <div id="kill-rewards" class="enemy-infobox-column-body"></div>
+        <div id="capture-rewards-heading" class="enemy-infobox-column-heading" data-tooltip-text="What you get for capturing this enemy with the Arc Thrower.">Rewards (Captured)</div>
+        <div id="capture-rewards" class="enemy-infobox-column-body"></div>
+        <div class="enemy-infobox-column-body-two-column-even">
+            <div class="enemy-infobox-column-heading">Autopsy</div>
+            <div class="enemy-infobox-column-heading">Interrogation</div>
+            <div id="enemy-infobox-autopsy" class="enemy-infobox-column-body"></div>
+            <div id="enemy-infobox-interrogation" class="enemy-infobox-column-body"></div>
+        </div>
+    </div>
+</template>
+
+<template id="enemy-tooltip-latest-appearance">
+    <div class="text-only-tooltip">
+        The latest point at which this enemy can lead a pod on a mission. If the aliens gain bonus research, they may show up earlier.
+        <br />
+        <br />
+        Note that this only applies to <strong>leading</strong> pods. Some enemies will show up contrary to what's shown here; for example, Drones can never lead pods on Terror missions, but they can still accompany Cyberdisc-led pods.
+        Zombies can never lead any pod except for on specially-scripted Terror missions.
+    </div>
+</template>
+
+<template id="template-enemy-description-sectoid">
+    <div>
+        The <strong>Sectoid</strong> is one of the first enemies XCOM will encounter.
+    </div>
+</template>

@@ -2,6 +2,7 @@ import * as DataHelper from "../data-helper.js";
 import PageManager from "../page-manager.js";
 
 import BaseFacilityPage from "../page-controllers/base-facility-page.js";
+import EnemyDisplayPage from "../page-controllers/enemy-display-page.js";
 import FoundryProjectDisplayPage from "../page-controllers/foundry-project-display-page.js";
 import ItemDisplayPage from "../page-controllers/item-display-page.js";
 import MapDetailsPage from "../page-controllers/map-details-page.js";
@@ -10,6 +11,13 @@ import TechDetailsPage from "../page-controllers/tech-details-page.js";
 import UfoDetailsPage from "../page-controllers/ufo-details-page.js";
 
 const linkTargets = [
+    {
+        prefix: "enemy_",
+        prefixText: "Enemy",
+        targetPage: EnemyDisplayPage,
+        dataSource: DataHelper.enemies,
+        pageArg: "enemyId"
+    },
     {
         prefix: "facility_",
         prefixText: "Facility",
@@ -177,7 +185,7 @@ class InAppLink extends HTMLElement {
     }
 
     get addPrefix() {
-        return this.hasAttribute("addPrefix");
+        return this.hasAttribute("addPrefix") || this.prefixText;
     }
 
     set addPrefix(addPrefix) {

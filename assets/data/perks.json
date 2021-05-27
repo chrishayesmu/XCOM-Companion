@@ -6,6 +6,16 @@
                 "icon": "assets/img/perk-icons/absorption_fields.png",
                 "description": "Reduces most incoming damage to this unit, scaling up as damage increases. Specifically: reduces 40% of any damage taken after 2; after all other damage reduction has been applied."
             },
+            "perk_acid_spit": {
+                "name": "Acid Spit",
+                "icon": "assets/img/perk-icons/acid_spit.png",
+                "description": "Spit acid at long range, causing a noxious cloud to remain briefly on the battlefield."
+            },
+            "perk_acidic": {
+                "name": "Acidic",
+                "icon": "assets/img/perk-icons/acidic.png",
+                "description": "For Chryssalids and Zombies, apply Acid to enemies hit with melee attacks. For Thin Men, on death, leave an acid cloud on the battlefield. Unit is also immune to Acid attacks and effects."
+            },
             "perk_adaptive_bone_marrow": {
                 "name": "Adaptive Bone Marrow",
                 "icon": "assets/img/perk-icons/adaptive_bone_marrow.png",
@@ -31,6 +41,11 @@
                 "icon": "assets/img/perk-icons/aggression.png",
                 "description": "Confers +10% critical chance per enemy in sight (max +30%). Aliens visible via squadsight are not counted for bonus."
             },
+            "perk_alien_grenade": {
+                "name": "Alien Grenade",
+                "icon": "assets/img/perk-icons/alien_grenade.png",
+                "description": "Does 5 (3-7) damage."
+            },
             "perk_automated_threat_assessment": {
                 "name": "Automated Threat Assessment",
                 "icon": "assets/img/perk-icons/automated_threat_assessment.png",
@@ -45,6 +60,16 @@
                 "name": "Bioelectric Skin",
                 "icon": "assets/img/perk-icons/bioelectric_skin.png",
                 "description": "The soldier projects an electric field from his or her skin, revealing but not alerting nearby enemies, and is immune to strangulation."
+            },
+            "perk_blood_call": {
+                "name": "Blood Call",
+                "icon": "assets/img/perk-icons/adrenal_neurosympathy.png",
+                "description": "Unleash a bestial roar that inspires nearby allies of the same species to greater speed, focus, and resolve for 3 turns. 4 turn cooldown."
+            },
+            "perk_bloodlust": {
+                "name": "Bloodlust",
+                "icon": "assets/img/perk-icons/bloodlust.png",
+                "description": "Allows the Berserker to charge an enemy that wounds it."
             },
             "perk_body_shield": {
                 "name": "Body Shield",
@@ -61,6 +86,21 @@
                 "icon": "assets/img/perk-icons/bring_em_on.png",
                 "description": "Confers 1-4 bonus damage during critical hits (which is then multiplied by 50% due to the critical hit). The damage is higher when more enemies are in view (including squad sight vision). This results in +1.5 dmg for 1-2 enemies, +3 dmg for 3-4 enemies, +4.5 dmg for 5-6 enemies, +6 dmg for 7 or more enemies."
             },
+            "perk_bull_rush": {
+                "name": "Bull Rush",
+                "icon": "assets/img/perk-icons/bull_rush.png",
+                "description": "Charge towards an enemy to make a melee attack. Breaks nearby cover."
+            },
+            "perk_cannon_fire": {
+                "name": "Cannon Fire",
+                "icon": "assets/img/perk-icons/cannon_fire.png",
+                "description": "Beam attack that causes high damage and grants free Overwatch. If the Sectopod does not move, Cannon Fire can be used twice (against different enemies)."
+            },
+            "perk_chryssalid_spawn": {
+                "name": "Chryssalid Spawn",
+                "icon": "assets/img/perk-icons/implant.png",
+                "description": "If a Zombie has been implanted with Chryssalid Eggs, they hatch into a Chryssalid after 3 turns if the Zombie host is not killed."
+            },
             "perk_close_combat_specialist": {
                 "name": "Close Combat Specialist",
                 "icon": "assets/img/perk-icons/close_combat_specialist.png",
@@ -70,6 +110,11 @@
                 "name": "Close Encounters",
                 "icon": "assets/img/perk-icons/close_encounters.png",
                 "description": "The first standard shot made within 4 tiles of the target does not cost an action. Cannot combine with Run And Gun."
+            },
+            "perk_cluster_bomb": {
+                "name": "Cluster Bomb",
+                "icon": "assets/img/perk-icons/fire_in_the_hole.png",
+                "description": "Mark a large area, and after one turn, saturate it with a barrage of explosive mini-bombs."
             },
             "perk_collateral_damage": {
                 "name": "Collateral Damage",
@@ -115,6 +160,16 @@
                 "name": "Deadeye",
                 "icon": "assets/img/perk-icons/deadeye.png",
                 "description": "Confers +15 aim against flying targets."
+            },
+            "perk_death_blossom": {
+                "name": "Death Blossom",
+                "icon": "assets/img/perk-icons/javelin_rockets.png",
+                "description": "Project an intense energy field from Closed position, damaging all nearby enemies."
+            },
+            "perk_death_explosion": {
+                "name": "Death Explosion",
+                "icon": "assets/img/perk-icons/death_explosion.png",
+                "description": "Explode on death, damaging everything in a small radius."
             },
             "perk_dense_smoke": {
                 "name": "Dense Smoke",
@@ -166,15 +221,35 @@
                 "icon": "assets/img/perk-icons/fire_rocket.png",
                 "description": "Fire a high explosive rocket using an equipped launcher."
             },
+            "perk_flight": {
+                "name": "Flight",
+                "icon": "assets/img/perk-icons/flight.png",
+                "description": "Flying units can bypass ground obstacles. They can remain in flight if they have sufficient fuel."
+            },
             "perk_flush": {
                 "name": "Flush",
                 "icon": "assets/img/perk-icons/flush.png",
                 "description": "Fire a shot that may cause non-flying enemies to run to new cover. The shot is easy to hit with (+30 aim), but does reduced damage (-50% base weapon damage), and consumes extra ammo (2 ammo). Hunkered units will not relocate."
             },
+            "perk_fortiores_una": {
+                "name": "Fortiores Una",
+                "icon": "assets/img/perk-icons/fortiores_una.png",
+                "description": "Nearby allies (8 tiles) receive an additional 2/3 damage reduction if they are in half cover and 1 damage reduction if they are in full cover."
+            },
             "perk_grenadier": {
                 "name": "Grenadier",
                 "icon": "assets/img/perk-icons/grenadier.png",
                 "description": "Allows 2 destructive grenades in a single inventory slot, and the soldier may throw grenades 20 percent further."
+            },
+            "perk_gunslinger": {
+                "name": "Gunslinger",
+                "icon": "assets/img/perk-icons/ranger.png",
+                "description": "Confers +1 damage with sidearms and negates the long-range accuracy penalty when shooting beyond 14 meters. (Sectoids and Seekers do not gain a damage bonus from this perk.)"
+            },
+            "perk_hardened": {
+                "name": "Hardened",
+                "icon": "assets/img/perk-icons/hardened.png",
+                "description": "Confers extra protection against critical hits. Enemies suffer a -60% chance to inflict critical hits."
             },
             "perk_heat_ammo": {
                 "name": "HEAT Ammo",
@@ -201,10 +276,20 @@
                 "icon": "assets/img/perk-icons/hyper_reactive_pupils.png",
                 "description": "Confers +10 Aim on any shot after a miss."
             },
+            "perk_implant": {
+                "name": "Implant",
+                "icon": "assets/img/perk-icons/implant.png",
+                "description": "Victims are implanted with a Chryssalid egg if they are killed by a Chryssalid's attack."
+            },
             "perk_in_the_zone": {
                 "name": "In the Zone",
                 "icon": "assets/img/perk-icons/in_the_zone.png",
                 "description": "Killing a flanked or uncovered target does not cost an action. Confers a -1 base damage and -10% critical hit chance penalty for each successive In The Zone kill."
+            },
+            "perk_intimidate": {
+                "name": "Intimidate",
+                "icon": "assets/img/perk-icons/intimidate.png",
+                "description": "Reacts unpredictably when wounded, provoking panic in enemies."
             },
             "perk_iron_skin": {
                 "name": "Iron Skin",
@@ -225,6 +310,16 @@
                 "name": "Killer Instinct",
                 "icon": "assets/img/perk-icons/killer_instinct.png",
                 "description": "Activating Run and Gun grants +50% critical damage for the rest of the turn."
+            },
+            "perk_launch": {
+                "name": "Launch",
+                "icon": "assets/img/perk-icons/launch.png",
+                "description": "Move anywhere on the battlefield in a single turn. Launch cannot be used indoors."
+            },
+            "perk_leap": {
+                "name": "Leap",
+                "icon": "assets/img/perk-icons/hit_and_run.png",
+                "description": "Allows vertical leaps onto elevated surfaces during movement."
             },
             "perk_light_em_up": {
                 "name": "Light 'Em Up",
@@ -261,6 +356,11 @@
                 "icon": "assets/img/perk-icons/mec_close_combat.png",
                 "description": "Kinetic Strike no longer ends the MEC's turn, although it still costs an action. It also deals 50% more damage."
             },
+            "perk_melee": {
+                "name": "Melee",
+                "icon": "assets/img/perk-icons/melee.png",
+                "description": "Melee units can only attack in melee."
+            },
             "perk_muscle_fiber_density": {
                 "name": "Muscle-fiber Density",
                 "icon": "assets/img/perk-icons/muscle_fiber_density.png",
@@ -280,6 +380,11 @@
                 "name": "Opportunist",
                 "icon": "assets/img/perk-icons/opportunist.png",
                 "description": "Eliminates the Aim penalty on reaction shots, and allows reaction shots to cause critical hits."
+            },
+            "perk_overload": {
+                "name": "Overload",
+                "icon": "assets/img/perk-icons/tandem_warheads.png",
+                "description": "Overload the unit's own power source, destroying the unit but causing explosive damage similar to a grenade's."
             },
             "perk_packmaster": {
                 "name": "Packmaster",
@@ -346,6 +451,11 @@
                 "icon": "assets/img/perk-icons/revive.png",
                 "description": "Allows Medikits to revive critically wounded Soldiers at 33% of maximum health instead of just stabilizing them."
             },
+            "perk_robotic": {
+                "name": "Robotic",
+                "icon": "assets/img/perk-icons/robotic.png",
+                "description": "Robotic/mechanized units are immune to psionic, acidic, and fire attacks. They are also immune to stun, panic, strangle, and implant."
+            },
             "perk_run_and_gun": {
                 "name": "Run & Gun",
                 "icon": "assets/img/perk-icons/run_and_gun.png",
@@ -360,6 +470,11 @@
                 "name": "Savior",
                 "icon": "assets/img/perk-icons/savior.png",
                 "description": "Provides 2 item-free medikit charges and +4 healing bonus to medikits. Restorative Mist units restore three more health per use."
+            },
+            "perk_secondary_heart": {
+                "name": "Secondary Heart",
+                "icon": "assets/img/perk-icons/secondary_heart.png",
+                "description": "Causes soldiers to bleed out instead of dying the first time they go to zero health in a mission. The bleed-out timer is extended by 2 turns. Prevents loss of Will from critical wounds."
             },
             "perk_sentinel": {
                 "name": "Sentinel",
@@ -391,11 +506,6 @@
                 "icon": "assets/img/perk-icons/smart_macrophages.png",
                 "description": "Medikits and Restorative Mist heal 2 HP more when used on the soldier. Confers complete immunity to poison and acid."
             },
-            "perk_secondary_heart": {
-                "name": "Secondary Heart",
-                "icon": "assets/img/perk-icons/secondary_heart.png",
-                "description": "Causes soldiers to bleed out instead of dying the first time they go to zero health in a mission. The bleed-out timer is extended by 2 turns. Prevents loss of Will from critical wounds."
-            },
             "perk_smoke_and_mirrors": {
                 "name": "Smoke & Mirrors",
                 "icon": "assets/img/perk-icons/smoke_and_mirrors.png",
@@ -426,6 +536,16 @@
                 "icon": "assets/img/perk-icons/steadfast.png",
                 "description": "Never panic as a result of getting wounded, allies panicking, allies getting wounded or killed, or the intimidation ability."
             },
+            "perk_strangle": {
+                "name": "Strangle",
+                "icon": "assets/img/perk-icons/strangle.png",
+                "description": "Strangle can be used against adjacent humans unprotected by strangle-resistant armor, items or abilities. Damage dealt doubles each turn, starting with 1 damage on the turn Strangle is used."
+            },
+            "perk_stun_immune": {
+                "name": "Stun Immune",
+                "icon": "assets/img/perk-icons/stun_immune.png",
+                "description": "This unit cannot be stunned with the Arc Thrower; taking a live specimen is not possible."
+            },
             "perk_suppression": {
                 "name": "Suppression",
                 "icon": "assets/img/perk-icons/suppression.png",
@@ -440,6 +560,11 @@
                 "name": "Tandem Warheads",
                 "icon": "assets/img/perk-icons/tandem_warheads.png",
                 "description": "Explosives employed by this soldier do full damage to the maximum extent of their area of effect."
+            },
+            "perk_unlimited_cloak": {
+                "name": "Unlimited Cloak",
+                "icon": "assets/img/perk-icons/unlimited_cloak.png",
+                "description": "The Seeker becomes invisible to enemies. It can use its tentacles to attack from stealth mode but it must deactivate the stealth mode to use its ranged attack."
             },
             "perk_vital_point_targeting": {
                 "name": "Vital Point Targeting",

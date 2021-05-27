@@ -1,3 +1,18 @@
+const months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December"
+];
+
 function appendElement(container, elementType, content, options) {
     options = options || {};
 
@@ -16,7 +31,15 @@ function appendElement(container, elementType, content, options) {
         }
     }
 
+    if (options.attributes) {
+        for (const [key, value] of Object.entries(options.attributes)) {
+            element.setAttribute(key, value);
+        }
+    }
+
     container.appendChild(element);
+
+    return element;
 }
 
 function capitalizeEachWord(str, originalSeparator, newSeparator) {
@@ -24,6 +47,53 @@ function capitalizeEachWord(str, originalSeparator, newSeparator) {
     newSeparator = newSeparator || " ";
 
     return str.split(originalSeparator).map( word => word[0].toUpperCase() + word.substring(1) ).join(newSeparator);
+}
+
+function createGrid(headers, sizes, values) {
+    const gridContainer = document.createElement("div");
+    gridContainer.classList.add("grid-container");
+
+    const sizeString = sizes.join(" ");
+    gridContainer.style = "grid-template-columns: " + sizeString;
+
+    for (const header of headers) {
+        const div = document.createElement("div");
+        div.classList.add("grid-header");
+        div.append(header);
+        gridContainer.append(div);
+    }
+
+    for (const value of values) {
+        const div = document.createElement("div");
+        div.classList.add("grid-value");
+        div.append(value);
+        gridContainer.append(div);
+    }
+
+    return gridContainer;
+}
+
+function createImg(src, attributes) {
+    const img = document.createElement("img");
+    img.src = src;
+
+    if (attributes) {
+        for (const [key, value] of Object.entries(attributes)) {
+            img.setAttribute(key, value);
+        }
+    }
+
+    return img;
+}
+
+function dateByDaysPassed(days) {
+    days = +days;
+
+    // Campaign starts on March 1st, 2016
+    const startDate = new Date("2016-03-01T00:00:00");
+    startDate.setDate(startDate.getDate() + days);
+
+    return startDate;
 }
 
 function equals(first, second) {
@@ -63,6 +133,14 @@ function equals(first, second) {
     }
 
     return true;
+}
+
+function formatCampaignDate(date) {
+    const day = date.getDate();
+    const month = months[date.getMonth()];
+    const year = date.getFullYear();
+
+    return `${day} ${month}, ${year}`;
 }
 
 function join(strings, joinWord, encodeSpaces) {
@@ -121,4 +199,4 @@ function xToY(x, y) {
     return `${x} to ${y}`;
 }
 
-export { appendElement, capitalizeEachWord, equals, join, truncateText, xToY };
+export { appendElement, capitalizeEachWord, createGrid, createImg, dateByDaysPassed, equals, formatCampaignDate, join, truncateText, xToY };

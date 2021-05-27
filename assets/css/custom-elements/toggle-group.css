@@ -18,6 +18,7 @@ toggle-group {
 
 .toggle-group-option {
     border-right: 1px solid var(--color-border-subtle);
+    color: var(--color);
     cursor: pointer;
     padding: 3px 8px;
     text-align: center;
@@ -29,4 +30,5 @@ toggle-group {
 
 .toggle-group-option.selected {
     background-color: var(--color-bg-subtle);
+    color: var(--color-strong);
 }

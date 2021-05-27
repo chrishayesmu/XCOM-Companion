@@ -8,6 +8,7 @@ class SearchResultsPage extends AppPage {
     static pageId = "search-results-page";
 
     #dataGroupByPrefix = {
+        "enemy": "Enemy",
         "facility": "Base Facility",
         "foundry": "Foundry Project",
         "gene_mod": "Gene Mod",
@@ -104,7 +105,10 @@ class SearchResultsPage extends AppPage {
     }
 
     _getDataType(data) {
-        if (data.id.startsWith("facility")) {
+        if (data.id.startsWith("enemy")) {
+            return "enemy";
+        }
+        else if (data.id.startsWith("facility")) {
             return "facility";
         }
         else if (data.id.startsWith("foundry")) {

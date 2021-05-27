@@ -8,6 +8,11 @@
             "column": 0,
             "research_prerequisite": "research_muton_interrogation"
         },
+        "psi_greater_mind_merge": {
+            "name": "Greater Mind Merge",
+            "description": "Merge minds with all lesser allies of the same species nearby, granting them +25 critical chance, +25 will, and +1 health per 45 of caster's will.",
+            "icon": "assets/img/perk-icons/psi_greater_mind_merge.png"
+        },
         "psi_mind_control": {
             "name": "Mind Control",
             "description": "Difficult psi technique that, if successful, grants control of the target for 3 turns. Does not work on robotic enemies. 5 turn cooldown. Imposes +12 hours fatigue after missions.",
@@ -53,6 +58,11 @@
             "rank": 2,
             "column": 0,
             "research_prerequisite": "research_muton_berserker_interrogation"
+        },
+        "psi_psi_shield": {
+            "name": "Psi Shield",
+            "description": "This unit generates a psionic force shield when targeted by an ally's Mind Merge ability.",
+            "icon": "assets/img/perk-icons/psi_mind_merge.png"
         },
         "psi_psychokinetic_strike": {
             "name": "Psychokinetic Strike",

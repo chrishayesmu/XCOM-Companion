@@ -14,7 +14,7 @@ async function instantiateTemplate(filepath, templateId) {
     const htmlDoc = new DOMParser().parseFromString(fileContents, "text/html");
     const template = htmlDoc.querySelector("#" + templateId);
 
-    return document.importNode(template.content, true).firstElementChild;
+    return template ? document.importNode(template.content, true).firstElementChild : null;
 }
 
 export { instantiateTemplate };

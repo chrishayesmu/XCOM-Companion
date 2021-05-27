@@ -3,6 +3,7 @@ import * as Utils from "./utils.js";
 // Load all the JSON data at once
 const baseFacilityData = await fetch("assets/data/base-facilities.json").then(response => response.json());
 const councilRequestData = await fetch("assets/data/council-requests.json").then(response => response.json());
+const enemyData = await fetch("assets/data/enemies.json").then(response => response.json());
 const foundryProjectData = await fetch("assets/data/foundry-projects.json").then(response => response.json());
 const geneModData = await fetch("assets/data/gene-mods.json").then(response => response.json());
 const itemData = await fetch("assets/data/items.json").then(response => response.json());
@@ -12,6 +13,18 @@ const psiAbilityData = await fetch("assets/data/psi-abilities.json").then(respon
 const soldierClassData = await fetch("assets/data/soldier-classes.json").then(response => response.json());
 const techTreeData = await fetch("assets/data/tech-tree.json").then(response => response.json());
 const ufoData = await fetch("assets/data/ufos.json").then(response => response.json());
+
+const baseFacilities = baseFacilityData.facilities;
+const enemies = enemyData.enemies;
+const enemyDamageRanges = enemyData.damage_ranges_by_base_damage;
+const foundryProjects = foundryProjectData.foundry_projects;
+const geneMods = geneModData.gene_mods;
+const items = itemData.items;
+const maps = mapData.maps;
+const perks = perkData.perks;
+const psiAbilities = psiAbilityData.abilities;
+const technologies = techTreeData.technologies;
+const ufos = ufoData.ufos;
 
 // ------------------------------------------------------------------
 // Process the data into a form we can readily use throughout the app
@@ -81,6 +94,45 @@ for (let i = 0; i < councilRequestData.requests.length; i++) {
     request.requested_item = itemData.items[request.requested_item];
 
     councilRequests[request.id] = request;
+}
+
+// --------------- Enemies ------------------
+for (let enemyId in enemyData.enemies) {
+    const enemy = enemyData.enemies[enemyId];
+    enemy.id = enemyId;
+    enemy.icon = "assets/img/enemy-icons/" + enemyId.substring("enemy_".length) + ".png";
+
+    if (enemy.base_perks) {
+        for (let i = 0; i < enemy.base_perks.length; i++) {
+            enemy.base_perks[i] = dataObjectById(enemy.base_perks[i]);
+        }
+    }
+
+    for (let i = 0; i < enemy.research_upgrades.length; i++) {
+        const upgrade = enemy.research_upgrades[i];
+
+        if (upgrade.perk) {
+            upgrade.perk = dataObjectById(upgrade.perk);
+        }
+    }
+
+    enemy.hasNavigationUpgrades = !!enemy.research_upgrades.find(upgrade => !!upgrade.chance);
+
+    if (enemy.leader_ranks) {
+        for (let i = 0; i < enemy.leader_ranks.length; i++) {
+            const leaderRank = enemy.leader_ranks[i];
+
+            if (leaderRank.perks) {
+                const perks = [];
+                for (const perk of leaderRank.perks) {
+                    perks.push(dataObjectById(perk));
+                }
+
+                leaderRank.perks = perks;
+            }
+        }
+    }
+
 }
 
 // --------------- Facilities ------------------
@@ -425,6 +477,45 @@ for (let techId in techTreeData.technologies) {
     }
 }
 
+function dataObjectById(id) {
+    if (id.startsWith("enemy")) {
+        return enemies[id];
+    }
+    else if (id.startsWith("facility")) {
+        return baseFacilities[id];
+    }
+    else if (id.startsWith("foundry")) {
+        return foundryProjects[id];
+    }
+    else if (id.startsWith("gene_mod")) {
+        return geneMods[id];
+    }
+    else if (id.startsWith("infantry_class") || id.startsWith("mec_class")) {
+        return soldierClasses[id];
+    }
+    else if (id.startsWith("item")) {
+        return items[id];
+    }
+    else if (id.startsWith("map")) {
+        return maps[id];
+    }
+    else if (id.startsWith("perk")) {
+        return perks[id];
+    }
+    else if (id.startsWith("psi")) {
+        return psiAbilities[id];
+    }
+    else if (id.startsWith("research")) {
+        return technologies[id];
+    }
+    else if (id.startsWith("ufo")) {
+        return ufos[id];
+    }
+    else {
+        throw new Error(`Unknown data object ID ${id}`);
+    }
+}
+
 function getInfantryClasses() {
     const classes = [];
 
@@ -465,19 +556,12 @@ function getResearchCreditSource(creditType) {
     return null;
 }
 
-const baseFacilities = baseFacilityData.facilities;
-const foundryProjects = foundryProjectData.foundry_projects;
-const geneMods = geneModData.gene_mods;
-const items = itemData.items;
-const maps = mapData.maps;
-const perks = perkData.perks;
-const psiAbilities = psiAbilityData.abilities;
-const technologies = techTreeData.technologies;
-const ufos = ufoData.ufos;
-
 export {
     baseFacilities,
     councilRequests,
+    dataObjectById,
+    enemies,
+    enemyDamageRanges,
     foundryProjects,
     geneMods,
     getInfantryClasses,

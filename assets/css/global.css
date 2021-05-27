@@ -166,6 +166,29 @@ span.inline-resource-icon {
     text-align: center;
 }
 
+.grid-container {
+    display: grid;
+}
+
+.grid-header,
+.grid-value {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid var(--color-border-subtle);
+    padding: 4px 7px;
+
+    /* collapse borders */
+    margin-left: -1px;
+    margin-top: -1px;
+}
+
+.grid-header {
+    background-color: var(--color-bg-subtle);
+}
+
 .tooltip {
     position: absolute;
 

@@ -3,6 +3,7 @@ import PageManager from "./page-manager.js";
 
 const dataSources = [
     Object.values(dataHelper.baseFacilities),
+    Object.values(dataHelper.enemies),
     Object.values(dataHelper.foundryProjects),
     Object.values(dataHelper.geneMods),
     Object.values(dataHelper.items),

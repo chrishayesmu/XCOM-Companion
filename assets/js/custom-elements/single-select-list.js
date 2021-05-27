@@ -2,8 +2,6 @@ const selectedItemClass = "ssl-selected";
 
 class SingleSelectList extends HTMLElement {
 
-    #selectedItem = null;
-
     constructor() {
         super();
 

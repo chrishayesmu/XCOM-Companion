@@ -7,6 +7,7 @@ import * as Utils from "./utils.js";
 import BaseFacilityPage from "./page-controllers/base-facility-page.js";
 import BaseFacilitiesBrowsePage from "./page-controllers/base-facilities-browse-page.js";
 import ClassSelectionPage from "./page-controllers/class-selection-page.js";
+import EnemyDisplayPage from "./page-controllers/enemy-display-page.js";
 import FoundryProjectsBrowsePage from "./page-controllers/foundry-projects-browse-page.js";
 import FoundryProjectDisplayPage from "./page-controllers/foundry-project-display-page.js";
 import HomePage from "./page-controllers/home-page.js";
@@ -25,6 +26,7 @@ const appPages = [
     BaseFacilityPage,
     BaseFacilitiesBrowsePage,
     ClassSelectionPage,
+    EnemyDisplayPage,
     FoundryProjectsBrowsePage,
     FoundryProjectDisplayPage,
     HomePage,
@@ -266,6 +268,14 @@ class PageManager {
             const targetElementRect = event.target.getBoundingClientRect();
 
             this.showTooltip(targetElementRect, template);
+        }
+        else if (event.target.dataset.tooltipText) {
+            const targetElementRect = event.target.getBoundingClientRect();
+            const div = document.createElement("div");
+            div.classList.add("text-only-tooltip");
+            div.innerHTML = event.target.dataset.tooltipText;
+
+            this.showTooltip(targetElementRect, div);
         }
         else if (event.target.dataset.pageOnClick) {
             const data = this._extractPageDataArgs(event.target);
