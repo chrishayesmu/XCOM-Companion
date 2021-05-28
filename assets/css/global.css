@@ -66,6 +66,10 @@ h3 {
   font-weight: 600;
 }
 
+select {
+    color: var(--color);
+}
+
 svg {
   fill: currentColor;
 }
@@ -147,11 +151,13 @@ img.inline-resource-icon {
     height: 16px;
 }
 
-input[type="text"] {
+input[type="date"], input[type="number"], input[type="text"]  {
+    background-color: #777;
     color: var(--color);
+    padding: 2px 5px;
 }
 
-input[type="text"]:focus {
+input[type="date"]:focus, input[type="number"]:focus, input[type="text"]:focus {
     box-shadow: none;
     outline: 1px solid var(--color-subtle);
 }

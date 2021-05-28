@@ -117,8 +117,9 @@ for (let enemyId in enemyData.enemies) {
     }
 
     enemy.hasNavigationUpgrades = !!enemy.research_upgrades.find(upgrade => !!upgrade.chance);
+    enemy.hasLeaderRanks = !!enemy.leader_ranks;
 
-    if (enemy.leader_ranks) {
+    if (enemy.hasLeaderRanks) {
         for (let i = 0; i < enemy.leader_ranks.length; i++) {
             const leaderRank = enemy.leader_ranks[i];
 

@@ -1,30 +1,57 @@
-.enemy-details {
-    margin-left: 25px;
-    padding-bottom: 30px;
-    padding-right: 13px;
+#enemy-overview {
+    display: flex;
+    flex-flow: row nowrap;
 }
 
-.enemy-details summary {
+#enemy-overview summary {
     color: var(--color);
     cursor: pointer;
     font-weight: bold;
 }
 
-.enemy-details details[open] summary {
+#enemy-overview details[open] summary {
     background-color: var(--color-bg-subtle);
 }
 
 #enemy-difficulty-toggle-group {
-    font-size: 1.2em;
     margin-bottom: 30px;
     margin-right: 50px;
 }
 
-#enemy-research-warning {
-    background-color: var(--color-bg-subtle);
-    border: 1px solid var(--color-border);
-    color: var(--color);
-    padding: 12px;
+#enemy-difficulty-toggle-group,
+#enemy-page-mode-toggle-group {
+    font-size: 1.2em;
+}
+
+#enemy-overview-right-column {
+    margin-left: 20px;
+}
+
+#enemy-point-in-time {
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+#enemy-point-in-time enemy-infobox {
+    margin-bottom: 20px;
+}
+
+#enemy-pit-ar-input {
+    width: 65px;
+}
+
+#enemy-pit-campaign-date-input {
+    height: fit-content;
+    margin-left: 6px;
+}
+
+#enemy-pit-info-message {
+    margin-top: 13px;
+    width: 750px;
+}
+
+#enemy-pit-min-research-by-date {
+    font-weight: bold;
 }
 
 .enemy-upgrades-container img {
@@ -39,165 +66,15 @@ details .grid-container {
     margin-left: 25px;
 }
 
-.enemy-infobox {
-    display: flex;
-    flex-flow: column nowrap;
-    align-items: center;
-
-    background-color: var(--color-bg-schematic-light);
-    border: 1px solid var(--color-border);
-    margin-left: 20px;
-    height: fit-content;
-    width: 275px;
-}
-
-.enemy-infobox * {
-    background-color: var(--color-bg-schematic-light);
-}
-
-.enemy-infobox-column-body {
-    display: flex;
-    flex-flow: column nowrap;
-    align-items: center;
-
-    padding: 6px 0px;
-    width: 100%;
-}
-
-.enemy-infobox-column-body-two-column {
-    display: grid;
-    grid-template-columns: 100px auto;
-    padding: 4px 0px;
-    width: 100%;
-}
-
-.enemy-infobox-column-body-two-column-even {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    width: 100%;
-}
-
-.enemy-infobox-column-heading {
-    background-color: var(--color-bg-schematic);
-    color: var(--color);
-    border-bottom: 1px solid var(--color-border-subtle);
-    border-top: 1px solid var(--color-border-subtle);
-    font-size: 1.2em;
-    text-align: center;
-    width: 100%;
-}
-
-.enemy-infobox-column-left {
-    color: var(--color);
-    display: inline-block;
-    font-weight: bold;
-    margin-right: 4px;
-    text-align: right;
-    width: 96px;
-}
-
-.enemy-infobox-column-body-two-column-even .enemy-infobox-column-body:nth-child(2n-1),
-.enemy-infobox-column-body-two-column-even .enemy-infobox-column-heading:nth-child(2n-1) {
-    border-right: 1px solid var(--color-border-subtle);
-}
-
-.enemy-infobox-column-right {
-    padding-left: 4px;
-    text-align: left;
-    width: 100%;
-}
-
-.enemy-infobox-img {
-    background-color: var(--color-bg-schematic);
-    width: 100%;
-}
-
-#enemy-infobox-perks-container {
-    display: grid;
-    align-items: start;
-    column-gap: 6px;
-    grid-template-columns: repeat(3, 1fr);
-    padding: 6px 4px;
-}
-
-.enemy-infobox-stat-block {
+#enemy-page-options {
     display: flex;
     flex-flow: row nowrap;
-    align-items: center;
-    justify-content: left;
-
-    font-size: 16px;
-    height: 30px;
-    width: 33%;
-}
-
-.enemy-infobox-stat-block img {
-    margin-right: 5px;
-    width: 20px;
-}
-
-.enemy-infobox-stat-block span {
-    display: inline-block;
-}
-
-.enemy-infobox-stats-container {
-    display: flex;
-    flex-flow: row wrap;
-    align-items: center;
-
-    padding-left: 20px;
-}
-
-.enemy-infobox-title {
-    background-color: var(--color-bg-schematic);
-    color: var(--color);
-    font-size: 2em;
-    text-align: center;
-    width: 100%;
-}
-
-.enemy-infobox-subtitle {
-    background-color: var(--color-bg-schematic);
-    color: var(--color);
-    margin-top: -8px;
-    text-align: center;
-    width: 100%;
-}
-
-#enemy-infobox-crit-range,
-#enemy-infobox-damage-range {
-    font-size: 1.2em;
-}
-
-#enemy-infobox-crit-range {
-    color: yellow;
-}
-
-.enemy-perk-icon {
-    font-size: 0.85em;
-    margin: 3px 0;
-    text-align: center;
-}
-
-.enemy-perk-icon * {
-    pointer-events: none;
-}
-
-.enemy-perk-icon div {
-    margin-top: -4px;
-}
-
-.enemy-perk-icon img {
-    background-color: var(--color-strong);
-    margin: 0 auto;
-    width: 50px;
-}
-
-img.enemy-perk-icon-psionic {
-    background-color: var(--color-psi);
+    justify-content: center;
 }
 
 .enemy-section-content {
     display: flex;
-    flex-flow: row nowrap;
+    flex-flow: column nowrap;
+
+    padding: 13px 20px 30px 20px;
 }

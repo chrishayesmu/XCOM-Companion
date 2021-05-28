@@ -3,7 +3,7 @@ class ToggleGroup extends HTMLElement {
     #contentsContainer = null;
 
     static get observedAttributes() {
-        return [ "defaultselected", "options", "rounded" ];
+        return [ "options", "rounded", "selectedoption" ];
     }
 
     attributeChangedCallback() {
@@ -36,7 +36,7 @@ class ToggleGroup extends HTMLElement {
 
             this.#contentsContainer.appendChild(div);
 
-            if (options[i] === this.defaultSelected) {
+            if (options[i] === this.selectedOption) {
                 selectedOption = options[i];
             }
         }
@@ -49,22 +49,23 @@ class ToggleGroup extends HTMLElement {
         const selectedOption = Array.prototype.find.call(allOptions, elem => elem.textContent === optionText);
 
         if (!selectedOption) {
+            this.selectedOption = "";
+            return;
+        }
+
+        if (selectedOption.classList.contains("selected")) {
             return;
         }
 
         Array.prototype.forEach.call(allOptions, elem => elem.classList.remove("selected"));
         selectedOption.classList.add("selected");
 
+        if (this.selectedOption !== optionText) {
+            this.selectedOption = optionText;
+        }
+
         const selectionEvent = new CustomEvent("selectedOptionChanged", { detail: { selectedOption: optionText }});
         this.dispatchEvent(selectionEvent);
-    }
-
-    get defaultSelected() {
-        return this.getAttribute("defaultSelected");
-    }
-
-    set defaultSelected(defaultSelected) {
-        this.setAttribute("defaultSelected", defaultSelected);
     }
 
     get rounded() {
@@ -93,8 +94,11 @@ class ToggleGroup extends HTMLElement {
     }
 
     get selectedOption() {
-        const option = this.#contentsContainer.querySelector(".toggle-group-option.selected");
-        return option.textContent;
+        return this.getAttribute("selectedOption");
+    }
+
+    set selectedOption(option) {
+        this.setAttribute("selectedOption", option);
     }
 }
 

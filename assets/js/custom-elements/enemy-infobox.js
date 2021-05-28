@@ -8,7 +8,7 @@ class EnemyInfobox extends HTMLElement {
     #enemy = null;
 
     static get observedAttributes() {
-        return [ "alienresearch", "difficulty", "enemyid", "hidebaseperks", "leaderrank", "mini" ];
+        return [ "alienresearch", "difficulty", "enemyid", "hidebaseperks", "leaderrank", "mini", "navigatorupgrades", "rankselect" ];
     }
 
     attributeChangedCallback() {
@@ -17,7 +17,7 @@ class EnemyInfobox extends HTMLElement {
 
     _createPerkIcon(perk) {
         const div = document.createElement("div");
-        div.classList.add("enemy-perk-icon");
+        div.classList.add("enemy-infobox-perk-icon");
         div.setAttribute("data-page-on-click", "perk-tree-display-page");
         div.setAttribute("data-pagearg-item-id", perk.id);
         div.setAttribute("data-pagearg-display-mode", "single-perk");
@@ -25,7 +25,7 @@ class EnemyInfobox extends HTMLElement {
         const img = Utils.appendElement(div, "img", "", { attributes: { src: perk.icon } })
 
         if (perk.id.startsWith("psi")) {
-            img.classList.add("enemy-perk-icon-psionic");
+            img.classList.add("enemy-infobox-perk-icon-psionic");
         }
 
         Utils.appendElement(div, "div", perk.name);
@@ -44,7 +44,30 @@ class EnemyInfobox extends HTMLElement {
     }
 
     _getStats(enemy) {
-        // TODO: need to differentiate hp_regen granted by perks and not double grant for the same perk
+        const difficultyFactors = {
+            "normal": 0.7,
+            "classic": 1,
+            "brutal": 1.1,
+            "impossible": 1.3
+        };
+
+        const researchFactor = difficultyFactors[this.difficulty];
+
+        const statPerks = {
+            perk_adaptive_bone_marrow: {
+                stat: "hp_regen",
+                value: 2
+            },
+            perk_sharpshooter: {
+                stat: "crit_chance",
+                value: 10
+            },
+            perk_sprinter: {
+                stat: "mobility",
+                value: 4
+            }
+        };
+
         // ex: sectoids get Adaptive Bone Marrow but so do sectoid leaders
         const baseStats = enemy.base_stats[this.difficulty];
         const stats = {};
@@ -60,16 +83,7 @@ class EnemyInfobox extends HTMLElement {
 
         stats.perks = enemy.base_perks ? [...enemy.base_perks] : [];
 
-        for (const upgrade of enemy.research_upgrades) {
-            if (upgrade.threshold > this.alienResearch) {
-                continue;
-            }
-
-            // Ignore optional navigator upgrades for now
-            if (upgrade.chance && upgrade.chance !== 100) {
-                continue;
-            }
-
+        const addUpgrade = function(upgrade) {
             stats.aim += (upgrade.aim || 0);
             stats.crit_chance += (upgrade.crit_chance || 0);
             stats.damage += (upgrade.damage || 0);
@@ -83,7 +97,56 @@ class EnemyInfobox extends HTMLElement {
 
             if (upgrade.perk) {
                 stats.perks.push(upgrade.perk);
+
+                if (upgrade.perk.id in statPerks) {
+                    const perkStats = statPerks[upgrade.perk.id];
+                    stats[perkStats.stat] -= perkStats.value;
+                }
             }
+
+            if (upgrade.perks) {
+                for (const perk of upgrade.perks) {
+                    if (perk.id in statPerks) {
+                        const perkStats = statPerks[perk.id];
+                        stats[perkStats.stat] -= perkStats.value;
+                    }
+
+                    if (!stats.perks.includes(perk)) {
+                        stats.perks.push(perk);
+                    }
+                }
+            }
+
+            if (upgrade.name) {
+                // Let the last name encountered apply; it will end up being the highest rank
+                stats.name = upgrade.name;
+            }
+        };
+
+        for (const upgrade of enemy.research_upgrades) {
+            // Research upgrades only: adjust threshold based on difficulty
+            if (Utils.researchThresholdByDifficulty(upgrade.threshold, this.difficulty) > this.alienResearch) {
+                continue;
+            }
+
+            // Ignore optional navigator upgrades for now
+            if (upgrade.chance && upgrade.chance !== 100) {
+                continue;
+            }
+
+            addUpgrade(upgrade);
+        }
+
+        const navigatorUpgrades = enemy.research_upgrades.filter(upgrade => upgrade.chance);
+        for (const index of this.navigatorUpgrades) {
+            const upgrade = navigatorUpgrades[index];
+
+            // 100% upgrades are already accounted for
+            if (upgrade.chance === 100) {
+                continue;
+            }
+
+            addUpgrade(upgrade);
         }
 
         if (Number.isFinite(this.leaderRank)) {
@@ -92,25 +155,17 @@ class EnemyInfobox extends HTMLElement {
                     continue;
                 }
 
-                stats.aim += (rank.aim || 0);
-                stats.crit_chance += (rank.crit_chance || 0);
-                stats.damage += (rank.damage || 0);
-                stats.damage_reduction += (rank.damage_reduction || 0);
-                stats.defense += (rank.defense || 0);
-                stats.hp += (rank.hp || 0);
-                stats.hp_regen += (rank.hp_regen || 0);
-                stats.mobility += (rank.mobility || 0);
-                stats.shield_hp += (rank.shield_hp || 0);
-                stats.will += (rank.will || 0);
+                addUpgrade(rank);
+            }
+        }
 
-                if (rank.perks) {
-                    stats.perks.push(...rank.perks);
-                }
-
-                if (rank.name) {
-                    // Let the highest rank name apply
-                    stats.name = rank.name;
-                }
+        for (const [perkId, config] of Object.entries(statPerks)) {
+            if (stats.perks.find(perk => perk.id === perkId)) {
+                stats[config.stat] += config.value;
+            }
+            else if (perkId === "perk_adaptive_bone_marrow") {
+                // hp_regen is a meaningless stat if you don't have Adaptive Bone Marrow
+                stats.hp_regen = 0;
             }
         }
 
@@ -262,6 +317,40 @@ class EnemyInfobox extends HTMLElement {
         template.querySelector("#stat-will").textContent = stats.will;
     }
 
+    _populateSubtitle(template, enemy) {
+        if (this.rankSelect) {
+            const select = Utils.createSelect([
+                { content: "Base Unit", value: "base" },
+                { content: "Leader Rank 0", value: 0 },
+                { content: "Leader Rank 1", value: 1 },
+                { content: "Leader Rank 2", value: 2 },
+                { content: "Leader Rank 3", value: 3 },
+                { content: "Leader Rank 4", value: 4 },
+                { content: "Leader Rank 5", value: 5 },
+                { content: "Leader Rank 6", value: 6 },
+                { content: "Leader Rank 7", value: 7 },
+                { content: "Leader Rank 8", value: 8 },
+                { content: "Leader Rank 9", value: 9 }
+            ], this.leaderRank);
+
+            select.addEventListener("change", event => {
+                const value = event.target.value;
+
+                if (value === "base") {
+                    this.removeAttribute("leaderRank");
+                }
+                else {
+                    this.leaderRank = value;
+                }
+            });
+
+            template.querySelector(".enemy-infobox-subtitle").appendChild(select);
+        }
+        else {
+            template.querySelector(".enemy-infobox-subtitle").textContent = Number.isFinite(this.leaderRank) ? "Leader Level " + this.leaderRank : "Base Unit";
+        }
+    }
+
     _populateUnitTypes(template, enemy) {
         const unitTypesContainer = template.querySelector("#enemy-infobox-unit-types");
 
@@ -278,6 +367,11 @@ class EnemyInfobox extends HTMLElement {
     }
 
     _recreateContents() {
+        if (!this.enemyId) {
+            this.innerHTML = "";
+            return;
+        }
+
         Templates.instantiateTemplate("assets/html/templates/pages/enemy-display-page.html", "template-enemy-infobox").then(template => {
             this.innerHTML = "";
 
@@ -286,7 +380,6 @@ class EnemyInfobox extends HTMLElement {
             const damageRange = DataHelper.enemyDamageRanges[enemyStats.damage];
 
             template.querySelector(".enemy-infobox-title").textContent = enemyStats.name || this.#enemy.name;
-            template.querySelector(".enemy-infobox-subtitle").textContent = Number.isFinite(this.leaderRank) ? "Leader Level " + this.leaderRank : "Base Unit";
             template.querySelector(".enemy-infobox-description").textContent = this.#enemy.description;
             template.querySelector(".enemy-infobox-img").src = this.#enemy.icon;
 
@@ -295,10 +388,12 @@ class EnemyInfobox extends HTMLElement {
 
             this._populateAppearances(template, this.#enemy);
             this._populatePerks(template, this.#enemy, enemyStats);
-            this._populateStats(template, enemyStats);
             this._populateResearch(template, this.#enemy);
             this._populateRewards(template, this.#enemy);
+            this._populateStats(template, enemyStats);
+            this._populateSubtitle(template, this.#enemy);
             this._populateUnitTypes(template, this.#enemy);
+
             this._showHideMiniFields(template);
 
             this.appendChild(template);
@@ -307,10 +402,12 @@ class EnemyInfobox extends HTMLElement {
 
     _showHideMiniFields(template) {
         const elements = [
-            template.querySelector(".enemy-infobox-img"),
-            template.querySelector("#enemy-infobox-unit-types"),
+            //template.querySelector(".enemy-infobox-img"),
+            //template.querySelector("#enemy-infobox-unit-types"),
             template.querySelector("#enemy-infobox-appearance-heading"),
             template.querySelector("#enemy-infobox-appearance-body"),
+            template.querySelector("#enemy-infobox-research-info"),
+            //template.querySelector("#enemy-infobox-stats-heading"),
             template.querySelector("#kill-rewards-heading"),
             template.querySelector("#kill-rewards"),
             template.querySelector("#capture-rewards-heading"),
@@ -344,7 +441,7 @@ class EnemyInfobox extends HTMLElement {
     }
 
     get enemyId() {
-        return this.getAttribute("enemyId") || "impossible";
+        return this.getAttribute("enemyId");
     }
 
     set enemyId(enemyId) {
@@ -366,7 +463,7 @@ class EnemyInfobox extends HTMLElement {
 
     get leaderRank() {
         const rank = this.getAttribute("leaderRank");
-        return rank ? +rank : null;
+        return this.hasAttribute("leaderRank") ? +rank : null;
     }
 
     set leaderRank(leaderRank) {
@@ -383,6 +480,36 @@ class EnemyInfobox extends HTMLElement {
         }
         else {
             this.removeAttribute("mini");
+        }
+    }
+
+    get navigatorUpgrades() {
+        if (!this.hasAttribute("navigatorUpgrades")) {
+            return [];
+        }
+
+        return this.getAttribute("navigatorUpgrades").split(",");
+    }
+
+    set navigatorUpgrades(navigatorUpgrades) {
+        if (!navigatorUpgrades || navigatorUpgrades.length === 0) {
+            this.removeAttribute("navigatorUpgrades");
+        }
+        else {
+            this.setAttribute("navigatorUpgrades", navigatorUpgrades.join(","));
+        }
+    }
+
+    get rankSelect() {
+        return this.hasAttribute("rankSelect");
+    }
+
+    set rankSelect(rankSelect) {
+        if (rankSelect) {
+            this.setAttribute("rankSelect", "");
+        }
+        else {
+            this.removeAttribute("rankSelect");
         }
     }
 }

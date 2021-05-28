@@ -8,31 +8,35 @@ class EnemyDisplayPage extends AppPage {
 
     static pageId = "enemy-display-page";
 
+    static currentResearch = 0;
+    static difficulty = "Impossible";
+
     #difficultySelector = null;
     #enemyId = null;
-
-    constructor() {
-        super();
-    }
+    #overviewInfobox = null;
+    #overviewSection = null;
+    #pageModeSelector = null;
+    #pointInTimeInfobox = null;
+    #pointInTimeSection = null;
 
     static async generatePreview(data) {
         if (!data.enemyId) {
             return null;
         }
 
-        this.#enemyId = data.enemyId;
         const enemy = DataHelper.enemies[data.enemyId];
 
         if (!enemy) {
             return null;
         }
 
+        // TODO: make a real tooltip; disabled for now
         const template = await Templates.instantiateTemplate("assets/html/templates/pages/enemy-display-page.html", "template-enemy-display-preview");
         template.querySelector(".preview-img-schematic").src = enemy.icon;
         template.querySelector(".preview-title").textContent = enemy.name;
         template.querySelector(".preview-description").textContent = Utils.truncateText(enemy.description, 300);
 
-        return template;
+        return null;
     }
 
     static ownsDataObject(dataObj) {
@@ -50,45 +54,47 @@ class EnemyDisplayPage extends AppPage {
         this.#enemyId = enemy.id;
 
         const template = await Templates.instantiateTemplate("assets/html/templates/pages/enemy-display-page.html", "template-enemy-display-page");
-        const baseInfobox = template.querySelector("#enemy-base-infobox");
 
-        baseInfobox.enemyId = this.#enemyId;
-        baseInfobox.alienResearch = 0;
+        this.#overviewSection = template.querySelector("#enemy-overview");
+        this.#pointInTimeSection = template.querySelector("#enemy-point-in-time");
+
+        this.#overviewInfobox = template.querySelector("#enemy-overview-base-infobox");
+        this.#overviewInfobox.enemyId = this.#enemyId;
+        this.#overviewInfobox.difficulty = this.difficulty;
+        this.#overviewInfobox.alienResearch = 0;
+
+        this.#pointInTimeInfobox = template.querySelector("#enemy-pit-infobox");
+        this.#pointInTimeInfobox.enemyId = this.#enemyId;
+        this.#pointInTimeInfobox.difficulty = this.difficulty;
+        this.#pointInTimeInfobox.alienResearch = EnemyDisplayPage.currentResearch;
 
         this.#difficultySelector = template.querySelector("#enemy-difficulty-toggle-group");
-        this.#difficultySelector.addEventListener("selectedOptionChanged", event => {
-            baseInfobox.difficulty = event.detail.selectedOption.toLowerCase();
-            this._generateUpgradesGrid(template, enemy, "general");
-            this._generateUpgradesGrid(template, enemy, "navigator");
+        this.#difficultySelector.selectedOption = EnemyDisplayPage.difficulty;
+        this.#difficultySelector.addEventListener("selectedOptionChanged", this._onSelectedDifficultyChanged.bind(this));
 
-            if (enemy.leader_ranks) {
-                this._generateUpgradesGrid(template, enemy, "leader");
-            }
+        template.querySelector("#enemy-pit-campaign-date-input").addEventListener("change", this._onCampaignDateChanged.bind(this));
+
+        this.#pageModeSelector = template.querySelector("#enemy-page-mode-toggle-group");
+        this.#pageModeSelector.addEventListener("selectedOptionChanged", this._onSelectedPageModeChanged.bind(this));
+
+        const currentResearchInput = template.querySelector("#enemy-pit-ar-input");
+        currentResearchInput.value = EnemyDisplayPage.currentResearch;
+        currentResearchInput.addEventListener("change", event => {
+            EnemyDisplayPage.currentResearch = event.target.value;
+            this.#pointInTimeInfobox.alienResearch = EnemyDisplayPage.currentResearch;
+            this.#pointInTimeInfobox.leaderRank = null;
+            this.#pointInTimeInfobox.navigatorUpgrades = [];
+
+            this._populateGrids(document.body);
         });
-
-        this._generateUpgradesGrid(template, enemy, "general");
-
-        if (enemy.hasNavigationUpgrades) {
-            this._generateUpgradesGrid(template, enemy, "navigator");
-        }
-        else {
-            template.querySelector("#enemy-navigator-upgrade-section").classList.add("hidden-collapse");
-            template.querySelector("#enemy-navigator-not-available").classList.remove("hidden-collapse");
-        }
-
-        if (enemy.leader_ranks) {
-            this._generateUpgradesGrid(template, enemy, "leader");
-        }
-        else {
-            template.querySelector("#enemy-leader-upgrade-section").classList.add("hidden-collapse");
-            template.querySelector("#enemy-leader-not-available").classList.remove("hidden-collapse");
-        }
 
         const enemyDescription = await Templates.instantiateTemplate("assets/html/templates/pages/enemy-display-page.html", "template-enemy-description-" + enemy.id.replace("_", "-").replace("enemy-", ""));
 
         if (enemyDescription) {
             template.querySelector("#enemy-description").appendChild(enemyDescription);
         }
+
+        this._populateGrids(template);
 
         return {
             body: template,
@@ -103,24 +109,39 @@ class EnemyDisplayPage extends AppPage {
         return new PageHistoryState(this, { enemyId: this.#enemyId });
     }
 
-    _generateUpgradesGrid(template, enemy, upgradeType) {
+    _generateUpgradesGrid(template, enemy, upgradeType, isPointInTimeView) {
         const useChanceBasedUpgrades = upgradeType === "navigator";
-        const difficultyFactors = {
-            "normal": 0.7,
-            "classic": 1,
-            "brutal": 1.1,
-            "impossible": 1.3
-        };
-
-        // Only general upgrades are subject to difficulty-based research threshold adjustments
-        const researchFactor = upgradeType === "general" ? difficultyFactors[this.#difficultySelector.selectedOption.toLowerCase()] : 1;
 
         const latestDateHeader = document.createElement("span");
         latestDateHeader.textContent = "Latest Date";
         latestDateHeader.setAttribute("data-tooltip-template-file", "assets/html/templates/custom-elements/alien-research.html");
         latestDateHeader.setAttribute("data-tooltip-template-id", "template-ar-tooltip-max-date");
 
+        const checkboxHeader = document.createElement("div");
+        Utils.appendElement(checkboxHeader, "div", "Apply");
+        const checkbox = Utils.appendElement(checkboxHeader, "input", "", { attributes: { id: "enemy-pit-apply-all", type: "checkbox" }});
+        checkbox.addEventListener("change", this._onApplyAllCheckboxChanged.bind(this));
+
+        const radioButtonHeader = document.createElement("div");
+        Utils.appendElement(radioButtonHeader, "div", "Apply");
+        const deactivateLink = Utils.appendElement(radioButtonHeader, "a", "Clear");
+        deactivateLink.addEventListener("click", event => {
+            this.#pointInTimeInfobox.leaderRank = null;
+            const radioButtons = [...document.querySelectorAll("input[type=radio][name=leaderRank]")];
+            radioButtons.forEach(btn => btn.checked = false);
+        });
+
         const columns = [
+            {
+                key: "checkbox",
+                header: checkboxHeader,
+                isUsed: upgradeType === "navigator" && isPointInTimeView
+            },
+            {
+                key: "radioButton",
+                header: radioButtonHeader,
+                isUsed: upgradeType === "leader" && isPointInTimeView
+            },
             {
                 key: "threshold",
                 header: "Research",
@@ -205,15 +226,22 @@ class EnemyDisplayPage extends AppPage {
             }
         ];
 
-        const upgradePool = upgradeType === "leader" ? enemy.leader_ranks : enemy.research_upgrades;
+        let upgradePool = upgradeType === "leader" ? enemy.leader_ranks : enemy.research_upgrades;
+        upgradePool = upgradePool.filter(upgrade => {
+            const isChanceBasedUpgrade = !!upgrade.chance;
+            return isChanceBasedUpgrade === useChanceBasedUpgrades;
+        });
+
+        // In point-in-time view, filter out upgrades that come later in research
+        if (isPointInTimeView) {
+            upgradePool = upgradePool.filter(upgrade => {
+                const threshold = upgradeType === "general" ? Utils.researchThresholdByDifficulty(upgrade.threshold, this.difficulty) : upgrade.threshold;
+                return threshold <= EnemyDisplayPage.currentResearch;
+            });
+        }
 
         // Figure out which keys we actually need
         for (const upgrade of upgradePool) {
-            const isChanceBasedUpgrade = !!upgrade.chance;
-            if (isChanceBasedUpgrade !== useChanceBasedUpgrades) {
-                continue;
-            }
-
             for (const column of columns) {
                 if (upgrade[column.key]) {
                     column.isUsed = true;
@@ -221,13 +249,11 @@ class EnemyDisplayPage extends AppPage {
             }
         }
 
+        const usedColumns = columns.filter(c => c.isUsed);
+
         // Get values for the header row and column sizes
         const headers = [], sizes = [];
-        for (const column of columns) {
-            if (!column.isUsed) {
-                continue;
-            }
-
+        for (const column of usedColumns) {
             headers.push(column.header);
             sizes.push(column.size || "50px");
         }
@@ -235,27 +261,35 @@ class EnemyDisplayPage extends AppPage {
         // Get the main body of the grid
         const values = [];
         for (const upgrade of upgradePool) {
-            const isChanceBasedUpgrade = !!upgrade.chance;
-            if (isChanceBasedUpgrade !== useChanceBasedUpgrades) {
-                continue;
-            }
-
-            for (const column of columns) {
-                if (!column.isUsed) {
-                    continue;
-                }
-
+            for (const column of usedColumns) {
                 let value = null;
-                if (column.key === "latest_date") {
-                    const researchAmount = Math.ceil(upgrade.threshold / researchFactor);
+
+                if (column.key === "checkbox" && upgrade.chance) {
+                    value = document.createElement("input");
+                    value.type = "checkbox";
+                    value.checked = upgrade.chance === 100;
+                    value.disabled = upgrade.chance === 100;
+
+                    value.addEventListener("change", this._onNavigatorCheckboxChanged.bind(this));
+                }
+                else if (column.key === "latest_date") {
+                    const researchAmount = upgradeType === "general" ? Utils.researchThresholdByDifficulty(upgrade.threshold, this.difficulty) : upgrade.threshold;
                     value = researchAmount === 0 ? "Campaign Start" : Utils.formatCampaignDate(Utils.dateByDaysPassed(researchAmount));
                 }
                 else if (column.key === "notes" && upgrade.notes) {
                     value = document.createElement("span");
                     value.innerHTML = upgrade.notes;
                 }
-                else if (column.key === "threshold") {
-                    value = Math.ceil(upgrade.threshold / researchFactor);
+                else if (column.key === "radioButton") {
+                    value = document.createElement("input");
+                    value.name = "leaderRank";
+                    value.type = "radio";
+                    value.value = upgrade.level;
+
+                    value.addEventListener("change", this._onLeaderRankRadioButtonChanged.bind(this));
+                }
+                else if (column.key === "threshold" && upgradeType === "general") {
+                    value = Utils.researchThresholdByDifficulty(upgrade.threshold, this.difficulty);
                 }
                 else if (column.key === "perk") {
                     const perk = upgrade[column.key];
@@ -297,8 +331,163 @@ class EnemyDisplayPage extends AppPage {
         const grid = Utils.createGrid(headers, sizes, values);
         grid.classList.add("enemy-upgrades-container");
 
-        const gridContainer = template.querySelector(`#enemy-${upgradeType}-upgrades-container`);
+        const containerSelector = isPointInTimeView ? `#enemy-pit-${upgradeType}-upgrades-container` : `#enemy-${upgradeType}-upgrades-container`;
+        const gridContainer = template.querySelector(containerSelector);
         gridContainer.replaceChildren(grid);
+    }
+
+    _onApplyAllCheckboxChanged(_event) {
+        const checkboxesNodeList = document.getElementById("enemy-pit-navigator-upgrades-container").querySelectorAll("input[type=checkbox]:not([disabled]):not([id=enemy-pit-apply-all])");
+        const checkboxes = [...checkboxesNodeList];
+
+        const shouldApplyAll = checkboxes.some(elem => !elem.checked);
+        checkboxes.forEach(elem => elem.checked = shouldApplyAll);
+
+        // Sync the selected options to the infobox
+        const selectedIndices = checkboxes.map( (_elem, index) => index ).filter( boxIndex => checkboxes[boxIndex].checked );
+        this.#pointInTimeInfobox.navigatorUpgrades = selectedIndices;
+    }
+
+    _onCampaignDateChanged(event) {
+        const campaignDate = new Date(event.target.value + "T00:00:00");
+        const minResearch = Utils.minResearchByDate(campaignDate);
+        document.getElementById("enemy-pit-min-research-by-date").textContent = minResearch;
+    }
+
+    _onLeaderRankRadioButtonChanged(_event) {
+        const radioButtons = [...document.querySelectorAll("input[type=radio][name=leaderRank]")];
+        const selected = radioButtons.find(btn => btn.checked);
+
+        const leaderRank = selected ? selected.value : null;
+        this.#pointInTimeInfobox.leaderRank = leaderRank;
+    }
+
+    _onNavigatorCheckboxChanged(_event) {
+        const applyAllCheckbox = document.getElementById("enemy-pit-apply-all");
+
+        const checkboxesNodeList = document.getElementById("enemy-pit-navigator-upgrades-container").querySelectorAll("input[type=checkbox]:not([id=enemy-pit-apply-all])");
+        const checkboxes = [...checkboxesNodeList];
+
+        const allAreApplied = !checkboxes.some(elem => !elem.checked);
+        applyAllCheckbox.checked = allAreApplied;
+
+        // Sync the selected options to the infobox
+        const selectedIndices = checkboxes.map( (_elem, index) => index ).filter( boxIndex => checkboxes[boxIndex].checked );
+        this.#pointInTimeInfobox.navigatorUpgrades = selectedIndices;
+    }
+
+    _onSelectedDifficultyChanged(event) {
+        EnemyDisplayPage.difficulty = event.detail.selectedOption.toLowerCase();
+        const infoboxes = document.body.querySelectorAll("enemy-infobox");
+
+        for (const infobox of infoboxes) {
+            infobox.difficulty = EnemyDisplayPage.difficulty;
+        }
+
+        const enemy = DataHelper.enemies[this.#enemyId];
+
+        this._generateUpgradesGrid(document.body, enemy, "general");
+        this._generateUpgradesGrid(document.body, enemy, "general", true);
+
+        this._generateUpgradesGrid(document.body, enemy, "navigator");
+        this._generateUpgradesGrid(document.body, enemy, "navigator", true);
+
+        if (enemy.leader_ranks) {
+            this._generateUpgradesGrid(document.body, enemy, "leader");
+            this._generateUpgradesGrid(document.body, enemy, "leader", true);
+        }
+    }
+
+    _onSelectedPageModeChanged(event) {
+        const pageMode = event.detail.selectedOption.toLowerCase();
+
+        if (pageMode === "overview") {
+            this.#overviewSection.classList.remove("hidden-collapse");
+            this.#pointInTimeSection.classList.add("hidden-collapse");
+        }
+        else {
+            this.#overviewSection.classList.add("hidden-collapse");
+            this.#pointInTimeSection.classList.remove("hidden-collapse");
+        }
+    }
+
+    _populateGrids(container) {
+        const enemy = DataHelper.enemies[this.#enemyId];
+
+        // Overview page
+        this._generateUpgradesGrid(container, enemy, "general");
+
+        if (enemy.hasNavigationUpgrades) {
+            this._generateUpgradesGrid(container, enemy, "navigator");
+        }
+        else {
+            container.querySelector("#enemy-navigator-upgrade-section").classList.add("hidden-collapse");
+            container.querySelector("#enemy-navigator-not-available").classList.remove("hidden-collapse");
+        }
+
+        if (enemy.leader_ranks) {
+            this._generateUpgradesGrid(container, enemy, "leader");
+        }
+        else {
+            container.querySelector("#enemy-leader-upgrade-section").classList.add("hidden-collapse");
+            container.querySelector("#enemy-leader-not-available").classList.remove("hidden-collapse");
+        }
+
+        // Point-in-time view: need to take current research level into account
+        const pointInTimeLeaderRanks = this._leaderRanksAvailable(enemy);
+        const pointInTimeResearchUpgrades = this._researchUpgradesAvailable(enemy);
+        const pointInTimeNavigatorUpgrades = this._navigatorUpgradesAvailable(enemy);
+
+        if (pointInTimeResearchUpgrades.length > 0) {
+            this._generateUpgradesGrid(container, enemy, "general", true);
+            container.querySelector("#enemy-pit-general-upgrades-not-available").classList.add("hidden-collapse");
+            container.querySelector("#enemy-pit-general-upgrades-info").classList.remove("hidden-collapse");
+        }
+        else {
+            container.querySelector("#enemy-pit-general-upgrades-not-available").classList.remove("hidden-collapse");
+            container.querySelector("#enemy-pit-general-upgrades-info").classList.add("hidden-collapse");
+        }
+
+        if (pointInTimeNavigatorUpgrades.length > 0) {
+            this._generateUpgradesGrid(container, enemy, "navigator", true);
+            container.querySelector("#enemy-pit-navigator-upgrades-not-available").classList.add("hidden-collapse");
+            container.querySelector("#enemy-pit-navigator-upgrades-info").classList.remove("hidden-collapse");
+        }
+        else {
+            container.querySelector("#enemy-pit-navigator-upgrades-not-available").classList.remove("hidden-collapse");
+            container.querySelector("#enemy-pit-navigator-upgrades-info").classList.add("hidden-collapse");
+        }
+
+        // Sectoids are the only enemy where there's a reason to show the rank 0 leader
+        if (pointInTimeLeaderRanks.length > 1 || enemy.id === "enemy_sectoid") {
+            this._generateUpgradesGrid(container, enemy, "leader", true);
+            container.querySelector("#enemy-pit-leader-upgrades-not-available").classList.add("hidden-collapse");
+            container.querySelector("#enemy-pit-leader-upgrades-info").classList.remove("hidden-collapse");
+        }
+        else {
+            container.querySelector("#enemy-pit-leader-upgrades-not-available").classList.remove("hidden-collapse");
+            container.querySelector("#enemy-pit-leader-upgrades-info").classList.add("hidden-collapse");
+        }
+    }
+
+    _leaderRanksAvailable(enemy) {
+        if (!enemy.hasLeaderRanks) {
+            return [];
+        }
+
+        return enemy.leader_ranks.filter(rank => rank.threshold <= EnemyDisplayPage.currentResearch);
+    }
+
+    _navigatorUpgradesAvailable(enemy) {
+        return enemy.research_upgrades.filter(upgrade => upgrade.chance && upgrade.threshold <= EnemyDisplayPage.currentResearch);
+    }
+
+    _researchUpgradesAvailable(enemy) {
+        return enemy.research_upgrades.filter(upgrade => !upgrade.chance && Utils.researchThresholdByDifficulty(upgrade.threshold, this.difficulty) <= EnemyDisplayPage.currentResearch);
+    }
+
+    get difficulty() {
+        return EnemyDisplayPage.difficulty.toLowerCase();
     }
 }
 

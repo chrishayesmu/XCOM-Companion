@@ -10,74 +10,134 @@
 
 <template id="template-enemy-display-page">
     <div class="section-content enemy-section-content">
-        <enemy-infobox id="enemy-base-infobox"></enemy-infobox>
-        <div class="enemy-details">
-            <toggle-group id="enemy-difficulty-toggle-group" options="Normal,Classic,Brutal,Impossible" defaultSelected="Impossible"></toggle-group>
-            <!-- <toggle-group options="Overview,Point-in-time"></toggle-group> -->
-            <div>
-                <div id="enemy-research-warning" class="flex-row">
-                        <span style="color: yellow; font-size: 3em; margin-right: 12px">⚠</span> Alien Research is partially dependent on difficulty (70% on Normal; 100% Classic; 110% Brutal; 130% Impossible). As best
-                        as I can determine, this only impacts the timing of Research Upgrades. It does not affect Navigator or Leader upgrades, or when an enemy first appears.
-                        <br /><br />
-                        Selecting a difficulty will automatically update the rest of the page.
-                </div>
+        <div id="enemy-page-options" class="flex-row">
+            <toggle-group id="enemy-difficulty-toggle-group" options="Normal,Classic,Brutal,Impossible" selectedOption="Impossible"></toggle-group>
+            <toggle-group id="enemy-page-mode-toggle-group" options="Overview,Point-in-time"></toggle-group>
+        </div>
+
+        <div id="enemy-overview">
+            <enemy-infobox id="enemy-overview-base-infobox"></enemy-infobox>
+
+            <div id="enemy-overview-right-column">
+                <info-box dismissable messageId="enemy-overview-warning" messageType="info">
+                    Alien Research is partially dependent on difficulty (70% on Normal; 100% Classic; 110% Brutal; 130% Impossible). As best as I can determine, this only impacts
+                    the timing of Research Upgrades. It does not affect Navigator or Leader upgrades, or when an enemy first appears.
+                    <br /><br />
+                    Selecting a difficulty will automatically update the rest of the page.
+                </info-box>
                 <div id="enemy-description" class="hidden-collapse"></div>
+                <div>
+                    <h3>Research Upgrades</h3>
+                    <p>
+                        These upgrades will be applied to all units of this type once the associated Alien Research threshold is reached.
+                    </p>
+                    <details>
+                        <summary>Show/hide</summary>
+                        <br />
+                        <div id="enemy-general-upgrades-container"></div>
+                    </details>
+                </div>
+                <br />
+                <div>
+                    <h3>Navigator Upgrades</h3>
+                    <p>
+                        These upgrades have a chance of being applied to each unit of this type. There is no limit on how many units in a pod can gain these upgrades, nor is there a limit to the number
+                        of upgrades an individual unit can receive. An enemy could have all of these upgrades, or none of them. It is purely up to chance. (Pod leaders are also eligible for these upgrades.)
+                    </p>
+                    <p>
+                        If a Navigator upgrade has a 100% chance to occur, then it is functionally identical to a Research upgrade (above), except that the timing of when it occurs will not be changed
+                        by the campaign's difficulty.
+                    </p>
+                    <span id="enemy-navigator-not-available" class="hidden-collapse" style="color: var(--color); font-weight: bold">
+                        This enemy type has no Navigator upgrades.
+                    </span>
+                    <details id="enemy-navigator-upgrade-section">
+                        <summary>Show/hide</summary>
+                        <br />
+                        <div id="enemy-navigator-upgrades-container"></div>
+                    </details>
+                </div>
+                <br />
+                <div>
+                    <h3>Pod Leaders</h3>
+                    <p>
+                        One (and only one) unit per pod will be the <strong>pod leader</strong>. In addition to improved stats and more perks, squad leaders are visibly larger than their peers, making them
+                        easy to identify. The pod's leader will determine what other units can appear in the pod.
+                    </p>
+                    <p>
+                        Leader upgrades are cumulative, so a level 6 leader will also have the stat and perk bonuses of all prior levels. When multiple levels are possible, the leader has an equal chance of
+                        rolling any of the levels. For example, if levels 0-3 are available at the current Alien Research, a leader has a 25% chance of being level 0, 1, 2, or 3. For most enemy types, a level 0
+                        leader is identical to a non-leader.
+                    </p>
+                    <p>
+                        Level 8 leaders can only appear during the Temple Ship Assault (the final mission), and level 9 leaders can only appear in specially scripted situations, which include certain story missions,
+                        specific terror missions, late-game council missions, and alien base assaults. A detailed list will be added at a later date.
+                    </p>
+                    <p id="enemy-leader-not-available" class="hidden-collapse" style="color: var(--color); font-weight: bold">
+                        This enemy type cannot spawn leaders.
+                    </p>
+                    <details id="enemy-leader-upgrade-section">
+                        <summary>Show/hide</summary>
+                        <br />
+                        <div id="enemy-leader-upgrades-container"></div>
+                    </details>
+                </div>
             </div>
-            <br />
-            <div>
+        </div>
+
+        <div id="enemy-point-in-time" class="hidden-collapse">
+            <enemy-infobox id="enemy-pit-infobox" mini></enemy-infobox>
+            <div id="enemy-overview-right-column">
+                <div>
+                    Enter your campaign's Alien Research: <input id="enemy-pit-ar-input" type="number" min="0" max="2000" value="0" />
+                    <div>
+                        <info-box id="enemy-pit-info-message" messageType="info">
+                            <div>
+                                Not sure where your campaign's at? Enter the campaign's current date: <input id="enemy-pit-campaign-date-input" type="date" value="2016-03-01" min="2016-03-01" max="2020-12-31" />
+                                <p>
+                                    By this date, the aliens have a minimum research of <span id="enemy-pit-min-research-by-date">0</span>. Remember that they have a number of ways to get bonus research, including
+                                    missions by landed UFOs, KIA or MIA soldiers on failed missions, alien bases, and more.
+                                </p>
+                            </div>
+                        </info-box>
+                    </div>
+                </div>
+
+                <br />
+
                 <h3>Research Upgrades</h3>
-                <p>
-                    These upgrades will be applied to all units of this type once the associated Alien Research threshold is reached.
-                </p>
-                <details>
-                    <summary>Show/hide</summary>
-                    <br />
-                    <div id="enemy-general-upgrades-container"></div>
-                </details>
-            <br />
-            <div>
+
+                <div id="enemy-pit-general-upgrades-info">
+                    <p>
+                        All of these upgrades are applied in the stats section to the left.
+                    </p>
+                    <div id="enemy-pit-general-upgrades-container"></div>
+                </div>
+                <div id="enemy-pit-general-upgrades-not-available" class="hidden-collapse">
+                    There are no Research Upgrades available at this level of research.
+                </div>
+
+                <br />
+
                 <h3>Navigator Upgrades</h3>
-                <p>
-                    These upgrades have a chance of being applied to each unit of this type. There is no limit on how many units in a pod can gain these upgrades, nor is there a limit to the number
-                    of upgrades an individual unit can receive. An enemy could have all of these upgrades, or none of them. It is purely up to chance. (Pod leaders are also eligible for these upgrades.)
-                </p>
-                <p>
-                    If a Navigator upgrade has a 100% chance to occur, then it is functionally identical to a Research upgrade (above), except that the timing of when it occurs will not be changed
-                    by the campaign's difficulty.
-                </p>
-                <span id="enemy-navigator-not-available" class="hidden-collapse" style="color: var(--color); font-weight: bold">
-                    This enemy type has no Navigator upgrades.
-                </span>
-                <details id="enemy-navigator-upgrade-section">
-                    <summary>Show/hide</summary>
-                    <br />
-                    <div id="enemy-navigator-upgrades-container"></div>
-                </details>
-            </div>
-            <br />
-            <div>
-                <h3>Pod Leaders</h3>
-                <p>
-                    One (and only one) unit per pod will be the <strong>pod leader</strong>. In addition to improved stats and more perks, squad leaders are visibly larger than their peers, making them
-                    easy to identify. The pod's leader will determine what other units can appear in the pod.
-                </p>
-                <p>
-                    Leader upgrades are cumulative, so a level 6 leader will also have the stat and perk bonuses of all prior levels. When multiple levels are possible, the leader has an equal chance of
-                    rolling any of the levels. For example, if levels 0-3 are available at the current Alien Research, a leader has a 25% chance of being level 0, 1, 2, or 3. For most enemy types, a level 0
-                    leader is identical to a non-leader.
-                </p>
-                <p>
-                    Level 8 leaders can only appear during the Temple Ship Assault (the final mission), and level 9 leaders can only appear in specially scripted situations, which include certain story missions,
-                    specific terror missions, late-game council missions, and alien base assaults. A detailed list will be added at a later date.
-                </p>
-                <p id="enemy-leader-not-available" class="hidden-collapse" style="color: var(--color); font-weight: bold">
-                    This enemy type cannot spawn leaders.
-                </p>
-                <details id="enemy-leader-upgrade-section">
-                    <summary>Show/hide</summary>
-                    <br />
-                    <div id="enemy-leader-upgrades-container"></div>
-                </details>
+                <div id="enemy-pit-navigator-upgrades-info">
+                    <p>Selected upgrades will be applied in the stats section. Upgrades with 100% chance are already applied.</p>
+                    <div id="enemy-pit-navigator-upgrades-container"></div>
+                </div>
+                <div id="enemy-pit-navigator-upgrades-not-available" class="hidden-collapse">
+                    There are no Navigator Upgrades available at this level of research.
+                </div>
+
+                <br />
+
+                <h3>Leader Ranks</h3>
+                <div id="enemy-pit-leader-upgrades-info">
+                    <p>The selected leader rank's upgrades, cumulative with all prior ranks, will be applied in the stats section.</p>
+                    <div id="enemy-pit-leader-upgrades-container"></div>
+                </div>
+                <div id="enemy-pit-leader-upgrades-not-available" class="hidden-collapse">
+                    There are no Leaders available at this level of research.
+                </div>
             </div>
         </div>
     </div>
@@ -92,7 +152,7 @@
             <div class="enemy-infobox-description"></div>
         </div>
         <div id="enemy-infobox-unit-types"></div>
-        <div class="enemy-infobox-column-heading">Stats</div>
+        <div id="enemy-infobox-stats-heading" class="enemy-infobox-column-heading">Stats</div>
         <div class="enemy-infobox-stats-container">
             <div class="enemy-infobox-stat-block">
                 <img src="assets/img/item-stat-icons/hp.png" data-tooltip-text="HP" />
@@ -161,7 +221,7 @@
         <div id="kill-rewards" class="enemy-infobox-column-body"></div>
         <div id="capture-rewards-heading" class="enemy-infobox-column-heading" data-tooltip-text="What you get for capturing this enemy with the Arc Thrower.">Rewards (Captured)</div>
         <div id="capture-rewards" class="enemy-infobox-column-body"></div>
-        <div class="enemy-infobox-column-body-two-column-even">
+        <div id="enemy-infobox-research-info" class="enemy-infobox-column-body-two-column-even">
             <div class="enemy-infobox-column-heading">Autopsy</div>
             <div class="enemy-infobox-column-heading">Interrogation</div>
             <div id="enemy-infobox-autopsy" class="enemy-infobox-column-body"></div>

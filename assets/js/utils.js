@@ -86,6 +86,24 @@ function createImg(src, attributes) {
     return img;
 }
 
+function createSelect(options, selectedValue) {
+    const select = document.createElement("select");
+
+    for (const option of options) {
+        const element = document.createElement("option");
+        element.value = option.value;
+        element.innerHTML = option.content;
+
+        if (option.value === selectedValue) {
+            element.setAttribute("selected", "");
+        }
+
+        select.appendChild(element);
+    }
+
+    return select;
+}
+
 function dateByDaysPassed(days) {
     days = +days;
 
@@ -176,6 +194,28 @@ function join(strings, joinWord, encodeSpaces) {
     return output;
 }
 
+function minResearchByDate(date) {
+    // Campaign starts on March 1st, 2016
+    const campaignStartDate = new Date("2016-03-01T00:00:00");
+    const elapsedMillis = date.getTime() - campaignStartDate.getTime();
+    const elapsedDays = elapsedMillis / (1000 * 60 * 60 * 24);
+
+    return Math.ceil(elapsedDays);
+}
+
+function researchThresholdByDifficulty(originalThreshold, difficulty) {
+    const difficultyFactors = {
+        "normal": 0.7,
+        "classic": 1,
+        "brutal": 1.1,
+        "impossible": 1.3
+    };
+
+    const researchFactor = difficultyFactors[difficulty];
+
+    return Math.ceil(originalThreshold / researchFactor);
+}
+
 function truncateText(text, maxLength) {
     if (text.length <= maxLength) {
         return text;
@@ -199,4 +239,4 @@ function xToY(x, y) {
     return `${x} to ${y}`;
 }
 
-export { appendElement, capitalizeEachWord, createGrid, createImg, dateByDaysPassed, equals, formatCampaignDate, join, truncateText, xToY };
+export { appendElement, capitalizeEachWord, createGrid, createImg, createSelect, dateByDaysPassed, equals, formatCampaignDate, join, minResearchByDate, researchThresholdByDifficulty, truncateText, xToY };
