@@ -449,6 +449,6 @@ const pageTitleHolder = document.getElementById("page-title-container");
 PageManager.instance = new PageManager(pageContentHolder, pageTitleHolder);
 
 Search.onDomReady();
-PageManager.instance.loadPage("enemy-display-page", { enemyId: "enemy_floater" });
+PageManager.instance.loadPage("home-page", { });
 
 export default PageManager;
