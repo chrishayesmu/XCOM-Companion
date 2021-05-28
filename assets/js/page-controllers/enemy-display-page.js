@@ -377,11 +377,11 @@ class EnemyDisplayPage extends AppPage {
     }
 
     _onSelectedDifficultyChanged(event) {
-        EnemyDisplayPage.difficulty = event.detail.selectedOption.toLowerCase();
+        EnemyDisplayPage.difficulty = event.detail.selectedOption;
         const infoboxes = document.body.querySelectorAll("enemy-infobox");
 
         for (const infobox of infoboxes) {
-            infobox.difficulty = EnemyDisplayPage.difficulty;
+            infobox.difficulty = this.difficulty;
         }
 
         const enemy = DataHelper.enemies[this.#enemyId];

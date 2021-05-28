@@ -25,7 +25,6 @@ class ToggleGroup extends HTMLElement {
         this.appendChild(this.#contentsContainer);
 
         const options = this.options;
-        let selectedOption = null;
 
         for (let i = 0; i < options.length; i++) {
             const div = document.createElement("div");
@@ -35,13 +34,9 @@ class ToggleGroup extends HTMLElement {
             div.addEventListener("click", this._onOptionClicked.bind(this));
 
             this.#contentsContainer.appendChild(div);
-
-            if (options[i] === this.selectedOption) {
-                selectedOption = options[i];
-            }
         }
 
-        this._selectOption(selectedOption || options[0]);
+        this._selectOption(this.selectedOption || options[0]);
     }
 
     _selectOption(optionText) {
