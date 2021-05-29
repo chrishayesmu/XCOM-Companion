@@ -557,6 +557,33 @@ function getResearchCreditSource(creditType) {
     return null;
 }
 
+function typeOf(dataObject) {
+    const id = typeof(dataObject) === "string" ? dataObject : dataObject.id;
+
+    const typeByPrefix = {
+        "enemy": "Enemy",
+        "facility": "Facility",
+        "foundry": "Foundry",
+        "gene_mod": "Gene Mod",
+        "infantry_class": "Class",
+        "item": "Item",
+        "mec_class": "MEC Class",
+        "map": "Map",
+        "perk": "Perk",
+        "psi": "Psi Ability",
+        "research": "Research",
+        "ufo": "UFO"
+    };
+
+    for (const [key, value] of Object.entries(typeByPrefix)) {
+        if (id.startsWith(key)) {
+            return value;
+        }
+    }
+
+    return "";
+}
+
 export {
     baseFacilities,
     councilRequests,
@@ -575,5 +602,6 @@ export {
     researchCredits,
     soldierClasses,
     technologies,
+    typeOf,
     ufos
 };

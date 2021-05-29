@@ -235,6 +235,11 @@ span.inline-resource-icon {
     margin-bottom: 40px;
 }
 
+.changelog-version h3 {
+    margin-left: 10px;
+    margin-top: 12px;
+}
+
 #home-welcome-text {
     padding-bottom: 25px;
 }
