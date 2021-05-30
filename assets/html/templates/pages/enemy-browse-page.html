@@ -1,0 +1,154 @@
+<template id="template-enemy-browse-page">
+    <div id="enemy-browse-page">
+        <p>
+            All stats shown on this page are
+        </p>
+        <div class="enemy-browse-container">
+            <div class="enemy-browse-column-header" data-tooltip-text="iMonth is an internal counter which goes up by 1 for every 28 points of Alien Research, meaning at its slowest, it goes up every 28 days. iMonth determines what enemies can appear on missions.">iMonth</div>
+            <div class="enemy-browse-column-header" data-tooltip-template-file="assets/html/templates/custom-elements/enemy-infobox.html"
+                                                    data-tooltip-template-id="enemy-tooltip-latest-appearance">Latest Appearance</div>
+            <div class="enemy-browse-column-header">New Enemies (Normal)</div>
+            <div class="enemy-browse-column-header">New Enemies (Terror)</div>
+
+            <!-- iMonth 0 -->
+            <div class="enemy-browse-imonth">0</div>
+            <div class="enemy-browse-date">1 March, 2016 (Campaign Start)</div>
+            <div class="enemy-browse-enemies">
+                <enemy-infobox tiny enemyId="enemy_sectoid"></enemy-infobox>
+                <enemy-infobox tiny enemyId="enemy_drone"></enemy-infobox>
+            </div>
+            <div class="enemy-browse-enemies">
+                <enemy-infobox tiny enemyId="enemy_chryssalid"></enemy-infobox>
+            </div>
+
+            <!-- iMonth 1 -->
+            <div class="enemy-browse-imonth">1</div>
+            <div class="enemy-browse-date">29 March, 2016</div>
+            <div class="enemy-browse-enemies">
+                <enemy-infobox tiny enemyId="enemy_thin_man"></enemy-infobox>
+                <enemy-infobox tiny enemyId="enemy_floater"></enemy-infobox>
+            </div>
+            <div class="enemy-browse-enemies">
+                <enemy-infobox tiny enemyId="enemy_thin_man"></enemy-infobox>
+                <enemy-infobox tiny enemyId="enemy_floater"></enemy-infobox>
+            </div>
+
+            <!-- iMonth 2 -->
+            <div class="enemy-browse-imonth">2</div>
+            <div class="enemy-browse-date">26 April, 2016</div>
+            <div class="enemy-browse-enemies">
+                <enemy-infobox tiny enemyId="enemy_seeker"></enemy-infobox>
+                <enemy-infobox tiny enemyId="enemy_muton"></enemy-infobox>
+            </div>
+            <div class="enemy-browse-enemies">
+                <enemy-infobox tiny enemyId="enemy_seeker"></enemy-infobox>
+            </div>
+
+            <!-- iMonth 3 -->
+            <div class="enemy-browse-imonth">3</div>
+            <div class="enemy-browse-date">24 May, 2016</div>
+            <div class="enemy-browse-enemies">
+            </div>
+            <div class="enemy-browse-enemies">
+                <enemy-infobox tiny enemyId="enemy_cyberdisc"></enemy-infobox>
+                <enemy-infobox tiny enemyId="enemy_muton"></enemy-infobox>
+            </div>
+
+            <!-- iMonth 4 -->
+            <div class="enemy-browse-imonth">4</div>
+            <div class="enemy-browse-date">21 June, 2016</div>
+            <div class="enemy-browse-enemies">
+                <enemy-infobox tiny enemyId="enemy_cyberdisc"></enemy-infobox>
+            </div>
+            <div class="enemy-browse-enemies">
+            </div>
+
+            <!-- iMonth 5 -->
+            <div class="enemy-browse-imonth">5</div>
+            <div class="enemy-browse-date">19 July, 2016</div>
+            <div class="enemy-browse-enemies">
+                <enemy-infobox tiny enemyId="enemy_mechtoid"></enemy-infobox>
+            </div>
+            <div class="enemy-browse-enemies">
+                <enemy-infobox tiny enemyId="enemy_mechtoid"></enemy-infobox>
+                <enemy-infobox tiny enemyId="enemy_muton_berserker"></enemy-infobox>
+            </div>
+
+            <!-- iMonth 6 -->
+            <div class="enemy-browse-imonth">6</div>
+            <div class="enemy-browse-date">16 August, 2016</div>
+            <div class="enemy-browse-enemies">
+                <enemy-infobox tiny enemyId="enemy_muton_berserker"></enemy-infobox>
+            </div>
+            <div class="enemy-browse-enemies">
+            </div>
+
+            <!-- iMonth 7 -->
+            <div class="enemy-browse-imonth">7</div>
+            <div class="enemy-browse-date">13 September, 2016</div>
+            <div class="enemy-browse-enemies">
+                <enemy-infobox tiny enemyId="enemy_sectoid_commander"></enemy-infobox>
+            </div>
+            <div class="enemy-browse-enemies">
+                <enemy-infobox tiny enemyId="enemy_sectoid_commander"></enemy-infobox>
+            </div>
+
+            <!-- iMonth 8 -->
+            <!-- TODO: EXALT can start showing up on terror missions here -->
+            <div class="enemy-browse-imonth">8</div>
+            <div class="enemy-browse-date">11 October, 2016</div>
+            <div class="enemy-browse-enemies">
+                <enemy-infobox tiny enemyId="enemy_heavy_floater"></enemy-infobox>
+            </div>
+            <div class="enemy-browse-enemies">
+                <enemy-infobox tiny enemyId="enemy_heavy_floater"></enemy-infobox>
+            </div>
+
+            <!-- iMonth 9 -->
+            <div class="enemy-browse-imonth">9</div>
+            <div class="enemy-browse-date">8 November, 2016</div>
+            <div class="enemy-browse-enemies">
+                <enemy-infobox tiny enemyId="enemy_muton_elite"></enemy-infobox>
+            </div>
+            <div class="enemy-browse-enemies">
+                <enemy-infobox tiny enemyId="enemy_muton_elite"></enemy-infobox>
+            </div>
+
+            <!-- iMonth 10 -->
+            <div class="enemy-browse-imonth">10</div>
+            <div class="enemy-browse-date">6 December, 2016</div>
+            <div class="enemy-browse-enemies">
+            </div>
+            <div class="enemy-browse-enemies">
+                <enemy-infobox tiny enemyId="enemy_sectopod"></enemy-infobox>
+            </div>
+
+            <!-- iMonth 11 -->
+            <div class="enemy-browse-imonth">11</div>
+            <div class="enemy-browse-date">3 January, 2017</div>
+            <div class="enemy-browse-enemies">
+            </div>
+            <div class="enemy-browse-enemies">
+                <enemy-infobox tiny enemyId="enemy_ethereal"></enemy-infobox>
+            </div>
+
+            <!-- iMonth 12 -->
+            <div class="enemy-browse-imonth">12</div>
+            <div class="enemy-browse-date">31 January, 2017</div>
+            <div class="enemy-browse-enemies">
+                <enemy-infobox tiny enemyId="enemy_ethereal"></enemy-infobox>
+            </div>
+            <div class="enemy-browse-enemies">
+            </div>
+
+            <!-- iMonth 13 -->
+            <div class="enemy-browse-imonth">13</div>
+            <div class="enemy-browse-date">28 February, 2017</div>
+            <div class="enemy-browse-enemies">
+                <enemy-infobox tiny enemyId="enemy_sectopod"></enemy-infobox>
+            </div>
+            <div class="enemy-browse-enemies">
+            </div>
+        </div>
+    </div>
+</template>

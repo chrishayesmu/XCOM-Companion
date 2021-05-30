@@ -10,6 +10,21 @@
     width: 275px;
 }
 
+enemy-infobox[tiny] .enemy-infobox {
+    cursor: pointer;
+    width: 200px;
+}
+
+enemy-infobox[tiny] .enemy-infobox:hover .enemy-infobox-img,
+enemy-infobox[tiny] .enemy-infobox:hover .enemy-infobox-img-container,
+enemy-infobox[tiny] .enemy-infobox:hover .enemy-infobox-title {
+    background-color: var(--color-bg-schematic-light);
+}
+
+enemy-infobox[tiny] .enemy-infobox * {
+    pointer-events: none;
+}
+
 .enemy-infobox * {
     background-color: var(--color-bg-schematic-light);
 }
@@ -74,9 +89,16 @@
     width: 100%;
 }
 
-.enemy-infobox-img {
+.enemy-infobox-img,
+.enemy-infobox-img-container {
     background-color: var(--color-bg-schematic);
     width: 100%;
+}
+
+enemy-infobox[tiny] .enemy-infobox-img {
+    display: block;
+    margin: 0 auto;
+    width: 70%;
 }
 
 #enemy-infobox-perks-container {
@@ -123,6 +145,10 @@
     width: 100%;
 }
 
+enemy-infobox[tiny] .enemy-infobox-title {
+    font-size: 1.5em;
+}
+
 .enemy-infobox-subtitle, .enemy-infobox select {
     background-color: var(--color-bg-schematic);
     color: var(--color);
@@ -165,6 +191,15 @@
     background-color: var(--color-strong);
     margin: 0 auto;
     width: 50px;
+}
+
+enemy-infobox[tiny] .enemy-infobox-perk-icon img {
+    width: 30px;
+}
+
+/* tiny mode: don't show perk names */
+enemy-infobox[tiny] .enemy-infobox-perk-name {
+    display: none;
 }
 
 img.enemy-infobox-perk-icon-psionic {

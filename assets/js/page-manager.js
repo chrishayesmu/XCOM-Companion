@@ -7,6 +7,7 @@ import * as Utils from "./utils.js";
 import BaseFacilityPage from "./page-controllers/base-facility-page.js";
 import BaseFacilitiesBrowsePage from "./page-controllers/base-facilities-browse-page.js";
 import ClassSelectionPage from "./page-controllers/class-selection-page.js";
+import EnemyBrowsePage from "./page-controllers/enemy-browse-page.js";
 import EnemyDisplayPage from "./page-controllers/enemy-display-page.js";
 import FoundryProjectsBrowsePage from "./page-controllers/foundry-projects-browse-page.js";
 import FoundryProjectDisplayPage from "./page-controllers/foundry-project-display-page.js";
@@ -26,6 +27,7 @@ const appPages = [
     BaseFacilityPage,
     BaseFacilitiesBrowsePage,
     ClassSelectionPage,
+    EnemyBrowsePage,
     EnemyDisplayPage,
     FoundryProjectsBrowsePage,
     FoundryProjectDisplayPage,

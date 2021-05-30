@@ -1,4 +1,5 @@
 import * as DataHelper from "../data-helper.js";
+import PageManager from "../page-manager.js";
 import * as Templates from "../templates.js";
 import * as Utils from "../utils.js";
 import * as Widgets from "../widgets.js";
@@ -8,7 +9,13 @@ class EnemyInfobox extends HTMLElement {
     #enemy = null;
 
     static get observedAttributes() {
-        return [ "alienresearch", "difficulty", "enemyid", "hidebaseperks", "leaderrank", "mini", "navigatorupgrades", "rankselect" ];
+        return [ "alienresearch", "difficulty", "enemyid", "hidebaseperks", "leaderrank", "mini", "navigatorupgrades", "rankselect", "tiny" ];
+    }
+
+    constructor() {
+        super();
+
+        this.addEventListener("click", this._onInfoboxClicked);
     }
 
     attributeChangedCallback() {
@@ -28,7 +35,7 @@ class EnemyInfobox extends HTMLElement {
             img.classList.add("enemy-infobox-perk-icon-psionic");
         }
 
-        Utils.appendElement(div, "div", perk.name);
+        Utils.appendElement(div, "div", perk.name, { attributes: { class: "enemy-infobox-perk-name" } });
 
         return div;
     }
@@ -44,15 +51,6 @@ class EnemyInfobox extends HTMLElement {
     }
 
     _getStats(enemy) {
-        const difficultyFactors = {
-            "normal": 0.7,
-            "classic": 1,
-            "brutal": 1.1,
-            "impossible": 1.3
-        };
-
-        const researchFactor = difficultyFactors[this.difficulty];
-
         const statPerks = {
             perk_adaptive_bone_marrow: {
                 stat: "hp_regen",
@@ -176,6 +174,12 @@ class EnemyInfobox extends HTMLElement {
         stats.perks.sort( (a, b) => a.id.localeCompare(b.id) );
 
         return stats;
+    }
+
+    _onInfoboxClicked() {
+        if (this.tiny) {
+            PageManager.instance.loadPageForData(this.#enemy);
+        }
     }
 
     _populateAppearances(template, enemy) {
@@ -372,7 +376,7 @@ class EnemyInfobox extends HTMLElement {
             return;
         }
 
-        Templates.instantiateTemplate("assets/html/templates/pages/enemy-display-page.html", "template-enemy-infobox").then(template => {
+        Templates.instantiateTemplate("assets/html/templates/custom-elements/enemy-infobox.html", "template-enemy-infobox").then(template => {
             this.innerHTML = "";
 
             this.#enemy = DataHelper.enemies[this.enemyId];
@@ -401,21 +405,37 @@ class EnemyInfobox extends HTMLElement {
     }
 
     _showHideMiniFields(template) {
-        const elements = [
-            //template.querySelector(".enemy-infobox-img"),
-            //template.querySelector("#enemy-infobox-unit-types"),
+        const hideInMini = [
             template.querySelector("#enemy-infobox-appearance-heading"),
             template.querySelector("#enemy-infobox-appearance-body"),
             template.querySelector("#enemy-infobox-research-info"),
-            //template.querySelector("#enemy-infobox-stats-heading"),
             template.querySelector("#kill-rewards-heading"),
             template.querySelector("#kill-rewards"),
             template.querySelector("#capture-rewards-heading"),
             template.querySelector("#capture-rewards")
         ];
 
-        for (const elem of elements) {
-            if (this.mini) {
+        const hideInTiny = [
+            template.querySelector(".enemy-infobox-subtitle"),
+            template.querySelector("#enemy-infobox-damage-range-container"),
+            template.querySelector("#enemy-infobox-unit-types"),
+            template.querySelector("#enemy-infobox-perks-container"),
+            template.querySelector("#enemy-infobox-perks-heading"),
+            template.querySelector(".enemy-infobox-stats-container"),
+            template.querySelector("#enemy-infobox-stats-heading")
+        ]
+
+        for (const elem of hideInMini) {
+            if (this.mini || this.tiny) {
+                elem.classList.add("hidden-collapse");
+            }
+            else {
+                elem.classList.remove("hidden-collapse");
+            }
+        }
+
+        for (const elem of hideInTiny) {
+            if (this.tiny) {
                 elem.classList.add("hidden-collapse");
             }
             else {
@@ -510,6 +530,19 @@ class EnemyInfobox extends HTMLElement {
         }
         else {
             this.removeAttribute("rankSelect");
+        }
+    }
+
+    get tiny() {
+        return this.hasAttribute("tiny");
+    }
+
+    set tiny(tiny) {
+        if (tiny) {
+            this.setAttribute("tiny", "");
+        }
+        else {
+            this.removeAttribute("tiny");
         }
     }
 }

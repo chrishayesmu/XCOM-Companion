@@ -1,0 +1,98 @@
+<template id="template-enemy-infobox">
+    <div class="enemy-infobox">
+        <div class="enemy-infobox-title"></div>
+        <div class="enemy-infobox-subtitle"></div>
+        <div class="enemy-infobox-img-container">
+            <img class="enemy-infobox-img" />
+        </div>
+        <div class="enemy-infobox-content-container">
+            <div class="enemy-infobox-description"></div>
+        </div>
+        <div id="enemy-infobox-unit-types"></div>
+        <div id="enemy-infobox-stats-heading" class="enemy-infobox-column-heading">Stats</div>
+        <div class="enemy-infobox-stats-container">
+            <div class="enemy-infobox-stat-block">
+                <img src="assets/img/item-stat-icons/hp.png" data-tooltip-text="HP" />
+                <span id="stat-hp"></span>
+            </div>
+            <div class="enemy-infobox-stat-block">
+                <img src="assets/img/item-stat-icons/healing.png" data-tooltip-text="HP Regen Per Turn<br/><br/>This regen will only be applied if this unit has the Adaptive Bone Marrow perk. The +2 regen from that perk <strong>is</strong> included in this number." />
+                <span id="stat-regen"></span>
+            </div>
+            <div class="enemy-infobox-stat-block">
+                <img src="assets/img/item-stat-icons/mobility.png" data-tooltip-text="Mobility" />
+                <span id="stat-mobility"></span>
+            </div>
+            <div class="enemy-infobox-stat-block">
+                <img src="assets/img/item-stat-icons/defense.png" data-tooltip-text="Defense" />
+                <span id="stat-defense"></span>
+            </div>
+            <div class="enemy-infobox-stat-block">
+                <img src="assets/img/item-stat-icons/damage_reduction.png" data-tooltip-text="Damage Reduction" />
+                <span id="stat-dr"></span>
+            </div>
+            <div class="enemy-infobox-stat-block">
+                <img src="assets/img/item-stat-icons/will.png" data-tooltip-text="Will" />
+                <span id="stat-will"></span>
+            </div>
+            <div class="enemy-infobox-stat-block">
+                <img src="assets/img/item-stat-icons/damage.png" data-tooltip-text="Base Damage" />
+                <span id="stat-damage"></span>
+            </div>
+            <div class="enemy-infobox-stat-block">
+                <img src="assets/img/item-stat-icons/aim.png" data-tooltip-text="Aim" />
+                <span id="stat-aim"></span>
+            </div>
+            <div class="enemy-infobox-stat-block">
+                <img src="assets/img/item-stat-icons/crit_chance.png" data-tooltip-text="Bonus Crit Chance"/>
+                <span id="stat-crit-chance"></span>
+            </div>
+            <div id="enemy-infobox-shield-hp-block" class="enemy-infobox-stat-block">
+                <img src="assets/img/item-stat-icons/shield_hp.png" data-tooltip-text="Shield HP<br/><br/>This is the HP of the shield this unit gains when targeted by Mind Merge."/>
+                <span id="stat-shield-hp"></span>
+            </div>
+        </div>
+        <div id="enemy-infobox-damage-range-container" class="enemy-infobox-column-body-two-column-even">
+            <div class="enemy-infobox-column-heading" data-tooltip-text="The damage dealt by this unit on a non-critical hit. Does not account for any perks.">Damage Range</div>
+            <div class="enemy-infobox-column-heading" data-tooltip-text="The damage dealt by this unit on a critical hit. Does not account for any perks.">Crit Range</div>
+            <div id="enemy-infobox-damage-range" class="enemy-infobox-column-body"></div>
+            <div id="enemy-infobox-crit-range" class="enemy-infobox-column-body"></div>
+        </div>
+        <div id="enemy-infobox-perks-heading" class="enemy-infobox-column-heading">Perks and Abilities</div>
+        <div id="enemy-infobox-perks-container" class="enemy-infobox-column-body"></div>
+        <div id="enemy-infobox-appearance-heading"
+             class="enemy-infobox-column-heading"
+             data-tooltip-template-file="assets/html/templates/custom-elements/enemy-infobox.html"
+             data-tooltip-template-id="enemy-tooltip-latest-appearance">
+             Latest Appearance As Leader
+        </div>
+        <div id="enemy-infobox-appearance-body" class="enemy-infobox-column-body-two-column">
+            <div class="enemy-infobox-column-left" data-tooltip-text="'Normal' refers to pods on the majority of missions, such as Abductions. Only Terror Sites and Covert Operations do not contain Normal pods.">Normal:</div>
+            <alien-research id="research-needed-normal" class="enemy-infobox-column-right" showDate></alien-research>
+            <div class="enemy-infobox-column-left" data-tooltip-text="Terror pods appear in a limited number of missions: Terror Sites, large and very large UFOs, trap UFOs, alien base assaults, and XCOM base defenses.">Terror:</div>
+            <alien-research id="research-needed-terror" class="enemy-infobox-column-right" showDate></alien-research>
+            <div class="enemy-infobox-column-left" data-tooltip-text="Landed UFOs generate enemies as though the aliens had an additional month (+28) of research. This only affects alien types, not their stats.">Landed UFO:</div>
+            <alien-research id="research-needed-landed-ufo" class="enemy-infobox-column-right" showDate></alien-research>
+        </div>
+        <div id="kill-rewards-heading" class="enemy-infobox-column-heading" data-tooltip-text="What this enemy drops when killed. Killing them with explosives will prevent any drops, but injuring it with explosives and finishing it off with something else will not.">Rewards (Killed)</div>
+        <div id="kill-rewards" class="enemy-infobox-column-body"></div>
+        <div id="capture-rewards-heading" class="enemy-infobox-column-heading" data-tooltip-text="What you get for capturing this enemy with the Arc Thrower.">Rewards (Captured)</div>
+        <div id="capture-rewards" class="enemy-infobox-column-body"></div>
+        <div id="enemy-infobox-research-info" class="enemy-infobox-column-body-two-column-even">
+            <div class="enemy-infobox-column-heading">Autopsy</div>
+            <div class="enemy-infobox-column-heading">Interrogation</div>
+            <div id="enemy-infobox-autopsy" class="enemy-infobox-column-body"></div>
+            <div id="enemy-infobox-interrogation" class="enemy-infobox-column-body"></div>
+        </div>
+    </div>
+</template>
+
+<template id="enemy-tooltip-latest-appearance">
+    <div class="text-only-tooltip">
+        The latest point at which this enemy can lead a pod on a mission. If the aliens gain bonus research, they may show up earlier.
+        <br />
+        <br />
+        Note that this only applies to <strong>leading</strong> pods. Some enemies will show up contrary to what's shown here; for example, Drones can never lead pods on Terror missions, but they can still accompany Cyberdisc-led pods.
+        Zombies can never lead any pod except for on specially-scripted Terror missions.
+    </div>
+</template>

@@ -1,0 +1,45 @@
+#enemy-browse-page {
+    padding: 20px;
+}
+
+.enemy-browse-column-header {
+    background-color: var(--color-bg-subtle);
+    font-size: 1.2em;
+    text-align: center;
+}
+
+.enemy-browse-container {
+    display: grid;
+    grid-template-columns: 80px 200px auto auto;
+}
+
+.enemy-browse-container > * {
+    border: 1px solid var(--color-border-subtle);
+    height: 100%;
+    width: 100%;
+}
+
+.enemy-browse-date,
+.enemy-browse-imonth {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 1.3em;
+    text-align: center;
+}
+
+.enemy-browse-enemies {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+
+    padding-top: 20px;
+    padding-right: 25px;
+    width: 100%;
+}
+
+.enemy-browse-enemies enemy-infobox {
+    margin-left: 25px;
+    margin-bottom: 20px;
+}
