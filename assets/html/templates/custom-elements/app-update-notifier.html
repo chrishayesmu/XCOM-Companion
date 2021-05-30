@@ -19,7 +19,9 @@
             }
 
             #notifier-contents-download-in-progress,
-            #notifier-contents-ready-to-install {
+            #notifier-contents-no-update-available,
+            #notifier-contents-ready-to-install,
+            #notifier-contents-update-check-in-progress {
                 display: flex;
                 flex-flow: row nowrap;
                 align-items: center;
@@ -28,7 +30,8 @@
                 padding: 0 20px;
             }
 
-            #notifier-contents-ready-to-install {
+            #notifier-contents-ready-to-install,
+            #notifier-contents-no-update-available {
                 justify-content: space-between;
             }
 
@@ -40,7 +43,8 @@
                 bottom: -51px !important;
             }
 
-            #dismiss-button {
+            #dismiss-button,
+            #dismiss-button-2 {
                 color: var(--color-subtle);
                 cursor: pointer;
                 margin-right: 5px;
@@ -60,6 +64,12 @@
         </div>
         <div id="notifier-contents-download-in-progress" class="hidden">
             An update for XCOM Companion has been found and is being downloaded. (<span id="download-percent"></span>% complete)
+        </div>
+        <div id="notifier-contents-no-update-available" class="hidden">
+            XCOM Companion is currently up-to-date. <a id="dismiss-button-2">Dismiss</a>
+        </div>
+        <div id="notifier-contents-update-check-in-progress" class="hidden">
+            Checking for updates..
         </div>
     </div>
 </template>

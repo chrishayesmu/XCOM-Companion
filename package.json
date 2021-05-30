@@ -14,8 +14,8 @@
     "prepush": "check-for-leaks"
   },
   "repository": {
-      "type": "git",
-      "url": "https://github.com/chrishayesmu/XCOM-Companion.git"
+    "type": "git",
+    "url": "https://github.com/chrishayesmu/XCOM-Companion.git"
   },
   "author": "Chris Hayes",
   "devDependencies": {

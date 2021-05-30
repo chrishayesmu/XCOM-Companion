@@ -1,0 +1,105 @@
+body {
+    background-color: var(--color-bg-subtle);
+    border: 1px solid var(--color-border);
+
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+h1, h2, h3, h4, h5 {
+    margin-bottom: 4px;
+}
+
+input[type=checkbox] {
+    /* Force checkboxes smaller so they left-align */
+    width: 13px;
+}
+
+label {
+    display: inline-block;
+    text-align: left;
+}
+
+legend {
+    font-size: 1.1em;
+    padding: 0 9px;
+}
+
+select {
+    background-color: var(--color-bg-nav);
+    color: var(--color-subtle);
+}
+
+.help-icon {
+    color: var(--color-strong);
+    cursor: help;
+    text-decoration: dashed underline;
+}
+
+.help-icon::before {
+    content: "?";
+}
+
+#settings-body,
+#settings-footer,
+#settings-header {
+    padding: 7px 13px;
+}
+
+#settings-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: var(--color-bg-schematic);
+    border-bottom: 1px solid var(--color-border);
+    color: var(--color);
+    flex-grow: 0;
+    font-size: 1.75em;
+    text-align: center;
+}
+
+#settings-body {
+    flex-grow: 1;
+    overflow-y: auto;
+}
+
+#settings-footer {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+
+    flex-grow: 0;
+}
+
+.settings-group {
+    margin-bottom: 18px;
+}
+
+.settings-help {
+    color: var(--color-subtle);
+}
+
+.settings-label {
+    padding-left: 12px;
+    width: 70%;
+}
+
+fieldset .settings-label {
+    padding-left: 0px;
+}
+
+.settings-row {
+    display: flex;
+    flex-flow: row nowrap;
+
+    margin-bottom: 6px;
+}
+
+.settings-subgroup {
+    margin-bottom: 13px;
+}
+
+.settings-value {
+    width: 30%;
+}

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+
+    <link rel="stylesheet" href="assets/css/variables.css" />
+    <link rel="stylesheet" href="assets/css/global.css" />
+    <link rel="stylesheet" href="assets/css/nativize.css" />
+
+    <link rel="stylesheet" href="assets/css/custom-elements/infobox.css" />
+    <script type="module" src="assets/js/custom-elements/infobox.js"></script>
+
+    <link rel="stylesheet" href="assets/css/settings-window.css" />
+</head>
+<body>
+    <div id="settings-header">XCOM Companion Settings</div>
+    <form id="settings-form">
+        <div id="settings-body">
+        <info-box id="first-time-message">It looks like you haven't entered any settings yet. Please take a moment to do so now.</info-box>
+
+            <div class="settings-group">
+                <h3>Campaign Options</h3>
+                <!-- Difficulty -->
+                <div class="settings-row">
+                    <label class="settings-label" for="default-difficulty">Default Difficulty</label>
+                    <select class="settings-value" name="default-difficulty">
+                        <option value="normal">Normal</option>
+                        <option value="classic">Classic</option>
+                        <option value="brutal">Brutal</option>
+                        <option value="impossible">Impossible</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="settings-group">
+                <h3>XCOM Base Setup <span class="help-icon" title="These options can be used to personalize data throughout the app to your campaign."></span></h3>
+                <div class="settings-row">
+                    <label class="settings-label" for="personalizeData">Personalize App Data</label>
+                    <input type="checkbox" class="settings-value" name="personalizeData" />
+                </div>
+
+                <!-- Scientists/labs -->
+                <fieldset class="settings-subgroup">
+                    <legend>Research</legend>
+                    <div class="settings-row">
+                        <label class="settings-label" for="numScientists"># of Scientists</label>
+                        <input type="number" class="settings-value" name="numScientists" value="10" min="10" max="200" />
+                    </div>
+                    <div class="settings-row">
+                        <label class="settings-label" for="numLabs"># of Laboratories</label>
+                        <input type="number" class="settings-value" name="numLabs" value="0" min="0" max="16" />
+                    </div>
+                    <div class="settings-row">
+                        <label class="settings-label" for="numLabAdjacencies"># of Lab Adjacencies</label>
+                        <input type="number" class="settings-value" name="numLabAdjacencies" value="0" min="0" max="16" />
+                    </div>
+                </fieldset>
+
+                <!-- Engineers/workshops -->
+                <fieldset class="settings-subgroup">
+                    <legend>Engineering</legend>
+                    <div class="settings-row">
+                        <label class="settings-label" for="numEngineers"># of Engineers</label>
+                        <input type="number" class="settings-value" name="numEngineers" value="10" min="10" max="200" />
+                    </div>
+                    <div class="settings-row">
+                        <label class="settings-label" for="numWorkshops"># of Workshops</label>
+                        <input type="number" class="settings-value" name="numWorkshops" value="0" min="0" max="16" />
+                    </div>
+                    <div class="settings-row">
+                        <label class="settings-label" for="numWorkshopAdjacencies"># of Workshop Adjacencies</label>
+                        <input type="number" class="settings-value" name="numWorkshopAdjacencies" value="0" min="0" max="16" />
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+        <div id="settings-footer">
+            <button id="save-settings" type="submit">Save Settings</button>
+            <button id="cancel">Cancel</button>
+        </div>
+    </form>
+
+    <script src="assets/js/settings-window.js"></script>
+</body>
+</html>
