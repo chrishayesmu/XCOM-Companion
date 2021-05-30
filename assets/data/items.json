@@ -1343,7 +1343,7 @@
         "item_chem_grenade": {
             "name": "Chem Grenade",
             "description": "Our advanced research in alien physiology has allowed us to synthesize a modified version of the acid projected by the Thin Man, and containerize it in grenade form. It should be useful against both biological and robotic targets.",
-            "tactical_text": "<ul><li>Creates a toxic cloud at impact site</li><li>Unprotected organic targets suffer reductions in mobility and take damage each turn; hunkering down can reduce damage</li><li>All targets (including robots) also suffer acid damage, reducing aim and damage reduction</li><li>Support grenade</li></ul>",
+            "tactical_text": "<ul><li>Creates a toxic cloud at impact site</li><li>Unprotected organic targets suffer reductions in mobility and take damage each turn; hunkering down can reduce damage</li><li>All targets (including robots) also suffer acid damage, reducing aim and damage reduction</li><li>Aim is reduced by a flat -20</li><li>Mobility (for affected targets) is reduced by 25%</li><li>DR is reduced by 50% or 3 points, whichever is greater, but cannot go negative</li><li>Targets also suffer a significant reduction in the throw range of grenades</li><li>Support grenade</li></ul>",
             "type": "loadout_equipment",
             "sell_value": 48,
             "type_specific_data": {
@@ -1962,7 +1962,7 @@
         "item_flashbang_grenade": {
             "name": "Flashbang Grenade",
             "description": "This grenade-style weapon emits a disorienting flash of light with accompanying sounds. Any enemies that can see the blast will be disoriented, suffering severe penalties to Aim and movement. Robotic and psionic enemies are immune.",
-            "tactical_text": "<ul><li>Enemy units inside the blast radius suffer significant Aim and movement penalties during their next turn.</li><li>Robotic and advanced psionic enemies are immune.</li><li>Support Grenade</ul>",
+            "tactical_text": "<ul><li>Enemy units inside the blast radius suffer significant Aim and movement penalties during their next turn.</li><li>Disoriented units suffer -50 Aim and -40% mobility, as well as a significant reduction in the throw range of grenades.</li><li>Disoriented units will also immediately cancel Overwatch or Suppression.</li><li>Robotic and advanced psionic enemies are immune.</li><li>Support Grenade</ul>",
             "type": "loadout_equipment",
             "type_specific_data": {
                 "usable_by_infantry": true,
