@@ -173,6 +173,14 @@ enemy-infobox[tiny] .enemy-infobox-title {
     color: yellow;
 }
 
+#enemy-infobox-unit-types {
+    background-color: var(--color-bg-schematic);
+    margin-top: -5px;
+    padding-bottom: 5px;
+    text-align: center;
+    width: 100%;
+}
+
 .enemy-infobox-perk-icon {
     font-size: 0.85em;
     margin: 3px 0;
