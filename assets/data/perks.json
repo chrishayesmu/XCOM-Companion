@@ -431,6 +431,11 @@
                 "icon": "assets/img/perk-icons/ready_for_anything.png",
                 "description": "If the unit fires without taking any other costly action, it automatically enters overwatch at the end of its turn."
             },
+            "perk_regen_pheromones": {
+                "name": "Regen Pheromones",
+                "icon": "assets/img/perk-icons/psi_regen_biofield.png",
+                "description": "This unit and all nearby allies are healed for 1 health each turn."
+            },
             "perk_repair": {
                 "name": "Repair",
                 "icon": "assets/img/perk-icons/repair.png",

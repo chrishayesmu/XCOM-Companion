@@ -237,7 +237,10 @@ class EnemyInfobox extends HTMLElement {
             const div = document.createElement("div");
             div.classList.add("enemy-infobox-column-body");
             div.textContent = "None";
-            perksContainer.replaceWith(div);
+
+            // Need to override grid display so text is centered
+            perksContainer.style = "display: unset";
+            perksContainer.appendChild(div);
         }
         else {
             for (const perk of perks) {

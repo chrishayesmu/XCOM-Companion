@@ -1,3 +1,7 @@
+enemy-infobox {
+    height: fit-content;
+    width: fit-content;
+}
 
 .enemy-infobox {
     display: flex;
@@ -12,7 +16,7 @@
 
 enemy-infobox[tiny] .enemy-infobox {
     cursor: pointer;
-    width: 200px;
+    width: 225px;
 }
 
 enemy-infobox[tiny] .enemy-infobox:hover .enemy-infobox-img,

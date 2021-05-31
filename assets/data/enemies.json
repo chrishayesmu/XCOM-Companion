@@ -912,6 +912,1306 @@
                 }
             ]
         },
+        "enemy_exalt_elite_heavy": {
+            "name": "EXALT Elite Heavy",
+            "description": "",
+            "appearances": {
+                "terror": 224
+            },
+            "creature_type": "organic",
+            "is_psionic": false,
+            "team": "exalt",
+            "capture_rewards": {
+                "item_alien_grenade": 1,
+                "item_autolaser": 1
+            },
+            "kill_rewards": {
+                "item_meld": 1
+            },
+            "base_stats": {
+                "normal": {
+                    "aim": 61,
+                    "crit_chance": 0,
+                    "damage": 6,
+                    "damage_reduction": 0,
+                    "defense": 0,
+                    "hp": 9,
+                    "mobility": 11,
+                    "will": 50
+                },
+                "classic": {
+                    "aim": 66,
+                    "crit_chance": 0,
+                    "damage": 6,
+                    "damage_reduction": 0,
+                    "defense": 0,
+                    "hp": 11,
+                    "mobility": 11,
+                    "will": 50
+                },
+                "brutal": {
+                    "aim": 71,
+                    "crit_chance": 0,
+                    "damage": 6,
+                    "damage_reduction": 0,
+                    "defense": 0,
+                    "hp": 12,
+                    "mobility": 11,
+                    "will": 60
+                },
+                "impossible": {
+                    "aim": 71,
+                    "crit_chance": 0,
+                    "damage": 8,
+                    "damage_reduction": 0,
+                    "defense": 0,
+                    "hp": 12,
+                    "mobility": 11,
+                    "will": 75
+                }
+            },
+            "base_perks": [
+                "perk_fire_rocket",
+                "perk_iron_skin"
+            ],
+            "research_upgrades": [
+                {
+                    "threshold": 0,
+                    "chance": 50,
+                    "perk": "perk_light_em_up"
+                },
+                {
+                    "threshold": 270,
+                    "damage": 1,
+                    "hp": 1
+                },
+                {
+                    "threshold": 350,
+                    "aim": 4,
+                    "damage": 1,
+                    "hp": 1,
+                    "will": 3
+                },
+                {
+                    "threshold": 480,
+                    "aim": 4,
+                    "damage": 1,
+                    "hp": 1
+                },
+                {
+                    "threshold": 630,
+                    "aim": 4,
+                    "damage": 1,
+                    "hp": 2,
+                    "will": 3
+                },
+                {
+                    "threshold": 900,
+                    "aim": 4,
+                    "damage": 1,
+                    "hp": 2,
+                    "will": 5
+                }
+            ],
+            "leader_ranks": [
+                {
+                    "threshold": 0,
+                    "level": 0
+                },
+                {
+                    "threshold": 40,
+                    "level": 1,
+                    "aim": 2,
+                    "hp": 2,
+                    "perks": [ "perk_danger_zone", "perk_javelin_rockets", "perk_light_em_up" ],
+                    "will": 2
+                },
+                {
+                    "threshold": 80,
+                    "level": 2,
+                    "aim": 2,
+                    "perks": [ "perk_grenadier" ],
+                    "will": 1
+                },
+                {
+                    "threshold": 120,
+                    "level": 3,
+                    "aim": 2,
+                    "hp": 1,
+                    "perks": [ "perk_will_to_survive" ],
+                    "will": 2
+                },
+                {
+                    "threshold": 160,
+                    "level": 4,
+                    "aim": 2,
+                    "damage": 1,
+                    "hp": 1,
+                    "perks": [ "perk_heat_ammo" ],
+                    "will": 1
+                },
+                {
+                    "threshold": 200,
+                    "level": 5,
+                    "aim": 2,
+                    "hp": 1,
+                    "perks": [ "perk_mayhem" ],
+                    "will": 2
+                },
+                {
+                    "threshold": 240,
+                    "level": 6,
+                    "aim": 2,
+                    "perks": [ "perk_bombard" ],
+                    "will": 1
+                },
+                {
+                    "threshold": 280,
+                    "level": 7,
+                    "aim": 2,
+                    "damage": 1,
+                    "hp": 1,
+                    "perks": [ "perk_combined_arms" ],
+                    "will": 2
+                },
+                {
+                    "threshold": 320,
+                    "level": 8
+                },
+                {
+                    "threshold": 320,
+                    "level": 9,
+                    "aim": 2,
+                    "damage": 1,
+                    "hp": 10,
+                    "perks": [ "perk_tactical_sense" ],
+                    "will": 12
+                }
+            ]
+        },
+        "enemy_exalt_elite_medic": {
+            "name": "EXALT Elite Medic",
+            "description": "",
+            "appearances": {
+                "terror": 224
+            },
+            "creature_type": "organic",
+            "is_psionic": false,
+            "team": "exalt",
+            "capture_rewards": {
+                "item_laser_rifle": 1
+            },
+            "kill_rewards": {
+                "item_meld": 1
+            },
+            "base_stats": {
+                "normal": {
+                    "aim": 61,
+                    "crit_chance": 0,
+                    "damage": 5,
+                    "damage_reduction": 0,
+                    "defense": 0,
+                    "hp": 8,
+                    "mobility": 12,
+                    "will": 60
+                },
+                "classic": {
+                    "aim": 66,
+                    "crit_chance": 0,
+                    "damage": 5,
+                    "damage_reduction": 0,
+                    "defense": 0,
+                    "hp": 10,
+                    "mobility": 12,
+                    "will": 60
+                },
+                "brutal": {
+                    "aim": 71,
+                    "crit_chance": 0,
+                    "damage": 5,
+                    "damage_reduction": 0,
+                    "defense": 0,
+                    "hp": 11,
+                    "mobility": 12,
+                    "will": 70
+                },
+                "impossible": {
+                    "aim": 71,
+                    "crit_chance": 0,
+                    "damage": 7,
+                    "damage_reduction": 0,
+                    "defense": 0,
+                    "hp": 11,
+                    "mobility": 12,
+                    "will": 85
+                }
+            },
+            "base_perks": [
+                "perk_regen_pheromones",
+                "perk_smoke_grenade"
+            ],
+            "research_upgrades": [
+                {
+                    "threshold": 270,
+                    "damage": 1,
+                    "hp": 1,
+                    "mobility": 1,
+                    "will": 5
+                },
+                {
+                    "threshold": 350,
+                    "aim": 4,
+                    "damage": 1,
+                    "will": 5
+                },
+                {
+                    "threshold": 480,
+                    "aim": 4,
+                    "damage": 1,
+                    "defense": 4,
+                    "hp": 1
+                },
+                {
+                    "threshold": 630,
+                    "aim": 5,
+                    "damage": 1,
+                    "defense": 4,
+                    "hp": 2,
+                    "hp_regen": 2,
+                    "mobility": 1
+                },
+                {
+                    "threshold": 900,
+                    "aim": 4,
+                    "damage": 1,
+                    "defense": 4,
+                    "hp": 2,
+                    "hp_regen": 2,
+                    "mobility": 1
+                }
+            ],
+            "leader_ranks": [
+                {
+                    "threshold": 0,
+                    "level": 0
+                },
+                {
+                    "threshold": 40,
+                    "level": 1,
+                    "aim": 2,
+                    "perks": [ "perk_covering_fire", "perk_suppression" ],
+                    "will": 1
+                },
+                {
+                    "threshold": 80,
+                    "level": 2,
+                    "aim": 2,
+                    "hp": 1,
+                    "perks": [ "perk_dense_smoke", "perk_tactical_sense" ],
+                    "will": 1
+                },
+                {
+                    "threshold": 120,
+                    "level": 3,
+                    "aim": 4,
+                    "hp_regen": 2,
+                    "mobility": 4,
+                    "perks": [ "perk_adaptive_bone_marrow", "perk_sprinter" ],
+                    "will": 2
+                },
+                {
+                    "threshold": 160,
+                    "level": 4,
+                    "aim": 2,
+                    "hp": 1,
+                    "perks": [ "perk_savior" ],
+                    "will": 1
+                },
+                {
+                    "threshold": 200,
+                    "level": 5,
+                    "aim": 2,
+                    "perks": [ "perk_opportunist" ],
+                    "will": 1
+                },
+                {
+                    "threshold": 240,
+                    "level": 6,
+                    "aim": 2,
+                    "hp": 1,
+                    "perks": [ "perk_low_profile" ],
+                    "will": 2
+                },
+                {
+                    "threshold": 280,
+                    "level": 7,
+                    "aim": 2,
+                    "damage": 1,
+                    "perks": [ "perk_sentinel" ],
+                    "will": 2
+                },
+                {
+                    "threshold": 320,
+                    "level": 8
+                },
+                {
+                    "threshold": 320,
+                    "level": 9,
+                    "aim": 5,
+                    "damage": 1,
+                    "hp": 8,
+                    "perks": [ "perk_light_em_up" ],
+                    "will": 10
+                }
+            ]
+        },
+        "enemy_exalt_elite_operative": {
+            "name": "EXALT Elite Operative",
+            "description": "",
+            "appearances": {
+                "terror": 224
+            },
+            "creature_type": "organic",
+            "is_psionic": false,
+            "team": "exalt",
+            "capture_rewards": {
+                "item_alien_grenade": 1,
+                "item_laser_rifle": 1
+            },
+            "kill_rewards": {
+                "item_meld": 1
+            },
+            "base_stats": {
+                "normal": {
+                    "aim": 66,
+                    "crit_chance": 0,
+                    "damage": 5,
+                    "damage_reduction": 0,
+                    "defense": 0,
+                    "hp": 9,
+                    "mobility": 12,
+                    "will": 60
+                },
+                "classic": {
+                    "aim": 71,
+                    "crit_chance": 0,
+                    "damage": 5,
+                    "damage_reduction": 0,
+                    "defense": 0,
+                    "hp": 11,
+                    "mobility": 12,
+                    "will": 60
+                },
+                "brutal": {
+                    "aim": 76,
+                    "crit_chance": 0,
+                    "damage": 5,
+                    "damage_reduction": 0,
+                    "defense": 0,
+                    "hp": 12,
+                    "mobility": 12,
+                    "will": 70
+                },
+                "impossible": {
+                    "aim": 76,
+                    "crit_chance": 0,
+                    "damage": 7,
+                    "damage_reduction": 0,
+                    "defense": 0,
+                    "hp": 12,
+                    "mobility": 12,
+                    "will": 85
+                }
+            },
+            "base_perks": [
+                "perk_adrenaline_surge",
+                "perk_alien_grenade"
+            ],
+            "research_upgrades": [
+                {
+                    "threshold": 0,
+                    "chance": 15,
+                    "damage": 1
+                },
+                {
+                    "threshold": 0,
+                    "chance": 15,
+                    "hp": 1
+                },
+                {
+                    "threshold": 0,
+                    "chance": 15,
+                    "hp": 1
+                },
+                {
+                    "threshold": 0,
+                    "chance": 25,
+                    "aim": 5
+                },
+                {
+                    "threshold": 0,
+                    "chance": 25,
+                    "perk": "perk_covering_fire"
+                },
+                {
+                    "threshold": 0,
+                    "chance": 33,
+                    "perk": "perk_tactical_sense"
+                },
+                {
+                    "threshold": 0,
+                    "chance": 50,
+                    "perk": "perk_suppression"
+                },
+                {
+                    "threshold": 270,
+                    "aim": 4,
+                    "damage": 1,
+                    "hp": 1
+                },
+                {
+                    "threshold": 350,
+                    "damage": 1,
+                    "hp": 1,
+                    "mobility": 1,
+                    "will": 3
+                },
+                {
+                    "threshold": 480,
+                    "aim": 4,
+                    "crit_chance": 4,
+                    "damage": 1,
+                    "defense": 4,
+                    "hp": 1
+                },
+                {
+                    "threshold": 630,
+                    "aim": 4,
+                    "damage": 1,
+                    "defense": 4,
+                    "hp": 2,
+                    "mobility": 1,
+                    "will": 3
+                },
+                {
+                    "threshold": 900,
+                    "aim": 4,
+                    "damage": 1,
+                    "defense": 4,
+                    "hp": 2,
+                    "mobility": 1,
+                    "will": 5
+                }
+            ],
+            "leader_ranks": [
+                {
+                    "threshold": 0,
+                    "level": 0
+                },
+                {
+                    "threshold": 40,
+                    "level": 1,
+                    "aim": 2,
+                    "hp": 1,
+                    "perks": [ "perk_grenadier" ]
+                },
+                {
+                    "threshold": 80,
+                    "level": 2,
+                    "aim": 2,
+                    "perks": [ "perk_opportunist" ],
+                    "will": 3
+                },
+                {
+                    "threshold": 120,
+                    "level": 3,
+                    "aim": 2,
+                    "hp": 1,
+                    "perks": [ "perk_aggression" ]
+                },
+                {
+                    "threshold": 160,
+                    "level": 4,
+                    "aim": 2,
+                    "damage": 1,
+                    "perks": [ "perk_lightning_reflexes" ],
+                    "will": 3
+                },
+                {
+                    "threshold": 200,
+                    "level": 5,
+                    "aim": 2,
+                    "hp": 1,
+                    "perks": [ "perk_bombard" ]
+                },
+                {
+                    "threshold": 240,
+                    "level": 6,
+                    "aim": 2,
+                    "perks": [ "perk_resilience" ],
+                    "will": 3
+                },
+                {
+                    "threshold": 280,
+                    "level": 7,
+                    "aim": 3,
+                    "damage": 1,
+                    "hp": 1,
+                    "perks": [ "perk_light_em_up" ]
+                },
+                {
+                    "threshold": 320,
+                    "level": 8
+                },
+                {
+                    "threshold": 320,
+                    "level": 9,
+                    "aim": 10,
+                    "crit_chance": 10,
+                    "damage": 1,
+                    "hp": 10,
+                    "perks": [ "perk_sharpshooter" ],
+                    "will": 25
+                }
+            ]
+        },
+        "enemy_exalt_elite_sniper": {
+            "name": "EXALT Elite Sniper",
+            "description": "",
+            "appearances": {
+                "terror": 224
+            },
+            "creature_type": "organic",
+            "is_psionic": false,
+            "team": "exalt",
+            "capture_rewards": {
+                "item_laser_sniper_rifle": 1
+            },
+            "kill_rewards": {
+                "item_meld": 1
+            },
+            "base_stats": {
+                "normal": {
+                    "aim": 86,
+                    "crit_chance": 0,
+                    "damage": 6,
+                    "damage_reduction": 0,
+                    "defense": 0,
+                    "hp": 8,
+                    "mobility": 12,
+                    "will": 56
+                },
+                "classic": {
+                    "aim": 91,
+                    "crit_chance": 0,
+                    "damage": 6,
+                    "damage_reduction": 0,
+                    "defense": 0,
+                    "hp": 10,
+                    "mobility": 12,
+                    "will": 56
+                },
+                "brutal": {
+                    "aim": 96,
+                    "crit_chance": 0,
+                    "damage": 6,
+                    "damage_reduction": 0,
+                    "defense": 0,
+                    "hp": 11,
+                    "mobility": 12,
+                    "will": 66
+                },
+                "impossible": {
+                    "aim": 96,
+                    "crit_chance": 0,
+                    "damage": 8,
+                    "damage_reduction": 0,
+                    "defense": 0,
+                    "hp": 11,
+                    "mobility": 12,
+                    "will": 81
+                }
+            },
+            "base_perks": [
+                "perk_depth_perception",
+                "perk_low_profile",
+                "perk_squadsight"
+            ],
+            "research_upgrades": [
+                {
+                    "threshold": 270,
+                    "aim": 4,
+                    "damage": 1,
+                    "hp": 1
+                },
+                {
+                    "threshold": 350,
+                    "crit_chance": 4,
+                    "damage": 1,
+                    "will": 3
+                },
+                {
+                    "threshold": 480,
+                    "aim": 4,
+                    "crit_chance": 4,
+                    "damage": 1
+                },
+                {
+                    "threshold": 630,
+                    "aim": 4,
+                    "crit_chance": 4,
+                    "damage": 1,
+                    "hp": 1,
+                    "will": 3
+                },
+                {
+                    "threshold": 900,
+                    "aim": 4,
+                    "crit_chance": 4,
+                    "damage": 1,
+                    "hp": 1,
+                    "will": 5
+                }
+            ],
+            "leader_ranks": [
+                {
+                    "threshold": 0,
+                    "level": 0
+                },
+                {
+                    "threshold": 40,
+                    "level": 1,
+                    "aim": 2,
+                    "will": 1
+                },
+                {
+                    "threshold": 80,
+                    "level": 2,
+                    "aim": 2,
+                    "crit_chance": 10,
+                    "perks": [ "perk_sharpshooter" ],
+                    "will": 1
+                },
+                {
+                    "threshold": 120,
+                    "level": 3,
+                    "aim": 3,
+                    "perks": [ "perk_aggression" ],
+                    "will": 1
+                },
+                {
+                    "threshold": 160,
+                    "level": 4,
+                    "aim": 2,
+                    "hp": 1,
+                    "perks": [ "perk_lone_wolf" ],
+                    "will": 1
+                },
+                {
+                    "threshold": 200,
+                    "level": 5,
+                    "aim": 3,
+                    "perks": [ "perk_mayhem" ],
+                    "will": 1
+                },
+                {
+                    "threshold": 240,
+                    "level": 6,
+                    "aim": 2,
+                    "damage": 1,
+                    "perks": [ "perk_in_the_zone" ],
+                    "will": 1
+                },
+                {
+                    "threshold": 280,
+                    "level": 7,
+                    "aim": 5,
+                    "damage": 1,
+                    "hp": 1,
+                    "perks": [ "perk_bring_em_on" ],
+                    "will": 3
+                },
+                {
+                    "threshold": 320,
+                    "level": 8
+                },
+                {
+                    "threshold": 320,
+                    "level": 9,
+                    "aim": 5,
+                    "damage": 1,
+                    "hp": 5,
+                    "perks": [ "perk_combined_arms" ],
+                    "will": 13
+                }
+            ]
+        },
+        "enemy_exalt_heavy": {
+            "name": "EXALT Heavy",
+            "description": "",
+            "appearances": {
+                "terror": 224
+            },
+            "creature_type": "organic",
+            "is_psionic": false,
+            "team": "exalt",
+            "kill_rewards": {
+                "item_meld": 0.3
+            },
+            "base_stats": {
+                "normal": {
+                    "aim": 50,
+                    "crit_chance": 0,
+                    "damage": 5,
+                    "damage_reduction": 0,
+                    "defense": 0,
+                    "hp": 7,
+                    "mobility": 12,
+                    "will": 20
+                },
+                "classic": {
+                    "aim": 55,
+                    "crit_chance": 0,
+                    "damage": 5,
+                    "damage_reduction": 0,
+                    "defense": 0,
+                    "hp": 8,
+                    "mobility": 12,
+                    "will": 20
+                },
+                "brutal": {
+                    "aim": 60,
+                    "crit_chance": 0,
+                    "damage": 5,
+                    "damage_reduction": 0,
+                    "defense": 0,
+                    "hp": 9,
+                    "mobility": 12,
+                    "will": 30
+                },
+                "impossible": {
+                    "aim": 60,
+                    "crit_chance": 0,
+                    "damage": 6,
+                    "damage_reduction": 0,
+                    "defense": 0,
+                    "hp": 9,
+                    "mobility": 12,
+                    "will": 45
+                }
+            },
+            "base_perks": [
+                "perk_fire_rocket"
+            ],
+            "research_upgrades": [
+                {
+                    "threshold": 210,
+                    "aim": 4,
+                    "damage": 1,
+                    "hp": 1
+                },
+                {
+                    "threshold": 330,
+                    "hp": 2
+                },
+                {
+                    "threshold": 450,
+                    "damage": 1,
+                    "hp": 2
+                }
+            ],
+            "leader_ranks": [
+                {
+                    "threshold": 0,
+                    "level": 0
+                },
+                {
+                    "threshold": 40,
+                    "level": 1,
+                    "aim": 2,
+                    "hp": 1,
+                    "perks": [ "perk_covering_fire" ],
+                    "will": 2
+                },
+                {
+                    "threshold": 80,
+                    "level": 2,
+                    "aim": 2,
+                    "perks": [ "perk_grenadier" ]
+                },
+                {
+                    "threshold": 120,
+                    "level": 3,
+                    "aim": 2,
+                    "hp": 1,
+                    "perks": [ "perk_danger_zone" ],
+                    "will": 2
+                },
+                {
+                    "threshold": 160,
+                    "level": 4,
+                    "aim": 2,
+                    "damage": 1,
+                    "perks": [ "perk_light_em_up" ]
+                },
+                {
+                    "threshold": 200,
+                    "level": 5,
+                    "aim": 2,
+                    "hp": 1,
+                    "perks": [ "perk_will_to_survive" ],
+                    "will": 2
+                },
+                {
+                    "threshold": 240,
+                    "level": 6,
+                    "aim": 2,
+                    "perks": [ "perk_heat_ammo" ]
+                },
+                {
+                    "threshold": 280,
+                    "level": 7,
+                    "aim": 2,
+                    "hp": 1,
+                    "perks": [ "perk_javelin_rockets" ]
+                }
+            ]
+        },
+        "enemy_exalt_medic": {
+            "name": "EXALT Medic",
+            "description": "",
+            "appearances": {
+                "terror": 224
+            },
+            "creature_type": "organic",
+            "is_psionic": false,
+            "team": "exalt",
+            "kill_rewards": {
+                "item_meld": 0.3
+            },
+            "base_stats": {
+                "normal": {
+                    "aim": 45,
+                    "crit_chance": 0,
+                    "damage": 4,
+                    "damage_reduction": 0,
+                    "defense": 0,
+                    "hp": 6,
+                    "mobility": 12,
+                    "will": 30
+                },
+                "classic": {
+                    "aim": 50,
+                    "crit_chance": 0,
+                    "damage": 4,
+                    "damage_reduction": 0,
+                    "defense": 0,
+                    "hp": 7,
+                    "mobility": 12,
+                    "will": 30
+                },
+                "brutal": {
+                    "aim": 55,
+                    "crit_chance": 0,
+                    "damage": 4,
+                    "damage_reduction": 0,
+                    "defense": 0,
+                    "hp": 8,
+                    "mobility": 12,
+                    "will": 40
+                },
+                "impossible": {
+                    "aim": 55,
+                    "crit_chance": 0,
+                    "damage": 4,
+                    "damage_reduction": 0,
+                    "defense": 0,
+                    "hp": 8,
+                    "mobility": 12,
+                    "will": 55
+                }
+            },
+            "base_perks": [
+                "perk_smoke_grenade"
+            ],
+            "research_upgrades": [
+                {
+                    "threshold": 210,
+                    "aim": 4,
+                    "damage": 1,
+                    "hp": 1,
+                    "mobility": 1,
+                    "will": 5
+                },
+                {
+                    "threshold": 330,
+                    "hp": 1,
+                    "will": 5
+                },
+                {
+                    "threshold": 450,
+                    "damage": 1,
+                    "hp": 1,
+                    "hp_regen": 2
+                }
+            ],
+            "leader_ranks": [
+                {
+                    "threshold": 0,
+                    "level": 0
+                },
+                {
+                    "threshold": 40,
+                    "level": 1,
+                    "aim": 2,
+                    "perks": [ "perk_covering_fire" ],
+                    "will": 2
+                },
+                {
+                    "threshold": 80,
+                    "level": 2,
+                    "aim": 2,
+                    "hp": 1,
+                    "perks": [ "perk_tactical_sense" ],
+                    "will": 1
+                },
+                {
+                    "threshold": 120,
+                    "level": 3,
+                    "aim": 2,
+                    "mobility": 4,
+                    "perks": [ "perk_sprinter" ],
+                    "will": 2
+                },
+                {
+                    "threshold": 160,
+                    "level": 4,
+                    "aim": 2,
+                    "hp": 1,
+                    "perks": [ "perk_savior" ],
+                    "will": 1
+                },
+                {
+                    "threshold": 200,
+                    "level": 5,
+                    "aim": 2,
+                    "perks": [ "perk_opportunist" ],
+                    "will": 2
+                },
+                {
+                    "threshold": 240,
+                    "level": 6,
+                    "aim": 2,
+                    "hp": 1,
+                    "hp_regen": 2,
+                    "perks": [ "perk_adaptive_bone_marrow" ],
+                    "will": 1
+                },
+                {
+                    "threshold": 280,
+                    "level": 7,
+                    "aim": 2,
+                    "perks": [ "perk_sentinel" ],
+                    "will": 2
+                }
+            ]
+        },
+        "enemy_exalt_operative": {
+            "name": "EXALT Operative",
+            "description": "",
+            "appearances": {
+                "terror": 224
+            },
+            "creature_type": "organic",
+            "is_psionic": false,
+            "team": "exalt",
+            "kill_rewards": {
+                "item_meld": 0.3
+            },
+            "base_stats": {
+                "normal": {
+                    "aim": 55,
+                    "crit_chance": 8,
+                    "damage": 4,
+                    "damage_reduction": 0,
+                    "defense": 0,
+                    "hp": 6,
+                    "mobility": 12,
+                    "will": 30
+                },
+                "classic": {
+                    "aim": 60,
+                    "crit_chance": 8,
+                    "damage": 4,
+                    "damage_reduction": 0,
+                    "defense": 0,
+                    "hp": 7,
+                    "mobility": 12,
+                    "will": 30
+                },
+                "brutal": {
+                    "aim": 65,
+                    "crit_chance": 8,
+                    "damage": 4,
+                    "damage_reduction": 0,
+                    "defense": 0,
+                    "hp": 8,
+                    "mobility": 12,
+                    "will": 40
+                },
+                "impossible": {
+                    "aim": 65,
+                    "crit_chance": 8,
+                    "damage": 5,
+                    "damage_reduction": 0,
+                    "defense": 0,
+                    "hp": 8,
+                    "mobility": 12,
+                    "will": 55
+                }
+            },
+            "base_perks": [
+            ],
+            "research_upgrades": [
+                {
+                    "threshold": 0,
+                    "chance": 25,
+                    "aim": -5,
+                    "hp": 1
+                },
+                {
+                    "threshold": 0,
+                    "chance": 25,
+                    "aim": 5,
+                    "hp": -1
+                },
+                {
+                    "threshold": 0,
+                    "chance": 25,
+                    "perk": "perk_covering_fire"
+                },
+                {
+                    "threshold": 0,
+                    "chance": 25,
+                    "damage": 1
+                },
+                {
+                    "threshold": 210,
+                    "aim": 4,
+                    "damage": 1,
+                    "hp": 1
+                },
+                {
+                    "threshold": 330,
+                    "hp": 1
+                },
+                {
+                    "threshold": 450,
+                    "aim": 4,
+                    "damage": 1,
+                    "hp": 2
+                }
+            ],
+            "leader_ranks": [
+                {
+                    "threshold": 0,
+                    "level": 0
+                },
+                {
+                    "threshold": 40,
+                    "level": 1,
+                    "aim": 2,
+                    "hp": 1,
+                    "perks": [ "perk_opportunist" ]
+                },
+                {
+                    "threshold": 80,
+                    "level": 2,
+                    "aim": 2,
+                    "perks": [ "perk_aggression" ],
+                    "will": 2
+                },
+                {
+                    "threshold": 120,
+                    "level": 3,
+                    "aim": 2,
+                    "hp": 1,
+                    "perks": [ "perk_tactical_sense" ]
+                },
+                {
+                    "threshold": 160,
+                    "level": 4,
+                    "aim": 2,
+                    "perks": [ "perk_suppression" ],
+                    "will": 2
+                },
+                {
+                    "threshold": 200,
+                    "level": 5,
+                    "aim": 2,
+                    "hp": 1,
+                    "perks": [ "perk_bring_em_on" ]
+                },
+                {
+                    "threshold": 240,
+                    "level": 6,
+                    "aim": 2,
+                    "perks": [ "perk_lightning_reflexes" ],
+                    "will": 2
+                },
+                {
+                    "threshold": 280,
+                    "level": 7,
+                    "aim": 2,
+                    "hp": 1,
+                    "perks": [ "perk_resilience" ]
+                },
+                {
+                    "threshold": 320,
+                    "level": 8
+                },
+                {
+                    "threshold": 320,
+                    "level": 9,
+                    "aim": 10,
+                    "hp": 10,
+                    "perks": [ "perk_light_em_up" ]
+                }
+            ]
+        },
+        "enemy_exalt_sniper": {
+            "name": "EXALT Sniper",
+            "description": "",
+            "appearances": {
+                "terror": 224
+            },
+            "creature_type": "organic",
+            "is_psionic": false,
+            "team": "exalt",
+            "kill_rewards": {
+                "item_meld": 0.3
+            },
+            "base_stats": {
+                "normal": {
+                    "aim": 60,
+                    "crit_chance": 0,
+                    "damage": 5,
+                    "damage_reduction": 0,
+                    "defense": 0,
+                    "hp": 5,
+                    "mobility": 12,
+                    "will": 25
+                },
+                "classic": {
+                    "aim": 65,
+                    "crit_chance": 0,
+                    "damage": 5,
+                    "damage_reduction": 0,
+                    "defense": 0,
+                    "hp": 6,
+                    "mobility": 12,
+                    "will": 25
+                },
+                "brutal": {
+                    "aim": 70,
+                    "crit_chance": 0,
+                    "damage": 5,
+                    "damage_reduction": 0,
+                    "defense": 0,
+                    "hp": 7,
+                    "mobility": 12,
+                    "will": 35
+                },
+                "impossible": {
+                    "aim": 70,
+                    "crit_chance": 0,
+                    "damage": 6,
+                    "damage_reduction": 0,
+                    "defense": 0,
+                    "hp": 7,
+                    "mobility": 12,
+                    "will": 50
+                }
+            },
+            "base_perks": [
+                "perk_snapshot"
+            ],
+            "research_upgrades": [
+                {
+                    "threshold": 210,
+                    "aim": 4,
+                    "damage": 1,
+                    "hp": 1
+                },
+                {
+                    "threshold": 330,
+                    "aim": 4,
+                    "crit_chance": 4
+                },
+                {
+                    "threshold": 450,
+                    "aim": 4,
+                    "crit_chance": 4,
+                    "damage": 1,
+                    "hp": 1
+                }
+            ],
+            "leader_ranks": [
+                {
+                    "threshold": 0,
+                    "level": 0
+                },
+                {
+                    "threshold": 40,
+                    "level": 1,
+                    "aim": 3,
+                    "crit_chance": 10,
+                    "perks": [ "perk_sharpshooter" ]
+                },
+                {
+                    "threshold": 80,
+                    "level": 2,
+                    "aim": 3,
+                    "perks": [ "perk_low_profile" ],
+                    "will": 2
+                },
+                {
+                    "threshold": 120,
+                    "level": 3,
+                    "aim": 3,
+                    "perks": [ "perk_squadsight" ]
+                },
+                {
+                    "threshold": 160,
+                    "level": 4,
+                    "aim": 3,
+                    "hp": 1,
+                    "perks": [ "perk_aggression" ],
+                    "will": 2
+                },
+                {
+                    "threshold": 200,
+                    "level": 5,
+                    "aim": 3,
+                    "damage": 1
+                },
+                {
+                    "threshold": 240,
+                    "level": 6,
+                    "aim": 3,
+                    "perks": [ "perk_executioner" ],
+                    "will": 2
+                },
+                {
+                    "threshold": 280,
+                    "level": 7,
+                    "aim": 3,
+                    "damage": 1,
+                    "hp": 1,
+                    "perks": [ "perk_in_the_zone" ]
+                }
+            ]
+        },
         "enemy_floater": {
             "name": "Floater",
             "description": "",
