@@ -117,6 +117,8 @@ class EnemyDisplayPage extends AppPage {
         latestDateHeader.setAttribute("data-tooltip-template-file", "assets/html/templates/custom-elements/alien-research.html");
         latestDateHeader.setAttribute("data-tooltip-template-id", "template-ar-tooltip-max-date");
 
+        let allBoxesChecked = true;
+        const useCheckboxHeader = upgradeType === "navigator" && isPointInTimeView;
         const checkboxHeader = document.createElement("div");
         Utils.appendElement(checkboxHeader, "div", "Apply");
         const checkbox = Utils.appendElement(checkboxHeader, "input", "", { attributes: { id: "enemy-pit-apply-all", type: "checkbox" }});
@@ -135,7 +137,7 @@ class EnemyDisplayPage extends AppPage {
             {
                 key: "checkbox",
                 header: checkboxHeader,
-                isUsed: upgradeType === "navigator" && isPointInTimeView
+                isUsed: useCheckboxHeader
             },
             {
                 key: "radioButton",
@@ -259,6 +261,7 @@ class EnemyDisplayPage extends AppPage {
         }
 
         // Get the main body of the grid
+        let checkboxIndex = 0;
         const values = [];
         for (const upgrade of upgradePool) {
             for (const column of usedColumns) {
@@ -267,10 +270,12 @@ class EnemyDisplayPage extends AppPage {
                 if (column.key === "checkbox" && upgrade.chance) {
                     value = document.createElement("input");
                     value.type = "checkbox";
-                    value.checked = upgrade.chance === 100;
+                    value.checked = upgrade.chance === 100 || this.#pointInTimeInfobox.navigatorUpgrades.includes(String(checkboxIndex));
                     value.disabled = upgrade.chance === 100;
 
                     value.addEventListener("change", this._onNavigatorCheckboxChanged.bind(this));
+
+                    allBoxesChecked = allBoxesChecked && value.checked;
                 }
                 else if (column.key === "latest_date") {
                     const researchAmount = upgradeType === "general" ? Utils.researchThresholdByDifficulty(upgrade.threshold, this.difficulty) : upgrade.threshold;
@@ -285,6 +290,7 @@ class EnemyDisplayPage extends AppPage {
                     value.name = "leaderRank";
                     value.type = "radio";
                     value.value = upgrade.level;
+                    value.checked = this.#pointInTimeInfobox.leaderRank >= upgrade.level;
 
                     value.addEventListener("change", this._onLeaderRankRadioButtonChanged.bind(this));
                 }
@@ -326,7 +332,11 @@ class EnemyDisplayPage extends AppPage {
 
                 values.push(value);
             }
+
+            checkboxIndex++;
         }
+
+        checkbox.checked = allBoxesChecked;
 
         const grid = Utils.createGrid(headers, sizes, values);
         grid.classList.add("enemy-upgrades-container");
@@ -337,11 +347,14 @@ class EnemyDisplayPage extends AppPage {
     }
 
     _onApplyAllCheckboxChanged(_event) {
-        const checkboxesNodeList = document.getElementById("enemy-pit-navigator-upgrades-container").querySelectorAll("input[type=checkbox]:not([disabled]):not([id=enemy-pit-apply-all])");
+        const checkboxesNodeList = document.getElementById("enemy-pit-navigator-upgrades-container").querySelectorAll("input[type=checkbox]:not([disabled]):not(#enemy-pit-apply-all)");
         const checkboxes = [...checkboxesNodeList];
 
         const shouldApplyAll = checkboxes.some(elem => !elem.checked);
         checkboxes.forEach(elem => elem.checked = shouldApplyAll);
+
+        const applyAllCheckbox = document.getElementById("enemy-pit-apply-all");
+        applyAllCheckbox.checked = shouldApplyAll;
 
         // Sync the selected options to the infobox
         const selectedIndices = checkboxes.map( (_elem, index) => index ).filter( boxIndex => checkboxes[boxIndex].checked );
@@ -380,9 +393,8 @@ class EnemyDisplayPage extends AppPage {
         EnemyDisplayPage.difficulty = event.detail.selectedOption;
         const infoboxes = document.body.querySelectorAll("enemy-infobox");
 
-        for (const infobox of infoboxes) {
-            infobox.difficulty = this.difficulty;
-        }
+        this.#overviewInfobox.difficulty = this.difficulty;
+        this.#pointInTimeInfobox.difficulty = this.difficulty;
 
         const enemy = DataHelper.enemies[this.#enemyId];
 
