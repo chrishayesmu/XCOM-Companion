@@ -306,6 +306,7 @@
                     "level": 3,
                     "damage": 1,
                     "hp": 2,
+                    "hp_regen": 2,
                     "perks": [ "perk_adaptive_bone_marrow" ],
                     "will": 5
                 },
@@ -2113,6 +2114,7 @@
                     "level": 3,
                     "damage": 1,
                     "hp": 2,
+                    "hp_regen": 2,
                     "perks": [ "perk_adaptive_bone_marrow" ],
                     "will": 3
                 },
@@ -2427,6 +2429,7 @@
                     "aim": 5,
                     "damage": 1,
                     "hp": 10,
+                    "hp_regen": 2,
                     "perks": [ "perk_adaptive_bone_marrow", "perk_aggression", "perk_neural_damping" ],
                     "will": 30
                 },
