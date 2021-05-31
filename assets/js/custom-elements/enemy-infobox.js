@@ -222,6 +222,28 @@ class EnemyInfobox extends HTMLElement {
         }
     }
 
+    _populateDamageRanges(template, stats) {
+        const damageRange = DataHelper.enemyDamageRanges[stats.damage];
+        const enemyHasMayhem = !!stats.perks.find(perk => perk.id === "perk_mayhem");
+
+        const damageRangeElement = template.querySelector("#enemy-infobox-damage-range");
+        damageRangeElement.textContent = `${damageRange.normal_min} - ${damageRange.normal_max}`;
+
+        const critRangeElement = template.querySelector("#enemy-infobox-crit-range");
+        critRangeElement.textContent = `${damageRange.crit_min} - ${damageRange.crit_max}`;
+
+        // Hopefully this can be removed one day if I can figure out how much damage Mayhem gives to floaters and such
+        if (enemyHasMayhem) {
+            const div = document.createElement("div");
+            div.textContent = "⚠";
+            div.setAttribute("data-tooltip-text", "This enemy has the Mayhem perk, which may be granting bonus damage that is not reflected here.");
+            div.style = "color: yellow; cursor: help; margin-left: 6px";
+
+            damageRangeElement.appendChild(div);
+            critRangeElement.appendChild(div.cloneNode(true));
+        }
+    }
+
     _populatePerks(template, enemy, stats) {
         const perksContainer = template.querySelector("#enemy-infobox-perks-container");
 
@@ -384,16 +406,13 @@ class EnemyInfobox extends HTMLElement {
 
             this.#enemy = DataHelper.enemies[this.enemyId];
             const enemyStats = this._getStats(this.#enemy);
-            const damageRange = DataHelper.enemyDamageRanges[enemyStats.damage];
 
             template.querySelector(".enemy-infobox-title").textContent = enemyStats.name || this.#enemy.name;
             template.querySelector(".enemy-infobox-description").textContent = this.#enemy.description;
             template.querySelector(".enemy-infobox-img").src = this.#enemy.icon;
 
-            template.querySelector("#enemy-infobox-damage-range").textContent = `${damageRange.normal_min} - ${damageRange.normal_max}`;
-            template.querySelector("#enemy-infobox-crit-range").textContent = `${damageRange.crit_min} - ${damageRange.crit_max}`;
-
             this._populateAppearances(template, this.#enemy);
+            this._populateDamageRanges(template, enemyStats);
             this._populatePerks(template, this.#enemy, enemyStats);
             this._populateResearch(template, this.#enemy);
             this._populateRewards(template, this.#enemy);

@@ -170,11 +170,13 @@ enemy-infobox[tiny] .enemy-infobox-title {
 
 #enemy-infobox-crit-range,
 #enemy-infobox-damage-range {
+    flex-flow: row nowrap;
     font-size: 1.2em;
+    justify-content: center;
 }
 
 #enemy-infobox-crit-range {
-    color: yellow;
+    color: var(--color-crit);
 }
 
 #enemy-infobox-unit-types {
