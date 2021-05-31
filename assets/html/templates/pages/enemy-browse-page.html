@@ -1,5 +1,8 @@
 <template id="template-enemy-browse-page">
     <div id="enemy-browse-page">
+        <info-box><div>These dates represent the latest points at which each enemy type can appear <strong>as pod leaders</strong>. Some enemies will appear before these dates as non-leaders;
+        for example, a <in-app-link to="enemy_thin_man"></in-app-link>-led pod can contain <in-app-link to="enemy_seeker" linkText="Seekers"></in-app-link> in early April, regardless of the current Alien Research value.
+        <in-app-link to="enemy_zombie" linkText="Zombies"></in-app-link> cannot be pod leaders, they can only accompany <in-app-link to="enemy_chryssalid" linkText="Chryssalids"></in-app-link>,  and thus they don't appear in this table at all.</div></info-box>
         <div class="enemy-browse-container">
             <div class="enemy-browse-column-header" data-tooltip-text="iMonth is an internal counter which goes up by 1 for every 28 points of Alien Research, meaning at its slowest, it goes up every 28 days. iMonth determines what enemies can appear on missions.">iMonth</div>
             <div class="enemy-browse-column-header" data-tooltip-template-file="assets/html/templates/custom-elements/enemy-infobox.html"
