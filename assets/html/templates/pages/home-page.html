@@ -19,6 +19,32 @@
             <h2>Changelog</h2>
             <div class="changelog-version">
                 <details>
+                    <summary>Version 0.6.3 (May 31, 2021)</summary>
+                    <h3>Features</h3>
+                    <ul>
+                        <li>Added <a data-page-on-click="enemy-browse-page">Enemies by Date</a> page in the left nav, showing the latest appearance of each enemy type month-by-month.</li>
+                        <li>
+                            Added enemy data for all EXALT units: <in-app-link to="enemy_exalt_heavy"></in-app-link>, <in-app-link to="enemy_exalt_elite_heavy"></in-app-link>, <in-app-link to="enemy_exalt_medic"></in-app-link>,
+                            <in-app-link to="enemy_exalt_elite_medic"></in-app-link>, <in-app-link to="enemy_exalt_operative"></in-app-link>, <in-app-link to="enemy_exalt_elite_operative"></in-app-link>,
+                            <in-app-link to="enemy_exalt_sniper"></in-app-link>, and <in-app-link to="enemy_exalt_elite_sniper"></in-app-link>.
+                        </li>
+                    </ul>
+                    <h3>Other improvements</h3>
+                    <ul>
+                        <li>In enemy point-in-time view, if an enemy has the Mayhem perk, a warning will appear in the Damage Range section to clarify that Mayhem is not taken into account</li>
+                        <li>Added some more specific info on the effects of the <in-app-link to="item_chem_grenade"></in-app-link> and <in-app-link to="item_flashbang_grenade"></in-app-link></li>
+                    </ul>
+                    <h3>Bug fixes</h3>
+                    <ul>
+                        <li>Corrected typo in the name of the Snap Shot perk</li>
+                        <li>Fixed incorrect tooltip when looking at Interceptor weapon stats (it read "Shots Per Second"; now "Seconds Between Shots")</li>
+                        <li>Fixed a few instances in enemy point-in-time view where the +2 HP regen from Adaptive Bone Marrow was not reflected in the stats box</li>
+                        <li>Fixed an issue in enemy point-in-time view where changing the selected difficulty could cause the selected Navigator and Leader Upgrades to be out of sync with the stats box</li>
+                    </ul>
+                </details>
+            </div>
+            <div class="changelog-version">
+                <details>
                     <summary>Version 0.6.2 (May 29, 2021)</summary>
                     <h3>Search improvements</h3>
                     <ul>
