@@ -517,7 +517,7 @@
                 "description": "Deploy a smoke grenade once per mission. The smoke confers +20 defense and prevents flanking for all enemy and allied units. Lasts 2 turns. Taking the perk on level up also allows an additional action after deploying a smoke grenade."
             },
             "perk_snapshot": {
-                "name": "Snapshot",
+                "name": "Snap Shot",
                 "icon": "assets/img/perk-icons/snapshot.png",
                 "description": "For snipers, removes the sniper rifle's restriction on firing and Overwatch after taking a costly action. Any shots taken after using any costly action suffer a -10 Aim penalty. For rocketeers, reduces the aim and range penalty for launching a rocket after taking a costly action to 25% (from 50%)."
             },
