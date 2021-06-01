@@ -252,16 +252,15 @@ class PageManager {
             return;
         }
 
-        if (!event.target.dataset.pageOnClick) {
-            return;
+        for (var t = event.target; t && t != event.currentTarget; t = t.parentNode) {
+            if (t.dataset.pageOnClick) {
+                event.preventDefault();
+                const requestedPageId = t.dataset.pageOnClick;
+                const data = this._extractPageDataArgs(t);
+                this.loadPage(requestedPageId, data);
+                break;
+            }
         }
-
-        event.preventDefault();
-
-        const requestedPageId = event.target.dataset.pageOnClick;
-        const data = this._extractPageDataArgs(event.target);
-
-        this.loadPage(requestedPageId, data);
     }
 
     async _handleElementMouseover(event) {
