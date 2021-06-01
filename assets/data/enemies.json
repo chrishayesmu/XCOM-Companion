@@ -2233,7 +2233,7 @@
                 "item_alien_alloy": 1,
                 "item_elerium": 1,
                 "item_meld": 0.5,
-                "item_weapon_fragment": -1
+                "item_weapon_fragment": 1
             },
             "base_stats": {
                 "normal": {
@@ -3755,7 +3755,7 @@
             },
             "kill_rewards": {
                 "item_meld": 0.3,
-                "item_weapon_fragment": -1
+                "item_weapon_fragment": 1
             },
             "base_stats": {
                 "normal": {
@@ -4839,7 +4839,7 @@
             "kill_rewards": {
                 "item_thin_man_corpse": 1,
                 "item_meld": 0.3,
-                "item_weapon_fragment": -1
+                "item_weapon_fragment": 1
             },
             "base_stats": {
                 "normal": {
