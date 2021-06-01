@@ -38,6 +38,8 @@ class MapDetailsPage extends AppPage {
 
     static pageId = "map-details-page";
 
+    #mapId = null;
+
     static async generatePreview(data) {
         if (!data.mapId) {
             return null;
@@ -76,6 +78,8 @@ class MapDetailsPage extends AppPage {
     }
 
     async loadFromDataObject(map) {
+        this.#mapId = map.id;
+
         const template = await Templates.instantiateTemplate("assets/html/templates/pages/map-details-page.html", "template-map-details-page");
 
         template.querySelector("#map-details-name").textContent = map.name;
@@ -92,6 +96,10 @@ class MapDetailsPage extends AppPage {
                 "text": "Map Details"
             }
         };
+    }
+
+    makeHistoryState() {
+        return new PageHistoryState(this, { mapId: this.#mapId });
     }
 
     _populateSize(template, map) {
