@@ -10,16 +10,17 @@ single-select-list > li {
     text-align: center;
 }
 
-single-select-list[disabled] > li {
+single-select-list[disabled] > li,
+single-select-list > li.disabled {
     background-color: #222;
     color: #888;
 }
 
-single-select-list:not([disabled]) > li {
+single-select-list:not([disabled]) > li:not(.disabled) {
     cursor: pointer;
 }
 
-single-select-list:not([disabled]) > li:hover {
+single-select-list:not([disabled]) > li:not(.disabled):hover {
     background-color: var(--color-bg-subtle);
 }
 

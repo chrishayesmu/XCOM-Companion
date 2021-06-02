@@ -1,4 +1,4 @@
-import { AppPage, PageHistoryState } from "./app-page.js";
+import { AppPage } from "./app-page.js";
 import * as DataHelper from "../data-helper.js";
 import * as Templates from "../templates.js";
 
@@ -6,12 +6,26 @@ class MapPossibilitiesPage extends AppPage {
 
     static pageId = "map-possibilities-page";
 
+    #allMissionTypeOptions = null;
+    #allUfoTypeOptions = null;
+
+    #areaOfOperationsSelect = null;
+    #missionTypeSelect = null;
+    #ufoTypeSelect = null;
+
     async load(data) {
         const template = await Templates.instantiateTemplate("assets/html/templates/pages/map-possibilities-page.html", "template-map-possibilities-page");
 
-        template.querySelector("#map-possibilities-ao-select").addEventListener("selectionChanged", this._onAnySelectionChanged.bind(this));
-        template.querySelector("#map-possibilities-mission-type-select").addEventListener("selectionChanged", this._onAnySelectionChanged.bind(this));
-        template.querySelector("#map-possibilities-ufo-type-select").addEventListener("selectionChanged", this._onAnySelectionChanged.bind(this));
+        this.#areaOfOperationsSelect = template.querySelector("#map-possibilities-ao-select");
+        this.#missionTypeSelect = template.querySelector("#map-possibilities-mission-type-select");
+        this.#ufoTypeSelect = template.querySelector("#map-possibilities-ufo-type-select");
+
+        this.#areaOfOperationsSelect.addEventListener("selectionChanged", this._onAnySelectionChanged.bind(this));
+        this.#missionTypeSelect.addEventListener("selectionChanged", this._onAnySelectionChanged.bind(this));
+        this.#ufoTypeSelect.addEventListener("selectionChanged", this._onAnySelectionChanged.bind(this));
+
+        this.#allMissionTypeOptions = this.#missionTypeSelect.items.map(element => ({ dataKey: element.dataset.dataKey, element: element, missionType: element.dataset.missionType }) );
+        this.#allUfoTypeOptions = this.#ufoTypeSelect.items.map(element => ({ element: element, ufoType: element.dataset.ufoType }) );
 
         return {
             body: template,
@@ -42,28 +56,66 @@ class MapPossibilitiesPage extends AppPage {
         return template;
     }
 
+    async _disableEmptyChoices() {
+        if (!this.areaOfOperations) {
+            return;
+        }
+
+        const mapsInAo = Object.values(DataHelper.maps).filter(map => map.area_of_operations === this.areaOfOperations);
+
+        for (const option of this.#allMissionTypeOptions) {
+            const anyMatching = mapsInAo.some(map => option.dataKey in map && (!option.missionType || map[option.dataKey].includes(option.missionType)));
+
+            if (!anyMatching) {
+                option.element.classList.add("disabled");
+
+                if (this.#missionTypeSelect.selectedItem === option.element) {
+                    // Selected item just became invalid, so deselect
+                    this.#missionTypeSelect.select(null);
+                }
+            }
+            else {
+                option.element.classList.remove("disabled");
+            }
+        }
+
+        // For UFO mission types only, filter the UFO list also
+        if (!this.missionTypeDataKey || !this.missionTypeDataKey.includes("ufo")) {
+            return;
+        }
+
+        const mapsForMissionType = mapsInAo.filter(map => this.missionTypeDataKey in map);
+
+        for (const option of this.#allUfoTypeOptions) {
+            const anyMatching = mapsForMissionType.some(map => map[this.missionTypeDataKey].includes(option.ufoType));
+
+            if (!anyMatching) {
+                option.element.classList.add("disabled");
+
+                if (this.#ufoTypeSelect.selectedItem === option.element) {
+                    // Selected item just became invalid, so deselect
+                    this.#ufoTypeSelect.select(null);
+                }
+            }
+            else {
+                option.element.classList.remove("disabled");
+            }
+        }
+    }
+
     async _onAnySelectionChanged(_event) {
-        const areaOfOperationsSelect = document.getElementById("map-possibilities-ao-select");
-        const missionTypeSelect = document.getElementById("map-possibilities-mission-type-select");
-        const ufoTypeSelect = document.getElementById("map-possibilities-ufo-type-select");
+        this._disableEmptyChoices();
 
-        const selectedAo =  areaOfOperationsSelect.selectedItem && areaOfOperationsSelect.selectedItem.dataset.ao;
-        const selectedMissionTypeDataKey =  missionTypeSelect.selectedItem && missionTypeSelect.selectedItem.dataset.dataKey;
-        const selectedUfoType =  ufoTypeSelect.selectedItem && ufoTypeSelect.selectedItem.dataset.ufoType;
-
-        const isUfoMissionTypeSelected = selectedMissionTypeDataKey === "ufo_crashed_mission_types" || selectedMissionTypeDataKey === "ufo_landed_mission_types";
-        const selectedMissionType = isUfoMissionTypeSelected ? selectedUfoType : missionTypeSelect.selectedItem && missionTypeSelect.selectedItem.dataset.missionType;
-
-        ufoTypeSelect.disabled = !isUfoMissionTypeSelected;
+        this.#ufoTypeSelect.disabled = !this.isUfoMissionTypeSelected;
 
         // If enough selected, generate list of maps
         const outputContainer = document.getElementById("map-possibilities-results");
         const summaryContainer = document.getElementById("map-possibilities-results-summary");
 
-        if (selectedAo && selectedMissionTypeDataKey && selectedMissionType) {
+        if (this.areaOfOperations && this.missionType && this.missionTypeDataKey) {
             outputContainer.innerHTML = "";
 
-            const matchingMaps = Object.values(DataHelper.maps).filter(map => map.area_of_operations === selectedAo && selectedMissionTypeDataKey in map && map[selectedMissionTypeDataKey].includes(selectedMissionType));
+            const matchingMaps = Object.values(DataHelper.maps).filter(map => map.area_of_operations === this.areaOfOperations && this.missionTypeDataKey in map && map[this.missionTypeDataKey].includes(this.missionType));
 
             if (matchingMaps.length === 0) {
                 summaryContainer.textContent = "There are no maps matching these mission parameters.";
@@ -80,7 +132,32 @@ class MapPossibilitiesPage extends AppPage {
         else {
             summaryContainer.innerHTML = "";
             outputContainer.innerHTML = "";
+
         }
+    }
+
+    get areaOfOperations() {
+        return this.#areaOfOperationsSelect.selectedItem && this.#areaOfOperationsSelect.selectedItem.dataset.ao;
+    }
+
+    get isUfoMissionTypeSelected() {
+        return this.missionTypeDataKey === "ufo_crashed_mission_types" || this.missionTypeDataKey === "ufo_landed_mission_types";
+    }
+
+    get missionType() {
+        if (this.isUfoMissionTypeSelected) {
+            return this.ufoType;
+        }
+
+        return this.#missionTypeSelect.selectedItem && this.#missionTypeSelect.selectedItem.dataset.missionType;
+    }
+
+    get missionTypeDataKey() {
+        return this.#missionTypeSelect.selectedItem && this.#missionTypeSelect.selectedItem.dataset.dataKey;
+    }
+
+    get ufoType() {
+        return this.#ufoTypeSelect.selectedItem && this.#ufoTypeSelect.selectedItem.dataset.ufoType;
     }
 }
 

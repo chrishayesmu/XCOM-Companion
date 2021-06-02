@@ -23,28 +23,32 @@ class SingleSelectList extends HTMLElement {
         }
     }
 
+    select(item) {
+        const items = [...this.querySelectorAll("li")];
+        items.forEach(item => item.classList.remove(selectedItemClass));
+
+        if (item) {
+            item.classList.add(selectedItemClass);
+        }
+
+        this.selectedItem = item;
+        const selectionEvent = new CustomEvent("selectionChanged", { detail: { selectedItem: this.selectedItem }});
+        this.dispatchEvent(selectionEvent);
+    }
+
     _onItemClicked(event) {
-        if (this.disabled) {
+        if (this.disabled || event.target.classList.contains("disabled")) {
             return;
         }
 
         const isSelecting = !event.target.classList.contains(selectedItemClass);
-        const items = this.querySelectorAll("li");
 
-        for (let i = 0; i < items.length; i++) {
-            const listItem = items[i];
-
-            if (isSelecting && event.target === listItem) {
-                listItem.classList.add(selectedItemClass);
-            }
-            else {
-                listItem.classList.remove(selectedItemClass);
-            }
+        if (isSelecting) {
+            this.select(event.target);
         }
-
-        this.selectedItem = isSelecting ? event.target : null;
-        const selectionEvent = new CustomEvent("selectionChanged", { detail: { selectedItem: this.selectedItem }});
-        this.dispatchEvent(selectionEvent);
+        else {
+            this.select(null);
+        }
     }
 
     get disabled() {
@@ -58,6 +62,10 @@ class SingleSelectList extends HTMLElement {
         else {
             this.removeAttribute("disabled");
         }
+    }
+
+    get items() {
+        return [...this.querySelectorAll("li")];
     }
 
     get title() {
