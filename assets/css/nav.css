@@ -44,6 +44,10 @@
   text-decoration: none !important;
 }
 
+.nav-title a * {
+    pointer-events: none;
+}
+
 .nav-body {
   flex-grow: 1;
   padding-left: 1rem;
