@@ -57,11 +57,7 @@ class MapPossibilitiesPage extends AppPage {
     }
 
     async _disableEmptyChoices() {
-        if (!this.areaOfOperations) {
-            return;
-        }
-
-        const mapsInAo = Object.values(DataHelper.maps).filter(map => map.area_of_operations === this.areaOfOperations);
+        const mapsInAo = Object.values(DataHelper.maps).filter(map => !this.areaOfOperations || map.area_of_operations === this.areaOfOperations);
 
         for (const option of this.#allMissionTypeOptions) {
             const anyMatching = mapsInAo.some(map => option.dataKey in map && (!option.missionType || map[option.dataKey].includes(option.missionType)));
@@ -79,15 +75,11 @@ class MapPossibilitiesPage extends AppPage {
             }
         }
 
-        // For UFO mission types only, filter the UFO list also
-        if (!this.missionTypeDataKey || !this.missionTypeDataKey.includes("ufo")) {
-            return;
-        }
-
+        // Filter the UFO list also
         const mapsForMissionType = mapsInAo.filter(map => this.missionTypeDataKey in map);
 
         for (const option of this.#allUfoTypeOptions) {
-            const anyMatching = mapsForMissionType.some(map => map[this.missionTypeDataKey].includes(option.ufoType));
+            const anyMatching = mapsForMissionType.some(map => !this.missionTypeDataKey || map[this.missionTypeDataKey].includes(option.ufoType));
 
             if (!anyMatching) {
                 option.element.classList.add("disabled");
