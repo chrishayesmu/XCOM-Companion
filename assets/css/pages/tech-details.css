@@ -17,6 +17,32 @@
     justify-content: center;
 }
 
+input[type=number]#num-scientists {
+    width: 40px;
+}
+
+input[type=number]#num-adjacencies,
+input[type=number]#num-labs {
+    width: 30px;
+}
+
+#tech-details-time-values-input input[type=number]::-webkit-inner-spin-button,
+#tech-details-time-values-input input[type=number]::-webkit-outer-spin-button {
+    appearance: none;
+}
+
+#tech-details-time-discard-button {
+    color: var(--color-red);
+    cursor: pointer;
+    font-size: 1.5em;
+}
+
+#tech-details-time-save-button {
+    color: var(--color-green);
+    cursor: pointer;
+    font-size: 1.5em;
+}
+
 .tech-details-cost-quantity {
     margin-right: 5px;
     text-align: right;

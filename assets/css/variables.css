@@ -22,7 +22,9 @@
   --color-highlight-subtle: #555;
 
   --color-crit: #e0cb19;
+  --color-green: #32CD32; /* money, positive messages, etc */
   --color-meld: #f7931d;
+  --color-red: #fc5c51;
 
   --color-psi: #a19ed8;
   --color-psi-strong: #6861d8;

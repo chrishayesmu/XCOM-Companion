@@ -8,3 +8,10 @@ Object.defineProperty(Array.prototype, "last", {
         return this[this.length - 1];
     }
 });
+
+Object.defineProperty(Math, "roundTo", {
+    value: function(val, numPlaces) {
+        const powerOfTen = Math.pow(10, numPlaces);
+        return (Math.ceil(val * powerOfTen) / powerOfTen).toFixed(numPlaces);
+    }
+});

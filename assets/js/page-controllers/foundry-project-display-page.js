@@ -139,7 +139,7 @@ class FoundryProjectDisplayPage extends AppPage {
 
             const span = document.createElement("span");
             span.classList.add("foundry-project-cost-quantity");
-            span.innerHTML = "<font color='#32CD32'>§" + project.cost.money + "</font>";
+            span.innerHTML = "<font color='var(--color-green)'>§" + project.cost.money + "</font>";
             div.appendChild(span);
             container.appendChild(div);
         }

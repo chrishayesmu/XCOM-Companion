@@ -168,7 +168,7 @@ class EnemyInfobox extends HTMLElement {
         }
 
         // Need to round DR to 1 decimal, or else floating point imprecisions might give us long values
-        stats.damage_reduction = (Math.ceil(stats.damage_reduction * 10) / 10).toFixed(1);
+        stats.damage_reduction = Math.roundTo(stats.damage_reduction, 1); // (Math.ceil(stats.damage_reduction * 10) / 10).toFixed(1);
 
         // Sort perks by ID, not name, so that psi abilities always end up in the back
         stats.perks.sort( (a, b) => a.id.localeCompare(b.id) );

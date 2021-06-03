@@ -526,7 +526,7 @@ class ItemDisplayPage extends AppPage {
 
         // Handle money first since it's displayed uniquely
         if (buildData.cost.money) {
-            addCostRow("Cost:", "<font color='#32CD32'>§" + buildData.cost.money + "</font>");
+            addCostRow("Cost:", "<font color='var(--color-green)'>§" + buildData.cost.money + "</font>");
         }
 
         for (const requiredItemId in buildData.cost) {

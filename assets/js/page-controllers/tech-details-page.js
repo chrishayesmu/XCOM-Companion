@@ -1,14 +1,33 @@
 import { AppPage, PageHistoryState } from "./app-page.js";
 import * as DataHelper from "../data-helper.js";
+import * as Settings from "../settings.js";
 import * as Templates from "../templates.js";
 import * as Widgets from "../widgets.js";
 import * as Utils from "../utils.js";
+
+const defaultSettings = {
+    numScientists: 30,
+    numLabs: 0,
+    numAdjacencies: 0
+};
 
 class TechDetailsPage extends AppPage {
 
     static pageId = "tech-details-page";
 
-    #techId = null;
+    #numAdjacenciesInput = null;
+    #numLabsInput = null;
+    #numScientistsInput = null;
+
+    #numAdjacenciesReadonly = null;
+    #numLabsReadonly = null;
+    #numScientistsReadonly = null;
+
+    #timeDisplay = null;
+    #timeValuesInput = null;
+    #timeValuesReadonly = null;
+
+    #tech = null;
 
     static async generatePreview(data) {
         if (!data.techId) {
@@ -40,7 +59,7 @@ class TechDetailsPage extends AppPage {
     }
 
     async loadFromDataObject(tech) {
-        this.#techId = tech.id;
+        this.#tech = tech;
 
         const template = await Templates.instantiateTemplate("assets/html/templates/pages/tech-details-page.html", "template-tech-details-page");
 
@@ -48,12 +67,35 @@ class TechDetailsPage extends AppPage {
         template.querySelector(".details-header-description").textContent = tech.description;
         template.querySelector(".details-header-img-container img").src = tech.icon;
 
+        this.#numAdjacenciesInput = template.querySelector("#num-adjacencies");
+        this.#numLabsInput = template.querySelector("#num-labs");
+        this.#numScientistsInput = template.querySelector("#num-scientists");
+
+        this.#numAdjacenciesReadonly = template.querySelector("#num-adjacencies-readonly");
+        this.#numLabsReadonly = template.querySelector("#num-labs-readonly");
+        this.#numScientistsReadonly = template.querySelector("#num-scientists-readonly");
+
+        this.#timeDisplay = template.querySelector("#tech-details-time");
+        this.#timeValuesInput = template.querySelector("#tech-details-time-values-input");
+        this.#timeValuesReadonly = template.querySelector("#tech-details-time-values-readonly");
+
+        this.#numAdjacenciesInput.addEventListener("input", this._validateNumberInput);
+        this.#numLabsInput.addEventListener("input", this._validateNumberInput);
+        this.#numScientistsInput.addEventListener("input", this._validateNumberInput);
+
+        template.querySelector("#tech-details-change-link").addEventListener("click", this._openResearchTimeChangeView.bind(this));
+        template.querySelector("#tech-details-time-discard-button").addEventListener("click", this._discardTimeInputs.bind(this));
+        template.querySelector("#tech-details-time-save-button").addEventListener("click", this._saveTimeInputs.bind(this));
+
+        const techSettings = await Settings.get("research") || defaultSettings;
+
         this._populateBeneficialCredits(template, tech);
         this._populateCost(template, tech);
         this._populateLeadsTo(template, tech);
         this._populatePrerequisites(template, tech);
-        this._populateResearchTime(template, tech);
         this._populateUnlocks(template, tech);
+
+        this._updateResearchTime(techSettings.numScientists, techSettings.numLabs, techSettings.numAdjacencies);
 
         return {
             body: template,
@@ -65,7 +107,27 @@ class TechDetailsPage extends AppPage {
     }
 
     makeHistoryState() {
-        return new PageHistoryState(this, { techId: this.#techId });
+        return new PageHistoryState(this, { techId: this.#tech.id });
+    }
+
+    _discardTimeInputs() {
+        // Just hide the inputs; their values will be reset the next time that view is opened anyway
+        this.#timeValuesInput.classList.add("hidden-collapse");
+        this.#timeValuesReadonly.classList.remove("hidden-collapse");
+    }
+
+    _openResearchTimeChangeView() {
+        this.#numAdjacenciesInput.value = this.#numAdjacenciesReadonly.textContent;
+        this.#numLabsInput.value = this.#numLabsReadonly.textContent;
+        this.#numScientistsInput.value = this.#numScientistsReadonly.textContent;
+
+        // Clear any validation styles from last time
+        this.#numAdjacenciesInput.style = "";
+        this.#numLabsInput.style = "";
+        this.#numScientistsInput.style = "";
+
+        this.#timeValuesInput.classList.remove("hidden-collapse");
+        this.#timeValuesReadonly.classList.add("hidden-collapse");
     }
 
     _populateBeneficialCredits(template, tech) {
@@ -203,11 +265,6 @@ class TechDetailsPage extends AppPage {
         }
     }
 
-    _populateResearchTime(template, tech) {
-        // TODO calculate the real time based on user input for # of labs, scientists, etc
-        template.querySelector("#tech-details-time").textContent = tech.base_time_in_days;
-    }
-
     _populateUnlocks(template, tech) {
         const unlocksContainer = template.querySelector("#tech-details-unlocks");
 
@@ -300,6 +357,68 @@ class TechDetailsPage extends AppPage {
             const div = document.createElement("div");
             div.textContent = "Research and Foundry Credit: " + credit;
             unlocksContainer.appendChild(div);
+        }
+    }
+
+    _saveTimeInputs() {
+        const numAdjacencies = this.#numAdjacenciesInput.value;
+        const numLabs = this.#numLabsInput.value;
+        const numScientists = this.#numScientistsInput.value;
+
+        let isValid = true;
+        if (numAdjacencies < 0) {
+            this.#numAdjacenciesInput.style = "border-color: red";
+            isValid = false;
+        }
+
+        if (numLabs < 0) {
+            this.#numLabsInput.style = "border-color: red";
+            isValid = false;
+        }
+
+        if (numScientists < 10) {
+            this.#numScientistsInput.style = "border-color: red";
+            isValid = false;
+        }
+
+        if (!isValid) {
+            return;
+        }
+
+        // Persist settings so they're used in the future
+        const settings = {
+            numScientists: numScientists,
+            numLabs: numLabs,
+            numAdjacencies: numAdjacencies
+        };
+        Settings.set("research", settings);
+
+        this._updateResearchTime(numScientists, numLabs, numAdjacencies);
+
+        this.#timeValuesInput.classList.add("hidden-collapse");
+        this.#timeValuesReadonly.classList.remove("hidden-collapse");
+    }
+
+    _updateResearchTime(numScientists, numLabs, numAdjacencies) {
+        const researchTime = Utils.calculateResearchTime(this.#tech.base_time_in_days, numScientists, numLabs, numAdjacencies);
+
+        this.#numAdjacenciesReadonly.textContent = numAdjacencies;
+        this.#numLabsReadonly.textContent = numLabs;
+        this.#numScientistsReadonly.textContent = numScientists;
+        this.#timeDisplay.textContent = Math.roundTo(researchTime, 1);
+    }
+
+    _validateNumberInput(event) {
+        const value = +event.target.value;
+        const min = +event.target.min;
+        const max = +event.target.max;
+        if (value < min || value > max) {
+            event.target.isValid = false;
+            event.target.style = "border-color: red";
+        }
+        else {
+            event.target.isValid = true;
+            event.target.style = "";
         }
     }
 }

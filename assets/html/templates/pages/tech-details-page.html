@@ -31,11 +31,18 @@
                 <div class="details-column-body flex-column">
                     <div id="tech-details-time-container">
                         <img class="inline-icon" src="assets/img/misc-icons/time.png" />
-                        <span id="tech-details-time">7</span>&nbsp;days
+                        <span id="tech-details-time"></span>&nbsp;days
                     </div>
                     <div class="flex-column-bottom flex-grow">
-                        <div>
-                            Displayed research time is based on having 30 scientists, 0 <in-app-link to="facility_laboratory">Laboratories</in-app-link> and 0 adjacency bonuses. <a id="tech-details-change-link"></a>
+                        <div id="tech-details-time-values-readonly">
+                            Displayed research time is based on having <span id="num-scientists-readonly">30</span> scientists, <span id="num-labs-readonly">0</span>
+                            <in-app-link to="facility_laboratory" linkText="Laboratories"></in-app-link>, and <span id="num-adjacencies-readonly">0</span> adjacency bonuses. <a id="tech-details-change-link">Change..</a>
+                        </div>
+                        <div id="tech-details-time-values-input" class="hidden-collapse">
+                            Displayed research time is based on having <input type="number" id="num-scientists" value="30" min="10" max="999" /> scientists, <input type="number" id="num-labs" value="0" min="0" max="16" />
+                            <in-app-link to="facility_laboratory" linkText="Laboratories"></in-app-link>, and <input type="number" id="num-adjacencies" value="0" min="0" max="16"> adjacency bonuses.
+                            <span id="tech-details-time-save-button" data-tooltip-text="Save Changes">✔</span>
+                            <span id="tech-details-time-discard-button" data-tooltip-text="Cancel">🗙</span>
                         </div>
                     </div>
                 </div>

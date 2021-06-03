@@ -42,6 +42,17 @@ function appendElement(container, elementType, content, options) {
     return element;
 }
 
+function calculateResearchTime(baseTimeInDays, numScientists, numLabs, numAdjacencies, hasCredit) {
+    // Each lab increases research speed by 20% (additive); each adjacency by 10%
+    const labBonus = 1 + numLabs * 0.2 + numAdjacencies * 0.1;
+
+    // Credits from interrogations are a 25% reduction im research time (unclear if multiple credits stack, TBD)
+    const creditBonus = hasCredit ? 0.75 : 1;
+
+    // baseTimeInDays is the time for 30 scientists, so everything is scaled based on that
+    return baseTimeInDays * (30 / (numScientists * labBonus)) * creditBonus;
+}
+
 function capitalizeEachWord(str, originalSeparator, newSeparator) {
     originalSeparator = originalSeparator || "_";
     newSeparator = newSeparator || " ";
@@ -239,4 +250,4 @@ function xToY(x, y) {
     return `${x} to ${y}`;
 }
 
-export { appendElement, capitalizeEachWord, createGrid, createImg, createSelect, dateByDaysPassed, equals, formatCampaignDate, join, minResearchByDate, researchThresholdByDifficulty, truncateText, xToY };
+export { appendElement, calculateResearchTime, capitalizeEachWord, createGrid, createImg, createSelect, dateByDaysPassed, equals, formatCampaignDate, join, minResearchByDate, researchThresholdByDifficulty, truncateText, xToY };

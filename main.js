@@ -2,6 +2,7 @@ const { autoUpdater } = require("electron-updater");
 
 const path = require('path');
 const { app, BrowserWindow, ipcMain, Menu, shell } = require('electron');
+const settings = require("electron-settings");
 
 const debug = /--debug/.test(process.argv[2]);
 const isMac = process.platform === 'darwin';
@@ -13,6 +14,14 @@ if (process.mas) {
 let manualUpdateCheckInProgress = false;
 let mainWindow = null;
 let settingsWindow = null;
+
+ipcMain.handle("get-settings", (_event, name) => {
+    return settings.get(name);
+});
+
+ipcMain.on("save-settings", (_event, name, value) => {
+    settings.set(name, value);
+});
 
 ipcMain.handle("get-window-size", () => {
     return mainWindow.getContentBounds();

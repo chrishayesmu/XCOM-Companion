@@ -46,9 +46,9 @@ customElements.define("base-facility-browse-preview",
         _populatePowerUsage(facility, template) {
             const element = template.querySelector("#power-usage");
             const sign = facility.power_usage > 0 ? "-" : "+"; // deliberately inverted
-            const color = facility.power_usage > 0 ? "#fc5c51" : "#32CD32";
+            const color = facility.power_usage > 0 ? "var(--color-red)" : "var(--color-green)";
 
-            element.innerHTML = `<font color='${color}'>${sign}${Math.abs(facility.power_usage)}</font>`;
+            element.innerHTML = `<span style="color: ${color}">${sign}${Math.abs(facility.power_usage)}</span>`;
         }
 
         _populateOtherCosts(facility, template) {
