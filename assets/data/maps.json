@@ -59,6 +59,15 @@
             "area_of_operations": "ao_urban_block",
             "alien_mission_types": [ "mission_abduction" ],
             "council_mission_types": [ "mission_target_escort" ],
+            "size": {
+                "length": 56,
+                "width": 56
+            }
+        },
+        "map_commercial_alley_ewi": {
+            "name": "Commercial Alley (Enemy Within)",
+            "area_of_operations": "ao_urban_block",
+            "alien_mission_types": [ "mission_abduction" ],
             "exalt_mission_types": [ "mission_covert_extraction" ],
             "size": {
                 "length": 56,
@@ -112,6 +121,15 @@
             "name": "Convenience Store",
             "area_of_operations": "ao_urban_block",
             "alien_mission_types": [ "mission_abduction" ],
+            "size": {
+                "length": 50,
+                "width": 46
+            }
+        },
+        "map_convenience_store_ewi": {
+            "name": "Convenience Store (Enemy Within)",
+            "area_of_operations": "ao_urban_block",
+            "alien_mission_types": [ "mission_abduction" ],
             "exalt_mission_types": [ "mission_covert_extraction" ],
             "size": {
                 "length": 50,
@@ -141,6 +159,11 @@
         },
         "map_fast_food": {
             "name": "Fast Food",
+            "area_of_operations": "ao_urban_close_quarters",
+            "alien_mission_types": [ "mission_abduction" ]
+        },
+        "map_fast_food_ewi": {
+            "name": "Fast Food (Enemy Within)",
             "area_of_operations": "ao_urban_close_quarters",
             "alien_mission_types": [ "mission_abduction" ],
             "council_mission_types": [ "mission_bomb_disposal" ]
@@ -176,10 +199,20 @@
             }
         },
         "map_highway_construction": {
-            "name": "Street Construction",
+            "name": "Highway Construction",
             "area_of_operations": "ao_roadway",
             "alien_mission_types": [ "mission_abduction" ],
-            "exalt_mission_types": [ "mission_covert_data_recovery", "mission_covert_extraction" ],
+            "exalt_mission_types": [ "mission_covert_data_recovery" ],
+            "size": {
+                "length": 66,
+                "width": 28
+            }
+        },
+        "map_highway_construction_ewi": {
+            "name": "Highway Construction (Enemy Within)",
+            "area_of_operations": "ao_roadway",
+            "alien_mission_types": [ "mission_abduction" ],
+            "exalt_mission_types": [ "mission_covert_extraction" ],
             "size": {
                 "length": 66,
                 "width": 28
@@ -238,7 +271,7 @@
             }
         },
         "map_office_paper": {
-            "name": "Scranton Paper Company",
+            "name": "Office Paper",
             "area_of_operations": "ao_urban_large_structure",
             "alien_mission_types": [ "mission_abduction" ],
             "size": {
@@ -246,8 +279,14 @@
                 "width": 48
             }
         },
+        "map_office_paper_ewi": {
+            "name": "Office Paper (Enemy Within)",
+            "area_of_operations": "ao_urban_large_structure",
+            "alien_mission_types": [ "mission_abduction" ],
+            "exalt_mission_types": [ "mission_covert_data_recovery" ]
+        },
         "map_office_paper_terror": {
-            "name": "Scranton Paper Company (Terror)",
+            "name": "Office Paper (Terror)",
             "area_of_operations": "ao_urban_large_structure",
             "alien_mission_types": [ "mission_terror" ],
             "size": {
@@ -362,15 +401,20 @@
             }
         },
         "map_street_overpass": {
-            "name": "Overpass",
+            "name": "Street Overpass",
             "area_of_operations": "ao_roadway",
             "alien_mission_types": [ "mission_abduction", "mission_terror" ],
             "council_mission_types": [ "mission_asset_recovery" ],
-            "exalt_mission_types": [ "mission_covert_extraction" ],
             "size": {
                 "length": 62,
                 "width": 40
             }
+        },
+        "map_street_overpass_ewi": {
+            "name": "Street Overpass (Enemy Within)",
+            "area_of_operations": "ao_roadway",
+            "alien_mission_types": [ "mission_abduction" ],
+            "exalt_mission_types": [ "mission_covert_extraction" ]
         },
         "map_train_station": {
             "name": "Train Station",
@@ -396,8 +440,17 @@
         "map_truck_stop": {
             "name": "Truck Stop",
             "area_of_operations": "ao_urban_block",
-            "alien_mission_types": [ "mission_abduction" ],
+            "alien_mission_types": [ "mission_abduction", "mission_terror" ],
             "council_mission_types": [ "mission_asset_recovery" ],
+            "size": {
+                "length": 74,
+                "width": 36
+            }
+        },
+        "map_truck_stop_ewi": {
+            "name": "Truck Stop (Enemy Within)",
+            "area_of_operations": "ao_urban_block",
+            "alien_mission_types": [ "mission_abduction" ],
             "exalt_mission_types": [ "mission_covert_data_recovery" ],
             "size": {
                 "length": 74,
