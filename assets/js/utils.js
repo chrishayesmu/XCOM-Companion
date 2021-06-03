@@ -42,6 +42,14 @@ function appendElement(container, elementType, content, options) {
     return element;
 }
 
+function calculateEngineeringTime(baseTimeInDays, expectedEngineers, actualEngineers) {
+    // Formula taken from https://www.ufopaedia.org/index.php/Engineering_(Long_War)
+    const engineerRatio = expectedEngineers / actualEngineers;
+    const timeCoefficient = 1 + Math.pow(engineerRatio, 0.06 * expectedEngineers);
+
+    return baseTimeInDays * 0.5 * timeCoefficient;
+}
+
 function calculateResearchTime(baseTimeInDays, numScientists, numLabs, numAdjacencies, hasCredit) {
     // Each lab increases research speed by 20% (additive); each adjacency by 10%
     const labBonus = 1 + numLabs * 0.2 + numAdjacencies * 0.1;
@@ -250,4 +258,20 @@ function xToY(x, y) {
     return `${x} to ${y}`;
 }
 
-export { appendElement, calculateResearchTime, capitalizeEachWord, createGrid, createImg, createSelect, dateByDaysPassed, equals, formatCampaignDate, join, minResearchByDate, researchThresholdByDifficulty, truncateText, xToY };
+export {
+        appendElement,
+        calculateEngineeringTime,
+        calculateResearchTime,
+        capitalizeEachWord,
+        createGrid,
+        createImg,
+        createSelect,
+        dateByDaysPassed,
+        equals,
+        formatCampaignDate,
+        join,
+        minResearchByDate,
+        researchThresholdByDifficulty,
+        truncateText,
+        xToY
+};
