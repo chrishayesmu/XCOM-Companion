@@ -287,7 +287,7 @@ class EnemyDisplayPage extends AppPage {
                     value.name = "leaderRank";
                     value.type = "radio";
                     value.value = upgrade.level;
-                    value.checked = this.#pointInTimeInfobox.leaderRank >= upgrade.level;
+                    value.checked = Number.isFinite(this.#pointInTimeInfobox.leaderRank) && this.#pointInTimeInfobox.leaderRank >= upgrade.level;
 
                     value.addEventListener("change", this._onLeaderRankRadioButtonChanged.bind(this));
                 }
