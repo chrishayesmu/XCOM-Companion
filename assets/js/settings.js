@@ -1,7 +1,14 @@
 const { ipcRenderer } = require('electron');
 
 async function get(name) {
-    return ipcRenderer.invoke("get-settings", name);
+    try {
+        return await ipcRenderer.invoke("get-settings", name);
+    }
+    catch (e) {
+        console.error(`Error while retrieving settings with name "${name}"`);
+        console.error(e);
+        return null;
+    }
 }
 
 async function set(name, value) {

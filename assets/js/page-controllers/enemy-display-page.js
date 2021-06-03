@@ -1,15 +1,19 @@
 import { AppPage, PageHistoryState } from "./app-page.js";
 import * as DataHelper from "../data-helper.js";
+import * as Settings from "../settings.js";
 import * as Templates from "../templates.js";
 import * as Widgets from "../widgets.js";
 import * as Utils from "../utils.js";
+
+const difficulty = await Settings.get("enemy.difficulty") || "Impossible";
+const research = await Settings.get("enemy.currentResearch") || 0;
 
 class EnemyDisplayPage extends AppPage {
 
     static pageId = "enemy-display-page";
 
-    static currentResearch = 0;
-    static difficulty = "Impossible";
+    static currentResearch = research;
+    static difficulty = difficulty;
 
     #difficultySelector = null;
     #enemyId = null;
@@ -79,14 +83,7 @@ class EnemyDisplayPage extends AppPage {
 
         const currentResearchInput = template.querySelector("#enemy-pit-ar-input");
         currentResearchInput.value = EnemyDisplayPage.currentResearch;
-        currentResearchInput.addEventListener("change", event => {
-            EnemyDisplayPage.currentResearch = event.target.value;
-            this.#pointInTimeInfobox.alienResearch = EnemyDisplayPage.currentResearch;
-            this.#pointInTimeInfobox.leaderRank = null;
-            this.#pointInTimeInfobox.navigatorUpgrades = [];
-
-            this._populateGrids(document.body);
-        });
+        currentResearchInput.addEventListener("change", this._onCurrentResearchChanged.bind(this));
 
         const enemyDescription = await Templates.instantiateTemplate("assets/html/templates/pages/enemy-display-page.html", "template-enemy-description-" + enemy.id.replace("_", "-").replace("enemy-", ""));
 
@@ -367,6 +364,19 @@ class EnemyDisplayPage extends AppPage {
         document.getElementById("enemy-pit-min-research-by-date").textContent = minResearch;
     }
 
+    _onCurrentResearchChanged(event) {
+        // Persist the value and then sync it throughout the page
+        const currentResearch = event.target.value;
+        Settings.set("enemy.currentResearch", currentResearch);
+
+        EnemyDisplayPage.currentResearch = currentResearch;
+        this.#pointInTimeInfobox.alienResearch = EnemyDisplayPage.currentResearch;
+        this.#pointInTimeInfobox.leaderRank = null;
+        this.#pointInTimeInfobox.navigatorUpgrades = [];
+
+        this._populateGrids(document.body);
+    }
+
     _onLeaderRankRadioButtonChanged(_event) {
         const radioButtons = [...document.querySelectorAll("input[type=radio][name=leaderRank]")];
         const selected = radioButtons.find(btn => btn.checked);
@@ -390,8 +400,10 @@ class EnemyDisplayPage extends AppPage {
     }
 
     _onSelectedDifficultyChanged(event) {
-        EnemyDisplayPage.difficulty = event.detail.selectedOption;
-        const infoboxes = document.body.querySelectorAll("enemy-infobox");
+        const difficulty = event.detail.selectedOption;
+        Settings.set("enemy.difficulty", difficulty);
+
+        EnemyDisplayPage.difficulty = difficulty;
 
         this.#overviewInfobox.difficulty = this.difficulty;
         this.#pointInTimeInfobox.difficulty = this.difficulty;
