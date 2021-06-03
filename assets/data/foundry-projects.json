@@ -205,7 +205,6 @@
         "foundry_enhanced_ballistics": {
             "name": "Enhanced Ballistics",
             "description": "We believe we can upgrade our ballistic small arms through combining alien materials with our own technologies.",
-            "tactical_text": "<ul><li></li></ul>",
             "cost": {
                 "item_alien_alloy": 10,
                 "item_weapon_fragment": 20,
