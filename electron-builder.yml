@@ -5,8 +5,3 @@ publish:
 
 win:
   icon: build/icon.png
-
-nsis:
-  oneClick: false
-  perMachine: false
-  allowToChangeInstallationDirectory: true
