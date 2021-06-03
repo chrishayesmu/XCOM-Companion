@@ -24,6 +24,11 @@ class SingleSelectList extends HTMLElement {
     }
 
     select(item) {
+        // Don't do anything if there's not actually a change
+        if (item == this.selectedItem) {
+            return;
+        }
+
         const items = [...this.querySelectorAll("li")];
         items.forEach(item => item.classList.remove(selectedItemClass));
 

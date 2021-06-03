@@ -1,4 +1,4 @@
-import { AppPage } from "./app-page.js";
+import { AppPage, PageHistoryState } from "./app-page.js";
 import * as DataHelper from "../data-helper.js";
 import * as Templates from "../templates.js";
 
@@ -13,12 +13,38 @@ class MapPossibilitiesPage extends AppPage {
     #missionTypeSelect = null;
     #ufoTypeSelect = null;
 
+    #outputSummaryContainer = null;
+    #outputContainer = null;
+
     async load(data) {
         const template = await Templates.instantiateTemplate("assets/html/templates/pages/map-possibilities-page.html", "template-map-possibilities-page");
 
         this.#areaOfOperationsSelect = template.querySelector("#map-possibilities-ao-select");
         this.#missionTypeSelect = template.querySelector("#map-possibilities-mission-type-select");
         this.#ufoTypeSelect = template.querySelector("#map-possibilities-ufo-type-select");
+
+        this.#outputContainer = template.querySelector("#map-possibilities-results");
+        this.#outputSummaryContainer = template.querySelector("#map-possibilities-results-summary");
+
+        // Load data from possible history state; do this before event listeners are attached
+        if (data.areaOfOperations) {
+            const element = this.#areaOfOperationsSelect.querySelector("li[data-ao=" + data.areaOfOperations + "]");
+            this.#areaOfOperationsSelect.select(element);
+        }
+
+        if (data.missionTypeDataKey && data.missionTypeDataKey.includes("ufo")) {
+            const element = this.#missionTypeSelect.querySelector("li[data-data-key=" + data.missionTypeDataKey + "]");
+            this.#missionTypeSelect.select(element);
+        }
+        else if (data.missionType) {
+            const element = this.#missionTypeSelect.querySelector("li[data-mission-type=" + data.missionType + "]");
+            this.#missionTypeSelect.select(element);
+        }
+
+        if (data.ufoType) {
+            const element = this.#ufoTypeSelect.querySelector("li[data-ufo-type=" + data.ufoType + "]");
+            this.#ufoTypeSelect.select(element);
+        }
 
         this.#areaOfOperationsSelect.addEventListener("selectionChanged", this._onAnySelectionChanged.bind(this));
         this.#missionTypeSelect.addEventListener("selectionChanged", this._onAnySelectionChanged.bind(this));
@@ -27,6 +53,9 @@ class MapPossibilitiesPage extends AppPage {
         this.#allMissionTypeOptions = this.#missionTypeSelect.items.map(element => ({ dataKey: element.dataset.dataKey, element: element, missionType: element.dataset.missionType }) );
         this.#allUfoTypeOptions = this.#ufoTypeSelect.items.map(element => ({ element: element, ufoType: element.dataset.ufoType }) );
 
+        // Run selection logic once to sync up with historical page state
+        this._onAnySelectionChanged();
+
         return {
             body: template,
             title: {
@@ -34,6 +63,17 @@ class MapPossibilitiesPage extends AppPage {
                 "text": "Possible Maps"
             }
         };
+    }
+
+    makeHistoryState() {
+        const historyData = {
+            areaOfOperations: this.areaOfOperations,
+            missionType: this.missionType,
+            missionTypeDataKey: this.missionTypeDataKey,
+            ufoType: this.ufoType
+        };
+
+        return new PageHistoryState(this, historyData);
     }
 
     async _createMapPreview(map) {
@@ -101,30 +141,27 @@ class MapPossibilitiesPage extends AppPage {
         this.#ufoTypeSelect.disabled = !this.isUfoMissionTypeSelected;
 
         // If enough selected, generate list of maps
-        const outputContainer = document.getElementById("map-possibilities-results");
-        const summaryContainer = document.getElementById("map-possibilities-results-summary");
-
         if (this.areaOfOperations && this.missionType && this.missionTypeDataKey) {
-            outputContainer.innerHTML = "";
-
             const matchingMaps = Object.values(DataHelper.maps).filter(map => map.area_of_operations === this.areaOfOperations && this.missionTypeDataKey in map && map[this.missionTypeDataKey].includes(this.missionType));
 
             if (matchingMaps.length === 0) {
-                summaryContainer.textContent = "There are no maps matching these mission parameters.";
+                this.#outputContainer.innerHTML = "";
+                this.#outputSummaryContainer.textContent = "There are no maps matching these mission parameters.";
             }
             else {
-                summaryContainer.textContent = `There ${matchingMaps.length === 1 ? "is 1 map" : "are " + matchingMaps.length + " maps"} possible for this mission.`;
+                this.#outputSummaryContainer.textContent = `There ${matchingMaps.length === 1 ? "is 1 map" : "are " + matchingMaps.length + " maps"} possible for this mission.`;
 
-                matchingMaps.forEach(async map => {
-                    const preview = await this._createMapPreview(map);
-                    outputContainer.appendChild(preview);
-                })
+                // Need to be careful how we do this; since we're using async functions, there's concurrency issues to be aware of
+                const mapElements = await Promise.all(matchingMaps.map(async map => this._createMapPreview(map)));
+
+                // Now that everything async is done, we can safely clear and refill the container
+                this.#outputContainer.innerHTML = "";
+                mapElements.forEach(elem => this.#outputContainer.appendChild(elem));
             }
         }
         else {
-            summaryContainer.innerHTML = "";
-            outputContainer.innerHTML = "";
-
+            this.#outputSummaryContainer.innerHTML = "";
+            this.#outputContainer.innerHTML = "";
         }
     }
 
