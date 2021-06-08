@@ -8,11 +8,27 @@ At this time, XCOM Companion contains enough data to replace various XCOM wikis 
 
 ## Installation
 
+## Windows
+
 Just head over to the [Releases](https://github.com/chrishayesmu/XCOM-Companion/releases/latest) here on GitHub and grab the latest `XCOM Companion Setup {version}.exe`. Run the quick install wizard and you're good to go.
 
 Note that you may receive warnings from your browser and/or from Windows while downloading or installing. That's because this executable is unsigned, because I don't want to spend $500+ per year on this. If you're paranoid, feel free to clone the repo and run from source.
 
-> :warning: At this time, XCOM Companion is only available as a standalone installer for Windows. This is mainly because I don't have Mac or Linux machines to test on. If you're on another OS and still want to use XCOM Companion, you can install [Node Package Manager](https://www.npmjs.com/), [clone this repository](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository), and run `npm install` followed by `npm start`. In theory that should work on any OS, but again, I haven't tested it.
+## OSX/Linux
+
+> :warning: The native installer only works on Windows, so in the event that you want to use XCOM-Companion on OSX or Linux, it must be manually cloned and installed with NPM. The following instructions will step you through the process.
+
+### Cloning the Repository
+
+To clone this repository, you must first install Git. Git will allow you to make a local copy of this code, allowing you to manually install XCOM-Companion. If you are on Linux, it is likely already installed on your machine. Otherwise, you can use your package manager to install it. For example, on Debian based distros such as Ubuntu you would do this by running `sudo apt-get git`. Once Git is installed, use the terminal to navigate into the repository you would like to clone into and run `git clone https://github.com/chrishayesmu/XCOM-Companion.git`. To install Git on OSX, please see the [Git website](https://git-scm.com/download/mac). For more detailed instructions on cloniing the repository, see [here](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository-from-github/cloning-a-repository).
+
+### Installing NPM
+
+Node Package Manger, or NPM, can be installed similarly to git. On Linux it can simply be installed with your package manager, again using a command such as `sudo apt-get npm` or your distros equivalent. To install on OSX, see the NPM [download page](https://nodejs.org/en/download/). For more detailed instructions on NPM installation, see the [documentation](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
+
+### Installing and Running XCOM-Companion
+
+Once you have cloned the repository and installed npm, you can install and run XCOM-Companion. To do this, first navigate into the cloned repository. This can be done using the `cd` command, in our case `cd XCOM-Companion`. Once you are inside the `XCOM-Companion` directory, run `npm install`. This will install the program. To start the program simply run `npm run`. From this point on, anytime you want to run XCOM-Companion, it must be done by navigating into the directory and running `npm run`.
 
 ### Updates
 
