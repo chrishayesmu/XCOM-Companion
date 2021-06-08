@@ -28,7 +28,7 @@ Node Package Manger, or NPM, can be installed similarly to git. On Linux it can 
 
 ### Installing and Running XCOM-Companion
 
-Once you have cloned the repository and installed npm, you can install and run XCOM-Companion. To do this, first navigate into the cloned repository. This can be done using the `cd` command, in our case `cd XCOM-Companion`. Once you are inside the `XCOM-Companion` directory, run `npm install`. This will install the program. To start the program simply run `npm run`. From this point on, anytime you want to run XCOM-Companion, it must be done by navigating into the directory and running `npm run`.
+Once you have cloned the repository and installed npm, you can install and run XCOM-Companion. To do this, first navigate into the cloned repository. This can be done using the `cd` command, in our case `cd XCOM-Companion`. Once you are inside the `XCOM-Companion` directory, run `npm install`. This will install the program. To start the program simply run `npm start`. From this point on, anytime you want to run XCOM-Companion, it must be done by navigating into the directory and running `npm start`.
 
 ### Updates
 
