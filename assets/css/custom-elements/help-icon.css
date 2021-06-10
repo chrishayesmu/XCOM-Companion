@@ -1,0 +1,26 @@
+:host {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 100%;
+    cursor: help;
+    font-weight: bold;
+    height: 16px;
+    line-height: 16px;
+    margin-left: 5px;
+    margin-top: 1px;
+    padding: 8px; /* unusually high padding to get around the border radius */
+    width: 16px;
+
+    /* default theming */
+    background-color: var(--color-bg-nav);
+    border: 1px solid var(--color-border);
+    color: var(--color-subtle);
+}
+
+:host(.theme-schematic) {
+    background-color: var(--color-bg-schematic-light);
+    border: 1px solid var(--color-border-subtle);
+    color: white;
+}

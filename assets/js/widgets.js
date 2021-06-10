@@ -3,15 +3,10 @@ import * as Templates from "./templates.js";
 import * as Utils from "./utils.js";
 
 function createHelpIcon(helpText) {
-    const img = document.createElement("img");
+    const icon = document.createElement("help-icon");
+    icon.innerHTML = helpText;
 
-    img.classList.add("inline-help-icon");
-    img.src = "assets/img/misc-icons/help.png";
-    img.title = helpText;
-
-    // TODO: use the same tooltip system as page previews
-
-    return img;
+    return icon;
 }
 
 function createInAppLink(data, options) {
