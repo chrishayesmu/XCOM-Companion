@@ -1406,6 +1406,7 @@
             "normal_build": {
                 "cost": {
                     "item_alien_alloy": 20,
+                    "item_chryssalid_corpse": 10,
                     "money": 80
                 },
                 "base_build_time_days": 10
@@ -1413,6 +1414,7 @@
             "quick_build": {
                 "cost": {
                     "item_alien_alloy": 30,
+                    "item_chryssalid_corpse": 10,
                     "item_meld": 4,
                     "money": 120
                 },
