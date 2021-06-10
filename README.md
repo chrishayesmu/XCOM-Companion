@@ -95,3 +95,28 @@ Disclaimer: None of these features are guaranteed to be added; they all depend o
 # Feedback, bug reports, feature requests
 
 The best way to contact me is by [creating an issue](https://github.com/chrishayesmu/XCOM-Companion/issues/new) on GitHub, but if you don't have a GitHub account, I can also be reached via Discord DM at SwfDelicious#4905.
+
+# FAQ
+
+## Will XCOM Companion really never support anything but Long War 1.0?
+
+Yes, I'm afraid so. I don't feel like there's any point in supporting the base Enemy Unknown/Enemy Within, as frankly, those games aren't complex enough to need something like this. For other popular mods, such as Long War Rebalanced and Long War 1.1, there are two main problems:
+
+1. **They're still being updated.** All of my data entry into the app is annoyingly manual. Every piece of information you see, from enemy names and stats to item costs, as well as all of the images, were manually entered. This makes XCOM Companion simpler, in that it doesn't have to find your game's files and parse them, but also means supporting any other version is a lot of work. If those versions are still changing, that work has to be repeated often.
+2. **XCOM Companion's architecture.** A lot of the data that differs between mods, such as item costs, would be straightforward to swap in and out. However, much of the content is not designed in this way; for example, all of the information on enemy pages about how navigators and leaders work is written directly into the page. If any of these mechanics differ between versions, there's no easy way to reflect that in XCOM Companion.
+
+## What if I really want something like XCOM Companion for a different mod?
+
+XCOM Companion is open source, so feel free to fork it and make a version targeting your preferred mod set. As long as the scope is constrained to one specific mod or set of mods, it should be relatively easy for someone to change around the app to fit that.
+
+## What about different difficulties than Impossible?
+
+I do eventually intend to support all difficulties on every page where it's relevant, using a single difficulty selection that is active throughout the entire app. It's going to take a while, though, especially as not all of the differences between difficulties may be fully documented.
+
+## Can I contribute to XCOM Companion?
+
+Feel free! But keep in mind that this is a hobbyist project, and I'm not looking to professionalize it. If you submit a pull request adding a bunch of unit tests that I have to maintain, it's probably going to get turned down. XCOM Companion is a just-for-fun side deal for me, and I get enough of those things at my day job.
+
+If you have a major feature or change in mind, open an issue to discuss it first. I have a lot of things I'm considering adding, and others I've decided not to. You don't want to invest a bunch of effort only to get turned down.
+
+If you're not a programmer, the best way to contribute is with feedback, and especially corrections. If you see something wrong in the app, let me know!
