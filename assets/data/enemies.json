@@ -376,7 +376,6 @@
                 "item_cyberdisc_corpse": 1,
                 "item_alien_alloy": 4,
                 "item_elerium": 4,
-                "item_meld": 0.3,
                 "item_weapon_fragment": -1
             },
             "base_stats": {
@@ -2974,7 +2973,7 @@
             "kill_rewards": {
                 "item_muton_corpse": 1,
                 "item_meld": 0.3,
-                "item_weapon_fragment": -1
+                "item_weapon_fragment": 2
             },
             "base_stats": {
                 "normal": {
@@ -4460,7 +4459,6 @@
                 "item_sectopod_corpse": 1,
                 "item_alien_alloy": 6,
                 "item_elerium": 6,
-                "item_meld": 0.3,
                 "item_weapon_fragment": -1
             },
             "base_stats": {
@@ -4633,7 +4631,6 @@
                 "item_seeker_corpse": 1,
                 "item_alien_alloy": 2,
                 "item_elerium": 1,
-                "item_meld": 0.3,
                 "item_weapon_fragment": -1
             },
             "base_stats": {
