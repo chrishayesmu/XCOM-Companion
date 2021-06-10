@@ -1,0 +1,338 @@
+#movement-grid-page-content {
+    display: flex;
+    flex-flow: column nowrap;
+
+    color: var(--color);
+    height: 100%;
+    padding: 20px;
+
+    /* variables */
+    --horizontal-panel-height: 200px;
+}
+
+#movement-main-controls-container {
+    display: flex;
+    flex-flow: row nowrap;
+
+    height: calc(100% - var(--horizontal-panel-height));
+    width: 100%;
+}
+
+#movement-controls-container {
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+#movement-legend-container{
+    display: flex;
+    flex-flow: column nowrap;
+
+    height: 100%;
+}
+
+#movement-underneath-controls-container {
+    display: flex;
+    flex-flow: row nowrap;
+    gap: 20px;
+
+    border-bottom: none;
+    height: var(--horizontal-panel-height);
+    width: 100%;
+}
+
+.movement-control-pane {
+    display: flex;
+    flex-flow: column nowrap;
+
+    background-color: var(--color-bg-schematic);
+    border: 1px solid var(--color-border-subtle);
+    flex-shrink: 0;
+    overflow-y: auto;
+    padding: 8px 0 10px 15px;
+    width: 250px;
+}
+
+.movement-control-pane-header {
+    font-size: 1.35em;
+    font-weight: bold;
+    margin-bottom: 7px;
+    text-align: center;
+}
+
+#movement-control-pane-right {
+    border-left: none;
+}
+
+#movement-control-pane-unit-stats {
+    border-right: none;
+}
+
+#movement-grid-canvas {
+    flex-grow: 1;
+    display: block;
+
+    /* aspect ratio of canvas adjusts dynamically */
+    height: 100%;
+    width: 100%;
+}
+
+#movement-grid-canvas-wrapper {
+    position: relative; /* for overlay */
+
+    border-bottom: 1px solid var(--color-border-subtle);
+    border-top: 1px solid var(--color-border-subtle);
+    flex-grow: 1;
+}
+
+#movement-grid-canvas-wrapper canvas {
+    z-index: -1;
+}
+
+.movement-grid-control {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+
+    margin-bottom: 6px;
+}
+
+.movement-grid-control img {
+    margin-right: 8px;
+}
+
+.effects-section-label {
+    font-size: 1.2em;
+    margin-bottom: 6px;
+}
+
+.movement-grid-legend-entry {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+
+    margin-bottom: 13px;
+}
+
+.movement-grid-legend-image,
+.movement-grid-legend-image img {
+    margin-right: 10px;
+    height: 25px;
+    width: 25px;
+}
+
+.movement-effects-options {
+    display: grid;
+    grid-template-columns: 25px max-content;
+}
+
+.movement-grid-options-menu {
+    background-color: var(--color-bg);
+    border: 1px solid var(--color-border);
+    color: var(--color-strong);
+
+    position: absolute;
+    height: fit-content;
+    width: fit-content;
+}
+
+.movement-grid-options-item {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: start;
+
+    border-bottom: 1px solid var(--color-border-subtle);
+    cursor: pointer;
+    padding: 6px 12px;
+    width: 100%;
+}
+
+.movement-grid-options-icon {
+    filter: brightness(1.25);
+    height: 20px;
+    margin-right: 6px;
+}
+
+.movement-grid-options-item:last-child {
+    border-bottom: none;
+}
+
+.movement-grid-options-item:hover {
+    background-color: var(--color-bg-subtle);
+}
+
+
+
+#selected-layout,
+#unit-mobility {
+    background-color: var(--color-bg-nav);
+}
+
+#unit-mobility {
+    width: 40px;
+}
+
+/**
+ * Styles for tools on left side of the canvas
+ */
+
+#movement-grid-canvas-overlay-container {
+    position: absolute;
+    left: 10px;
+    top: 130px;
+    z-index: 1;
+
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 13px;
+
+    background-color: var(--color-bg-subtle);
+    border: 1px solid var(--color-border-subtle);
+    height: fit-content;
+    padding: 10px;
+    width: 72px;
+}
+
+#movement-grid-canvas-overlay-container > div {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+    height: 50px;
+    padding: 5px;
+    position: relative;
+    width: 100%;
+}
+
+#movement-grid-canvas-overlay-container > div > img {
+    position: absolute;
+    left: 5px;
+
+    margin: 0 auto;
+    pointer-events: none;
+    height: 40px;
+}
+
+#movement-grid-canvas-overlay-container > div.selected {
+    background-color: var(--color-bg-nav);
+}
+
+#movement-grid-canvas-overlay-container > div:hover {
+    background-color: var(--color-bg);
+    border: 1px solid var(--color-border-subtle);
+    border-right: none;
+    width: 65px;
+}
+
+#movement-grid-canvas-overlay-container .flyout {
+    background-color: var(--color-bg);
+    border: 1px solid var(--color-border-subtle);
+    border-left: none;
+    gap: 0;
+    height: fit-content;
+    top: -1px;
+    width: fit-content;
+}
+
+#ground-obstacle-flyout {
+    display: grid;
+    grid-template-columns: repeat(5, max-content);
+}
+
+#ground-obstacle-flyout > *:nth-child(6n) {
+    /* add a left-side border to each selection that starts a new row of the grid */
+    border-left: 1px solid var(--color-border-subtle);
+}
+
+#movement-grid-canvas-overlay-container .flyout > * {
+    padding: 8px;
+}
+
+#movement-grid-canvas-overlay-container .flyout > *:hover {
+    background-color: var(--color-bg-subtle);
+}
+
+#movement-grid-canvas-overlay-container .flyout img {
+    height: 50px;
+}
+
+/**
+ * Styles for grid size controls on the top of the canvas
+ */
+
+#movement-grid-size-container {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+
+    background-color: var(--color-bg-subtle);
+    border: 1px solid var(--color-border-subtle);
+    padding: 8px;
+}
+
+#movement-grid-size-container input[type=number] {
+    margin: 0 4px;
+    width: 40px;
+}
+
+#set-grid-size {
+    display: block;
+    margin: 8px auto 0 auto;
+}
+
+/**
+ * Styles for panel underneath the canvas
+ */
+
+ #movement-underneath-controls-right {
+    display: flex;
+    flex-flow: row nowrap;
+
+    flex-grow: 1;
+ }
+
+#layout-notes-container {
+    display: flex;
+    flex-flow: column nowrap;
+
+    flex-grow: 1;
+    padding-right: 13px;
+}
+
+#layout-notes-container fieldset {
+    height: 100%;
+}
+
+#layout-selection-container {
+    display: flex;
+    flex-flow: column nowrap;
+
+    flex-grow: 0;
+    gap: 5px;
+    height: 100%;
+    margin-right: 13px;
+    width: 225px;
+}
+
+#layout-selection-container-header {
+    font-size: 1.2em;
+    text-align: center;
+}
+
+ .saved-layout-preset {
+     color: gold;
+     flex-grow: 1;
+     font-size: 0.9em;
+     text-align: right;
+ }
+
+ #selected-layout {
+     flex-grow: 1;
+ }
+
+ #selected-layout li {
+     display: flex;
+     flex-flow: row nowrap;
+     text-align: left;
+ }

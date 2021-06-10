@@ -28,6 +28,7 @@ body {
   margin: 0;
   height: 100%;
   display: flex;
+  position: relative;
 }
 
 ::-webkit-scrollbar {
@@ -172,6 +173,12 @@ span.inline-resource-icon {
     text-align: center;
 }
 
+textarea {
+    background-color: #777;
+    color: var(--color);
+    resize: none;
+}
+
 .grid-container {
     display: grid;
 }
@@ -210,6 +217,10 @@ span.inline-resource-icon {
     min-width: 300px;
     max-width: 680px;
     padding: 10px 8px;
+}
+
+.underline {
+    text-decoration: underline;
 }
 
 :not(input) {

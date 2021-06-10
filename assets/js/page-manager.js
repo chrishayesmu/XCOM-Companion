@@ -15,6 +15,7 @@ import HomePage from "./page-controllers/home-page.js";
 import ItemDisplayPage from "./page-controllers/item-display-page.js";
 import MapDetailsPage from "./page-controllers/map-details-page.js";
 import MapPossibilitiesPage from "./page-controllers/map-possibilities-page.js";
+import MovementGridPage from "./page-controllers/movement-grid-page.js";
 import PerkTreeDisplayPage from "./page-controllers/perk-tree-display-page.js";
 import ResearchCreditsBrowsePage from "./page-controllers/research-credits-browse-page.js";
 import SearchResultsPage from "./page-controllers/search-results-page.js";
@@ -35,6 +36,7 @@ const appPages = [
     ItemDisplayPage,
     MapDetailsPage,
     MapPossibilitiesPage,
+    MovementGridPage,
     PerkTreeDisplayPage,
     ResearchCreditsBrowsePage,
     SearchResultsPage,

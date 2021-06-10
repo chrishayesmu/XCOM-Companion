@@ -1,0 +1,35 @@
+.flyout-container {
+    position: relative;
+    overflow: hidden;
+}
+
+.flyout-container:hover {
+    overflow: visible;
+}
+
+.flyout {
+    position: absolute;
+    left: 100%;
+    top: 0;
+    transform: translateX(-100%);
+    visibility: hidden;
+
+    display: flex;
+    flex-flow: row nowrap;
+    gap: 5px;
+
+    height: 100%;
+
+    width: fit-content;
+}
+
+.flyout,
+.flyout * {
+    z-index: -1;
+}
+
+.flyout:hover,
+.flyout-container:hover .flyout {
+    transform: translateX(0);
+    visibility: visible;
+}

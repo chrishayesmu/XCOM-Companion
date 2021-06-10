@@ -1,0 +1,236 @@
+<template id="template-movement-grid-page">
+    <div id="movement-grid-page-content">
+        <info-box style="width: 100%">
+            <div id="movement-controls-container">
+                <div class="movement-control-pane-header">Controls</div>
+
+                <div class="movement-grid-control">
+                    <img src="assets/img/misc-icons/icon-mouse-left.png" />
+                    Left click to paint tiles
+                </div>
+                <div class="movement-grid-control">
+                    <img src="assets/img/misc-icons/icon-mouse-right.png" />
+                    Right click to modify tiles
+                </div>
+                <div class="movement-grid-control">
+                    <img src="assets/img/misc-icons/icon-mouse-wheel-click.png" />
+                    <span>Middle click and drag to <strong>pan</strong></span>
+                </div>
+                <div class="movement-grid-control">
+                    <img src="assets/img/misc-icons/icon-mouse-wheel-scroll.png" />
+                    <span>Scroll wheel to <strong>zoom</strong></span>
+                </div>
+            </div>
+        </info-box>
+
+        <div id="movement-main-controls-container">
+            <div id="movement-control-pane-unit-stats" class="movement-control-pane">
+                <div class="movement-control-pane-header">Unit Stats</div>
+
+                <div>
+                    <select id="unit-mobility">
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12" selected>12</option>
+                        <option value="13">13</option>
+                        <option value="14">14</option>
+                        <option value="15">15</option>
+                        <option value="16">16</option>
+                        <option value="17">17</option>
+                        <option value="18">18</option>
+                        <option value="19">19</option>
+                        <option value="20">20</option>
+                    </select>
+                    <label for="unit-mobility">Mobility</label>
+                </div>
+
+                <br/>
+
+                <div class="effects-section-label">Abilities</div>
+                <div class="movement-effects-options">
+                    <input type="checkbox" id="unit-can-jump" />
+                    <label for="unit-can-jump">Unit Can Jump <help-icon class="theme-schematic">The unit has an ability such as Muscle-fiber Density that allows it to jump to high locations.</help-icon></label>
+
+                    <input type="checkbox" id="unit-can-fly" />
+                    <label for="unit-can-fly">Unit Can Fly <help-icon class="theme-schematic">Flying units can ignore elevation changes and ground obstacles, but are still stopped by tall obstacles.</help-icon></label>
+                </div>
+
+                <br/>
+
+                <div class="effects-section-label">Positive Effects</div>
+                <div class="movement-effects-options">
+                    <input type="checkbox" id="effect-blood-call" />
+                    <label for="effect-blood-call">Blood Call <help-icon class="theme-schematic">The unit is under the effect of the Muton ability Blood Call. +4 mobility.</help-icon></label>
+
+                    <input type="checkbox" id="effect-combat-rush" />
+                    <label for="effect-combat-rush">Combat Rush <help-icon class="theme-schematic">The unit is under the effect of Combat Rush, granted by Adrenal Neurosympathy. +2 mobility.</help-icon></label>
+
+                    <input type="checkbox" id="effect-combat-stims" />
+                    <label for="effect-combat-stims">Combat Stims <help-icon class="theme-schematic">The unit has recently used Combat Stims. +4 mobility.</help-icon></label>
+                </div>
+
+                <br/>
+
+                <div class="effects-section-label">Negative Effects</div>
+                <div class="movement-effects-options">
+                    <input type="checkbox" id="effect-acid" />
+                    <label for="effect-acid">Acid <help-icon class="theme-schematic">The unit has been affected by Thin Man acid or a Chem Grenade. -25% mobility.</help-icon></label>
+
+                    <input type="checkbox" id="effect-catching-breath" />
+                    <label for="effect-catching-breath">Catching Breath <help-icon class="theme-schematic">The unit has recently been strangled by a Seeker. -75% mobility. </help-icon></label>
+
+                    <input type="checkbox" id="effect-flashbang" />
+                    <label for="effect-flashbang">Flashbang (Disoriented) <help-icon class="theme-schematic">The unit is affected by a Flashbang Grenade. -40% mobility.</help-icon></label>
+
+                    <input type="checkbox" id="effect-mindfray" />
+                    <label for="effect-mindfray">Mindfray <help-icon class="theme-schematic">The unit has been affected by the psionic ability Mindfray. -40% mobility.</help-icon></label>
+                </div>
+
+                <br />
+
+                <div>
+                    Final mobility: <span id="unit-final-mobility"></span>
+                </div>
+
+                <br />
+
+                <div id="movement-legend-container">
+                    <div class="movement-control-pane-header">Legend</div>
+
+                    <div style="display: flex; flex-flow: column wrap; height: 100%">
+                        <div class="movement-grid-legend-entry">
+                            <div id="movement-grid-legend-start" class="movement-grid-legend-image"></div>
+                            Unit Starting Position&nbsp;
+                            <help-icon class="theme-schematic">
+                                The grid square the unit is starting its movement from. You can change this by right clicking another tile.
+                            </help-icon>
+                        </div>
+                        <div class="movement-grid-legend-entry">
+                            <div id="movement-grid-legend-obstacle" class="movement-grid-legend-image"><img src="assets/img/movement-grid/red_cross_stroke.png" /></div>
+                            Ground Obstacle&nbsp;
+                            <help-icon class="theme-schematic">
+                                Ground obstacles block squares such that units without flying cannot stand in or walk through them.
+                                In addition, two ground obstacles which touch diagonally will prevent units from walking through the diagonal between them.
+                                <br/><br/>
+                                Rocks, cars, and fire are all examples of ground obstacles. Grounded units other than the unit whose mobility you are checking
+                                also should be mapped as ground obstacles.
+                            </help-icon>
+                        </div>
+                        <div class="movement-grid-legend-entry">
+                            <div id="movement-grid-legend-tall-obstacle" class="movement-grid-legend-image"><img src="assets/img/movement-grid/tall_obstacle.png" /></div>
+                            Tall Obstacle&nbsp;
+                            <help-icon class="theme-schematic">
+                                Tall obstacles block squares from both grounded and flying units. Similar to ground obstacles, two tall obstacles which touch
+                                diagonally will prevent units from traveling through the diagonal between them.
+                                <br/><br/>
+                                Undamaged trees are tall obstacles, as are building walls with a roof above them.
+                            </help-icon>
+                        </div>
+                        <div class="movement-grid-legend-entry">
+                            <div id="movement-grid-legend-obstacle" class="movement-grid-legend-image"><img src="assets/img/movement-grid/grid_elevation.png" /></div>
+                            Elevated Tile&nbsp;
+                            <help-icon class="theme-schematic">
+                                Denotes a tile which is higher than the default elevation of 0. The number next to the symbol represents the elevation. Units without flying or the ability to jump cannot go up
+                                an elevation change of more than 1. Similar to obstacles,
+                                <br/><br/>
+                                Units that can jump
+                            </help-icon>
+                        </div>
+                        <div class="movement-grid-legend-entry">
+                            <div id="movement-grid-legend-blue-move" class="movement-grid-legend-image"></div>
+                            Reachable in blue move
+                        </div>
+                        <div class="movement-grid-legend-entry">
+                            <div id="movement-grid-legend-yellow-move" class="movement-grid-legend-image"></div>
+                            Reachable in yellow move
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="movement-grid-canvas-wrapper">
+                <!-- Container that holds the toolbar on the left side of the canvas -->
+                <div id="movement-grid-canvas-overlay-container">
+                    <div id="overlay-mark-ground-obstacle" class="selected flyout-container" data-paint-mode="mark-ground-obstacles"
+                         data-tooltip-text="<strong>Mark ground obstacles</strong><br/><br/>Ground obstacles are short objects that block movement and generally provide cover, such as rocks or cars. They do not block flying units. See the Legend for more.">
+                        <img src="assets/img/movement-grid/red_cross_stroke.png" />
+
+                        <div id="ground-obstacle-flyout" class="flyout">
+                            <img src="assets/img/movement-grid/person.png" data-tooltip-text="Mark the position of an XCOM infantry." />
+                            <img src="assets/img/misc-icons/mec.png" data-tooltip-text="Mark the position of an XCOM MEC." />
+                            <img src="assets/img/movement-grid/shiv.png" data-tooltip-text="Mark the position of an XCOM SHIV." />
+                            <img src="assets/img/misc-icons/alien.png" data-tooltip-text="Mark the position of an alien unit." />
+                            <img src="assets/img/misc-icons/exalt.png" data-tooltip-text="Mark the position of an EXALT unit." />
+                            <img src="assets/img/movement-grid/rock_large.png" data-tooltip-text="Mark the position of a large rock (provides full cover)." />
+                            <img src="assets/img/movement-grid/rock_small.png" data-tooltip-text="Mark the position of a small rock (provides partial cover)." />
+                        </div>
+                    </div>
+                    <div id="overlay-mark-tall-obstacle" class="flyout-container" data-paint-mode="mark-tall-obstacles"
+                         data-tooltip-text="<strong>Mark tall obstacles</strong><br/><br/>Tall obstacles, such as trees, are big enough to block both ground and flying units. Effectively, this is any object that extends up high enough to prevent flying over.">
+                        <img src="assets/img/movement-grid/tall_obstacle.png" />
+
+                        <div class="flyout">
+                            <img src="assets/img/movement-grid/tree.png" data-tooltip-text="Mark the position of an undamaged tree." />
+                            <img src="assets/img/movement-grid/wall.png" data-tooltip-text="Mark the position of a building's wall. Only mark it in this way if it is attached to a roof, preventing flight into adjacent tiles." />
+                        </div>
+                    </div>
+                    <div id="overlay-clear-obstacle" data-paint-mode="clear-obstacles"
+                         data-tooltip-text="<strong>Remove marked obstacles</strong><br/><br/>Deletes obstacles, but does not modify elevation.">
+                        <img src="assets/img/movement-grid/eraser.png" />
+                    </div>
+                    <div id="overlay-increase-elevation" data-paint-mode="increase-elevation"
+                         data-tooltip-text="<strong>Increase elevation by 1</strong><br/><br/>Most units can climb up a single unit of elevation. A typical increase of elevation by one unit will provide low cover, except for ramps.">
+                        <img src="assets/img/ui-icons/arrow_up.png" />
+                    </div>
+                    <div id="overlay-decrease-elevation" data-paint-mode="decrease-elevation"
+                         data-tooltip-text="<strong>Decrease elevation by 1</strong><br/><br/>Most units can climb up a single unit of elevation. A typical increase of elevation by one unit will provide low cover, except for ramps.">
+                        <img src="assets/img/ui-icons/arrow_down.png" />
+                    </div>
+                </div>
+
+                <!-- Container holding the canvas size controls -->
+                <div id="movement-grid-size-container">
+                    <input type="number" id="grid-size-width" class="hide-number-spinners" value="40" min="20" /> by <input type="number" id="grid-size-height" class="hide-number-spinners" value="40" min="20" />
+                    <button id="set-grid-size">Set Grid Size</button>
+                </div>
+
+                <!-- Actual canvas itself -->
+                <canvas id="movement-grid-canvas" width="1100" height="1100">
+                </canvas>
+            </div>
+
+            <div id="movement-control-pane-right" class="movement-control-pane">
+                <div id="movement-underneath-controls-right">
+                    <div id="layout-selection-container" class="flex-column">
+                        <span id="layout-selection-container-header">Saved Layouts</span>
+                        <single-select-list id="selected-layout">
+                            <li>Alien Base Assault <span class="saved-layout-preset">Preset</span></li>
+                            <li>Gangplank <span class="saved-layout-preset">Preset</span></li>
+                            <li>Portent <span class="saved-layout-preset">Preset</span></li>
+                            <li>Small UFO Cockpit</li>
+                        </single-select-list>
+                        <button id="save-layout-button"><span class="layout-button-icon">💾</span> Save as New Layout</button>
+                        <button id="overwrite-layout-button"><span class="layout-button-icon"></span>Overwrite Selected</button>
+                        <button id="export-layout-button"><span class="layout-button-icon">▦→📋</span> Copy to Clipboard</button>
+                        <button id="load-layout-button"><span class="layout-button-icon">📂</span> Load Selected</button>
+                        <button id="import-layout-button"><span class="layout-button-icon">📋→▦</span> Import from Clipboard</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- This image is referenced by the Canvas script later -->
+        <img id="img-selector-glow" src="assets/img/ui-icons/selector-glow.png" class="hidden-collapse" />
+    </div>
+</template>
+
+<template id="template-grid-cell-options-menu">
+    <div class="movement-grid-options-menu hidden-collapse">
+        <!--
+        <div id="set-note" class="movement-grid-options-item">Add Note</div>
+        <div id="delete-note" class="movement-grid-options-item">Delete Note</div>
+        -->
+        <div id="set-as-start" class="movement-grid-options-item">Set as Starting Point</div>
+    </div>
+</template>
