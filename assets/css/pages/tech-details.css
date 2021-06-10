@@ -26,11 +26,6 @@ input[type=number]#num-labs {
     width: 30px;
 }
 
-#tech-details-time-values-input input[type=number]::-webkit-inner-spin-button,
-#tech-details-time-values-input input[type=number]::-webkit-outer-spin-button {
-    appearance: none;
-}
-
 #tech-details-time-discard-button {
     color: var(--color-red);
     cursor: pointer;

@@ -166,6 +166,11 @@ input[type="text"]::placeholder {
     color: var(--color-subtle);
 }
 
+input[type=number].hide-number-spinners::-webkit-inner-spin-button,
+input[type=number].hide-number-spinners::-webkit-outer-spin-button {
+    appearance: none;
+}
+
 span.inline-resource-icon {
     font-size: 16px;
     margin-right: 2px;
@@ -197,6 +202,7 @@ span.inline-resource-icon {
 
 .tooltip {
     position: absolute;
+    z-index: 100;
 
     background-color: var(--color-bg-subtle);
     border: 1px solid white;
