@@ -44,6 +44,7 @@ Once you have cloned the repository and installed npm, you can install and run X
 
 <details>
 <summary>Update instructions</summary>
+
 Close XCOM Companion and run `git pull && git fetch --tags` in its directory. This will get you the very latest code, which may not be in the most functional state. To match the latest release, run `git tag` to see a list of tags such as this:
 
 ```
