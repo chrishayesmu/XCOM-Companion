@@ -147,6 +147,11 @@ function initialize() {
             mainWindow = null;
         });
 
+        // Make absolutely sure we can't accidentally navigate to a URL within the app
+        mainWindow.webContents.on("will-navigate", (event, url) => {
+            event.preventDefault();
+        });
+
         mainWindow.once('ready-to-show', () => {
             if (autoUpdater.isUpdaterActive()) {
                 autoUpdater.checkForUpdates();
