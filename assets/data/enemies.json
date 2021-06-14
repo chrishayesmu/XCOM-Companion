@@ -3764,7 +3764,7 @@
                     "damage_reduction": 0,
                     "defense": 0,
                     "hp": 10,
-                    "hp_regen": 3,
+                    "hp_regen": 1,
                     "mobility": 12,
                     "will": 105
                 },
@@ -3775,7 +3775,7 @@
                     "damage_reduction": 0,
                     "defense": 0,
                     "hp": 10,
-                    "hp_regen": 3,
+                    "hp_regen": 1,
                     "mobility": 12,
                     "will": 105
                 },
@@ -3786,7 +3786,7 @@
                     "damage_reduction": 0,
                     "defense": 0,
                     "hp": 10,
-                    "hp_regen": 3,
+                    "hp_regen": 1,
                     "mobility": 12,
                     "will": 115
                 },
@@ -3797,7 +3797,7 @@
                     "damage_reduction": 0,
                     "defense": 0,
                     "hp": 10,
-                    "hp_regen": 3,
+                    "hp_regen": 1,
                     "mobility": 12,
                     "will": 130
                 }
