@@ -608,7 +608,6 @@
             "size": "large",
             "resource_value": 24,
             "equipment": {
-                "item_alien_food": 10,
                 "item_alien_stasis_tank": 8,
                 "item_alien_surgery": 2,
                 "item_ufo_power_source": 4,
