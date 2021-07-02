@@ -1,0 +1,18 @@
+<svg viewBox="0 0 130 32" version="1.1" baseProfile="full" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+    <link xmlns="http://www.w3.org/1999/xhtml" rel="stylesheet" href="../css/variables.css" type="text/css"/>
+    <link xmlns="http://www.w3.org/1999/xhtml" rel="stylesheet" href="../css/svg.css" type="text/css"/>
+
+    <!-- Outline -->
+    <polyline points="0,0 0,14 18,32 130,32 130,6 124,0 0,0" class="thin" fill="transparent" stroke-width="1" stroke="rgba(154, 234, 239, 1)" />
+
+    <!-- Outline of icon in center (20px square) -->
+    <polyline points="55,6 75,6 75,26 55,26 55,6" class="thin" fill="transparent" stroke-width="1" stroke="rgba(0, 225, 239, 1)" />
+
+    <!-- Mini version of outline (7px square) -->
+    <polyline points="59,16 66,16 66,23 59,23 59,16" class="thin" fill="transparent" stroke-width="1" stroke="rgba(0, 225, 239, 1)" />
+
+    <line x1="58" y1="9" x2="72" y2="9" class="thin" fill="transparent" stroke-width="1" stroke="rgba(0, 225, 239, 1)" />
+    <line x1="58" y1="13" x2="72" y2="13" class="thin" fill="transparent" stroke-width="1" stroke="rgba(0, 225, 239, 1)" />
+    <line x1="68" y1="17" x2="72" y2="17" class="thin" fill="transparent" stroke-width="1" stroke="rgba(0, 225, 239, 1)" />
+    <line x1="68" y1="21" x2="72" y2="21" class="thin" fill="transparent" stroke-width="1" stroke="rgba(0, 225, 239, 1)" />
+</svg>

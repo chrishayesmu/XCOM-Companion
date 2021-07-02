@@ -1,4 +1,5 @@
 import * as DataHelper from "./data-helper.js";
+import * as Modal from "./modal.js";
 import PageManager from "./page-manager.js";
 
 const dataSources = [
@@ -80,7 +81,7 @@ function onDomReady() {
     });
 
     document.body.addEventListener("keydown", event => {
-        if (event.key === "f" && event.ctrlKey) {
+        if (!Modal.isAnyModalOpen() && event.key === "f" && event.ctrlKey) {
             searchInput.focus();
         }
     });

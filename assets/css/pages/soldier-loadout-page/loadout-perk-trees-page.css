@@ -1,0 +1,311 @@
+.perk-icon {
+    display: flex; /* to vertically align img inside */
+    pointer-events: none;
+}
+
+.perk-icon > img {
+    margin-left: 25px;
+    margin-right: 25px;
+
+    background-color: var(--color-subtle);
+    pointer-events: all;
+    width: 64px;
+    height: 64px;
+}
+
+.perk-icon.unselected > img {
+    background-color: rgba(0, 150, 150, .25);
+}
+
+.perk-icon.selected > img {
+    background-color: var(--color-strong);
+}
+
+.perk-slot-empty > div {
+    margin-left: 25px;
+    margin-right: 25px;
+
+    width: 64px;
+    height: 64px;
+}
+
+.perk-icon:hover > img {
+    background-color: var(--color-strong);
+
+    outline: 1px solid var(--color-strong);
+}
+
+.perk-icon-active > img {
+    background-color: var(--color-strong);
+}
+
+.perk-icon-inactive > img {
+    background-color: var(--color-subtle);
+}
+
+.perk-tree-rank-icon > img {
+    transform: translateY(10%);
+}
+
+.perk-tree-rank-name {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    gap: 4px;
+
+    flex-grow: 1;
+    font-size: 20px;
+    text-align: left;
+    text-transform: uppercase;
+}
+
+.perk-tree-row {
+    border: 1px solid var(--color-subtle);
+    border-top-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+
+    display: flex;
+    justify-content: space-between;
+
+    margin-bottom: 11px;
+    padding: 8px 18px;
+    width: 100%;
+}
+
+#perk-tree-content-section {
+    display: flex;
+    flex-flow: column nowrap;
+    padding-left: 20px;
+}
+
+#perk-tree-details {
+    border-top: 1px solid var(--color-subtle);
+    border-top-left-radius: 30px;
+
+    flex-grow: 1;
+    line-height: 1.2;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    padding: 10px;
+    text-align: center;
+
+    min-height: 300px;
+    max-height: 500px;
+    overflow-y: auto;
+
+    max-width: 650px;
+    min-width: 600px;
+}
+
+#perk-tree-details-name {
+    color: var(--color-strong);
+    font-size: 3em;
+}
+
+#perk-tree-details-stat-bonuses {
+    color: var(--color-subtle);
+    margin-top: 5px;
+}
+
+#perk-tree-details-description {
+    font-size: 1.5em;
+    margin-top: 15px;
+}
+
+/***************************
+ * Soldier-rank-specific styles
+ ***************************/
+
+ .stat-aim,
+ .stat-hp,
+ .stat-will {
+     font-size: 15px;
+     margin-right: 8px;
+     text-transform: none;
+ }
+
+ .stat-aim::before {
+     content: "Aim: +";
+ }
+
+ .stat-hp::before {
+     content: "HP: +";
+ }
+
+ .stat-will::before {
+     content: "Will: +";
+ }
+
+/***************************
+ * Gene-mod-specific styles
+ ***************************/
+
+.gene-mods-body-part {
+    display: flex;
+    flex-flow: column;
+    justify-content: space-evenly;
+
+    flex-grow: 1;
+    font-size: 20px;
+    text-align: left;
+    text-transform: uppercase;
+    width: 40%;
+}
+
+.gene-mod-icon.selected > img {
+    background-color: var(--color-meld);
+}
+
+.gene-mod-icon.selected:hover > img {
+    background-color: var(--color-meld);
+
+    outline: 1px solid var(--color-meld);
+}
+
+#gene-mod-added-fatigue {
+    font-size: 1.2em;
+    margin-top: 18px;
+}
+
+#gene-mod-added-fatigue::before {
+    content: "Added post-mission fatigue: +";
+}
+
+#gene-mod-added-fatigue::after {
+    content: " hours";
+}
+
+#gene-mod-costs {
+    display: flex;
+    flex-flow: row nowrap;
+    font-size: 1.2em;
+    justify-content: center;
+    margin-bottom: 6px;
+    margin-top: 6px;
+}
+
+#gene-mod-costs > div {
+    display: flex;
+    flex-flow: row;
+    line-height: 1;
+    margin: 0 15px;
+    justify-content: space-evenly;
+}
+
+#gene-mod-costs img {
+    height: 20px;
+    width: 20px;
+    margin-right: 5px;
+}
+
+div > #gene-mod-required-research,
+#gene-mod-required-research {
+    font-size: 1.2em;
+    margin-top: 8px;
+}
+
+/***************************
+ * Psionics-specific styles
+ ***************************/
+
+.psi-ability-fatigue {
+    display: flex;
+    flex-flow: row nowrap;
+    gap: 4px;
+
+    font-size: 15px;
+    text-transform: none;
+}
+
+.psi-ability-fatigue img {
+    cursor: help;
+    width: 20px;
+}
+
+.psi-ability-icon > img {
+    background-color: var(--color-psi);
+}
+
+.psi-ability-icon.selected > img {
+    background-color: var(--color-psi-strong);
+    outline: 2px solid var(--color-psi-strong);
+}
+
+.psi-ability-icon.unselected > img {
+    background-color: var(--color-psi-subtle);
+}
+
+.psi-ability-icon > img:hover {
+    background-color: var(--color-psi-strong);
+    outline-color: var(--color-psi);
+}
+
+#perk-trees-page .perk-tree-row perk-icon {
+    width: 100%;
+}
+
+#perk-trees-page #perk-tree-container {
+    margin-right: 60px;
+}
+
+#perk-trees-page #perk-tree-container .perk-tree-row {
+    display: grid;
+    grid-template-columns: 150px repeat(3, 1fr);
+    gap: 40px;
+}
+
+#perk-trees-page #perk-tree-container .perk-tree-row.active-row {
+    border: 1px solid var(--color-gold);
+    color: var(--color-gold);
+}
+
+#perk-trees-page #perk-tree-container .perk-tree-row.active-row perk-icon img {
+    background-color: var(--color-gold);
+}
+
+#perk-trees-page #perk-tree-container .perk-tree-row.active-row .perk-tree-rank-icon img {
+    filter: hue-rotate(230deg) brightness(0.8);
+}
+
+/* rows after the active row appear inactive */
+#perk-trees-page #perk-tree-container .perk-tree-row.active-row ~ .perk-tree-row perk-icon {
+    filter: brightness(0.6);
+}
+
+#perk-trees-page #perk-tree-container .perk-tree-row.active-row ~ .perk-tree-row perk-icon:hover {
+    filter: none;
+}
+
+#perk-trees-page #perk-tree-container.gene-mods-tree .perk-tree-row {
+    display: grid;
+    grid-template-columns: 80px 1fr 1fr;
+    gap: 75px;
+}
+
+#perk-trees-page #perk-tree-container.officer-tree .perk-tree-row {
+    display: grid;
+    grid-template-columns: 150px 1fr 1fr;
+    gap: 75px;
+}
+
+#perk-trees-page #perk-tree-container.psi-tree .perk-tree-row {
+    display: grid;
+    grid-template-columns: 115px repeat(3, 1fr);
+    gap: 40px;
+}
+
+#perk-trees-page #perk-tree-container .perk-tree-rank {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    gap: 6px;
+}
+
+#perk-trees-page #perk-tree-container .perk-tree-rank .perk-tree-rank-name {
+    justify-content: flex-start;
+}
+
+#perk-trees-page #return-to-loadout {
+    margin: 0 auto;
+    width: 400px;
+}

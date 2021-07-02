@@ -4,6 +4,28 @@
             "id": "infantry_class_assault",
             "name": "Assault",
             "icon": "assets/img/soldier-class-icons/assault.png",
+            "loadout_slots": [
+                {
+                    "role": "loadout_armor"
+                },
+                {
+                    "role": "loadout_primary"
+                },
+                {
+                    "role": "loadout_secondary"
+                },
+                {
+                    "role": "loadout_equipment"
+                },
+                {
+                    "role": "loadout_equipment"
+                },
+                {
+                    "role": "loadout_equipment",
+                    "requires_tactical_rigging": true
+                }
+            ],
+            "default_loadout": [ "item_tac_armor", "item_shotgun", "item_pistol", "item_ceramic_plating", "item_medikit" ],
             "perks": {
                 "0": [ "perk_run_and_gun" ],
                 "1": [ "perk_steadfast", "perk_close_combat_specialist", "perk_flush" ],
@@ -75,6 +97,28 @@
             "id": "infantry_class_engineer",
             "name": "Engineer",
             "icon": "assets/img/soldier-class-icons/engineer.png",
+            "default_loadout": [ "item_tac_armor", "item_assault_rifle", "item_pistol", "item_ceramic_plating", "item_he_grenade" ],
+            "loadout_slots": [
+                {
+                    "role": "loadout_armor"
+                },
+                {
+                    "role": "loadout_primary"
+                },
+                {
+                    "role": "loadout_secondary"
+                },
+                {
+                    "role": "loadout_equipment"
+                },
+                {
+                    "role": "loadout_equipment"
+                },
+                {
+                    "role": "loadout_equipment",
+                    "requires_tactical_rigging": true
+                }
+            ],
             "perks": {
                 "0": [ "perk_grenadier" ],
                 "1": [ "perk_holo_targeting", "perk_smoke_grenade", "perk_sapper" ],
@@ -142,6 +186,25 @@
             "id": "infantry_class_gunner",
             "name": "Gunner",
             "icon": "assets/img/soldier-class-icons/gunner.png",
+            "default_loadout": [ "item_tac_armor", "item_lmg", "item_ceramic_plating", "item_scope" ],
+            "loadout_slots": [
+                {
+                    "role": "loadout_armor"
+                },
+                {
+                    "role": "loadout_primary"
+                },
+                {
+                    "role": "loadout_equipment"
+                },
+                {
+                    "role": "loadout_equipment"
+                },
+                {
+                    "role": "loadout_equipment",
+                    "requires_tactical_rigging": true
+                }
+            ],
             "perks": {
                 "0": [ "perk_suppression" ],
                 "1": [ "perk_flush", "perk_covering_fire", "perk_holo_targeting" ],
@@ -209,6 +272,28 @@
             "id": "infantry_class_infantry",
             "name": "Infantry",
             "icon": "assets/img/soldier-class-icons/infantry.png",
+            "default_loadout": [ "item_tac_armor", "item_assault_rifle", "item_pistol", "item_ceramic_plating", "item_medikit" ],
+            "loadout_slots": [
+                {
+                    "role": "loadout_armor"
+                },
+                {
+                    "role": "loadout_primary"
+                },
+                {
+                    "role": "loadout_secondary"
+                },
+                {
+                    "role": "loadout_equipment"
+                },
+                {
+                    "role": "loadout_equipment"
+                },
+                {
+                    "role": "loadout_equipment",
+                    "requires_tactical_rigging": true
+                }
+            ],
             "perks": {
                 "0": [ "perk_light_em_up" ],
                 "1": [ "perk_steadfast", "perk_covering_fire", "perk_executioner" ],
@@ -276,6 +361,28 @@
             "id": "infantry_class_medic",
             "name": "Medic",
             "icon": "assets/img/soldier-class-icons/medic.png",
+            "default_loadout": [ "item_tac_armor", "item_assault_rifle", "item_pistol", "item_ceramic_plating", "item_medikit" ],
+            "loadout_slots": [
+                {
+                    "role": "loadout_armor"
+                },
+                {
+                    "role": "loadout_primary"
+                },
+                {
+                    "role": "loadout_secondary"
+                },
+                {
+                    "role": "loadout_equipment"
+                },
+                {
+                    "role": "loadout_equipment"
+                },
+                {
+                    "role": "loadout_equipment",
+                    "requires_tactical_rigging": true
+                }
+            ],
             "perks": {
                 "0": [ "perk_field_medic" ],
                 "1": [ "perk_suppression", "perk_steadfast", "perk_field_surgeon" ],
@@ -346,6 +453,29 @@
             "id": "infantry_class_rocketeer",
             "name": "Rocketeer",
             "icon": "assets/img/soldier-class-icons/rocketeer.png",
+            "default_loadout": [ "item_tac_armor", "item_assault_rifle", "item_rocket_launcher", "item_ceramic_plating", "item_shredder_rocket" ],
+            "loadout_slots": [
+                {
+                    "role": "loadout_armor"
+                },
+                {
+                    "role": "loadout_primary"
+                },
+                {
+                    "role": "loadout_secondary",
+                    "category": "rocket_launcher"
+                },
+                {
+                    "role": "loadout_equipment"
+                },
+                {
+                    "role": "loadout_equipment"
+                },
+                {
+                    "role": "loadout_equipment",
+                    "requires_tactical_rigging": true
+                }
+            ],
             "perks": {
                 "0": [ "perk_fire_rocket" ],
                 "1": [ "perk_will_to_survive", "perk_ranger", "perk_heat_warheads" ],
@@ -410,6 +540,28 @@
             "id": "infantry_class_scout",
             "name": "Scout",
             "icon": "assets/img/soldier-class-icons/scout.png",
+            "default_loadout": [ "item_tac_armor", "item_marksman_rifle", "item_pistol", "item_ceramic_plating", "item_medikit" ],
+            "loadout_slots": [
+                {
+                    "role": "loadout_armor"
+                },
+                {
+                    "role": "loadout_primary"
+                },
+                {
+                    "role": "loadout_secondary"
+                },
+                {
+                    "role": "loadout_equipment"
+                },
+                {
+                    "role": "loadout_equipment"
+                },
+                {
+                    "role": "loadout_equipment",
+                    "requires_tactical_rigging": true
+                }
+            ],
             "perks": {
                 "0": [ "perk_lightning_reflexes" ],
                 "1": [ "perk_holo_targeting", "perk_damn_good_ground", "perk_lone_wolf" ],
@@ -477,6 +629,28 @@
             "id": "infantry_class_sniper",
             "name": "Sniper",
             "icon": "assets/img/soldier-class-icons/sniper.png",
+            "default_loadout": [ "item_tac_armor", "item_sniper_rifle", "item_pistol", "item_ceramic_plating", "item_scope" ],
+            "loadout_slots": [
+                {
+                    "role": "loadout_armor"
+                },
+                {
+                    "role": "loadout_primary"
+                },
+                {
+                    "role": "loadout_secondary"
+                },
+                {
+                    "role": "loadout_equipment"
+                },
+                {
+                    "role": "loadout_equipment"
+                },
+                {
+                    "role": "loadout_equipment",
+                    "requires_tactical_rigging": true
+                }
+            ],
             "perks": {
                 "0": [ "perk_squadsight" ],
                 "1": [ "perk_low_profile", "perk_deadeye", "perk_lone_wolf" ],

@@ -79,6 +79,9 @@
             "type": "loadout_armor",
             "sell_value": 56,
             "type_specific_data": {
+                "usable_by_infantry": true,
+                "usable_by_mec": false,
+                "usable_by_shiv": false,
                 "grants_flight": false,
                 "has_grapple": false,
                 "negates_acid": false,
@@ -164,6 +167,7 @@
                 "usable_by_infantry": true,
                 "usable_by_mec": false,
                 "usable_by_shiv": false,
+                "can_equip_multiple": true,
                 "range": 15,
 
                 "aim": 0,
@@ -295,7 +299,11 @@
                 "category": "shotgun",
                 "can_steady": false,
                 "class_restriction": [ "infantry_class_assault", "infantry_class_engineer", "infantry_class_infantry", "infantry_class_medic", "infantry_class_scout" ],
+                "usable_by_infantry": true,
+                "usable_by_mec": false,
+                "usable_by_shiv": false,
                 "dr_penetration": 0.33,
+                "weapon_tier": "gauss",
 
                 "base_ammo": 5,
                 "aim": 0,
@@ -504,7 +512,11 @@
                 "category": "marksman_rifle",
                 "can_steady": true,
                 "class_restriction": [ "infantry_class_scout", "infantry_class_sniper" ],
+                "usable_by_infantry": true,
+                "usable_by_mec": false,
+                "usable_by_shiv": false,
                 "dr_penetration": 0.33,
+                "weapon_tier": "gauss",
 
                 "base_ammo": 4,
                 "aim": 0,
@@ -549,6 +561,7 @@
                 "usable_by_infantry": true,
                 "usable_by_mec": false,
                 "usable_by_shiv": false,
+                "can_equip_multiple": true,
                 "range": 15,
 
                 "aim": 0,
@@ -573,6 +586,9 @@
                 "category": "special",
                 "can_steady": false,
                 "class_restriction": [ "infantry_class_assault", "infantry_class_engineer", "infantry_class_infantry", "infantry_class_medic", "infantry_class_scout", "infantry_class_sniper" ],
+                "usable_by_infantry": true,
+                "usable_by_mec": false,
+                "usable_by_shiv": false,
 
                 "base_ammo": 2,
                 "aim": 10,
@@ -618,6 +634,7 @@
                 "usable_by_infantry": true,
                 "usable_by_mec": false,
                 "usable_by_shiv": false,
+                "can_equip_multiple": true,
                 "range": 5,
 
                 "aim": 0,
@@ -651,6 +668,9 @@
             "type": "loadout_armor",
             "sell_value": 120,
             "type_specific_data": {
+                "usable_by_infantry": true,
+                "usable_by_mec": false,
+                "usable_by_shiv": false,
                 "grants_flight": true,
                 "has_grapple": false,
                 "negates_acid": true,
@@ -699,6 +719,7 @@
                 "usable_by_infantry": true,
                 "usable_by_mec": true,
                 "usable_by_shiv": true,
+                "compatible_weapon_categories": [ "assault_rifle", "battle_rifle", "carbine", "lmg", "mec", "saw", "shiv", "smg" ],
 
                 "aim": 0,
                 "crit_chance": 0,
@@ -733,8 +754,13 @@
             "tactical_text": "<ul><li>Lightweight primary weapon</li><li>Less damage and crit chance than its assault rifle counterpart, but imparts +6 accuracy and +1 mobility</li></ul>",
             "type": "loadout_primary",
             "type_specific_data": {
+                "usable_by_infantry": true,
+                "usable_by_mec": false,
+                "usable_by_shiv": false,
+
                 "category": "carbine",
                 "can_steady": true,
+                "weapon_tier": "ballistic",
 
                 "base_ammo": 3,
                 "aim": 6,
@@ -755,8 +781,13 @@
             "tactical_text": "<ul><li>The assault rifle and its variants are the primary weapons XCOM rookies can use</li></ul>",
             "type": "loadout_primary",
             "type_specific_data": {
+                "usable_by_infantry": true,
+                "usable_by_mec": false,
+                "usable_by_shiv": false,
+
                 "category": "assault_rifle",
                 "can_steady": true,
+                "weapon_tier": "ballistic",
 
                 "base_ammo": 3,
                 "aim": 0,
@@ -778,6 +809,10 @@
             "type": "loadout_armor",
             "sell_value": 50,
             "type_specific_data": {
+                "usable_by_infantry": true,
+                "usable_by_mec": false,
+                "usable_by_shiv": false,
+
                 "grants_flight": false,
                 "has_grapple": false,
                 "negates_acid": false,
@@ -821,6 +856,10 @@
             "type": "loadout_primary",
             "type_specific_data": {
                 "category": "shiv",
+                "usable_by_infantry": false,
+                "usable_by_mec": false,
+                "usable_by_shiv": true,
+                "weapon_tier": "ballistic",
 
                 "base_ammo": 3,
                 "aim": 0,
@@ -842,9 +881,14 @@
             "type": "loadout_primary",
             "sell_value": 24,
             "type_specific_data": {
+                "usable_by_infantry": true,
+                "usable_by_mec": false,
+                "usable_by_shiv": false,
+
                 "category": "saw",
                 "can_steady": false,
                 "class_restriction": [ "infantry_class_gunner" ],
+                "weapon_tier": "laser",
 
                 "base_ammo": 6,
                 "aim": 6,
@@ -934,6 +978,10 @@
             "type": "loadout_armor",
             "sell_value": 56,
             "type_specific_data": {
+                "usable_by_infantry": true,
+                "usable_by_mec": false,
+                "usable_by_shiv": false,
+
                 "grants_flight": false,
                 "has_grapple": true,
                 "negates_acid": false,
@@ -973,6 +1021,10 @@
             "tactical_text": "<ul><li>Cannot be worn into battle</li></ul>",
             "type": "loadout_mec_exoskeleton",
             "type_specific_data": {
+                "usable_by_infantry": false,
+                "usable_by_mec": false,
+                "usable_by_shiv": false,
+
                 "negates_acid": false,
                 "negates_fire": false,
                 "prevents_strangulation": false,
@@ -1038,7 +1090,12 @@
                 "category": "battle_rifle",
                 "can_steady": true,
                 "class_restriction": [ "infantry_class_assault", "infantry_class_engineer", "infantry_class_infantry", "infantry_class_medic", "infantry_class_scout" ],
+                "usable_by_infantry": true,
+                "usable_by_mec": false,
+                "usable_by_shiv": false,
+
                 "costly_aim_penalty": -10,
+                "weapon_tier": "ballistic",
 
                 "base_ammo": 3,
                 "aim": 0,
@@ -1063,6 +1120,7 @@
                 "usable_by_infantry": true,
                 "usable_by_mec": false,
                 "usable_by_shiv": false,
+                "can_equip_multiple": true,
                 "range": 27,
 
                 "aim": 0,
@@ -1084,6 +1142,10 @@
             "type_specific_data": {
                 "category": "machine_pistol",
                 "class_restriction": [ "infantry_class_assault", "infantry_class_engineer", "infantry_class_infantry", "infantry_class_medic", "infantry_class_scout", "infantry_class_sniper" ],
+                "usable_by_infantry": true,
+                "usable_by_mec": false,
+                "usable_by_shiv": false,
+                "weapon_tier": "pulse",
 
                 "base_ammo": 2,
                 "aim": -8,
@@ -1125,6 +1187,10 @@
             "type_specific_data": {
                 "category": "rocket_launcher",
                 "class_restriction": [ "infantry_class_engineer", "infantry_class_rocketeer" ],
+                "usable_by_infantry": true,
+                "usable_by_mec": false,
+                "usable_by_shiv": false,
+                "weapon_tier": "plasma",
 
                 "base_ammo": 1,
                 "effect_radius": 6,
@@ -1170,6 +1236,10 @@
                 "category": "marksman_rifle",
                 "can_steady": true,
                 "class_restriction": [ "infantry_class_scout", "infantry_class_sniper" ],
+                "usable_by_infantry": true,
+                "usable_by_mec": false,
+                "usable_by_shiv": false,
+                "weapon_tier": "pulse",
 
                 "base_ammo": 3,
                 "aim": 0,
@@ -1216,6 +1286,7 @@
                 "usable_by_infantry": true,
                 "usable_by_mec": false,
                 "usable_by_shiv": false,
+                "compatible_weapon_categories": [ "shotgun" ],
 
                 "aim": 0,
                 "crit_chance": 0,
@@ -1250,6 +1321,10 @@
             "type": "loadout_armor",
             "sell_value": 32,
             "type_specific_data": {
+                "usable_by_infantry": true,
+                "usable_by_mec": false,
+                "usable_by_shiv": false,
+
                 "grants_flight": false,
                 "has_grapple": false,
                 "negates_acid": false,
@@ -1350,6 +1425,7 @@
                 "usable_by_infantry": true,
                 "usable_by_mec": false,
                 "usable_by_shiv": false,
+                "can_equip_multiple": true,
                 "range": 15,
 
                 "aim": 0,
@@ -1462,6 +1538,7 @@
                 "usable_by_infantry": true,
                 "usable_by_mec": false,
                 "usable_by_shiv": false,
+                "can_equip_multiple": true,
 
                 "aim": 0,
                 "crit_chance": 0,
@@ -1533,6 +1610,10 @@
             "type": "loadout_armor",
             "sell_value": 100,
             "type_specific_data": {
+                "usable_by_infantry": true,
+                "usable_by_mec": false,
+                "usable_by_shiv": false,
+
                 "grants_flight": false,
                 "has_grapple": true,
                 "negates_acid": false,
@@ -1654,12 +1735,14 @@
             "type": "loadout_equipment",
             "type_specific_data": {
                 "class_restriction": [ "infantry_class_assault", "infantry_class_engineer", "infantry_class_infantry", "infantry_class_medic", "infantry_class_scout" ],
+                "compatible_weapon_categories": [ "assault_rifle", "battle_rifle", "carbine" ],
                 "exclusive_with": [ "item_hi_cap_mags" ],
                 "usable_by_infantry": true,
                 "usable_by_mec": false,
                 "usable_by_shiv": false,
 
                 "aim": -4,
+                "ammo": 2,
                 "crit_chance": 0,
                 "damage_reduction": 0,
                 "defense": 0,
@@ -1675,6 +1758,10 @@
             "type": "loadout_secondary",
             "sell_value": 72,
             "type_specific_data": {
+                "usable_by_infantry": false,
+                "usable_by_mec": true,
+                "usable_by_shiv": false,
+
                 "category": "mec",
 
                 "base_ammo": 0,
@@ -1932,6 +2019,10 @@
             "type": "loadout_secondary",
             "sell_value": 60,
             "type_specific_data": {
+                "usable_by_infantry": false,
+                "usable_by_mec": true,
+                "usable_by_shiv": false,
+
                 "category": "mec",
 
                 "base_ammo": 2,
@@ -1970,6 +2061,7 @@
                 "usable_by_infantry": true,
                 "usable_by_mec": false,
                 "usable_by_shiv": false,
+                "can_equip_multiple": true,
                 "range": 15,
 
                 "aim": 0,
@@ -2087,7 +2179,12 @@
                 "category": "lmg",
                 "can_steady": false,
                 "class_restriction": [ "infantry_class_gunner" ],
+                "usable_by_infantry": true,
+                "usable_by_mec": false,
+                "usable_by_shiv": false,
+
                 "grants_perks": [ "perk_squadsight" ],
+                "weapon_tier": "laser",
 
                 "base_ammo": 8,
                 "aim": 6,
@@ -2129,7 +2226,11 @@
                 "category": "lmg",
                 "can_steady": false,
                 "class_restriction": [ "infantry_class_gunner" ],
+                "usable_by_infantry": true,
+                "usable_by_mec": false,
+                "usable_by_shiv": false,
                 "grants_perks": [ "perk_squadsight" ],
+                "weapon_tier": "pulse",
 
                 "base_ammo": 8,
                 "aim": 0,
@@ -2172,7 +2273,11 @@
             "type_specific_data": {
                 "category": "machine_pistol",
                 "class_restriction": [ "infantry_class_assault", "infantry_class_engineer", "infantry_class_infantry", "infantry_class_medic", "infantry_class_scout", "infantry_class_sniper" ],
+                "usable_by_infantry": true,
+                "usable_by_mec": false,
+                "usable_by_shiv": false,
                 "dr_penetration": 0.33,
+                "weapon_tier": "gauss",
 
                 "base_ammo": 3,
                 "aim": -8,
@@ -2215,7 +2320,11 @@
                 "category": "saw",
                 "can_steady": false,
                 "class_restriction": [ "infantry_class_gunner" ],
+                "usable_by_infantry": true,
+                "usable_by_mec": false,
+                "usable_by_shiv": false,
                 "dr_penetration": 0.33,
+                "weapon_tier": "gauss",
 
                 "base_ammo": 7,
                 "aim": 0,
@@ -2256,9 +2365,14 @@
             "type": "loadout_primary",
             "sell_value": 32,
             "type_specific_data": {
+                "usable_by_infantry": true,
+                "usable_by_mec": false,
+                "usable_by_shiv": false,
+
                 "category": "carbine",
                 "can_steady": true,
                 "dr_penetration": 0.33,
+                "weapon_tier": "gauss",
 
                 "base_ammo": 4,
                 "aim": 6,
@@ -2302,8 +2416,12 @@
                 "category": "sniper_rifle",
                 "can_steady": true,
                 "class_restriction": [ "infantry_class_sniper" ],
+                "usable_by_infantry": true,
+                "usable_by_mec": false,
+                "usable_by_shiv": false,
                 "dr_penetration": 0.33,
                 "grants_perks": [ "perk_heat_ammo" ],
+                "weapon_tier": "gauss",
 
                 "base_ammo": 1,
                 "aim": 0,
@@ -2349,8 +2467,12 @@
                 "category": "lmg",
                 "can_steady": false,
                 "class_restriction": [ "infantry_class_gunner" ],
+                "usable_by_infantry": true,
+                "usable_by_mec": false,
+                "usable_by_shiv": false,
                 "dr_penetration": 0.33,
                 "grants_perks": [ "perk_squadsight" ],
+                "weapon_tier": "gauss",
 
                 "base_ammo": 9,
                 "aim": 0,
@@ -2392,8 +2514,12 @@
             "sell_value": 36,
             "type_specific_data": {
                 "category": "assault_rifle",
+                "usable_by_infantry": true,
+                "usable_by_mec": false,
+                "usable_by_shiv": false,
                 "can_steady": true,
                 "dr_penetration": 0.33,
+                "weapon_tier": "gauss",
 
                 "base_ammo": 4,
                 "aim": 0,
@@ -2435,8 +2561,12 @@
             "sell_value": 26,
             "type_specific_data": {
                 "category": "submachine_gun",
+                "usable_by_infantry": true,
+                "usable_by_mec": false,
+                "usable_by_shiv": false,
                 "can_steady": true,
                 "dr_penetration": 0.33,
+                "weapon_tier": "gauss",
 
                 "base_ammo": 3,
                 "aim": 0,
@@ -2478,6 +2608,10 @@
             "type_specific_data": {
                 "category": "mec",
 
+                "usable_by_infantry": false,
+                "usable_by_mec": true,
+                "usable_by_shiv": false,
+
                 "base_ammo": 2,
                 "effect_radius": 6.4,
                 "mobility": -1,
@@ -2515,6 +2649,7 @@
                 "usable_by_infantry": true,
                 "usable_by_mec": false,
                 "usable_by_shiv": false,
+                "can_equip_multiple": true,
                 "range": 15,
 
                 "aim": 0,
@@ -2576,6 +2711,10 @@
             "type_specific_data": {
                 "category": "machine_pistol",
                 "class_restriction": [ "infantry_class_assault", "infantry_class_engineer", "infantry_class_infantry", "infantry_class_medic", "infantry_class_scout", "infantry_class_sniper" ],
+                "usable_by_infantry": true,
+                "usable_by_mec": false,
+                "usable_by_shiv": false,
+                "weapon_tier": "laser",
 
                 "base_ammo": 2,
                 "aim": -2,
@@ -2628,8 +2767,12 @@
                 "category": "battle_rifle",
                 "can_steady": true,
                 "class_restriction": [ "infantry_class_assault", "infantry_class_engineer", "infantry_class_infantry", "infantry_class_medic", "infantry_class_scout" ],
+                "usable_by_infantry": true,
+                "usable_by_mec": false,
+                "usable_by_shiv": false,
                 "costly_aim_penalty": -10,
                 "dr_penetration": 0.33,
+                "weapon_tier": "gauss",
 
                 "base_ammo": 4,
                 "aim": 0,
@@ -2673,7 +2816,11 @@
                 "category": "battle_rifle",
                 "can_steady": true,
                 "class_restriction": [ "infantry_class_assault", "infantry_class_engineer", "infantry_class_infantry", "infantry_class_medic", "infantry_class_scout" ],
+                "usable_by_infantry": true,
+                "usable_by_mec": false,
+                "usable_by_shiv": false,
                 "costly_aim_penalty": -10,
+                "weapon_tier": "laser",
 
                 "base_ammo": 3,
                 "aim": 6,
@@ -2715,8 +2862,12 @@
                 "category": "battle_rifle",
                 "can_steady": true,
                 "class_restriction": [ "infantry_class_assault", "infantry_class_engineer", "infantry_class_infantry", "infantry_class_medic", "infantry_class_scout" ],
+                "usable_by_infantry": true,
+                "usable_by_mec": false,
+                "usable_by_shiv": false,
                 "costly_aim_penalty": -10,
                 "damage_bonus_when_steadied": 1,
+                "weapon_tier": "plasma",
 
                 "base_ammo": 3,
                 "aim": 0,
@@ -2763,7 +2914,11 @@
                 "category": "battle_rifle",
                 "can_steady": true,
                 "class_restriction": [ "infantry_class_assault", "infantry_class_engineer", "infantry_class_infantry", "infantry_class_medic", "infantry_class_scout" ],
+                "usable_by_infantry": true,
+                "usable_by_mec": false,
+                "usable_by_shiv": false,
                 "costly_aim_penalty": -10,
+                "weapon_tier": "pulse",
 
                 "base_ammo": 3,
                 "aim": 0,
@@ -2809,6 +2964,7 @@
                 "usable_by_shiv": true,
 
                 "aim": 0,
+                "ammo": 1,
                 "crit_chance": 0,
                 "damage_reduction": 0,
                 "defense": 0,
@@ -3048,6 +3204,10 @@
             "type": "loadout_armor",
             "sell_value": 20,
             "type_specific_data": {
+                "usable_by_infantry": true,
+                "usable_by_mec": false,
+                "usable_by_shiv": false,
+
                 "grants_flight": false,
                 "has_grapple": true,
                 "negates_acid": false,
@@ -3087,6 +3247,9 @@
             "sell_value": 80,
             "type_specific_data": {
                 "category": "mec",
+                "usable_by_infantry": false,
+                "usable_by_mec": true,
+                "usable_by_shiv": false,
 
                 "base_ammo": 0,
                 "mobility": -1,
@@ -3157,7 +3320,11 @@
             "sell_value": 14,
             "type_specific_data": {
                 "category": "carbine",
+                "usable_by_infantry": true,
+                "usable_by_mec": false,
+                "usable_by_shiv": false,
                 "can_steady": true,
+                "weapon_tier": "laser",
 
                 "base_ammo": 3,
                 "aim": 12,
@@ -3196,6 +3363,10 @@
             "sell_value": 30,
             "type_specific_data": {
                 "category": "mec",
+                "usable_by_infantry": false,
+                "usable_by_mec": true,
+                "usable_by_shiv": false,
+                "weapon_tier": "laser",
 
                 "base_ammo": 3,
                 "aim": 6,
@@ -3240,6 +3411,10 @@
             "type_specific_data": {
                 "category": "pistol",
                 "class_restriction": [ "infantry_class_assault", "infantry_class_engineer", "infantry_class_infantry", "infantry_class_medic", "infantry_class_scout", "infantry_class_sniper" ],
+                "usable_by_infantry": true,
+                "usable_by_mec": false,
+                "usable_by_shiv": false,
+                "weapon_tier": "laser",
 
                 "base_ammo": 2,
                 "aim": 6,
@@ -3278,7 +3453,11 @@
             "sell_value": 18,
             "type_specific_data": {
                 "category": "assault_rifle",
+                "usable_by_infantry": true,
+                "usable_by_mec": false,
+                "usable_by_shiv": false,
                 "can_steady": true,
+                "weapon_tier": "laser",
 
                 "base_ammo": 3,
                 "aim": 6,
@@ -3318,7 +3497,11 @@
             "sell_value": 12,
             "type_specific_data": {
                 "category": "submachine_gun",
+                "usable_by_infantry": true,
+                "usable_by_mec": false,
+                "usable_by_shiv": false,
                 "can_steady": true,
+                "weapon_tier": "laser",
 
                 "base_ammo": 2,
                 "aim": 6,
@@ -3376,8 +3559,12 @@
             "sell_value": 20,
             "type_specific_data": {
                 "category": "sniper_rifle",
+                "usable_by_infantry": true,
+                "usable_by_mec": false,
+                "usable_by_shiv": false,
                 "can_steady": true,
                 "class_restriction": [ "infantry_class_sniper" ],
+                "weapon_tier": "laser",
 
                 "base_ammo": 3,
                 "aim": 6,
@@ -3421,6 +3608,10 @@
                 "category": "marksman_rifle",
                 "can_steady": true,
                 "class_restriction": [ "infantry_class_scout", "infantry_class_sniper" ],
+                "usable_by_infantry": true,
+                "usable_by_mec": false,
+                "usable_by_shiv": false,
+                "weapon_tier": "laser",
 
                 "base_ammo": 3,
                 "aim": 6,
@@ -3460,6 +3651,10 @@
             "tactical_text": "<ul><li>Very light armor, but allows a unit to blend into everyday society</li><li>Only usable by Covert Operatives on EXALT missions</li><li>Sharp-looking, +1 charisma</li></ul>",
             "type": "loadout_armor",
             "type_specific_data": {
+                "usable_by_infantry": false,
+                "usable_by_mec": false,
+                "usable_by_shiv": false,
+
                 "grants_flight": false,
                 "has_grapple": false,
                 "negates_acid": false,
@@ -3483,7 +3678,12 @@
                 "category": "lmg",
                 "can_steady": false,
                 "class_restriction": [ "infantry_class_gunner" ],
+                "usable_by_infantry": true,
+                "usable_by_mec": false,
+                "usable_by_shiv": false,
+
                 "grants_perks": [ "perk_squadsight" ],
+                "weapon_tier": "ballistic",
 
                 "base_ammo": 8,
                 "aim": 0,
@@ -3506,6 +3706,10 @@
             "type_specific_data": {
                 "category": "machine_pistol",
                 "class_restriction": [ "infantry_class_assault", "infantry_class_engineer", "infantry_class_infantry", "infantry_class_medic", "infantry_class_scout", "infantry_class_sniper" ],
+                "usable_by_infantry": true,
+                "usable_by_mec": false,
+                "usable_by_shiv": false,
+                "weapon_tier": "ballistic",
 
                 "base_ammo": 2,
                 "aim": -8,
@@ -3528,6 +3732,10 @@
                 "category": "marksman_rifle",
                 "can_steady": true,
                 "class_restriction": [ "infantry_class_scout", "infantry_class_sniper" ],
+                "usable_by_infantry": true,
+                "usable_by_mec": false,
+                "usable_by_shiv": false,
+                "weapon_tier": "ballistic",
 
                 "base_ammo": 5,
                 "aim": 0,
@@ -3588,6 +3796,10 @@
             "type": "loadout_mec_exoskeleton",
             "sell_value": 60,
             "type_specific_data": {
+                "usable_by_infantry": false,
+                "usable_by_mec": true,
+                "usable_by_shiv": false,
+
                 "grants_perks": [ "perk_body_shield" ],
                 "negates_acid": true,
                 "negates_fire": true,
@@ -3630,6 +3842,10 @@
             "type": "loadout_mec_exoskeleton",
             "sell_value": 160,
             "type_specific_data": {
+                "usable_by_infantry": false,
+                "usable_by_mec": true,
+                "usable_by_shiv": false,
+
                 "grants_perks": [ "perk_body_shield" ],
                 "negates_acid": true,
                 "negates_fire": true,
@@ -3674,6 +3890,10 @@
             "type": "loadout_mec_exoskeleton",
             "sell_value": 160,
             "type_specific_data": {
+                "usable_by_infantry": false,
+                "usable_by_mec": true,
+                "usable_by_shiv": false,
+
                 "grants_perks": [ "perk_jetboot_module" ],
                 "negates_acid": true,
                 "negates_fire": true,
@@ -3718,6 +3938,10 @@
             "type": "loadout_mec_exoskeleton",
             "sell_value": 240,
             "type_specific_data": {
+                "usable_by_infantry": false,
+                "usable_by_mec": true,
+                "usable_by_shiv": false,
+
                 "grants_perks": [ "perk_body_shield" ],
                 "negates_acid": true,
                 "negates_fire": true,
@@ -3764,6 +3988,10 @@
             "type": "loadout_mec_exoskeleton",
             "sell_value": 240,
             "type_specific_data": {
+                "usable_by_infantry": false,
+                "usable_by_mec": true,
+                "usable_by_shiv": false,
+
                 "grants_perks": [ "perk_body_shield" ],
                 "negates_acid": true,
                 "negates_fire": true,
@@ -3804,6 +4032,10 @@
             "research_prerequisites": [ "research_heavy_combat_exoskeletons" ]
         },
         "item_mec_6": {
+            "usable_by_infantry": false,
+            "usable_by_mec": true,
+            "usable_by_shiv": false,
+
             "name": "MEC-6 Vanguard",
             "description": "The MEC-6 Vanguard prioritizes mobility to the extreme, but it cannot survive as many hits as our other designs. It is equipped with Jet Boot Modules.",
             "tactical_text": "<ul><li>MECs cannot use cover and their size means reaction fire against them is more accurate</li><li>All MECs receive the <a data-page-on-click='perk-tree-display-page' data-pagearg-display-mode='single-perk' data-pagearg-item-id='perk_one_for_all'>One For All</a> perk, providing bonus Damage Reduction and cover for allies when activated</li><li>All MECs receive the <a data-page-on-click='perk-tree-display-page' data-pagearg-display-mode='single-perk' data-pagearg-item-id='perk_combined_arms'>Combined Arms</a> perk, nullifying one point of enemy Damage Reduction</li></ul>",
@@ -3856,6 +4088,10 @@
             "type": "loadout_mec_exoskeleton",
             "sell_value": 240,
             "type_specific_data": {
+                "usable_by_infantry": false,
+                "usable_by_mec": true,
+                "usable_by_shiv": false,
+
                 "grants_perks": [ "perk_jetboot_module" ],
                 "negates_acid": true,
                 "negates_fire": true,
@@ -3911,6 +4147,7 @@
                 "usable_by_infantry": true,
                 "usable_by_mec": false,
                 "usable_by_shiv": false,
+                "can_equip_multiple": true,
 
                 "aim": 0,
                 "crit_chance": 0,
@@ -3939,6 +4176,7 @@
                 "usable_by_infantry": true,
                 "usable_by_mec": false,
                 "usable_by_shiv": false,
+                "can_equip_multiple": true,
                 "range": 27,
 
                 "aim": 0,
@@ -4027,6 +4265,10 @@
             "type": "loadout_primary",
             "type_specific_data": {
                 "category": "mec",
+                "usable_by_infantry": false,
+                "usable_by_mec": true,
+                "usable_by_shiv": false,
+                "weapon_tier": "ballistic",
 
                 "base_ammo": 2,
                 "aim": 0,
@@ -4053,6 +4295,7 @@
                 "usable_by_infantry": true,
                 "usable_by_mec": false,
                 "usable_by_shiv": true,
+                "can_equip_multiple": true,
 
                 "aim": 0,
                 "crit_chance": 0,
@@ -4194,6 +4437,10 @@
             "sell_value": 180,
             "type_specific_data": {
                 "category": "mec",
+                "usable_by_infantry": false,
+                "usable_by_mec": true,
+                "usable_by_shiv": false,
+                "weapon_tier": "plasma",
 
                 "base_ammo": 3,
                 "aim": 0,
@@ -4239,6 +4486,10 @@
             "type": "loadout_armor",
             "sell_value": 14,
             "type_specific_data": {
+                "usable_by_infantry": true,
+                "usable_by_mec": false,
+                "usable_by_shiv": false,
+
                 "grants_flight": false,
                 "has_grapple": false,
                 "negates_acid": false,
@@ -4325,6 +4576,10 @@
             "type_specific_data": {
                 "category": "pistol",
                 "class_restriction": [ "infantry_class_assault", "infantry_class_engineer", "infantry_class_infantry", "infantry_class_medic", "infantry_class_scout", "infantry_class_sniper" ],
+                "usable_by_infantry": true,
+                "usable_by_mec": false,
+                "usable_by_shiv": false,
+                "weapon_tier": "ballistic",
 
                 "base_ammo": 2,
                 "aim": 0,
@@ -4382,7 +4637,11 @@
             "sell_value": 100,
             "type_specific_data": {
                 "category": "carbine",
+                "usable_by_infantry": true,
+                "usable_by_mec": false,
+                "usable_by_shiv": false,
                 "can_steady": true,
+                "weapon_tier": "plasma",
 
                 "base_ammo": 3,
                 "aim": 6,
@@ -4429,7 +4688,11 @@
                 "category": "lmg",
                 "can_steady": false,
                 "class_restriction": [ "infantry_class_gunner" ],
+                "usable_by_infantry": true,
+                "usable_by_mec": false,
+                "usable_by_shiv": false,
                 "grants_perks": [ "perk_squadsight" ],
+                "weapon_tier": "plasma",
 
                 "base_ammo": 8,
                 "aim": 0,
@@ -4475,6 +4738,10 @@
             "type_specific_data": {
                 "category": "machine_pistol",
                 "class_restriction": [ "infantry_class_assault", "infantry_class_engineer", "infantry_class_infantry", "infantry_class_medic", "infantry_class_scout", "infantry_class_sniper" ],
+                "usable_by_infantry": true,
+                "usable_by_mec": false,
+                "usable_by_shiv": false,
+                "weapon_tier": "plasma",
 
                 "base_ammo": 2,
                 "aim": -8,
@@ -4520,6 +4787,10 @@
                 "category": "saw",
                 "can_steady": true,
                 "class_restriction": [ "infantry_class_gunner" ],
+                "usable_by_infantry": true,
+                "usable_by_mec": false,
+                "usable_by_shiv": false,
+                "weapon_tier": "plasma",
 
                 "base_ammo": 6,
                 "aim": 0,
@@ -4565,6 +4836,10 @@
             "type_specific_data": {
                 "category": "pistol",
                 "class_restriction": [ "infantry_class_assault", "infantry_class_engineer", "infantry_class_infantry", "infantry_class_medic", "infantry_class_scout", "infantry_class_sniper" ],
+                "usable_by_infantry": true,
+                "usable_by_mec": false,
+                "usable_by_shiv": false,
+                "weapon_tier": "plasma",
 
                 "base_ammo": 2,
                 "aim": 0,
@@ -4608,8 +4883,12 @@
             "sell_value": 140,
             "type_specific_data": {
                 "category": "assault_rifle",
+                "usable_by_infantry": true,
+                "usable_by_mec": false,
+                "usable_by_shiv": false,
                 "can_steady": true,
                 "crit_damage_bonus_vs_biological": 1.5,
+                "weapon_tier": "plasma",
 
                 "base_ammo": 3,
                 "aim": 0,
@@ -4656,6 +4935,10 @@
                 "category": "sniper_rifle",
                 "can_steady": true,
                 "class_restriction": [ "infantry_class_sniper" ],
+                "usable_by_infantry": true,
+                "usable_by_mec": false,
+                "usable_by_shiv": false,
+                "weapon_tier": "plasma",
 
                 "base_ammo": 3,
                 "aim": 0,
@@ -4742,7 +5025,11 @@
             "sell_value": 80,
             "type_specific_data": {
                 "category": "submachine_gun",
+                "usable_by_infantry": true,
+                "usable_by_mec": false,
+                "usable_by_shiv": false,
                 "can_steady": true,
+                "weapon_tier": "plasma",
 
                 "base_ammo": 2,
                 "aim": 0,
@@ -4787,6 +5074,9 @@
             "sell_value": 72,
             "type_specific_data": {
                 "category": "mec",
+                "usable_by_infantry": false,
+                "usable_by_mec": true,
+                "usable_by_shiv": false,
 
                 "base_ammo": 3,
                 "effect_radius": 4,
@@ -4829,6 +5119,7 @@
                 "usable_by_infantry": true,
                 "usable_by_mec": false,
                 "usable_by_shiv": false,
+                "can_equip_multiple": true,
                 "range": 15,
 
                 "aim": 0,
@@ -4917,6 +5208,10 @@
                 "category": "saw",
                 "can_steady": false,
                 "class_restriction": [ "infantry_class_gunner" ],
+                "usable_by_infantry": true,
+                "usable_by_mec": false,
+                "usable_by_shiv": false,
+                "weapon_tier": "pulse",
 
                 "base_ammo": 6,
                 "aim": 0,
@@ -4974,7 +5269,11 @@
             "sell_value": 72,
             "type_specific_data": {
                 "category": "carbine",
+                "usable_by_infantry": true,
+                "usable_by_mec": false,
+                "usable_by_shiv": false,
                 "can_steady": true,
+                "weapon_tier": "pulse",
 
                 "base_ammo": 3,
                 "aim": 6,
@@ -5015,6 +5314,10 @@
             "sell_value": 96,
             "type_specific_data": {
                 "category": "mec",
+                "usable_by_infantry": false,
+                "usable_by_mec": true,
+                "usable_by_shiv": false,
+                "weapon_tier": "pulse",
 
                 "base_ammo": 3,
                 "aim": 0,
@@ -5060,7 +5363,11 @@
             "sell_value": 80,
             "type_specific_data": {
                 "category": "assault_rifle",
+                "usable_by_infantry": true,
+                "usable_by_mec": false,
+                "usable_by_shiv": false,
                 "can_steady": true,
+                "weapon_tier": "pulse",
 
                 "base_ammo": 3,
                 "aim": 0,
@@ -5104,6 +5411,10 @@
                 "category": "sniper_rifle",
                 "can_steady": true,
                 "class_restriction": [ "infantry_class_sniper" ],
+                "usable_by_infantry": true,
+                "usable_by_mec": false,
+                "usable_by_shiv": false,
+                "weapon_tier": "pulse",
 
                 "base_ammo": 3,
                 "aim": 0,
@@ -5147,7 +5458,11 @@
             "sell_value": 48,
             "type_specific_data": {
                 "category": "submachine_gun",
+                "usable_by_infantry": true,
+                "usable_by_mec": false,
+                "usable_by_shiv": false,
                 "can_steady": true,
+                "weapon_tier": "pulse",
 
                 "base_ammo": 2,
                 "aim": 0,
@@ -5189,7 +5504,11 @@
             "sell_value": 48,
             "type_specific_data": {
                 "category": "mec",
+                "usable_by_infantry": false,
+                "usable_by_mec": true,
+                "usable_by_shiv": false,
                 "dr_penetration": 0.33,
+                "weapon_tier": "gauss",
 
                 "base_ammo": 4,
                 "aim": 0,
@@ -5273,6 +5592,10 @@
             "type_specific_data": {
                 "category": "rocket_launcher",
                 "class_restriction": [ "infantry_class_engineer", "infantry_class_rocketeer" ],
+                "usable_by_infantry": true,
+                "usable_by_mec": false,
+                "usable_by_shiv": false,
+                "weapon_tier": "gauss",
 
                 "base_ammo": 1,
                 "effect_radius": 6,
@@ -5313,6 +5636,10 @@
                 "category": "shotgun",
                 "can_steady": false,
                 "class_restriction": [ "infantry_class_assault", "infantry_class_engineer", "infantry_class_infantry", "infantry_class_medic", "infantry_class_scout" ],
+                "usable_by_infantry": true,
+                "usable_by_mec": false,
+                "usable_by_shiv": false,
+                "weapon_tier": "plasma",
 
                 "base_ammo": 4,
                 "aim": 0,
@@ -5359,6 +5686,10 @@
                 "category": "marksman_rifle",
                 "can_steady": true,
                 "class_restriction": [ "infantry_class_scout", "infantry_class_sniper" ],
+                "usable_by_infantry": true,
+                "usable_by_mec": false,
+                "usable_by_shiv": false,
+                "weapon_tier": "plasma",
 
                 "base_ammo": 3,
                 "aim": 0,
@@ -5480,6 +5811,9 @@
             "sell_value": 48,
             "type_specific_data": {
                 "category": "mec",
+                "usable_by_infantry": false,
+                "usable_by_mec": true,
+                "usable_by_shiv": false,
 
                 "base_ammo": 1,
                 "effect_radius": 5,
@@ -5515,6 +5849,7 @@
                 "usable_by_infantry": true,
                 "usable_by_mec": false,
                 "usable_by_shiv": false,
+                "can_equip_multiple": true,
 
                 "aim": 0,
                 "crit_chance": 0,
@@ -5533,6 +5868,10 @@
             "type_specific_data": {
                 "category": "rocket_launcher",
                 "class_restriction": [ "infantry_class_engineer", "infantry_class_rocketeer" ],
+                "usable_by_infantry": true,
+                "usable_by_mec": false,
+                "usable_by_shiv": false,
+                "weapon_tier": "ballistic",
 
                 "base_ammo": 1,
                 "effect_radius": 6,
@@ -5573,6 +5912,10 @@
                 "category": "saw",
                 "can_steady": false,
                 "class_restriction": [ "infantry_class_gunner" ],
+                "usable_by_infantry": true,
+                "usable_by_mec": false,
+                "usable_by_shiv": false,
+                "weapon_tier": "ballistic",
 
                 "base_ammo": 6,
                 "aim": 0,
@@ -5595,6 +5938,10 @@
             "type_specific_data": {
                 "category": "special",
                 "class_restriction": [ "infantry_class_assault", "infantry_class_engineer", "infantry_class_infantry", "infantry_class_medic", "infantry_class_scout" ],
+                "usable_by_infantry": true,
+                "usable_by_mec": false,
+                "usable_by_shiv": false,
+                "weapon_tier": "ballistic",
 
                 "base_ammo": 1,
                 "aim": -12,
@@ -5632,6 +5979,10 @@
                 "category": "shotgun",
                 "can_steady": false,
                 "class_restriction": [ "infantry_class_assault", "infantry_class_engineer", "infantry_class_infantry", "infantry_class_medic", "infantry_class_scout" ],
+                "usable_by_infantry": true,
+                "usable_by_mec": false,
+                "usable_by_shiv": false,
+                "weapon_tier": "pulse",
 
                 "base_ammo": 4,
                 "aim": 0,
@@ -5675,6 +6026,10 @@
                 "category": "shotgun",
                 "can_steady": false,
                 "class_restriction": [ "infantry_class_assault", "infantry_class_engineer", "infantry_class_infantry", "infantry_class_medic", "infantry_class_scout" ],
+                "usable_by_infantry": true,
+                "usable_by_mec": false,
+                "usable_by_shiv": false,
+                "weapon_tier": "laser",
 
                 "base_ammo": 4,
                 "aim": 6,
@@ -5786,6 +6141,10 @@
             "type_specific_data": {
                 "category": "shiv",
                 "dr_penetration": 0.33,
+                "usable_by_infantry": false,
+                "usable_by_mec": false,
+                "usable_by_shiv": true,
+                "weapon_tier": "gauss",
 
                 "base_ammo": 4,
                 "aim": 0,
@@ -5826,6 +6185,10 @@
             "type": "loadout_armor",
             "sell_value": 120,
             "type_specific_data": {
+                "usable_by_infantry": true,
+                "usable_by_mec": false,
+                "usable_by_shiv": false,
+
                 "grants_flight": true,
                 "has_grapple": false,
                 "negates_acid": false,
@@ -5866,6 +6229,10 @@
             "type": "loadout_armor",
             "sell_value": 120,
             "type_specific_data": {
+                "usable_by_infantry": true,
+                "usable_by_mec": false,
+                "usable_by_shiv": false,
+
                 "grants_flight": false,
                 "has_grapple": true,
                 "negates_acid": false,
@@ -6003,6 +6370,10 @@
                 "category": "shotgun",
                 "can_steady": false,
                 "class_restriction": [ "infantry_class_assault", "infantry_class_engineer", "infantry_class_infantry", "infantry_class_medic", "infantry_class_scout" ],
+                "usable_by_infantry": true,
+                "usable_by_mec": false,
+                "usable_by_shiv": false,
+                "weapon_tier": "ballistic",
 
                 "base_ammo": 4,
                 "aim": 0,
@@ -6067,6 +6438,7 @@
                 "usable_by_infantry": true,
                 "usable_by_mec": false,
                 "usable_by_shiv": false,
+                "can_equip_multiple": true,
 
                 "aim": 0,
                 "crit_chance": 0,
@@ -6149,6 +6521,10 @@
             "type_specific_data": {
                 "category": "submachine_gun",
                 "can_steady": true,
+                "usable_by_infantry": true,
+                "usable_by_mec": false,
+                "usable_by_shiv": false,
+                "weapon_tier": "ballistic",
 
                 "base_ammo": 2,
                 "aim": 0,
@@ -6172,6 +6548,7 @@
                 "usable_by_infantry": true,
                 "usable_by_mec": false,
                 "usable_by_shiv": false,
+                "can_equip_multiple": true,
                 "range": 15,
 
                 "aim": 0,
@@ -6193,6 +6570,10 @@
                 "category": "sniper_rifle",
                 "can_steady": true,
                 "class_restriction": [ "infantry_class_sniper" ],
+                "usable_by_infantry": true,
+                "usable_by_mec": false,
+                "usable_by_shiv": false,
+                "weapon_tier": "ballistic",
 
                 "base_ammo": 5,
                 "aim": 0,
@@ -6230,6 +6611,10 @@
             "sell_value": 30,
             "type_specific_data": {
                 "category": "shiv",
+                "usable_by_infantry": false,
+                "usable_by_mec": false,
+                "usable_by_shiv": true,
+                "weapon_tier": "laser",
 
                 "base_ammo": 3,
                 "aim": 6,
@@ -6269,6 +6654,10 @@
             "sell_value": 180,
             "type_specific_data": {
                 "category": "shiv",
+                "usable_by_infantry": false,
+                "usable_by_mec": false,
+                "usable_by_shiv": true,
+                "weapon_tier": "plasma",
 
                 "base_ammo": 3,
                 "aim": 8,
@@ -6313,6 +6702,10 @@
             "sell_value": 120,
             "type_specific_data": {
                 "category": "shiv",
+                "usable_by_infantry": false,
+                "usable_by_mec": false,
+                "usable_by_shiv": true,
+                "weapon_tier": "pulse",
 
                 "base_ammo": 3,
                 "aim": 0,
@@ -6352,6 +6745,10 @@
             "tactical_text": "<ul><li>Light armor</li><li>XCOM soldiers will appreciate it if better armor development is given a high priority</li></ul>",
             "type": "loadout_armor",
             "type_specific_data": {
+                "usable_by_infantry": true,
+                "usable_by_mec": false,
+                "usable_by_shiv": false,
+
                 "grants_flight": false,
                 "has_grapple": false,
                 "negates_acid": false,
@@ -6371,6 +6768,10 @@
             "description": "Even more lightly armored than the Tac Armor, this vest is best used by soldiers who need to move quickly and aren't likely to get shot at.",
             "type": "loadout_armor",
             "type_specific_data": {
+                "usable_by_infantry": true,
+                "usable_by_mec": false,
+                "usable_by_shiv": false,
+
                 "grants_flight": false,
                 "has_grapple": false,
                 "negates_acid": false,
@@ -6520,6 +6921,10 @@
             "type": "loadout_armor",
             "sell_value": 120,
             "type_specific_data": {
+                "usable_by_infantry": true,
+                "usable_by_mec": false,
+                "usable_by_shiv": false,
+
                 "grants_flight": false,
                 "grants_perks": [ "perk_damage_control" ],
                 "has_grapple": false,
@@ -6650,6 +7055,10 @@
             "type": "loadout_armor",
             "sell_value": 400,
             "type_specific_data": {
+                "usable_by_infantry": true,
+                "usable_by_mec": false,
+                "usable_by_shiv": false,
+
                 "grants_flight": false,
                 "has_grapple": false,
                 "negates_acid": false,

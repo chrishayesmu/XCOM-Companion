@@ -14,13 +14,7 @@ class SingleSelectList extends HTMLElement {
             this.prepend(div);
         }
 
-        const items = this.querySelectorAll("li");
-
-        for (let i = 0; i < items.length; i++) {
-            const listItem = items[i];
-
-            listItem.addEventListener("click", this._onItemClicked.bind(this));
-        }
+        this.addEventListener("click", this._onClick.bind(this));
     }
 
     select(item) {
@@ -41,8 +35,12 @@ class SingleSelectList extends HTMLElement {
         this.dispatchEvent(selectionEvent);
     }
 
-    _onItemClicked(event) {
+    _onClick(event) {
         if (this.disabled || event.target.classList.contains("disabled")) {
+            return;
+        }
+
+        if (event.target.localName != "li") {
             return;
         }
 

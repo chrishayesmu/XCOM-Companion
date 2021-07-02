@@ -59,6 +59,8 @@ for (let i = 0; i < soldierClassData.classes.length; i++) {
         "id": soldierClass.id,
         "name": soldierClass.name,
         "icon": soldierClass.icon,
+        "defaultLoadout": soldierClass.default_loadout,
+        "loadoutSlots": soldierClass.loadout_slots,
         "perks": {},
         "perkStatBonuses": soldierClass.perk_stat_bonuses,
         "statProgression": soldierClass.stat_progression
@@ -170,6 +172,8 @@ for (let id in geneModData.gene_mods) {
     const prereqTech = techTreeData.technologies[mod.research_prerequisite];
 
     mod.id = id;
+    mod.description = perk.description;
+    mod.icon = perk.icon;
     mod.name = perk.name;
     mod.perk = perk;
     mod.research_prerequisite = prereqTech;
@@ -193,6 +197,10 @@ for (let id in itemData.items) {
                 console.error(`Item ${item.id} references non-existent perk ${perkId}`);
             }
         }
+    }
+
+    if (item.type_specific_data && item.type_specific_data.damage_min_normal && item.type_specific_data.damage_max_normal) {
+        item.type_specific_data.base_damage = (item.type_specific_data.damage_min_normal + item.type_specific_data.damage_max_normal) / 2;
     }
 
     if (item.research_prerequisites) {

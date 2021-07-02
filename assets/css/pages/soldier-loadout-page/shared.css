@@ -1,0 +1,16 @@
+.soldier-loadout-page {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+
+    height: 100%;
+}
+
+.soldier-loadout-page loadout-summary {
+    margin-left: 40px;
+}
+
+.soldier-loadout-page #return-to-loadout {
+    margin: 0 auto;
+    width: 400px;
+}

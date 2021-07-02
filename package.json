@@ -45,7 +45,7 @@
     "keycharm": "^0.2.0 || ^0.3.0 || ^0.4.0",
     "timsort": "^0.3.0",
     "update-electron-app": "^1.1.1",
-    "uuid": "^3.4.0 || ^7.0.0 || ^8.0.0",
+    "uuid": "^8.3.2",
     "vis-data": "^7.0.0",
     "vis-network": "^9.0.4",
     "vis-util": "^5.0.1"

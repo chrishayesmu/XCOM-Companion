@@ -1,0 +1,35 @@
+/* button */
+
+button.xcom {
+    border: 1px solid var(--color);
+    border-radius: 7px;
+    border-top-left-radius: 0;
+
+    background-color: var(--color-bg-nav);
+    color: var(--color-strong);
+    cursor: pointer;
+    padding: 4px 0;
+}
+
+button.xcom:active:not(.disabled),
+button.xcom:hover:not(.disabled) {
+    background: linear-gradient(180deg, rgba(161,201,205,0.35) 0%, rgba(161,201,205,0.25) 40%, rgba(161,201,205,0) 55%, rgba(161,201,205,0) 100%);
+    color: var(--color);
+}
+
+button.xcom:active:not(.disabled) {
+    filter: brightness(1.25);
+}
+
+button.xcom.disabled {
+    cursor: default;
+    filter: brightness(0.5);
+}
+
+/* textarea */
+
+textarea.xcom {
+    border: 1px solid var(--color);
+    background-color: var(--color-bg-subtle);
+    color: var(--color);
+}

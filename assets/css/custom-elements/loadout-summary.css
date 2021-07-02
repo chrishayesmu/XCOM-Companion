@@ -1,0 +1,175 @@
+loadout-summary {
+    display: block;
+    height: fit-content;
+}
+
+loadout-summary[singleColumn] {
+    flex-shrink: 0;
+    width: 450px;
+}
+
+/* header */
+
+loadout-summary #loadout-summary-header {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    gap: 10px;
+
+    border: 1px solid var(--color-border-subtle);
+    border-bottom: none;
+    padding: 13px;
+    position: relative;
+}
+
+loadout-summary #loadout-summary-header #top-left-corner {
+    position: absolute;
+    left: -1px;
+    top: -1px;
+    height: 20px;
+}
+
+loadout-summary #loadout-summary-header #top-left-corner polygon,
+loadout-summary #loadout-summary-header #top-right-corner polygon {
+    fill: var(--color-bg);
+}
+
+loadout-summary #loadout-summary-header #top-left-corner line,
+loadout-summary #loadout-summary-header #top-right-corner line {
+    stroke: var(--color-border-subtle);
+}
+
+loadout-summary #loadout-summary-header #top-right-corner {
+    position: absolute;
+    right: -1px;
+    top: -1px;
+    height: 20px;
+}
+
+loadout-summary #loadout-summary-header img {
+    height: 48px;
+    object-fit: contain;
+    width: auto;
+}
+
+loadout-summary #loadout-summary-header #loadout-summary-insignia {
+    display: flex;
+    flex-flow: row nowrap;
+    gap: 20px;
+    justify-content: space-between;
+    padding: 0 13px;
+}
+
+loadout-summary[singleColumn] #loadout-summary-header #loadout-summary-insignia {
+    width: 100%;
+}
+
+loadout-summary #loadout-summary-header #loadout-summary-name {
+    flex-grow: 1;
+    font-size: 1.5em;
+    text-align: right;
+}
+
+loadout-summary #loadout-summary-header #loadout-summary-class,
+loadout-summary #loadout-summary-header #loadout-summary-officer-rank,
+loadout-summary #loadout-summary-header #loadout-summary-rank {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+
+    height: 90px;
+    text-align: center;
+}
+
+/* body */
+
+loadout-summary #loadout-summary-body {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+loadout-summary[singleColumn] #loadout-summary-body {
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+loadout-summary #loadout-summary-body h3 {
+    background-color: var(--color-bg-subtle);
+    border: 1px solid var(--color-border-subtle);
+    display: block;
+    margin: 0;
+    text-align: center;
+    width: 100%;
+}
+
+loadout-summary #loadout-summary-body .loadout-summary-column-body {
+    border: 1px solid var(--color-border-subtle);
+    border-top: none;
+    border-bottom: none;
+    padding: 8px;
+}
+
+loadout-summary #loadout-summary-body #loadout-summary-equipment {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+    text-align: center;
+}
+
+loadout-summary #loadout-summary-body #loadout-summary-stats {
+    display: grid;
+    grid-template-columns: repeat(5, 75px);
+    grid-template-rows: repeat(2, 20px);
+
+    align-content: center;
+    justify-content: center;
+    gap: 10px;
+
+    height: calc(100% - 25px);
+}
+
+loadout-summary #loadout-summary-body #loadout-summary-stats img {
+    width: 20px;
+}
+
+loadout-summary #loadout-summary-body #loadout-summary-stats .stat-block {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+    font-size: 16px;
+}
+
+loadout-summary #loadout-summary-body #loadout-summary-stats .stat-from-items-bonus {
+    color: var(--color-gold);
+}
+
+loadout-summary #loadout-summary-body #loadout-summary-stats .stat-from-items-malus {
+    color: var(--color-red);
+}
+
+loadout-summary #loadout-summary-body #loadout-summary-gene-mods,
+loadout-summary #loadout-summary-body #loadout-summary-officer-abilities,
+loadout-summary #loadout-summary-body #loadout-summary-perks,
+loadout-summary #loadout-summary-body #loadout-summary-psi-abilities {
+    display: flex;
+    flex-flow: row wrap;
+    gap: var(--intra-group-control-gap);
+
+    align-items: center;
+    justify-content: center;
+}
+
+loadout-summary #loadout-summary-body #loadout-summary-notes {
+    border-bottom: 1px solid var(--color-border-subtle);
+    white-space: pre;
+}
+
+loadout-summary #loadout-summary-body #loadout-summary-officer-abilities img[src$="command.png"] {
+    background-color: var(--color-gold);
+}
+
+/* override style that would use psi-strong within loadout summary */
+loadout-summary perk-icon[perkId^=psi][selected] img {
+    background-color: var(--color-psi);
+}

@@ -64,7 +64,8 @@ class PerkTreeDisplayPage extends AppPage {
             return this._loadPsiTree();
         }
         else {
-            throw new Error(`Unknown display mode ${data.displayMode}`);
+            console.error(`Unknown display mode ${data.displayMode}`);
+            return null;
         }
     }
 

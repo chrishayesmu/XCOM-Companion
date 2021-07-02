@@ -41,7 +41,7 @@ body {
 }
 
 a {
-  color: var(--color-link);
+  color: var(--color);
 }
 
 h1,
@@ -177,6 +177,10 @@ span.inline-resource-icon {
     text-align: center;
 }
 
+.standard-page {
+    padding: var(--page-content-padding-vert) var(--page-content-padding-horiz);
+}
+
 .grid-container {
     display: grid;
 }
@@ -202,7 +206,7 @@ span.inline-resource-icon {
 
 .tooltip {
     position: absolute;
-    z-index: 100;
+    z-index: 100000;
 
     background-color: var(--color-bg-subtle);
     border: 1px solid white;

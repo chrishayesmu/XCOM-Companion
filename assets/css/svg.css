@@ -1,0 +1,9 @@
+svg .thick {
+    stroke: var(--color-strong);
+    stroke-width: 3;
+}
+
+svg .thin {
+    stroke: var(--color);
+    stroke-width: 1;
+}

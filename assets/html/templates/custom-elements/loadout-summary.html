@@ -1,0 +1,112 @@
+<template id="template-loadout-summary">
+    <div id="loadout-summary">
+        <div id="loadout-summary-header">
+            <svg id="top-left-corner" viewBox="0 0 10 10">
+                <polygon points="0,10 10,0 0,0" stroke-width="0" />
+                <line x1="0" y1="10" x2="10" y2="0" stroke="black" stroke-width="1" />
+            </svg>
+            <svg id="top-right-corner" viewBox="0 0 10 10">
+                <polygon points="10,10 0,0 10,0" stroke-width="0" />
+                <line x1="10" y1="10" x2="0" y2="0" stroke="black" stroke-width="1" />
+            </svg>
+            <div id="loadout-summary-name"></div>
+            <div id="loadout-summary-insignia">
+                <div id="loadout-summary-class"></div>
+                <div id="loadout-summary-officer-rank" class="hidden-collapse"></div>
+                <div id="loadout-summary-rank"></div>
+            </div>
+        </div>
+        <div id="loadout-summary-body">
+            <div>
+                <h3>
+                    Stats
+                    <help-icon>
+                        These stats are based on the default soldier stats with Strict Screening enabled (65 aim, 0 defense, 4 HP, 13 mobility, and 30 will). If you are not using Strict Screening, or if you are using Hidden
+                        Potential, your results may differ.
+                        <br/><br/>
+                        Stats displayed are for the soldier's primary weapon, and take into account any <strong>unconditional bonuses</strong> from perks or equipment. For example, Sharpshooter always provides +10 crit chance, so that number will
+                        be reflected here; but the +10 aim from Sharpshooter is conditional (target must be in full cover) and so that is not shown.
+                        <br/><br/>
+                        No Foundry projects are included in these stats in any form.
+                    </help-icon>
+                </h3>
+                <div id="loadout-summary-stats" class="loadout-summary-column-body">
+                    <div class="stat-block">
+                        <img src="assets/img/item-stat-icons/hp.png" data-tooltip-text="HP" />
+                        <span id="stat-hp"></span>
+                    </div>
+                    <div class="stat-block">
+                        <img src="assets/img/item-stat-icons/mobility.png" data-tooltip-text="Mobility" />
+                        <span id="stat-mobility"></span>
+                    </div>
+                    <div class="stat-block">
+                        <img src="assets/img/item-stat-icons/defense.png" data-tooltip-text="Defense" />
+                        <span id="stat-defense"></span>
+                    </div>
+                    <div class="stat-block">
+                        <img src="assets/img/item-stat-icons/damage_reduction.png" data-tooltip-text="Damage Reduction" />
+                        <span id="stat-dr"></span>
+                    </div>
+                    <div class="stat-block">
+                        <img src="assets/img/item-stat-icons/will.png" data-tooltip-text="Will<br/><br/>This is the minimum will at this rank; even without Hidden Potential turned on, there is a chance to gain +1 will at each rank up." />
+                        <span id="stat-will"></span>
+                    </div>
+                    <div class="stat-block">
+                        <img src="assets/img/item-stat-icons/damage.png" data-tooltip-text="Base Damage" />
+                        <span id="stat-damage"></span>
+                        <help-icon></help-icon>
+                    </div>
+                    <div class="stat-block">
+                        <img src="assets/img/item-stat-icons/aim.png" data-tooltip-text="Aim" />
+                        <span id="stat-aim"></span>
+                    </div>
+                    <div class="stat-block">
+                        <img src="assets/img/item-stat-icons/crit_chance.png" data-tooltip-text="Bonus Crit Chance"/>
+                        <span id="stat-crit-chance"></span>
+                    </div>
+                    <div class="stat-block">
+                        <img src="assets/img/item-stat-icons/ammo.png" data-tooltip-text="Ammo (Primary Weapon)"/>
+                        <span id="stat-ammo"></span>
+                    </div>
+                    <div class="stat-block">
+                        <img src="assets/img/misc-icons/time.png" data-tooltip-text="Additional Post-Mission Fatigue (Hours)<br/><br/>Factors in <strong>Stay Frosty</strong> if present." />
+                        <span id="stat-additional-fatigue"></span>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <h3>Equipment</h3>
+                <div id="loadout-summary-equipment" class="loadout-summary-column-body">
+                </div>
+            </div>
+            <div>
+                <h3>
+                    Perks
+                    <help-icon>All perks which the soldier has, either from their class or from equipped items.</help-icon>
+                </h3>
+                <div id="loadout-summary-perks" class="loadout-summary-column-body">
+                </div>
+            </div>
+            <div>
+                <h3>Gene Mods</h3>
+                <div id="loadout-summary-gene-mods" class="loadout-summary-column-body">
+                </div>
+            </div>
+            <div>
+                <h3>Psi Powers</h3>
+                <div id="loadout-summary-psi-abilities" class="loadout-summary-column-body">
+                </div>
+            </div>
+            <div>
+                <h3>Officer Abilities</h3>
+                <div id="loadout-summary-officer-abilities" class="loadout-summary-column-body">
+                </div>
+            </div>
+            <div>
+                <h3>Notes</h3>
+                <div id="loadout-summary-notes" class="loadout-summary-column-body">
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

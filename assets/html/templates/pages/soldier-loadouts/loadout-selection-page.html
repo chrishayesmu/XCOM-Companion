@@ -1,0 +1,113 @@
+<template id="template-loadout-selection-page">
+    <div>
+        <div id="loadout-selection-page" class="soldier-loadout-page standard-page">
+            <div id="loadout-selection-controls">
+                <h3>Saved Loadouts</h3>
+                <single-select-list id="saved-loadouts"></single-select-list>
+                <div id="selection-control-buttons-container">
+                    <button id="new-loadout" class="xcom">Create New</button>
+                    <button id="open-loadout" class="xcom disabled">Open Selected</button>
+                    <button id="delete-loadout" class="xcom disabled">Delete Selected</button>
+                </div>
+            </div>
+
+            <loadout-summary singleColumn></loadout-summary>
+        </div>
+    </div>
+</template>
+
+<template id="template-new-loadout-class-selection">
+    <div id="class-selection-modal">
+        <h1>Select a Class</h1>
+
+        <h3>Soldier Classes</h3>
+        <div class="class-selection-grid">
+            <div class="class-selection-grid-entry" data-class-id="infantry_class_assault">
+                <img src="assets/img/soldier-class-icons/assault.png" />
+                Assault
+            </div>
+            <div class="class-selection-grid-entry" data-class-id="infantry_class_engineer">
+                <img src="assets/img/soldier-class-icons/engineer.png" />
+                Engineer
+            </div>
+            <div class="class-selection-grid-entry" data-class-id="infantry_class_gunner">
+                <img src="assets/img/soldier-class-icons/gunner.png" />
+                Gunner
+            </div>
+            <div class="class-selection-grid-entry" data-class-id="infantry_class_infantry">
+                <img src="assets/img/soldier-class-icons/infantry.png" />
+                Infantry
+            </div>
+            <div class="class-selection-grid-entry" data-class-id="infantry_class_medic">
+                <img src="assets/img/soldier-class-icons/medic.png" />
+                Medic
+            </div>
+            <div class="class-selection-grid-entry" data-class-id="infantry_class_rocketeer">
+                <img src="assets/img/soldier-class-icons/rocketeer.png" />
+                Rocketeer
+            </div>
+            <div class="class-selection-grid-entry" data-class-id="infantry_class_scout">
+                <img src="assets/img/soldier-class-icons/scout.png" />
+                Scout
+            </div>
+            <div class="class-selection-grid-entry" data-class-id="infantry_class_sniper">
+                <img src="assets/img/soldier-class-icons/sniper.png" />
+                Sniper
+            </div>
+        </div>
+
+        <h3 style="filter: grayscale(1) brightness(0.5)">MEC Classes</h3>
+        <div class="class-selection-grid">
+            <div class="class-selection-grid-entry disabled" data-class-id="mec_class_archer" data-tooltip-text="MEC classes are not yet supported.">
+                <img src="assets/img/soldier-class-icons/mec-archer.png" />
+                Archer
+            </div>
+            <div class="class-selection-grid-entry disabled" data-class-id="mec_class_goliath" data-tooltip-text="MEC classes are not yet supported.">
+                <img src="assets/img/soldier-class-icons/mec-goliath.png" />
+                Goliath
+            </div>
+            <div class="class-selection-grid-entry disabled" data-class-id="mec_class_guardian" data-tooltip-text="MEC classes are not yet supported.">
+                <img src="assets/img/soldier-class-icons/mec-guardian.png" />
+                Guardian
+            </div>
+            <div class="class-selection-grid-entry disabled" data-class-id="mec_class_jaeger" data-tooltip-text="MEC classes are not yet supported.">
+                <img src="assets/img/soldier-class-icons/mec-jaeger.png" />
+                Jaeger
+            </div>
+            <div class="class-selection-grid-entry disabled" data-class-id="mec_class_marauder" data-tooltip-text="MEC classes are not yet supported.">
+                <img src="assets/img/soldier-class-icons/mec-marauder.png" />
+                Marauder
+            </div>
+            <div class="class-selection-grid-entry disabled" data-class-id="mec_class_pathfinder" data-tooltip-text="MEC classes are not yet supported.">
+                <img src="assets/img/soldier-class-icons/mec-pathfinder.png" />
+                Pathfinder
+            </div>
+            <div class="class-selection-grid-entry disabled" data-class-id="mec_class_shogun" data-tooltip-text="MEC classes are not yet supported.">
+                <img src="assets/img/soldier-class-icons/mec-shogun.png" />
+                Shogun
+            </div>
+            <div class="class-selection-grid-entry disabled" data-class-id="mec_class_valkyrie" data-tooltip-text="MEC classes are not yet supported.">
+                <img src="assets/img/soldier-class-icons/mec-valkyrie.png" />
+                Valkyrie
+            </div>
+        </div>
+
+        <!--
+        <h3>SHIVs</h3>
+        <div class="class-selection-grid">
+            <div class="class-selection-grid-entry" data-class-id="shiv_chassis_basic">
+                <img src="assets/img/misc-icons/shiv.png" />
+                SHIV
+            </div>
+            <div class="class-selection-grid-entry" data-class-id="shiv_chassis_alloy">
+                <img src="assets/img/misc-icons/alloy_shiv.png" />
+                Alloy SHIV
+            </div>
+            <div class="class-selection-grid-entry" data-class-id="shiv_chassis_hover">
+                <img src="assets/img/misc-icons/hover_shiv.png" />
+                Hover SHIV
+            </div>
+        </div>
+        -->
+    </div>
+</template>

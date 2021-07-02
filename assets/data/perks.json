@@ -51,6 +51,11 @@
                 "icon": "assets/img/perk-icons/automated_threat_assessment.png",
                 "description": "Confers 0.5 DR (50% chance to absorb one point of damage) at all times, and confers +15 defense when in overwatch until the unit takes an overwatch shot."
             },
+            "perk_band_of_warriors": {
+                "name": "Band of Warriors",
+                "icon": "assets/img/perk-icons/band_of_warriors.png",
+                "description": "Squad receives +2 Aim per continent bonus XCOM has earned."
+            },
             "perk_battle_scanner": {
                 "name": "Battle Scanner",
                 "icon": "assets/img/perk-icons/battle_scanner.png",
@@ -110,6 +115,11 @@
                 "name": "Close Encounters",
                 "icon": "assets/img/perk-icons/close_encounters.png",
                 "description": "The first standard shot made within 4 tiles of the target does not cost an action. Cannot combine with Run And Gun."
+            },
+            "perk_command": {
+                "name": "Command",
+                "icon": "assets/img/perk-icons/command.png",
+                "description": "Grant a yellow move to an XCOM soldier in sight ranger whose turn is complete. Cannot be used on soldiers on Overwatch, who have Steadied their weapon, who have Hunkered Down, or used One For All. Does not allow use of multi-action perks like Close Encounters or Hit and Run. Four-turn cooldown. Note that this will NOT allow you to fire move-limited weapons (sniper rifles and LMGs), if you have taken a costly action (e.g. if you double-moved and then were commanded). The only exception to that is, after using double-tap, a unit can be commanded to fire once more, effectively triple-tapping."
             },
             "perk_cluster_bomb": {
                 "name": "Cluster Bomb",
@@ -190,6 +200,11 @@
                 "name": "Double Tap",
                 "icon": "assets/img/perk-icons/double_tap.png",
                 "description": "Allows a second action restricted to Standard Shot, Precision Shot, or Disabling Shot as long as the first action was a Standard Shot, Precision Shot, Disabling Shot, or Flush provided no costly actions were taken. 1 turn cooldown. (Note: Double Tap is cancelled in the following cases: (1) the first shot results in a kill, and no more enemies are visible to the unit, or (2) for gunners only, the first shot depletes the ammo.)"
+            },
+            "perk_esprit_de_corps": {
+                "name": "Esprit de Corps",
+                "icon": "assets/img/perk-icons/esprit_de_corps.png",
+                "description": "Squad receives +5 Will and +5 Defense in battle. Robotic units receive only the Defense bonus."
             },
             "perk_executioner": {
                 "name": "Executioner",
@@ -286,6 +301,11 @@
                 "icon": "assets/img/perk-icons/in_the_zone.png",
                 "description": "Killing a flanked or uncovered target does not cost an action. Confers a -1 base damage and -10% critical hit chance penalty for each successive In The Zone kill."
             },
+            "perk_into_the_breach": {
+                "name": "Into the Breach",
+                "icon": "assets/img/perk-icons/into_the_breach.png",
+                "description": "All soldiers in the squad at Sergeant rank or lower gain +25% XP for completing missions."
+            },
             "perk_intimidate": {
                 "name": "Intimidate",
                 "icon": "assets/img/perk-icons/intimidate.png",
@@ -316,10 +336,20 @@
                 "icon": "assets/img/perk-icons/launch.png",
                 "description": "Move anywhere on the battlefield in a single turn. Launch cannot be used indoors."
             },
+            "perk_lead_by_example": {
+                "name": "Lead By Example",
+                "icon": "assets/img/perk-icons/lead_by_example.png",
+                "description": "This officer substitutes his or her Will for that of all nearby lower-Will squadmates."
+            },
             "perk_leap": {
                 "name": "Leap",
                 "icon": "assets/img/perk-icons/hit_and_run.png",
                 "description": "Allows vertical leaps onto elevated surfaces during movement."
+            },
+            "perk_legio_patria_nostra": {
+                "name": "Legio Patria Nostra",
+                "icon": "assets/img/perk-icons/legio_patria_nostra.png",
+                "description": "Squad receives +1 Will per different nationality in the squad."
             },
             "perk_light_em_up": {
                 "name": "Light 'Em Up",
@@ -481,6 +511,11 @@
                 "icon": "assets/img/perk-icons/secondary_heart.png",
                 "description": "Causes soldiers to bleed out instead of dying the first time they go to zero health in a mission. The bleed-out timer is extended by 2 turns. Prevents loss of Will from critical wounds."
             },
+            "perk_semper_vigilans": {
+                "name": "Semper Vigilans",
+                "icon": "assets/img/perk-icons/semper_vigilans.png",
+                "description": "Squad receives +5 Defense when in cover."
+            },
             "perk_sentinel": {
                 "name": "Sentinel",
                 "icon": "assets/img/perk-icons/sentinel.png",
@@ -514,7 +549,7 @@
             "perk_smoke_and_mirrors": {
                 "name": "Smoke & Mirrors",
                 "icon": "assets/img/perk-icons/smoke_and_mirrors.png",
-                "description": "Allows one additional use of all support grenades during each mission. It also increases charges from Smoke Grenade and Battlescanner perks by 1."
+                "description": "Allows one additional use of all support grenades during each mission. It also increases charges from Smoke Grenade and Battle Scanner perks by 1."
             },
             "perk_smoke_grenade": {
                 "name": "Smoke Grenade",
@@ -526,6 +561,16 @@
                 "icon": "assets/img/perk-icons/snapshot.png",
                 "description": "For snipers, removes the sniper rifle's restriction on firing and Overwatch after taking a costly action. Any shots taken after using any costly action suffer a -10 Aim penalty. For rocketeers, reduces the aim and range penalty for launching a rocket after taking a costly action to 25% (from 50%)."
             },
+            "perk_so_others_may_live": {
+                "name": "So Others May Live",
+                "icon": "assets/img/perk-icons/so_others_may_live.png",
+                "description": "Squad members receive a permanent increase of +1 Aim and Will for completing a mission under this officer with no soldier deaths, up to a maximum of +8."
+            },
+            "perk_so_shall_you_fight": {
+                "name": "So Shall You Fight",
+                "icon": "assets/img/perk-icons/so_shall_you_fight.png",
+                "description": "All units in the squad receive +25% XP for every kill."
+            },
             "perk_sprinter": {
                 "name": "Sprinter",
                 "icon": "assets/img/perk-icons/sprinter.png",
@@ -535,6 +580,11 @@
                 "name": "Squadsight",
                 "icon": "assets/img/perk-icons/squadsight.png",
                 "description": "Allows firing at targets in any ally's sight radius within weapon range, but critical chance suffers a -20% penalty. Extended range weapons (MEC primary weapons, Marksman and Strike Rifles, and LMGs) gain roughly five extra tiles range. Sniper rifles have infinite range. Overwatch fire does not extend to squadsight ranges, except with Marksman's and Strike Rifles."
+            },
+            "perk_stay_frosty": {
+                "name": "Stay Frosty",
+                "icon": "assets/img/perk-icons/adrenaline_surge.png",
+                "description": "All units in the squad have post-mission fatigue reduced by one day."
             },
             "perk_steadfast": {
                 "name": "Steadfast",

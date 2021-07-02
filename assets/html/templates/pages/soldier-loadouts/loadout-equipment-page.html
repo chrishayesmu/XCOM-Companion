@@ -1,0 +1,26 @@
+<template id="template-loadout-equipment-page">
+    <div id="loadout-equipment-page" class="soldier-loadout-page standard-page">
+        <div class="flex-column">
+            <div id="loadout-equipment-container">
+                <div id="loadout-equipment-slots-container">
+                    <h3>Equipped</h3>
+
+                    <div id="loadout-equipment-slots" class="equipment-slots-container">
+                    </div>
+                </div>
+                <div id="loadout-equipment-choices-container">
+                    <h3>Available</h3>
+
+                    <div id="loadout-equipment-choices" class="equipment-slots-container">
+                    </div>
+                </div>
+
+                <object id="bracket-between-columns" data="assets/svg/soldier-loadout-equipment-bracket.svg" type="image/svg+xml"></object>
+            </div>
+
+            <button id="return-to-loadout" class="xcom">Return to Loadout</button>
+        </div>
+
+        <loadout-summary singleColumn></loadout-summary>
+    </div>
+</template>

@@ -7,10 +7,13 @@
 
     <link rel="stylesheet" href="assets/css/variables.css" />
     <link rel="stylesheet" href="assets/css/global.css" />
+    <link rel="stylesheet" href="assets/css/modal.css" />
     <link rel="stylesheet" href="assets/css/nativize.css" />
     <link rel="stylesheet" href="assets/css/nav.css" />
     <link rel="stylesheet" href="assets/css/section.css" />
     <link rel="stylesheet" href="assets/css/shared.css" />
+    <link rel="stylesheet" href="assets/css/svg.css" />
+    <link rel="stylesheet" href="assets/css/xcom.css" />
 
     <link rel="stylesheet" href="assets/css/pages/base-facilities.css" />
     <link rel="stylesheet" href="assets/css/pages/enemy-browse-page.css" />
@@ -25,6 +28,12 @@
     <link rel="stylesheet" href="assets/css/pages/tech-tree.css" />
     <link rel="stylesheet" href="assets/css/pages/ufos.css" />
 
+    <link rel="stylesheet" href="assets/css/pages/soldier-loadout-page/loadout-equipment-page.css" />
+    <link rel="stylesheet" href="assets/css/pages/soldier-loadout-page/loadout-home-page.css" />
+    <link rel="stylesheet" href="assets/css/pages/soldier-loadout-page/loadout-perk-trees-page.css" />
+    <link rel="stylesheet" href="assets/css/pages/soldier-loadout-page/loadout-selection-page.css" />
+    <link rel="stylesheet" href="assets/css/pages/soldier-loadout-page/shared.css" />
+
     <link rel="stylesheet" href="assets/css/widgets.css" />
 
     <!-- CSS for custom elements -->
@@ -32,6 +41,8 @@
     <link rel="stylesheet" href="assets/css/custom-elements/enemy-infobox.css" />
     <link rel="stylesheet" href="assets/css/custom-elements/help-icon.css" />
     <link rel="stylesheet" href="assets/css/custom-elements/infobox.css" />
+    <link rel="stylesheet" href="assets/css/custom-elements/loadout-summary.css" />
+    <link rel="stylesheet" href="assets/css/custom-elements/perk-icon.css" />
     <link rel="stylesheet" href="assets/css/custom-elements/research-credit.css" />
     <link rel="stylesheet" href="assets/css/custom-elements/single-select-list.css" />
     <link rel="stylesheet" href="assets/css/custom-elements/timeline.css" />
@@ -51,6 +62,8 @@
     <script type="module" src="assets/js/custom-elements/help-icon.js"></script>
     <script type="module" src="assets/js/custom-elements/in-app-link.js"></script>
     <script type="module" src="assets/js/custom-elements/infobox.js"></script>
+    <script type="module" src="assets/js/custom-elements/loadout-summary.js"></script>
+    <script type="module" src="assets/js/custom-elements/perk-icon.js"></script>
     <script type="module" src="assets/js/custom-elements/research-credit.js"></script>
     <script type="module" src="assets/js/custom-elements/single-select-list.js"></script>
     <script type="module" src="assets/js/custom-elements/timeline.js"></script>
@@ -103,12 +116,12 @@
                     <span class="nav-container-label">Soldiers</span>
 
                     <div class="nav-subsection-container">
+                        <button data-page-on-click="loadout-selection-page" class="nav-button subnav-button">Build Manager</button>
                         <button data-page-on-click="class-selection-page" data-pagearg-class-pool="infantry" class="nav-button subnav-button">Infantry Perk Trees</a>
                         <button data-page-on-click="class-selection-page" data-pagearg-class-pool="mec" class="nav-button subnav-button">MEC Perk Trees</button>
                         <button data-page-on-click="perk-tree-display-page" data-pagearg-display-mode="gene-mods" class="nav-button subnav-button">Gene Mods</button>
                         <button data-page-on-click="perk-tree-display-page" data-pagearg-display-mode="psi-training" class="nav-button subnav-button">Psi Training</button>
                         <button class="nav-button subnav-button not-implemented">Officer Training School</button>
-                        <button class="nav-button subnav-button not-implemented">Officer Ranks</button>
                     </div>
                 </div>
 
@@ -131,6 +144,12 @@
             <a href="https://www.github.com/chrishayesmu/XCOM-Companion">View on GitHub</a>
         </footer>
     </nav>
+
+    <div id="modal-container" class="hidden-collapse">
+        <div id="modal-background"></div>
+        <div id="modal-contents">
+        </div>
+    </div>
 
     <main class="content js-content">
         <img id="easter-egg-amongus-pizza" class="hidden-collapse" src="assets/img/amongus_pizza.png" />

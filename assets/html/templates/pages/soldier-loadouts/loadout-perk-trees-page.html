@@ -1,0 +1,317 @@
+<template id="template-loadout-perk-trees">
+    <div id="perk-trees-page" class="soldier-loadout-page standard-page">
+        <div class="flex-column">
+            <div id="perk-tree-container"></div>
+            <button id="return-to-loadout" class="xcom">Return to Loadout</button>
+        </div>
+
+        <loadout-summary singleColumn></loadout-summary>
+    </div>
+</template>
+
+<template id="template-class-perks-tree">
+    <div>
+        <div>
+            <div class="perk-tree-row" data-row-index="0">
+                <div class="perk-tree-rank">
+                    <div class="perk-tree-rank-icon"><img src="assets/img/soldier-rank-icons/specialist.png" /></div>
+                    <div class="perk-tree-rank-name">
+                        <div>Specialist</div>
+                        <div class="flex-single-row">
+                            <div class="stat-hp"></div>
+                            <div class="stat-aim"></div>
+                            <div class="stat-will"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div></div>
+                <perk-icon></perk-icon>
+                <div></div>
+            </div>
+            <div class="perk-tree-row" data-row-index="1">
+                <div class="perk-tree-rank">
+                    <div class="perk-tree-rank-icon"><img src="assets/img/soldier-rank-icons/lance_corporal.png" /></div>
+                    <div class="perk-tree-rank-name">
+                        <div>Lance Corporal</div>
+                        <div class="flex-single-row">
+                            <div class="stat-hp"></div>
+                            <div class="stat-aim"></div>
+                            <div class="stat-will"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <perk-icon></perk-icon>
+                <perk-icon></perk-icon>
+                <perk-icon></perk-icon>
+            </div>
+            <div class="perk-tree-row" data-row-index="2">
+                <div class="perk-tree-rank">
+                    <div class="perk-tree-rank-icon"><img src="assets/img/soldier-rank-icons/corporal.png" /></div>
+                    <div class="perk-tree-rank-name">
+                        <div>Corporal</div>
+                        <div class="flex-single-row">
+                            <div class="stat-hp"></div>
+                            <div class="stat-aim"></div>
+                            <div class="stat-will"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <perk-icon></perk-icon>
+                <perk-icon></perk-icon>
+                <perk-icon></perk-icon>
+            </div>
+            <div class="perk-tree-row" data-row-index="3">
+                <div class="perk-tree-rank">
+                    <div class="perk-tree-rank-icon"><img src="assets/img/soldier-rank-icons/sergeant.png" /></div>
+                    <div class="perk-tree-rank-name">
+                        <div>Sergeant</div>
+                        <div class="flex-single-row">
+                            <div class="stat-hp"></div>
+                            <div class="stat-aim"></div>
+                            <div class="stat-will"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <perk-icon></perk-icon>
+                <perk-icon></perk-icon>
+                <perk-icon></perk-icon>
+            </div>
+            <div class="perk-tree-row" data-row-index="4">
+                <div class="perk-tree-rank">
+                    <div class="perk-tree-rank-icon"><img src="assets/img/soldier-rank-icons/tech_sergeant.png" /></div>
+                    <div class="perk-tree-rank-name">
+                        <div>Tech Sergeant</div>
+                        <div class="flex-single-row">
+                            <div class="stat-hp"></div>
+                            <div class="stat-aim"></div>
+                            <div class="stat-will"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <perk-icon></perk-icon>
+                <perk-icon></perk-icon>
+                <perk-icon></perk-icon>
+            </div>
+            <div class="perk-tree-row" data-row-index="5">
+                <div class="perk-tree-rank">
+                    <div class="perk-tree-rank-icon"><img src="assets/img/soldier-rank-icons/gunnery_sergeant.png" /></div>
+                    <div class="perk-tree-rank-name">
+                        <div>Gunnery Sergeant</div>
+                        <div class="flex-single-row">
+                            <div class="stat-hp"></div>
+                            <div class="stat-aim"></div>
+                            <div class="stat-will"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <perk-icon></perk-icon>
+                <perk-icon></perk-icon>
+                <perk-icon></perk-icon>
+            </div>
+            <div class="perk-tree-row" data-row-index="6">
+                <div class="perk-tree-rank">
+                    <div class="perk-tree-rank-icon"><img src="assets/img/soldier-rank-icons/master_sergeant.png" /></div>
+                    <div class="perk-tree-rank-name">
+                        <div>Master Sergeant</div>
+                        <div class="flex-single-row">
+                            <div class="stat-hp"></div>
+                            <div class="stat-aim"></div>
+                            <div class="stat-will"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <perk-icon></perk-icon>
+                <perk-icon></perk-icon>
+                <perk-icon></perk-icon>
+            </div>
+        </div>
+    </div>
+</template>
+
+<template id="template-gene-mods-tree">
+    <div>
+        <div>
+            <div class="perk-tree-row" data-row-index="0">
+                <div class="gene-mods-body-part">
+                    <span>Brain</span>
+                </div>
+                <perk-icon perkId="gene_mod_neural_damping"></perk-icon>
+                <perk-icon perkId="gene_mod_smart_macrophages"></perk-icon>
+            </div>
+            <div class="perk-tree-row" data-row-index="1">
+                <div class="gene-mods-body-part">
+                    <span>Eyes</span>
+                </div>
+                <perk-icon perkId="gene_mod_hyper_reactive_pupils"></perk-icon>
+                <perk-icon perkId="gene_mod_depth_perception"></perk-icon>
+            </div>
+            <div class="perk-tree-row" data-row-index="2">
+                <div class="gene-mods-body-part">
+                    <span>Chest</span>
+                </div>
+                <perk-icon perkId="gene_mod_secondary_heart"></perk-icon>
+                <perk-icon perkId="gene_mod_adrenal_neurosympathy"></perk-icon>
+            </div>
+            <div class="perk-tree-row" data-row-index="3">
+                <div class="gene-mods-body-part">
+                    <span>Skin</span>
+                </div>
+                <perk-icon perkId="gene_mod_bioelectric_skin"></perk-icon>
+                <perk-icon perkId="gene_mod_iron_skin"></perk-icon>
+            </div>
+            <div class="perk-tree-row" data-row-index="4">
+                <div class="gene-mods-body-part">
+                    <span>Legs</span>
+                </div>
+                <perk-icon perkId="gene_mod_muscle_fiber_density"></perk-icon>
+                <perk-icon perkId="gene_mod_adaptive_bone_marrow"></perk-icon>
+            </div>
+        </div>
+    </div>
+</template>
+
+<template id="template-officer-perks-tree">
+    <div>
+        <div>
+            <div class="perk-tree-row" data-row-index="0">
+                <div class="perk-tree-rank">
+                    <div class="perk-tree-rank-icon"><img src="assets/img/soldier-rank-icons/officer_lieutenant.png" /></div>
+                    <div class="perk-tree-rank-name">
+                        <div>Lieutenant</div>
+                    </div>
+                </div>
+
+                <perk-icon perkId="perk_legio_patria_nostra"></perk-icon>
+                <perk-icon perkId="perk_stay_frosty"></perk-icon>
+            </div>
+            <div class="perk-tree-row" data-row-index="1">
+                <div class="perk-tree-rank">
+                    <div class="perk-tree-rank-icon"><img src="assets/img/soldier-rank-icons/officer_captain.png" /></div>
+                    <div class="perk-tree-rank-name">
+                        <div>Captain</div>
+                    </div>
+                </div>
+
+                <perk-icon perkId="perk_semper_vigilans"></perk-icon>
+                <perk-icon perkId="perk_fortiores_una"></perk-icon>
+            </div>
+            <div class="perk-tree-row" data-row-index="2">
+                <div class="perk-tree-rank">
+                    <div class="perk-tree-rank-icon"><img src="assets/img/soldier-rank-icons/officer_major.png" /></div>
+                    <div class="perk-tree-rank-name">
+                        <div>Major</div>
+                    </div>
+                </div>
+
+                <perk-icon perkId="perk_into_the_breach"></perk-icon>
+                <perk-icon perkId="perk_so_shall_you_fight"></perk-icon>
+            </div>
+            <div class="perk-tree-row" data-row-index="3">
+                <div class="perk-tree-rank">
+                    <div class="perk-tree-rank-icon"><img src="assets/img/soldier-rank-icons/officer_colonel.png" /></div>
+                    <div class="perk-tree-rank-name">
+                        <div>Colonel</div>
+                    </div>
+                </div>
+
+                <perk-icon perkId="perk_band_of_warriors"></perk-icon>
+                <perk-icon perkId="perk_esprit_de_corps"></perk-icon>
+            </div>
+            <div class="perk-tree-row" data-row-index="4">
+                <div class="perk-tree-rank">
+                    <div class="perk-tree-rank-icon"><img src="assets/img/soldier-rank-icons/officer_field_commander.png" /></div>
+                    <div class="perk-tree-rank-name">
+                        <div>Field Commander</div>
+                    </div>
+                </div>
+
+                <perk-icon perkId="perk_so_others_may_live"></perk-icon>
+                <perk-icon perkId="perk_combined_arms"></perk-icon>
+            </div>
+        </div>
+    </div>
+</template>
+
+<template id="template-psi-tree">
+    <div>
+        <div>
+            <div class="perk-tree-row" data-row-index="0">
+                <div class="perk-tree-rank-name">
+                    Awakened
+                    <div class="psi-ability-fatigue">
+                        <img src="assets/img/misc-icons/time.png" data-tooltip-text="Additional Post-Mission Fatigue" /> +24 hours
+                    </div>
+                </div>
+                <perk-icon perkId="psi_regen_biofield"></perk-icon>
+                <perk-icon perkId="psi_neural_feedback"></perk-icon>
+                <perk-icon perkId="psi_mindfray"></perk-icon>
+            </div>
+            <div class="perk-tree-row" data-row-index="1">
+                <div class="perk-tree-rank-name">
+                    Sensitive
+                    <div class="psi-ability-fatigue">
+                        <img src="assets/img/misc-icons/time.png" data-tooltip-text="Additional Post-Mission Fatigue" /> +6 hours
+                    </div>
+                </div>
+
+                <perk-icon perkId="psi_distortion_field"></perk-icon>
+                <div></div>
+                <perk-icon perkId="psi_psi_inspiration"></perk-icon>
+            </div>
+            <div class="perk-tree-row" data-row-index="2">
+                <div class="perk-tree-rank-name">
+                    Talent
+                    <div class="psi-ability-fatigue">
+                        <img src="assets/img/misc-icons/time.png" data-tooltip-text="Additional Post-Mission Fatigue" /> +6 hours
+                    </div>
+                </div>
+
+                <perk-icon perkId="psi_psi_panic"></perk-icon>
+                <div></div>
+                <perk-icon perkId="psi_mind_merge"></perk-icon>
+            </div>
+            <div class="perk-tree-row" data-row-index="3">
+                <div class="perk-tree-rank-name">
+                    Adept
+                    <div class="psi-ability-fatigue">
+                        <img src="assets/img/misc-icons/time.png" data-tooltip-text="Additional Post-Mission Fatigue" /> +12 hours
+                    </div>
+                </div>
+
+                <perk-icon perkId="psi_psychokinetic_strike"></perk-icon>
+                <perk-icon perkId="psi_pyrokinesis"></perk-icon>
+                <perk-icon perkId="psi_telekinetic_field"></perk-icon>
+            </div>
+            <div class="perk-tree-row" data-row-index="4">
+                <div class="perk-tree-rank-name">
+                    Psion
+                    <div class="psi-ability-fatigue">
+                        <img src="assets/img/misc-icons/time.png" data-tooltip-text="Additional Post-Mission Fatigue" /> +12 hours
+                    </div>
+                </div>
+
+                <div></div>
+                <perk-icon perkId="psi_mind_control"></perk-icon>
+                <div></div>
+            </div>
+            <div class="perk-tree-row" data-row-index="5">
+                <div class="perk-tree-rank-name">
+                    Master
+                    <div class="psi-ability-fatigue">
+                        <img src="assets/img/misc-icons/time.png" data-tooltip-text="Additional Post-Mission Fatigue" /> +12 hours
+                    </div>
+                </div>
+                <div></div>
+                <perk-icon perkId="psi_rift"></perk-icon>
+                <div></div>
+            </div>
+        </div>
+    </div>
+</template>

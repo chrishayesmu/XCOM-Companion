@@ -1,0 +1,85 @@
+perk-icon {
+    display: inline-flex;
+    flex-flow: column nowrap;
+    align-items: center;
+
+    width: fit-content;
+}
+
+perk-icon:not([hideName]):not([hideDescription]) {
+    min-width: 250px;
+    padding: 5px 8px;
+}
+
+perk-icon[hideDescription] img,
+perk-icon[hideName] img {
+    margin: auto;
+}
+
+perk-icon[selectable] {
+    cursor: pointer;
+}
+
+perk-icon * {
+    pointer-events: none;
+}
+
+perk-icon .perk-icon-description {
+    margin-top: 4px;
+    text-align: justify;
+}
+
+perk-icon .perk-icon-name {
+    font-size: 0.85em;
+    text-align: center;
+}
+
+perk-icon[hideDesc] .perk-icon-description,
+perk-icon[hideName] .perk-icon-description {
+    display: none;
+}
+
+perk-icon[hideName] .perk-icon-name {
+    display: none;
+}
+
+perk-icon img {
+    background-color: var(--color-strong);
+    margin: 0 auto;
+    width: 50px;
+}
+
+perk-icon[inactive] img {
+    background-color: transparent;
+}
+
+perk-icon[selected] img {
+    background-color: var(--color);
+}
+
+perk-icon[perkId^=gene][selectable]:hover img,
+perk-icon[perkId^=gene][selected] img {
+    background-color: var(--color-meld);
+}
+
+perk-icon[perkId^=psi] img {
+    background-color: var(--color-psi);
+}
+
+perk-icon[perkId^=psi][inactive] img {
+    background-color: var(--color-psi-subtle);
+}
+
+perk-icon[perkId^=psi][selectable]:hover img,
+perk-icon[perkId^=psi][selected] img {
+    background-color: var(--color-psi-strong);
+}
+
+perk-icon[selectable]:hover {
+    background-color: var(--color-bg-subtle);
+}
+
+perk-icon[selectable]:hover img,
+perk-icon[selected] img {
+    background-color: var(--color-strong);
+}

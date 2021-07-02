@@ -1,0 +1,15 @@
+<svg viewBox="0 0 130 32" version="1.1" baseProfile="full" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+    <link xmlns="http://www.w3.org/1999/xhtml" rel="stylesheet" href="../css/variables.css" type="text/css"/>
+    <link xmlns="http://www.w3.org/1999/xhtml" rel="stylesheet" href="../css/svg.css" type="text/css"/>
+
+    <!-- Outline -->
+    <polyline points="130,0 130,32 0,32 0,6 6,0 130,0" class="thin" fill="transparent" stroke-width="1" stroke="rgba(154, 234, 239, 1)" />
+
+    <!-- Swooping arrow (head) -->
+    <polygon points="52,18 61,24 57,10" fill="rgba(154, 234, 239, 1)" stroke-width="1" stroke="rgba(154, 234, 239, 1)" />
+
+    <!-- Swooping arrow (body) -->
+    <path d="M 55,19
+             C 65,10 72,15 80,18"
+          fill="transparent" stroke-width="4" stroke="rgba(154, 234, 239, 1)" stroke-linepath="round" />
+</svg>

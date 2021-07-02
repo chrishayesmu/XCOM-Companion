@@ -15,12 +15,16 @@ let manualUpdateCheckInProgress = false;
 let mainWindow = null;
 let settingsWindow = null;
 
+ipcMain.handle("delete-settings", (_event, name) => {
+    return settings.unset(name);
+});
+
 ipcMain.handle("get-settings", (_event, name) => {
     return settings.get(name);
 });
 
-ipcMain.on("save-settings", (_event, name, value) => {
-    settings.set(name, value);
+ipcMain.handle("save-settings", (_event, name, value) => {
+    return settings.set(name, value);
 });
 
 ipcMain.handle("get-window-size", () => {

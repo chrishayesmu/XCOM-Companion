@@ -1,0 +1,247 @@
+#loadout-equipment-page #loadout-equipment-container {
+    display: flex;
+    flex-flow: row nowrap;
+    gap: 28px; /* extra large gap to leave room for SVG between */
+
+    height: calc(100% - 50px);
+    position: relative;
+}
+
+#loadout-equipment-page #loadout-equipment-container #bracket-between-columns {
+    position: absolute;
+
+    left: 364px;
+    top: 30px;
+    width: 20px;
+    height: calc(100% - 45px);
+}
+
+/* styles shared between equipped items and equipment choices */
+
+#loadout-equipment-page #loadout-equipment-container h3 {
+    font-weight: normal;
+    font-size: 1.9em;
+    margin: 0 0 calc(-1 * var(--intra-group-control-gap)) 0; /* cancel out container gap */
+    padding-right: 6px;
+    text-align: right;
+    text-transform: uppercase;
+    width: 100%;
+}
+
+#loadout-equipment-page #loadout-equipment-container .equipment-slots-container {
+    display: flex;
+    flex-flow: column nowrap;
+
+    gap: var(--intra-group-control-gap);
+
+    height: 100%;
+    margin: 10px 10px 0 0;
+    max-height: calc(100% - 75px);
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding-right: 10px;
+}
+
+#loadout-equipment-page #loadout-equipment-container .equipment-slots-container::-webkit-scrollbar-thumb {
+    background-color: var(--color-semi-trans);
+}
+
+#loadout-equipment-page #loadout-equipment-container .item-container {
+    position: relative;
+
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: center;
+
+    background-image: url("../../../svg/soldier-loadout-equipment-slot-border.svg");
+
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+#loadout-equipment-page #loadout-equipment-container .item-container.selected {
+    background-color: rgba(71, 118, 120, 0.3);
+}
+
+@keyframes border-pulsing {
+    0% { box-shadow: inset 0 0 8px var(--color);}
+    25% { box-shadow: inset 0 0 16px var(--color); }
+    50% { box-shadow: inset 0 0 32px var(--color);}
+    75% { box-shadow: inset 0 0 16px var(--color); }
+    100% { box-shadow: inset 0 0 8px var(--color);}
+}
+
+#loadout-equipment-page #loadout-equipment-container .item-container:hover {
+    animation: border-pulsing 2500ms infinite;
+    animation-timing-function: linear;
+}
+
+#loadout-equipment-page #loadout-equipment-container .item-container * {
+    pointer-events: none;
+}
+
+#loadout-equipment-page #loadout-equipment-container .item-container[data-item-id] .item-help-button,
+#loadout-equipment-page #loadout-equipment-container .item-container[data-item-id] .remove-item-button {
+    background-color: rgba(0, 0, 0, 0.05);
+    background-size: cover;
+    border: none;
+    box-shadow: none;
+
+    position: absolute;
+    bottom: 6px;
+
+    display: none;
+    pointer-events: all;
+}
+
+#loadout-equipment-page #loadout-equipment-container .item-container[data-item-id] .item-help-button {
+    background-image: url("../../../svg/soldier-loadout-equipment-slot-help-box.svg");
+    left: 8px;
+
+    cursor: help;
+}
+
+#loadout-equipment-page #loadout-equipment-container .item-container[data-item-id] .remove-item-button {
+    background-image: url("../../../svg/soldier-loadout-equipment-slot-remove-item-box.svg");
+    right: 8px;
+
+    cursor: pointer;
+}
+
+#loadout-equipment-page #loadout-equipment-container .item-container[data-item-id]:hover .item-help-button,
+#loadout-equipment-page #loadout-equipment-container .item-container[data-item-id]:hover .remove-item-button {
+    display: block;
+}
+
+#loadout-equipment-page #loadout-equipment-container .item-container[data-item-id] .item-help-button:hover,
+#loadout-equipment-page #loadout-equipment-container .item-container[data-item-id] .remove-item-button:hover {
+    background-color: rgba(71, 118, 120, 0.6);
+}
+
+/* styles for currently equipped items */
+
+#loadout-equipment-page #loadout-equipment-container #loadout-equipment-slots .item-container {
+    height: 180px;
+    width: 340px;
+
+    background-size: 340px 180px;
+}
+
+#loadout-equipment-page #loadout-equipment-container #loadout-equipment-slots .item-container::before {
+    content: "";
+    height: 0;
+    width: 0;
+    z-index: 1000;
+
+    position: absolute;
+    bottom: -13px;
+    left: -6.5px;
+    transform: rotate(135deg);
+
+    border-left: 19px solid var(--color-bg);
+    border-bottom: 19px solid transparent;
+    border-top: 19px solid transparent;
+}
+
+#loadout-equipment-page #loadout-equipment-container #loadout-equipment-slots .item-container::after {
+    content: "";
+    height: 0;
+    width: 0;
+    z-index: 1000;
+
+    position: absolute;
+    top: -8px;
+    right: -5.5px;
+    transform: rotate(315deg);
+
+    border-left: 12px solid var(--color-bg);
+    border-bottom: 12px solid transparent;
+    border-top: 12px solid transparent;
+}
+
+#loadout-equipment-page #loadout-equipment-container #loadout-equipment-slots .item-container .item-help-button,
+#loadout-equipment-page #loadout-equipment-container #loadout-equipment-slots .item-container .remove-item-button {
+    width: 160px;
+    height: 32px;
+}
+
+#loadout-equipment-page #loadout-equipment-container #loadout-equipment-slots .item-container img {
+    height: 128px;
+    width: 256px;
+}
+
+#loadout-equipment-page #loadout-equipment-container #loadout-equipment-slots .item-container .item-container-name {
+    position: absolute;
+    top: 6px;
+    left: 8px;
+
+    font-size: 1.7em;
+}
+
+/* styles for available items */
+
+#loadout-equipment-page #loadout-equipment-container #loadout-equipment-choices {
+    margin: 10px 10px 0 0;
+}
+
+#loadout-equipment-page #loadout-equipment-container #loadout-equipment-choices .item-container {
+    height: 120px;
+    width: 220px;
+
+    background-size: 220px 120px;
+}
+
+#loadout-equipment-page #loadout-equipment-container #loadout-equipment-choices .item-container::before {
+    content: "";
+    height: 0;
+    width: 0;
+    z-index: 1000;
+
+    position: absolute;
+    bottom: -13px;
+    left: -6.5px;
+    transform: rotate(135deg);
+
+    border-left: 15px solid var(--color-bg);
+    border-bottom: 15px solid transparent;
+    border-top: 15px solid transparent;
+}
+
+#loadout-equipment-page #loadout-equipment-container #loadout-equipment-choices .item-container::after {
+    content: "";
+    height: 0;
+    width: 0;
+    z-index: 1000;
+
+    position: absolute;
+    top: -6px;
+    right: -3.5px;
+    transform: rotate(315deg);
+
+    border-left: 8px solid var(--color-bg);
+    border-bottom: 8px solid transparent;
+    border-top: 8px solid transparent;
+}
+
+#loadout-equipment-page #loadout-equipment-container #loadout-equipment-choices .item-container .item-help-button {
+    width: 100px;
+    height: 24px;
+}
+
+#loadout-equipment-page #loadout-equipment-container #loadout-equipment-choices .item-container:hover .item-help-button {
+    display: block;
+}
+
+#loadout-equipment-page #loadout-equipment-container #loadout-equipment-choices .item-container img {
+    height: 86px;
+    width: 192px;
+}
+
+#loadout-equipment-page #loadout-equipment-container #loadout-equipment-choices .item-container .item-container-name {
+    position: absolute;
+    top: 6px;
+    left: 8px;
+
+    font-size: 1.1em;
+}

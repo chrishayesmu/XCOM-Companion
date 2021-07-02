@@ -73,6 +73,30 @@ class ItemDisplayPage extends AppPage {
         }
     };
 
+    /**
+     * Generates a miniature version of the item detail page that can be shown in a modal.
+     */
+    static async generateMiniPage(item) {
+        const template = await Templates.instantiateTemplate("assets/html/templates/pages/item-display-page.html", "template-item-display-page-mini");
+
+        template.querySelector(".column-heading").textContent = item.name;
+        const tacticalTextContainer = template.querySelector("#item-details-tactical-text");
+
+
+        if (item.tactical_text) {
+            tacticalTextContainer.innerHTML = item.tactical_text;
+        }
+
+        this._addSpecialBulletPoints(item, tacticalTextContainer);
+
+        const statsGrid = await this._createApplicableStatsGridIfAny(item);
+        if (statsGrid) {
+            tacticalTextContainer.appendChild(statsGrid);
+        }
+
+        return template;
+    }
+
     static async generatePreview(data) {
         if (!data.itemId) {
             return null;
@@ -89,26 +113,10 @@ class ItemDisplayPage extends AppPage {
         template.querySelector(".preview-title").textContent = item.name;
         template.querySelector(".preview-description").innerHTML = item.description;
 
-        if (item.type === "loadout_secondary" && item.type_specific_data.category === "mec") {
-            template.querySelector("#item-preview-stats-table").appendChild(await this._createMecSecondaryStatsGrid(item));
-        }
-        else if (item.type === "loadout_primary" || item.type === "loadout_secondary") {
-            template.querySelector("#item-preview-stats-table").appendChild(await this._createWeaponStatsGrid(item));
-        }
-        else if (item.type === "loadout_armor" || item.type === "loadout_mec_exoskeleton") {
-            template.querySelector("#item-preview-stats-table").appendChild(await this._createArmorStatsGrid(item));
-        }
-        else if (item.type === "loadout_equipment") {
-            template.querySelector("#item-preview-stats-table").appendChild(await this._createEquipmentStatsGrid(item));
-        }
-        else if (item.type === "aircraft") {
-            template.querySelector("#item-preview-stats-table").appendChild(await this._createInterceptorStatsGrid(item));
-        }
-        else if (item.type === "aircraft_weapon") {
-            template.querySelector("#item-preview-stats-table").appendChild(await this._createInterceptorWeaponStatsGrid(item));
-        }
-        else if (item.type === "shiv") {
-            template.querySelector("#item-preview-stats-table").appendChild(await this._createShivStatsGrid(item));
+        const statsGrid = await this._createApplicableStatsGridIfAny(item);
+
+        if (statsGrid) {
+            template.querySelector("#item-preview-stats-table").appendChild(statsGrid);
         }
 
         return template;
@@ -175,26 +183,10 @@ class ItemDisplayPage extends AppPage {
         const tacticalTextContainer = template.querySelector("#item-details-tactical-text");
         ItemDisplayPage._addSpecialBulletPoints(item, tacticalTextContainer);
 
-        if (item.type === "loadout_secondary" && item.type_specific_data.category === "mec") {
-            tacticalTextContainer.appendChild(await ItemDisplayPage._createMecSecondaryStatsGrid(item));
-        }
-        else if (item.type === "loadout_primary" || item.type === "loadout_secondary") {
-            tacticalTextContainer.appendChild(await ItemDisplayPage._createWeaponStatsGrid(item));
-        }
-        else if (item.type === "loadout_armor" || item.type === "loadout_mec_exoskeleton") {
-            tacticalTextContainer.appendChild(await ItemDisplayPage._createArmorStatsGrid(item));
-        }
-        else if (item.type === "loadout_equipment") {
-            tacticalTextContainer.appendChild(await ItemDisplayPage._createEquipmentStatsGrid(item));
-        }
-        else if (item.type === "aircraft") {
-            tacticalTextContainer.appendChild(await ItemDisplayPage._createInterceptorStatsGrid(item));
-        }
-        else if (item.type === "aircraft_weapon") {
-            tacticalTextContainer.appendChild(await ItemDisplayPage._createInterceptorWeaponStatsGrid(item));
-        }
-        else if (item.type === "shiv") {
-            tacticalTextContainer.appendChild(await ItemDisplayPage._createShivStatsGrid(item));
+        const statsGrid = await ItemDisplayPage._createApplicableStatsGridIfAny(item);
+
+        if (statsGrid) {
+            tacticalTextContainer.appendChild(statsGrid);
         }
 
         if (item.id === "item_arc_thrower") {
@@ -286,7 +278,7 @@ class ItemDisplayPage extends AppPage {
         const usableByShiv = typeData.category == "shiv" || typeData.usable_by_shiv;
         const useCategories = [];
 
-        if (usableBySoldier) {
+        if (usableBySoldier && !typeData.class_restriction) {
             useCategories.push("regular (non-MEC) soldiers");
         }
 
@@ -302,6 +294,38 @@ class ItemDisplayPage extends AppPage {
             const text = "Usable by " + Utils.join(useCategories);
             addBulletPoint(text);
         }
+    }
+
+    static async _createApplicableStatsGridIfAny(item) {
+        if (item.type === "loadout_secondary" && item.type_specific_data.category === "mec") {
+            return this._createMecSecondaryStatsGrid(item);
+        }
+
+        if (item.type === "loadout_primary" || item.type === "loadout_secondary") {
+            return this._createWeaponStatsGrid(item);
+        }
+
+        if (item.type === "loadout_armor" || item.type === "loadout_mec_exoskeleton") {
+            return this._createArmorStatsGrid(item);
+        }
+
+        if (item.type === "loadout_equipment") {
+            return this._createEquipmentStatsGrid(item);
+        }
+
+        if (item.type === "aircraft") {
+            return this._createInterceptorStatsGrid(item);
+        }
+
+        if (item.type === "aircraft_weapon") {
+            return this._createInterceptorWeaponStatsGrid(item);
+        }
+
+        if (item.type === "shiv") {
+            return this._createShivStatsGrid(item);
+        }
+
+        return null;
     }
 
     static async _createArmorStatsGrid(item) {

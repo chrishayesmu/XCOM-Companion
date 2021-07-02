@@ -1,0 +1,10 @@
+<svg viewBox="0 0 272 144" version="1.1" baseProfile="full" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+    <link xmlns="http://www.w3.org/1999/xhtml" rel="stylesheet" href="../css/variables.css" type="text/css"/>
+    <link xmlns="http://www.w3.org/1999/xhtml" rel="stylesheet" href="../css/svg.css" type="text/css"/>
+
+    <polyline points="0,0 0,111" class="thin" fill="transparent" stroke-width="1" stroke="rgba(154, 234, 239, 1)" />
+    <polyline points="0,111 0,124 20,144 33,144" class="thick" fill="transparent" stroke-width="3" stroke="rgba(0, 225, 239, 1)" />
+    <polyline points="33,144 259,144" class="thin" fill="transparent" stroke-width="1" stroke="rgba(154, 234, 239, 1)" />
+    <polyline points="259,144 272,144 272,13 259,0 246,0" class="thick" fill="transparent" stroke-width="3" stroke="rgba(0, 225, 239, 1)" />
+    <polyline points="246,0 0,0" class="thin" fill="transparent" stroke-width="1" stroke="rgba(154, 234, 239, 1)" />
+</svg>

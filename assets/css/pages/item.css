@@ -1,3 +1,24 @@
+/* styles for mini-page */
+
+.item-display-page-mini .column-heading {
+    font-size: 1.4em;
+    text-transform: none;
+}
+
+.item-display-page-mini #item-details-tactical-text {
+    padding: 0 13px;
+}
+
+.item-display-page-mini #item-details-tactical-text table {
+    margin: 15px auto;
+}
+
+.item-display-page-mini #item-details-tactical-text ul {
+    padding-inline-start: 13px;
+}
+
+/* general styles */
+
 #item-details-content-section {
     display: flex;
     flex-flow: column nowrap;
@@ -79,6 +100,8 @@ table.item-stats-grid caption {
 .item-stats-header-img {
     height: 24px;
     width: 24px;
+
+    pointer-events: none;
 }
 
 /**

@@ -1,0 +1,54 @@
+<template id="template-loadout-home-page">
+    <div id="loadout-home-page" class="soldier-loadout-page standard-page">
+        <div class="flex-column">
+            <div id="loadout-name-container">
+                <h2 id="loadout-name"></h2>
+                <div id="loadout-name-edit-container" class="hidden-collapse">
+                    <input type="text" id="loadout-name-input"></input>
+                    <span id="loadout-name-save-button" data-tooltip-text="Save Changes">✔</span>
+                    <span id="loadout-name-discard-button" data-tooltip-text="Cancel">🗙</span>
+                </div>
+                <span id="loadout-edit-name">🖉</span>
+            </div>
+
+            <div id="loadout-main-menu">
+                <button id="loadout-edit-perks" class="xcom" data-description="View and assign new training to this soldier.">Perks</button>
+                <button id="loadout-edit-equipment" class="xcom" data-description="Choose the armor, weapons, and items that this soldier will take into combat.">Equipment</button>
+                <button id="loadout-edit-gene-mods" class="xcom" data-description="Perform genetic modifications to improve this soldier's aptitude in combat.">Gene Mods</button>
+                <button id="loadout-edit-psi" class="xcom" data-description="Test this soldier for psionic gifts, or tap deeper into their existing psionic potential.">Psi Training</button>
+                <button id="loadout-edit-officer" class="xcom" data-description="Give this soldier special training to lead missions as an officer.">Officer Training</button>
+                <button id="loadout-edit-notes" class="xcom" data-description="Make notes on this build for future reference, such as general tactics in battle, or what mission types it works best in.">Edit Notes</button>
+                <!-- <button id="loadout-perf-lab" class="xcom" data-description="Analyze how this soldier will perform in real combat scenarios.">Performance Lab</button> -->
+                <button id="loadout-save-and-close" class="xcom" data-description="Save this build and return to the build selection screen.">Save and Close Build</button>
+                <button id="loadout-close-without-saving" class="xcom" data-description="Discard all changes and return to the build selection screen.">Close Without Saving</button>
+
+                <div id="loadout-main-menu-selected-option-description">
+                </div>
+
+                <!-- SVG: outline around menu -->
+                <svg id="loadout-main-menu-outline" viewBox="0 0 375 650">
+                    <polyline points="0,0 0,150 25,175 25,200" class="thick" fill="transparent" />
+                    <polyline points="25,200 25,625" class="thin" fill="transparent" />
+                    <polyline points="25,625 25,650 340,650 375,620 375,585" class="thick" fill="transparent" />
+                    <polyline points="375,585 375,40" class="thin" fill="transparent" />
+                    <polyline points="375,40 375,15 190,15 160,0 140,0" class="thick" fill="transparent" />
+                    <polyline points="140,0 25,0" class="thin" fill="transparent" />
+                    <polyline points="25,0 0,0" class="thick" fill="transparent" />
+                </svg>
+            </div>
+        </div>
+
+        <loadout-summary singleColumn></loadout-summary>
+    </div>
+</template>
+
+<template id="template-loadout-edit-notes">
+    <div id="loadout-modal-edit-notes" class="standard-modal">
+        <h3>Edit build Notes</h3>
+        <textarea id="notes-input" class="xcom" maxlength="600"></textarea>
+        <div class="buttons-container">
+            <button id="edit-notes-save" class="xcom">Save Notes</button>
+            <button id="edit-notes-discard" class="xcom">Cancel</button>
+        </div>
+    </div>
+</template>

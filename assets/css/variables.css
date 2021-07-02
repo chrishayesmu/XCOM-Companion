@@ -2,9 +2,9 @@
 /* Custom Properties */
 
 :root {
-  --color:          #9aeaef;
-  --color-link:     #9aeaef;
-  --color-strong:   #00e1ef;
+  --color:          rgba(154, 234, 239, 1);
+  --color-semi-trans: rgba(154, 234, 239, 0.5);
+  --color-strong:   rgba(0, 225, 239, 1);
   --color-subtle:   #aad7da;
 
   --color-border:   hsl(0, 0%, 88%);
@@ -22,6 +22,7 @@
   --color-highlight-subtle: #555;
 
   --color-crit: #e0cb19;
+  --color-gold: goldenrod; /* some icons, priority interactable elements, etc */
   --color-green: #32CD32; /* money, positive messages, etc */
   --color-meld: #f7931d;
   --color-red: #fc5c51;
@@ -31,4 +32,9 @@
   --color-psi-subtle: #cbcad8;
 
   --nav-width: 220px;
+
+  --intra-group-control-gap: 8px;
+  --inter-group-gap: 13px;
+  --page-content-padding-horiz: 20px;
+  --page-content-padding-vert: 20px;
 }
