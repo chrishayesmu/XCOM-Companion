@@ -34,20 +34,26 @@ function close() {
 
 /**
  * Opens a modal dialog that asks the user to confirm a choice they've made.
- *
- * @param {*} prompt
- * @param {*} title
  */
-async function confirm(prompt, title) {
+async function confirm(prompt, title, trueLabel, falseLabel) {
+    trueLabel = trueLabel || "Confirm";
+    falseLabel = falseLabel || "Cancel";
+
     const template = await Templates.instantiateTemplate("assets/html/templates/widgets/modal.html", "template-confirm-modal");
     template.querySelector("#modal-content").textContent = prompt;
     template.querySelector("#modal-title").textContent = title;
 
+    const confirmButton = template.querySelector("#modal-confirm");
+    confirmButton.textContent = trueLabel;
+
+    const cancelButton = template.querySelector("#modal-cancel");
+    cancelButton.textContent = falseLabel;
+
     open(template);
 
     return new Promise(resolve => {
-        template.querySelector("#modal-confirm").addEventListener("click", () => { close(); resolve(true); } );
-        template.querySelector("#modal-cancel").addEventListener("click", () => { close(); resolve(false) } );
+        confirmButton.addEventListener("click", () => { close(); resolve(true); } );
+        cancelButton.addEventListener("click", () => { close(); resolve(false); } );
     });
 }
 

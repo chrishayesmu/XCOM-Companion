@@ -43,6 +43,7 @@
     "glob": "^7.1.0",
     "highlight.js": "^10.4.1",
     "keycharm": "^0.2.0 || ^0.3.0 || ^0.4.0",
+    "lzutf8": "^0.6.0",
     "timsort": "^0.3.0",
     "update-electron-app": "^1.1.1",
     "uuid": "^8.3.2",

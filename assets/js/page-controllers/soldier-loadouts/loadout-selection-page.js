@@ -1,3 +1,4 @@
+const { clipboard } = require("electron");
 const { v4: uuidv4 } = require("uuid");
 
 import { AppPage, PageHistoryState } from "../app-page.js";
@@ -17,6 +18,8 @@ class SoldierLoadoutSelectionPage extends AppPage {
     #loadoutSummary = null;
 
     #deleteSelectedLoadoutButton = null;
+    #exportSelectedLoadoutButton = null;
+    #importLoadoutButton = null;
     #openSelectedLoadoutButton = null;
 
     static async generatePreview(data) {
@@ -40,6 +43,12 @@ class SoldierLoadoutSelectionPage extends AppPage {
 
         this.#deleteSelectedLoadoutButton = template.querySelector("#delete-loadout");
         this.#deleteSelectedLoadoutButton.addEventListener("click", this._onDeleteLoadoutClicked.bind(this));
+
+        this.#exportSelectedLoadoutButton = template.querySelector("#export-loadout");
+        this.#exportSelectedLoadoutButton.addEventListener("click", this._onExportLoadoutClicked.bind(this));
+
+        this.#importLoadoutButton = template.querySelector("#import-loadout");
+        this.#importLoadoutButton.addEventListener("click", this._onImportLoadoutClicked.bind(this));
 
         this.#openSelectedLoadoutButton = template.querySelector("#open-loadout");
         this.#openSelectedLoadoutButton.addEventListener("click", this._openSelectedLoadout.bind(this));
@@ -93,35 +102,91 @@ class SoldierLoadoutSelectionPage extends AppPage {
     }
 
     async _onDeleteLoadoutClicked() {
-        const selectedLoadout = this.#loadoutSelect.selectedItem;
+        const selectedLoadout = await this.selectedLoadout;
 
         if (!selectedLoadout) {
             return;
         }
 
-        const loadoutId = selectedLoadout.dataset.loadoutId;
-        const loadout = await Settings.getSoldierLoadoutById(loadoutId);
-
-        const confirm = await Modal.confirm(`Are you sure you want to delete this build (${loadout.name})? This action cannot be undone.`, "Confirm Deletion");
+        const confirm = await Modal.confirm(`Are you sure you want to delete this build (${selectedLoadout.name})? This action cannot be undone.`, "Confirm Deletion");
 
         if (confirm) {
-            await Settings.deleteSoldierLoadout(loadoutId);
+            await Settings.deleteSoldierLoadout(selectedLoadout.id);
             this._populateLoadouts();
             this.#loadoutSummary.render(null);
             this._onSelectedLoadoutChanged({ detail: { selectedItem: null } });
         }
     }
 
-    async _openSelectedLoadout() {
-        const selectedLoadout = this.#loadoutSelect.selectedItem;
+    async _onExportLoadoutClicked() {
+        const selectedLoadout = await this.selectedLoadout;
 
         if (!selectedLoadout) {
             return;
         }
 
-        const loadoutId = selectedLoadout.dataset.loadoutId;
-        const loadout = await Settings.getSoldierLoadoutById(loadoutId);
-        Loadouts.setActiveLoadout(loadout);
+        const exportString = Loadouts.toExportString(selectedLoadout);
+
+        const template = await Templates.instantiateTemplate("assets/html/templates/pages/soldier-loadouts/loadout-selection-page.html", "template-export-modal");
+        template.querySelector("#export-string-display").textContent = exportString;
+        template.querySelector("#modal-close").addEventListener("click", Modal.close);
+
+        template.querySelector("#copy-export-string").addEventListener("click", () => {
+            clipboard.writeText(exportString);
+            template.querySelector("#string-copied-message").classList.remove("hidden-collapse");
+        });
+
+        Modal.open(template, null, true);
+    }
+
+    async _onImportLoadoutClicked() {
+        // If there's a build on the clipboard, offer to import it directly
+        const clipboardContents = clipboard.readText();
+
+        if (clipboardContents) {
+            const clipboardLoadout = Loadouts.fromExportString(clipboardContents);
+
+            if (clipboardLoadout) {
+                const importClipboard = await Modal.confirm(`Found a build on your clipboard named "${clipboardLoadout.name}". Is this the build you want to import?`, "Build Found", "Yes", "No");
+
+                if (importClipboard) {
+                    this._tryImportLoadout(clipboardLoadout);
+                    return;
+                }
+            }
+        }
+
+        // Otherwise, present a modal to paste the build into
+        const template = await Templates.instantiateTemplate("assets/html/templates/pages/soldier-loadouts/loadout-selection-page.html", "template-import-modal");
+        const inputTextarea = template.querySelector("#import-string-input");
+        template.querySelector("#modal-close").addEventListener("click", Modal.close);
+        template.querySelector("#modal-import-action").addEventListener("click", () => {
+            if (!inputTextarea.value.trim()) {
+                return;
+            }
+
+            const loadout = Loadouts.fromExportString(inputTextarea.value.trim());
+
+            if (!loadout) {
+                template.querySelector("#string-invalid-message").classList.remove("hidden-collapse");
+                return;
+            }
+
+            Modal.close();
+            this._tryImportLoadout(loadout);
+        });
+
+        Modal.open(template, null, true);
+    }
+
+    async _openSelectedLoadout() {
+        const selectedLoadout = await this.selectedLoadout;
+
+        if (!selectedLoadout) {
+            return;
+        }
+
+        Loadouts.setActiveLoadout(selectedLoadout);
 
         PageManager.instance.loadPage("loadout-home-page", { } );
     }
@@ -132,11 +197,13 @@ class SoldierLoadoutSelectionPage extends AppPage {
         if (!selectedLoadoutElem) {
             this.#loadoutSummary.render(null);
             this.#deleteSelectedLoadoutButton.classList.add("disabled");
+            this.#exportSelectedLoadoutButton.classList.add("disabled");
             this.#openSelectedLoadoutButton.classList.add("disabled");
             return;
         }
 
         this.#deleteSelectedLoadoutButton.classList.remove("disabled");
+        this.#exportSelectedLoadoutButton.classList.remove("disabled");
         this.#openSelectedLoadoutButton.classList.remove("disabled");
 
         const loadoutId = selectedLoadoutElem.dataset.loadoutId;
@@ -178,6 +245,38 @@ class SoldierLoadoutSelectionPage extends AppPage {
 
             this.#loadoutSelect.append(listItem);
         }
+    }
+
+    async _tryImportLoadout(loadout) {
+        // Check if a loadout already exists with this ID
+        const existingLoadout = await Settings.getSoldierLoadoutById(loadout.id);
+
+        if (existingLoadout) {
+            const overwrite = await Modal.confirm(`This appears to be an update to an existing build called "${existingLoadout.name}". Do you want to overwrite that build?`, "Existing Build Found", "Overwrite", "Import as New");
+
+            if (!overwrite) {
+                // Give this loadout a new ID so it won't overwrite
+                loadout.id = uuidv4();
+            }
+        }
+
+        await Settings.saveSoldierLoadout(loadout);
+        await this._populateLoadouts();
+
+        // Select the newly imported loadout
+        const loadoutElem = document.querySelector(`li[data-loadout-id="${loadout.id}"]`);
+        this.#loadoutSelect.select(loadoutElem);
+    }
+
+    get selectedLoadout() {
+        const selectedLoadout = this.#loadoutSelect.selectedItem;
+
+        if (!selectedLoadout) {
+            return null;
+        }
+
+        const loadoutId = selectedLoadout.dataset.loadoutId;
+        return Settings.getSoldierLoadoutById(loadoutId);
     }
 }
 

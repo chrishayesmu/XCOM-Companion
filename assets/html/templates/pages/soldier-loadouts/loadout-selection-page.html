@@ -5,8 +5,16 @@
                 <h3>Saved Loadouts</h3>
                 <single-select-list id="saved-loadouts"></single-select-list>
                 <div id="selection-control-buttons-container">
-                    <button id="new-loadout" class="xcom">Create New</button>
-                    <button id="open-loadout" class="xcom disabled">Open Selected</button>
+                    <div class="button-group">
+                        <button id="new-loadout" class="xcom">Create New</button>
+                        <button id="import-loadout" class="xcom">Import Build</button>
+                    </div>
+
+                    <div class="button-group">
+                        <button id="open-loadout" class="xcom disabled">Open Selected</button>
+                        <button id="export-loadout" class="xcom disabled">Export Selected</button>
+                    </div>
+
                     <button id="delete-loadout" class="xcom disabled">Delete Selected</button>
                 </div>
             </div>
@@ -109,5 +117,40 @@
             </div>
         </div>
         -->
+    </div>
+</template>
+
+<template id="template-export-modal">
+    <div id="export-build-modal" class="standard-modal">
+        <h3>Export Build</h3>
+        <div>
+            Copy the string below, or <a id="copy-export-string">click here</a> to copy it to your clipboard directly.
+        </div>
+
+        <textarea id="export-string-display" readonly></textarea>
+
+        <div id="string-copied-message" class="hidden-collapse">String copied to clipboard!</div>
+
+        <div class="buttons-container">
+            <button id="modal-close" class="xcom">Close</button>
+        </div>
+    </div>
+</template>
+
+<template id="template-import-modal">
+    <div id="import-build-modal" class="standard-modal">
+        <h3>Import Build</h3>
+        <div>
+            Paste a build string below.
+        </div>
+
+        <textarea id="import-string-input"></textarea>
+
+        <div id="string-invalid-message" class="hidden-collapse">This build string is not valid.</div>
+
+        <div class="buttons-container">
+            <button id="modal-import-action" class="xcom">Import</button>
+            <button id="modal-close" class="xcom">Close</button>
+        </div>
     </div>
 </template>

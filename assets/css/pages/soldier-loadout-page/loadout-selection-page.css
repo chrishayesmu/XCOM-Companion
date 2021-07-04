@@ -64,16 +64,23 @@
 #loadout-selection-controls #selection-control-buttons-container {
     display: flex;
     flex-flow: row nowrap;
+    gap: calc(2 * var(--intra-group-control-gap));
+}
 
+#loadout-selection-controls #selection-control-buttons-container .button-group {
+    display: flex;
+    flex-flow: column nowrap;
     gap: var(--intra-group-control-gap);
 }
 
-#loadout-selection-controls #selection-control-buttons-container button {
+#loadout-selection-controls #selection-control-buttons-container button,
+#loadout-selection-controls #selection-control-buttons-container .button-group {
     flex-grow: 1;
     max-width: 150px;
 }
 
-#loadout-selection-controls #selection-control-buttons-container button:last-of-type {
+#loadout-selection-controls #selection-control-buttons-container #delete-loadout {
+    height: 50%;
     margin-left: auto;
 }
 
@@ -125,4 +132,32 @@
 #class-selection-modal .class-selection-grid .class-selection-grid-entry img {
     margin-bottom: 2px;
     width: 64px;
+}
+
+/* export/import modals */
+
+#export-build-modal #copy-export-string {
+    color: var(--color-subtle);
+}
+
+#export-build-modal #export-string-display,
+#import-build-modal #import-string-input {
+    background-color: var(--color-bg-subtle);
+    color: var(--color-subtle);
+    display: block;
+    height: 200px;
+    max-width: 800px;
+    min-width: 400px;
+    resize: none;
+    word-wrap: break-word;
+}
+
+#export-build-modal #string-copied-message {
+    color: var(--color-green);
+    text-align: center;
+}
+
+#import-build-modal #string-invalid-message {
+    color: var(--color-red);
+    text-align: center;
 }

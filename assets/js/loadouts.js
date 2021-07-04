@@ -1,3 +1,5 @@
+const lzutf8 = require('lzutf8');
+
 import * as DataHelper from "./data-helper.js";
 
 let activeLoadout = null;
@@ -271,4 +273,91 @@ function setActiveLoadout(loadout) {
     activeLoadout = loadout;
 }
 
-export { calculateStatsForPrimary, getActiveLoadout, getLoadoutOfficerRank, getLoadoutRank, setActiveLoadout };
+function fromExportString(str) {
+    let decompressed = null, jsonObj = null;
+
+    try {
+        decompressed = lzutf8.decompress(str, { inputEncoding: "Base64", outputEncoding: "String" });
+        jsonObj = JSON.parse(decompressed);
+    }
+    catch (e) {
+        return null;
+    }
+
+    const loadout = {
+        classId: jsonObj.c,
+        equipment: [],
+        geneMods: [],
+        id: jsonObj.id,
+        name: jsonObj.n,
+        notes: jsonObj.ns || "",
+        perks: [],
+        psiAbilities: [],
+        officerAbilities: []
+    };
+
+    const populateArray = function(destinationArray, inputArray, leadingSubstring) {
+        if (!inputArray) {
+            return;
+        }
+
+        for (const shortId of inputArray) {
+            const longId = leadingSubstring + shortId;
+            destinationArray.push(longId);
+        }
+    }
+
+    populateArray(loadout.equipment, jsonObj.e, "item_");
+    populateArray(loadout.geneMods, jsonObj.g, "gene_mod_");
+    populateArray(loadout.perks, jsonObj.p, "perk_");
+    populateArray(loadout.psiAbilities, jsonObj.ps, "psi_");
+    populateArray(loadout.officerAbilities, jsonObj.o, "perk_");
+
+    return loadout;
+}
+
+function toExportString(loadout) {
+    const exportObj = {
+        c: loadout.classId,
+        n: loadout.name,
+        id: loadout.id
+    };
+
+    if (loadout.notes) {
+        exportObj.ns = loadout.notes.trim();
+    }
+
+    const copyArrayIfPopulated = function(array, outputKey, leadingSubstring) {
+        if (!array || !array.length) {
+            return;
+        }
+
+        exportObj[outputKey] = [];
+
+        for (const id of array) {
+            const shortId = id.substring(leadingSubstring.length);
+            exportObj[outputKey].push(shortId);
+        }
+    }
+
+    copyArrayIfPopulated(loadout.equipment, "e", "item_");
+    copyArrayIfPopulated(loadout.geneMods, "g", "gene_mod_");
+    copyArrayIfPopulated(loadout.perks, "p", "perk_");
+    copyArrayIfPopulated(loadout.psiAbilities, "ps", "psi_");
+    copyArrayIfPopulated(loadout.officerAbilities, "o", "perk_");
+
+    const jsonString = JSON.stringify(exportObj);
+    const compressed = lzutf8.compress(jsonString, { outputEncoding: "Base64" });
+
+    return compressed;
+}
+
+export {
+    calculateStatsForPrimary,
+    fromExportString,
+    getActiveLoadout,
+    getLoadoutOfficerRank,
+    getLoadoutRank,
+    setActiveLoadout,
+    toExportString
+};
