@@ -16,7 +16,7 @@ perk-icon[hideName] img {
     margin: auto;
 }
 
-perk-icon[selectable] {
+perk-icon[selectable]:not([disabled]) {
     cursor: pointer;
 }
 
@@ -49,6 +49,11 @@ perk-icon img {
     width: 50px;
 }
 
+perk-icon[disabled] {
+    filter: brightness(0.5);
+}
+
+perk-icon[disabled] img,
 perk-icon[inactive] img {
     background-color: transparent;
 }
@@ -57,7 +62,7 @@ perk-icon[selected] img {
     background-color: var(--color);
 }
 
-perk-icon[perkId^=gene][selectable]:hover img,
+perk-icon[perkId^=gene][selectable]:not([disabled]):hover img,
 perk-icon[perkId^=gene][selected] img {
     background-color: var(--color-meld);
 }
@@ -70,16 +75,16 @@ perk-icon[perkId^=psi][inactive] img {
     background-color: var(--color-psi-subtle);
 }
 
-perk-icon[perkId^=psi][selectable]:hover img,
+perk-icon[perkId^=psi][selectable]:not([disabled]):hover img,
 perk-icon[perkId^=psi][selected] img {
     background-color: var(--color-psi-strong);
 }
 
-perk-icon[selectable]:hover {
+perk-icon[selectable]:not([disabled]):hover {
     background-color: var(--color-bg-subtle);
 }
 
-perk-icon[selectable]:hover img,
+perk-icon[selectable]:not([disabled]):hover img,
 perk-icon[selected] img {
     background-color: var(--color-strong);
 }

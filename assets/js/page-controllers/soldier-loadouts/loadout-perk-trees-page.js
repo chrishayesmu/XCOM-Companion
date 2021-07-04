@@ -159,6 +159,13 @@ class SoldierLoadoutPerkTreesPage extends AppPage {
     async _loadGeneModTree() {
         const template = await Templates.instantiateTemplate("assets/html/templates/pages/soldier-loadouts/loadout-perk-trees-page.html", "template-gene-mods-tree");
 
+        // Psionic soldiers can't take Neural Damping so disable the mod
+        if (this.#loadout.psiAbilities.length > 0) {
+            const neuralDampingIcon = template.querySelector("perk-icon[perkId='gene_mod_neural_damping']");
+            neuralDampingIcon.setAttribute("data-tooltip-text", "Neural Damping is unavailable to psionic soldiers.");
+            neuralDampingIcon.setAttribute("disabled", "");
+        }
+
         return template;
     }
 
@@ -192,6 +199,11 @@ class SoldierLoadoutPerkTreesPage extends AppPage {
                 // Perks before the last can be swapped, but not deselected
                 return;
             }
+        }
+
+        // Psionic soldiers can't take Neural Damping
+        if (event.target.perkId === "gene_mod_neural_damping" && this.#loadout.psiAbilities.length > 0) {
+            return;
         }
 
         for (const icon of iconsInRow) {
