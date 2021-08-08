@@ -96,6 +96,8 @@ function _addItemStats(item, currentStats) {
 }
 
 function calculateStatsForPrimary(loadout) {
+    const isMec = loadout.classId.startsWith("mec");
+
     // Base stats for a rookie with Strict Screening on
     const stats = {
         aim: {
@@ -121,7 +123,7 @@ function calculateStatsForPrimary(loadout) {
         },
         fatigue_extra_time_hours: 0,
         hp: {
-            base: 4,
+            base: isMec ? 8 : 4,
             fromItems: 0
         },
         mobility: {
@@ -159,6 +161,9 @@ function calculateStatsForPrimary(loadout) {
             stats.will.base += statBonuses.will || 0;
         }
 
+        if (perk === "perk_automated_threat_assessment") {
+            stats.damage_reduction.base += 0.5;
+        }
         if (perk === "perk_sharpshooter") {
             stats.crit_chance.base += 10;
         }

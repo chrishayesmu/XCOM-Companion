@@ -95,26 +95,47 @@ class SoldierLoadoutEquipmentPage extends AppPage {
 
         this.#equipmentCategoriesContainer.innerHTML = "";
 
-        if (soldierIsInfantry) {
-            const slots = soldierClass.loadoutSlots;
+        const slots = soldierIsInfantry ? soldierClass.loadoutSlots : this._getMecLoadoutSlots();
 
-            for (let i = 0; i < slots.length; i++) {
-                const slot = slots[i];
-                const currentItemId = this.#loadout.equipment[i];
-                const currentItem = DataHelper.items[currentItemId];
+        for (let i = 0; i < slots.length; i++) {
+            const slot = slots[i];
+            const currentItemId = this.#loadout.equipment[i];
+            const currentItem = DataHelper.items[currentItemId];
 
-                const div = document.createElement("div");
-                div.classList.add("item-container");
-                div.setAttribute("data-item-id", currentItemId);
-                div.setAttribute("data-role", slot.role);
-                div.setAttribute("data-row-index", i);
-                div.addEventListener("click", this._onEquipmentCategoryClicked.bind(this));
+            const div = document.createElement("div");
+            div.classList.add("item-container");
+            div.setAttribute("data-item-id", currentItemId);
+            div.setAttribute("data-role", slot.role);
+            div.setAttribute("data-row-index", i);
+            div.addEventListener("click", this._onEquipmentCategoryClicked.bind(this));
 
-                const includeRemoveButton = slot.role === "loadout_equipment";
-                this._appendItemElements(div, currentItem, includeRemoveButton);
-                this.#equipmentCategoriesContainer.append(div);
-            }
+            const includeRemoveButton = slot.role === "loadout_equipment" || (!soldierIsInfantry && slot.role === "loadout_secondary");
+            this._appendItemElements(div, currentItem, includeRemoveButton);
+            this.#equipmentCategoriesContainer.append(div);
         }
+    }
+
+    _getMecLoadoutSlots() {
+        const loadoutSlots = [
+            {
+                "role": "loadout_mec_exoskeleton"
+            },
+            {
+                "role": "loadout_primary"
+            }
+        ];
+
+        const mecSuit = DataHelper.items[this.#loadout.equipment[0]];
+
+        for (var i = 0; i < mecSuit.type_specific_data.num_secondary_weapons; i++) {
+            loadoutSlots.push({ "role": "loadout_secondary" });
+        }
+
+        for (var i = 0; i < mecSuit.type_specific_data.num_equipment_slots; i++) {
+            loadoutSlots.push({ "role": "loadout_equipment" });
+        }
+
+        return loadoutSlots;
     }
 
     _onEquipmentCategoryClicked(event) {
@@ -183,11 +204,15 @@ class SoldierLoadoutEquipmentPage extends AppPage {
     _onEquipmentChoiceClicked(event) {
         const itemId = event.target.dataset.itemId;
         const item = DataHelper.items[itemId];
-        this._appendItemElements(this.#selectedEquipmentCategory, item, this.#selectedEquipmentCategory.dataset.role === "loadout_equipment");
+        const invSlot = +this.#selectedEquipmentCategory.dataset.rowIndex;
+        const previousItem = DataHelper.items[this.#loadout.equipment[invSlot]];
+
+        const soldierIsMec = this.#loadout.classId.startsWith("mec");
+        const includeRemoveButton = this.#selectedEquipmentCategory.dataset.role === "loadout_equipment" || (soldierIsMec && this.#selectedEquipmentCategory.dataset.role === "loadout_secondary");
+        this._appendItemElements(this.#selectedEquipmentCategory, item, includeRemoveButton);
 
         this.#selectedEquipmentCategory.setAttribute("data-item-id", itemId);
 
-        const invSlot = +this.#selectedEquipmentCategory.dataset.rowIndex;
         this.#loadout.equipment[invSlot] = itemId;
 
         if (this.#selectedEquipmentChoice) {
@@ -196,6 +221,44 @@ class SoldierLoadoutEquipmentPage extends AppPage {
 
         event.target.classList.add("selected");
         this.#selectedEquipmentChoice = event.target;
+
+        // When changing exoskeletons, the number of loadout slots can change
+        if (item.type === "loadout_mec_exoskeleton") {
+            const changeInSecondaries = item.type_specific_data.num_secondary_weapons - previousItem.type_specific_data.num_secondary_weapons;
+            const changeInEquipment = item.type_specific_data.num_equipment_slots - previousItem.type_specific_data.num_equipment_slots;
+
+            if (changeInSecondaries > 0) {
+                // Adding secondary weapon slots; insert at the end of previous secondary slots
+                const startingIndex = 2 + previousItem.type_specific_data.num_secondary_weapons;
+                for (var i = 0; i < changeInSecondaries; i++) {
+                    this.#loadout.equipment.splice(startingIndex, 0, "");
+                }
+            }
+            else if (changeInSecondaries < 0) {
+                // Removing secondary weapon slots; remove from the end
+                const startingIndex = 2 + previousItem.type_specific_data.num_secondary_weapons - 1;
+                for (var i = 0; i < Math.abs(changeInSecondaries); i++) {
+                    this.#loadout.equipment.splice(startingIndex - i, 1);
+                }
+            }
+
+            if (changeInEquipment > 0) {
+                // Adding equipment slots; insert at the end of inventory
+                const startingIndex = this.#loadout.equipment.length;
+                for (var i = 0; i < changeInEquipment; i++) {
+                    this.#loadout.equipment.splice(startingIndex, 0, "");
+                }
+            }
+            else if (changeInEquipment < 0) {
+                // Removing equipment slots; remove from the end
+                const startingIndex = this.#loadout.equipment.length - 1;
+                for (var i = 0; i < Math.abs(changeInEquipment); i++) {
+                    this.#loadout.equipment.splice(startingIndex - i, 1);
+                }
+            }
+
+            this._configureLoadoutSlots();
+        }
 
         // Re-render summary whenever equipment changes
         this.#loadoutSummary.render(this.#loadout);

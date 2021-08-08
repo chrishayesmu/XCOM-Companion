@@ -491,6 +491,11 @@
                 "icon": "assets/img/perk-icons/robotic.png",
                 "description": "Robotic/mechanized units are immune to psionic, acidic, and fire attacks. They are also immune to stun, panic, strangle, and implant."
             },
+            "perk_robotic_mec": {
+                "name": "Partially Robotic",
+                "icon": "assets/img/perk-icons/robotic.png",
+                "description": "MEC troopers are immune to fire, strangulation, and implant, and take no mobility penalty nor damage from acid. Unlike fully robotic units, they are still vulnerable to psionic attacks."
+            },
             "perk_run_and_gun": {
                 "name": "Run & Gun",
                 "icon": "assets/img/perk-icons/run_and_gun.png",

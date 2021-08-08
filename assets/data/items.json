@@ -1022,7 +1022,7 @@
             "type": "loadout_mec_exoskeleton",
             "type_specific_data": {
                 "usable_by_infantry": false,
-                "usable_by_mec": false,
+                "usable_by_mec": true,
                 "usable_by_shiv": false,
 
                 "negates_acid": false,
@@ -1031,7 +1031,7 @@
 
                 "damage_reduction": 0,
                 "defense": 0,
-                "extra_conditioning_bonus_hp": 0,
+                "extra_conditioning_bonus_hp": 1,
                 "hp": 0,
                 "mobility": 0,
                 "num_secondary_weapons": 0,
@@ -2022,6 +2022,7 @@
                 "usable_by_infantry": false,
                 "usable_by_mec": true,
                 "usable_by_shiv": false,
+                "can_equip_multiple": true,
 
                 "category": "mec",
 
@@ -2611,6 +2612,7 @@
                 "usable_by_infantry": false,
                 "usable_by_mec": true,
                 "usable_by_shiv": false,
+                "can_equip_multiple": true,
 
                 "base_ammo": 2,
                 "effect_radius": 6.4,
@@ -3250,6 +3252,7 @@
                 "usable_by_infantry": false,
                 "usable_by_mec": true,
                 "usable_by_shiv": false,
+                "can_equip_multiple": true,
 
                 "base_ammo": 0,
                 "mobility": -1,
@@ -4032,16 +4035,16 @@
             "research_prerequisites": [ "research_heavy_combat_exoskeletons" ]
         },
         "item_mec_6": {
-            "usable_by_infantry": false,
-            "usable_by_mec": true,
-            "usable_by_shiv": false,
-
             "name": "MEC-6 Vanguard",
             "description": "The MEC-6 Vanguard prioritizes mobility to the extreme, but it cannot survive as many hits as our other designs. It is equipped with Jet Boot Modules.",
             "tactical_text": "<ul><li>MECs cannot use cover and their size means reaction fire against them is more accurate</li><li>All MECs receive the <a data-page-on-click='perk-tree-display-page' data-pagearg-display-mode='single-perk' data-pagearg-item-id='perk_one_for_all'>One For All</a> perk, providing bonus Damage Reduction and cover for allies when activated</li><li>All MECs receive the <a data-page-on-click='perk-tree-display-page' data-pagearg-display-mode='single-perk' data-pagearg-item-id='perk_combined_arms'>Combined Arms</a> perk, nullifying one point of enemy Damage Reduction</li></ul>",
             "type": "loadout_mec_exoskeleton",
             "sell_value": 240,
             "type_specific_data": {
+                "usable_by_infantry": false,
+                "usable_by_mec": true,
+                "usable_by_shiv": false,
+
                 "grants_perks": [ "perk_jetboot_module" ],
                 "negates_acid": true,
                 "negates_fire": true,
@@ -5077,6 +5080,7 @@
                 "usable_by_infantry": false,
                 "usable_by_mec": true,
                 "usable_by_shiv": false,
+                "can_equip_multiple": true,
 
                 "base_ammo": 3,
                 "effect_radius": 4,
@@ -5814,6 +5818,7 @@
                 "usable_by_infantry": false,
                 "usable_by_mec": true,
                 "usable_by_shiv": false,
+                "can_equip_multiple": true,
 
                 "base_ammo": 1,
                 "effect_radius": 5,

@@ -710,6 +710,7 @@
             "id": "mec_class_archer",
             "name": "Archer",
             "icon": "assets/img/soldier-class-icons/mec-archer.png",
+            "default_loadout": [ "item_mec_1", "item_minigun", "", "item_armor_piercing_ammo", "item_laser_sight" ],
             "perks": {
                 "0": [ "perk_bombard" ],
                 "1": [ "perk_heat_warheads", "perk_automated_threat_assessment", "perk_platform_stability" ],
@@ -779,6 +780,7 @@
             "id": "mec_class_goliath",
             "name": "Goliath",
             "icon": "assets/img/soldier-class-icons/mec-goliath.png",
+            "default_loadout": [ "item_mec_1", "item_minigun", "", "item_armor_piercing_ammo", "item_laser_sight" ],
             "perks": {
                 "0": [ "perk_absorption_fields" ],
                 "1": [ "perk_steadfast", "perk_reactive_targeting_sensors", "perk_flush" ],
@@ -853,6 +855,7 @@
             "id": "mec_class_goliath",
             "name": "Goliath",
             "icon": "assets/img/soldier-class-icons/mec-goliath.png",
+            "default_loadout": [ "item_mec_1", "item_minigun", "", "item_armor_piercing_ammo", "item_laser_sight" ],
             "perks": {
                 "0": [ "perk_absorption_fields" ],
                 "1": [ "perk_steadfast", "perk_reactive_targeting_sensors", "perk_flush" ],
@@ -927,6 +930,7 @@
             "id": "mec_class_guardian",
             "name": "Guardian",
             "icon": "assets/img/soldier-class-icons/mec-guardian.png",
+            "default_loadout": [ "item_mec_1", "item_minigun" ],
             "perks": {
                 "0": [ "perk_opportunist" ],
                 "1": [ "perk_field_medic", "perk_steadfast", "perk_ranger" ],
@@ -997,6 +1001,7 @@
             "id": "mec_class_jaeger",
             "name": "Jaeger",
             "icon": "assets/img/soldier-class-icons/mec-jaeger.png",
+            "default_loadout": [ "item_mec_1", "item_minigun", "", "item_armor_piercing_ammo", "item_laser_sight" ],
             "perks": {
                 "0": [ "perk_in_the_zone" ],
                 "1": [ "perk_damn_good_ground", "perk_platform_stability", "perk_sharpshooter" ],
@@ -1065,6 +1070,7 @@
             "id": "mec_class_marauder",
             "name": "Marauder",
             "icon": "assets/img/soldier-class-icons/mec-marauder.png",
+            "default_loadout": [ "item_mec_1", "item_minigun", "", "item_armor_piercing_ammo", "item_laser_sight" ],
             "perks": {
                 "0": [ "perk_close_encounters" ],
                 "1": [ "perk_aggression", "perk_steadfast", "perk_shock_absorbent_armor" ],
@@ -1140,6 +1146,7 @@
             "id": "mec_class_pathfinder",
             "name": "Pathfinder",
             "icon": "assets/img/soldier-class-icons/mec-pathfinder.png",
+            "default_loadout": [ "item_mec_1", "item_minigun", "", "item_armor_piercing_ammo", "item_laser_sight" ],
             "perks": {
                 "0": [ "perk_hit_and_run" ],
                 "1": [ "perk_deadeye", "perk_advanced_fire_control", "perk_lone_wolf" ],
@@ -1202,6 +1209,7 @@
             "id": "mec_class_shogun",
             "name": "Shogun",
             "icon": "assets/img/soldier-class-icons/mec-shogun.png",
+            "default_loadout": [ "item_mec_1", "item_minigun", "", "item_armor_piercing_ammo", "item_laser_sight" ],
             "perks": {
                 "0": [ "perk_collateral_damage" ],
                 "1": [ "perk_packmaster", "perk_damage_control", "perk_heat_ammo" ],
@@ -1261,6 +1269,7 @@
             "id": "mec_class_valkyrie",
             "name": "Valkyrie",
             "icon": "assets/img/soldier-class-icons/mec-valkyrie.png",
+            "default_loadout": [ "item_mec_1", "item_minigun", "", "item_armor_piercing_ammo", "item_laser_sight" ],
             "perks": {
                 "0": [ "perk_light_em_up" ],
                 "1": [ "perk_ranger", "perk_automated_threat_assessment", "perk_flush" ],

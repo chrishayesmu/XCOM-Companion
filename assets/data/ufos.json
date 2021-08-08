@@ -18,7 +18,6 @@
             "size": "large",
             "resource_value": 18,
             "equipment": {
-                "item_alien_stasis_tank": 6,
                 "item_alien_surgery": 2,
                 "item_ufo_power_source": 2,
                 "item_ufo_flight_computer": 4

@@ -26,12 +26,20 @@ class LoadoutSummary extends HTMLElement {
         this._populatePerkArea(template.querySelector("#loadout-summary-gene-mods"), this.#loadout.geneMods, "None");
         this._populatePerkArea(template.querySelector("#loadout-summary-officer-abilities"), this.#loadout.officerAbilities, "None");
         this._populatePerkArea(template.querySelector("#loadout-summary-psi-abilities"), this.#loadout.psiAbilities, "None");
+
         this._populateBaseOfficerAbilities(template); // has to be after populating the perk area
         this._populateHeader(template);
         this._populateStats(template);
         this._populateDamageHelpText(template);
 
         this._addPerksFromEquipment(template);
+
+        if (this.#loadout.classId.startsWith("mec")) {
+            const perksContainer = template.querySelector("#loadout-summary-perks");
+            perksContainer.append(this._createPerkIcon("perk_hardened"));
+            perksContainer.append(this._createPerkIcon("perk_robotic_mec"));
+            perksContainer.append(this._createPerkIcon("perk_one_for_all"));
+        }
 
         this.replaceChildren(template);
     }

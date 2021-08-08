@@ -77,10 +77,6 @@ class SoldierLoadoutSelectionPage extends AppPage {
     _onClassSelectedForNewLoadout(event) {
         const classId = event.target.dataset.classId;
 
-        if (classId.startsWith("mec")) {
-            return;
-        }
-
         Modal.close();
 
         const soldierClass = DataHelper.soldierClasses[classId];

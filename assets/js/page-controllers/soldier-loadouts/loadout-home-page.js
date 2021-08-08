@@ -43,6 +43,12 @@ class SoldierLoadoutHomePage extends AppPage {
         template.querySelector("#loadout-name-save-button").addEventListener("click", this._onSaveNameClicked.bind(this));
         template.querySelector("#loadout-save-and-close").addEventListener("click", this._onSaveLoadoutClicked.bind(this));
 
+        if (this.#loadout.classId.startsWith("mec")) {
+            template.querySelector("#loadout-edit-gene-mods").classList.add("hidden-collapse");
+            officerTrainingButton.classList.add("hidden-collapse");
+            psiTrainingButton.classList.add("hidden-collapse");
+        }
+
         // Officer training: only if not psi trained
         if (this.#loadout.psiAbilities.length > 0) {
             officerTrainingButton.classList.add("disabled");
