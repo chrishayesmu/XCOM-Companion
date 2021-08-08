@@ -35,10 +35,16 @@ class LoadoutSummary extends HTMLElement {
         this._addPerksFromEquipment(template);
 
         if (this.#loadout.classId.startsWith("mec")) {
+            // Add perks that all MECs get
             const perksContainer = template.querySelector("#loadout-summary-perks");
             perksContainer.append(this._createPerkIcon("perk_hardened"));
             perksContainer.append(this._createPerkIcon("perk_robotic_mec"));
             perksContainer.append(this._createPerkIcon("perk_one_for_all"));
+
+            // Hide areas that are irrelevant to MECs
+            template.querySelector("#loadout-summary-gene-mods").parentNode.classList.add("hidden-collapse");
+            template.querySelector("#loadout-summary-officer-abilities").parentNode.classList.add("hidden-collapse");
+            template.querySelector("#loadout-summary-psi-abilities").parentNode.classList.add("hidden-collapse");
         }
 
         this.replaceChildren(template);

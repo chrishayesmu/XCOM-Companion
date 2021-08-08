@@ -307,7 +307,7 @@ function fromExportString(str) {
         }
 
         for (const shortId of inputArray) {
-            const longId = leadingSubstring + shortId;
+            const longId = shortId ? leadingSubstring + shortId : "";
             destinationArray.push(longId);
         }
     }
@@ -339,7 +339,9 @@ function toExportString(loadout) {
 
         exportObj[outputKey] = [];
 
-        for (const id of array) {
+        for (var id of array) {
+            id = id || "";
+
             const shortId = id.substring(leadingSubstring.length);
             exportObj[outputKey].push(shortId);
         }

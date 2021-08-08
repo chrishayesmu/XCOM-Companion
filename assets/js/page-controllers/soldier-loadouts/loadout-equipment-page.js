@@ -281,7 +281,7 @@ class SoldierLoadoutEquipmentPage extends AppPage {
         const equipmentCategory = event.target.parentElement;
         const rowIndex = equipmentCategory.dataset.rowIndex;
 
-        this.#loadout.equipment[rowIndex] = null;
+        this.#loadout.equipment[rowIndex] = "";
         this.#loadoutSummary.render(this.#loadout);
 
         // Need to null out this field or else the click might be a no-op
