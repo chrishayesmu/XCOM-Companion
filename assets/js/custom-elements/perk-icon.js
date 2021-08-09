@@ -1,4 +1,5 @@
 import * as DataHelper from "../data-helper.js";
+import * as Widgets from "../widgets.js";
 
 const perkTypes = {
     GeneMod: "gene_mod",
@@ -12,8 +13,9 @@ class PerkIcon extends HTMLElement {
         return [ "classid", "notooltip", "perkid", "selectable" ];
     }
 
-    #image = null;
     #descriptionElement = null;
+    #geneModCostsElement = null;
+    #image = null;
     #nameElement = null;
     #perkStatsElement = null;
 
@@ -27,11 +29,15 @@ class PerkIcon extends HTMLElement {
         this.#descriptionElement = document.createElement("div");
         this.#descriptionElement.classList.add("perk-icon-description");
 
+        this.#geneModCostsElement = document.createElement("div");
+        this.#geneModCostsElement.classList.add("perk-icon-gene-mod-costs");
+
         this.#perkStatsElement = document.createElement("div");
         this.#perkStatsElement.classList.add("perk-icon-stats");
 
         this.append(this.#image);
         this.append(this.#nameElement);
+        this.append(this.#geneModCostsElement);
         this.append(this.#perkStatsElement);
         this.append(this.#descriptionElement);
 
@@ -89,6 +95,19 @@ class PerkIcon extends HTMLElement {
             const will = (statBonuses && statBonuses.will) || 0;
 
             this.#perkStatsElement.textContent = "Aim: " + aim + ", Will: " + will + ", Mobility: " + mobility;
+        }
+
+        if (this.perkId.startsWith("gene_mod")) {
+            const geneMod = DataHelper.geneMods[this.perkId];
+
+            if (geneMod.research_prerequisite.id === "research_xenogenetics") {
+                this.#geneModCostsElement.innerHTML = "No prerequisite.<br/>Costs ";
+            }
+            else {
+                this.#geneModCostsElement.innerHTML = `Requires ${geneMod.research_prerequisite.name}.<br/>Costs `;
+            }
+
+            this.#geneModCostsElement.innerHTML += `<img src="assets/img/misc-icons/meld.png" /> ${geneMod.cost_meld}, §${geneMod.cost_money}, <img src="assets/img/misc-icons/time.png" /> ${geneMod.cost_time_days} days`;
         }
 
         if (this.noTooltip) {

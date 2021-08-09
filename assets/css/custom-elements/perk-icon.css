@@ -11,8 +11,8 @@ perk-icon:not([hideName]):not([hideDescription]) {
     padding: 5px 8px;
 }
 
-perk-icon[hideDescription] img,
-perk-icon[hideName] img {
+perk-icon[hideDescription] > img,
+perk-icon[hideName] > img {
     margin: auto;
 }
 
@@ -32,6 +32,18 @@ perk-icon .perk-icon-description {
 perk-icon .perk-icon-name {
     font-size: 0.85em;
     text-align: center;
+}
+
+perk-icon .perk-icon-gene-mod-costs {
+    font-size: 0.9em;
+    margin: 8px 0;
+    text-align: center;
+}
+
+perk-icon .perk-icon-gene-mod-costs img {
+    background-color: transparent;
+    margin-bottom: -3px;
+    width: 18px;
 }
 
 perk-icon .perk-icon-stats {
@@ -54,7 +66,7 @@ perk-icon[hideName] .perk-icon-stats {
     display: none;
 }
 
-perk-icon img {
+perk-icon > img {
     background-color: var(--color-strong);
     margin: 0 auto;
     width: 50px;
@@ -64,30 +76,34 @@ perk-icon[disabled] {
     filter: brightness(0.5);
 }
 
-perk-icon[disabled] img,
-perk-icon[inactive] img {
+perk-icon[disabled] > img,
+perk-icon[inactive] > img {
     background-color: transparent;
 }
 
-perk-icon[selected] img {
+perk-icon[selected] > img {
     background-color: var(--color);
 }
 
-perk-icon[perkId^=gene][selectable]:not([disabled]):hover img,
-perk-icon[perkId^=gene][selected] img {
+perk-icon:not([perkId^=gene]) .perk-icon-gene-mod-costs {
+    display: none;
+}
+
+perk-icon[perkId^=gene][selectable]:not([disabled]):hover > img,
+perk-icon[perkId^=gene][selected] > img {
     background-color: var(--color-meld);
 }
 
-perk-icon[perkId^=psi] img {
+perk-icon[perkId^=psi] > img {
     background-color: var(--color-psi);
 }
 
-perk-icon[perkId^=psi][inactive] img {
+perk-icon[perkId^=psi][inactive] > img {
     background-color: var(--color-psi-subtle);
 }
 
-perk-icon[perkId^=psi][selectable]:not([disabled]):hover img,
-perk-icon[perkId^=psi][selected] img {
+perk-icon[perkId^=psi][selectable]:not([disabled]):hover > img,
+perk-icon[perkId^=psi][selected] > img {
     background-color: var(--color-psi-strong);
 }
 
@@ -95,7 +111,7 @@ perk-icon[selectable]:not([disabled]):hover {
     background-color: var(--color-bg-subtle);
 }
 
-perk-icon[selectable]:not([disabled]):hover img,
-perk-icon[selected] img {
+perk-icon[selectable]:not([disabled]):hover > img,
+perk-icon[selected] > img {
     background-color: var(--color-strong);
 }
