@@ -1,6 +1,9 @@
 loadout-summary {
     display: block;
     height: fit-content;
+
+    position: sticky;
+    top: var(--page-content-padding-vert);
 }
 
 loadout-summary[singleColumn] {
