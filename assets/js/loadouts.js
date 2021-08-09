@@ -133,7 +133,8 @@ function calculateStatsForPrimary(loadout) {
         will: {
             base: 30,
             fromItems: 0
-        }
+        },
+        maxPossibleWill: 30
     };
 
     const soldierClass = DataHelper.soldierClasses[loadout.classId];
@@ -149,6 +150,7 @@ function calculateStatsForPrimary(loadout) {
         stats.aim.base += statsProgression.aim || 0;
         stats.hp.base += statsProgression.hp || 0;
         stats.will.base += statsProgression.will || 0;
+        stats.maxPossibleWill += (statsProgression.will || 0) + 1; // each rank up has a chance to grant +1 will
     }
 
     // Account for stats granted by perks, which are only given if the perk is chosen
@@ -159,6 +161,7 @@ function calculateStatsForPrimary(loadout) {
             stats.aim.base += statBonuses.aim || 0;
             stats.mobility.base += statBonuses.mobility || 0;
             stats.will.base += statBonuses.will || 0;
+            stats.maxPossibleWill += statBonuses.will || 0;
         }
 
         if (perk === "perk_automated_threat_assessment") {
@@ -181,10 +184,14 @@ function calculateStatsForPrimary(loadout) {
         }
     }
 
-    // Psionics never adds raw stats, but does add fatigue
+    // Account for fatigue from psi abilities
     if (psionicsRank >= 0) {
         stats.fatigue_extra_time_hours += psiFatigueByRank[psionicsRank];
     }
+
+    // Each psi rank adds between 1 and 6 will (chosen randomly)
+    stats.will.base       += 1 * loadout.psiAbilities.length;
+    stats.maxPossibleWill += 6 * loadout.psiAbilities.length;
 
     // #region Add stats from equipped items
     const equippedItems = loadout.equipment.filter(itemId => !!itemId).map(itemId => DataHelper.items[itemId]);
@@ -252,6 +259,7 @@ function calculateStatsForPrimary(loadout) {
     if (loadout.officerAbilities.includes("perk_esprit_de_corps")) {
         stats.defense.base += 5;
         stats.will.base += 5;
+        stats.maxPossibleWill += 5;
     }
 
     if (loadout.officerAbilities.includes("perk_stay_frosty")) {

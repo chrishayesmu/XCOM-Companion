@@ -8,7 +8,7 @@ loadout-summary {
 
 loadout-summary[singleColumn] {
     flex-shrink: 0;
-    width: 450px;
+    width: 470px;
 }
 
 /* header */
@@ -141,6 +141,11 @@ loadout-summary #loadout-summary-body #loadout-summary-stats .stat-block {
     gap: 5px;
 
     font-size: 16px;
+}
+
+loadout-summary #loadout-summary-body #loadout-summary-stats .stat-block help-icon {
+    margin-left: 1px;
+    margin-top: -1px;
 }
 
 loadout-summary #loadout-summary-body #loadout-summary-stats .stat-from-items-bonus {

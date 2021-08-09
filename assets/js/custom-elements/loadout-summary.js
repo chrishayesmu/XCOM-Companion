@@ -31,6 +31,7 @@ class LoadoutSummary extends HTMLElement {
         this._populateHeader(template);
         this._populateStats(template);
         this._populateDamageHelpText(template);
+        this._populateWillHelpText(template);
 
         this._addPerksFromEquipment(template);
 
@@ -203,6 +204,16 @@ class LoadoutSummary extends HTMLElement {
         // Fatigue time can't be affected by items, and damage is inherently from items
         template.querySelector("#stat-additional-fatigue").textContent = stats.fatigue_extra_time_hours;
         template.querySelector("#stat-damage").textContent = stats.damage;
+    }
+
+    _populateWillHelpText(template) {
+        const maxWill = this.#stats.maxPossibleWill;
+        const willHelp = template.querySelector(".stat-block #stat-will + help-icon");
+
+        willHelp.innerHTML = `The base will shown here (${this.#stats.will.base}) is the minimum possible value. At each soldier rank up, the soldier may randomly receive +1 will, even without Hidden Potential turned on.
+                              Additionally, each rank of psi training gives between 1 and 6 bonus will, chosen randomly.
+                              <br/><br/>
+                              Based on this, the maximum will this character could have is <strong>${maxWill}</strong>, not including any equipment bonuses.`;
     }
 }
 
