@@ -34,12 +34,23 @@ perk-icon .perk-icon-name {
     text-align: center;
 }
 
+perk-icon .perk-icon-stats {
+    font-size: 0.9em;
+    margin: 2px 0 6px 0;
+}
+
 perk-icon[hideDesc] .perk-icon-description,
 perk-icon[hideName] .perk-icon-description {
     display: none;
 }
 
 perk-icon[hideName] .perk-icon-name {
+    display: none;
+}
+
+perk-icon:not([classId]) .perk-icon-stats,
+perk-icon[hideDesc] .perk-icon-stats,
+perk-icon[hideName] .perk-icon-stats {
     display: none;
 }
 

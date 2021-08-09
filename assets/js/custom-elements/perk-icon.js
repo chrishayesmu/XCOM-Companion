@@ -9,12 +9,13 @@ const perkTypes = {
 class PerkIcon extends HTMLElement {
 
     static get observedAttributes() {
-        return [ "notooltip", "perkid", "selectable" ];
+        return [ "classid", "notooltip", "perkid", "selectable" ];
     }
 
     #image = null;
     #descriptionElement = null;
     #nameElement = null;
+    #perkStatsElement = null;
 
     connectedCallback() {
         // Set up the DOM structure but don't populate anything yet
@@ -26,15 +27,19 @@ class PerkIcon extends HTMLElement {
         this.#descriptionElement = document.createElement("div");
         this.#descriptionElement.classList.add("perk-icon-description");
 
+        this.#perkStatsElement = document.createElement("div");
+        this.#perkStatsElement.classList.add("perk-icon-stats");
+
         this.append(this.#image);
         this.append(this.#nameElement);
+        this.append(this.#perkStatsElement);
         this.append(this.#descriptionElement);
 
         this._populate();
     }
 
     attributeChangedCallback() {
-        if (this.#image && this.#nameElement && this.#descriptionElement) {
+        if (this.#image && this.#nameElement && this.#descriptionElement && this.#perkStatsElement) {
             this._populate();
         }
     }
@@ -75,6 +80,17 @@ class PerkIcon extends HTMLElement {
             this.#descriptionElement.textContent += ` Adds +${perk.added_fatigue_hours} hours post-mission fatigue.`;
         }
 
+        if (this.classId) {
+            const classDef = DataHelper.soldierClasses[this.classId];
+            const statBonuses = classDef.perkStatBonuses[this.perkId];
+
+            const aim = (statBonuses && statBonuses.aim) || 0;
+            const mobility = (statBonuses && statBonuses.mobility) || 0;
+            const will = (statBonuses && statBonuses.will) || 0;
+
+            this.#perkStatsElement.textContent = "Aim: " + aim + ", Will: " + will + ", Mobility: " + mobility;
+        }
+
         if (this.noTooltip) {
             this.removeAttribute("data-page-on-click");
             this.removeAttribute("data-pagearg-item-id");
@@ -85,6 +101,14 @@ class PerkIcon extends HTMLElement {
             this.setAttribute("data-pagearg-item-id", perk.id);
             this.setAttribute("data-pagearg-display-mode", "single-perk");
         }
+    }
+
+    get classId() {
+        return this.getAttribute("classId");
+    }
+
+    set classId(classId) {
+        this.setAttribute("classId", classId);
     }
 
     get noTooltip() {

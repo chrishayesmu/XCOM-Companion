@@ -100,6 +100,10 @@ class SoldierLoadoutPerkTreesPage extends AppPage {
         for (const icon of perkIcons) {
             icon.noTooltip = true;
             icon.selectable = true;
+
+            if (this.#treeType === perkTreeTypes.ClassPerks) {
+                icon.classId = this.#loadout.classId;
+            }
         }
     }
 
