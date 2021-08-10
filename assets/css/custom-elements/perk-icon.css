@@ -85,7 +85,9 @@ perk-icon[selected] > img {
     background-color: var(--color);
 }
 
-perk-icon:not([perkId^=gene]) .perk-icon-gene-mod-costs {
+perk-icon:not([perkId^=gene]) .perk-icon-gene-mod-costs,
+perk-icon[hideDesc] .perk-icon-gene-mod-costs,
+perk-icon[hideName] .perk-icon-gene-mod-costs {
     display: none;
 }
 
