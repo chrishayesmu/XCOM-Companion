@@ -133,7 +133,7 @@
         {
             "prerequisite": "research_plasma_weapons",
             "requested_item": "item_alien_carbine",
-            "rewards": [ "scientists", "soldier" ]
+            "rewards": [ "credits", "scientists", "soldier" ]
         },
         {
             "prerequisite": "research_sectoid_commander_autopsy",
