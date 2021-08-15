@@ -167,7 +167,7 @@ function calculateStatsForPrimary(loadout) {
         if (perk === "perk_automated_threat_assessment") {
             stats.damage_reduction.base += 0.5;
         }
-        if (perk === "perk_sharpshooter") {
+        else if (perk === "perk_sharpshooter") {
             stats.crit_chance.base += 10;
         }
         else if (perk === "perk_sprinter") {
@@ -233,7 +233,7 @@ function calculateStatsForPrimary(loadout) {
 
     // #region Add some stats from perks that depend on equipment
     if (classPerks.includes("perk_extra_conditioning")) {
-        const armor = equippedItems.find(item => item.type === "loadout_armor");
+        const armor = equippedItems.find(item => item.type === "loadout_armor" || item.type === "loadout_mec_exoskeleton");
         stats.hp.fromItems += armor.type_specific_data.extra_conditioning_bonus_hp;
     }
 
