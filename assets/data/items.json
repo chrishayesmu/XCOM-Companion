@@ -6547,7 +6547,7 @@
         "item_smoke_grenade": {
             "name": "Smoke Grenade",
             "description": "A popular utility device for keeping soldiers safe during conventional warfare on Earth, we have found the alien threat to be equally stymied by the smoke cloud produced by this grenade.",
-            "tactical_text": "<ul><li>Confers +20 defense bonus to all units within smoke cloud</li><li>Smoke cloud lasts for 2 turns</li><li>Units at the edge of the effect radius may not be affected</li><li>Units in smoke do not suffer an increased chance to be critically hit due to being exposed or flanked</li><li>Support grenade</li><li>Smoke deploys in this tile pattern:<br /> <img src='assets/img/item-stat-icons/smoke_grenade_pattern.png' width='256px' height='256px' /></li></ul>",
+            "tactical_text": "<ul><li>Confers +20 defense bonus to all units within smoke cloud</li><li>Smoke cloud lasts for 2 turns</li><li>Units at the edge of the effect radius may not be affected</li><li>Units in smoke do not suffer an increased chance to be critically hit due to being exposed or flanked</li><li>Support grenade</li><li>Smoke deploys in this tile pattern, where grey denotes ordinary Smoke Grenades or the <in-app-link to='perk_dense_smoke'></in-app-link> perk, and purple shows additional tiles from the <in-app-link to='perk_combat_drugs'></in-app-link> perk:<br /> <img src='assets/img/item-stat-icons/smoke_grenade_pattern.png' width='256px' height='256px' /></li></ul>",
             "type": "loadout_equipment",
             "type_specific_data": {
                 "usable_by_infantry": true,
