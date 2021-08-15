@@ -1196,7 +1196,6 @@
                 ]
             },
             "cost": {
-                "item_alien_alloy": 30,
                 "item_elerium": 100
             },
             "ui": {
