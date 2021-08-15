@@ -96,7 +96,7 @@ class FoundryProjectDisplayPage extends AppPage {
         container.append(div);
     }
 
-    _populateBenefits(template, project) {
+    async _populateBenefits(template, project) {
         const benefitsContainer = template.querySelector("#foundry-project-benefits");
 
         if (!project.tactical_text && !project.unlocks) {
@@ -125,6 +125,10 @@ class FoundryProjectDisplayPage extends AppPage {
 
         if (ul) {
             ul.classList.add("details-list");
+        }
+
+        if (project.id === "foundry_improved_arc_thrower") {
+            benefitsContainer.appendChild(await Templates.instantiateTemplate("assets/html/templates/pages/item-display-page.html", "template-arc-thrower-stats-grid"));
         }
     }
 
