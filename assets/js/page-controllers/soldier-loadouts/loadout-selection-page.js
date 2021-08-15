@@ -220,7 +220,18 @@ class SoldierLoadoutSelectionPage extends AppPage {
     }
 
     async _populateLoadouts() {
-        const loadouts = await Settings.getSoldierLoadouts();
+        var loadouts = await Settings.getSoldierLoadouts();
+        loadouts = Object.values(loadouts);
+
+        loadouts.sort( (a, b) => {
+            const strCompare = a.classId.localeCompare(b.classId);
+
+            if (strCompare === 0) {
+                return a.name.localeCompare(b.name);
+            }
+
+            return strCompare;
+        });
 
         this.#loadoutSelect.innerHTML = "";
 
