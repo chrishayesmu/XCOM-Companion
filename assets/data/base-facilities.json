@@ -61,7 +61,7 @@
                     "item_alien_alloy": 60,
                     "item_elerium": 60,
                     "item_ufo_power_source": 2,
-                    "money": 200
+                    "money": 400
                 },
                 "build_time_days": 25
             },
@@ -71,7 +71,7 @@
                     "item_elerium": 90,
                     "item_meld": 10,
                     "item_ufo_power_source": 2,
-                    "money": 300
+                    "money": 600
                 },
                 "build_time_days": 13
             },
