@@ -3,7 +3,7 @@
         "foundry_advanced_flight": {
             "name": "Advanced Flight",
             "description": "We believe that we can improve the small system flight capabilities of our flying armor and the Hover SHIV designs, considerably increasing their maximum flight time in combat.",
-            "tactical_text": "<ul><li>Increases the maximum fuel (and therefore flight time) for the <a data-page-on-click='item-display-page' data-pagearg-item-id='item_archangel_armor'>Archangel Armor</a>, <a data-page-on-click='item-display-page' data-pagearg-item-id='item_seraph_armor'>Seraph Armor</a>, and <a data-page-on-click='item-display-page' data-pagearg-item-id='item_hover_shiv'>Hover SHIV</a></li></ul>",
+            "tactical_text": "<ul><li>Increases the maximum fuel (and therefore flight time) for the <a data-page-on-click='item-display-page' data-pagearg-item-id='item_archangel_armor'>Archangel Armor</a>, <a data-page-on-click='item-display-page' data-pagearg-item-id='item_seraph_armor'>Seraph Armor</a>, and <a data-page-on-click='item-display-page' data-pagearg-item-id='item_hover_shiv'>Hover SHIV</a> from 6 to 12</li><li>Also causes the <in-app-link to='item_fuel_cell'></in-app-link> to give 12 additional fuel (up from 6)</li></ul>",
             "cost": {
                 "item_alien_alloy": 40,
                 "item_cyberdisc_corpse": 5,

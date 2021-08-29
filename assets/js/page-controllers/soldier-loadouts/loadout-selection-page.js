@@ -80,6 +80,7 @@ class SoldierLoadoutSelectionPage extends AppPage {
         Modal.close();
 
         const soldierClass = DataHelper.soldierClasses[classId];
+        const isShiv = classId.startsWith("shiv");
 
         const loadout = {
             classId: classId,
@@ -87,7 +88,7 @@ class SoldierLoadoutSelectionPage extends AppPage {
             id: uuidv4(),
             name: "New Loadout",
             notes: "",
-            perks: [ this._getStartingPerkForClass(classId).id ],
+            perks: isShiv ? [] : [ this._getStartingPerkForClass(classId).id ],
             foundryProjects: [],
             geneMods: [],
             officerAbilities: [],

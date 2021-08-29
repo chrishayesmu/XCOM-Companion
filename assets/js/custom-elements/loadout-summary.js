@@ -16,17 +16,24 @@ class LoadoutSummary extends HTMLElement {
             return;
         }
 
-        const foundryProjects = this.#loadout.foundryProjects || [];
+        const isMec = this.#loadout.classId.startsWith("mec");
+        const isShiv = this.#loadout.classId.startsWith("shiv");
+
         const template = await Templates.instantiateTemplate("assets/html/templates/custom-elements/loadout-summary.html", "template-loadout-summary");
+        const perksContainer = template.querySelector("#loadout-summary-perks");
 
         template.querySelector("#loadout-summary-name").textContent = this.#loadout.name;
         template.querySelector("#loadout-summary-notes").textContent = this.#loadout.notes || "No notes provided.";
 
         this._populateEquipment(template);
-        this._populatePerkArea(template.querySelector("#loadout-summary-perks"), this.#loadout.perks, "None");
-        this._populatePerkArea(template.querySelector("#loadout-summary-gene-mods"), this.#loadout.geneMods, "None");
-        this._populatePerkArea(template.querySelector("#loadout-summary-officer-abilities"), this.#loadout.officerAbilities, "None");
-        this._populatePerkArea(template.querySelector("#loadout-summary-psi-abilities"), this.#loadout.psiAbilities, "None");
+
+        // Don't want to put "None" in the perks area for SHIVs since they have some that aren't in the usual spot
+        if (!isShiv) {
+            this._populatePerkArea(perksContainer, this.#loadout.perks, "None");
+            this._populatePerkArea(template.querySelector("#loadout-summary-gene-mods"), this.#loadout.geneMods, "None");
+            this._populatePerkArea(template.querySelector("#loadout-summary-officer-abilities"), this.#loadout.officerAbilities, "None");
+            this._populatePerkArea(template.querySelector("#loadout-summary-psi-abilities"), this.#loadout.psiAbilities, "None");
+        }
 
         this._populateBaseOfficerAbilities(template); // has to be after populating the perk area
         this._populateHeader(template);
@@ -35,22 +42,31 @@ class LoadoutSummary extends HTMLElement {
         this._populateWillHelpText(template);
 
         this._addPerksFromEquipment(template);
+        this._addPerksFromFoundry(template);
 
-        if (this.#loadout.classId.startsWith("mec")) {
-            // Add perks that all MECs get
-            const perksContainer = template.querySelector("#loadout-summary-perks");
+        if (isMec || isShiv) {
+            // Add perks that all MECs/SHIVs get
             perksContainer.append(this._createPerkIcon("perk_hardened"));
-            perksContainer.append(this._createPerkIcon("perk_robotic_mec"));
-            perksContainer.append(this._createPerkIcon("perk_one_for_all"));
 
-            if (foundryProjects.includes("foundry_advanced_servomotors")) {
-                perksContainer.append(this._createPerkIcon("perk_sprinter"));
+            if (isMec) {
+                perksContainer.append(this._createPerkIcon("perk_robotic_mec"));
+                perksContainer.append(this._createPerkIcon("perk_one_for_all"));
             }
 
-            // Hide areas that are irrelevant to MECs
+            if (isShiv) {
+                perksContainer.append(this._createPerkIcon("perk_robotic"));
+
+                // TODO: give Alloy SHIV a perk showing that it acts as low cover
+            }
+
+            // Hide areas that are irrelevant to MECs/SHIVs
             template.querySelector("#loadout-summary-gene-mods").parentNode.classList.add("hidden-collapse");
             template.querySelector("#loadout-summary-officer-abilities").parentNode.classList.add("hidden-collapse");
             template.querySelector("#loadout-summary-psi-abilities").parentNode.classList.add("hidden-collapse");
+        }
+
+        if (this.#stats.fuel) {
+            perksContainer.append(this._createPerkIcon("perk_flight"));
         }
 
         this.replaceChildren(template);
@@ -68,6 +84,31 @@ class LoadoutSummary extends HTMLElement {
             for (const perk of item.type_specific_data.grants_perks) {
                 perksContainer.append(this._createPerkIcon(perk.id));
             }
+        }
+    }
+
+    _addPerksFromFoundry(template) {
+        const foundryProjects = this.#loadout.foundryProjects || [];
+        const isMec = this.#loadout.classId.startsWith("mec");
+        const isShiv = this.#loadout.classId.startsWith("shiv");
+        const perksContainer = template.querySelector("#loadout-summary-perks");
+
+        // Regular soldiers never gain perks from Foundry projects
+        if (!isMec && !isShiv) {
+            return;
+        }
+
+        if (foundryProjects.includes("foundry_advanced_servomotors")) {
+            perksContainer.append(this._createPerkIcon("perk_sprinter"));
+        }
+
+        if (isShiv && foundryProjects.includes("foundry_sentinel_drone")) {
+            perksContainer.append(this._createPerkIcon("perk_close_combat_specialist"));
+            perksContainer.append(this._createPerkIcon("perk_repair_servos"));
+        }
+
+        if (isShiv && foundryProjects.includes("foundry_shiv_suppression")) {
+            perksContainer.append(this._createPerkIcon("perk_suppression"));
         }
     }
 
@@ -145,15 +186,17 @@ class LoadoutSummary extends HTMLElement {
         classContainer.prepend(classImage);
 
         // Soldier rank
-        const rankInfo = Loadouts.getLoadoutRank(this.#loadout);
-        const rankName = rankInfo.name.replace(" ", "<br/>"); // force names to line break
+        if (!this.#loadout.classId.startsWith("shiv")) {
+            const rankInfo = Loadouts.getLoadoutRank(this.#loadout);
+            const rankName = rankInfo.name.replace(" ", "<br/>"); // force names to line break
 
-        const rankImage = document.createElement("img");
-        rankImage.src = rankInfo.icon;
+            const rankImage = document.createElement("img");
+            rankImage.src = rankInfo.icon;
 
-        const rankContainer = template.querySelector("#loadout-summary-rank");
-        rankContainer.innerHTML = rankName;
-        rankContainer.prepend(rankImage);
+            const rankContainer = template.querySelector("#loadout-summary-rank");
+            rankContainer.innerHTML = rankName;
+            rankContainer.prepend(rankImage);
+        }
 
         // Officer rank
         if (this.#loadout.officerAbilities.length > 0) {
@@ -206,8 +249,24 @@ class LoadoutSummary extends HTMLElement {
         addStatText(template.querySelector("#stat-mobility"), stats.mobility);
         addStatText(template.querySelector("#stat-will"), stats.will);
 
-        // Fatigue time can't be affected by items, and damage is inherently from items
-        template.querySelector("#stat-additional-fatigue").textContent = stats.fatigue_extra_time_hours;
+        // Don't show fuel if it isn't relevant
+        if (stats.fuel) {
+            template.querySelector("#stat-fuel").textContent = stats.fuel;
+        }
+        else {
+            template.querySelector("#stat-fuel").parentElement.classList.add("hidden-collapse");
+        }
+
+        // Likewise, don't show fatigue for SHIVs
+        if (this.#loadout.classId.startsWith("shiv")) {
+            template.querySelector("#stat-additional-fatigue").parentElement.classList.add("hidden-collapse");
+        }
+        else {
+            // Fatigue time can't be affected by items
+            template.querySelector("#stat-additional-fatigue").textContent = stats.fatigue_extra_time_hours;
+        }
+
+        // damage is inherently from items
         template.querySelector("#stat-damage").textContent = stats.damage;
     }
 
@@ -215,10 +274,16 @@ class LoadoutSummary extends HTMLElement {
         const maxWill = this.#stats.maxPossibleWill;
         const willHelp = template.querySelector(".stat-block #stat-will + help-icon");
 
-        willHelp.innerHTML = `The base will shown here (${this.#stats.will.base}) is the minimum possible value. At each soldier rank up, the soldier may randomly receive +1 will, even without Hidden Potential turned on.
-                              Additionally, each rank of psi training gives between 1 and 6 bonus will, chosen randomly.
-                              <br/><br/>
-                              Based on this, the maximum will this character could have is <strong>${maxWill}</strong>, not including any equipment bonuses.`;
+        if (this.#loadout.classId.startsWith("shiv")) {
+            willHelp.innerHTML = `SHIVs always have 0 will. Since they are immune to panic and most psionic attacks, this usually doesn't matter. However, the Psi Lance and Rift attacks used by Ethereals can target
+                                  SHIVs, and they deal 1 bonus damage for each 10 will more that the attacker has than the target. This makes SHIVs extremely susceptible to those attacks.`;
+        }
+        else {
+            willHelp.innerHTML = `The base will shown here (${this.#stats.will.base}) is the minimum possible value. At each soldier rank up, the soldier may randomly receive +1 will, even without Hidden Potential turned on.
+                                Additionally, each rank of psi training gives between 1 and 6 bonus will, chosen randomly.
+                                <br/><br/>
+                                Based on this, the maximum will this character could have is <strong>${maxWill}</strong>, not including any equipment bonuses.`;
+        }
     }
 }
 

@@ -681,6 +681,7 @@
                 "damage_reduction": 0.3,
                 "defense": 0,
                 "extra_conditioning_bonus_hp": 4,
+                "fuel": 6,
                 "hp": 8,
                 "mobility": 1,
                 "will": 0
@@ -2090,7 +2091,7 @@
         "item_fuel_cell": {
             "name": "Fuel Cell",
             "description": "Equipping this allows our flight armors to stay aloft longer.",
-            "tactical_text": "<ul><li>Confers additional flight fuel for <a data-page-on-click='item-display-page' data-pagearg-item-id='item_archangel_armor'>Archangel</a> and <a data-page-on-click='item-display-page' data-pagearg-item-id='item_seraph_armor'>Seraph</a> armors and <a data-page-on-click='item-display-page' data-pagearg-item-id='item_hover_shiv'>Hover SHIVs</a></li></ul>",
+            "tactical_text": "<ul><li>Confers additional flight fuel for <a data-page-on-click='item-display-page' data-pagearg-item-id='item_archangel_armor'>Archangel</a> and <a data-page-on-click='item-display-page' data-pagearg-item-id='item_seraph_armor'>Seraph</a> armors and <a data-page-on-click='item-display-page' data-pagearg-item-id='item_hover_shiv'>Hover SHIVs</a></li><li>Gives 6 additional fuel before <in-app-link to='foundry_advanced_flight'></in-app-link>, or 12 additional fuel after</li></ul>",
             "type": "loadout_equipment",
             "sell_value": 16,
             "type_specific_data": {
@@ -2102,6 +2103,7 @@
                 "crit_chance": 0,
                 "damage_reduction": 0,
                 "defense": 0,
+                "fuel": 6,
                 "hp": 0,
                 "mobility": -2,
                 "will": 0
@@ -6204,6 +6206,7 @@
                 "damage_reduction": 0,
                 "defense": 8,
                 "extra_conditioning_bonus_hp": 3,
+                "fuel": 6,
                 "hp": 5,
                 "mobility": 3,
                 "will": 0

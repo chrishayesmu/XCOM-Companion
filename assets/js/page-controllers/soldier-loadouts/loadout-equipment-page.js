@@ -91,11 +91,11 @@ class SoldierLoadoutEquipmentPage extends AppPage {
 
     _configureLoadoutSlots() {
         const soldierClass = DataHelper.soldierClasses[this.#loadout.classId];
-        const soldierIsInfantry = this.#loadout.classId.startsWith("infantry");
+        const soldierIsMec = this.#loadout.classId.startsWith("mec");
 
         this.#equipmentCategoriesContainer.innerHTML = "";
 
-        const slots = soldierIsInfantry ? soldierClass.loadoutSlots : this._getMecLoadoutSlots();
+        const slots = soldierIsMec ? this._getMecLoadoutSlots() : soldierClass.loadoutSlots;
 
         for (let i = 0; i < slots.length; i++) {
             const slot = slots[i];
@@ -109,7 +109,7 @@ class SoldierLoadoutEquipmentPage extends AppPage {
             div.setAttribute("data-row-index", i);
             div.addEventListener("click", this._onEquipmentCategoryClicked.bind(this));
 
-            const includeRemoveButton = slot.role === "loadout_equipment" || (!soldierIsInfantry && slot.role === "loadout_secondary");
+            const includeRemoveButton = slot.role === "loadout_equipment" || (soldierIsMec && slot.role === "loadout_secondary");
             this._appendItemElements(div, currentItem, includeRemoveButton);
             this.#equipmentCategoriesContainer.append(div);
         }
@@ -163,6 +163,7 @@ class SoldierLoadoutEquipmentPage extends AppPage {
         const soldierClass = this.#loadout.classId;
         const soldierIsInfantry = this.#loadout.classId.startsWith("infantry");
         const soldierIsMec = this.#loadout.classId.startsWith("mec");
+        const soldierIsShiv = this.#loadout.classId.startsWith("shiv");
         const soldierIsPsionic = this.#loadout.psiAbilities.length > 0;
 
         const filterFunction = (item) => {
@@ -177,6 +178,7 @@ class SoldierLoadoutEquipmentPage extends AppPage {
                 && (!typeData.compatible_weapon_categories || typeData.compatible_weapon_categories.includes(primaryWeapon.type_specific_data.category))
                 && (typeData.usable_by_infantry || !soldierIsInfantry)
                 && (typeData.usable_by_mec || !soldierIsMec)
+                && (typeData.usable_by_shiv || !soldierIsShiv)
                 && (!typeData.requires_psionic || soldierIsPsionic);
         };
 

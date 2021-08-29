@@ -1328,6 +1328,75 @@
                     "will": 2
                 }
             }
+        },
+        {
+            "id": "shiv_chassis_alloy",
+            "name": "Alloy SHIV",
+            "icon": "assets/img/misc-icons/alloy_shiv.png",
+            "loadout_slots": [
+                {
+                    "role": "loadout_chassis"
+                },
+                {
+                    "role": "loadout_primary"
+                },
+                {
+                    "role": "loadout_equipment"
+                },
+                {
+                    "role": "loadout_equipment"
+                },
+                {
+                    "role": "loadout_equipment"
+                }
+            ],
+            "default_loadout": [ "item_alloy_shiv", "item_autocannon", "", "", "" ]
+        },
+        {
+            "id": "shiv_chassis_hover",
+            "name": "Hover SHIV",
+            "icon": "assets/img/misc-icons/hover_shiv.png",
+            "loadout_slots": [
+                {
+                    "role": "loadout_chassis"
+                },
+                {
+                    "role": "loadout_primary"
+                },
+                {
+                    "role": "loadout_equipment"
+                },
+                {
+                    "role": "loadout_equipment"
+                },
+                {
+                    "role": "loadout_equipment"
+                }
+            ],
+            "default_loadout": [ "item_hover_shiv", "item_autocannon", "", "", "" ]
+        },
+        {
+            "id": "shiv_chassis_shiv",
+            "name": "SHIV",
+            "icon": "assets/img/misc-icons/shiv.png",
+            "loadout_slots": [
+                {
+                    "role": "loadout_chassis"
+                },
+                {
+                    "role": "loadout_primary"
+                },
+                {
+                    "role": "loadout_equipment"
+                },
+                {
+                    "role": "loadout_equipment"
+                },
+                {
+                    "role": "loadout_equipment"
+                }
+            ],
+            "default_loadout": [ "item_shiv", "item_autocannon", "", "", "" ]
         }
     ]
 }

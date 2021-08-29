@@ -39,6 +39,24 @@ const officerRanks = [
     }
 ];
 
+const shivRanks = {
+    "shiv_chassis_alloy": {
+        rank: -1,
+        name: "Alloy SHIV",
+        icon: "assets/img/misc-icons/alloy_shiv.png"
+    },
+    "shiv_chassis_hover": {
+        rank: -1,
+        name: "Hover SHIV",
+        icon: "assets/img/misc-icons/hover_shiv.png"
+    },
+    "shiv_chassis_shiv": {
+        rank: -1,
+        name: "SHIV",
+        icon: "assets/img/misc-icons/shiv.png"
+    }
+};
+
 const soldierRanks = [
     {
         rank: 0,
@@ -90,6 +108,7 @@ function _addItemStats(item, currentStats) {
     currentStats.damage += typeData.damage || 0;
     currentStats.damage_reduction.fromItems += typeData.damage_reduction || 0;
     currentStats.defense.fromItems += typeData.defense || 0;
+    currentStats.fuel += typeData.fuel || 0;
     currentStats.hp.fromItems += typeData.hp || 0;
     currentStats.mobility.fromItems += typeData.mobility || 0;
     currentStats.will.fromItems += typeData.will || 0;
@@ -97,6 +116,7 @@ function _addItemStats(item, currentStats) {
 
 function calculateStatsForPrimary(loadout) {
     const isMec = loadout.classId.startsWith("mec");
+    const isShiv = loadout.classId.startsWith("shiv");
 
     // Base stats for a rookie with Strict Screening on
     const stats = {
@@ -122,6 +142,7 @@ function calculateStatsForPrimary(loadout) {
             fromItems: 0
         },
         fatigue_extra_time_hours: 0,
+        fuel: 0,
         hp: {
             base: isMec ? 8 : 4,
             fromItems: 0
@@ -136,6 +157,41 @@ function calculateStatsForPrimary(loadout) {
         },
         maxPossibleWill: 30
     };
+
+    if (loadout.classId === "shiv_chassis_alloy") {
+        stats.aim.base = 70;
+        stats.damage_reduction.base = 2.5;
+        stats.defense.fromItems = 8;
+        stats.hp.base = 18;
+        stats.hp.fromItems = 4;
+        stats.mobility.base = 14;
+        stats.mobility.fromItems = 2;
+        stats.will.base = 0;
+        stats.maxPossibleWill = 0;
+    }
+    else if (loadout.classId === "shiv_chassis_hover") {
+        stats.aim.base = 70;
+        stats.damage_reduction.base = 2.0;
+        stats.defense.fromItems = 12;
+        stats.fuel = 6;
+        stats.hp.base = 14;
+        stats.hp.fromItems = 2;
+        stats.mobility.base = 14;
+        stats.mobility.fromItems = 5;
+        stats.will.base = 0;
+        stats.maxPossibleWill = 0;
+    }
+    else if (loadout.classId === "shiv_chassis_shiv") {
+        stats.aim.base = 70;
+        stats.damage_reduction.base = 1.5;
+        stats.defense.fromItems = 12;
+        stats.hp.base = 8;
+        stats.hp.fromItems = 2;
+        stats.mobility.base = 14;
+        stats.mobility.fromItems = 3;
+        stats.will.base = 0;
+        stats.maxPossibleWill = 0;
+    }
 
     const soldierClass = DataHelper.soldierClasses[loadout.classId];
     const classPerks = loadout.perks;
@@ -213,6 +269,11 @@ function calculateStatsForPrimary(loadout) {
             continue;
         }
 
+        // SHIV chassis stats are accounted for already
+        if (item.type === "shiv") {
+            continue;
+        }
+
         _addItemStats(item, stats);
     }
     // #endregion
@@ -259,11 +320,25 @@ function calculateStatsForPrimary(loadout) {
     // #endregion
 
     // #region Add stats from Foundry projects
-    if (isMec && foundryProjects.includes("foundry_advanced_servomotors")) {
+    if (foundryProjects.includes("foundry_advanced_flight")) {
+        if (loadout.classId === "shiv_chassis_hover") {
+            stats.fuel += 6;
+        }
+
+        if (loadout.equipment.includes("item_archangel_armor") || loadout.equipment.includes("item_seraph_armor")) {
+            stats.fuel += 6;
+        }
+
+        if (loadout.equipment.includes("item_fuel_cell")) {
+            stats.fuel += 6;
+        }
+    }
+
+    if ( (isMec || isShiv) && foundryProjects.includes("foundry_advanced_servomotors")) {
         stats.mobility.fromItems += 4;
     }
 
-    if (isMec && foundryProjects.includes("foundry_shaped_armor")) {
+    if ( (isMec || isShiv) && foundryProjects.includes("foundry_shaped_armor")) {
         stats.hp.fromItems += 3;
     }
 
@@ -310,6 +385,10 @@ function getLoadoutOfficerRank(loadout) {
 }
 
 function getLoadoutRank(loadout) {
+    if (loadout.classId.startsWith("shiv")) {
+        return shivRanks[loadout.classId];
+    }
+
     return soldierRanks[loadout.perks.length - 1];
 }
 

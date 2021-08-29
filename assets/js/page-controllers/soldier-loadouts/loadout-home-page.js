@@ -23,6 +23,9 @@ class SoldierLoadoutHomePage extends AppPage {
     async load(_data) {
         this.#loadout = Loadouts.getActiveLoadout();
 
+        const isMec = this.#loadout.classId.startsWith("mec");
+        const isShiv = this.#loadout.classId.startsWith("shiv");
+
         const template = await Templates.instantiateTemplate("assets/html/templates/pages/soldier-loadouts/loadout-home-page.html", "template-loadout-home-page");
         const officerTrainingButton = template.querySelector("#loadout-edit-officer");
         const psiTrainingButton = template.querySelector("#loadout-edit-psi");
@@ -44,10 +47,14 @@ class SoldierLoadoutHomePage extends AppPage {
         template.querySelector("#loadout-name-save-button").addEventListener("click", this._onSaveNameClicked.bind(this));
         template.querySelector("#loadout-save-and-close").addEventListener("click", this._onSaveLoadoutClicked.bind(this));
 
-        if (this.#loadout.classId.startsWith("mec")) {
+        if (isMec || isShiv) {
             template.querySelector("#loadout-edit-gene-mods").classList.add("hidden-collapse");
             officerTrainingButton.classList.add("hidden-collapse");
             psiTrainingButton.classList.add("hidden-collapse");
+
+            if (isShiv) {
+                template.querySelector("#loadout-edit-perks").classList.add("hidden-collapse");
+            }
         }
 
         // Officer training: only if not psi trained
