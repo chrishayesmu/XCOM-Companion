@@ -213,6 +213,7 @@ class SoldierLoadoutEquipmentPage extends AppPage {
 
         this.#selectedEquipmentCategory.setAttribute("data-item-id", itemId);
 
+        // TODO: changing equipment can invalidate other equipment, e.g. changing away from a Strike Rifle means you can't use a Marksman's Scope anymore
         this.#loadout.equipment[invSlot] = itemId;
 
         if (this.#selectedEquipmentChoice) {

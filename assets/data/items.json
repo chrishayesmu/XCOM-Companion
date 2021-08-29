@@ -3767,6 +3767,7 @@
                 "usable_by_infantry": true,
                 "usable_by_mec": false,
                 "usable_by_shiv": false,
+                "compatible_weapon_categories": [ "marksman_rifle" ],
 
                 "aim": 0,
                 "crit_chance": 0,

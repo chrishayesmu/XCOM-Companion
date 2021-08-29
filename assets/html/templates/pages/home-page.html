@@ -22,7 +22,9 @@
                     <summary>Version 0.7.6 (TBD)</summary>
                     <h3>Features and Improvements</h3>
                     <ul>
-                        <li>The <a data-page-on-click="loadout-selection-page">Build Manager</a> now correctly accounts for the 12 extra hours of fatigue imposed per officer rank.</li>
+                        <li>The <a data-page-on-click="loadout-selection-page">Build Manager</a> now allows you to select Foundry projects which may impact your loadout's stats. (Most Foundry projects only unlock items for use,
+                            and those are not included here; all items will be available regardless of Foundry selections.)</li>
+                        <li>The Build Manager now correctly accounts for the 12 extra hours of fatigue imposed per officer rank.</li>
                         <li>The standalone pages for soldier perk trees, gene mods, and psi abilities have been removed, as they are now redundant with the Build Manager.
                             Since this makes Build Manager the only entry under the "Soldiers" category, that category has also been removed.</li>
                     </ul>
@@ -31,6 +33,11 @@
                         <li>Corrected the credits cost of the <in-app-link to="facility_elerium_generator"></in-app-link> from 200 to 400. (Thanks to <strong>Macsee</strong> for reporting this.)</li>
                         <li>Fixed (hopefully) an issue where the image for the <in-app-link to="research_gauss_weapons"></in-app-link> research failed to load. (Thanks to <strong>Macsee</strong> for reporting this.)</li>
                         <li>Fixed the UFO Air Combat page interpreting UFO weapon speed as "shots per second" when it's actually "seconds between shots", causing UFO DPS to be inflated. (This was fixed some time back for XCOM air weapons, but UFOs were missed.)</li>
+                        <li>Fixed an issue where the Build Manager allowed Scouts to equip a Marksman's Scope without checking that they were using a Marksman's Rifle.</li>
+                    </ul>
+                    <h3>Known issues</h3>
+                    <ul>
+                        <li>The Build Manager does not enforce restrictions on selected equipment when changing weapon types, e.g. changing to a non-plasma weapon should unequip the Plasma Stellerator.</li>
                     </ul>
                 </details>
             </div>
