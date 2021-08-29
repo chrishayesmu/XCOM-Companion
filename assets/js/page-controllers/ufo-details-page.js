@@ -10,7 +10,7 @@ const ufoWeapons = {
         armorPenetration: 20,
         baseHitChance: 40,
         damagePerShot: 800,
-        shotsPerSecond: 1.25,
+        secondsBetweenShots: 1.25,
         tooltipTemplateId: "template-ufo-tooltip-double-plasma"
     },
     fusion_lance: {
@@ -18,7 +18,7 @@ const ufoWeapons = {
         armorPenetration: 50,
         baseHitChance: 45,
         damagePerShot: 1300,
-        shotsPerSecond: 1.25,
+        secondsBetweenShots: 1.25,
         tooltipTemplateId: "template-ufo-tooltip-fusion-lance"
 
     },
@@ -27,7 +27,7 @@ const ufoWeapons = {
         armorPenetration: 0,
         baseHitChance: 33,
         damagePerShot: 450,
-        shotsPerSecond: 1.15,
+        secondsBetweenShots: 1.15,
         tooltipTemplateId: "template-ufo-tooltip-single-plasma"
     }
 };
@@ -113,7 +113,7 @@ class UfoDetailsPage extends AppPage {
             const hitChance = Math.min((weaponStats.baseHitChance + aimBonus) / 100, 0.95); // aim is capped to 95% chance to hit
 
             const damagePerShot = weaponStats.damagePerShot * (1 - armorMitigation) * (1 + critChance) * damageMultiplier;
-            const dps = damagePerShot * weaponStats.shotsPerSecond * hitChance;
+            const dps = damagePerShot * (1.0 / weaponStats.secondsBetweenShots) * hitChance;
 
             totalDps += dps;
         }
@@ -272,7 +272,6 @@ class UfoDetailsPage extends AppPage {
         template.querySelector("#ufo-ac-derived-stats-agg-ttk-firestorm").textContent = Math.round(10 * firestormData.hp / dpsVsFirestormAggressive) / 10 + "s";
         template.querySelector("#ufo-ac-derived-stats-agg-ttk-armored-interceptor").textContent = Math.round(10 * (interceptorData.hp + 1000) / dpsVsInterceptorAggressive) / 10 + "s";
         template.querySelector("#ufo-ac-derived-stats-agg-ttk-armored-firestorm").textContent = Math.round(10 * (firestormData.hp + 1000) / dpsVsFirestormAggressive) / 10 + "s";
-
     }
 
     _populateAirCombatTimeline(template, ufo) {
