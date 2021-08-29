@@ -185,7 +185,7 @@ class LoadoutSummary extends HTMLElement {
 
             if (stat.fromItems !== 0) {
                 const cssClass = stat.fromItems > 0 ? "stat-from-items-bonus" : "stat-from-items-malus";
-                const sign = stat.fromItems > 0 ? "+" : "–";
+                const sign = stat.fromItems > 0 ? "+" : "-";
                 innerHTML += `<span class="${cssClass}">${sign}${Math.abs(stat.fromItems)}</span>`;
             }
 

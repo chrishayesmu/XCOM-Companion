@@ -154,6 +154,7 @@ loadout-summary #loadout-summary-body #loadout-summary-stats .stat-from-items-bo
 
 loadout-summary #loadout-summary-body #loadout-summary-stats .stat-from-items-malus {
     color: var(--color-red);
+    margin-left: 2px;
 }
 
 loadout-summary #loadout-summary-body #loadout-summary-gene-mods,
