@@ -88,6 +88,7 @@ class SoldierLoadoutSelectionPage extends AppPage {
             name: "New Loadout",
             notes: "",
             perks: [ this._getStartingPerkForClass(classId).id ],
+            foundryProjects: [],
             geneMods: [],
             officerAbilities: [],
             psiAbilities: []

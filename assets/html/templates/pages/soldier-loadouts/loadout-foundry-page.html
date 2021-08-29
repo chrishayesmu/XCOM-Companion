@@ -1,0 +1,49 @@
+<template id="template-loadout-foundry-page">
+    <div id="loadout-foundry-page" class="soldier-loadout-page standard-page">
+        <div class="flex-column">
+
+            <div id="loadout-foundry-projects-selector">
+                <div>Enabled?</div>
+                <div>Project Name</div>
+                <div>Effects</div>
+
+                <div data-project-id="foundry_advanced_servomotors" data-include-infantry="false" data-include-mec="true" data-include-shiv="false"><input type="checkbox" /></div>
+                <div>Advanced Servomotors</div>
+                <div>All MECs gain the Sprinter perk.</div>
+
+                <div data-project-id="foundry_ammo_conservation" data-include-infantry="true" data-include-mec="true" data-include-shiv="true"><input type="checkbox" /></div>
+                <div>Ammo Conservation</div>
+                <div>Gives all weapons +1 ammo per reload.</div>
+
+                <div data-project-id="foundry_enhanced_plasma" data-include-infantry="true" data-include-mec="true" data-include-shiv="true"><input type="checkbox" /></div>
+                <div>Enhanced Plasma</div>
+                <div>+1 base damage for all plasma-based weaponry.</div>
+
+                <div data-project-id="foundry_scope_upgrade" data-include-infantry="true" data-include-mec="true" data-include-shiv="true"><input type="checkbox" /></div>
+                <div>SCOPE Upgrade</div>
+                <div>Gives +4 crit chance for Laser Sights and +8 crit chance for SCOPEs.</div>
+
+                <div data-project-id="foundry_sentinel_drone" data-include-infantry="false" data-include-mec="false" data-include-shiv="true"><input type="checkbox" /></div>
+                <div>Sentinel Drone</div>
+                <div>All SHIVs gain the Close Combat Specialist and Repair Servos perks.</div>
+
+                <div data-project-id="foundry_shaped_armor" data-include-infantry="false" data-include-mec="true" data-include-shiv="true"><input type="checkbox" /></div>
+                <div>Shaped Armor</div>
+                <div>+3 HP for all MECs and SHIVs.</div>
+
+                <div data-project-id="foundry_shiv_suppression" data-include-infantry="false" data-include-mec="false" data-include-shiv="true"><input type="checkbox" /></div>
+                <div>SHIV Suppression</div>
+                <div>All SHIVs gain the Suppression perk.</div>
+            </div>
+
+            <div class="flex-row">
+                <button id="select-all" class="xcom">Select All</button>
+                <button id="select-none" class="xcom">Select None</button>
+            </div>
+
+            <button id="return-to-loadout" class="xcom">Return to Loadout</button>
+        </div>
+
+        <loadout-summary singleColumn></loadout-summary>
+    </div>
+</template>

@@ -35,6 +35,7 @@ class SoldierLoadoutHomePage extends AppPage {
 
         template.querySelector("#loadout-close-without-saving").addEventListener("click", this._onCloseWithoutSavingClicked.bind(this));
         template.querySelector("#loadout-edit-equipment").addEventListener("click", this._openEquipmentPage.bind(this));
+        template.querySelector("#loadout-edit-foundry").addEventListener("click", this._openFoundryPage.bind(this));
         template.querySelector("#loadout-edit-name").addEventListener("click", this._onEditNameClicked.bind(this));
         template.querySelector("#loadout-edit-notes").addEventListener("click", this._onEditNotesClicked.bind(this));
         template.querySelector("#loadout-edit-perks").addEventListener("click", () => { this._openPerkTreesPage("perks"); } );
@@ -146,6 +147,14 @@ class SoldierLoadoutHomePage extends AppPage {
         };
 
         PageManager.instance.loadPage("loadout-equipment-page", pageData);
+    }
+
+    _openFoundryPage() {
+        const pageData = {
+            loadout: this.#loadout
+        };
+
+        PageManager.instance.loadPage("loadout-foundry-page", pageData);
     }
 
     _openPerkTreesPage(perkTreeType) {

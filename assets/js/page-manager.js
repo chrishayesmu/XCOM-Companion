@@ -19,6 +19,7 @@ import PerkTreeDisplayPage from "./page-controllers/perk-tree-display-page.js";
 import ResearchCreditsBrowsePage from "./page-controllers/research-credits-browse-page.js";
 import SearchResultsPage from "./page-controllers/search-results-page.js";
 import SoldierLoadoutEquipmentPage from "./page-controllers/soldier-loadouts/loadout-equipment-page.js";
+import SoldierLoadoutFoundryPage from "./page-controllers/soldier-loadouts/loadout-foundry-page.js";
 import SoldierLoadoutHomePage from "./page-controllers/soldier-loadouts/loadout-home-page.js";
 import SoldierLoadoutPerkTreesPage from "./page-controllers/soldier-loadouts/loadout-perk-trees-page.js";
 import SoldierLoadoutSelectionPage from "./page-controllers/soldier-loadouts/loadout-selection-page.js";
@@ -43,6 +44,7 @@ const appPages = [
     ResearchCreditsBrowsePage,
     SearchResultsPage,
     SoldierLoadoutEquipmentPage,
+    SoldierLoadoutFoundryPage,
     SoldierLoadoutHomePage,
     SoldierLoadoutPerkTreesPage,
     SoldierLoadoutSelectionPage,

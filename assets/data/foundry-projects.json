@@ -545,7 +545,7 @@
         "foundry_shiv_suppression": {
             "name": "SHIV Suppression",
             "description": "With a fairly extensive hardware and software upgrade, our SHIV units would be capable of suppressive fire, letting them pin enemy targets down under a hail of bullets.",
-            "tactical_text": "<ul><li><li>All of XCOM's SHIV units gain the <a data-page-on-click='perk-tree-display-page' data-pagearg-display-mode='single-perk' data-pagearg-item-id='perk_suppression'>Suppression</a> perk</li></li></ul>",
+            "tactical_text": "<ul><li>All of XCOM's SHIV units gain the <a data-page-on-click='perk-tree-display-page' data-pagearg-display-mode='single-perk' data-pagearg-item-id='perk_suppression'>Suppression</a> perk</li></ul>",
             "cost": {
                 "item_weapon_fragment": 5,
                 "money": 40

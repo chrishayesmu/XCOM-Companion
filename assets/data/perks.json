@@ -119,7 +119,7 @@
             "perk_command": {
                 "name": "Command",
                 "icon": "assets/img/perk-icons/command.png",
-                "description": "Grant a yellow move to an XCOM soldier in sight ranger whose turn is complete. Cannot be used on soldiers on Overwatch, who have Steadied their weapon, who have Hunkered Down, or used One For All. Does not allow use of multi-action perks like Close Encounters or Hit and Run. Four-turn cooldown. Note that this will NOT allow you to fire move-limited weapons (sniper rifles and LMGs), if you have taken a costly action (e.g. if you double-moved and then were commanded). The only exception to that is, after using double-tap, a unit can be commanded to fire once more, effectively triple-tapping."
+                "description": "Grant a yellow move to an XCOM soldier in sight range whose turn is complete. Cannot be used on soldiers on Overwatch, who have Steadied their weapon, who have Hunkered Down, or used One For All. Does not allow use of multi-action perks like Close Encounters or Hit and Run. Four-turn cooldown. Note that this will NOT allow you to fire move-limited weapons (sniper rifles and LMGs), if you have taken a costly action (e.g. if you double-moved and then were commanded). The only exception to that is, after using double-tap, a unit can be commanded to fire once more, effectively triple-tapping."
             },
             "perk_cluster_bomb": {
                 "name": "Cluster Bomb",

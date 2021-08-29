@@ -139,6 +139,7 @@ function calculateStatsForPrimary(loadout) {
 
     const soldierClass = DataHelper.soldierClasses[loadout.classId];
     const classPerks = loadout.perks;
+    const foundryProjects = loadout.foundryProjects || []; // backwards compatibility
     const currentRank = getLoadoutRank(loadout);
     const officerRank = loadout.officerAbilities.length;
     const psionicsRank = loadout.psiAbilities.length - 1;
@@ -257,6 +258,34 @@ function calculateStatsForPrimary(loadout) {
     }
     // #endregion
 
+    // #region Add stats from Foundry projects
+    if (isMec && foundryProjects.includes("foundry_advanced_servomotors")) {
+        stats.mobility.fromItems += 4;
+    }
+
+    if (isMec && foundryProjects.includes("foundry_shaped_armor")) {
+        stats.hp.fromItems += 3;
+    }
+
+    if (foundryProjects.includes("foundry_ammo_conservation")) {
+        stats.ammo.base += 1;
+    }
+
+    if (foundryProjects.includes("foundry_scope_upgrade")) {
+        if (loadout.equipment.includes("item_laser_sight")) {
+            stats.crit_chance.fromItems += 4;
+        }
+
+        if (loadout.equipment.includes("item_scope")) {
+            stats.crit_chance.fromItems += 8;
+        }
+    }
+
+    if (primaryWeapon.type_specific_data.weapon_tier === "plasma" && foundryProjects.includes("foundry_enhanced_plasma")) {
+        stats.damage += 1;
+    }
+    // #endregion
+
     // #region Add stats from officer abilities
     if (loadout.officerAbilities.includes("perk_esprit_de_corps")) {
         stats.defense.base += 5;
@@ -302,6 +331,7 @@ function fromExportString(str) {
     const loadout = {
         classId: jsonObj.c,
         equipment: [],
+        foundryProjects: [],
         geneMods: [],
         id: jsonObj.id,
         name: jsonObj.n,
@@ -323,6 +353,7 @@ function fromExportString(str) {
     }
 
     populateArray(loadout.equipment, jsonObj.e, "item_");
+    populateArray(loadout.foundryProjects, jsonObj.f, "foundry_");
     populateArray(loadout.geneMods, jsonObj.g, "gene_mod_");
     populateArray(loadout.perks, jsonObj.p, "perk_");
     populateArray(loadout.psiAbilities, jsonObj.ps, "psi_");
@@ -358,6 +389,7 @@ function toExportString(loadout) {
     }
 
     copyArrayIfPopulated(loadout.equipment, "e", "item_");
+    copyArrayIfPopulated(loadout.foundryProjects, "f", "foundry_");
     copyArrayIfPopulated(loadout.geneMods, "g", "gene_mod_");
     copyArrayIfPopulated(loadout.perks, "p", "perk_");
     copyArrayIfPopulated(loadout.psiAbilities, "ps", "psi_");

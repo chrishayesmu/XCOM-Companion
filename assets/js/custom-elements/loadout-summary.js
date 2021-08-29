@@ -16,6 +16,7 @@ class LoadoutSummary extends HTMLElement {
             return;
         }
 
+        const foundryProjects = this.#loadout.foundryProjects || [];
         const template = await Templates.instantiateTemplate("assets/html/templates/custom-elements/loadout-summary.html", "template-loadout-summary");
 
         template.querySelector("#loadout-summary-name").textContent = this.#loadout.name;
@@ -41,6 +42,10 @@ class LoadoutSummary extends HTMLElement {
             perksContainer.append(this._createPerkIcon("perk_hardened"));
             perksContainer.append(this._createPerkIcon("perk_robotic_mec"));
             perksContainer.append(this._createPerkIcon("perk_one_for_all"));
+
+            if (foundryProjects.includes("foundry_advanced_servomotors")) {
+                perksContainer.append(this._createPerkIcon("perk_sprinter"));
+            }
 
             // Hide areas that are irrelevant to MECs
             template.querySelector("#loadout-summary-gene-mods").parentNode.classList.add("hidden-collapse");

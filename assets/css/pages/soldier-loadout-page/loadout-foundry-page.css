@@ -1,0 +1,35 @@
+#loadout-foundry-page #loadout-foundry-projects-selector {
+    display: grid;
+    grid-template-columns: 80px 175px minmax(min-content, 500px);
+    margin-bottom: var(--intra-group-control-gap);
+}
+
+#loadout-foundry-page #loadout-foundry-projects-selector > * {
+    border: 1px solid var(--color-border-subtle);
+    padding: 5px 6px;
+
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    /* to combine adjacent borders */
+    margin-top: -1px;
+    margin-left: -1px;
+}
+
+/* First 3 children are the header row */
+#loadout-foundry-page #loadout-foundry-projects-selector > *:nth-child(-n+3) {
+    background-color: var(--color-bg-subtle);
+}
+
+#loadout-foundry-page button#select-all,
+#loadout-foundry-page button#select-none {
+    margin: 0 6px;
+    width: 100px;
+}
+
+#loadout-foundry-page button#return-to-loadout {
+    margin-top: 26px;
+}

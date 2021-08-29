@@ -29,7 +29,7 @@
     align-items: flex-start;
 
     position: relative;
-    top: 150px;
+    top: 100px;
 
     border-top: 1px solid var(--color);
     flex-grow: 1;
