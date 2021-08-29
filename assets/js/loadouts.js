@@ -140,6 +140,7 @@ function calculateStatsForPrimary(loadout) {
     const soldierClass = DataHelper.soldierClasses[loadout.classId];
     const classPerks = loadout.perks;
     const currentRank = getLoadoutRank(loadout);
+    const officerRank = loadout.officerAbilities.length;
     const psionicsRank = loadout.psiAbilities.length - 1;
 
     // Stats granted just by leveling up
@@ -184,7 +185,8 @@ function calculateStatsForPrimary(loadout) {
         }
     }
 
-    // Account for fatigue from psi abilities
+    // Account for fatigue from officer ranks and psi abilities
+    stats.fatigue_extra_time_hours += 12 * officerRank;
     if (psionicsRank >= 0) {
         stats.fatigue_extra_time_hours += psiFatigueByRank[psionicsRank];
     }
