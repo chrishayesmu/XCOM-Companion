@@ -58,6 +58,7 @@ for (let i = 0; i < soldierClassData.classes.length; i++) {
     const convertedClass = {
         "id": soldierClass.id,
         "name": soldierClass.name,
+        "hideInSearch": soldierClass.hideInSearch || false,
         "icon": soldierClass.icon,
         "defaultLoadout": soldierClass.default_loadout,
         "loadoutSlots": soldierClass.loadout_slots,
@@ -499,7 +500,7 @@ function dataObjectById(id) {
     else if (id.startsWith("gene_mod")) {
         return geneMods[id];
     }
-    else if (id.startsWith("infantry_class") || id.startsWith("mec_class")) {
+    else if (id.startsWith("infantry_class") || id.startsWith("mec_class") || id.startsWith("shiv_chassis")) {
         return soldierClasses[id];
     }
     else if (id.startsWith("item")) {

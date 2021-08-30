@@ -11,7 +11,6 @@ const dataSources = [
     Object.values(DataHelper.maps),
     Object.values(DataHelper.perks),
     Object.values(DataHelper.psiAbilities),
-    Object.values(DataHelper.soldierClasses),
     Object.values(DataHelper.technologies),
     Object.values(DataHelper.ufos)
 ];
@@ -33,7 +32,7 @@ function onDomReady() {
             continue;
         }
 
-        searchTerms.push(...dataSource.map(d => ({ name: d.name, id: d.id }) ));
+        searchTerms.push(...dataSource.filter(d => !d.hideInSearch).map(d => ({ name: d.name, id: d.id }) ));
     }
 
     searchTerms.sort( (a, b) => a.name.localeCompare(b.name));

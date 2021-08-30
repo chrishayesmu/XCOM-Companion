@@ -1332,6 +1332,7 @@
         {
             "id": "shiv_chassis_alloy",
             "name": "Alloy SHIV",
+            "hideInSearch": true,
             "icon": "assets/img/misc-icons/alloy_shiv.png",
             "loadout_slots": [
                 {
@@ -1355,6 +1356,7 @@
         {
             "id": "shiv_chassis_hover",
             "name": "Hover SHIV",
+            "hideInSearch": true,
             "icon": "assets/img/misc-icons/hover_shiv.png",
             "loadout_slots": [
                 {
@@ -1378,6 +1380,7 @@
         {
             "id": "shiv_chassis_shiv",
             "name": "SHIV",
+            "hideInSearch": true,
             "icon": "assets/img/misc-icons/shiv.png",
             "loadout_slots": [
                 {
