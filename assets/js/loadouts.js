@@ -229,7 +229,7 @@ function calculateStatsForPrimary(loadout) {
             stats.crit_chance.base += 10;
         }
         else if (perk === "perk_sprinter") {
-            stats.mobility.base += 4;
+            stats.mobility.fromItems += 4; // in-game shows it in the fromItems section for whatever reason
         }
     }
 
