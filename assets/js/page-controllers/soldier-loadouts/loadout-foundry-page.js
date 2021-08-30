@@ -1,11 +1,7 @@
 import { AppPage, PageHistoryState } from "../app-page.js";
-import * as DataHelper from "../../data-helper.js";
 import * as Loadouts from "../../loadouts.js";
-import * as Modal from "../../modal.js";
 import PageManager from "../../page-manager.js";
-import * as Settings from "../../settings.js";
 import * as Templates from "../../templates.js";
-import * as Utils from "../../utils.js";
 
 class SoldierLoadoutFoundryPage extends AppPage {
 
