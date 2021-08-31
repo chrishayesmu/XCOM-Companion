@@ -17,12 +17,12 @@
     justify-content: center;
 }
 
-input[type=number]#num-scientists {
+#tech-details-page input[type=number]#num-scientists {
     width: 40px;
 }
 
-input[type=number]#num-adjacencies,
-input[type=number]#num-labs {
+#tech-details-page input[type=number]#num-adjacencies,
+#tech-details-page input[type=number]#num-labs {
     width: 30px;
 }
 

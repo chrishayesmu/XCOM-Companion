@@ -323,6 +323,11 @@
                 <div class="column-heading">Normal Build</div>
                 <div class="item-details-build-content">
                     <div class="details-column-body flex-column-wrap" id="item-details-normal-build-cost-container"></div>
+                    <div id="item-details-build-time-explanation">
+                        <span id="item-details-rebate-block"></span>
+                        Displayed data is based on having <span id="build-time-num-engineers"></span> engineers, <span id="build-time-num-workshops"></span> <in-app-link to="facility_workshop" linkText="Workshop(s)"></in-app-link>,
+                        and <span id="build-time-num-adjacencies"></span> adjacency bonuses. <a id="change-engineering-settings">Change..</a>
+                    </div>
                 </div>
             </div>
             <div class="details-right-column">
@@ -355,6 +360,17 @@
             <div class="column-heading"></div>
             <div class="details-column-body" id="item-details-tactical-text"></div>
         </div>
+    </div>
+</template>
+
+<template id="template-enter-engineering-settings-modal">
+    <div id="engineering-settings-modal" class="standard-modal">
+        <div>Number of engineers:</div> <input type="number" id="num-engineers" class="hide-number-spinners"></input>
+        <div>Number of workshops:</div> <input type="number" id="num-workshops" class="hide-number-spinners"></input>
+        <div>Number of adjacency bonuses:</div> <input type="number" id="num-adjacencies" class="hide-number-spinners"></input>
+
+        <button class="xcom" id="save-changes">Save Changes</button>
+        <button class="xcom" id="cancel">Cancel</button>
     </div>
 </template>
 

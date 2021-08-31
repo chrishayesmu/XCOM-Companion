@@ -42,12 +42,37 @@ function appendElement(container, elementType, content, options) {
     return element;
 }
 
-function calculateEngineeringTime(baseTimeInDays, expectedEngineers, actualEngineers) {
-    // Formula taken from https://www.ufopaedia.org/index.php/Engineering_(Long_War)
-    const engineerRatio = expectedEngineers / actualEngineers;
-    const timeCoefficient = 1 + Math.pow(engineerRatio, 0.06 * expectedEngineers);
+function calculateRebate(numWorkshops, numAdjacencies, moneyCost, numAlloysCost, numEleriumCost) {
+    // Note, rush builds do not change the rebate amount
+    numWorkshops = Number(numWorkshops);
+    numAdjacencies = Number(numAdjacencies);
+    numAlloysCost = Number(numAlloysCost);
+    numEleriumCost = Number(numEleriumCost);
 
-    return baseTimeInDays * 0.5 * timeCoefficient;
+    // Based off rebates in LW code: XGFacility_Engineering#3000
+    const rebate = {
+        alloys: 0,
+        elerium: 0,
+        money: 0
+    };
+
+    const rebatePerWorkshop = 0.1; // 10% per workshop, 5% per adjacency
+    const adjScore = 2 * numWorkshops + numAdjacencies;
+
+    if (adjScore === 0) {
+        return rebate;
+    }
+
+    rebate.alloys = numAlloysCost;
+    rebate.elerium = numEleriumCost;
+    rebate.money = moneyCost;
+
+    const rebateCoefficient = 0.5 + 0.5 * Math.pow((1.0 - rebatePerWorkshop * 2), adjScore / 2);
+    rebate.alloys -= Math.floor(numAlloysCost * rebateCoefficient);
+    rebate.elerium -= Math.floor(numEleriumCost * rebateCoefficient);
+    rebate.money -= Math.floor(moneyCost * rebateCoefficient);
+
+    return rebate;
 }
 
 function calculateResearchTime(baseTimeInDays, numScientists, numLabs, numAdjacencies, hasCredit) {
@@ -59,6 +84,37 @@ function calculateResearchTime(baseTimeInDays, numScientists, numLabs, numAdjace
 
     // baseTimeInDays is the time for 30 scientists, so everything is scaled based on that
     return baseTimeInDays * (30 / (numScientists * labBonus)) * creditBonus;
+}
+
+function calculateTimeToBuild(itemOrFoundryProject, numActualEngineers, isRushJob) {
+    const numExpectedEngineers = itemOrFoundryProject.base_engineers;
+    // Unfortunately the data format for items and foundry projects is slightly different
+    const expectedEngineerHours = 24 * numExpectedEngineers * (itemOrFoundryProject.base_time_days || itemOrFoundryProject.normal_build.base_build_time_days);
+    const workPerHour = calculateWorkPerHour(numExpectedEngineers, numActualEngineers, isRushJob);
+
+    var hoursToBuild = Math.floor(expectedEngineerHours / workPerHour);
+
+    if (expectedEngineerHours % workPerHour != 0) {
+        hoursToBuild++;
+    }
+
+    return hoursToBuild;
+}
+
+function calculateWorkPerHour(numExpectedEngineers, numActualEngineers, isRushJob) {
+    // Formula from XGFacility_Engineering#117
+
+    const rushFactor = isRushJob ? 2 : 1;
+    const timeScaleFactor = 0.03; // this is ABDUCTION_REWARD_ENG in DefaultGameCore.ini
+    const engineerRatio = numExpectedEngineers / numActualEngineers;
+    const exponent = Math.min(50, 2  * timeScaleFactor * numExpectedEngineers);
+    const divisor = (0.5 / rushFactor) * (1 + Math.pow(engineerRatio, exponent));
+
+    var workPerHour = Math.floor(numExpectedEngineers / divisor);
+    workPerHour = Math.max(1, workPerHour);
+    workPerHour = Math.min(workPerHour, rushFactor * numActualEngineers);
+
+    return workPerHour;
 }
 
 function capitalizeEachWord(str, originalSeparator, newSeparator) {
@@ -260,8 +316,10 @@ function xToY(x, y) {
 
 export {
         appendElement,
-        calculateEngineeringTime,
+        calculateRebate,
         calculateResearchTime,
+        calculateTimeToBuild,
+        calculateWorkPerHour,
         capitalizeEachWord,
         createGrid,
         createImg,

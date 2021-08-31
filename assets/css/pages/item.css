@@ -41,8 +41,14 @@
 
 .item-details-build-content {
     display: flex;
-    flex-flow: row nowrap;
+    flex-flow: column nowrap;
     height: calc(100% - 31px); /* magic to make sure normal and quick build are the same height even if one is naturally longer */
+}
+
+#item-details-build-time-explanation {
+    max-width: fit-content;
+    padding: 10px 13px 15px 13px;
+
 }
 
 #item-details-cost-container {
@@ -130,4 +136,18 @@ table.item-stats-grid caption {
 
 #item-details-used-in div {
     margin-right: 16px;
+}
+
+/**
+ * Modal for entering engineers/workshops/adjacencies
+ */
+
+#engineering-settings-modal {
+    display: grid;
+    grid-template-columns: 70% calc(30% - 13px);
+}
+
+#engineering-settings-modal #cancel,
+#engineering-settings-modal #save-changes {
+    margin-top: 8px;
 }

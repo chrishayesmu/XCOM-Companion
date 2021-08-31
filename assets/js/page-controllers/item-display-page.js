@@ -1,5 +1,7 @@
 import { AppPage, PageHistoryState } from "./app-page.js";
 import * as DataHelper from "../data-helper.js";
+import * as Modal from "../modal.js";
+import * as Settings from "../settings.js";
 import * as Templates from "../templates.js";
 import * as Utils from "../utils.js";
 import * as Widgets from "../widgets.js";
@@ -146,6 +148,7 @@ class ItemDisplayPage extends AppPage {
         template.querySelector(".details-header-description").innerHTML = item.description;
         template.querySelector("#item-details-type").textContent = itemTypeConfig.friendlyName;
         template.querySelector(".details-header-img-container img").src = item.icon;
+        template.querySelector("#change-engineering-settings").addEventListener("click", this._onChangeNumEngineersClicked.bind(this));
 
         if (item.sell_value) {
             template.querySelector("#item-details-sell-value").innerHTML += item.sell_value;
@@ -159,8 +162,9 @@ class ItemDisplayPage extends AppPage {
             template.querySelector("#item-details-build").classList.add("hidden-collapse");
         }
         else {
-            this._populateBuildSection(item.normal_build, item.base_engineers, template.querySelector("#item-details-normal-build-cost-container"));
-            this._populateBuildSection(item.quick_build, item.base_engineers, template.querySelector("#item-details-quick-build-cost-container"));
+            this._populateBuildSection(item.normal_build, item.base_engineers, template.querySelector("#item-details-normal-build-cost-container"), false);
+            this._populateBuildSection(item.quick_build, item.base_engineers, template.querySelector("#item-details-quick-build-cost-container"), true);
+            this._populateEngineeringSettingsDisplay(template);
         }
 
         if (itemTypeConfig.showTacticalText) {
@@ -523,11 +527,87 @@ class ItemDisplayPage extends AppPage {
         grid.querySelector(`#${stat}-header`).classList.add("hidden-collapse");
     }
 
-    _populateBuildSection(buildData, numEngineersNeeded, containerElement) {
-        if (!buildData) {
-            Utils.appendElement(containerElement, "div", "This item cannot be built quickly.");
+    async _getCurrentEngineeringSettings() {
+        const engineeringSettings = await Settings.get("engineering");
+
+        if (engineeringSettings) {
+            engineeringSettings.numEngineers = engineeringSettings.numEngineers || 10;
+            engineeringSettings.numWorkshops = engineeringSettings.numWorkshops || 0;
+            engineeringSettings.numAdjacencies = engineeringSettings.numAdjacencies || 0;
+
+            return engineeringSettings;
+        }
+
+        return {
+            numEngineers: 10,
+            numWorkshops: 0,
+            numAdjacencies: 0
+        };
+    }
+
+    async _onChangeNumEngineersClicked() {
+        const template = await Templates.instantiateTemplate("assets/html/templates/pages/item-display-page.html", "template-enter-engineering-settings-modal");
+        const currentEngineeringSettings = await this._getCurrentEngineeringSettings();
+
+        template.querySelector("#num-engineers").value = currentEngineeringSettings.numEngineers;
+        template.querySelector("#num-workshops").value = currentEngineeringSettings.numWorkshops;
+        template.querySelector("#num-adjacencies").value = currentEngineeringSettings.numAdjacencies;
+
+        template.querySelector("#save-changes").addEventListener("click", () => { this._onSaveNumEngineers(template); });
+        template.querySelector("#cancel").addEventListener("click", Modal.close);
+
+        Modal.open(template, null, false);
+    }
+
+    async _onSaveNumEngineers(domContainer) {
+        const newNumEngineers = domContainer.querySelector("#num-engineers").value;
+        const newNumWorkshops = domContainer.querySelector("#num-workshops").value;
+        const newNumAdjacencies = domContainer.querySelector("#num-adjacencies").value;
+
+        if (newNumEngineers <= 10) {
+            // TODO flag invalid or something
             return;
         }
+
+        const newSettings = {
+            numEngineers: newNumEngineers,
+            numWorkshops: newNumWorkshops,
+            numAdjacencies: newNumAdjacencies
+        };
+
+        await Settings.set("engineering", newSettings);
+
+        // Update UI with new number of engineers and build time
+        const item = DataHelper.items[this.#itemId];
+        const normalBuildContainer = document.getElementById("item-details-normal-build-cost-container");
+        normalBuildContainer.innerHTML = "";
+        this._populateBuildSection(item.normal_build, item.base_engineers, normalBuildContainer, false);
+
+        const quickBuildContainer = document.getElementById("item-details-quick-build-cost-container");
+        quickBuildContainer.innerHTML = "";
+        this._populateBuildSection(item.quick_build, item.base_engineers, quickBuildContainer, true);
+
+        this._populateEngineeringSettingsDisplay(document);
+
+        Modal.close();
+    }
+
+    async _populateBuildSection(buildData, numEngineersNeeded, containerElement, isQuickBuild) {
+        if (!buildData) {
+            if (isQuickBuild) {
+                Utils.appendElement(containerElement, "div", "This item cannot be built quickly.");
+            }
+            else {
+                console.error("No build data is present on a normal build. Item " + this.#itemId + "is misconfigured.");
+            }
+
+            return;
+        }
+
+        // Rebate is always based on the normal build cost
+        const currentEngineeringSettings = await this._getCurrentEngineeringSettings();
+        const normalBuildCost = DataHelper.items[this.#itemId].normal_build.cost;
+        const rebate = Utils.calculateRebate(currentEngineeringSettings.numWorkshops, currentEngineeringSettings.numAdjacencies, normalBuildCost.money, normalBuildCost.item_alien_alloy, normalBuildCost.item_elerium);
 
         const addCostRow = function(label, content) {
             const div = document.createElement("div");
@@ -546,11 +626,35 @@ class ItemDisplayPage extends AppPage {
             return div;
         };
 
-        addCostRow("Time:", buildData.base_build_time_days + " days");
+
+        var buildTimeHours = Utils.calculateTimeToBuild(DataHelper.items[this.#itemId], currentEngineeringSettings.numEngineers, isQuickBuild);
+        const buildTimeDays = Math.floor(buildTimeHours / 24);
+        buildTimeHours = buildTimeHours % 24;
+
+        var buildTimeString = buildTimeDays !== 1 ? `${buildTimeDays} days` : "1 day";
+
+        if (buildTimeHours !== 0) {
+            buildTimeString += buildTimeHours > 1 ? `, ${buildTimeHours} hours` : ", 1 hour";
+        }
+
+        addCostRow("Time:", buildTimeString);
 
         // Handle money first since it's displayed uniquely
         if (buildData.cost.money) {
-            addCostRow("Cost:", "<font color='var(--color-green)'>§" + buildData.cost.money + "</font>");
+            // Apply discount from workshops/adjacencies
+            var finalCost = normalBuildCost.money - rebate.money;
+
+            // For quick builds we need to recreate the cost formula the same way it's done in-game,
+            // or we'll sometimes be off by a dollar due to rounding issues
+            // TODO: get rid of quick build data in the input data at all and just calculate it on the fly.
+            //       See XGFacility_Engineering#GetItemProjectCost(L2304) for calculations
+            // TODO: quick build meld cost is based on cash cost AFTER discount, so having a fixed cost in the JSON is wrong
+            //      See XGFacility_Engineering L2320
+            if (isQuickBuild) {
+                finalCost = Math.floor(1.5 * finalCost);
+            }
+
+            addCostRow("Cost:", "<font color='var(--color-green)'>§" + finalCost + "</font>");
         }
 
         for (const requiredItemId in buildData.cost) {
@@ -566,9 +670,39 @@ class ItemDisplayPage extends AppPage {
 
         // Add the number of engineers, and help text, at the very end
         if (numEngineersNeeded) {
-            const helpIcon = Widgets.createHelpIcon("The time to build is based on having this many engineers. It will go quicker if you have more, and much slower if you have less.");
+            const helpIcon = Widgets.createHelpIcon("The item's build time is based around having this many engineers. It will go quicker if you have more, and much slower if you have less.");
             const engineerContainer = addCostRow(numEngineersNeeded, "Engineers");
             engineerContainer.appendChild(helpIcon);
+        }
+    }
+
+    async _populateEngineeringSettingsDisplay(container) {
+        const currentEngineeringSettings = await this._getCurrentEngineeringSettings();
+
+        container.querySelector("#build-time-num-engineers").textContent = currentEngineeringSettings.numEngineers;
+        container.querySelector("#build-time-num-workshops").textContent = currentEngineeringSettings.numWorkshops;
+        container.querySelector("#build-time-num-adjacencies").textContent = currentEngineeringSettings.numAdjacencies;
+
+        const buildCost = DataHelper.items[this.#itemId].normal_build.cost;
+        const alloyCost = buildCost.item_alien_alloy || 0;
+        const eleriumCost = buildCost.item_elerium || 0;
+        const rebate = Utils.calculateRebate(currentEngineeringSettings.numWorkshops, currentEngineeringSettings.numAdjacencies, /* moneyCost; unimportant here */ 0, alloyCost, eleriumCost);
+
+        if (rebate.alloys === 0 && rebate.elerium === 0) {
+            container.querySelector("#item-details-rebate-block").textContent = "";
+        }
+        else {
+            const parts = [];
+
+            if (rebate.alloys > 0) {
+                parts.push(rebate.alloys + (rebate.alloys === 1 ? " Alien Alloy" : " Alien Alloys"));
+            }
+
+            if (rebate.elerium > 0) {
+                parts.push(rebate.elerium + " elerium");
+            }
+
+            container.querySelector("#item-details-rebate-block").textContent = `You will receive a rebate of ${Utils.join(parts)}.`;
         }
     }
 
