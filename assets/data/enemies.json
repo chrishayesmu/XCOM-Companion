@@ -2348,6 +2348,11 @@
                     "will": 2
                 },
                 {
+                    "threshold": 301,
+                    "chance": 100,
+                    "notes": "Floaters will automatically Overwatch after Launching."
+                },
+                {
                     "threshold": 330,
                     "damage": 1,
                     "defense": 4,
@@ -2624,6 +2629,11 @@
                     "hp": 2,
                     "mobility": 1,
                     "will": 2
+                },
+                {
+                    "threshold": 541,
+                    "chance": 100,
+                    "notes": "Heavy Floaters will automatically Overwatch after Launching."
                 },
                 {
                     "threshold": 600,
