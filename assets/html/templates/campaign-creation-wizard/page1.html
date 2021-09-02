@@ -1,0 +1,91 @@
+<template id="template-campaign-creation-wizard-page-1">
+    <div class="standard-modal wizard-modal">
+        <info-box>Everything you select here can be changed later.</info-box>
+        <div class="wizard-body">
+            <fieldset>
+                <legend>Campaign difficulty</legend>
+                <div id="difficulty-select-container">
+                    <input type="radio" id="difficulty-normal" value="normal" name="difficulty" checked />
+                    <label for="difficulty-normal">Normal</label>
+                    <help-icon>
+                        <h3>Difficulty effects</h3>
+                        <ul>
+                            <li>Starting funds: <b>§600</b></li>
+                            <li>Starting HQ power: <b>32</b></li>
+                            <li>Starting panic: <b>200</b> (distributed worldwide)</li>
+                            <li>Enemy base stats are at their lowest level</li>
+                            <li>Enemy unit research upgrade thresholds <b>increased by 40%</b></li>
+                            <li>Some enemies drop additional Weapon Fragments</li>
+                            <li>Recover <b>40%</b> more Alien Alloys from UFOs</li>
+                            <li>UFOs contain <b>35</b> elerium per power source</li>
+                            <li>Countries with satellite coverage give <b>110%</b> of their maximum funding per month</li>
+                            <li>Countries without satellite coverage give <b>50%</b> of their maximum funding per month</li>
+                        </ul>
+                    </help-icon>
+
+                    <input type="radio" id="difficulty-classic" value="classic" name="difficulty" />
+                    <label for="difficulty-classic">Classic</label>
+                    <help-icon>
+                        <h3>Difficulty effects</h3>
+                        <ul>
+                            <li>Starting funds: <b>§500</b></li>
+                            <li>Starting HQ power: <b>30</b></li>
+                            <li>Starting panic: <b>400</b> (distributed worldwide)</li>
+                            <li>Most enemies have +5 aim compared to Normal; some have increased defense</li>
+                            <li>Some enemies drop additional Weapon Fragments (less than Normal)</li>
+                            <li>Recover <b>20%</b> more Alien Alloys from UFOs</li>
+                            <li>UFOs contain <b>30</b> elerium per power source</li>
+                            <li>Countries without satellite coverage give <b>40%</b> of their maximum funding per month</li>
+                        </ul>
+                    </help-icon>
+
+                    <input type="radio" id="difficulty-brutal" value="brutal" name="difficulty" />
+                    <label for="difficulty-brutal">Brutal</label>
+                    <help-icon>
+                        <h3>Difficulty effects</h3>
+                        <ul>
+                            <li>Starting funds: <b>§400</b></li>
+                            <li>Starting HQ power: <b>30</b></li>
+                            <li>Starting panic: <b>600</b> (distributed worldwide)</li>
+                            <li>Most enemies have increased stats compared to Classic</li>
+                            <li>Enemy unit research upgrade thresholds <b>decreased by 10%</b></li>
+                            <li>UFOs contain <b>25</b> elerium per power source</li>
+                            <li>Countries without satellite coverage give <b>33%</b> of their maximum funding per month</li>
+                        </ul>
+                    </help-icon>
+
+                    <input type="radio" id="difficulty-impossible" value="impossible" name="difficulty" />
+                    <label for="difficulty-impossible">Impossible</label>
+                    <help-icon>
+                        <h3>Difficulty effects</h3>
+                        <ul>
+                            <li>Starting funds: <b>§300</b></li>
+                            <li>Starting HQ power: <b>30</b></li>
+                            <li>Starting panic: <b>800</b> (distributed worldwide)</li>
+                            <li>Enemies have significant increases to aim, HP, will, and damage</li>
+                            <li>Enemy unit research upgrade thresholds <b>decreased by 30%</b></li>
+                            <li>UFOs contain <b>25</b> elerium per power source</li>
+                            <li>Countries without satellite coverage give <b>25%</b> of their maximum funding per month</li>
+                        </ul>
+                    </help-icon>
+
+                </div>
+            </fieldset>
+            <fieldset class="flex-column">
+                <legend>Optional DLCs</legend>
+                <div>
+                    <input type="checkbox" class="xcom" id="is-progeny-enabled" checked /><label for="is-progeny-enabled">Operation Progeny</label>
+                    <help-icon style="margin-left: 10.25px">Operation Progeny contains the council missions Portent, Deluge, and Furies.</help-icon>
+                </div>
+                <div>
+                    <input type="checkbox" class="xcom" id="is-slingshot-enabled" checked /><label for="">Operation Slingshot</label>
+                    <help-icon>Operation Slingshot contains the council missions Friends In Low Places, Confounding Light, and Gangplank.</help-icon>
+                </div>
+            </fieldset>
+        </div>
+        <div class="wizard-button-bar">
+            <button id="btn-previous" class="xcom">Go Back</button>
+            <button id="btn-next" class="xcom">Next Step</button>
+        </div>
+    </div>
+</template>

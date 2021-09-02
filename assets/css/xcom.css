@@ -26,6 +26,50 @@ button.xcom.disabled {
     filter: brightness(0.5);
 }
 
+/* checkbox */
+
+input[type=checkbox].xcom {
+    position: relative;
+}
+
+input[type=checkbox].xcom::before,
+input[type=checkbox].xcom::after {
+    content: "";
+    border: 2px solid var(--color);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 11px;
+    width: 11px;
+}
+
+input[type=checkbox].xcom::before {
+    background: var(--color-bg);
+}
+
+input[type=checkbox].xcom:checked::before,
+input[type=checkbox].xcom:checked::after {
+    color: var(--color);
+    font-size: 26px;
+}
+
+input[type=checkbox].xcom:checked::before {
+    content: "◸";
+}
+
+input[type=checkbox].xcom:checked::after {
+    content: "◹";
+}
+
+input[type=checkbox].xcom:hover::before,
+input[type=checkbox].xcom:hover::after {
+    filter: brightness(1.1);
+}
+
 /* textarea */
 
 textarea.xcom {

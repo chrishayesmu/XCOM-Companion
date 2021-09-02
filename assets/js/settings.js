@@ -25,6 +25,45 @@ async function unset(name) {
  *
  *******************/
 
+
+
+/**** Campaigns ****/
+
+const DELIBERATELY_NONE_CAMPAIGN_ID = "DeliberatelyNoCampaignIdSet"
+
+async function getAllCampaigns() {
+    const allCampaigns = await get("campaigns");
+    delete allCampaigns.current;
+
+    return allCampaigns;
+}
+
+async function getCurrentCampaign() {
+    const currentCampaignId = await getCurrentCampaignId();
+
+    if (!currentCampaignId || currentCampaignId === DELIBERATELY_NONE_CAMPAIGN_ID) {
+        return null;
+    }
+
+    return get("campaigns." + currentCampaignId);
+}
+
+async function getCurrentCampaignId() {
+    return get("campaigns.current");
+}
+
+async function saveCampaign(campaign) {
+    return set("campaigns." + campaign.id, campaign);
+}
+
+async function setCurrentCampaign(campaignId) {
+    return set("campaigns.current", campaignId);
+}
+
+
+
+/**** Soldier loadouts ****/
+
 const defaultLoadouts = {"75573b4c-e08e-4f4b-ad81-6e3489cc54e2":{"classId":"infantry_class_sniper","equipment":["item_archangel_armor","item_gauss_long_rifle","item_laser_pistol","item_alloy_jacketed_rounds","item_illuminator_gunsight","item_targeting_module"],"id":"75573b4c-e08e-4f4b-ad81-6e3489cc54e2","name":"Eminem's \"8 Mile Pie\" Sniper","notes":"His rifle's ready, scope's up, barrel heavy\nCyberdisc killed his medic already, space confetti\nSquadsight only, but last turn he steadied\nCrit penalties, but Precision Shot is ready\nTo take it down, the disc's shell is open now\nNo Hardened perk out, critical scopin', pow\nSqueeze the trigger, one bullet, just hopin' now\nBut the shot missed, turn's done, fuckin how","perks":["perk_squadsight","perk_lone_wolf","perk_precision_shot","perk_ranger","perk_vital_point_targeting","perk_bring_em_on","perk_mayhem"],"geneMods":["gene_mod_depth_perception","gene_mod_muscle_fiber_density"],"officerAbilities":["perk_stay_frosty","perk_semper_vigilans","perk_into_the_breach","perk_band_of_warriors","perk_combined_arms"],"psiAbilities":[]}};
 
 async function deleteSoldierLoadout(id) {
@@ -56,6 +95,16 @@ async function setSoldierLoadouts(loadouts) {
 
 export { get,
          set,
+
+         // Campaigns
+         DELIBERATELY_NONE_CAMPAIGN_ID,
+         getAllCampaigns,
+         saveCampaign,
+         getCurrentCampaign,
+         getCurrentCampaignId,
+         setCurrentCampaign,
+
+         // Loadouts
          deleteSoldierLoadout,
          getSoldierLoadoutById,
          getSoldierLoadouts,

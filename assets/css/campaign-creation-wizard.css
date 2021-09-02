@@ -1,0 +1,60 @@
+.wizard-modal fieldset {
+    margin-bottom: var(--inter-group-gap);
+    width: 100%;
+}
+
+.wizard-modal input[type=checkbox].xcom {
+    bottom: -1px;
+    margin-right: 8px;
+}
+
+.wizard-modal .wizard-body {
+    max-height: 60%;
+    width: 100%;
+}
+
+.wizard-modal #difficulty-select-container {
+    display: grid;
+    grid-template-columns: 25px 73px auto;
+}
+
+.wizard-modal single-select-list#starting-country {
+    height: 500px;
+    overflow-y: auto;
+}
+
+.wizard-modal single-select-list#starting-country li {
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+.wizard-modal single-select-list#starting-country li * {
+    pointer-events: none;
+}
+
+.wizard-modal single-select-list#starting-country li .country-name {
+    text-align: left;
+    width: 120px;
+}
+
+.wizard-modal single-select-list#starting-country li .country-starting-bonus {
+    flex-grow: 1;
+    text-align: left;
+    width: 200px;
+}
+
+.wizard-modal .wizard-body #continent-bonus-name,
+.wizard-modal .wizard-body #country-bonus-name {
+    color: gold;
+    font-size: 1.2em;
+}
+
+.wizard-modal .wizard-body #selected-country-details-container {
+    float: right;
+    padding: 0 calc(1.5 * var(--inter-group-gap));
+    width: 370px;
+}
+
+.wizard-modal .wizard-body #selected-country-details-container h3 {
+    text-align: left;
+}

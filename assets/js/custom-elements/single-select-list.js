@@ -49,8 +49,21 @@ class SingleSelectList extends HTMLElement {
         if (isSelecting) {
             this.select(event.target);
         }
-        else {
+        else if (!this.preventDeselect) {
             this.select(null);
+        }
+    }
+
+    get preventDeselect() {
+        return this.hasAttribute("prevent-deselect");
+    }
+
+    set preventDeselect(preventDeselect) {
+        if (preventDeselect) {
+            this.setAttribute("prevent-deselect", "");
+        }
+        else {
+            this.removeAttribute("prevent-deselect");
         }
     }
 

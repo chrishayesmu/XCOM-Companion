@@ -1,0 +1,293 @@
+{
+    "continents": {
+        "africa": {
+            "name": "Africa",
+            "bonusName": "Architects of the Future",
+            "bonusDescription": "Laboratories and Workshops cost 30% less to build and maintain."
+        },
+        "asia": {
+            "name": "Asia",
+            "bonusName": "New Warfare",
+            "bonusDescription": "Foundry projects have cash, alloy and elerium cost reduced by 25% percent."
+        },
+        "europe": {
+            "name": "Europe",
+            "bonusName": "Wealth of Nations",
+            "bonusDescription": "Monthly XCOM funding increased by 20%."
+        },
+        "north_america": {
+            "name": "North America",
+            "bonusName": "Air Superiority",
+            "bonusDescription": "Aircraft and aircraft weapons cost 25% less to purchase and maintain."
+        },
+        "south_america": {
+            "name": "South America",
+            "bonusName": "Power to the People",
+            "bonusDescription": "Power facilities cost 30% less to build and maintain."
+        }
+    },
+    "countries": {
+        "argentina": {
+            "name": "Argentina",
+            "startingBonuses": [
+                {
+                    "name": "Patriae Semper Vigilis",
+                    "description": "All soldiers receive +5 will."
+                }
+            ],
+			"continent": "south_america"
+		},
+        "australia": {
+            "name": "Australia",
+            "startingBonuses": [
+                {
+                    "name": "Per Ardua Ad Astra",
+                    "description": "All soldiers receive +5 ability points for stat rolls upon recruitment."
+                }
+            ],
+			"continent": "asia"
+		},
+        "brazil": {
+            "name": "Brazil",
+            "startingBonuses": [
+                {
+                    "name": "Jungle Scouts",
+                    "description": "Early armors (Tac Vest and Tac, Kestrel, Phalanx and Aurora Armors) receive an additional small item slot until Tactical Rigging is developed."
+                },
+                {
+                    "name": "Expertise",
+                    "description": "+15% bonus to research credits from interrogations."
+                },
+                {
+                    "name": "On Our Own",
+                    "description": "No unique bonus."
+                }
+            ],
+			"continent": "south_america"
+		},
+        "canada": {
+            "name": "Canada",
+            "startingBonuses": [
+                {
+                    "name": "Advanced Preparations",
+                    "description": "XCOM HQ starts with a Laboratory and Workshop already built."
+                },
+                {
+                    "name": "Cadre",
+                    "description": "Start with four corporals in the barracks, one of each supraclass."
+                }
+            ],
+			"continent": "north_america"
+		},
+        "china": {
+            "name": "China",
+            "startingBonuses": [
+                {
+                    "name": "Wei Renmin Fuwu",
+                    "description": "Start with a Workshop and Repair Bay already built."
+                },
+                {
+                    "name": "Xenological Remedies",
+                    "description": "100% bonus cash from alien corpse and wreck sales."
+                },
+                {
+                    "name": "Deus Ex",
+			        "description": "50% reduction in genemod meld and cash cost and modification time."
+                }
+            ],
+			"continent": "asia"
+		},
+        "egypt": {
+            "name": "Egypt",
+            "startingBonuses": [
+                {
+                    "name": "Gift of Osiris",
+                    "description": "Fatigue from psi powers, genemods and officer ranks reduced by 50%."
+                },
+                {
+                    "name": "For the Sake of Glory",
+                    "description": "Start with Advanced Repair foundry project, which grants faster repair time for aircraft, mechanized units and damaged soldier gear."
+                }
+            ],
+			"continent": "africa"
+		},
+        "france": {
+            "name": "France",
+            "startingBonuses": [
+                {
+                    "name": "Quai d'Orsay",
+                    "description": "Country item requests occur 40% faster; fulfilled requests provide 40% additional defense, and intel scans cost 40% less."
+                },
+                {
+                    "name": "Foreign Legion",
+                    "description": "Start with 20 additional soldiers in the barracks."
+                }
+            ],
+			"continent": "europe"
+		},
+        "germany": {
+            "name": "Germany",
+            "startingBonuses": [
+                {
+                    "name": "Skunkworks",
+                    "description": "XCOM HQ starts with the Foundry already built."
+                },
+                {
+                    "name": "Baumeister",
+                    "description": "Facility construction time reduced by 33%."
+                },
+                {
+                    "name": "NeoPanzers",
+                    "description": "50% reduction in cash, alloy and elerium required for MEC and SHIV primary weapons."
+                },
+                {
+                    "name": "On Our Own",
+                    "description": "No unique bonus."
+                }
+            ],
+			"continent": "europe"
+		},
+        "india": {
+            "name": "India",
+            "startingBonuses": [
+                {
+                    "name": "Jai Jawan",
+                    "description": "Start with 2 additional interceptors in your home base and Elerium Afterburners foundry project, granting extended interception time."
+                }
+            ],
+			"continent": "asia"
+		},
+        "japan": {
+            "name": "Japan",
+            "startingBonuses": [
+                {
+                    "name": "Ring of Fire",
+                    "description": "XCOM HQ has 3 additional Steam Vents."
+                },
+                {
+                    "name": "Ghost In the Machine",
+                    "description": "SHIVs receive +10 aim, and you start the campaign with two SHIVs in the barracks."
+                },
+                {
+                    "name": "Kiryu-Kai Commander",
+                    "description": "Start with a Master Sergeant of a random class on your roster."
+                },
+                {
+                    "name": "Robotics",
+                    "description": "+5 bonus aim for new SHIVs and MEC troopers."
+                },
+                {
+                    "name": "On Our Own",
+                    "description": "No unique bonus."
+                }
+            ],
+			"continent": "asia"
+		},
+        "mexico": {
+            "name": "Mexico",
+            "startingBonuses": [
+                {
+                    "name": "Wealthy Benefactor",
+                    "description": "Start with 500 bonus cash."
+                },
+                {
+                    "name": "Ancient Artifact",
+                    "description": "Start the campaign with an Illuminator Gunsight small item."
+                },
+                {
+                    "name": "Legacy of Uxmal",
+                    "description": "20% bonus to psionic training chances."
+                }
+            ],
+
+			"continent": "north_america"
+		},
+        "nigeria": {
+            "name": "Nigeria",
+            "startingBonuses": [
+                {
+                    "name": "Pax Nigeriana",
+                    "description": "All soldiers receive +1 mobility."
+                },
+                {
+                    "name": "The Old Path",
+                    "description": "50% reduction in psi training time."
+                },
+                {
+                    "name": "On Our Own",
+                    "description": "No unique bonus."
+                }
+            ],
+			"continent": "africa"
+		},
+        "russia": {
+            "name": "Russia",
+            "startingBonuses": [
+                {
+                    "name": "Sukhoi Company",
+                    "description": "Start with Enhanced Avionics foundry project, granting +10% to hit during air combat."
+                },
+                {
+                    "name": "Roscosmos",
+                    "description": "Start with an additional satellite uplink, and all satellites cost 50% less to build."
+                }
+            ],
+
+			"continent": "europe"
+		},
+        "south_africa": {
+            "name": "South Africa",
+            "startingBonuses": [
+                {
+                    "name": "Resourceful",
+                    "description": "Start with Alien Metallurgy and Advanced Salvage foundry projects (bonus alloys and weapon fragments)."
+                },
+                {
+                    "name": "Survival Training",
+                    "description": "All soldiers receive +1 hit point."
+                }
+            ],
+			"continent": "africa"
+		},
+        "united_kingdom": {
+            "name": "United Kingdom",
+            "startingBonuses": [
+                {
+                    "name": "Special Air Service",
+                    "description": "All soldiers receive +3 aim."
+                },
+                {
+                    "name": "Their Finest Hour",
+                    "description": "Start with Penetrator Weapons foundry project, granting interceptor weapons increased armor piercing capabilities."
+                },
+                {
+                    "name": "Sandhurst",
+                    "description": "33% reduction in ranks required to unlock Officer Training School projects."
+                }
+            ],
+			"continent": "europe"
+		},
+        "united_states": {
+            "name": "United States",
+            "startingBonuses": [
+                {
+                    "name": "Special Warfare School",
+                    "description": "Officer Training School Projects cost 90% less."
+                },
+                {
+                    "name": "Cheyenne Mountain",
+                    "description": "XCOM HQ starts with all elevators already built, and excavation costs are reduced by 50%."
+                },
+                {
+                    "name": "We Have Ways",
+                    "description": "75% reduction in time to complete autopsies and interrogations."
+                },
+                {
+                    "name": "On Our Own",
+                    "description": "No unique bonus."
+                }
+            ],
+			"continent": "north_america"
+		}
+    }
+}

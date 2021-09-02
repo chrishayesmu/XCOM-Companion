@@ -1,0 +1,35 @@
+<template id="template-campaign-creation-wizard-page-2">
+    <div class="standard-modal wizard-modal">
+        <info-box>Everything you select here can be changed later.</info-box>
+        <div class="wizard-body">
+            <fieldset>
+                <legend>Starting country</legend>
+                <single-select-list id="starting-country" prevent-deselect>
+                </single-select-list>
+
+                <div id="selected-country-details-container">
+                    <h3 id="selected-country-name"></h3>
+
+                    <div id="starting-country-bonuses">
+                        <span id="country-bonus-name"></span>
+                        <span id="country-bonus-description"></span>
+                    </div>
+
+                    <br/><br/>
+
+                    <h3>Continent Bonus:</h3>
+                    (Requires full satellite coverage)
+                    <div id="starting-continent-bonuses">
+                        <span id="continent-bonus-name"></span>
+                        <span id="continent-bonus-description"></span>
+                    </div>
+                </div>
+            </fieldset>
+
+        </div>
+        <div class="wizard-button-bar">
+            <button id="btn-previous" class="xcom">Go Back</button>
+            <button id="btn-next" class="xcom">Next Step</button>
+        </div>
+    </div>
+</template>

@@ -414,3 +414,25 @@
         </div>
     </div>
 </template>
+
+<template id="template-create-campaign-prompt-modal">
+    <div id="create-campaign-prompt-modal" class="standard-modal wizard-modal">
+        <h3>Welcome to XCOM Companion!</h3>
+        <div>
+            It looks like you don't have an XCOM campaign in progress. Starting a campaign gives you personalized information while using XCOM Companion,
+            such as research and engineering times based on your base facilities, expected rebates from building items, and more.
+        </div>
+        <div id="create-campaign-choices-container">
+            <div id="campaign-choice-create-new">
+                <h4>Create a new campaign now.</h4>
+                Go through a quick wizard to set your starting parameters.
+                <button id="create-campaign" class="xcom">Get Started</button>
+            </div>
+            <div id="campaign-choice-skip-creation">
+                <h4>Continue without a campaign.</h4>
+                You will be shown default info without personalization.
+                <button id="skip-creation" class="xcom">Skip for Now</button>
+            </div>
+        </div>
+    </div>
+</template>

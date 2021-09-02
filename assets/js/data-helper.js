@@ -13,6 +13,7 @@ const psiAbilityData = await fetch("assets/data/psi-abilities.json").then(respon
 const soldierClassData = await fetch("assets/data/soldier-classes.json").then(response => response.json());
 const techTreeData = await fetch("assets/data/tech-tree.json").then(response => response.json());
 const ufoData = await fetch("assets/data/ufos.json").then(response => response.json());
+const worldData = await fetch("assets/data/world.json").then(response => response.json());
 
 const baseFacilities = baseFacilityData.facilities;
 const enemies = enemyData.enemies;
@@ -29,6 +30,11 @@ const ufos = ufoData.ufos;
 // ------------------------------------------------------------------
 // Process the data into a form we can readily use throughout the app
 // ------------------------------------------------------------------
+
+// --------------- Continents/countries ------------------
+// No processing to do
+const continents = worldData.continents;
+const countries = worldData.countries;
 
 // --------------- Research credits ------------------
 // Research credits are entirely synthesized from other data
@@ -595,7 +601,9 @@ function typeOf(dataObject) {
 
 export {
     baseFacilities,
+    continents,
     councilRequests,
+    countries,
     dataObjectById,
     enemies,
     enemyDamageRanges,

@@ -171,10 +171,26 @@ input[type=number].hide-number-spinners::-webkit-outer-spin-button {
     appearance: none;
 }
 
+legend {
+    font-size: 1.2em;
+    padding: 0 9px;
+}
+
 span.inline-resource-icon {
     font-size: 16px;
     margin-right: 2px;
     text-align: center;
+}
+
+select {
+    background-color: var(--color-bg-nav);
+    color: var(--color-subtle);
+}
+
+ul {
+    margin-block-end: 0;
+    margin-block-start: 0;
+    padding-inline-start: 13px;
 }
 
 .standard-page {
@@ -224,34 +240,6 @@ span.inline-resource-icon {
 
 :not(input) {
     outline: none;
-}
-
-#changelog {
-    border-top: 1px solid var(--color-border);
-    padding-top: 25px;
-}
-
-#changelog details[open] summary {
-    background-color: var(--color-bg-subtle);
-}
-
-#changelog summary {
-    cursor: pointer;
-    font-size: 1.12em;
-    font-weight: 600;
-}
-
-.changelog-version {
-    margin-bottom: 40px;
-}
-
-.changelog-version h3 {
-    margin-left: 10px;
-    margin-top: 12px;
-}
-
-#home-welcome-text {
-    padding-bottom: 25px;
 }
 
 #easter-egg-amongus-pizza {
