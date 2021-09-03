@@ -89,6 +89,7 @@ class CampaignCreationWizard {
 
         // TODO: should probably configure base layout here; extra sat uplink from Roscosmos, starting facilities from other bonuses, Cheyenne Mountain, etc
         //       also need to place steam vents
+        modalTemplate.querySelector("#btn-previous").addEventListener("click", () => { this._loadPage2(); });
 
         Modal.close();
         Modal.open(modalTemplate, null, false);
@@ -109,6 +110,9 @@ class CampaignCreationWizard {
 
         document.getElementById("country-bonus-name").textContent = bonusData.name + ":";
         document.getElementById("country-bonus-description").textContent = bonusData.description;
+
+        document.getElementById("satellite-bonus-name").textContent = countryData.satelliteBonus.name + ":";
+        document.getElementById("satellite-bonus-description").textContent = countryData.satelliteBonus.description;
 
         document.getElementById("continent-bonus-name").textContent = continentData.bonusName + ":";
         document.getElementById("continent-bonus-description").textContent = continentData.bonusDescription;

@@ -29,6 +29,10 @@
     "countries": {
         "argentina": {
             "name": "Argentina",
+            "satelliteBonus": {
+                "name": "Bounties",
+                "description": "20% bonus cash from abductions."
+            },
             "startingBonuses": [
                 {
                     "name": "Patriae Semper Vigilis",
@@ -39,6 +43,10 @@
 		},
         "australia": {
             "name": "Australia",
+            "satelliteBonus": {
+                "name": "Army of the Southern Cross",
+                "description": "+2 bonus aim for newly promoted gunners and rocketeers."
+            },
             "startingBonuses": [
                 {
                     "name": "Per Ardua Ad Astra",
@@ -49,6 +57,10 @@
 		},
         "brazil": {
             "name": "Brazil",
+            "satelliteBonus": {
+                "name": "Expertise",
+                "description": "+10% bonus to research credits from interrogations."
+            },
             "startingBonuses": [
                 {
                     "name": "Jungle Scouts",
@@ -67,6 +79,10 @@
 		},
         "canada": {
             "name": "Canada",
+            "satelliteBonus": {
+                "name": "Task Force Arrowhead",
+                "description": "+2 bonus will for new engineers and medics."
+            },
             "startingBonuses": [
                 {
                     "name": "Advanced Preparations",
@@ -81,6 +97,10 @@
 		},
         "china": {
             "name": "China",
+            "satelliteBonus": {
+                "name": "Xenological Remedies",
+                "description": "34% bonus cash from alien corpse and wreck sales."
+            },
             "startingBonuses": [
                 {
                     "name": "Wei Renmin Fuwu",
@@ -99,6 +119,10 @@
 		},
         "egypt": {
             "name": "Egypt",
+            "satelliteBonus": {
+                "name": "Call to Arms",
+                "description": "25% reduction in fatigue from genemods."
+            },
             "startingBonuses": [
                 {
                     "name": "Gift of Osiris",
@@ -113,6 +137,10 @@
 		},
         "france": {
             "name": "France",
+            "satelliteBonus": {
+                "name": "Cyberware",
+                "description": "20% reduction in meld required for MEC primary weapons and tactical subsystems."
+            },
             "startingBonuses": [
                 {
                     "name": "Quai d'Orsay",
@@ -127,6 +155,10 @@
 		},
         "germany": {
             "name": "Germany",
+            "satelliteBonus": {
+                "name": "NeoPanzers",
+                "description": "15% reduction in cash, alloy and elerium required for MEC and SHIV primary weapons."
+            },
             "startingBonuses": [
                 {
                     "name": "Skunkworks",
@@ -149,6 +181,10 @@
 		},
         "india": {
             "name": "India",
+            "satelliteBonus": {
+                "name": "Jai Vidwan",
+                "description": "+5% research bonus for each lab adjacency."
+            },
             "startingBonuses": [
                 {
                     "name": "Jai Jawan",
@@ -159,6 +195,10 @@
 		},
         "japan": {
             "name": "Japan",
+            "satelliteBonus": {
+                "name": "Robotics",
+                "description": "+2 bonus aim for new SHIVs and MEC troopers."
+            },
             "startingBonuses": [
                 {
                     "name": "Ring of Fire",
@@ -185,6 +225,10 @@
 		},
         "mexico": {
             "name": "Mexico",
+            "satelliteBonus": {
+                "name": "Legacy of Uxmal",
+                "description": "10% bonus to psionic training chances."
+            },
             "startingBonuses": [
                 {
                     "name": "Wealthy Benefactor",
@@ -204,6 +248,10 @@
 		},
         "nigeria": {
             "name": "Nigeria",
+            "satelliteBonus": {
+                "name": "The Old Path",
+                "description": "20% reduction in psi training time."
+            },
             "startingBonuses": [
                 {
                     "name": "Pax Nigeriana",
@@ -222,6 +270,10 @@
 		},
         "russia": {
             "name": "Russia",
+            "satelliteBonus": {
+                "name": "Spetznaz",
+                "description": "+1 bonus HP for new infantry and assault soldiers."
+            },
             "startingBonuses": [
                 {
                     "name": "Sukhoi Company",
@@ -237,6 +289,10 @@
 		},
         "south_africa": {
             "name": "South Africa",
+            "satelliteBonus": {
+                "name": "1st Recce",
+                "description": "+2 bonus defense for newly promoted snipers and scouts."
+            },
             "startingBonuses": [
                 {
                     "name": "Resourceful",
@@ -251,6 +307,10 @@
 		},
         "united_kingdom": {
             "name": "United Kingdom",
+            "satelliteBonus": {
+                "name": "Sandhurst",
+                "description": "15% reduction in ranks required to unlock Officer Training School projects."
+            },
             "startingBonuses": [
                 {
                     "name": "Special Air Service",
@@ -269,6 +329,10 @@
 		},
         "united_states": {
             "name": "United States",
+            "satelliteBonus": {
+                "name": "We Have Ways",
+                "description": "25% reduction in time to complete autopsies and interrogations."
+            },
             "startingBonuses": [
                 {
                     "name": "Special Warfare School",

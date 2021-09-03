@@ -1,0 +1,211 @@
+facility-planner {
+    display: block;
+    height: 800px;
+}
+
+.facility-planner-container {
+    display: grid;
+    grid-template-columns: repeat(7, 192px);
+    grid-template-rows: repeat(4, 96px);
+
+    height: 100%;
+}
+
+.facility-planner-container .facility-icon {
+    background-color: black;
+    background-repeat: no-repeat;
+    background-size: 192px 80px;
+    border: 1px dashed var(--color-subtle);
+    cursor: pointer;
+    filter: brightness(0.85);
+    margin-bottom: -1px;
+    margin-left: -1px;
+    position: relative;
+}
+
+.facility-planner-container .facility-icon:hover {
+    filter: brightness(1.1);
+}
+
+.facility-planner-container .facility-icon:after {
+    position: absolute;
+    bottom: 2px;
+    left: 0;
+    right: 0;
+
+    font-size: 1.3em;
+    text-align: center;
+}
+
+.facility-planner-menu {
+    background-color: black;
+    border: 2px solid var(--color-border);
+    position: absolute;
+}
+
+.facility-planner-menu .menu-divider {
+    border-bottom: 1px solid var(--color-border);
+    height: 1px;
+    margin: 6px 12px;
+}
+
+.facility-planner-menu .menu-item {
+    cursor: pointer;
+    padding: 2px 7px;
+}
+
+.facility-planner-menu .menu-item:first-child {
+    padding-top: 3px;
+}
+
+.facility-planner-menu .menu-item:last-child {
+    padding-bottom: 3px;
+}
+
+.facility-planner-menu .menu-item:hover {
+    background-color: #222;
+    filter: brightness(1.2);
+}
+
+/* Facility card images */
+
+.facility-planner-container .facility-icon[data-facility-id=excavated] {
+    background-color: #317173;
+    background-image: url("../../img/facility-icons/excavated_card.png");
+    background-size: cover;
+}
+
+.facility-planner-container .facility-icon[data-facility-id=unexcavated] {
+    background-image: url("../../img/facility-icons/unexcavated_card.png");
+    background-size: cover;
+}
+
+.facility-planner-container .facility-icon[data-facility-id=facility_access_lift] {
+    background-image: url("../../img/facility-icons/access_lift_card.png");
+}
+
+.facility-planner-container .facility-icon[data-facility-id=facility_alien_containment] {
+    background-image: url("../../img/facility-icons/alien_containment_card.png");
+}
+
+.facility-planner-container .facility-icon[data-facility-id=facility_elerium_generator] {
+    background-image: url("../../img/facility-icons/elerium_generator_card.png");
+}
+
+.facility-planner-container .facility-icon[data-facility-id=facility_fission_generator] {
+    background-image: url("../../img/facility-icons/fission_generator_card.png");
+}
+
+.facility-planner-container .facility-icon[data-facility-id=facility_foundry] {
+    background-image: url("../../img/facility-icons/foundry_card.png");
+}
+
+.facility-planner-container .facility-icon[data-facility-id=facility_genetics_lab] {
+    background-image: url("../../img/facility-icons/genetics_lab_card.png");
+}
+
+.facility-planner-container .facility-icon[data-facility-id=facility_gollop_chamber] {
+    background-image: url("../../img/facility-icons/gollop_chamber_card.png");
+}
+
+.facility-planner-container .facility-icon[data-facility-id=facility_hyperwave_relay] {
+    background-image: url("../../img/facility-icons/hyperwave_relay_card.png");
+}
+
+.facility-planner-container .facility-icon[data-facility-id=facility_laboratory] {
+    background-image: url("../../img/facility-icons/laboratory_card.png");
+}
+
+.facility-planner-container .facility-icon[data-facility-id=facility_officer_training_school] {
+    background-image: url("../../img/facility-icons/officer_training_school_card.png");
+}
+
+.facility-planner-container .facility-icon[data-facility-id=facility_psionic_labs] {
+    background-image: url("../../img/facility-icons/psionic_labs_card.png");
+}
+
+.facility-planner-container .facility-icon[data-facility-id=facility_repair_bay] {
+    background-image: url("../../img/facility-icons/repair_bay_card.png");
+}
+
+.facility-planner-container .facility-icon[data-facility-id=facility_satellite_nexus] {
+    background-image: url("../../img/facility-icons/satellite_nexus_card.png");
+}
+
+.facility-planner-container .facility-icon[data-facility-id=facility_satellite_uplink] {
+    background-image: url("../../img/facility-icons/satellite_uplink_card.png");
+}
+
+.facility-planner-container .facility-icon[data-facility-id=facility_thermo_generator] {
+    background-image: url("../../img/facility-icons/thermo_generator_card.png");
+}
+
+.facility-planner-container .facility-icon[data-facility-id=facility_workshop] {
+    background-image: url("../../img/facility-icons/workshop_card.png");
+}
+
+/* Facility card overlay text */
+
+.facility-planner-container .facility-icon[data-facility-id=facility_access_lift]:after {
+    content: "Access Lift"
+}
+
+.facility-planner-container .facility-icon[data-facility-id=facility_alien_containment]:after {
+    content: "Alien Containment"
+}
+
+.facility-planner-container .facility-icon[data-facility-id=facility_elerium_generator]:after {
+    content: "Elerium Generator"
+}
+
+.facility-planner-container .facility-icon[data-facility-id=facility_fission_generator]:after {
+    content: "Fission Generator"
+}
+
+.facility-planner-container .facility-icon[data-facility-id=facility_foundry]:after {
+    content: "Foundry"
+}
+
+.facility-planner-container .facility-icon[data-facility-id=facility_genetics_lab]:after {
+    content: "Genetics Lab"
+}
+
+.facility-planner-container .facility-icon[data-facility-id=facility_gollop_chamber]:after {
+    content: "Gollop Chamber"
+}
+
+.facility-planner-container .facility-icon[data-facility-id=facility_hyperwave_relay]:after {
+    content: "Hyperwave Relay"
+}
+
+.facility-planner-container .facility-icon[data-facility-id=facility_laboratory]:after {
+    content: "Laboratory"
+}
+
+.facility-planner-container .facility-icon[data-facility-id=facility_officer_training_school]:after {
+    content: "Officer Training School"
+}
+
+.facility-planner-container .facility-icon[data-facility-id=facility_psionic_labs]:after {
+    content: "Psionic Labs"
+}
+
+.facility-planner-container .facility-icon[data-facility-id=facility_repair_bay]:after {
+    content: "Repair Bay"
+}
+
+.facility-planner-container .facility-icon[data-facility-id=facility_satellite_nexus]:after {
+    content: "Satellite Nexus"
+}
+
+.facility-planner-container .facility-icon[data-facility-id=facility_satellite_uplink]:after {
+    content: "Satellite Uplink"
+}
+
+.facility-planner-container .facility-icon[data-facility-id=facility_thermo_generator]:after {
+    content: "Thermo Generator"
+}
+
+.facility-planner-container .facility-icon[data-facility-id=facility_workshop]:after {
+    content: "Workshop"
+}

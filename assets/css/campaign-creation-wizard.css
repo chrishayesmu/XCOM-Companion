@@ -13,10 +13,14 @@
     width: 100%;
 }
 
+/* Page 1 */
+
 .wizard-modal #difficulty-select-container {
     display: grid;
     grid-template-columns: 25px 73px auto;
 }
+
+/* Page 2 */
 
 .wizard-modal single-select-list#starting-country {
     height: 500px;
@@ -34,7 +38,7 @@
 
 .wizard-modal single-select-list#starting-country li .country-name {
     text-align: left;
-    width: 120px;
+    width: 125px;
 }
 
 .wizard-modal single-select-list#starting-country li .country-starting-bonus {
@@ -49,10 +53,23 @@
     font-size: 1.2em;
 }
 
+.wizard-modal .wizard-body #satellite-bonus-name {
+    color: gold;
+    font-size: 1.1em;
+}
+
 .wizard-modal .wizard-body #selected-country-details-container {
     float: right;
     padding: 0 calc(1.5 * var(--inter-group-gap));
     width: 370px;
+}
+
+.wizard-modal .wizard-body #selected-country-details-container #country-info {
+    height: 150px;
+}
+
+.wizard-modal .wizard-body #selected-country-details-container #country-non-starter-info {
+    height: 190px;
 }
 
 .wizard-modal .wizard-body #selected-country-details-container h3 {

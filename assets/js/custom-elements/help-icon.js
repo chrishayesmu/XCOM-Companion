@@ -23,6 +23,7 @@ customElements.define("help-icon",
             const rect = this.getBoundingClientRect();
 
             const tooltip = document.createElement("div");
+            tooltip.classList.add("help-icon-tooltip-container");
             tooltip.innerHTML = this.innerHTML;
             tooltip.style = "max-width: 450px; padding: 8px 10px";
 
