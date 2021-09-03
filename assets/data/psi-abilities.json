@@ -30,7 +30,7 @@
         },
         "psi_mind_merge": {
             "name": "Mind Merge",
-            "description": "Merge minds with the target, granting the target +25% critical chance, bonus will, and temporary health (for aliens) or damage reduction (for humans: DR=caster_will/60). Imposes +6 hours postmission fatigue for psi soldiers.",
+            "description": "Merge minds with the target, granting the target +25% critical chance, bonus will, and temporary health (for aliens) or damage reduction (for humans: DR=caster_will/50). Imposes +6 hours postmission fatigue for psi soldiers.",
             "icon": "assets/img/perk-icons/psi_mind_merge.png",
             "rank": 2,
             "column": 2,
