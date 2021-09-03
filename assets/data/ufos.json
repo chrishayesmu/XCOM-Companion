@@ -70,7 +70,7 @@
                 "single_plasma": 1
             },
             "upgraded_armament": {
-                "upgrade_threshold": -2000,
+                "upgrade_threshold": 570,
                 "double_plasma": 2
             },
             "base_hp": 8000,
@@ -89,7 +89,7 @@
                     "type": "research",
                     "required_research": 0,
                     "required_resources": 300,
-                    "grants_research": 0
+                    "grants_research": 10
                 },
                 {
                     "type": "retaliate"
