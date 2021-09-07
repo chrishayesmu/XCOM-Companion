@@ -322,6 +322,7 @@
                     "item_alien_alloy": 75,
                     "item_elerium": 30,
                     "item_meld": 20,
+                    "item_ufo_flight_computer": 2,
                     "money": 450
                 },
                 "build_time_days": 11
