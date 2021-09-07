@@ -1531,7 +1531,7 @@
         "item_combat_stims": {
             "name": "Combat Stims",
             "description": "This powerful stimulant cocktail derived from a chemical found in the glands of a Muton Berserker provides a temporary boost to several of our soldier's vital statistics.",
-            "tactical_text": "<ul><li>Grants <a data-page-on-click='perk-tree-display-page' data-pagearg-display-mode='single-perk' data-pagearg-item-id='perk_adrenaline_surge'>Adrenaline Surge</a> perk for duration of battle<li>When its single charge is applied to soldier, it strengthens the user's Will against panic</li><li>Reduces incoming damage by 40% and provides immunity to critical hits if not flanked or exposed during the next 2 enemy turns</li><li>Increases mobility for 2 turns</li></ul>",
+            "tactical_text": "<ul><li>Grants <a data-page-on-click='perk-tree-display-page' data-pagearg-display-mode='single-perk' data-pagearg-item-id='perk_adrenaline_surge'>Adrenaline Surge</a> perk for duration of battle<li>When its single charge is applied to soldier, it strengthens the user's Will against panic</li><li>Reduces incoming damage by 40% and provides immunity to critical hits if not flanked or exposed during the next 2 enemy turns</li><li>Increases mobility by +4 for 2 turns</li></ul>",
             "type": "loadout_equipment",
             "sell_value": 48,
             "type_specific_data": {
