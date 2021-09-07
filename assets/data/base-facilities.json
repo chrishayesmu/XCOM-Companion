@@ -16,7 +16,7 @@
             },
             "quick_build": {
                 "cost": {
-                    "item_meld": 10,
+                    "item_meld": 20,
                     "money": 150
                 },
                 "build_time_days": 4
@@ -40,7 +40,7 @@
             "quick_build": {
                 "cost": {
                     "item_alien_alloy": 30,
-                    "item_meld": 10,
+                    "item_meld": 20,
                     "money": 300
                 },
                 "build_time_days": 7
@@ -69,7 +69,7 @@
                 "cost": {
                     "item_alien_alloy": 90,
                     "item_elerium": 90,
-                    "item_meld": 10,
+                    "item_meld": 20,
                     "item_ufo_power_source": 2,
                     "money": 600
                 },
@@ -117,7 +117,7 @@
             },
             "quick_build": {
                 "cost": {
-                    "item_meld": 10,
+                    "item_meld": 20,
                     "money": 300
                 },
                 "build_time_days": 9
@@ -140,7 +140,7 @@
             },
             "quick_build": {
                 "cost": {
-                    "item_meld": 10,
+                    "item_meld": 20,
                     "money": 300
                 },
                 "build_time_days": 9
@@ -169,7 +169,7 @@
                     "item_alien_alloy": 30,
                     "item_elerium": 90,
                     "item_ethereal_device": 1,
-                    "item_meld": 10,
+                    "item_meld": 20,
                     "money": 1500
                 },
                 "build_time_days": 7
@@ -198,7 +198,7 @@
                     "item_alien_alloy": 150,
                     "item_elerium": 90,
                     "item_hyperwave_beacon": 1,
-                    "item_meld": 10,
+                    "item_meld": 20,
                     "money": 900
                 },
                 "build_time_days": 14
@@ -222,7 +222,7 @@
             },
             "quick_build": {
                 "cost": {
-                    "item_meld": 10,
+                    "item_meld": 20,
                     "money": 300
                 },
                 "build_time_days": 11
@@ -244,7 +244,7 @@
             },
             "quick_build": {
                 "cost": {
-                    "item_meld": 10,
+                    "item_meld": 20,
                     "money": 300
                 },
                 "build_time_days": 4
@@ -269,7 +269,7 @@
             "quick_build": {
                 "cost": {
                     "item_elerium": 30,
-                    "item_meld": 10,
+                    "item_meld": 20,
                     "money": 375
                 },
                 "build_time_days": 9
@@ -293,7 +293,7 @@
             },
             "quick_build": {
                 "cost": {
-                    "item_meld": 10,
+                    "item_meld": 20,
                     "money": 75
                 },
                 "build_time_days": 5
@@ -321,7 +321,7 @@
                 "cost": {
                     "item_alien_alloy": 75,
                     "item_elerium": 30,
-                    "item_meld": 10,
+                    "item_meld": 20,
                     "money": 450
                 },
                 "build_time_days": 11
@@ -368,7 +368,7 @@
             },
             "quick_build": {
                 "cost": {
-                    "item_meld": 10,
+                    "item_meld": 20,
                     "money": 525
                 },
                 "build_time_days": 11
@@ -391,7 +391,7 @@
             },
             "quick_build": {
                 "cost": {
-                    "item_meld": 10,
+                    "item_meld": 20,
                     "money": 300
                 },
                 "build_time_days": 11
