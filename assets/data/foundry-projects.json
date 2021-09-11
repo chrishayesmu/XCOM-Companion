@@ -618,7 +618,7 @@
         "foundry_ufo_countermeasures": {
             "name": "UFO Countermeasures",
             "description": "Now that we have a handle on alien weapon systems and computers, we believe we can develop some countermeasures that will make our aircraft significantly harder to hit by alien UFO weaponry.",
-            "tactical_text": "<ul><li>Increases dodge chance for <a data-page-on-click='item-display-page' data-pagearg-item-id='item_interceptor'>Interceptors</a> and <a data-page-on-click='item-display-page' data-pagearg-item-id='item_firestorm'>Firestorms</a> by 15%</li><li>Exactly how this functions (ie. is it a flat decrease to UFO aim, a chance to dodge, etc) is unknown</li></ul>",
+            "tactical_text": "<ul><li>Increases dodge chance for <a data-page-on-click='item-display-page' data-pagearg-item-id='item_interceptor'>Interceptors</a> and <a data-page-on-click='item-display-page' data-pagearg-item-id='item_firestorm'>Firestorms</a> by 15%</li><li>This is applied as a flat -15 aim to enemy UFOs, providing a substantial boost to survivability</li></ul>",
             "cost": {
                 "item_alien_alloy": 10,
                 "item_elerium": 60,
