@@ -65,3 +65,12 @@ body[modal] #modal-container * {
     margin-bottom: 0;
     text-align: center;
 }
+
+#confirmation-modal {
+    max-width: 450px;
+    text-align: center;
+}
+
+#confirmation-modal .buttons-container {
+    margin-top: 8px;
+}

@@ -7,7 +7,6 @@
   src: local('Source Code Pro'), local('SourceCodePro'), url(fonts/SourceCodePro-Regular.ttf) format('truetype');
 }
 
-
 /* Global ---------------------------- */
 
 * {
@@ -151,12 +150,20 @@ img.inline-resource-icon {
     height: 16px;
 }
 
+input[type="date"] {
+    font-family: inherit;
+    width: 125px;
+}
+
+input[type="number"], input[type="text"] {
+    padding: 2px 5px;
+}
+
 input[type="date"], input[type="number"], input[type="text"]  {
     background-color: #777;
     border-style: solid;
     color: var(--color);
     outline: none;
-    padding: 2px 5px;
 }
 
 input[type="date"]:focus, input[type="number"]:focus, input[type="text"]:focus {

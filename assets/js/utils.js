@@ -56,23 +56,23 @@ function calculateRebate(numWorkshops, numAdjacencies, moneyCost, numAlloysCost,
         money: 0
     };
 
-    const rebatePerWorkshop = 0.1; // 10% per workshop, 5% per adjacency
-    const adjScore = 2 * numWorkshops + numAdjacencies;
-
-    if (adjScore === 0) {
-        return rebate;
-    }
-
     rebate.alloys = numAlloysCost;
     rebate.elerium = numEleriumCost;
     rebate.money = moneyCost;
 
-    const rebateCoefficient = 0.5 + 0.5 * Math.pow((1.0 - rebatePerWorkshop * 2), adjScore / 2);
+    const rebateCoefficient = calculateRebatePercentage(numWorkshops, numAdjacencies);
     rebate.alloys -= Math.floor(numAlloysCost * rebateCoefficient);
     rebate.elerium -= Math.floor(numEleriumCost * rebateCoefficient);
     rebate.money -= Math.floor(moneyCost * rebateCoefficient);
 
     return rebate;
+}
+
+function calculateRebatePercentage(numWorkshops, numAdjacencies) {
+    const rebatePerWorkshop = 0.1; // 10% per workshop, 5% per adjacency
+    const adjScore = 2 * numWorkshops + numAdjacencies;
+
+    return 0.5 + 0.5 * Math.pow((1.0 - rebatePerWorkshop * 2), adjScore / 2);
 }
 
 function calculateResearchTime(baseTimeInDays, numScientists, numLabs, numAdjacencies, hasCredit) {
@@ -182,11 +182,45 @@ function createSelect(options, selectedValue) {
 function dateByDaysPassed(days) {
     days = +days;
 
-    // Campaign starts on March 1st, 2016
-    const startDate = new Date("2016-03-01T00:00:00");
+    const startDate = getCampaignStartDate();
     startDate.setDate(startDate.getDate() + days);
 
     return startDate;
+}
+
+function dateFromInputString(s) {
+    return new Date(s + "T00:00:00");
+}
+
+function dateToInputString(date) {
+    const year = date.getFullYear();
+    let month = date.getMonth() + 1;
+    let day = date.getDate();
+
+    if (month < 10) {
+        month = "0" + String(month);
+    }
+
+    if (day < 10) {
+        day = "0" + String(day);
+    }
+
+    return `${year}-${month}-${day}`;
+}
+
+function daysPassedByDate(date) {
+    if (typeof date === "string") {
+        date = dateFromInputString(date);
+    }
+
+    const startDate = getCampaignStartDate();
+    const msDiff = date - startDate;
+
+    // Thanks to JS having daylight savings and XCOM not, we need to round the result
+    // since it will sometimes be off by one hour
+    const daysPassed = Math.round(msDiff / (24 * 60 * 60 * 1000));
+
+    return daysPassed;
 }
 
 function equals(first, second) {
@@ -234,6 +268,10 @@ function formatCampaignDate(date) {
     const year = date.getFullYear();
 
     return `${day} ${month}, ${year}`;
+}
+
+function getCampaignStartDate() {
+    return new Date("2016-03-01T00:00:00");
 }
 
 function join(strings, joinWord, encodeSpaces) {
@@ -317,6 +355,7 @@ function xToY(x, y) {
 export {
         appendElement,
         calculateRebate,
+        calculateRebatePercentage,
         calculateResearchTime,
         calculateTimeToBuild,
         calculateWorkPerHour,
@@ -325,8 +364,12 @@ export {
         createImg,
         createSelect,
         dateByDaysPassed,
+        dateFromInputString,
+        dateToInputString,
+        daysPassedByDate,
         equals,
         formatCampaignDate,
+        getCampaignStartDate,
         join,
         minResearchByDate,
         researchThresholdByDifficulty,

@@ -189,6 +189,14 @@ class PageManager {
     showTooltip(targetElementRect, content) {
         this.#showTooltip = true;
 
+        if (typeof(content) === "string") {
+            const div = document.createElement("div");
+            div.classList.add("text-only-tooltip");
+            div.innerHTML = content;
+
+            content = div;
+        }
+
         this.#pagePreviewTooltip.classList.add("content-tooltip");
         this.#pagePreviewTooltip.classList.remove("preview-tooltip");
         this.#pagePreviewTooltip.appendChild(content);
@@ -283,11 +291,7 @@ class PageManager {
         }
         else if (event.target.dataset.tooltipText) {
             const targetElementRect = event.target.getBoundingClientRect();
-            const div = document.createElement("div");
-            div.classList.add("text-only-tooltip");
-            div.innerHTML = event.target.dataset.tooltipText;
-
-            this.showTooltip(targetElementRect, div);
+            this.showTooltip(targetElementRect, event.target.dataset.tooltipText);
         }
         else if (event.target.dataset.pageOnClick) {
             const data = this._extractPageDataArgs(event.target);
@@ -456,7 +460,7 @@ class PageManager {
     }
 }
 
-const pageContentHolder = document.getElementById("page-body-container");
+const pageContentHolder = document.getElementById("page-replace-target");
 const pageTitleHolder = document.getElementById("page-title-container");
 PageManager.instance = new PageManager(pageContentHolder, pageTitleHolder);
 

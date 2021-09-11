@@ -39,6 +39,8 @@
                     "description": "All soldiers receive +5 will."
                 }
             ],
+            "funding": 70,
+            "staff_from_satellite": "engineer",
 			"continent": "south_america"
 		},
         "australia": {
@@ -53,6 +55,8 @@
                     "description": "All soldiers receive +5 ability points for stat rolls upon recruitment."
                 }
             ],
+            "funding": 80,
+            "staff_from_satellite": "engineer",
 			"continent": "asia"
 		},
         "brazil": {
@@ -75,6 +79,8 @@
                     "description": "No unique bonus."
                 }
             ],
+            "funding": 100,
+            "staff_from_satellite": "scientist",
 			"continent": "south_america"
 		},
         "canada": {
@@ -93,6 +99,8 @@
                     "description": "Start with four corporals in the barracks, one of each supraclass."
                 }
             ],
+            "funding": 90,
+            "staff_from_satellite": "scientist",
 			"continent": "north_america"
 		},
         "china": {
@@ -115,6 +123,8 @@
 			        "description": "50% reduction in genemod meld and cash cost and modification time."
                 }
             ],
+            "funding": 130,
+            "staff_from_satellite": "engineer",
 			"continent": "asia"
 		},
         "egypt": {
@@ -133,6 +143,8 @@
                     "description": "Start with Advanced Repair foundry project, which grants faster repair time for aircraft, mechanized units and damaged soldier gear."
                 }
             ],
+            "funding": 80,
+            "staff_from_satellite": "engineer",
 			"continent": "africa"
 		},
         "france": {
@@ -151,6 +163,8 @@
                     "description": "Start with 20 additional soldiers in the barracks."
                 }
             ],
+            "funding": 120,
+            "staff_from_satellite": "scientist",
 			"continent": "europe"
 		},
         "germany": {
@@ -177,6 +191,8 @@
                     "description": "No unique bonus."
                 }
             ],
+            "funding": 140,
+            "staff_from_satellite": "engineer",
 			"continent": "europe"
 		},
         "india": {
@@ -191,6 +207,8 @@
                     "description": "Start with 2 additional interceptors in your home base and Elerium Afterburners foundry project, granting extended interception time."
                 }
             ],
+            "funding": 100,
+            "staff_from_satellite": "engineer",
 			"continent": "asia"
 		},
         "japan": {
@@ -221,6 +239,8 @@
                     "description": "No unique bonus."
                 }
             ],
+            "funding": 150,
+            "staff_from_satellite": "scientist",
 			"continent": "asia"
 		},
         "mexico": {
@@ -243,7 +263,8 @@
                     "description": "20% bonus to psionic training chances."
                 }
             ],
-
+            "funding": 80,
+            "staff_from_satellite": "engineer",
 			"continent": "north_america"
 		},
         "nigeria": {
@@ -266,6 +287,8 @@
                     "description": "No unique bonus."
                 }
             ],
+            "funding": 80,
+            "staff_from_satellite": "scientist",
 			"continent": "africa"
 		},
         "russia": {
@@ -284,7 +307,8 @@
                     "description": "Start with an additional satellite uplink, and all satellites cost 50% less to build."
                 }
             ],
-
+            "funding": 100,
+            "staff_from_satellite": "scientist",
 			"continent": "europe"
 		},
         "south_africa": {
@@ -303,6 +327,8 @@
                     "description": "All soldiers receive +1 hit point."
                 }
             ],
+            "funding": 70,
+            "staff_from_satellite": "scientist",
 			"continent": "africa"
 		},
         "united_kingdom": {
@@ -325,6 +351,8 @@
                     "description": "33% reduction in ranks required to unlock Officer Training School projects."
                 }
             ],
+            "funding": 110,
+            "staff_from_satellite": "scientist",
 			"continent": "europe"
 		},
         "united_states": {
@@ -351,6 +379,8 @@
                     "description": "No unique bonus."
                 }
             ],
+            "funding": 160,
+            "staff_from_satellite": "scientist",
 			"continent": "north_america"
 		}
     }

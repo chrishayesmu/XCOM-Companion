@@ -1,0 +1,30 @@
+<template id="template-campaign-footer">
+    <div id="content">
+        <div class="bookend">
+            <div>
+                Current campaign: <span id="campaign-name"></span>
+            </div>
+            <div>
+                Engineers: <span id="num-engineers"></span>
+            </div>
+        </div>
+
+        <div id="campaign-date-container">
+            <img id="previous-day" src="assets/img/ui-icons/arrow_right_2.png" />
+            <div id="campaign-date-display">
+                <input id="campaign-date-input" type="date" min="2016-03-01" />
+                <div id="campaign-date-replace-target"></div>
+            </div>
+            <img id="next-day" src="assets/img/ui-icons/arrow_right_2.png" />
+        </div>
+
+        <div class="bookend">
+            <div class="vertical-center">
+                <img src="assets/img/misc-icons/research.png" /> <span id="current-research"></span>
+            </div>
+            <div class="vertical-center">
+                <img src="assets/img/misc-icons/person.png" data-tooltip-text="Estimated number of scientists by this date" /> <span id="num-scientists"></span>
+            </div>
+        </div>
+    </div>
+</template>

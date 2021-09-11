@@ -1,76 +1,284 @@
 facility-planner {
     display: block;
-    height: 800px;
+    width: 100%;
+    aspect-ratio: 14/4;
 }
 
 .facility-planner-container {
     display: grid;
-    grid-template-columns: repeat(7, 192px);
-    grid-template-rows: repeat(4, 96px);
+    grid-template-columns: repeat(7, auto);
+    grid-template-rows: repeat(4, auto);
 
     height: 100%;
+    width: 100%;
 }
 
 .facility-planner-container .facility-icon {
     background-color: black;
     background-repeat: no-repeat;
-    background-size: 192px 80px;
+    background-size: 100% 80%;
     border: 1px dashed var(--color-subtle);
     cursor: pointer;
-    filter: brightness(0.85);
     margin-bottom: -1px;
     margin-left: -1px;
+    min-width: 200px;
     position: relative;
+
+    aspect-ratio: 2/1;
 }
 
-.facility-planner-container .facility-icon:hover {
+.facility-planner-container .facility-icon[data-days-remaining]:hover .cancel {
+    background-color: rgba(0, 0, 0, 0.75);
+
+    pointer-events: none;
+    position: relative;
+    z-index: 1000;
+
+    height: 100%;
+    width: 100%;
+}
+
+.facility-planner-container .facility-icon[data-days-remaining]:hover .cancel:before {
+    display: block;
+
+    content: "Cancel";
+    font-size: 1.6em;
+    text-align: center;
+
+    height: 100%;
+    width: 100%;
+}
+
+.facility-planner-container .facility-icon[can-build]:hover {
+    border: 1px solid var(--color);
+    z-index: 1000;
+}
+
+.facility-planner-container .facility-icon[can-build]:hover::before {
+    background-color: rgba(0, 0, 0, 0.75);
+
+    content: "Build Facility";
+
+    bottom: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.facility-planner-container .facility-icon[can-excavate]:hover {
+    border: 1px solid var(--color);
+    z-index: 1000;
+}
+
+.facility-planner-container .facility-icon[can-excavate]:hover::before {
+    background-color: rgba(0, 0, 0, 0.75);
+
+    content: "Excavate";
+
+    bottom: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.facility-planner-container .facility-icon[can-excavate]:hover::after {
+    content: "Cost: §" attr(excavate-cost);
+
+    top: 25px;
+
+    height: 100%;
+    width: 100%;
+}
+
+.facility-planner-container .facility-icon[needs-access-lift],
+.facility-planner-container .facility-icon[neighbor-unexcavated] {
+    filter: brightness(0.65);
+}
+
+.facility-planner-container .facility-icon:not([needs-access-lift]):hover {
     filter: brightness(1.1);
 }
 
-.facility-planner-container .facility-icon:after {
+.facility-planner-container .facility-icon[needs-access-lift]:hover,
+.facility-planner-container .facility-icon[neighbor-unexcavated]:hover {
+    border: 2px solid red;
+    z-index: 1000;
+}
+
+.facility-planner-container .facility-icon[needs-access-lift]:hover::after,
+.facility-planner-container .facility-icon[neighbor-unexcavated]:hover::after {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+
+    background-color: rgba(0, 0, 0, 0.75);
+
+    color: red;
+    font-size: 1.35em;
+    font-weight: bold;
+    line-height: 1.3;
+    padding: 4px;
+
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+}
+
+.facility-planner-container .facility-icon[needs-access-lift]:hover::after {
+    content: "You must first build an access lift on this level to reach this area.";
+}
+
+.facility-planner-container .facility-icon[neighbor-unexcavated]:hover::after {
+    content: "You cannot reach this area without excavating.";
+}
+
+.facility-planner-container .facility-icon[needs-access-lift]:hover::before,
+.facility-planner-container .facility-icon[neighbor-unexcavated]:hover::before {
+    background-image: url("../../img/misc-icons/warning_icon_red.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+
+    content: "";
+    filter: opacity(0.8);
+
+    height: 100%;
+    width: 100%;
+}
+
+.facility-planner-container .facility-icon:after,
+.facility-planner-container .facility-icon:before {
     position: absolute;
     bottom: 2px;
     left: 0;
     right: 0;
 
-    font-size: 1.3em;
+    font-size: 1.6em;
     text-align: center;
 }
 
-.facility-planner-menu {
-    background-color: black;
-    border: 2px solid var(--color-border);
-    position: absolute;
+.facility-planner-container .facility-icon[data-days-remaining]:after,
+.facility-planner-container .facility-icon[data-days-remaining]:before,
+.facility-planner-container .facility-icon[data-facility-id][data-start-date]:after,
+.facility-planner-container .facility-icon[data-facility-id][data-start-date]:before {
+    color: gold;
 }
 
-.facility-planner-menu .menu-divider {
-    border-bottom: 1px solid var(--color-border);
-    height: 1px;
-    margin: 6px 12px;
+.facility-planner-container .facility-icon[data-facility-id][data-days-remaining]:after,
+.facility-planner-container .facility-icon[data-facility-id][data-start-date]:after {
+    background-image: url("../../img/misc-icons/facility-under-construction-sign.png");
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-size: 25%;
+
+    bottom: 0;
+    line-height: 3.5;
+
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-end;
+
+    height: 100%;
+    width: 100%;
 }
 
-.facility-planner-menu .menu-item {
-    cursor: pointer;
-    padding: 2px 7px;
+.facility-planner-container .facility-icon[data-facility-id][data-days-remaining]:before,
+.facility-planner-container .facility-icon[data-facility-id][data-start-date]:before {
+    background-color: rgba(0, 0, 0, 0.5);
+    background-image: url("../../img/misc-icons/facility-warning-stripes.png");
+    background-position: center top;
+    background-position-y: 20%;
+    background-repeat: repeat-x;
+    background-size: 25%;
+
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-end;
+
+    bottom: 0;
+    line-height: 1.3;
+
+    height: 100%;
+    width: 100%;
 }
 
-.facility-planner-menu .menu-item:first-child {
-    padding-top: 3px;
+.facility-planner-container .facility-icon[data-facility-id][data-days-remaining]:before {
+    content: "Days remaining: " attr(data-days-remaining);
 }
 
-.facility-planner-menu .menu-item:last-child {
-    padding-bottom: 3px;
+.facility-planner-container .facility-icon[data-facility-id="excavated"][data-days-remaining]:after,
+.facility-planner-container .facility-icon[data-facility-id="excavated"][data-start-date]:after {
+    background-image: url("../../img/misc-icons/facility-excavation.png");
 }
 
-.facility-planner-menu .menu-item:hover {
-    background-color: #222;
-    filter: brightness(1.2);
+.facility-planner-container .facility-icon[data-facility-id="excavated"][data-days-remaining]:before,
+.facility-planner-container .facility-icon[data-facility-id="excavated"][data-start-date]:before {
+    background-image: none;
 }
 
-/* Facility card images */
+.facility-planner-container .facility-icon[data-facility-id][data-start-date]:before {
+    content: "Starting " attr(data-start-date);
+}
 
-.facility-planner-container .facility-icon[data-facility-id=excavated] {
-    background-color: #317173;
+/* Modal for choosing which facility to build */
+
+#facility-planner-build-modal {
+    display: flex;
+    flex-flow: row nowrap;
+    gap: 0 13px;
+
+    height: 500px;
+    width: 750px;
+}
+
+#facility-planner-build-modal single-select-list#facility-to-build {
+    flex-shrink: 0;
+    width: 200px;
+}
+
+#facility-planner-build-modal #controls {
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 6px 0;
+}
+
+#facility-planner-build-modal img#selected-facility-icon {
+    margin: 0 auto;
+    height: 150px;
+}
+
+#facility-planner-build-modal #selected-facility-name {
+    font-size: 1.3em;
+    margin-top: 6px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+#facility-planner-build-modal #selected-facility-cost {
+    border: 1px solid var(--color-border-subtle);
+    border-left: none;
+    border-right: none;
+    height: fit-content;
+    min-height: 50px;
+    padding: 4px 0;
+    margin: 6px 0;
+}
+
+#facility-planner-build-modal #selected-facility-summary {
+    border-bottom: 1px solid var(--color-border-subtle);
+    height: 135px;
+    margin-bottom: 15px;
+}
+
+/*************
+ Facility card images
+ *************/
+
+ /* Use the excavated image for ongoing excavations and for ongoing construction */
+.facility-planner-container .facility-icon[data-facility-id=excavated],
+.facility-planner-container .facility-icon[data-facility-id][data-days-remaining] {
+    background-color: #317173; /* this is the only transparent image for some reason */
     background-image: url("../../img/facility-icons/excavated_card.png");
     background-size: cover;
 }
@@ -145,6 +353,11 @@ facility-planner {
 }
 
 /* Facility card overlay text */
+
+.facility-planner-container .facility-icon[data-facility-id=excavated][data-days-remaining]:after,
+.facility-planner-container .facility-icon[data-facility-id=excavated][data-start-date]:after {
+    content: "EXCAVATING"
+}
 
 .facility-planner-container .facility-icon[data-facility-id=facility_access_lift]:after {
     content: "Access Lift"

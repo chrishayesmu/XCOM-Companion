@@ -250,6 +250,9 @@ for (let techId in techTreeData.technologies) {
     tech.id = techId;
     tech.unlocks = {};
 
+    // Convert time to research to scientist-hours; the base time is always number of days for 30 scientists
+    tech.hours = tech.base_time_in_days * 24 * 30;
+
     // Replace each prereq by the corresponding object
     if (tech.prerequisites && tech.prerequisites.research) {
         for (let i = 0; i < tech.prerequisites.research.length; i++) {

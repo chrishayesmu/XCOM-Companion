@@ -1,5 +1,10 @@
 const { ipcRenderer } = require('electron');
 
+import * as AppEvents from "./app-events.js";
+import XComCampaign from "./xcom-campaign.js";
+
+const eventListeners = {};
+
 async function get(name) {
     try {
         return await ipcRenderer.invoke("get-settings", name);
@@ -29,7 +34,8 @@ async function unset(name) {
 
 /**** Campaigns ****/
 
-const DELIBERATELY_NONE_CAMPAIGN_ID = "DeliberatelyNoCampaignIdSet"
+const DELIBERATELY_NONE_CAMPAIGN_ID = "DeliberatelyNoCampaignIdSet";
+let currentCampaign = null;
 
 async function getAllCampaigns() {
     const allCampaigns = await get("campaigns");
@@ -38,14 +44,29 @@ async function getAllCampaigns() {
     return allCampaigns;
 }
 
-async function getCurrentCampaign() {
-    const currentCampaignId = await getCurrentCampaignId();
+async function getCampaign(campaignId) {
+    const json = await get("campaigns."  + campaignId);
 
-    if (!currentCampaignId || currentCampaignId === DELIBERATELY_NONE_CAMPAIGN_ID) {
+    if (json) {
+        return new XComCampaign(json);
+    }
+    else {
         return null;
     }
+}
 
-    return get("campaigns." + currentCampaignId);
+async function getCurrentCampaign() {
+    if (currentCampaign) {
+        return currentCampaign;
+    }
+
+    // Use promise chaining to make sure anyone getting the current campaign gets the same object,
+    // so modifications are shared
+    const currentCampaignId = getCurrentCampaignId();
+    const campaign = currentCampaignId.then(id => id && id !== DELIBERATELY_NONE_CAMPAIGN_ID ? getCampaign(id) : null);
+    currentCampaign = Promise.resolve(campaign);
+
+    return currentCampaign;
 }
 
 async function getCurrentCampaignId() {
@@ -53,11 +74,16 @@ async function getCurrentCampaignId() {
 }
 
 async function saveCampaign(campaign) {
-    return set("campaigns." + campaign.id, campaign);
+    return set("campaigns." + campaign.id, campaign.toJsonObj());
 }
 
 async function setCurrentCampaign(campaignId) {
-    return set("campaigns.current", campaignId);
+    currentCampaign = null;
+    const response = await set("campaigns.current", campaignId);
+
+    AppEvents.fireEvent("activeCampaignChanged");
+
+    return response;
 }
 
 
@@ -100,6 +126,7 @@ export { get,
          DELIBERATELY_NONE_CAMPAIGN_ID,
          getAllCampaigns,
          saveCampaign,
+         getCampaign,
          getCurrentCampaign,
          getCurrentCampaignId,
          setCurrentCampaign,

@@ -1,12 +1,14 @@
 single-select-list {
     border: 1px solid var(--color-border-subtle);
-    display: inline-block;
+    display: flex;
+    flex-flow: column nowrap;
     list-style-type: none;
     overflow-y: auto;
 }
 
 single-select-list > li {
     align-items: center;
+    flex-grow: 1;
     padding: 3px 14px;
     text-align: center;
 }

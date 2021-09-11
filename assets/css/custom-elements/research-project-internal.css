@@ -1,0 +1,137 @@
+:host {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+
+    background-color: var(--color-bg-schematic-light);
+    border: 1px solid var(--color-border-subtle);
+    font-size: 1.2em;
+    min-height: 40px;
+    width: 795px;
+    padding: 7.5px 8px;
+}
+
+:host(:not([available])) {
+    background-color: var(--color-bg-nav);
+}
+
+:host([complete]) {
+    background-color: var(--color-bg-nav);
+}
+
+:host .hidden-collapse {
+    display: none;
+}
+
+:host #project-name {
+    flex-grow: 0;
+    flex-shrink: 0;
+    width: 325px;
+}
+
+:host #project-time {
+    flex-grow: 0;
+    flex-shrink: 0;
+    width: 100px;
+}
+
+:host #label-container {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    gap: 3px 8px;
+}
+
+:host #name-and-dates-container {
+    display: flex;
+    flex-flow: row wrap;
+    gap: 3px 8px;
+    width: 325px;
+}
+
+:host #name-and-dates-container hr {
+    flex-basis: 100%;
+    border: none;
+    height: 0;
+    margin: 0;
+}
+
+:host .button-label {
+    background-color: var(--color-bg-subtle);
+    border: 1px solid var(--color-border-subtle);
+    font-size: 0.8em;
+    padding: 1px 5px;
+    text-align: center;
+}
+
+:host .button-label.interactive {
+    cursor: pointer;
+}
+
+:host .button-label.interactive:hover {
+    filter: brightness(1.3);
+}
+
+:host #project-start-date {
+    font-size: 0.8em;
+    padding: 1px 5px;
+}
+
+:host .button-label.interactive::before {
+    content: "";
+    display: inline-block;
+    background-repeat: no-repeat;
+    background-size: 15px;
+
+    margin-right: 4px;
+    height: 15px;
+    width: 15px;
+
+    position: relative;
+    left: -1px;
+    top: 3px;
+}
+
+:host #project-mark-complete-button::before {
+    background-image: url("../../img/ui-icons/checkmark.png");
+    left: 0;
+}
+
+:host #project-move-down-in-queue-button::before {
+    background-image: url("../../img/ui-icons/arrow_down.png");
+    left: 0;
+    margin-right: 0;
+}
+
+:host #project-move-up-in-queue-button::before {
+    background-image: url("../../img/ui-icons/arrow_up.png");
+    left: 0;
+    margin-right: 0;
+}
+
+:host #project-remove-from-queue-button::before {
+    background-image: url("../../img/ui-icons/cancel.png");
+    left: 0;
+}
+
+:host #project-move-down-in-queue-button[disabled]::before,
+:host #project-move-up-in-queue-button[disabled]::before {
+    filter: saturate(0);
+}
+
+:host([available]) #project-add-to-queue-button::before {
+    background-image: url("../../img/ui-icons/add_icon.png");
+}
+
+:host([missingPrereqs]) #project-add-to-queue-button::before {
+    background-image: url("../../img/ui-icons/add_icon_needs_attention.png");
+}
+
+:host #project-complete-label {
+    color: var(--color-green);
+}
+
+:host #project-queue-position-label {
+    color: var(--color-green);
+    width: 100px;
+}

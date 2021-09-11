@@ -31,6 +31,9 @@
   --color-psi-strong: #6861d8;
   --color-psi-subtle: #cbcad8;
 
+  --footer-border-width: 1px;
+  --footer-height: 99px;
+  --footer-margin-top: 20px;
   --nav-width: 220px;
 
   --intra-group-control-gap: 8px;

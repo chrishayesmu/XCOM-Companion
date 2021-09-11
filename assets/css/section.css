@@ -67,3 +67,11 @@
     margin-top: -12px;
     margin-left: 0px;
 }
+
+#page-replace-target {
+    min-height: calc(100% - var(--footer-height) - var(--footer-margin-top) - var(--footer-border-width));
+}
+
+#page-replace-target.hideFooter {
+    min-height: unset;
+}

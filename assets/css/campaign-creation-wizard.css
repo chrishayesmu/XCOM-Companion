@@ -23,6 +23,7 @@
 /* Page 2 */
 
 .wizard-modal single-select-list#starting-country {
+    float: left;
     height: 500px;
     overflow-y: auto;
 }
@@ -74,4 +75,11 @@
 
 .wizard-modal .wizard-body #selected-country-details-container h3 {
     text-align: left;
+}
+
+/* Page 3 */
+
+.wizard-modal .wizard-body .review-row {
+    display: grid;
+    grid-template-columns: 300px auto;
 }

@@ -13,7 +13,7 @@ toggle-group {
 
 .toggle-group-container-rounded {
     border: 1px solid var(--color-border-subtle);
-    border-radius: 20px; /* TODO probably need this to be more dynamic */
+    border-radius: 20px;
 }
 
 .toggle-group-option {

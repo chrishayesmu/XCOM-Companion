@@ -3,14 +3,24 @@
         <info-box>Everything you select here can be changed later.</info-box>
         <div class="wizard-body">
             <fieldset>
+                <legend>Campaign Name</legend>
+                <input type="text" id="campaign-name" style="width: 100%" />
+                <div style="margin-top: 6px">Choose a name to identify this campaign.</div>
+            </fieldset>
+            <fieldset>
                 <legend>Review settings</legend>
-
+                <div class="review-row"><b>Difficulty:</b> <span id="difficulty"></span></div>
+                <div class="review-row"><b>EXALT missions:</b> <span id="are-exalt-enabled"></span></div>
+                <div class="review-row"><b>Operation Progeny:</b> <span id="is-progeny-enabled"></span></div>
+                <div class="review-row"><b>Operation Slingshot:</b> <span id="is-slingshot-enabled"></span></div>
+                <div class="review-row"><b>Starting Country:</b> <span id="starting-country"></span></div>
+                <div class="review-row"><b>Starting Bonus:</b> <span id="starting-country-bonus"></span></div>
             </fieldset>
 
         </div>
         <div class="wizard-button-bar">
             <button id="btn-previous" class="xcom">Go Back</button>
-            <button id="btn-next" class="xcom">Next Step</button>
+            <button id="btn-next" class="xcom">Finish</button>
         </div>
     </div>
 </template>

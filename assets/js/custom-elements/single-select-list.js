@@ -85,11 +85,11 @@ class SingleSelectList extends HTMLElement {
     }
 
     get title() {
-        return this.getAttribute("data-title");
+        return this.getAttribute("title");
     }
 
     set title(title) {
-        this.setAttribute("data-title", title);
+        this.setAttribute("title", title);
     }
 }
 

@@ -14,7 +14,7 @@ customElements.define("help-icon",
 
             const cssLink = document.createElement("link");
             cssLink.rel = "stylesheet";
-            cssLink.href = "assets/css/custom-elements/help-icon.css";
+            cssLink.href = "assets/css/custom-elements/help-icon-internal.css";
 
             shadowRoot.prepend(cssLink);
         }

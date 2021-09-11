@@ -1,0 +1,89 @@
+#campaign-planner-page {
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+#campaign-planner-page #campaign-planner-view-selector {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+
+    /* Establish a new stacking context so we can use z-index in the selected child */
+    position: relative;
+    z-index: 0;
+}
+
+#campaign-planner-page #campaign-planner-view-selector .view-selector-item {
+    background-color: var(--color-bg-subtle);
+    border: 1px solid var(--color-border-subtle);
+    cursor: pointer;
+    font-size: 1.3em;
+    margin-left: -1px;
+    padding: 4px 12px;
+    text-align: center;
+    width: 160px;
+}
+
+#campaign-planner-page #campaign-planner-view-selector .view-selector-item[disabled] {
+    color: gray;
+    pointer-events: none;
+}
+
+#campaign-planner-page #campaign-planner-view-selector .view-selector-item.selected {
+    background-color: var(--color-bg-schematic-light);
+    border: 1px solid var(--color-border);
+    color: var(--color);
+    font-weight: bold;
+    z-index: 1;
+}
+
+#campaign-planner-page #campaign-planner-active-view-container {
+    border: 1px solid var(--color-border-subtle);
+    flex-grow: 1;
+    margin-top: -1px;
+    width: 100%;
+}
+
+/* Styles specific to facilities view */
+
+#campaign-planner-page #campaign-planner-active-view-container #campaign-planner-facilities-view {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+}
+
+#campaign-planner-page #campaign-planner-active-view-container #campaign-planner-facilities-view #facility-stats {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    gap: 8px 50px;
+
+    font-size: 1.3em;
+    padding: 13px 0;
+    width: 100%;
+}
+
+/* Styles specific to research view */
+
+#campaign-planner-page #campaign-planner-active-view-container #campaign-planner-research-view {
+    display: flex;
+    flex-flow: row nowrap;
+    max-height: 100%;
+    overflow-y: auto;
+}
+
+#campaign-planner-page #campaign-planner-active-view-container #research-controls {
+    padding: 8px;
+}
+
+#campaign-planner-page #campaign-planner-active-view-container #research-list {
+    display: flex;
+    flex-flow: column nowrap;
+    overflow-y: auto;
+    padding-left: 8px;
+    padding-top: 8px;
+}
+
+#campaign-planner-page #campaign-planner-active-view-container #research-list research-project {
+    margin-top: -1px;
+}

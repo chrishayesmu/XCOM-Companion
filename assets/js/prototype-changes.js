@@ -37,3 +37,9 @@ Object.defineProperty(Math, "roundTo", {
         return parseFloat(asString);
     }
 });
+
+Object.defineProperty(String.prototype, "contains", {
+    value: function(str) {
+        return this.indexOf(str) >= 0;
+    }
+});

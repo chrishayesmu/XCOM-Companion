@@ -1,6 +1,45 @@
 <template id="template-campaign-planner-page">
-    <div class="section-content standard-page">
+    <div id="campaign-planner-page" class="section-content standard-page">
+
+        <div id="campaign-planner-view-selector">
+            <div class="view-selector-item" data-view="timeline" disabled>Timeline</div>
+            <div class="view-selector-item selected" data-view="research">Research</div>
+            <div class="view-selector-item" data-view="facilities">Base Facilities</div>
+            <div class="view-selector-item" data-view="satellites" disabled>Satellites</div>
+        </div>
+
+        <div id="campaign-planner-active-view-container">
+        </div>
+
+        <!--
         <button id="new-campaign" class="xcom">New Campaign</button>
         <button id="open-campaign" class="xcom">Open Campaign</button>
+        -->
+    </div>
+</template>
+
+<template id="template-campaign-planner-facilities-view">
+    <div id="campaign-planner-facilities-view" class="campaign-planner-view">
+        <div id="facility-stats">
+            <div>Research speed increase: +<span id="research-speed-increase"></span>%</div>
+            <div>Workshop discount/rebate: <span id="workshop-rebate"></span>%</div>
+            <div>Maximum satellites: <span id="satellites"></span></div>
+            <div>Monthly maintenance: §<span id="maintenance"></span></div>
+            <div>Power: <span id="power-container"> <span id="power-used"></span>/<span id="power-available"></span></span></div>
+        </div>
+        <facility-planner id="campaign-facilities-planner"></facility-planner>
+    </div>
+</template>
+
+<template id="template-campaign-planner-research-view">
+    <div id="campaign-planner-research-view" class="campaign-planner-view">
+        <div id="research-list"></div>
+        <div id="research-controls">
+            <div>Research Status: <span id="num-research-complete"></span> / 75 complete</div>
+            <div>
+                <label for="scientists-per-month">Expected scientists per month:</label>
+                <input id="scientists-per-month" type="number" class="hide-number-spinners" value="4" />
+            </div>
+        </div>
     </div>
 </template>

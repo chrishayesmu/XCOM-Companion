@@ -8,7 +8,7 @@ button.xcom {
     background-color: var(--color-bg-nav);
     color: var(--color-strong);
     cursor: pointer;
-    padding: 4px 0;
+    padding: 4px 6px;
 }
 
 button.xcom:active:not(.disabled),

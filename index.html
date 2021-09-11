@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="assets/css/xcom.css" />
 
     <link rel="stylesheet" href="assets/css/pages/base-facilities.css" />
+    <link rel="stylesheet" href="assets/css/pages/campaign-planner-page.css" />
     <link rel="stylesheet" href="assets/css/pages/enemy-browse-page.css" />
     <link rel="stylesheet" href="assets/css/pages/enemy-display-page.css" />
     <link rel="stylesheet" href="assets/css/pages/home-page.css" />
@@ -61,6 +62,7 @@
     <script type="module" src="assets/js/custom-elements/alien-research.js"></script>
     <script type="module" src="assets/js/custom-elements/app-update-notifier.js"></script>
     <script type="module" src="assets/js/custom-elements/base-facilities.js"></script>
+    <script type="module" src="assets/js/custom-elements/campaign-footer.js"></script>
     <script type="module" src="assets/js/custom-elements/enemy-infobox.js"></script>
     <script type="module" src="assets/js/custom-elements/facility-planner.js"></script>
     <script type="module" src="assets/js/custom-elements/foundry-projects.js"></script>
@@ -70,6 +72,7 @@
     <script type="module" src="assets/js/custom-elements/loadout-summary.js"></script>
     <script type="module" src="assets/js/custom-elements/perk-icon.js"></script>
     <script type="module" src="assets/js/custom-elements/research-credit.js"></script>
+    <script type="module" src="assets/js/custom-elements/research-project.js"></script>
     <script type="module" src="assets/js/custom-elements/single-select-list.js"></script>
     <script type="module" src="assets/js/custom-elements/timeline.js"></script>
     <script type="module" src="assets/js/custom-elements/toggle-group.js"></script>
@@ -164,7 +167,10 @@
             </div>
         </header>
 
-        <section id="page-body-container" class="section js-section">
+        <section class="section js-section">
+            <div id="page-replace-target"></div>
+
+            <campaign-footer class="hidden-collapse"></campaign-footer>
         </section>
     </main>
     <app-update-notifier></app-update-notifier>

@@ -1,0 +1,117 @@
+:host {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: space-evenly;
+
+    position: sticky;
+    bottom: 0;
+    left: var(--nav-width);
+    right: 0;
+
+    background-color: var(--color-bg-nav);
+    border-top: var(--footer-border-width) solid var(--color-border);
+    font-size: 1.6em;
+    margin-top: var(--footer-margin-top);
+    padding: 4px;
+
+    height: var(--footer-height);
+}
+
+:host #content {
+    display: flex;
+    flex-flow: row nowrap;
+    gap: 0 10px;
+    width: 100%;
+}
+
+:host img {
+    height: 30px;
+    margin-right: 5px;
+}
+
+:host .bookend {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-around;
+
+    flex-basis: 10%; /* use a small basis so neither bookend gets more room */
+    flex-grow: 1;
+    flex-shrink: 0;
+    margin: 0 15px;
+}
+
+:host .vertical-center {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+}
+
+:host #campaign-date-container {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    gap: 0 8px;
+
+    cursor: pointer;
+    flex-shrink: 0;
+    margin: 0 auto;
+}
+
+:host #campaign-date-container #next-day,
+:host #campaign-date-container #previous-day {
+    cursor: pointer;
+
+    height: 50px;
+    width: 50px;
+}
+
+:host #campaign-date-container #previous-day {
+    transform: rotateY(180deg);
+}
+
+:host .disabled {
+    filter: saturate(0);
+}
+
+:host #campaign-date-display {
+    position: relative;
+
+    cursor: pointer;
+    font-size: 1.3em;
+    text-align: center;
+}
+
+:host #campaign-date-input {
+    position: absolute;
+    bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    cursor: pointer;
+    opacity: 0;
+    width: 100%;
+}
+
+/*
+    Styling of the webkit-specific shadow DOM that makes up the date input.
+    All of this is to make the interactive portion of the date input the only thing
+    taking up any space.
+*/
+
+:host #campaign-date-input::-webkit-datetime-edit-fields-wrapper,
+:host #campaign-date-input::-webkit-datetime-edit-day-field,
+:host #campaign-date-input::-webkit-datetime-edit-month-field,
+:host #campaign-date-input::-webkit-datetime-edit-year-field,
+:host #campaign-date-input::-webkit-inner-spin-button,
+:host #campaign-date-input::-webkit-datetime-edit-text {
+    display: none;
+}
+
+:host #campaign-date-input::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+    margin-inline-start: 0;
+    height: 100%;
+    width: 100%
+}

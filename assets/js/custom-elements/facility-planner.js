@@ -1,230 +1,361 @@
+import * as AppEvents from "../app-events.js";
 import * as DataHelper from "../data-helper.js";
+import * as Modal from "../modal.js";
+import * as Settings from "../settings.js";
 import * as Templates from "../templates.js";
 import * as Utils from "../utils.js";
-import * as Widgets from "../widgets.js";
+
+const relevantCampaignProperties = [ "daysPassed", "difficulty", "facilityQueue", "startingCountryAndBonus" ];
 
 class FacilityPlanner extends HTMLElement {
 
-    #campaign = null; // Will be set if this is being used in the context of a campaign plan
-    #allowedFacilities = null; // If set, only these facilities (and the quantities specified) can be built.
-                               // If not set and campaign != null, only facilities unlocked in the campaign can be built;
-                               // otherwise, all facilities are available.
-
-
-    #contextMenu = null;
-
-    static get observedAttributes() {
-        return [ ];
-    }
+    #activeCampaign = null;
 
     constructor() {
         super();
 
-        document.body.addEventListener("click", this._onClick.bind(this));
+        this.addEventListener("click", this._onClick.bind(this));
 
         Templates.instantiateTemplate("assets/html/templates/custom-elements/facility-planner.html", "template-facility-planner").then(template => {
             this.appendChild(template);
+
+            Settings.getCurrentCampaign().then(campaign => {
+                this.#activeCampaign = campaign;
+                this._loadFacilitiesFromCampaign();
+
+                AppEvents.registerEventListener("campaignDataChanged", this._loadFacilitiesFromCampaign.bind(this));
+            });
         });
     }
 
-    attributeChangedCallback() {
-        //this._recreateContents();
+    _getAdjacencyText(adjacencyType) {
+        switch (adjacencyType) {
+            case "laboratory":
+                return "+10% increase to research speed for every adjacent laboratory.";
+            case "power":
+                return "+3 power for every adjacent power facility.";
+            case "satellite":
+                return "+1 satellite capacity for every two uplinks constructed adjacent to one another.";
+            case "workshop":
+                return "Each adjacency counts as half an additional workshop.";
+        }
     }
 
-    getFacilityAtPosition(row, column) {
-        return this.querySelector(`.facility-icon[data-row="${row}"][data-column="${column}"]`).dataset.facilityId;
-    }
+    _loadFacilitiesFromCampaign() {
+        const liftStatuses = [
+            null, // irrelevant, row 0 always has a lift
+            this.#activeCampaign.getFacilityStatus(1, 3, this.#activeCampaign.daysPassed),
+            this.#activeCampaign.getFacilityStatus(2, 3, this.#activeCampaign.daysPassed),
+            this.#activeCampaign.getFacilityStatus(3, 3, this.#activeCampaign.daysPassed)
+        ]
 
-    numberOf(facilityType) {
-        return this.querySelectorAll(`.facility-icon[data-facility-id=${facilityType}]`).length;
-    }
+        const rowHasAccessLift = [
+            true,
+            liftStatuses[1].id === "facility_access_lift" && liftStatuses[1].status === "complete",
+            liftStatuses[2].id === "facility_access_lift" && liftStatuses[2].status === "complete",
+            liftStatuses[3].id === "facility_access_lift" && liftStatuses[3].status === "complete"
+        ];
 
-    /**
-     * Sets the facilities in the planner. Does not check that the configuration is valid.
-     *
-     * @param {*} facilities A 4x7 array of facilities.
-     */
-    setFacilities(facilities) {
         for (var i = 0; i < 4; i++) {
             for (var j = 0; j < 7; j++) {
-                const facility = facilities[i][j] || "unexcavated";
+                let facilityStatus = this.#activeCampaign.getFacilityStatus(i, j, this.#activeCampaign.daysPassed);
+                const icon = this.querySelector(`.facility-icon[data-row="${i}"][data-column="${j}"]`);
+                const spaceIsReachable = this.#activeCampaign.isFacilitySpaceReachable(i, j, this.#activeCampaign.daysPassed);
 
-                this.querySelector(`.facility-icon[data-row="${i}"][data-column="${j}"]`).setAttribute("data-facility-id", facility);
+                // For an unexcavated or empty space, we want to look into the future and show what's planned
+                if (facilityStatus.id === "unexcavated" || (facilityStatus.id === "excavated" && facilityStatus.status === "complete")) {
+                    const futureFacility = this.#activeCampaign.getFacilityStatus(i, j, 100000);
+                    futureFacility.status = "future";
+
+                    if (futureFacility.id !== facilityStatus.id) {
+                        facilityStatus = futureFacility;
+                    }
+                }
+
+                icon.setAttribute("data-facility-id", facilityStatus.id);
+
+                // Clear out any previously set attributes
+                icon.removeAttribute("can-build");
+                icon.removeAttribute("can-excavate");
+                icon.removeAttribute("data-days-remaining");
+                icon.removeAttribute("data-ending-days-passed");
+                icon.removeAttribute("data-start-date");
+                icon.removeAttribute("excavate-cost");
+                icon.removeAttribute("needs-access-lift");
+                icon.removeAttribute("neighbor-unexcavated");
+
+                if (facilityStatus.hasFacility) {
+                    icon.setAttribute("can-demolish", "");
+                }
+
+                if (facilityStatus.status === "building") {
+                    const daysRemaining = facilityStatus.queueItem.endingDaysPassed - this.#activeCampaign.daysPassed;
+
+                    icon.setAttribute("data-days-remaining", daysRemaining);
+                    icon.setAttribute("data-ending-days-passed", facilityStatus.queueItem.endingDaysPassed);
+                }
+                else if (facilityStatus.status === "future" && facilityStatus.queueItem) {
+                    // This is a preview of a future build
+                    const futureStartDate = Utils.dateToInputString(Utils.dateByDaysPassed(facilityStatus.queueItem.startingDaysPassed));
+                    icon.setAttribute("data-start-date", futureStartDate);
+                }
+
+                if ((j !== 3 && !rowHasAccessLift[i]) || (i > 0 && j === 3 && !rowHasAccessLift[i - 1])) {
+                    icon.setAttribute("needs-access-lift", "");
+                }
+                else if (!spaceIsReachable) {
+                    icon.setAttribute("neighbor-unexcavated", "");
+                }
+                else if (facilityStatus.id === "excavated" && facilityStatus.status === "complete") {
+                    icon.setAttribute("can-build", "");
+                }
+                else if (facilityStatus.id === "unexcavated") {
+                    icon.setAttribute("can-excavate", "");
+                    icon.setAttribute("excavate-cost", this.#activeCampaign.getExcavationCost(i));
+                }
             }
         }
     }
 
     async _onClick(event) {
-        if (this.#contextMenu) {
-            this.#contextMenu.remove();
+        const facilityId = event.target.dataset.facilityId;
+        const targetColumn = Number(event.target.dataset.column);
+        const targetRow = Number(event.target.dataset.row);
+
+        if (event.target.hasAttribute("can-excavate")) {
+            this.#activeCampaign.enqueueExcavation(targetRow, targetColumn, this.#activeCampaign.daysPassed);
+
+            this._loadFacilitiesFromCampaign();
+
+            const customEvent = new CustomEvent("facilityChanged");
+            this.dispatchEvent(customEvent);
         }
+        else if (event.target.hasAttribute("data-days-remaining")) {
+            // Canceling an ongoing project
+            const message = facilityId === "excavated" ? "Are you sure you want to cancel this excavation?" : "Are you sure you want to cancel this facility's construction?";
+            const confirmed = await Modal.confirm(message, "Cancel Facility");
 
-        if (!event.target.parentElement === this || !event.target.classList.contains("facility-icon")) {
-            return;
-        }
-
-        const clickedIcon = event.target;
-        const iconRect = clickedIcon.getBoundingClientRect();
-        const targetColumn = Number(clickedIcon.dataset.column);
-        const targetRow = Number(clickedIcon.dataset.row);
-
-        this.#contextMenu = document.createElement("div");
-        this.#contextMenu.classList.add("facility-planner-menu");
-        this.appendChild(this.#contextMenu);
-
-        // #region Add context menu items
-        const addMenuItem = (text, facilityId, isUnique) => {
-            if (facilityId === clickedIcon.dataset.facilityId) {
-                return false;
+            if (!confirmed) {
+                return;
             }
 
-            if (targetColumn === 3 && facilityId !== "facility_access_lift" && facilityId !== "excavated") {
-                return false;
-            }
+            const endingDaysPassed = Number(event.target.dataset.endingDaysPassed);
+            const queueIndex = this.#activeCampaign.facilityQueue.findIndex( queueItem => queueItem.resultDataId === facilityId
+                                                                          && queueItem.endingDaysPassed === endingDaysPassed
+                                                                          && queueItem.row === targetRow
+                                                                          && queueItem.column === targetColumn
+                                                                        );
 
-            if (targetColumn !== 3 && facilityId === "facility_access_lift") {
-                return false;
-            }
+            this.#activeCampaign.cancelConstruction(queueIndex);
 
-            // TODO: add rules for excavating without an access lift, and for building access lifts in a row
-            if (targetColumn !== 3 && this.getFacilityAtPosition(targetRow, 3) !== "facility_access_lift") {
-                return false;
-            }
+            this._loadFacilitiesFromCampaign();
 
-            if (targetColumn < 3) {
-                for (var i = 2; i > targetColumn; i--) {
-                    if (this.getFacilityAtPosition(targetRow, i) === "unexcavated") {
-                        return false;
-                    }
-                }
-            }
-            else if (targetColumn > 3) {
-                for (var i = 4; i < targetColumn; i++) {
-                    if (this.getFacilityAtPosition(targetRow, i) === "unexcavated") {
-                        return false;
-                    }
-                }
-            }
-
-            if (isUnique && this.numberOf(facilityId) !== 0) {
-                return false;
-            }
-
-            if (this.#allowedFacilities != null) {
-                if (!(facilityId in this.#allowedFacilities)) {
-                    return false;
-                }
-
-                if (this.numberOf(facilityId) >= this.#allowedFacilities[facilityId]) {
-                    return false;
-                }
-            }
-
-            const div = document.createElement("div");
-
-            if (facilityId.startsWith("facility")) {
-                const facility = DataHelper.baseFacilities[facilityId];
-
-                const cost = this.#campaign != null ? this.#campaign.getCosts(facilityId) : facility.normal_build.cost.money;
-                text = facility.name;
-            }
-
-            div.classList.add("menu-item");
-            div.textContent = text;
-            div.setAttribute("data-facility-id", facilityId);
-            div.addEventListener("click", () => this._onContextMenuItemClicked(div, targetRow, targetColumn));
-
-            this.#contextMenu.appendChild(div);
-            return true;
-        };
-
-        const addDivider = () => {
-            const div = document.createElement("div");
-            div.classList.add("menu-divider");
-
-            this.#contextMenu.appendChild(div);
-        };
-
-        const excavationCost = 10 * Math.pow(2, targetRow);
-        var addedAny = false, addedItem = false;
-
-        addedItem = addMenuItem("Mark Unexcavated", "unexcavated") || addedItem;
-        addedItem = addMenuItem(`Excavate (§${excavationCost})`, "excavated") || addedItem;
-        addedItem = addMenuItem(null, "facility_access_lift") || addedItem;
-        addedAny = addedAny || addedItem;
-
-        if (addedItem && targetColumn !== 3) {
-            addDivider();
+            const customEvent = new CustomEvent("facilityChanged");
+            this.dispatchEvent(customEvent);
         }
+        else if (event.target.hasAttribute("can-build")) {
+            const template = await Templates.instantiateTemplate("assets/html/templates/custom-elements/facility-planner.html", "template-facility-planner-build-modal");
 
-        addedItem = false;
-        addedItem = addMenuItem(null, "facility_satellite_uplink") || addedItem;
-        addedItem = addMenuItem(null, "facility_satellite_nexus") || addedItem;
-        addedAny = addedAny || addedItem;
+            this._updateModal(template, targetRow, targetColumn, true);
 
-        if (addedItem) {
-            addDivider();
+            template.querySelector("#facility-to-build").addEventListener("selectionChanged", () => this._updateModal(document, targetRow, targetColumn, /* resetDates */ true));
+            template.querySelector("#build-start-date").addEventListener("change", () => this._updateModal(document, targetRow, targetColumn));
+            template.querySelector("#build-quickly").addEventListener("change", () => this._updateModal(document, targetRow, targetColumn));
+            template.querySelector("#build").addEventListener("click", () => this._queueBuildingSelectedFacility(document, targetRow, targetColumn));
+            template.querySelector("#cancel").addEventListener("click", Modal.close);
+
+            Modal.open(template, null, false);
         }
-
-        addedItem = false;
-        addedItem = addMenuItem(null, "facility_fission_generator") || addedItem;
-        addedItem = addMenuItem(null, "facility_thermo_generator") || addedItem;
-        addedItem = addMenuItem(null, "facility_elerium_generator") || addedItem;
-        addedAny = addedAny || addedItem;
-
-        if (addedItem) {
-            addDivider();
-        }
-
-        addedItem = false;
-        addedItem = addMenuItem(null, "facility_laboratory") || addedItem;
-        addedItem = addMenuItem(null, "facility_genetics_lab", true) || addedItem;
-        addedItem = addMenuItem(null, "facility_psionic_labs", true) || addedItem;
-        addedAny = addedAny || addedItem;
-
-        if (addedItem) {
-            addDivider();
-        }
-
-        addedItem = false;
-        addedItem = addMenuItem(null, "facility_workshop") || addedItem;
-        addedItem = addMenuItem(null, "facility_foundry", true) || addedItem;
-        addedItem = addMenuItem(null, "facility_repair_bay", true) || addedItem;
-        addedAny = addedAny || addedItem;
-
-        if (addedItem) {
-            addDivider();
-        }
-
-        addedAny = addMenuItem(null, "facility_alien_containment", true) || addedAny;
-        addedAny = addMenuItem(null, "facility_gollop_chamber", true) || addedAny;
-        addedAny = addMenuItem(null, "facility_hyperwave_relay", true) || addedAny;
-        addedAny = addMenuItem(null, "facility_officer_training_school", true) || addedAny;
-
-        // #endregion
-
-        if (!addedAny) {
-            this.#contextMenu.remove();
-            return;
-        }
-
-        const menuRect = this.#contextMenu.getBoundingClientRect();
-        var menuX = clickedIcon.offsetLeft;
-        var menuY = clickedIcon.offsetTop + (iconRect.height / 2) - (menuRect.height / 2);
-
-        if (targetColumn > 3) {
-            menuX -= menuRect.width + 20;
-        }
-        else {
-            menuX += iconRect.width + 20;
-        }
-
-        this.#contextMenu.style.left = menuX + "px";
-        this.#contextMenu.style.top = menuY + "px";
     }
 
-    _onContextMenuItemClicked(item, row, column) {
-        this.querySelector(`.facility-icon[data-row="${row}"][data-column="${column}"]`).dataset.facilityId = item.dataset.facilityId;
+    _populateModalSummary(pageContainer) {
+        const selectedFacilityId = pageContainer.querySelector("#facility-to-build").selectedItem.dataset.facilityId;
+        const facility = DataHelper.baseFacilities[selectedFacilityId];
+        let facilitySummary = facility.description;
+
+        if (facility.adjacency_type) {
+            facilitySummary += "<br/><br/>Adjacency Bonus: " + this._getAdjacencyText(facility.adjacency_type);
+        }
+
+        pageContainer.querySelector("#selected-facility-name").textContent = facility.name;
+        pageContainer.querySelector("#selected-facility-icon").src = facility.icon;
+        pageContainer.querySelector("#selected-facility-summary").innerHTML = facilitySummary;
+    }
+
+    _populateModalBuildCosts(pageContainer) {
+        const costContainer = pageContainer.querySelector("#selected-facility-cost");
+        const selectedFacilityId = pageContainer.querySelector("#facility-to-build").selectedItem.dataset.facilityId;
+        const facility = DataHelper.baseFacilities[selectedFacilityId];
+        const isRushJob = pageContainer.querySelector("#build-quickly").checked;
+
+        const facilityCost = isRushJob ? facility.quick_build.cost : facility.normal_build.cost;
+        const costs = [];
+
+        if (facility.power_usage > 0) {
+            const power = this.#activeCampaign.getPower(this.#activeCampaign.daysPassed);
+            const available = power.available - power.inUse;
+            const color = available <= facility.power_usage ? "" : "var(--color-red)";
+            costs.push(`<span color="${color}">${facility.power_usage} Power</span>`);
+        }
+
+        if (selectedFacilityId === "facility_laboratory") {
+            const numScientistsRequired = 10 + 10 * this.#activeCampaign.numFacilities("facility_laboratory", this.#activeCampaign.daysPassed);
+            costs.push(`${numScientistsRequired} Scientists`);
+        }
+
+        if (selectedFacilityId === "facility_workshop") {
+            const numEngineersRequired = 10 + 10 * this.#activeCampaign.numFacilities("facility_workshop", this.#activeCampaign.daysPassed);
+            costs.push(`${numEngineersRequired} Engineers`);
+        }
+
+        // TODO: satellite calculations are not correct, do more testing
+        if (selectedFacilityId === "facility_satellite_nexus") {
+            const numEngineersRequired = 20 + 10 * (this.#activeCampaign.numFacilities("facility_satellite_uplink", this.#activeCampaign.daysPassed) - 1)
+                                            + 20 * this.#activeCampaign.numFacilities("facility_satellite_nexus", this.#activeCampaign.daysPassed);
+            costs.push(`${numEngineersRequired} Engineers`);
+        }
+
+        if (selectedFacilityId === "facility_satellite_uplink") {
+            const numEngineersRequired = 10 + 10 * (this.#activeCampaign.numFacilities("facility_satellite_uplink", this.#activeCampaign.daysPassed) - 1)
+                                            + 20 * this.#activeCampaign.numFacilities("facility_satellite_nexus", this.#activeCampaign.daysPassed);
+            costs.push(`${numEngineersRequired} Engineers`);
+        }
+
+        costs.push("§" + facilityCost.money);
+
+        if (facilityCost.item_elerium) {
+            costs.push(facilityCost.item_elerium + "x Elerium");
+        }
+
+        if (facilityCost.item_alien_alloy) {
+            costs.push(facilityCost.item_alien_alloy + "x Alloys");
+        }
+
+        if (facilityCost.item_ufo_flight_computer) {
+            costs.push(facilityCost.item_ufo_flight_computer + "x UFO Flight Computer");
+        }
+
+        if (facilityCost.item_ufo_power_source) {
+            costs.push(facilityCost.item_ufo_power_source + "x UFO Power Source");
+        }
+
+        if (facilityCost.item_meld) {
+            costs.push(facilityCost.item_meld + "x Meld");
+        }
+
+        costContainer.innerHTML = "Required to Build: " + Utils.join(costs);
+
+        // Time to build is included in the costs section
+        const buildTimeInHours = this.#activeCampaign.calculateTimeToBuildFacility(selectedFacilityId, isRushJob);
+        const days = Math.floor(buildTimeInHours / 24);
+        const hours = buildTimeInHours % 24;
+
+        let buildTimeString = "ETA: " + days + " days";
+
+        if (hours > 0) {
+            buildTimeString += ", " + hours + " hours";
+        }
+
+        costContainer.innerHTML += "<br />" + buildTimeString;
+    }
+
+    _populateModalDates(pageContainer, targetRow, targetColumn) {
+        const selectedFacilityId = pageContainer.querySelector("#facility-to-build").selectedItem.dataset.facilityId;
+        const startDateElem = pageContainer.querySelector("#build-start-date");
+
+        if (!startDateElem.value) {
+            const earliestBuildDaysPassed = this.#activeCampaign.earliestFacilityBuildDateAsDaysPassed(selectedFacilityId, targetRow, targetColumn);
+            const startDaysPassed = Math.max(earliestBuildDaysPassed, this.#activeCampaign.daysPassed); // Don't suggest a build date earlier than the current campaign date
+            const earliestBuildDate = Utils.dateByDaysPassed(startDaysPassed);
+            const earliestBuildDateString = Utils.dateToInputString(earliestBuildDate);
+
+            startDateElem.min = earliestBuildDateString;
+            startDateElem.value = earliestBuildDateString;
+        }
+
+        const isRushJob = pageContainer.querySelector("#build-quickly").checked;
+        const buildTimeInHours = this.#activeCampaign.calculateTimeToBuildFacility(selectedFacilityId, isRushJob);
+        const buildTimeInMs = 1000 * 60 * 60 * buildTimeInHours;
+
+        const startDate = new Date(startDateElem.value + "T00:00:00");
+        const endDate = new Date(startDate.getTime() + buildTimeInMs);
+
+        pageContainer.querySelector("#build-end-date").textContent = Utils.formatCampaignDate(endDate);
+    }
+
+    _queueBuildingSelectedFacility(pageContainer, row, column) {
+        const selectedFacilityId = pageContainer.querySelector("#facility-to-build").selectedItem.dataset.facilityId;
+        const isRushJob = pageContainer.querySelector("#build-quickly").checked;
+        const startDateElem = pageContainer.querySelector("#build-start-date");
+
+        const startingDaysPassed = Utils.daysPassedByDate(startDateElem.value);
+
+        this.#activeCampaign.enqueueFacility(selectedFacilityId, row, column, isRushJob, startingDaysPassed);
+
+        Modal.close();
+
+        // TODO: might need to change the active campaign date or you may not see the thing you just queued up
+        this._loadFacilitiesFromCampaign();
+
+        const event = new CustomEvent("facilityChanged");
+        this.dispatchEvent(event);
+    }
+
+    _updateModal(pageContainer, targetRow, targetColumn, resetDates) {
+        if (resetDates) {
+            //const facilityList = pageContainer.querySelector("#facility-to-build");
+            //const selectedFacilityId = "";// .selectedItem.dataset.facilityId;
+            //const earliestDaysPassed = this.#activeCampaign.earliestFacilityBuildDateAsDaysPassed(selectedFacilityId, targetRow, targetColumn);
+
+            const dateInput = pageContainer.querySelector("#build-start-date");
+            dateInput.value = ""; //Utils.dateToInputString(Utils.dateByDaysPassed(this.#activeCampaign.daysPassed));
+            dateInput.min = "";// Utils.dateToInputString(Utils.dateByDaysPassed(earliestDaysPassed));
+        }
+
+        this._updateModalValidOptions(pageContainer, targetRow, targetColumn);
+        this._populateModalBuildCosts(pageContainer, targetRow, targetColumn);
+        this._populateModalDates(pageContainer, targetRow, targetColumn);
+        this._populateModalSummary(pageContainer, targetRow, targetColumn);
+    }
+
+    _updateModalValidOptions(pageContainer, targetRow, targetColumn) {
+        const list = pageContainer.querySelector("#facility-to-build");
+
+        for (const facility of Object.values(DataHelper.baseFacilities)) {
+            let isValid = true;
+            let disabledReason = "";
+
+            if (targetColumn !== 3 && facility.id === "facility_access_lift") {
+                isValid = false;
+                disabledReason = "Access Lifts can only be built in the center column.";
+            }
+            else if (targetColumn === 3 && facility.id !== "facility_access_lift") {
+                isValid = false;
+                disabledReason = "Only Access Lifts can be built in the center column.";
+            }
+            else if (facility.is_unique && this.#activeCampaign.numFacilities(facility.id, 10000, /* includeBuilding */ true) > 0) {
+                isValid = false;
+                disabledReason = "You can only have one of this facility.";
+            }
+            else if (facility.research_prerequisite && this.#activeCampaign.getPositionInResearchQueue(facility.research_prerequisite.id) < 0) {
+                isValid = false;
+                disabledReason = "You are missing the prerequisite research <b>" + facility.research_prerequisite.name + "</b>. You must queue it before attempting to build this facility, and you will not be able to choose a build date prior to the research's completion date.";
+            }
+
+            const listItem = list.querySelector(`li[data-facility-id="${facility.id}"]`);
+            if (isValid) {
+                listItem.classList.remove("disabled");
+                listItem.removeAttribute("data-tooltip-text");
+            }
+            else {
+                listItem.classList.add("disabled");
+                listItem.setAttribute("data-tooltip-text", disabledReason);
+            }
+        }
+
+        if (!list.selectedItem || list.selectedItem.classList.contains("disabled")) {
+            list.select(list.querySelector("li:not(.disabled)"));
+        }
     }
 }
 
