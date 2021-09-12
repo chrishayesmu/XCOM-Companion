@@ -13,7 +13,6 @@ class CampaignPlannerPage extends AppPage {
     #currentView = null;
 
     // Research view variables
-    #projectElementsById = {};
     #projectElements = [];
     #researchList = null;
 
@@ -201,12 +200,9 @@ class CampaignPlannerPage extends AppPage {
             techElem.addEventListener("completed", this._recreateResearchQueue.bind(this));
             techElem.addEventListener("removedFromQueue", this._recreateResearchQueue.bind(this));
 
-            this.#projectElementsById[tech.id] = techElem;
             this.#projectElements[i] = techElem;
             this.#researchList.append(techElem);
         }
-
-        this._updateResearchSummary(template);
 
         return template;
     }
@@ -222,22 +218,6 @@ class CampaignPlannerPage extends AppPage {
                 this.#projectElements[i]._populateData();
             }
         }
-
-        // Just recreate everything; it's performant enough
-        for (const techElem of Object.values(this.#projectElementsById)) {
-            //techElem._populateData();
-        }
-
-        this._updateResearchSummary(document);
-    }
-
-    _sortResearchQueue() {
-
-    }
-
-    _updateResearchSummary(pageContainer) {
-        const numCompleteTechs = Object.values(this.#projectElementsById).reduce( (sum, elem) => elem.complete ? sum + 1 : sum, 0);
-        pageContainer.querySelector("#num-research-complete").textContent = numCompleteTechs;
     }
 
     // #endregion

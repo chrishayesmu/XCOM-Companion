@@ -11,6 +11,7 @@
 
     background-color: var(--color-bg-nav);
     border-top: var(--footer-border-width) solid var(--color-border);
+    flex-shrink: 0;
     font-size: 1.6em;
     margin-top: var(--footer-margin-top);
     padding: 4px;

@@ -84,7 +84,11 @@ class ResearchProject extends HTMLElement {
         this.#moveUpInQueueButton.id = "project-move-up-in-queue-button";
         this.#moveUpInQueueButton.classList.add("button-label");
         this.#moveUpInQueueButton.classList.add("interactive");
-        this.#moveUpInQueueButton.addEventListener("click", () => { this.#activeCampaign.moveResearchTowardsBeginningOfQueue(this.researchId); });
+        this.#moveUpInQueueButton.addEventListener("click", () => {
+            if (!this.#moveUpInQueueButton.hasAttribute("disabled")) {
+                this.#activeCampaign.moveResearchTowardsBeginningOfQueue(this.researchId);
+            }
+        });
         labelContainer.append(this.#moveUpInQueueButton);
 
         // Move down in queue
@@ -92,7 +96,11 @@ class ResearchProject extends HTMLElement {
         this.#moveDownInQueueButton.id = "project-move-down-in-queue-button";
         this.#moveDownInQueueButton.classList.add("button-label");
         this.#moveDownInQueueButton.classList.add("interactive");
-        this.#moveDownInQueueButton.addEventListener("click", () => { this.#activeCampaign.moveResearchTowardsEndOfQueue(this.researchId); });
+        this.#moveDownInQueueButton.addEventListener("click", () => {
+            if (!this.#moveDownInQueueButton.hasAttribute("disabled")) {
+                this.#activeCampaign.moveResearchTowardsEndOfQueue(this.researchId);
+            }
+        });
         labelContainer.append(this.#moveDownInQueueButton);
 
         // Remove from queue
@@ -177,7 +185,7 @@ class ResearchProject extends HTMLElement {
 
                 this.#queuePosition.textContent = `#${queueIndex+1} In Queue`;
 
-                if (queueIndex === 0) {
+                if (queueIndex === 0 || this.#activeCampaign.researchQueue[queueIndex - 1].endingDaysPassed <= this.#activeCampaign.daysPassed) {
                     // TODO check if previous item is complete also
                     this.#moveUpInQueueButton.setAttribute("disabled", "");
                 }

@@ -1,6 +1,9 @@
 /* Section ------------------ */
 
 .section {
+  display: flex;
+  flex-flow: column nowrap;
+
   position: absolute;
   top: 6rem;
   left: 0;
@@ -69,9 +72,10 @@
 }
 
 #page-replace-target {
-    min-height: calc(100% - var(--footer-height) - var(--footer-margin-top) - var(--footer-border-width));
+    flex-grow: 1;
+    /* height: calc(100% - var(--footer-height) - var(--footer-margin-top) - var(--footer-border-width)); */
 }
 
 #page-replace-target.hideFooter {
-    min-height: unset;
+    height: unset;
 }

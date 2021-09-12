@@ -131,6 +131,7 @@ class FacilityPlanner extends HTMLElement {
             this.dispatchEvent(customEvent);
         }
         else if (event.target.hasAttribute("data-days-remaining")) {
+            // TODO: if canceling an excavation, need to also cancel anything building after it, and any future excavations/builds depending on it
             // Canceling an ongoing project
             const message = facilityId === "excavated" ? "Are you sure you want to cancel this excavation?" : "Are you sure you want to cancel this facility's construction?";
             const confirmed = await Modal.confirm(message, "Cancel Facility");
@@ -194,8 +195,8 @@ class FacilityPlanner extends HTMLElement {
         if (facility.power_usage > 0) {
             const power = this.#activeCampaign.getPower(this.#activeCampaign.daysPassed);
             const available = power.available - power.inUse;
-            const color = available <= facility.power_usage ? "" : "var(--color-red)";
-            costs.push(`<span color="${color}">${facility.power_usage} Power</span>`);
+            const color = available <= facility.power_usage ? "var(--color-red)" : "";
+            costs.push(`<span style="color: ${color}">${facility.power_usage} Power</span>`);
         }
 
         if (selectedFacilityId === "facility_laboratory") {
@@ -243,7 +244,7 @@ class FacilityPlanner extends HTMLElement {
             costs.push(facilityCost.item_meld + "x Meld");
         }
 
-        costContainer.innerHTML = "Required to Build: " + Utils.join(costs);
+        costContainer.innerHTML = "Required to Build: " + Utils.join(costs, ",");
 
         // Time to build is included in the costs section
         const buildTimeInHours = this.#activeCampaign.calculateTimeToBuildFacility(selectedFacilityId, isRushJob);
@@ -262,6 +263,7 @@ class FacilityPlanner extends HTMLElement {
     _populateModalDates(pageContainer, targetRow, targetColumn) {
         const selectedFacilityId = pageContainer.querySelector("#facility-to-build").selectedItem.dataset.facilityId;
         const startDateElem = pageContainer.querySelector("#build-start-date");
+        const warningElem = pageContainer.querySelector("#build-start-date-warning");
 
         if (!startDateElem.value) {
             const earliestBuildDaysPassed = this.#activeCampaign.earliestFacilityBuildDateAsDaysPassed(selectedFacilityId, targetRow, targetColumn);
@@ -271,6 +273,15 @@ class FacilityPlanner extends HTMLElement {
 
             startDateElem.min = earliestBuildDateString;
             startDateElem.value = earliestBuildDateString;
+
+            // Warn the user if they can't start this facility on the current date
+            if (startDaysPassed !== this.#activeCampaign.daysPassed) {
+                warningElem.textContent = `You cannot start construction on this facility until ${Utils.formatCampaignDate(earliestBuildDate)}.`;
+                warningElem.classList.remove("hidden-collapse");
+            }
+            else {
+                warningElem.classList.add("hidden-collapse");
+            }
         }
 
         const isRushJob = pageContainer.querySelector("#build-quickly").checked;

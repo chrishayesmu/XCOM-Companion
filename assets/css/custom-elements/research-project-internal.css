@@ -5,6 +5,7 @@
 
     background-color: var(--color-bg-schematic-light);
     border: 1px solid var(--color-border-subtle);
+    flex-shrink: 0;
     font-size: 1.2em;
     min-height: 40px;
     width: 795px;

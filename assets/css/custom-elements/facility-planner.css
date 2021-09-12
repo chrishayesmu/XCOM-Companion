@@ -228,7 +228,7 @@ facility-planner {
     flex-flow: row nowrap;
     gap: 0 13px;
 
-    height: 500px;
+    height: 540px;
     width: 750px;
 }
 
@@ -261,18 +261,23 @@ facility-planner {
     border-right: none;
     height: fit-content;
     min-height: 50px;
-    padding: 4px 0;
+    padding: 4px 0 10px 0;
     margin: 6px 0;
 }
 
 #facility-planner-build-modal #selected-facility-summary {
     border-bottom: 1px solid var(--color-border-subtle);
+    flex-grow: 1;
     height: 135px;
     margin-bottom: 15px;
 }
 
+#facility-planner-build-modal #build-start-date-warning {
+    margin: 0 auto 13px auto;
+}
+
 /*************
- Facility card images
+ * Facility card images
  *************/
 
  /* Use the excavated image for ongoing excavations and for ongoing construction */

@@ -275,7 +275,9 @@ function getCampaignStartDate() {
 }
 
 function join(strings, joinWord, encodeSpaces) {
-    joinWord = joinWord || "and";
+    if (!joinWord && joinWord !== "") {
+        joinWord = "and";
+    }
 
     const space = encodeSpaces ? "&nbsp;" : " ";
 
@@ -288,7 +290,12 @@ function join(strings, joinWord, encodeSpaces) {
     }
 
     if (strings.length == 2) {
-        return strings[0] + space + joinWord + space + strings[1];
+        if (joinWord === ",") {
+            return strings[0] + joinWord + space + strings[1];
+        }
+        else {
+            return strings[0] + space + joinWord + space + strings[1];
+        }
     }
 
     let output = "";
@@ -299,7 +306,7 @@ function join(strings, joinWord, encodeSpaces) {
             output += "," + space;
         }
 
-        if (i == strings.length - 2) {
+        if (i == strings.length - 2 && joinWord !== ",") {
             output += space + joinWord + space;
         }
     }
