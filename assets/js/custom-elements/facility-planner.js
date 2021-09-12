@@ -130,7 +130,7 @@ class FacilityPlanner extends HTMLElement {
             const customEvent = new CustomEvent("facilityChanged");
             this.dispatchEvent(customEvent);
         }
-        else if (event.target.hasAttribute("data-days-remaining")) {
+        else if (event.target.hasAttribute("data-days-remaining") || event.target.hasAttribute("data-start-date")) {
             // TODO: if canceling an excavation, need to also cancel anything building after it, and any future excavations/builds depending on it
             // Canceling an ongoing project
             const message = facilityId === "excavated" ? "Are you sure you want to cancel this excavation?" : "Are you sure you want to cancel this facility's construction?";
@@ -142,10 +142,8 @@ class FacilityPlanner extends HTMLElement {
 
             const endingDaysPassed = Number(event.target.dataset.endingDaysPassed);
             const queueIndex = this.#activeCampaign.facilityQueue.findIndex( queueItem => queueItem.resultDataId === facilityId
-                                                                          && queueItem.endingDaysPassed === endingDaysPassed
                                                                           && queueItem.row === targetRow
-                                                                          && queueItem.column === targetColumn
-                                                                        );
+                                                                          && queueItem.column === targetColumn);
 
             this.#activeCampaign.cancelConstruction(queueIndex);
 
@@ -189,13 +187,15 @@ class FacilityPlanner extends HTMLElement {
         const facility = DataHelper.baseFacilities[selectedFacilityId];
         const isRushJob = pageContainer.querySelector("#build-quickly").checked;
 
+        let enoughPowerAvailable = true;
         const facilityCost = isRushJob ? facility.quick_build.cost : facility.normal_build.cost;
         const costs = [];
 
         if (facility.power_usage > 0) {
             const power = this.#activeCampaign.getPower(this.#activeCampaign.daysPassed);
             const available = power.available - power.inUse;
-            const color = available <= facility.power_usage ? "var(--color-red)" : "";
+            enoughPowerAvailable = available >= facility.power_usage;
+            const color = !enoughPowerAvailable ? "var(--color-red)" : "";
             costs.push(`<span style="color: ${color}">${facility.power_usage} Power</span>`);
         }
 
@@ -258,6 +258,14 @@ class FacilityPlanner extends HTMLElement {
         }
 
         costContainer.innerHTML += "<br />" + buildTimeString;
+
+        // Ideally this wouldn't be here but it'll do for now
+        if (enoughPowerAvailable) {
+            pageContainer.querySelector("#build").classList.remove("disabled");
+        }
+        else {
+            pageContainer.querySelector("#build").classList.add("disabled");
+        }
     }
 
     _populateModalDates(pageContainer, targetRow, targetColumn) {

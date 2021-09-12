@@ -24,6 +24,7 @@ button.xcom:active:not(.disabled) {
 button.xcom.disabled {
     cursor: default;
     filter: brightness(0.5);
+    pointer-events: none;
 }
 
 /* checkbox */
