@@ -3,11 +3,28 @@
         {
             "prerequisite": "research_advanced_plasma_weapons",
             "requested_item": "item_alien_rifle",
+            "requested_amount": {
+                "min": 1,
+                "max": 2
+            },
             "rewards": [ "scientists", "soldier" ]
+        },
+        {
+            "prerequisite": "research_alien_communications",
+            "requested_item": "item_alien_entertainment",
+            "requested_amount": {
+                "min": 1,
+                "max": 1
+            },
+            "rewards": [ "panic_reduction" ]
         },
         {
             "prerequisite": "research_alien_computers",
             "requested_item": "item_ufo_flight_computer",
+            "requested_amount": {
+                "min": 3,
+                "max": 3
+            },
             "rewards": [ "credits", "engineers", "soldier" ]
         },
         {
@@ -28,6 +45,10 @@
         {
             "prerequisite": "research_alien_power_systems",
             "requested_item": "item_ufo_power_source",
+            "requested_amount": {
+                "min": 2,
+                "max": 2
+            },
             "rewards": [ "credits", "engineers", "scientists", "soldier" ]
         },
         {
@@ -38,21 +59,37 @@
         {
             "prerequisite": "research_beam_lasers",
             "requested_item": "item_laser_rifle",
+            "requested_amount": {
+                "min": 3,
+                "max": 3
+            },
             "rewards": [ "soldier" ]
         },
         {
             "prerequisite": "research_chryssalid_autopsy",
             "requested_item": "item_chryssalid_corpse",
+            "requested_amount": {
+                "min": 10,
+                "max": 10
+            },
             "rewards": [ "credits", "scientists" ]
         },
         {
             "prerequisite": "research_compact_plasma_weapons",
             "requested_item": "item_alien_pistol",
+            "requested_amount": {
+                "min": 3,
+                "max": 3
+            },
             "rewards": [ "credits", "scientists", "soldier" ]
         },
         {
             "prerequisite": "research_cyberdisc_autopsy",
             "requested_item": "item_cyberdisc_corpse",
+            "requested_amount": {
+                "min": 3,
+                "max": 3
+            },
             "rewards": [ "credits", "engineers", "soldier" ]
         },
         {
@@ -63,11 +100,19 @@
         {
             "prerequisite": "research_ethereal_autopsy",
             "requested_item": "item_ethereal_corpse",
+            "requested_amount": {
+                "min": 3,
+                "max": 3
+            },
             "rewards": [ "soldier" ]
         },
         {
             "prerequisite": "research_ethereal_interrogation",
             "requested_item": "item_ethereal_captive",
+            "requested_amount": {
+                "min": 1,
+                "max": 1
+            },
             "rewards": [ "engineers", "scientists", "soldier" ]
         },
         {
@@ -78,26 +123,55 @@
         {
             "prerequisite": "research_floater_interrogation",
             "requested_item": "item_floater_captive",
+            "requested_amount": {
+                "min": 1,
+                "max": 1
+            },
             "rewards": [ "engineers" ]
+        },
+        {
+            "prerequisite": "research_fusion_weapons",
+            "requested_item": "item_fusion_core",
+            "requested_amount": {
+                "min": 1,
+                "max": 1
+            },
+            "rewards": [ "engineers", "scientists" ]
         },
         {
             "prerequisite": "research_heavy_floater_autopsy",
             "requested_item": "item_heavy_floater_corpse",
+            "requested_amount": {
+                "min": 10,
+                "max": 10
+            },
             "rewards": [ "engineers", "scientists", "soldier" ]
         },
         {
             "prerequisite": "research_heavy_floater_interrogation",
             "requested_item": "item_heavy_floater_captive",
+            "requested_amount": {
+                "min": 1,
+                "max": 1
+            },
             "rewards": [ "engineers", "scientists", "soldier" ]
         },
         {
             "prerequisite": "research_heavy_plasma_weapons",
             "requested_item": "item_alien_heavy_weapon",
+            "requested_amount": {
+                "min": 1,
+                "max": 1
+            },
             "rewards": [ "engineers", "soldier" ]
         },
         {
             "prerequisite": "research_mechtoid_autopsy",
             "requested_item": "item_mechtoid_corpse",
+            "requested_amount": {
+                "min": 5,
+                "max": 5
+            },
             "rewards": [ "engineers", "scientists", "soldier" ]
         },
         {
@@ -108,61 +182,118 @@
         {
             "prerequisite": "research_muton_interrogation",
             "requested_item": "item_muton_captive",
+            "requested_amount": {
+                "min": 1,
+                "max": 1
+            },
             "rewards": [ "soldier" ]
         },
         {
             "prerequisite": "research_muton_berserker_autopsy",
             "requested_item": "item_muton_berserker_corpse",
+            "requested_amount": {
+                "min": 10,
+                "max": 10
+            },
             "rewards": [ "credits", "scientists", "soldier" ]
         },
         {
             "prerequisite": "research_muton_berserker_interrogation",
             "requested_item": "item_muton_berserker_captive",
+            "requested_amount": {
+                "min": 1,
+                "max": 1
+            },
             "rewards": [ "soldier" ]
         },
         {
             "prerequisite": "research_muton_elite_autopsy",
             "requested_item": "item_muton_elite_corpse",
+            "requested_amount": {
+                "min": 10,
+                "max": 10
+            },
             "rewards": [ "scientists", "soldier" ]
         },
         {
             "prerequisite": "research_muton_elite_interrogation",
             "requested_item": "item_muton_elite_captive",
+            "requested_amount": {
+                "min": 1,
+                "max": 1
+            },
             "rewards": [ "soldier" ]
         },
         {
             "prerequisite": "research_plasma_weapons",
             "requested_item": "item_alien_carbine",
+            "requested_amount": {
+                "min": 1,
+                "max": 3
+            },
             "rewards": [ "credits", "scientists", "soldier" ]
         },
         {
             "prerequisite": "research_sectoid_commander_autopsy",
-            "requested_item": "item_alien_entertainment",
-            "rewards": [ "panic_reduction" ]
+            "requested_item": "item_sectoid_commander_corpse",
+            "requested_amount": {
+                "min": 5,
+                "max": 5
+            },
+            "rewards": [ "engineers", "scientists", "soldier" ]
         },
         {
             "prerequisite": "research_sectoid_commander_autopsy",
-            "requested_item": "item_sectoid_commander_corpse",
-            "rewards": [ "engineers", "scientists", "soldier" ]
+            "requested_item": "item_alien_stasis_tank",
+            "requested_amount": {
+                "min": 10,
+                "max": 10
+            },
+            "rewards": [ "scientists" ]
+        },
+        {
+            "prerequisite": "research_sectoid_commander_autopsy",
+            "requested_item": "item_alien_surgery",
+            "requested_amount": {
+                "min": 6,
+                "max": 6
+            },
+            "rewards": [ "scientists" ]
         },
         {
             "prerequisite": "research_sectoid_commander_interrogation",
             "requested_item": "item_sectoid_commander_captive",
+            "requested_amount": {
+                "min": 1,
+                "max": 1
+            },
             "rewards": [ "panic_reduction", "scientists", "soldier" ]
         },
         {
             "prerequisite": "research_sectoid_interrogation",
             "requested_item": "item_sectoid_captive",
+            "requested_amount": {
+                "min": 1,
+                "max": 1
+            },
             "rewards": [ "scientists", "soldier" ]
         },
         {
             "prerequisite": "research_sectopod_autopsy",
             "requested_item": "item_sectopod_corpse",
+            "requested_amount": {
+                "min": 2,
+                "max": 2
+            },
             "rewards": [ "credits", "engineers"]
         },
         {
             "prerequisite": "research_seeker_autopsy",
             "requested_item": "item_seeker_corpse",
+            "requested_amount": {
+                "min": 10,
+                "max": 10
+            },
             "rewards": [ "credits", "engineers" ]
         },
         {
@@ -173,6 +304,10 @@
         {
             "prerequisite": "research_thin_man_interrogation",
             "requested_item": "item_thin_man_captive",
+            "requested_amount": {
+                "min": 1,
+                "max": 1
+            },
             "rewards": [ "credits", "scientists", "soldier" ]
         },
         {

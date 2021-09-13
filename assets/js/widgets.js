@@ -88,13 +88,36 @@ function _createCouncilRequestLink(requestId, options) {
     const request = DataHelper.councilRequests[requestId];
     const span = document.createElement("span");
 
+    let quantityString = null;
+
+    if (request.requested_amount) {
+        quantityString = Utils.xToY(request.requested_amount.min, request.requested_amount.max).replace(" ", "x ")  + "x";
+    }
+    else if (request.prerequisite.id.contains("autopsy")) {
+        // All corpses without hardcoded quantities follow the same logic
+        // TODO include help icon explaining how this scales
+        quantityString = "6x to 20x";
+    }
+    else {
+        // The only other item category is materials (alloys, elerium, fragments, and meld) which also have their own rules
+        // TODO include help icon
+        quantityString = "12x to 50x";
+    }
+
+    span.innerHTML = quantityString + " ";
+
     const link = createInAppLink(request.requested_item);
     span.appendChild(link);
     span.innerHTML += " for ";
 
     let rewardString = "";
     for (let i = 0; i < request.rewards.length; i++) {
-        rewardString += Utils.capitalizeEachWord(request.rewards[i]) + " / "; // TODO capitalize
+        let reward = request.rewards[i];
+        if (reward === "panic_reduction") {
+            reward += " (-20)";
+        }
+
+        rewardString += Utils.capitalizeEachWord(reward) + " / ";
     }
 
     rewardString = rewardString.substring(0, rewardString.length - 3);

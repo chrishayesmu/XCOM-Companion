@@ -353,7 +353,7 @@ function truncateText(text, maxLength) {
 
 function xToY(x, y) {
     if (x === y) {
-        return x;
+        return String(x);
     }
 
     return `${x} to ${y}`;
