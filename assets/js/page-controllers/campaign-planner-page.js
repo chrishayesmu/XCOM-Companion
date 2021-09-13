@@ -29,7 +29,7 @@ class CampaignPlannerPage extends AppPage {
         }
 
         AppEvents.registerEventListener("campaignDataChanged", data => {
-            if (data.propertyName === "researchQueue") {
+            if (this.#currentView === "research" && data.propertyName === "daysPassed" || data.propertyName === "researchQueue") {
                 this._recreateResearchQueue();
             }
 
@@ -186,7 +186,7 @@ class CampaignPlannerPage extends AppPage {
     async _loadResearchView() {
         const template = await Templates.instantiateTemplate("assets/html/templates/pages/campaign-planner-page.html", "template-campaign-planner-research-view");
 
-        // TODO: need to reorganize queue when changing date in footer
+        // TODO: it would be nice to warn if you try to pick Alien Computers as the first research since it's literally impossible to start on March 1st
 
         const sortedTechs = this._getSortedResearch();
         this.#researchList = template.querySelector("#research-list");

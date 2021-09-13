@@ -83,6 +83,7 @@
 #campaign-planner-page #campaign-planner-active-view-container #research-list {
     display: flex;
     flex-flow: column nowrap;
+    flex-shrink: 0;
     height: 79vh;
     overflow-y: auto;
     padding-left: 8px;
@@ -92,4 +93,9 @@
 
 #campaign-planner-page #campaign-planner-active-view-container #research-list research-project:not(:first-child) {
     margin-top: -1px;
+}
+
+#campaign-planner-page #campaign-planner-active-view-container #research-help {
+    margin-left: 24px;
+    min-width: 450px;
 }

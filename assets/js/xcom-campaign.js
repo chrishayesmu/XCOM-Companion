@@ -221,6 +221,7 @@ class XComCampaign {
 
         this.recalculateDates();
 
+        this._validateCampaignState();
         this._fireChangeEvent("facilityQueue");
     }
 
@@ -319,6 +320,7 @@ class XComCampaign {
 
         this.#facilityQueue.push(queueItem);
 
+        this._validateCampaignState();
         this._fireChangeEvent("facilityQueue");
     }
 
@@ -335,6 +337,7 @@ class XComCampaign {
         // TODO do we need to maintain sorting of the queue?
         this.#facilityQueue.push(queueItem);
 
+        this._validateCampaignState();
         this._fireChangeEvent("facilityQueue");
     }
 
@@ -369,6 +372,7 @@ class XComCampaign {
         const queueItem = new CampaignQueueItem(researchId, startingDaysPassed, startingDaysPassed + this.calculateResearchTime(researchId, startingDaysPassed));
         this.#researchQueue.push(queueItem);
 
+        this._validateCampaignState();
         this._fireChangeEvent("researchQueue");
 
         return true;
@@ -839,8 +843,6 @@ class XComCampaign {
     recalculateDates() {
         let nextEndDateDaysPassed = 0;
 
-        // TODO include other queue types and interleave everything so their dependencies are handled correctly
-
         for (let i = 0; i < this.#researchQueue.length; i++) {
             this.#researchQueue[i].startingDaysPassed = nextEndDateDaysPassed;
 
@@ -871,6 +873,7 @@ class XComCampaign {
             this.#startingCountry = startingCountry;
             this.#startingCountryBonusIndex = bonusIndex;
 
+            this._validateCampaignState();
             this._fireChangeEvent("startingCountryAndBonus");
         }
     }
@@ -887,7 +890,31 @@ class XComCampaign {
         AppEvents.fireEvent("campaignDataChanged", { propertyName: propertyName });
     }
 
+    _isFacilityQueueValid() {
+        // Ignore anything ending on day 0, since that comes from the starting setup and can legitimately
+        // bypass research requirements
+        const facilityQueue = this.#facilityQueue.filter(item => item.endingDaysPassed > 0);
+
+        for (const queueItem of facilityQueue) {
+            if (!this.isFacilitySpaceReachable(queueItem.row, queueItem.column, queueItem.startingDaysPassed)) {
+                return false;
+            }
+
+            const facilityId = queueItem.resultDataId;
+            const facility = DataHelper.baseFacilities[facilityId];
+
+            if (facility && facility.research_prerequisite && !this.isResearchComplete(facility.research_prerequisite.id, queueItem.startingDaysPassed)) {
+                return false;
+            }
+
+            // TODO: validate that there will be enough power for this facility and all others on the starting day
+        }
+
+        return true;
+    }
+
     _moveResearchInQueue(researchId, indexChange) {
+        // TODO: moving research can invalidate the facility queue
         const queueIndex = this.getPositionInResearchQueue(researchId);
 
         if (queueIndex < 0) {
@@ -933,6 +960,7 @@ class XComCampaign {
 
         this.recalculateDates();
 
+        this._validateCampaignState();
         this._fireChangeEvent("researchQueue");
 
         return true;
@@ -1022,6 +1050,12 @@ class XComCampaign {
     _validateArgumentPresent(arg) {
         if (arg === null || arg === undefined) {
             throw new Error("Required argument not provided");
+        }
+    }
+
+    _validateCampaignState() {
+        if (!this._isFacilityQueueValid()) {
+            console.error("WARNING: facility queue is invalid. Current queue: ", this.#facilityQueue);
         }
     }
 

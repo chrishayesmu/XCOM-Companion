@@ -4,7 +4,7 @@ import * as Modal from "../modal.js";
 import * as Settings from "../settings.js";
 import * as Utils from "../utils.js";
 
-const relevantCampaignProperties = [ "allData", "facilityQueue", "satelliteQueue" ];
+const relevantCampaignProperties = [ "allData", "daysPassed", "facilityQueue", "satelliteQueue" ];
 
 class ResearchProject extends HTMLElement {
 
@@ -146,10 +146,16 @@ class ResearchProject extends HTMLElement {
             startingDaysPassed = this.#activeCampaign.researchQueue.last.endingDaysPassed;
         }
 
-        const researchTime = this.#activeCampaign.calculateResearchTime(this.researchId, startingDaysPassed);
+        let researchTime = this.#activeCampaign.calculateResearchTime(this.researchId, startingDaysPassed);
+
+        if (queueIndex >= 0 && startingDaysPassed <= this.#activeCampaign.daysPassed) {
+            // Account for time already spent on this research if it's started
+            researchTime -= (this.#activeCampaign.daysPassed - startingDaysPassed);
+            researchTime = Math.max(researchTime, 0);
+        }
 
         this.#projectName.textContent = research.name;
-        this.#projectTime.textContent = Math.roundTo(researchTime, 1) + " days";
+        this.#projectTime.textContent = Math.roundTo(researchTime, 1) + (researchTime === 1 ? " day": " days");
 
         if (this.#activeCampaign.isResearchComplete(this.researchId, this.#activeCampaign.daysPassed)) {
             this.#addToQueueButton.classList.add("hidden-collapse");

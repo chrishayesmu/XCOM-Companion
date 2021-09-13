@@ -80,7 +80,12 @@
 
     cursor: pointer;
     font-size: 1.3em;
+    padding: 0 6px;
     text-align: center;
+}
+
+:host #campaign-date-display:hover {
+    background-color: var(--color-bg-subtle);
 }
 
 :host #campaign-date-input {

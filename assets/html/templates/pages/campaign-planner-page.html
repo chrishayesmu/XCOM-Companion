@@ -36,6 +36,35 @@
         <div id="research-list"></div>
         <div id="research-controls">
             <div id="research-help">
+                <h3>How it works</h3>
+
+                The research planner allows you to build a research queue and get a rough idea of how your research will progress. You can freely reorder the queue, though
+                prerequisites are enforced (you won't be allowed to research Advanced Beam Lasers before Beam Lasers, for example).
+
+                <br/><br/>
+
+                Unlike in the actual game, you cannot switch away from a research while it is in progress.
+
+                <br/><br/>
+
+                <h3>Time estimates</h3>
+
+                The time estimates are generated using the following:
+
+                <ol>
+                    <li>The facility plan you've established in the Facilities tab (i.e. number of Laboratories and lab adjacencies).</li>
+                    <li>Interrogation bonuses earned before the research's position in the queue.</li>
+                    <li>Country and continent bonuses earned before or during the research's position in the queue (e.g. We Have Ways or Expertise).</li>
+                    <li>A rough guess at how many scientists you will have at that time.</li>
+                </ol>
+
+                The first 3 factors are all deterministic; if you follow the plan you've built exactly, those will always play out the same way. The fourth factor is much more random,
+                because scientists are gained by completing council missions and fulfilling council requests, both of which are not only heavily randomized, but depend on your actions
+                as well. (You also can gain scientists at each council report, which is deterministic and is factored in according to your satellite plan.)
+
+                <br/><br/>
+
+                To account for this, the number of scientists you will have is estimated based on data collected from other players' campaigns.
             </div>
         </div>
     </div>

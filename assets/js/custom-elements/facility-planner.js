@@ -84,6 +84,8 @@ class FacilityPlanner extends HTMLElement {
                 icon.removeAttribute("needs-access-lift");
                 icon.removeAttribute("neighbor-unexcavated");
 
+                // TODO: trying to queue a project needs to check the validity of all future projects in queue (e.g.,
+                // we might now be using too much power for a future facility to be built)
                 if (facilityStatus.hasFacility) {
                     icon.setAttribute("can-demolish", "");
                 }
@@ -313,7 +315,6 @@ class FacilityPlanner extends HTMLElement {
 
         Modal.close();
 
-        // TODO: might need to change the active campaign date or you may not see the thing you just queued up
         this._loadFacilitiesFromCampaign();
 
         const event = new CustomEvent("facilityChanged");
@@ -322,13 +323,9 @@ class FacilityPlanner extends HTMLElement {
 
     _updateModal(pageContainer, targetRow, targetColumn, resetDates) {
         if (resetDates) {
-            //const facilityList = pageContainer.querySelector("#facility-to-build");
-            //const selectedFacilityId = "";// .selectedItem.dataset.facilityId;
-            //const earliestDaysPassed = this.#activeCampaign.earliestFacilityBuildDateAsDaysPassed(selectedFacilityId, targetRow, targetColumn);
-
             const dateInput = pageContainer.querySelector("#build-start-date");
-            dateInput.value = ""; //Utils.dateToInputString(Utils.dateByDaysPassed(this.#activeCampaign.daysPassed));
-            dateInput.min = "";// Utils.dateToInputString(Utils.dateByDaysPassed(earliestDaysPassed));
+            dateInput.value = "";
+            dateInput.min = "";
         }
 
         this._updateModalValidOptions(pageContainer, targetRow, targetColumn);
