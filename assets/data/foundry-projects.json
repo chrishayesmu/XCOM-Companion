@@ -572,7 +572,7 @@
         "foundry_supercapacitors": {
             "name": "Supercapacitors",
             "description": "By increasing our ability to burst energy through our laser weapon optics, we can make these weapons far more dangerous to our alien foe. This will upgrade all of our aircraft laser cannon by increasing their firing rate and armor piercing capabilities, and will also allow us to construct a weapon addon for our personal laser weapons that will increase their chances of scoring a critical hit.",
-            "tactical_text": "<ul><li>All <a data-page-on-click='item-display-page' data-pagearg-item-id='item_laser_cannon'>Laser Cannons</a> in XCOM's arsenal are upgraded to <a data-page-on-click='item-display-page' data-pagearg-item-id='item_pulse_cannon'>Pulse Cannons</a></li><li>Pulse Cannons have +10 damage, +30% armor penetration, and 25% increased rate of fire compared to Laser Cannons</li></ul>",
+            "tactical_text": "<ul><li>All <a data-page-on-click='item-display-page' data-pagearg-item-id='item_laser_cannon'>Laser Cannons</a> in XCOM's arsenal are upgraded to <a data-page-on-click='item-display-page' data-pagearg-item-id='item_pulse_cannon'>Pulse Cannons</a></li><li>Pulse Cannons have +10 damage, +30% armor penetration, and 33% increased rate of fire compared to Laser Cannons (0.75s cooldown, from 1.0s)</li></ul>",
             "cost": {
                 "item_alien_alloy": 150,
                 "item_elerium": 200,
