@@ -97,14 +97,14 @@ facility-planner {
     filter: brightness(1.1);
 }
 
-.facility-planner-container .facility-icon[needs-access-lift]:hover,
-.facility-planner-container .facility-icon[neighbor-unexcavated]:hover {
+.facility-planner-container .facility-icon[needs-access-lift]:not([data-days-remaining]):not([data-start-date]):hover,
+.facility-planner-container .facility-icon[neighbor-unexcavated]:not([data-days-remaining]):not([data-start-date]):hover {
     border: 2px solid red;
     z-index: 1000;
 }
 
-.facility-planner-container .facility-icon[needs-access-lift]:hover::after,
-.facility-planner-container .facility-icon[neighbor-unexcavated]:hover::after {
+.facility-planner-container .facility-icon[needs-access-lift]:not([data-days-remaining]):not([data-start-date]):hover::after,
+.facility-planner-container .facility-icon[neighbor-unexcavated]:not([data-days-remaining]):not([data-start-date]):hover::after {
     display: flex;
     flex-flow: column nowrap;
     justify-content: center;
@@ -125,16 +125,16 @@ facility-planner {
     top: 0;
 }
 
-.facility-planner-container .facility-icon[needs-access-lift]:hover::after {
+.facility-planner-container .facility-icon[needs-access-lift]:not([data-days-remaining]):not([data-start-date]):hover::after {
     content: "You must first build an access lift on this level to reach this area.";
 }
 
-.facility-planner-container .facility-icon[neighbor-unexcavated]:hover::after {
+.facility-planner-container .facility-icon[neighbor-unexcavated]:not([data-days-remaining]):not([data-start-date]):hover::after {
     content: "You cannot reach this area without excavating.";
 }
 
-.facility-planner-container .facility-icon[needs-access-lift]:hover::before,
-.facility-planner-container .facility-icon[neighbor-unexcavated]:hover::before {
+.facility-planner-container .facility-icon[needs-access-lift]:not([data-days-remaining]):not([data-start-date]):hover::before,
+.facility-planner-container .facility-icon[neighbor-unexcavated]:not([data-days-remaining]):not([data-start-date]):hover::before {
     background-image: url("../../img/misc-icons/warning_icon_red.png");
     background-position: center;
     background-repeat: no-repeat;
