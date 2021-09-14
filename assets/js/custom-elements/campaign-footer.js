@@ -16,7 +16,9 @@ class CampaignFooter extends HTMLElement {
     #campaignDateInput = null;
     #campaignName = null;
     #currentResearch = null;
+    #maintenance = null;
     #nextDayArrow = null;
+    #power = null;
     #previousDayArrow = null;
     #numEngineers = null;
     #numScientists = null;
@@ -43,6 +45,8 @@ class CampaignFooter extends HTMLElement {
             this.#campaignDateInput = template.querySelector("#campaign-date-input");
             this.#campaignName = template.querySelector("#campaign-name");
             this.#currentResearch = template.querySelector("#current-research");
+            this.#maintenance = template.querySelector("#maintenance");
+            this.#power = template.querySelector("#power");
             this.#nextDayArrow = template.querySelector("#next-day");
             this.#previousDayArrow = template.querySelector("#previous-day");
             this.#numEngineers = template.querySelector("#num-engineers");
@@ -135,6 +139,12 @@ class CampaignFooter extends HTMLElement {
         else {
             this.#currentResearch.textContent = "None";
         }
+
+        const maintenance = this.#activeCampaign.getMaintenanceCost(this.#activeCampaign.daysPassed);
+        this.#maintenance.textContent = "§" + maintenance;
+
+        const power = this.#activeCampaign.getPower(this.#activeCampaign.daysPassed);
+        this.#power.textContent = power.inUse + "/" + power.available;
 
         const staff = this.#activeCampaign.getStaff(this.#activeCampaign.daysPassed);
         this.#numEngineers.textContent = staff.engineers;

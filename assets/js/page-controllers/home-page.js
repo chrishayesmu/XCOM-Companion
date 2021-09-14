@@ -9,7 +9,7 @@ class HomePage extends AppPage {
     static pageId = "home-page";
 
     async load(_data) {
-        //setTimeout(this._checkIfCampaignIdSet.bind(this), 100);
+        setTimeout(this._checkIfCampaignIdSet.bind(this), 100);
 
         return {
             body: Templates.instantiateTemplate("assets/html/templates/pages/home-page.html", "template-home-page"),

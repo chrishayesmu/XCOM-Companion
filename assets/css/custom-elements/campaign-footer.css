@@ -23,6 +23,7 @@
     display: flex;
     flex-flow: row nowrap;
     gap: 0 10px;
+    height: 100%;
     width: 100%;
 }
 
@@ -34,7 +35,9 @@
 :host .bookend {
     display: flex;
     flex-flow: column wrap;
+    align-content: flex-start;
     justify-content: space-around;
+    gap: 0 75px;
 
     flex-basis: 10%; /* use a small basis so neither bookend gets more room */
     flex-grow: 1;
