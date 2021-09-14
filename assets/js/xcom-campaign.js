@@ -336,6 +336,7 @@ class XComCampaign {
 
         // TODO do we need to maintain sorting of the queue?
         this.#facilityQueue.push(queueItem);
+        this.recalculateDates();
 
         this._validateCampaignState();
         this._fireChangeEvent("facilityQueue");
@@ -512,7 +513,8 @@ class XComCampaign {
                     if (facility.power_usage > 0) {
                         power.inUse += facility.power_usage;
                     }
-                    else {
+                    else if (facilityStatus.status === "complete") {
+                        // Power is consumed as soon as construction begins, but not provided until it's done
                         power.available += -1 * facility.power_usage;
                     }
                 }
