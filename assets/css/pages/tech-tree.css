@@ -1,3 +1,5 @@
 #tech-tree-content-section {
-    height: 100%;
+    /* Tech tree needs a fixed height or else it'll end up in an infinite resizing loop
+       due to the page container being a flex container (for some reason) */
+    height: 80vh;
 }
