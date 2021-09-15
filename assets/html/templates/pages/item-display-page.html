@@ -324,9 +324,14 @@
                 <div class="item-details-build-content">
                     <div class="details-column-body flex-column-wrap" id="item-details-normal-build-cost-container"></div>
                     <div id="item-details-build-time-explanation">
-                        <span id="item-details-rebate-block"></span>
-                        Displayed data is based on having <span id="build-time-num-engineers"></span> engineers, <span id="build-time-num-workshops"></span> <in-app-link to="facility_workshop" linkText="Workshop(s)"></in-app-link>,
-                        and <span id="build-time-num-adjacencies"></span> adjacency bonuses. <a id="change-engineering-settings">Change..</a>
+                        <div id="rebate-block-personalized">
+                            <span id="item-details-rebate-block"></span>
+                            Displayed data is based on having <span id="build-time-num-engineers"></span> engineers, <span id="build-time-num-workshops"></span> <in-app-link to="facility_workshop" linkText="Workshop(s)"></in-app-link>,
+                            and <span id="build-time-num-adjacencies"></span> adjacency bonuses. <a id="change-engineering-settings">Change..</a>
+                        </div>
+                        <div id="rebate-block-generic">
+                            You are viewing the generic data for this item, not personalized to your campaign. <a id="change-engineering-settings-2">Change..</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -365,6 +370,7 @@
 
 <template id="template-enter-engineering-settings-modal">
     <div id="engineering-settings-modal" class="standard-modal">
+        <label for="personalize-data">Personalize Item Data:</label> <input type="checkbox" id="personalize-data" class="xcom" />
         <div>Number of engineers:</div> <input type="number" id="num-engineers" class="hide-number-spinners"></input>
         <div>Number of workshops:</div> <input type="number" id="num-workshops" class="hide-number-spinners"></input>
         <div>Number of adjacency bonuses:</div> <input type="number" id="num-adjacencies" class="hide-number-spinners"></input>
