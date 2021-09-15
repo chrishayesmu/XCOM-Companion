@@ -65,6 +65,9 @@ class CampaignPlannerPage extends AppPage {
             case "research":
                 template = await this._loadResearchView();
                 break;
+            case "settings":
+                template = await this._loadSettingsView();
+                break;
         }
 
         if (template != null) {
@@ -218,6 +221,21 @@ class CampaignPlannerPage extends AppPage {
                 this.#projectElements[i]._populateData();
             }
         }
+    }
+
+    // #endregion
+
+    // #region Settings view functions
+
+    async _loadSettingsView() {
+        const template = await Templates.instantiateTemplate("assets/html/templates/pages/campaign-planner-page.html", "template-campaign-planner-settings-view");
+
+        template.querySelector("#campaign-name").textContent = this.#activeCampaign.name;
+        template.querySelector("#campaign-difficulty").textContent = this.#activeCampaign.difficulty;
+        template.querySelector("#campaign-starting-country").textContent = this.#activeCampaign.startingCountry;
+        template.querySelector("#campaign-starting-bonus").textContent = this.#activeCampaign.startingCountryBonusIndex;
+
+        return template;
     }
 
     // #endregion
