@@ -552,43 +552,37 @@ class XComCampaign {
     }
 
     getStaff(daysPassed) {
-        const increaseFromCouncil = this.getIncomeFromCouncil(daysPassed);
 
-        // Estimate staff gained from council requests
-        const staffModel = staffPerWeekModels.average;
+        // Estimate staff gained from council requests using quadratic regressions calculated from latest Francecom numbers
+        let engineersGained = 0.0004 * daysPassed * daysPassed + 0.1429 * daysPassed;
+        let scientistsGained = .00005 * daysPassed * daysPassed + 0.2458 * daysPassed;
 
-        let engineersGained = 0, scientistsGained = 0;
-        const staffFactor = this.hasQuaidOrsay() ? 1.4 : 1;
-        const weeksPassed = Math.floor(daysPassed / 7);
-
-        for (let weekNum = 0; weekNum < weeksPassed; weekNum++) {
-            let engineersThisWeek, scientistsThisWeek;
-
-            if (weekNum < staffModel.engineers.length) {
-                engineersThisWeek = staffModel.engineers[weekNum];
-            }
-            else {
-                engineersThisWeek = staffModel.engineers.last;
-            }
-
-            if (weekNum < staffModel.scientists.length) {
-                scientistsThisWeek = staffModel.scientists[weekNum];
-            }
-            else {
-                scientistsThisWeek = staffModel.scientists.last;
-            }
-
-            engineersGained += staffFactor * engineersThisWeek;
-            scientistsGained += staffFactor * scientistsThisWeek;
+        if (daysPassed < 18) {
+            // Almost no one is fulfilling requests before the first research is done
+            engineersGained = 0;
+            scientistsGained = 0;
         }
 
-        //console.log(`After ${weeksPassed} weeks, model predicts a gain of ${engineersGained} engineers and ${scientistsGained} scientists`);
-        engineersGained = Math.floor(engineersGained);
-        scientistsGained = Math.floor(scientistsGained);
+        if (daysPassed < 30) {
+            // Model currently vastly overestimates the first month due to Marazuki missions
+            scientistsGained -= 4;
+        }
+
+        // Model is based on players with Quai d'Orsay
+        if (!this.hasQuaidOrsay()) {
+            engineersGained *= 0.6;
+            scientistsGained *= 0.6;
+        }
+
+        engineersGained = Math.max(engineersGained, 0);
+        scientistsGained = Math.max(scientistsGained, 0);
+
+        // TODO: staffing from council is currently unused because all present modeling data is polluted by council income
+        // const increaseFromCouncil = this.getIncomeFromCouncil(daysPassed);
 
         return {
-            engineers: 10 + increaseFromCouncil.engineers + engineersGained,
-            scientists: 10 + increaseFromCouncil.scientists + scientistsGained,
+            engineers: 10 + Math.floor(engineersGained),
+            scientists: 10 + Math.floor(scientistsGained),
         };
     }
 
