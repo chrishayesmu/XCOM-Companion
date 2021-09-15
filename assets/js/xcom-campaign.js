@@ -29,32 +29,6 @@ setInterval(async () => {
     isCampaignDataDirty = false;
 }, 1000 * 3);
 
-
-// Models for estimating how many engineers/scientists will be gained from council requests each week.
-// Does not incorporate council missions, some of which are fixed; for example, Portent will always be
-// the April mission if Operation Progeny is enabled, and it gives 2 engineers and 2 scientists.
-
-const staffPerWeekModels = {
-    average: {
-        engineers: [ 0 ],
-        scientists: [
-            // the only council request to start is satellites for engineers, so no incoming scientists at first
-            0, // March 8
-            0, // March 15
-            1, // March 22
-            1, // March 29
-            1.5, // April 5
-            2, // April 12
-            2.5, // April 19
-            2, // April 26
-            2, // May 3
-            2, // May 10
-            2, // May 17
-            2, // May 24
-        ]
-    }
-};
-
 class CampaignQueueItem {
 
     constructor(resultDataId, startingDaysPassed, endingDaysPassed) {
