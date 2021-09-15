@@ -656,7 +656,7 @@ class ItemDisplayPage extends AppPage {
             return div;
         };
 
-        let buildTimeHours = Utils.calculateTimeToBuild(DataHelper.items[this.#itemId], currentEngineeringSettings.numEngineers, isQuickBuild);
+        let buildTimeHours = buildData.base_build_time_days * 24;
         let moneyCost = buildData.cost.money;
 
         if (currentEngineeringSettings.personalizeData) {
