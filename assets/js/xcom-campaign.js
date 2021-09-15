@@ -1326,7 +1326,7 @@ class XComCampaign {
     }
 
     get startingCountryBonusIndex() {
-        return this.#startingCountry;
+        return this.#startingCountryBonusIndex;
     }
 
     // #endregion
