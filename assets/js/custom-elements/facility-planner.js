@@ -133,6 +133,11 @@ class FacilityPlanner extends HTMLElement {
             this.dispatchEvent(customEvent);
         }
         else if (event.target.hasAttribute("data-days-remaining") || event.target.hasAttribute("data-start-date")) {
+            if (facilityId === "excavated" && this.#activeCampaign.isExcavationRequiredForValidity(targetRow, targetColumn)) {
+                Modal.message("You cannot cancel this excavation because a future project depends on it.", "Excavation Required");
+                return;
+            }
+
             // TODO: if canceling an excavation, need to also cancel anything building after it, and any future excavations/builds depending on it
             // Canceling an ongoing project
             const message = facilityId === "excavated" ? "Are you sure you want to cancel this excavation?" : "Are you sure you want to cancel this facility's construction?";
@@ -142,7 +147,6 @@ class FacilityPlanner extends HTMLElement {
                 return;
             }
 
-            const endingDaysPassed = Number(event.target.dataset.endingDaysPassed);
             const queueIndex = this.#activeCampaign.facilityQueue.findIndex( queueItem => queueItem.resultDataId === facilityId
                                                                           && queueItem.row === targetRow
                                                                           && queueItem.column === targetColumn);

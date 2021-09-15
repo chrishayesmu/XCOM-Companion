@@ -61,6 +61,17 @@ function isAnyModalOpen() {
     return isOpen;
 }
 
+async function message(content, title) {
+    const template = await Templates.instantiateTemplate("assets/html/templates/widgets/modal.html", "template-message-modal");
+    template.querySelector("#modal-content").innerHTML = content;
+    template.querySelector("#modal-title").textContent = title;
+
+    const closeButton = template.querySelector("#modal-close");
+    closeButton.addEventListener("click", close);
+
+    open(template, null, true);
+}
+
 /**
  * Opens a new model with the given contents, disabling the rest of the application in the process.
  *
@@ -90,4 +101,4 @@ document.getElementById("modal-background").addEventListener("click", () => {
     }
 });
 
-export { close, confirm, isAnyModalOpen, open };
+export { close, confirm, isAnyModalOpen, message, open };

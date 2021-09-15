@@ -199,7 +199,6 @@ class XComCampaign {
 
         // TODO: validate these numbers
         return spentClockHours / 24;
-        //return Utils.calculateResearchTime(requiredTechHours / 24, 10, this.numFacilities("facility_laboratory", startingDaysPassed), this.numAdjacencies("laboratory", startingDaysPassed), false);
     }
 
     calculateTimeToBuildFacility(facilityId, isRushJob) {
@@ -713,6 +712,41 @@ class XComCampaign {
         }
 
         return false;
+    }
+
+    isExcavationRequiredForValidity(row, column) {
+        // If we're building something here later, then obviously we need to excavate
+        if (this.isFacilitySpaceEverOccupied(row, column)) {
+            return true;
+        }
+
+        // Nothing depends on the outermost columns
+        if (column === 0 || column === 6) {
+            return false;
+        }
+
+        // For other columns, if we're excavating further out spaces, this excavation is needed.
+        // Don't count excavations which the base started with, though.
+        switch (column) {
+            case 0:
+                return false;
+            case 1:
+                return this.isFacilitySpaceEverOccupied(row, 0) || this.whenWillSpaceBeExcavated(row, 0) > 0;
+            case 2:
+                return this.isFacilitySpaceEverOccupied(row, 1) || this.whenWillSpaceBeExcavated(row, 1) > 0
+                    || this.isFacilitySpaceEverOccupied(row, 0) || this.whenWillSpaceBeExcavated(row, 0) > 0;
+            case 3:
+                return true; // may as well, you never actually have to excavate the center column anyway
+            case 4:
+                return this.isFacilitySpaceEverOccupied(row, 5) || this.whenWillSpaceBeExcavated(row, 5) > 0
+                    || this.isFacilitySpaceEverOccupied(row, 6) || this.whenWillSpaceBeExcavated(row, 6) > 0;
+            case 5:
+                return this.isFacilitySpaceEverOccupied(row, 6) || this.whenWillSpaceBeExcavated(row, 6) > 0;
+            case 6:
+                return false;
+            default:
+                throw new Error("Invalid column value: " + column);
+        }
     }
 
     isFacilitySpaceEverOccupied(row, column) {
