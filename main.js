@@ -11,6 +11,19 @@ if (process.mas) {
     app.setName('XCOM Companion');
 }
 
+// Set update channel based on current version
+if (app.getVersion().indexOf("alpha") >= 0) {
+    autoUpdater.channel = "alpha";
+}
+else if (app.getVersion().indexOf("beta") >= 0) {
+    autoUpdater.channel = "beta";
+}
+else {
+    autoUpdater.channel = "latest";
+}
+
+console.log("Using update channel: " + autoUpdater.channel);
+
 let manualUpdateCheckInProgress = false;
 let mainWindow = null;
 let settingsWindow = null;
