@@ -66,6 +66,7 @@ class CampaignFooter extends HTMLElement {
             // Don't register for events until now, since we wouldn't be able to handle them without a template loaded
             AppEvents.registerEventListener("activeCampaignChanged", this._loadCurrentCampaign.bind(this));
             AppEvents.registerEventListener("campaignDataChanged", this._update.bind(this));
+            AppEvents.registerEventListener("pageChanged", this._onAppPageChanged.bind(this));
 
             this._loadCurrentCampaign();
         });
@@ -76,17 +77,19 @@ class CampaignFooter extends HTMLElement {
     }
 
     show() {
-        this.classList.remove("hidden-collapse");
+        if (this.#activeCampaign !== null) {
+            this.classList.remove("hidden-collapse");
+        }
     }
 
     async _loadCurrentCampaign() {
         this.#activeCampaign = await Settings.getCurrentCampaign();
+        this._update();
 
-        if (this.#activeCampaign === null) {
+        if (this.#activeCampaign === null || PageManager.instance.currentPage.pageId !== "campaign-planner-page") {
             this.hide();
         }
         else {
-            this._update();
             this.show();
         }
     }
@@ -107,6 +110,15 @@ class CampaignFooter extends HTMLElement {
         return null;
     }
 
+    _onAppPageChanged(data) {
+        if (data.currentPageId === "campaign-planner-page") {
+            this.show();
+        }
+        else {
+            this.hide();
+        }
+    }
+
     _onDateSelected(event) {
         const daysPassed = Utils.daysPassedByDate(Utils.dateFromInputString(event.target.value));
 
@@ -125,6 +137,10 @@ class CampaignFooter extends HTMLElement {
     }
 
     _update(event) {
+        if (this.#activeCampaign === null) {
+            return;
+        }
+
         if (event && event.propertyName) {
             // TODO pick which properties we care about
         }

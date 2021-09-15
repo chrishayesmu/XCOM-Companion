@@ -1,5 +1,6 @@
 const { ipcRenderer, shell } = require('electron');
 
+import * as AppEvents from "./app-events.js";
 import * as Search from "./search-provider.js";
 import * as Templates from "./templates.js";
 import * as Utils from "./utils.js";
@@ -123,6 +124,8 @@ class PageManager {
             throw new Error(`Could not find a page with the ID "${pageId}"`);
         }
 
+        const previousPageId = this.#currentPage ? this.#currentPage.pageId : "";
+
         this._unloadCurrentPage(false);
         this.hideTooltip();
 
@@ -132,11 +135,18 @@ class PageManager {
         this._loadPageDocument(pageDocument);
         this._validateHistory();
         this._updateHistoryButtons();
+
+        AppEvents.fireEvent("pageChanged", {
+            previousPageId: previousPageId,
+            currentPageId: pageId
+        });
     }
 
     loadPageForData(data) {
         for (let i = 0; i < appPages.length; i++) {
             if (appPages[i].ownsDataObject(data)) {
+                const previousPageId = this.#currentPage ? this.#currentPage.pageId : "";
+
                 this._unloadCurrentPage(false);
                 this.hideTooltip();
 
@@ -146,6 +156,11 @@ class PageManager {
                     this._loadPageDocument(pageDocument);
                     this._validateHistory();
                     this._updateHistoryButtons();
+
+                    AppEvents.fireEvent("pageChanged", {
+                        previousPageId: previousPageId,
+                        currentPageId: page.pageId
+                    });
                 })
 
                 return;
@@ -457,6 +472,10 @@ class PageManager {
 
     get canGoForward() {
         return this.#currentHistoryIndex < this.#pageHistory.length - 1;
+    }
+
+    get currentPage() {
+        return this.#currentPage;
     }
 }
 
