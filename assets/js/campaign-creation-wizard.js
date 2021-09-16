@@ -17,6 +17,8 @@ const startingFundsByDifficulty = {
 
 class CampaignCreationWizard {
 
+    #options;
+
     // Page 1 data
     #difficulty = "normal";
     #exaltEnabled = true;
@@ -30,6 +32,10 @@ class CampaignCreationWizard {
     // Page 3 data
     #campaignName = null;
 
+    constructor(options) {
+        this.#options = options || {};
+    }
+
     async start() {
         this._loadPage1();
     }
@@ -42,6 +48,19 @@ class CampaignCreationWizard {
         const modalTemplate = await this._loadModalPage(1);
 
         modalTemplate.querySelector("#btn-next").addEventListener("click", () => { this._savePage1Data(); this._loadPage2(); });
+
+        const backButton = modalTemplate.querySelector("#btn-previous");
+
+        if (this.#options.firstBackButtonLabel) {
+            backButton.textContent = this.#options.firstBackButtonLabel;
+        }
+
+        if (this.#options.firstBackButtonCallback) {
+            backButton.addEventListener("click", this.#options.firstBackButtonCallback);
+        }
+        else {
+            backButton.addEventListener("click", Modal.close);
+        }
 
         modalTemplate.querySelector("input[type=radio][value=" + this.#difficulty + "]").checked = true;
         modalTemplate.querySelector("#are-exalt-enabled").checked = this.#exaltEnabled;

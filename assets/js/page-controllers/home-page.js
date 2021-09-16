@@ -36,7 +36,14 @@ class HomePage extends AppPage {
     }
 
     _onCreateCampaignClicked() {
-        const wizard = new CampaignCreationWizard();
+        const wizard = new CampaignCreationWizard({
+            firstBackButtonLabel: "Go Back",
+            firstBackButtonCallback: () => {
+                // Go back to choosing whether to create a campaign
+                Modal.close();
+                this._checkIfCampaignIdSet();
+            }
+        });
         wizard.start();
     }
 
