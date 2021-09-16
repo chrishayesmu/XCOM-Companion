@@ -21,7 +21,8 @@ class AlienResearch extends HTMLElement {
 
             const amountContainer = template.querySelector(".ar-amount");
             const maxDateContainer = template.querySelector(".ar-max-date");
-            const campaignDate = Utils.formatCampaignDate(Utils.dateByDaysPassed(this.amount));
+            const daysPassed = Math.max(0, this.amount - 1);
+            const campaignDate = Utils.formatCampaignDate(Utils.dateByDaysPassed(daysPassed));
 
             amountContainer.textContent = "Alien Research " + this.amount;
             maxDateContainer.textContent = this.amount > 0 ? campaignDate : "Campaign Start";

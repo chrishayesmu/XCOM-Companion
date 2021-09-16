@@ -149,6 +149,7 @@ class ItemDisplayPage extends AppPage {
         template.querySelector("#item-details-type").textContent = itemTypeConfig.friendlyName;
         template.querySelector(".details-header-img-container img").src = item.icon;
         template.querySelector("#change-engineering-settings").addEventListener("click", this._onChangeNumEngineersClicked.bind(this));
+        template.querySelector("#change-engineering-settings-2").addEventListener("click", this._onChangeNumEngineersClicked.bind(this));
 
         if (item.sell_value) {
             template.querySelector("#item-details-sell-value").innerHTML += item.sell_value;
@@ -534,6 +535,7 @@ class ItemDisplayPage extends AppPage {
             engineeringSettings.numEngineers = engineeringSettings.numEngineers || 10;
             engineeringSettings.numWorkshops = engineeringSettings.numWorkshops || 0;
             engineeringSettings.numAdjacencies = engineeringSettings.numAdjacencies || 0;
+            engineeringSettings.personalizeData = engineeringSettings.personalizeData || false;
 
             return engineeringSettings;
         }
@@ -541,7 +543,8 @@ class ItemDisplayPage extends AppPage {
         return {
             numEngineers: 10,
             numWorkshops: 0,
-            numAdjacencies: 0
+            numAdjacencies: 0,
+            personalizeData: false
         };
     }
 
@@ -549,9 +552,34 @@ class ItemDisplayPage extends AppPage {
         const template = await Templates.instantiateTemplate("assets/html/templates/pages/item-display-page.html", "template-enter-engineering-settings-modal");
         const currentEngineeringSettings = await this._getCurrentEngineeringSettings();
 
-        template.querySelector("#num-engineers").value = currentEngineeringSettings.numEngineers;
-        template.querySelector("#num-workshops").value = currentEngineeringSettings.numWorkshops;
-        template.querySelector("#num-adjacencies").value = currentEngineeringSettings.numAdjacencies;
+        const personalizeData = template.querySelector("#personalize-data")
+        const numEngineers = template.querySelector("#num-engineers")
+        const numWorkshops = template.querySelector("#num-workshops")
+        const numAdjacencies = template.querySelector("#num-adjacencies")
+
+        personalizeData.checked = currentEngineeringSettings.personalizeData;
+        numEngineers.value = currentEngineeringSettings.numEngineers;
+        numWorkshops.value = currentEngineeringSettings.numWorkshops;
+        numAdjacencies.value = currentEngineeringSettings.numAdjacencies;
+
+        if (!currentEngineeringSettings.personalizeData) {
+            numEngineers.setAttribute("disabled", "");
+            numWorkshops.setAttribute("disabled", "");
+            numAdjacencies.setAttribute("disabled", "");
+        }
+
+        personalizeData.addEventListener("change", event => {
+            if (event.target.checked) {
+                numEngineers.removeAttribute("disabled");
+                numWorkshops.removeAttribute("disabled");
+                numAdjacencies.removeAttribute("disabled");
+            }
+            else {
+                numEngineers.setAttribute("disabled", "");
+                numWorkshops.setAttribute("disabled", "");
+                numAdjacencies.setAttribute("disabled", "");
+            }
+        });
 
         template.querySelector("#save-changes").addEventListener("click", () => { this._onSaveNumEngineers(template); });
         template.querySelector("#cancel").addEventListener("click", Modal.close);
@@ -563,6 +591,7 @@ class ItemDisplayPage extends AppPage {
         const newNumEngineers = domContainer.querySelector("#num-engineers").value;
         const newNumWorkshops = domContainer.querySelector("#num-workshops").value;
         const newNumAdjacencies = domContainer.querySelector("#num-adjacencies").value;
+        const newPersonalizeData = domContainer.querySelector("#personalize-data").checked;
 
         if (newNumEngineers <= 10) {
             // TODO flag invalid or something
@@ -572,7 +601,8 @@ class ItemDisplayPage extends AppPage {
         const newSettings = {
             numEngineers: newNumEngineers,
             numWorkshops: newNumWorkshops,
-            numAdjacencies: newNumAdjacencies
+            numAdjacencies: newNumAdjacencies,
+            personalizeData: newPersonalizeData
         };
 
         await Settings.set("engineering", newSettings);
@@ -626,23 +656,14 @@ class ItemDisplayPage extends AppPage {
             return div;
         };
 
+        let buildTimeHours = buildData.base_build_time_days * 24;
+        let moneyCost = buildData.cost.money;
 
-        var buildTimeHours = Utils.calculateTimeToBuild(DataHelper.items[this.#itemId], currentEngineeringSettings.numEngineers, isQuickBuild);
-        const buildTimeDays = Math.floor(buildTimeHours / 24);
-        buildTimeHours = buildTimeHours % 24;
+        if (currentEngineeringSettings.personalizeData) {
+            buildTimeHours = Utils.calculateTimeToBuild(DataHelper.items[this.#itemId], currentEngineeringSettings.numEngineers, isQuickBuild);
 
-        var buildTimeString = buildTimeDays !== 1 ? `${buildTimeDays} days` : "1 day";
-
-        if (buildTimeHours !== 0) {
-            buildTimeString += buildTimeHours > 1 ? `, ${buildTimeHours} hours` : ", 1 hour";
-        }
-
-        addCostRow("Time:", buildTimeString);
-
-        // Handle money first since it's displayed uniquely
-        if (buildData.cost.money) {
             // Apply discount from workshops/adjacencies
-            var finalCost = normalBuildCost.money - rebate.money;
+            moneyCost = normalBuildCost.money - rebate.money;
 
             // For quick builds we need to recreate the cost formula the same way it's done in-game,
             // or we'll sometimes be off by a dollar due to rounding issues
@@ -651,10 +672,24 @@ class ItemDisplayPage extends AppPage {
             // TODO: quick build meld cost is based on cash cost AFTER discount, so having a fixed cost in the JSON is wrong
             //      See XGFacility_Engineering L2320
             if (isQuickBuild) {
-                finalCost = Math.floor(1.5 * finalCost);
+                moneyCost = Math.floor(1.5 * moneyCost);
             }
+        }
 
-            addCostRow("Cost:", "<font color='var(--color-green)'>§" + finalCost + "</font>");
+        const buildTimeDays = Math.floor(buildTimeHours / 24);
+        buildTimeHours = buildTimeHours % 24;
+
+        let buildTimeString = buildTimeDays !== 1 ? `${buildTimeDays} days` : "1 day";
+
+        if (buildTimeHours !== 0) {
+            buildTimeString += buildTimeHours > 1 ? `, ${buildTimeHours} hours` : ", 1 hour";
+        }
+
+        addCostRow("Time:", buildTimeString);
+
+        // Handle money first since it's displayed uniquely
+        if (moneyCost) {
+            addCostRow("Cost:", "<font color='var(--color-green)'>§" + moneyCost + "</font>");
         }
 
         for (const requiredItemId in buildData.cost) {
@@ -679,30 +714,39 @@ class ItemDisplayPage extends AppPage {
     async _populateEngineeringSettingsDisplay(container) {
         const currentEngineeringSettings = await this._getCurrentEngineeringSettings();
 
-        container.querySelector("#build-time-num-engineers").textContent = currentEngineeringSettings.numEngineers;
-        container.querySelector("#build-time-num-workshops").textContent = currentEngineeringSettings.numWorkshops;
-        container.querySelector("#build-time-num-adjacencies").textContent = currentEngineeringSettings.numAdjacencies;
-
-        const buildCost = DataHelper.items[this.#itemId].normal_build.cost;
-        const alloyCost = buildCost.item_alien_alloy || 0;
-        const eleriumCost = buildCost.item_elerium || 0;
-        const rebate = Utils.calculateRebate(currentEngineeringSettings.numWorkshops, currentEngineeringSettings.numAdjacencies, /* moneyCost; unimportant here */ 0, alloyCost, eleriumCost);
-
-        if (rebate.alloys === 0 && rebate.elerium === 0) {
-            container.querySelector("#item-details-rebate-block").textContent = "";
+        if (!currentEngineeringSettings.personalizeData) {
+            container.querySelector("#rebate-block-generic").classList.remove("hidden-collapse");
+            container.querySelector("#rebate-block-personalized").classList.add("hidden-collapse");
         }
         else {
-            const parts = [];
+            container.querySelector("#rebate-block-generic").classList.add("hidden-collapse");
+            container.querySelector("#rebate-block-personalized").classList.remove("hidden-collapse");
 
-            if (rebate.alloys > 0) {
-                parts.push(rebate.alloys + (rebate.alloys === 1 ? " Alien Alloy" : " Alien Alloys"));
+            container.querySelector("#build-time-num-engineers").textContent = currentEngineeringSettings.numEngineers;
+            container.querySelector("#build-time-num-workshops").textContent = currentEngineeringSettings.numWorkshops;
+            container.querySelector("#build-time-num-adjacencies").textContent = currentEngineeringSettings.numAdjacencies;
+
+            const buildCost = DataHelper.items[this.#itemId].normal_build.cost;
+            const alloyCost = buildCost.item_alien_alloy || 0;
+            const eleriumCost = buildCost.item_elerium || 0;
+            const rebate = Utils.calculateRebate(currentEngineeringSettings.numWorkshops, currentEngineeringSettings.numAdjacencies, /* moneyCost; unimportant here */ 0, alloyCost, eleriumCost);
+
+            if (rebate.alloys === 0 && rebate.elerium === 0) {
+                container.querySelector("#item-details-rebate-block").textContent = "";
             }
+            else {
+                const parts = [];
 
-            if (rebate.elerium > 0) {
-                parts.push(rebate.elerium + " elerium");
+                if (rebate.alloys > 0) {
+                    parts.push(rebate.alloys + (rebate.alloys === 1 ? " Alien Alloy" : " Alien Alloys"));
+                }
+
+                if (rebate.elerium > 0) {
+                    parts.push(rebate.elerium + " elerium");
+                }
+
+                container.querySelector("#item-details-rebate-block").textContent = `You will receive a rebate of ${Utils.join(parts)}.`;
             }
-
-            container.querySelector("#item-details-rebate-block").textContent = `You will receive a rebate of ${Utils.join(parts)}.`;
         }
     }
 
@@ -743,7 +787,6 @@ class ItemDisplayPage extends AppPage {
         section.style = "grid-template-rows: repeat(" + numRows + ", 21px)";
 
         for (let i = 0; i < item.usedIn.length; i++) {
-            // TODO include info about how many are needed for each use
             const link = Widgets.createInAppLink(item.usedIn[i].outcome, { addPrefix: true });
             const div = document.createElement("div");
             div.appendChild(link);

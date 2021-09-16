@@ -320,7 +320,7 @@ function minResearchByDate(date) {
     const elapsedMillis = date.getTime() - campaignStartDate.getTime();
     const elapsedDays = elapsedMillis / (1000 * 60 * 60 * 24);
 
-    return Math.ceil(elapsedDays);
+    return Math.ceil(elapsedDays) + 1;
 }
 
 function researchThresholdByDifficulty(originalThreshold, difficulty) {

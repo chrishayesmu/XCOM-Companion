@@ -113,6 +113,72 @@
             "normal_max": 25,
             "crit_min": 25,
             "crit_max": 35
+        },
+        "21": {
+            "normal_min": 16,
+            "normal_max": 26,
+            "crit_min": 26,
+            "crit_max": 37
+        },
+        "22": {
+            "normal_min": 16,
+            "normal_max": 28,
+            "crit_min": 28,
+            "crit_max": 39
+        },
+        "23": {
+            "normal_min": 17,
+            "normal_max": 29,
+            "crit_min": 29,
+            "crit_max": 40
+        },
+        "24": {
+            "normal_min": 18,
+            "normal_max": 30,
+            "crit_min": 30,
+            "crit_max": 42
+        },
+        "25": {
+            "normal_min": 19,
+            "normal_max": 31,
+            "crit_min": 31,
+            "crit_max": 44
+        },
+        "26": {
+            "normal_min": 19,
+            "normal_max": 33,
+            "crit_min": 33,
+            "crit_max": 46
+        },
+        "27": {
+            "normal_min": 20,
+            "normal_max": 34,
+            "crit_min": 34,
+            "crit_max": 47
+        },
+        "28": {
+            "normal_min": 21,
+            "normal_max": 35,
+            "crit_min": 35,
+            "crit_max": 49
+        },
+        "29": {
+            "normal_min": 22,
+            "normal_max": 36,
+            "crit_min": 35,
+            "crit_max": 51
+        },
+        "30": {
+            "normal_min": 22,
+            "normal_max": 38,
+            "crit_min": 38,
+            "crit_max": 53
+        },
+        "31": {
+            "normal_min": 23,
+            "normal_max": 39,
+            "crit_min": 39,
+            "crit_max": 54
         }
     },
     "enemies": {
