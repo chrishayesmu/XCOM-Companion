@@ -21,8 +21,22 @@
                 <details>
                     <summary>Version 0.8.0-beta</summary>
                     <h3>Features</h3>
+                    <div>
+                        Includes a beta version of the <a data-page-on-click="campaign-planner-page">Campaign Planner</a> tool. The beta version includes the <b>Facilities</b> and <b>Research</b> planners.
+                    </div>
+                    <h3>Known issues</h3>
                     <ul>
-                        <li>Includes a beta version of the <a data-page-on-click="campaign-planner-page">Campaign Planner</a> tool.</li>
+                        <li>Some of the UI elements don't play nice on resolutions less than 1700px wide.</li>
+                        <li>
+                            The Facilities planner does not yet include full safeguards to stop you from putting your facilities in an impossible state; changing the campaign date and cancelling/queuing facilities
+                            can allow you to do things like build the whole base without sufficient power.
+                        </li>
+                        <li>Similarly, there is not yet full integration between the Facilities and Research queues; you can modify your research in a way that should invalidate your facilities
+                            (such as by cancelling a prerequisite research) and vice versa (cancelling labs).
+                        </li>
+                        <li>The model for estimating your number of scientists is based on a pretty small dataset. It has shown accurate enough for the first months of the campaign,
+                            but it isn't properly validated for later on yet.
+                        </li>
                     </ul>
                 </details>
             </div>
