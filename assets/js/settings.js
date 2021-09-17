@@ -37,6 +37,18 @@ async function unset(name) {
 const DELIBERATELY_NONE_CAMPAIGN_ID = "DeliberatelyNoCampaignIdSet";
 let currentCampaign = null;
 
+async function deleteCampaign(campaignId) {
+    return unset("campaigns." + campaignId).then( async val => {
+        const currentCampaignId = await getCurrentCampaignId();
+
+        if (campaignId === currentCampaignId) {
+            await setCurrentCampaign(DELIBERATELY_NONE_CAMPAIGN_ID);
+        }
+
+        return val;
+    });
+}
+
 async function getAllCampaigns() {
     const allCampaigns = await get("campaigns");
     delete allCampaigns.current;
@@ -124,6 +136,7 @@ export { get,
 
          // Campaigns
          DELIBERATELY_NONE_CAMPAIGN_ID,
+         deleteCampaign,
          getAllCampaigns,
          saveCampaign,
          getCampaign,

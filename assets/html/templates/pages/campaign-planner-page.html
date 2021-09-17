@@ -2,11 +2,11 @@
     <div id="campaign-planner-page" class="section-content standard-page">
 
         <div id="campaign-planner-view-selector">
+            <a id="change-campaign">Change Campaign</a>
             <div class="view-selector-item" data-view="timeline" disabled>Timeline</div>
             <div class="view-selector-item selected" data-view="research">Research</div>
             <div class="view-selector-item" data-view="facilities">Base Facilities</div>
             <div class="view-selector-item" data-view="satellites" disabled>Satellites</div>
-            <div class="view-selector-item" data-view="settings">Settings</div>
         </div>
 
         <div id="campaign-planner-active-view-container">
@@ -70,28 +70,21 @@
                 <br/><br/>
 
                 <span style="color: var(--color-red)">Beta note: </span> Council report income is not currently being used to determine your number of scientists. It is purely based on a regression
-                function calculated based on other players' reporting scientist numbers throughout their campaigns.
+                function calculated based on other players' reported scientist numbers throughout their campaigns.
             </div>
         </div>
     </div>
 </template>
 
-<template id="template-campaign-planner-settings-view">
-    <div id="campaign-planner-settings-view" class="campaign-planner-view">
-        <div id="current-campaign">
-            <div id="campaign-name"></div>
-            <div id="campaign-difficulty"></div>
-            <div id="campaign-starting-country"></div>
-            <div id="campaign-starting-bonus"></div>
-        </div>
-        <div id="campaign-selector-container">
-            <single-select-list id="campaign-list">
-            </single-select-list>
+<template id="template-campaign-planner-settings-modal">
+    <div id="campaign-planner-change-campaign">
+        <single-select-list id="campaign-list" title="Your Campaigns" prevent-deselect>
+        </single-select-list>
 
-            <div id="buttons-container">
-                <button class="xcom">Load Campaign</button>
-                <button class="xcom">Delete Campaign</button>
-            </div>
+        <div id="buttons-container">
+            <button class="xcom" id="new-campaign">New Campaign</button>
+            <button class="xcom" id="load-campaign">Load Campaign</button>
+            <button class="xcom" id="delete-campaign">Delete Campaign</button>
         </div>
     </div>
 </template>

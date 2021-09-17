@@ -33,11 +33,9 @@
 }
 
 :host .bookend {
-    display: flex;
-    flex-flow: column wrap;
-    align-content: flex-start;
-    justify-content: space-around;
-    gap: 0 75px;
+    display: grid;
+    grid-template-columns: 60% 40%;
+    grid-template-rows: repeat(2, 50%);
 
     flex-basis: 10%; /* use a small basis so neither bookend gets more room */
     flex-grow: 1;
@@ -49,6 +47,15 @@
     display: flex;
     flex-flow: row nowrap;
     align-items: center;
+}
+
+:host #campaign-name {
+    color: var(--color);
+    display: block;
+    margin: auto 20px auto 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 :host #campaign-date-container {

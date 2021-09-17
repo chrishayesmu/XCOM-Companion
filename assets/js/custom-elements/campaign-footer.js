@@ -86,7 +86,7 @@ class CampaignFooter extends HTMLElement {
         this.#activeCampaign = await Settings.getCurrentCampaign();
         this._update();
 
-        if (this.#activeCampaign === null || PageManager.instance.currentPage.pageId !== "campaign-planner-page") {
+        if (this.#activeCampaign === null || PageManager.instance.currentPage.constructor.pageId !== "campaign-planner-page") {
             this.hide();
         }
         else {

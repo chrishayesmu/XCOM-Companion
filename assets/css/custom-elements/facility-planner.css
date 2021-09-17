@@ -21,7 +21,7 @@ facility-planner {
     cursor: pointer;
     margin-bottom: -1px;
     margin-left: -1px;
-    min-width: 200px;
+    min-width: 100px;
     position: relative;
 
     aspect-ratio: 2/1;
@@ -126,7 +126,7 @@ facility-planner {
 }
 
 .facility-planner-container .facility-icon[needs-access-lift]:not([data-days-remaining]):not([data-start-date]):hover::after {
-    content: "You must first build an access lift on this level to reach this area.";
+    content: "Build an access lift on this level to reach this area.";
 }
 
 .facility-planner-container .facility-icon[neighbor-unexcavated]:not([data-days-remaining]):not([data-start-date]):hover::after {
@@ -220,6 +220,50 @@ facility-planner {
 .facility-planner-container .facility-icon[data-facility-id][data-start-date]:before {
     content: "Starting " attr(data-start-date);
 }
+
+/* Media queries for reducing text size automatically */
+
+@media (max-width: 1200px) {
+    .facility-planner-container .facility-icon:after,
+    .facility-planner-container .facility-icon:before,
+    .facility-planner-container .facility-icon[needs-access-lift]:not([data-days-remaining]):not([data-start-date]):hover::after,
+    .facility-planner-container .facility-icon[neighbor-unexcavated]:not([data-days-remaining]):not([data-start-date]):hover::after,
+    .facility-planner-container .facility-icon[data-days-remaining]:hover .cancel:before {
+        font-size: .95em;
+    }
+}
+
+@media (min-width: 1201px) and (max-width: 1300px) {
+    .facility-planner-container .facility-icon:after,
+    .facility-planner-container .facility-icon:before,
+    .facility-planner-container .facility-icon[needs-access-lift]:not([data-days-remaining]):not([data-start-date]):hover::after,
+    .facility-planner-container .facility-icon[neighbor-unexcavated]:not([data-days-remaining]):not([data-start-date]):hover::after,
+    .facility-planner-container .facility-icon[data-days-remaining]:hover .cancel:before {
+        font-size: 1.1em;
+    }
+}
+
+@media (min-width: 1301px) and (max-width: 1400px) {
+    .facility-planner-container .facility-icon:after,
+    .facility-planner-container .facility-icon:before,
+    .facility-planner-container .facility-icon[needs-access-lift]:not([data-days-remaining]):not([data-start-date]):hover::after,
+    .facility-planner-container .facility-icon[neighbor-unexcavated]:not([data-days-remaining]):not([data-start-date]):hover::after,
+    .facility-planner-container .facility-icon[data-days-remaining]:hover .cancel:before {
+        font-size: 1.175em;
+    }
+}
+
+@media (min-width: 1400px) and (max-width: 1600px) {
+    .facility-planner-container .facility-icon:after,
+    .facility-planner-container .facility-icon:before,
+    .facility-planner-container .facility-icon[needs-access-lift]:not([data-days-remaining]):not([data-start-date]):hover::after,
+    .facility-planner-container .facility-icon[neighbor-unexcavated]:not([data-days-remaining]):not([data-start-date]):hover::after,
+    .facility-planner-container .facility-icon[data-days-remaining]:hover .cancel:before {
+        font-size: 1.35em;
+    }
+}
+
+
 
 /* Modal for choosing which facility to build */
 
@@ -401,7 +445,7 @@ facility-planner {
 }
 
 .facility-planner-container .facility-icon[data-facility-id=facility_officer_training_school]:after {
-    content: "Officer Training School"
+    content: "Officer Training"
 }
 
 .facility-planner-container .facility-icon[data-facility-id=facility_psionic_labs]:after {

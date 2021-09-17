@@ -1,6 +1,9 @@
 import { AppPage, PageHistoryState } from "./app-page.js";
+import CampaignCreationWizard from "../campaign-creation-wizard.js";
 import * as AppEvents from "../app-events.js";
 import * as DataHelper from "../data-helper.js";
+import * as Modal from "../modal.js";
+import PageManager from "../page-manager.js";
 import * as Templates from "../templates.js";
 import * as Settings from "../settings.js";
 import * as Utils from "../utils.js";
@@ -19,21 +22,32 @@ class CampaignPlannerPage extends AppPage {
     async load(data) {
         const template = await Templates.instantiateTemplate("assets/html/templates/pages/campaign-planner-page.html", "template-campaign-planner-page");
 
-        const currentCampaignId = await Settings.getCurrentCampaignId();
+        this._loadCampaign(template);
 
-        if (currentCampaignId && currentCampaignId !== Settings.DELIBERATELY_NONE_CAMPAIGN_ID) {
-            this._loadCampaign(template);
-        }
-        else {
-            // TODO show a screen when no campaign is active
-        }
+        const viewSelectorItems = [...template.querySelectorAll(".view-selector-item")];
+        viewSelectorItems.forEach(item => item.addEventListener("click", this._onViewSelectorItemClicked.bind(this)));
 
-        AppEvents.registerEventListener("campaignDataChanged", data => {
+        template.querySelector("#change-campaign").addEventListener("click", this._onChangeCampaignClicked.bind(this));
+
+        const onActiveCampaignChanged = () => {
+            this._loadCampaign(document);
+        };
+
+        const onCampaignDataChanged = data => {
             if (this.#currentView === "research" && data.propertyName === "daysPassed" || data.propertyName === "researchQueue") {
                 this._recreateResearchQueue();
             }
 
             this._populateFacilitiesData(document);
+        };
+
+        AppEvents.registerEventListener("activeCampaignChanged", onActiveCampaignChanged);
+        AppEvents.registerEventListener("campaignDataChanged", onCampaignDataChanged);
+        AppEvents.registerEventListener("pageChanged", data => {
+            if (data.currentPageId !== CampaignPlannerPage.pageId) {
+                AppEvents.removeEventListener("campaignDataChanged", onCampaignDataChanged);
+                AppEvents.removeEventListener("activeCampaignChanged", onActiveCampaignChanged);
+            }
         });
 
         return {
@@ -48,15 +62,28 @@ class CampaignPlannerPage extends AppPage {
     async _loadCampaign(pageContainer) {
         this.#activeCampaign = await Settings.getCurrentCampaign();
 
-        const viewSelectorItems = [...pageContainer.querySelectorAll(".view-selector-item")];
-        viewSelectorItems.forEach(item => item.addEventListener("click", this._onViewSelectorItemClicked.bind(this)));
+        if (this.#activeCampaign) {
+            return this._loadView("research", pageContainer);
+        }
+        else {
+            const viewContainer = pageContainer.querySelector("#campaign-planner-active-view-container");
 
-        return this._loadView("research", pageContainer);
+            if (!viewContainer.querySelector("#create-or-load-campaign-warning")) {
+                Utils.appendElement(viewContainer, "div", "You must have an active campaign to use the Campaign Planner tool.<br /><br />Click the \"Change Campaign\" link in the top left.", { attributes: { id: "create-or-load-campaign-warning" }});
+            }
+
+            // Present the modal to choose or create a campaign
+            this._onChangeCampaignClicked();
+        }
     }
 
     async _loadView(viewId, pageContainer) {
         let template = null;
         this.#currentView = viewId;
+
+        this._onViewSelectorItemClicked({
+            target: pageContainer.querySelector(`.view-selector-item[data-view="${viewId}"]`)
+        });
 
         switch(viewId) {
             case "facilities":
@@ -65,9 +92,6 @@ class CampaignPlannerPage extends AppPage {
             case "research":
                 template = await this._loadResearchView();
                 break;
-            case "settings":
-                template = await this._loadSettingsView();
-                break;
         }
 
         if (template != null) {
@@ -75,8 +99,53 @@ class CampaignPlannerPage extends AppPage {
         }
     }
 
+    async _onChangeCampaignClicked() {
+        const template = await Templates.instantiateTemplate("assets/html/templates/pages/campaign-planner-page.html", "template-campaign-planner-settings-modal");
+
+        template.querySelector("#delete-campaign").addEventListener("click", this._onDeleteCampaignClicked.bind(this));
+        template.querySelector("#load-campaign").addEventListener("click", this._onLoadCampaignClicked.bind(this));
+        template.querySelector("#new-campaign").addEventListener("click", this._onNewCampaignClicked.bind(this));
+
+        const allCampaigns = Object.values(await Settings.getAllCampaigns());
+        allCampaigns.sort( (a, b) => a.name.localeCompare(b.name));
+
+        const campaignList = template.querySelector("#campaign-list");
+        campaignList.addEventListener("selectionChanged", this._onSelectedCampaignChanged.bind(this));
+
+        if (allCampaigns.length === 0) {
+            campaignList.replaceWith("You do not have any campaigns saved. Please create a new one to continue.");
+        }
+        else {
+            let selectedItem = null;
+
+            for (const campaign of allCampaigns) {
+                const li = Utils.appendElement(campaignList, "li", campaign.name, { classes: [ "campaign-option" ] });
+                li.setAttribute("data-campaign-id", campaign.id);
+
+                // Always add a label so each row lines up
+                const label = document.createElement("div");
+                li.prepend(label);
+
+                if (this.#activeCampaign && campaign.id === this.#activeCampaign.id) {
+                    label.classList.add("active-label");
+                    label.textContent = "Active";
+
+                    selectedItem = li;
+                }
+            }
+
+            setTimeout(() => campaignList.select(selectedItem), 20);
+        }
+
+        Modal.open(template, null, true);
+    }
+
     _onViewSelectorItemClicked(event) {
         if (event.target.disabled || event.target.classList.contains("selected")) {
+            return;
+        }
+
+        if (!this.#activeCampaign) {
             return;
         }
 
@@ -225,17 +294,61 @@ class CampaignPlannerPage extends AppPage {
 
     // #endregion
 
-    // #region Settings view functions
+    // #region Campaign selection modal functions
 
-    async _loadSettingsView() {
-        const template = await Templates.instantiateTemplate("assets/html/templates/pages/campaign-planner-page.html", "template-campaign-planner-settings-view");
+    async _onDeleteCampaignClicked() {
+        const campaignList = document.getElementById("campaign-list");
 
-        template.querySelector("#campaign-name").textContent = this.#activeCampaign.name;
-        template.querySelector("#campaign-difficulty").textContent = this.#activeCampaign.difficulty;
-        template.querySelector("#campaign-starting-country").textContent = this.#activeCampaign.startingCountry;
-        template.querySelector("#campaign-starting-bonus").textContent = this.#activeCampaign.startingCountryBonusIndex;
+        if (!campaignList.selectedItem) {
+            return;
+        }
 
-        return template;
+        Modal.close();
+        const confirmed = await Modal.confirm("Are you sure you want to delete this campaign? This action is permanent and cannot be undone.", "Confirm Deletion");
+
+        if (!confirmed) {
+            return;
+        }
+
+        await Settings.deleteCampaign(campaignList.selectedItem.dataset.campaignId);
+        PageManager.instance.loadPage(CampaignPlannerPage.pageId);
+    }
+
+    async _onLoadCampaignClicked() {
+        const campaignList = document.getElementById("campaign-list");
+
+        if (!campaignList.selectedItem) {
+            return;
+        }
+
+        const campaignId = campaignList.selectedItem.dataset.campaignId;
+
+        if (this.#activeCampaign && this.#activeCampaign.id === campaignId) {
+            return;
+        }
+
+        if (this.#activeCampaign) {
+            await Settings.saveCampaign(this.#activeCampaign);
+        }
+
+        await Settings.setCurrentCampaign(campaignId);
+
+        this._loadCampaign(document);
+        Modal.close();
+    }
+
+    async _onNewCampaignClicked() {
+        const wizard = new CampaignCreationWizard();
+        wizard.start();
+    }
+
+    _onSelectedCampaignChanged(event) {
+        if (this.#activeCampaign && this.#activeCampaign.id === event.detail.selectedItem.dataset.campaignId) {
+            document.getElementById("load-campaign").classList.add("disabled");
+        }
+        else {
+            document.getElementById("load-campaign").classList.remove("disabled");
+        }
     }
 
     // #endregion

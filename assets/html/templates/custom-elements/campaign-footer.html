@@ -1,14 +1,13 @@
 <template id="template-campaign-footer">
     <div id="content">
         <div class="bookend">
-            <div class="vertical-center">
-                Active campaign:&nbsp;<span id="campaign-name"></span>
-            </div>
-            <div class="vertical-center">
-                Maintenance:&nbsp;<span id="maintenance"></span>
+            <div id="campaign-name" class="vertical-center clip">
             </div>
             <div class="vertical-center">
                 Power:&nbsp;<span id="power"></span>
+            </div>
+            <div class="vertical-center">
+                Maintenance:&nbsp;<span id="maintenance"></span>
             </div>
             <div class="vertical-center">
                 Engineers:&nbsp;<span id="num-engineers"></span>
@@ -28,9 +27,11 @@
             <div class="vertical-center">
                 <img src="assets/img/misc-icons/research.png" /> <span id="current-research"></span>
             </div>
+            <div></div>
             <div class="vertical-center">
                 <img src="assets/img/misc-icons/person.png" data-tooltip-text="Estimated number of scientists by this date" /> <span id="num-scientists"></span>
             </div>
+            <div></div>
         </div>
     </div>
 </template>

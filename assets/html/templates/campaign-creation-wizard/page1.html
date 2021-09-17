@@ -1,6 +1,6 @@
 <template id="template-campaign-creation-wizard-page-1">
     <div class="standard-modal wizard-modal">
-        <info-box>Everything you select here can be changed later.</info-box>
+        <info-box messageType="warning" style="width: 350px">These settings cannot be changed later without creating a new campaign.</info-box>
         <div class="wizard-body">
             <fieldset>
                 <legend>Campaign difficulty</legend>
@@ -75,7 +75,7 @@
                 <legend>Optional content</legend>
                 <div>
                     <input type="checkbox" class="xcom" id="are-exalt-enabled" checked /><label for="are-exalt-enabled">EXALT missions</label>
-                    <help-icon style="margin-left: 10.25px">EXALT will be enabled by default unless the "United Humanity" second wave option is turned on.</help-icon>
+                    <help-icon style="margin-left: 26.5px">EXALT will be enabled by default unless the "United Humanity" second wave option is turned on.</help-icon>
                 </div>
                 <div>
                     <input type="checkbox" class="xcom" id="is-progeny-enabled" checked /><label for="is-progeny-enabled">Operation Progeny</label>

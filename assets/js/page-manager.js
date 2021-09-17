@@ -395,9 +395,9 @@ class PageManager {
 
         // Tooltip needs to be briefly visible so its size can be calculated in the DOM, but then hidden
         // again so it's not visible in the wrong place while we use IPC
-        this.#pagePreviewTooltip.classList.remove("hidden-collapse")
+        this.#pagePreviewTooltip.classList.remove("hidden-collapse");
         const tooltipRect = this.#pagePreviewTooltip.getBoundingClientRect();
-        this.#pagePreviewTooltip.classList.add("hidden-collapse")
+        this.#pagePreviewTooltip.classList.add("hidden-collapse");
 
         let windowBounds = await ipcRenderer.invoke("get-window-size");
 
