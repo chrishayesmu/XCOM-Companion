@@ -8,7 +8,7 @@
     color: var(--color);
 
     margin-bottom: 13px;
-    padding: 6px 12px;
+    padding: 4px 6px;
     position: relative;
     width: fit-content;
 }
@@ -17,13 +17,9 @@
     color: var(--color-strong);
     cursor: pointer;
     font-size: 1.2em;
+    margin: 0 0 auto 5px;
     text-align: center;
-    height: 24px;
     width: 24px;
-
-    position: absolute;
-    right: 6px;
-    top: 4px;
 }
 
 .infobox-dismiss-button:hover {
@@ -31,6 +27,10 @@
 }
 
 .infobox-icon {
+    display: flex;
+    align-items: center;
+
+    height: 48px;
     font-size: 3em;
     margin-right: 12px;
 }
