@@ -7,7 +7,7 @@ import * as Utils from "../utils.js";
 const ufoWeapons = {
     double_plasma: {
         name: "Double Plasma",
-        armorPenetration: 20,
+        armorPenetration: 100,
         baseHitChance: 40,
         damagePerShot: 800,
         secondsBetweenShots: 1.25,
@@ -15,12 +15,11 @@ const ufoWeapons = {
     },
     fusion_lance: {
         name: "Fusion Lance",
-        armorPenetration: 50,
+        armorPenetration: 250,
         baseHitChance: 45,
         damagePerShot: 1300,
         secondsBetweenShots: 1.25,
         tooltipTemplateId: "template-ufo-tooltip-fusion-lance"
-
     },
     single_plasma: {
         name: "Single Plasma",
