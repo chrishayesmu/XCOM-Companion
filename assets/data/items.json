@@ -2057,7 +2057,7 @@
         "item_flashbang_grenade": {
             "name": "Flashbang Grenade",
             "description": "This grenade-style weapon emits a disorienting flash of light with accompanying sounds. Any enemies that can see the blast will be disoriented, suffering severe penalties to Aim and movement. Robotic and psionic enemies are immune.",
-            "tactical_text": "<ul><li>Enemy units inside the blast radius suffer significant Aim and movement penalties during their next turn.</li><li>Disoriented units suffer -50% Aim and -40% mobility, as well as a significant reduction in the throw range of grenades.</li><li>Disoriented units will also immediately cancel Overwatch or Suppression.</li><li>Robotic and advanced psionic enemies are immune.</li><li>Support Grenade</ul>",
+            "tactical_text": "<ul><li>Enemy units inside the blast radius suffer significant Aim and movement penalties during their next turn.</li><li>Disoriented units suffer -50% Aim and -40% mobility, as well as a significant reduction in the throw range of grenades.</li><li>Disoriented units will also immediately cancel Overwatch or Suppression.</li><li>Robotic and advanced psionic enemies (namely Sectoid Commanders and Ethereals) are immune.</li><li>Support Grenade</ul>",
             "type": "loadout_equipment",
             "type_specific_data": {
                 "usable_by_infantry": true,
