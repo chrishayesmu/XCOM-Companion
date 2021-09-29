@@ -754,8 +754,7 @@
                 },
                 {
                     "threshold": 80,
-                    "level": 2,
-                    "name": "Tracker Drone"
+                    "level": 2
                 },
                 {
                     "threshold": 120,
@@ -4012,13 +4011,13 @@
                     "threshold": 240,
                     "level": 6,
                     "aim": 5,
-                    "name": "Outsider Commander",
                     "perks": [ "perk_sentinel" ],
                     "will": 10
                 },
                 {
                     "threshold": 280,
                     "level": 7,
+                    "name": "Outsider Commander",
                     "perks": [ "perk_damage_control" ],
                     "will": 10
                 },
