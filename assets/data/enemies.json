@@ -1088,6 +1088,7 @@
                     "level": 1,
                     "aim": 2,
                     "hp": 2,
+                    "name": "EXALT Elite Rocketeer",
                     "perks": [ "perk_danger_zone", "perk_javelin_rockets", "perk_light_em_up" ],
                     "will": 2
                 },
@@ -1149,6 +1150,7 @@
                     "aim": 2,
                     "damage": 1,
                     "hp": 10,
+                    "name": "EXALT Commander Iago Van Doorn",
                     "perks": [ "perk_tactical_sense" ],
                     "will": 12
                 }
@@ -1264,6 +1266,7 @@
                     "threshold": 40,
                     "level": 1,
                     "aim": 2,
+                    "name": "EXALT Elite Defender",
                     "perks": [ "perk_covering_fire", "perk_suppression" ],
                     "will": 1
                 },
@@ -1325,6 +1328,7 @@
                     "aim": 5,
                     "damage": 1,
                     "hp": 8,
+                    "name": "EXALT Elite Captain",
                     "perks": [ "perk_light_em_up" ],
                     "will": 10
                 }
@@ -1416,6 +1420,7 @@
                 {
                     "threshold": 0,
                     "chance": 25,
+                    "name": "EXALT Elite Sentry",
                     "perk": "perk_covering_fire"
                 },
                 {
@@ -1499,6 +1504,7 @@
                     "level": 4,
                     "aim": 2,
                     "damage": 1,
+                    "name": "EXALT Elite Scout",
                     "perks": [ "perk_lightning_reflexes" ],
                     "will": 3
                 },
@@ -1535,6 +1541,7 @@
                     "crit_chance": 10,
                     "damage": 1,
                     "hp": 10,
+                    "name": "EXALT Deputy Commander",
                     "perks": [ "perk_sharpshooter" ],
                     "will": 25
                 }
@@ -1838,6 +1845,7 @@
                     "level": 7,
                     "aim": 2,
                     "hp": 1,
+                    "name": "EXALT Rocketeer",
                     "perks": [ "perk_javelin_rockets" ]
                 }
             ]
@@ -1929,6 +1937,7 @@
                     "threshold": 40,
                     "level": 1,
                     "aim": 2,
+                    "name": "EXALT Defender",
                     "perks": [ "perk_covering_fire" ],
                     "will": 2
                 },
@@ -2053,6 +2062,7 @@
                 {
                     "threshold": 0,
                     "chance": 25,
+                    "name": "EXALT Sentry",
                     "perk": "perk_covering_fire"
                 },
                 {
@@ -2121,6 +2131,7 @@
                     "threshold": 240,
                     "level": 6,
                     "aim": 2,
+                    "name": "EXALT Scout",
                     "perks": [ "perk_lightning_reflexes" ],
                     "will": 2
                 },
@@ -2140,6 +2151,7 @@
                     "level": 9,
                     "aim": 10,
                     "hp": 10,
+                    "name": "EXALT Lieutenant",
                     "perks": [ "perk_light_em_up" ]
                 }
             ]
