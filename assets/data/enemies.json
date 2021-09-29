@@ -3795,6 +3795,7 @@
                     "aim": 2,
                     "damage": 1,
                     "hp": 2,
+                    "name": "Muton Elite Praetorian",
                     "perks": [ "perk_covering_fire", "perk_reactive_targeting_sensors", "perk_squadsight" ],
                     "will": 4
                 },
@@ -3811,7 +3812,7 @@
                 {
                     "threshold": 660,
                     "level": 9,
-                    "name": "Muton Elite Praetorian",
+                    "name": "Bashar",
                     "perks": [ "perk_shredder_ammo" ]
                 }
             ]
