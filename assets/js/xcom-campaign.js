@@ -814,12 +814,20 @@ class XComCampaign {
                     continue;
                 }
 
-                if (i !== 3 && eligibleFacilities.includes(this.getFacilityStatus(i + 1, j, daysPassed).id)) {
-                    adjacencies++;
+                if (i !== 3) {
+                    const adjacentFacility = this.getFacilityStatus(i + 1, j, daysPassed);
+
+                    if (eligibleFacilities.includes(adjacentFacility.id) && adjacentFacility.status === "complete") {
+                        adjacencies++;
+                    }
                 }
 
-                if (j !== 6 && eligibleFacilities.includes(this.getFacilityStatus(i, j + 1, daysPassed).id)) {
-                    adjacencies++;
+                if (j !== 6) {
+                    const adjacentFacility = this.getFacilityStatus(i, j + 1, daysPassed);
+
+                    if (eligibleFacilities.includes(adjacentFacility.id) && adjacentFacility.status === "complete") {
+                        adjacencies++;
+                    }
                 }
             }
         }
