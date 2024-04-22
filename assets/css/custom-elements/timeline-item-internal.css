@@ -1,0 +1,17 @@
+#timeline-item {
+    display: grid;
+    flex-flow: row nowrap;
+    align-items: center;
+    grid-template-columns: 30px 350px 240px auto;
+
+    font-size: 1.2em;
+}
+
+#timeline-item #icon {
+    height: 20px;
+    width: 20px;
+}
+
+#timeline-item #date {
+    text-align: center;
+}

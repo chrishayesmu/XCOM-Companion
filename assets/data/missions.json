@@ -1,0 +1,38 @@
+{
+    "missions": {
+        "confounding_light": {
+            "name": "Confounding Light",
+            "description": "TBD",
+            "requires_slingshot": true
+        },
+        "deluge": {
+            "name": "Deluge",
+            "description": "TBD",
+            "requires_progeny": true
+        },
+        "friends_in_low_places": {
+            "name": "Friends In Low Places",
+            "description": "An enigmatic Triad operative requests XCOM's help in China.",
+            "requires_slingshot": true
+        },
+        "furies": {
+            "name": "Furies",
+            "description": "TBD",
+            "requires_progeny": true
+        },
+        "gangplank": {
+            "name": "Gangplank",
+            "description": "TBD",
+            "requires_slingshot": true
+        },
+        "portent": {
+            "name": "Portent",
+            "description": "TBD",
+            "requires_progeny": true
+        },
+        "site_recon": {
+            "name": "Site Recon",
+            "description": "TBD"
+        }
+    }
+}

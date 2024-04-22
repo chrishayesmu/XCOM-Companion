@@ -37,14 +37,6 @@ class CampaignQueueItem {
         this.resultDataId = resultDataId;
     }
 
-    getPrerequisites() {
-        const prereqs = {
-            foundry: [],
-            research: []
-        };
-
-        return prereqs;
-    }
 }
 
 /**
@@ -352,6 +344,10 @@ class XComCampaign {
         return true;
     }
 
+    findFacilityProjectsByType(facilityId) {
+        return this.#facilityQueue.filter(f => f.resultDataId === facilityId);
+    }
+
     getCosts(dataId) {
         // TODO
         if (dataId === "item_satellite" && this.hasRoscosmos()) {
@@ -400,6 +396,11 @@ class XComCampaign {
         const baseCost = 10 * Math.pow(2, row);
 
         return this.hasCheyenneMountain() ? baseCost / 2 : baseCost;
+    }
+
+    getFacilityEvents() {
+        return this.#facilityQueue.filter(f => f.endingDaysPassed > 0)
+                                  .map(f => ({ dataId: f.resultDataId, eventType: "facility", startingDaysPassed: f.startingDaysPassed, endingDaysPassed: f.endingDaysPassed}));
     }
 
     getFacilityStatus(row, column, daysPassed) {
@@ -507,6 +508,10 @@ class XComCampaign {
         const staff = this.getStaff(daysPassed);
 
         return Math.floor(staff.scientists * (1 + (labBonus * numLabs) + (adjacencyBonus * numAdjacencies)));
+    }
+
+    getResearchEvents() {
+        return this.#researchQueue.map(r => ({ dataId: r.resultDataId, eventType: "research", startingDaysPassed: r.startingDaysPassed, endingDaysPassed: r.endingDaysPassed}));
     }
 
     getSellPrice(itemId, daysPassed) {

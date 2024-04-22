@@ -137,6 +137,23 @@
     min-width: 450px;
 }
 
+/* Styles specific to timeline view */
+
+#campaign-planner-page #campaign-planner-active-view-container #campaign-planner-timeline-view {
+    height: 100%;
+    overflow-y: auto;
+}
+
+#campaign-planner-page #campaign-planner-active-view-container #timeline-list {
+    display: flex;
+    flex-flow: column nowrap;
+    flex-shrink: 0;
+    overflow-y: auto;
+    padding-left: 8px;
+    padding-right: 10px;
+    margin: 12px 0;
+}
+
 /* Styles specific to campaign selection modal */
 
 #modal-contents #campaign-planner-change-campaign {

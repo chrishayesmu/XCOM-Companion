@@ -8,6 +8,7 @@ const foundryProjectData = await fetch("assets/data/foundry-projects.json").then
 const geneModData = await fetch("assets/data/gene-mods.json").then(response => response.json());
 const itemData = await fetch("assets/data/items.json").then(response => response.json());
 const mapData = await fetch("assets/data/maps.json").then(response => response.json());
+const missionData = await fetch("assets/data/missions.json").then(response => response.json());
 const perkData = await fetch("assets/data/perks.json").then(response => response.json());
 const psiAbilityData = await fetch("assets/data/psi-abilities.json").then(response => response.json());
 const soldierClassData = await fetch("assets/data/soldier-classes.json").then(response => response.json());
@@ -230,6 +231,20 @@ for (let key in mapData.maps) {
     const data = mapData.maps[key];
     data.id = key;
     data.image = "assets/img/maps/" + key.substring(4) + ".png";
+}
+
+// --------------- Missions ------------------
+const missions = {};
+
+for (let key in missionData.missions) {
+    const data = missionData.missions[key];
+
+    missions[key] = {
+        name: data.name,
+        description: data.description,
+        requiresProgeny: data.requires_progeny,
+        requiresSlingshot: data.requires_slingshot
+    };
 }
 
 // --------------- Psi abilities ------------------
@@ -518,6 +533,9 @@ function dataObjectById(id) {
     else if (id.startsWith("map")) {
         return maps[id];
     }
+    else if (id.startsWith("mission")) {
+        return missions[id];
+    }
     else if (id.startsWith("perk")) {
         return perks[id];
     }
@@ -617,6 +635,7 @@ export {
     getResearchCreditSource,
     items,
     maps,
+    missions,
     perks,
     psiAbilities,
     researchCredits,

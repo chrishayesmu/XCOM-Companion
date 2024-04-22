@@ -19,6 +19,10 @@ class CampaignPlannerPage extends AppPage {
     #projectElements = [];
     #researchList = null;
 
+    // Timeline view variables
+    #timelineElements = [];
+    #timelineList = null;
+
     async load(data) {
         const template = await Templates.instantiateTemplate("assets/html/templates/pages/campaign-planner-page.html", "template-campaign-planner-page");
 
@@ -91,6 +95,9 @@ class CampaignPlannerPage extends AppPage {
                 break;
             case "research":
                 template = await this._loadResearchView();
+                break;
+            case "timeline":
+                template = await this._loadTimelineView();
                 break;
         }
 
@@ -292,6 +299,120 @@ class CampaignPlannerPage extends AppPage {
         }
     }
 
+    // #endregion
+
+    // #region Timeline view functions
+    async _loadTimelineView() {
+        const template = await Templates.instantiateTemplate("assets/html/templates/pages/campaign-planner-page.html", "template-campaign-planner-timeline-view");
+
+        const timelineEvents = this._getTimelineEvents();
+        this.#timelineList = template.querySelector("#timeline-list");
+
+        for (let i = 0; i < timelineEvents.length; i++) {
+            const timelineItem = document.createElement("timeline-item");
+            timelineItem.populateFromTimelineEvent(timelineEvents[i]);
+
+            // timelineItem.addEventListener("addedToQueue", this._recreateResearchQueue.bind(this));
+            // timelineItem.addEventListener("completed", this._recreateResearchQueue.bind(this));
+            // timelineItem.addEventListener("removedFromQueue", this._recreateResearchQueue.bind(this));
+
+            this.#timelineElements[i] = timelineItem;
+            this.#timelineList.append(timelineItem);
+        }
+
+        return template;
+    }
+
+    _getTimelineEvents() {
+        const facilityEvents = this.#activeCampaign.getFacilityEvents();
+        const researchEvents = this.#activeCampaign.getResearchEvents();
+        const mergedEvents = [...facilityEvents, ...researchEvents];
+        const events = [];
+
+        mergedEvents.forEach(e => {
+            if (e.startingDaysPassed >= 0) {
+                events.push({ dataId: e.dataId, eventType: e.eventType, timelineEvent: "start", daysPassed: e.startingDaysPassed });
+            }
+
+            if (e.endingDaysPassed >= 0) {
+                events.push({ dataId: e.dataId, eventType: e.eventType, timelineEvent: "end", daysPassed: e.endingDaysPassed });
+            }
+        });
+
+        // Items (TODO)
+
+        // Council/DLC missions (TODO)
+        let siteReconDaysPassed = 31;
+        if (this.#activeCampaign.progenyEnabled) {
+            siteReconDaysPassed = 61;
+
+            events.push({ dataId: "portent", eventType: "mission", timelineEvent: "certainThisMonth", daysPassed: 31 });
+
+            const psiLabFacilities = this.#activeCampaign.findFacilityProjectsByType("facility_psionic_labs");
+
+            if (psiLabFacilities.length > 0) {
+                const psiLabProject = psiLabFacilities[0]; // can't build more than 1
+                const psiLabEndDate = Utils.dateByDaysPassed(psiLabProject.endingDaysPassed);
+
+                // If psi labs finish early enough in the month, give a warning that Deluge is possible in the same month
+                // TODO: add a similar warning for the following month in case it doesn't happen
+                // TODO: if psi lab is really early, "should happen" should be "will happen"
+                let startOfMonthDelugeDate, startOfMonthFuriesDate;
+                if (psiLabEndDate.getDate() <= 29) {
+                    startOfMonthDelugeDate = new Date(psiLabEndDate);
+                    startOfMonthDelugeDate.setDate(0);
+                }
+                else {
+                    startOfMonthDelugeDate = new Date(psiLabEndDate);
+                    startOfMonthDelugeDate.setDate(0);
+                    startOfMonthDelugeDate.setMonth(startOfMonthDelugeDate.getMonth() + 1);
+                }
+
+                // Deluge can't occur before a certain point no matter what
+                // TODO: everyone says it's September but XGFundingCouncil seems to suggest it's October? we use Sept here
+                if (startOfMonthDelugeDate.getFullYear() === 2016 && startOfMonthDelugeDate.getMonth() < 8) {
+                    startOfMonthDelugeDate.setMonth(8, 1);
+                }
+
+                startOfMonthFuriesDate = new Date(startOfMonthDelugeDate);
+                startOfMonthFuriesDate.setMonth(startOfMonthDelugeDate.getMonth() + 1);
+
+                events.push({ dataId: "deluge", eventType: "mission", timelineEvent: "possibleThisMonth", daysPassed: Utils.daysPassedByDate(startOfMonthDelugeDate) });
+                events.push({ dataId: "furies", eventType: "mission", timelineEvent: "possibleThisMonth", daysPassed: Utils.daysPassedByDate(startOfMonthFuriesDate) });
+            }
+        }
+
+        events.push({ dataId: "site_recon", eventType: "mission", timelineEvent: "likelyThisMonth", daysPassed: siteReconDaysPassed });
+
+        if (this.#activeCampaign.slingshotEnabled) {
+            events.push({ dataId: "friends_in_low_places", eventType: "mission", timelineEvent: "instant", daysPassed: 65 });
+            events.push({ dataId: "confounding_light", eventType: "mission", timelineEvent: "instant", daysPassed: 120 });
+            events.push({ dataId: "gangplank", eventType: "mission", timelineEvent: "instant", daysPassed: 122 });
+        }
+
+        events.sort((e1, e2) => {
+            if (e1.daysPassed !== e2.daysPassed) {
+                return e1.daysPassed - e2.daysPassed;
+            }
+
+            if (e1.timelineEvent !== e2.timelineEvent) {
+                // When multiple events land on the same day, show the ending ones first so they bracket properly
+                // (e.g. you don't start a new research before finishing the current one)
+                if (e1.timelineEvent === "start") {
+                    return 1;
+                }
+                else {
+                    return -1;
+                }
+            }
+
+            // TODO: missions before research before facilities
+
+            return 0;
+        });
+
+        return events;
+    }
     // #endregion
 
     // #region Campaign selection modal functions
