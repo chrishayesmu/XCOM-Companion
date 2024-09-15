@@ -49,7 +49,8 @@ class UfoBrowsePage extends AppPage {
         sizes.sort(UfoBrowsePage.sizeCompareFn);
 
         for (let size in sizes) {
-            container.appendChild(await this._createUfoCat(sizes[size], ufo_groups[sizes[size]]));
+            const detail_open = data.expandedIds && data.expandedIds.includes(sizes[size]);
+            container.appendChild(await this._createUfoCat(sizes[size], ufo_groups[sizes[size]], detail_open));
         }
 
         return {
@@ -61,9 +62,13 @@ class UfoBrowsePage extends AppPage {
         };
     }
 
-    async _createUfoCat(size, ufos) {
+    async _createUfoCat(size, ufos, should_open) {
         const template = await Templates.instantiateTemplate("assets/html/templates/pages/ufo-browse-page.html", "template-ufo-browse-category");
 
+        template.setAttribute("data-size", size);
+        if (should_open) {
+            template.setAttribute("open", "");
+        }
         template.querySelector("#ufo-size-name").textContent = Utils.capitalizeEachWord(size);
 
         const container = template.querySelector("#ufo-browse-entries-container");
@@ -88,6 +93,14 @@ class UfoBrowsePage extends AppPage {
         template.setAttribute("data-pagearg-ufo-id", ufo.id);
 
         return template;
+    }
+
+    makeHistoryState() {
+        // Remember which sections are open
+        const expandedDetails = document.querySelectorAll("#ufo-browse-cats-container details[open]");
+        const ids = Array.prototype.map.call(expandedDetails, e => e.getAttribute("data-size"));
+
+        return new PageHistoryState(this, { expandedIds: ids });
     }
 }
 
