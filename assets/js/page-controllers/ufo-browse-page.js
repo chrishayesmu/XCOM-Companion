@@ -7,12 +7,49 @@ class UfoBrowsePage extends AppPage {
 
     static pageId = "ufo-browse-page";
 
+    static sizeToInt = function(size) {
+        switch (size) {
+            case "small":
+                return 0;
+            case "medium":
+                return 1;
+            case "large":
+                return 2;
+            case "very_large":
+                return 3;
+        }
+
+        return -1;
+    }
+
+    static sizeCompareFn = function(sizeA, sizeB) {
+        return UfoBrowsePage.sizeToInt(sizeA) - UfoBrowsePage.sizeToInt(sizeB);
+    }
+
+    ufoSizeCompareFN(ufoA, ufoB) {
+        return sizeCompareFn(ufoA.size, ufoB.size);
+    }
+
     async load(data) {
         const template = await Templates.instantiateTemplate("assets/html/templates/pages/ufo-browse-page.html", "template-ufo-browse-page");
-        const container = template.querySelector("#ufo-browse-entries-container");
+        const container = template.querySelector("#ufo-browse-cats-container");
 
-        for (let key in DataHelper.ufos) {
-            container.appendChild(await this._createUfoEntry(DataHelper.ufos[key]));
+        const ufos = Object.values(DataHelper.ufos);
+
+        const ufo_groups = {};
+
+        for (let key in ufos) {
+            if (!ufo_groups[ufos[key].size]) {
+                ufo_groups[ufos[key].size] = [];
+            }
+            ufo_groups[ufos[key].size].push(ufos[key]);
+        }
+
+        const sizes = Object.keys(ufo_groups);
+        sizes.sort(UfoBrowsePage.sizeCompareFn);
+
+        for (let size in sizes) {
+            container.appendChild(await this._createUfoCat(sizes[size], ufo_groups[sizes[size]]));
         }
 
         return {
@@ -24,12 +61,27 @@ class UfoBrowsePage extends AppPage {
         };
     }
 
+    async _createUfoCat(size, ufos) {
+        const template = await Templates.instantiateTemplate("assets/html/templates/pages/ufo-browse-page.html", "template-ufo-browse-category");
+
+        template.querySelector("#ufo-size-name").textContent = Utils.capitalizeEachWord(size);
+
+        const container = template.querySelector("#ufo-browse-entries-container");
+
+        ufos.sort((a,b) => a.base_hp - b.base_hp);
+
+        for (let ufo in ufos) {
+            container.appendChild(await this._createUfoEntry(ufos[ufo]));
+        }
+
+        return template;
+    }
+
     async _createUfoEntry(ufo) {
         const template = await Templates.instantiateTemplate("assets/html/templates/pages/ufo-browse-page.html", "template-ufo-browse-entry");
 
         template.querySelector(".ufo-browse-entry-name").textContent = ufo.name;
         template.querySelector(".ufo-browse-entry-img").src = ufo.image;
-        template.querySelector(".ufo-browse-entry-size").textContent = Utils.capitalizeEachWord(ufo.size);
 
         template.setAttribute("data-page-on-click", "ufo-details-page");
         template.setAttribute("data-pagearg-no-preview", true);
