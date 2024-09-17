@@ -6,7 +6,7 @@
 
     position: sticky;
     bottom: 0;
-    left: var(--nav-width);
+    left: 0;
     right: 0;
 
     background-color: var(--color-bg-nav);
@@ -17,6 +17,13 @@
     padding: 4px;
 
     height: var(--footer-height);
+
+    /* make scrollbar an overlay to avoid reflowing */
+    overflow: overlay;
+}
+
+:host::-webkit-scrollbar {
+    height: 0;
 }
 
 :host #content {
@@ -55,6 +62,10 @@
     margin: auto 20px auto 0;
     overflow: hidden;
     text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+:host .bookend #current-research {
     white-space: nowrap;
 }
 

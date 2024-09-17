@@ -11,6 +11,8 @@
     height: 40px;
     justify-content: center;
 
+    white-space: nowrap;
+
     /* Establish a new stacking context so we can use z-index in the selected child */
     position: relative;
     z-index: 0;
@@ -41,29 +43,13 @@
 }
 
 #campaign-planner-page #campaign-planner-view-selector #change-campaign {
-    position: absolute;
-    left: 8px;
-
     display: flex;
     align-items: center;
+    flex-grow: 1;
 
     font-size: 1.1em;
     height: 100%;
-}
-
-@media (max-width: 1180px) {
-    #campaign-planner-page #campaign-planner-view-selector #change-campaign {
-        position: relative;
-        left: 0;
-        right: 12px;
-
-        display: flex;
-        align-items: center;
-
-        font-size: 1.1em;
-        height: 100%;
-        margin-right: 30px;
-    }
+    padding-right: 10px;
 }
 
 #campaign-planner-page #campaign-planner-active-view-container {
