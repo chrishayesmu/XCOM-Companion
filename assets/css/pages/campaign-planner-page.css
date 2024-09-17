@@ -144,6 +144,18 @@
     margin: 12px 0;
 }
 
+#campaign-planner-page #campaign-planner-active-view-container #timeline-list .campaign-planner-timeline-view-separator {
+    border-bottom: 1px solid cyan;
+    font-size: 1.4em;
+    margin-bottom: 8px;
+    margin-top: 15px;
+    padding-left: 4px;
+}
+
+#campaign-planner-page #campaign-planner-active-view-container #timeline-list .campaign-planner-timeline-view-separator:first-child {
+    margin-top: 0;
+}
+
 /* Styles specific to campaign selection modal */
 
 #modal-contents #campaign-planner-change-campaign {

@@ -325,11 +325,25 @@ class CampaignPlannerPage extends AppPage {
 
         for (let i = 0; i < timelineEvents.length; i++) {
             const timelineItem = document.createElement("timeline-item");
-            timelineItem.populateFromTimelineEvent(timelineEvents[i]);
+            timelineItem.populateFromTimelineEvent(timelineEvents[i], this.#activeCampaign);
 
-            // timelineItem.addEventListener("addedToQueue", this._recreateResearchQueue.bind(this));
-            // timelineItem.addEventListener("completed", this._recreateResearchQueue.bind(this));
-            // timelineItem.addEventListener("removedFromQueue", this._recreateResearchQueue.bind(this));
+            let isFirstEventOfMonth = i === 0;
+
+            if (i > 0) {
+                const thisDate = Utils.dateByDaysPassed(timelineEvents[i].daysPassed);
+                const previousDate = Utils.dateByDaysPassed(timelineEvents[i-1].daysPassed);
+
+                if (thisDate.getMonth() !== previousDate.getMonth()) {
+                    isFirstEventOfMonth = true;
+                }
+            }
+
+            if (isFirstEventOfMonth) {
+                const separator = await Templates.instantiateTemplate("assets/html/templates/pages/campaign-planner-page.html", "template-campaign-planner-timeline-view-separator");
+                separator.innerText = Utils.formatCampaignDateAsMonthAndYear(Utils.dateByDaysPassed(timelineEvents[i].daysPassed));
+
+                this.#timelineList.append(separator);
+            }
 
             this.#timelineElements[i] = timelineItem;
             this.#timelineList.append(timelineItem);

@@ -902,8 +902,8 @@ class XComCampaign {
         return queue.filter(item => item.startingDaysPassed <= daysPassed);
     }
 
-    _fireChangeEvent(propertyName) {
-        AppEvents.fireEvent("campaignDataChanged", { propertyName: propertyName });
+    _fireChangeEvent(propertyName, newValue) {
+        AppEvents.fireEvent("campaignDataChanged", { propertyName: propertyName, newValue: newValue });
     }
 
     _isFacilityQueueValid() {
@@ -1230,7 +1230,7 @@ class XComCampaign {
     set daysPassed(daysPassed) {
         if (daysPassed >= 0 && this.#daysPassed !== daysPassed) {
             this.#daysPassed = daysPassed;
-            this._fireChangeEvent("daysPassed");
+            this._fireChangeEvent("daysPassed", daysPassed);
         }
     }
 

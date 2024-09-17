@@ -7,11 +7,24 @@
     font-size: 1.2em;
 }
 
+/* Apply a slightly more subtle underline for links, since there's a lot in close proximity */
+#timeline-item a {
+    text-decoration-color: rgba(0, 255, 255, 0.6);
+}
+
 #timeline-item #icon {
     height: 20px;
     width: 20px;
 }
 
 #timeline-item #date {
-    text-align: center;
+    text-align: right;
+}
+
+:host {
+    margin-left: 10px;
+}
+
+:host([dateHasPassed]) {
+    opacity: 0.3;
 }

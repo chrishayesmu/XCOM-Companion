@@ -1,3 +1,4 @@
+import * as AppEvents from "../app-events.js";
 import * as DataHelper from "../data-helper.js";
 import * as Templates from "../templates.js";
 import * as Utils from "../utils.js";
@@ -27,6 +28,11 @@ class TimelineItem extends HTMLElement {
         cssLink.href = "assets/css/custom-elements/timeline-item-internal.css";
         this.#shadowRoot.appendChild(cssLink);
 
+        cssLink = document.createElement("link");
+        cssLink.rel = "stylesheet";
+        cssLink.href = "assets/css/nativize.css";
+        this.#shadowRoot.appendChild(cssLink);
+
         Templates.instantiateTemplate("assets/html/templates/custom-elements/timeline-item.html", "template-timeline-item").then(template => {
             this.#shadowRoot.appendChild(template);
 
@@ -36,6 +42,8 @@ class TimelineItem extends HTMLElement {
 
             this.#isDomLoaded = true;
             this._populateData();
+
+            AppEvents.registerEventListener("campaignDataChanged", this._onCampaignDataChanged.bind(this));
         });
     }
 
@@ -43,17 +51,26 @@ class TimelineItem extends HTMLElement {
         this._populateData();
     }
 
-    populateFromTimelineEvent(e) {
+    populateFromTimelineEvent(e, activeCampaign) {
         this.#ignoreAttributeUpdates = true;
 
         this.dataId = e.dataId;
         this.daysPassed = e.daysPassed;
         this.eventType = e.eventType;
         this.timelineEvent = e.timelineEvent;
+        this.dateHasPassed = activeCampaign.daysPassed > this.daysPassed;
 
         this.#ignoreAttributeUpdates = false;
 
         this._populateData();
+    }
+
+    _onCampaignDataChanged(e) {
+        if (e.propertyName !== "daysPassed") {
+            return;
+        }
+
+        this.dateHasPassed = e.newValue > this.daysPassed;
     }
 
     async _populateData() {
@@ -66,7 +83,7 @@ class TimelineItem extends HTMLElement {
         switch (this.eventType) {
             case "facility":
                 iconSrc = "assets/img/misc-icons/facility-under-construction-sign.png";
-                title = this.dataId === "excavated" ? "Excavation" : DataHelper.baseFacilities[this.dataId].name;
+                title = this.dataId === "excavated" ? "Excavation" : `<in-app-link to=${this.dataId}>${DataHelper.baseFacilities[this.dataId].name}</in-app-link>`;
                 break;
             case "mission":
                 iconSrc = "assets/img/misc-icons/tactical-layer-icon.png";
@@ -74,7 +91,7 @@ class TimelineItem extends HTMLElement {
                 break;
             case "research":
                 iconSrc = "assets/img/misc-icons/research.png";
-                title = DataHelper.technologies[this.dataId].name;
+                title = `<in-app-link to=${this.dataId}>${DataHelper.technologies[this.dataId].name}</in-app-link>`;
                 break;
         }
 
@@ -107,6 +124,19 @@ class TimelineItem extends HTMLElement {
 
     set dataId(id) {
         this.setAttribute("dataId", id);
+    }
+
+    get dateHasPassed() {
+        return this.hasAttribute("dateHasPassed");
+    }
+
+    set dateHasPassed(hasPassed) {
+        if (hasPassed) {
+            this.setAttribute("dateHasPassed", "");
+        }
+        else {
+            this.removeAttribute("dateHasPassed");
+        }
     }
 
     get daysPassed() {

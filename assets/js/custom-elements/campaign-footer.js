@@ -1,6 +1,5 @@
 import * as AppEvents from "../app-events.js";
 import * as DataHelper from "../data-helper.js";
-import * as Modal from "../modal.js";
 import PageManager from "../page-manager.js";
 import * as Settings from "../settings.js";
 import * as Templates from "../templates.js";

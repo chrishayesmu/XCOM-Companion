@@ -270,6 +270,13 @@ function formatCampaignDate(date) {
     return `${day} ${month}, ${year}`;
 }
 
+function formatCampaignDateAsMonthAndYear(date) {
+    const month = months[date.getMonth()];
+    const year = date.getFullYear();
+
+    return `${month} ${year}`;
+}
+
 function getCampaignStartDate() {
     return new Date("2016-03-01T00:00:00");
 }
@@ -376,6 +383,7 @@ export {
         daysPassedByDate,
         equals,
         formatCampaignDate,
+        formatCampaignDateAsMonthAndYear,
         getCampaignStartDate,
         join,
         minResearchByDate,
