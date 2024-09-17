@@ -33,6 +33,11 @@
         "site_recon": {
             "name": "Site Recon",
             "description": "TBD"
+        },
+        "exalt_first_operation": {
+            "name": "EXALT's first operation",
+            "description": "TBD",
+            "requires_exalt": true
         }
     }
 }
