@@ -1,11 +1,8 @@
 import * as AppEvents from "../app-events.js";
 import * as DataHelper from "../data-helper.js";
 import * as Modal from "../modal.js";
-import PageManager from "../page-manager.js";
 import * as Settings from "../settings.js";
 import * as Utils from "../utils.js";
-
-import TechDetailsPage from "../page-controllers/tech-details-page.js";
 
 const relevantCampaignProperties = [ "allData", "daysPassed", "facilityQueue", "satelliteQueue" ];
 
@@ -17,7 +14,6 @@ class ResearchProject extends HTMLElement {
     // DOM elements
     #addToQueueButton;
     #completeLabel;
-    #goToResearchButton;
     #moveDownInQueueButton;
     #moveUpInQueueButton;
     #projectDates;
@@ -49,9 +45,15 @@ class ResearchProject extends HTMLElement {
     }
 
     _createInitialDom() {
-        const cssLink = document.createElement("link");
+        let cssLink = document.createElement("link");
         cssLink.rel = "stylesheet";
         cssLink.href = "assets/css/custom-elements/research-project-internal.css";
+
+        this.#shadowRoot.prepend(cssLink);
+
+        cssLink = document.createElement("link");
+        cssLink.rel = "stylesheet";
+        cssLink.href = "assets/css/nativize.css";
 
         this.#shadowRoot.prepend(cssLink);
 
@@ -90,15 +92,6 @@ class ResearchProject extends HTMLElement {
         this.#addToQueueButton.classList.add("interactive");
         this.#addToQueueButton.addEventListener("click", this._onAddToQueueClicked.bind(this));
         labelContainer.append(this.#addToQueueButton);
-
-        // Go to research
-        this.#goToResearchButton = document.createElement("div");
-        this.#goToResearchButton.id = "project-go-to-research-button";
-        this.#goToResearchButton.title = "Go to research page";
-        this.#goToResearchButton.classList.add("button-label");
-        this.#goToResearchButton.classList.add("interactive");
-        this.#goToResearchButton.addEventListener("click", this._onGoToResearchClicked.bind(this));
-        labelContainer.append(this.#goToResearchButton);
 
         // Move up in queue
         this.#moveUpInQueueButton = document.createElement("div");
@@ -168,7 +161,7 @@ class ResearchProject extends HTMLElement {
             researchTime = Math.max(researchTime, 0);
         }
 
-        this.#projectName.textContent = research.name;
+        this.#projectName.innerHTML = `<in-app-link to="${this.researchId}">${research.name}</in-app-link>`;
         this.#projectTime.textContent = Math.roundTo(researchTime, 1) + (researchTime === 1 ? " day": " days");
 
         if (this.#activeCampaign.isResearchComplete(this.researchId, this.#activeCampaign.daysPassed)) {
@@ -259,10 +252,6 @@ class ResearchProject extends HTMLElement {
             const event = new CustomEvent("addedToQueue");
             this.dispatchEvent(event);
         }
-    }
-
-    async _onGoToResearchClicked() {
-        PageManager.instance.loadPage(TechDetailsPage.pageId, { techId: this.researchId });
     }
 
     async _onRemoveFromQueueClicked() {

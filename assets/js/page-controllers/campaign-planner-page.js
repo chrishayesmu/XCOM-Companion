@@ -415,11 +415,11 @@ class CampaignPlannerPage extends AppPage {
             }
         }
 
+        events.push({ dataId: "site_recon", eventType: "mission", timelineEvent: "likelyThisMonth", daysPassed: siteReconDaysPassed });
+
         if (this.#activeCampaign.exaltEnabled) {
             events.push({ dataId: "exalt_first_operation", eventType: "mission", timelineEvent: "certainThisMonth", daysPassed: 61 });
         }
-
-        events.push({ dataId: "site_recon", eventType: "mission", timelineEvent: "likelyThisMonth", daysPassed: siteReconDaysPassed });
 
         if (this.#activeCampaign.slingshotEnabled) {
             events.push({ dataId: "friends_in_low_places", eventType: "mission", timelineEvent: "instant", daysPassed: 65 });
