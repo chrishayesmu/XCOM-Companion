@@ -252,16 +252,16 @@ class ResearchProject extends HTMLElement {
         const research = DataHelper.technologies[this.researchId];
 
         if (research.leadsTo) {
-            let dependentResearchQueued = false;
+            let numDependentResearch = 0;
 
             for (const downstreamTech of Object.keys(research.leadsTo)) {
                 if (this.#activeCampaign.getPositionInResearchQueue(downstreamTech) >= 0) {
-                    dependentResearchQueued = true;
+                    numDependentResearch++;
                 }
             }
 
-            if (dependentResearchQueued) {
-                const confirmed = await Modal.confirm("This will cancel any research depending on " + research.name + ". Are you sure you want to cancel?", "Dependent Research Conflict", "Yes, Remove", "No, Keep");
+            if (numDependentResearch > 0) {
+                const confirmed = await Modal.confirm("This will cancel " + numDependentResearch + " techs depending on " + research.name + ". Are you sure you want to cancel?", "Dependent Research Conflict", "Yes, Remove", "No, Keep");
 
                 if (!confirmed) {
                     return;

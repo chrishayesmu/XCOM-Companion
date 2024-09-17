@@ -105,6 +105,11 @@
     width: 100%;
 }
 
+#campaign-planner-page #campaign-planner-active-view-container #campaign-planner-facilities-view #facility-controls {
+    font-size: 1.2em;
+    margin-top: 10px;
+}
+
 /* Styles specific to research view */
 
 #campaign-planner-page #campaign-planner-active-view-container #campaign-planner-research-view {

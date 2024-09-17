@@ -531,7 +531,6 @@ class XComCampaign {
     }
 
     getStaff(daysPassed) {
-
         // Estimate staff gained from council requests using quadratic regressions calculated from latest Francecom numbers
         let engineersGained = 0.0004 * daysPassed * daysPassed + 0.1429 * daysPassed;
         let scientistsGained = .00005 * daysPassed * daysPassed + 0.2458 * daysPassed;

@@ -15,6 +15,9 @@ class CampaignPlannerPage extends AppPage {
     #activeCampaign = null;
     #currentView = null;
 
+    // Facility view variables
+    #showPlannedProjectsCheckbox = null;
+
     // Research view variables
     #projectElements = [];
     #researchList = null;
@@ -167,8 +170,13 @@ class CampaignPlannerPage extends AppPage {
 
     async _loadFacilitiesView() {
         const template = await Templates.instantiateTemplate("assets/html/templates/pages/campaign-planner-page.html", "template-campaign-planner-facilities-view");
+        const campaignDisplaySettings = await Settings.getCampaignDisplaySettings();
+
+        this.#showPlannedProjectsCheckbox = template.querySelector("#show-planned-projects");
+        this.#showPlannedProjectsCheckbox.checked = campaignDisplaySettings.facilities.showPlannedProjects;
 
         template.querySelector("facility-planner").addEventListener("facilityChanged", this._onFacilityChanged.bind(this));
+        this.#showPlannedProjectsCheckbox.addEventListener("click", this._onFacilityShowPlannedProjectsChanged.bind(this));
 
         this._populateFacilitiesData(template);
 
@@ -177,6 +185,13 @@ class CampaignPlannerPage extends AppPage {
 
     async _onFacilityChanged() {
         this._populateFacilitiesData(document);
+    }
+
+    async _onFacilityShowPlannedProjectsChanged() {
+        const displaySettings = await Settings.getCampaignDisplaySettings();
+
+        displaySettings.facilities.showPlannedProjects = this.#showPlannedProjectsCheckbox.checked;
+        await Settings.setCampaignDisplaySettings(displaySettings);
     }
 
     _populateFacilitiesData(pageContainer) {
@@ -341,7 +356,7 @@ class CampaignPlannerPage extends AppPage {
 
         // Items (TODO)
 
-        // Council/DLC missions (TODO)
+        // Council/DLC missions
         let siteReconDaysPassed = 31;
         if (this.#activeCampaign.progenyEnabled) {
             siteReconDaysPassed = 61;
@@ -390,6 +405,19 @@ class CampaignPlannerPage extends AppPage {
             events.push({ dataId: "gangplank", eventType: "mission", timelineEvent: "instant", daysPassed: 122 });
         }
 
+        const eventTypeToInt = function(eventType) {
+            switch (eventType) {
+                case "mission":
+                    return 3;
+                case "research":
+                    return 2;
+                case "facility":
+                    return 1;
+                default:
+                    return 0;
+            }
+        };
+
         events.sort((e1, e2) => {
             if (e1.daysPassed !== e2.daysPassed) {
                 return e1.daysPassed - e2.daysPassed;
@@ -406,9 +434,8 @@ class CampaignPlannerPage extends AppPage {
                 }
             }
 
-            // TODO: missions before research before facilities
-
-            return 0;
+            // Missions before research before facilities
+            return eventTypeToInt(e1.eventType) - eventTypeToInt(e2.eventType);
         });
 
         return events;

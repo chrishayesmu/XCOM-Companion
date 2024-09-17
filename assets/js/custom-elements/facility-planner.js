@@ -19,11 +19,12 @@ class FacilityPlanner extends HTMLElement {
         Templates.instantiateTemplate("assets/html/templates/custom-elements/facility-planner.html", "template-facility-planner").then(template => {
             this.appendChild(template);
 
-            Settings.getCurrentCampaign().then(campaign => {
+            Settings.getCurrentCampaign().then(async campaign => {
                 this.#activeCampaign = campaign;
-                this._loadFacilitiesFromCampaign();
+                await this._loadFacilitiesFromCampaign();
 
                 AppEvents.registerEventListener("campaignDataChanged", this._loadFacilitiesFromCampaign.bind(this));
+                AppEvents.registerEventListener("campaignDisplaySettingsChanged", this._loadFacilitiesFromCampaign.bind(this));
             });
         });
     }
@@ -41,7 +42,7 @@ class FacilityPlanner extends HTMLElement {
         }
     }
 
-    _loadFacilitiesFromCampaign() {
+    async _loadFacilitiesFromCampaign() {
         const liftStatuses = [
             null, // irrelevant, row 0 always has a lift
             this.#activeCampaign.getFacilityStatus(1, 3, this.#activeCampaign.daysPassed),
@@ -56,19 +57,24 @@ class FacilityPlanner extends HTMLElement {
             liftStatuses[3].id === "facility_access_lift" && liftStatuses[3].status === "complete"
         ];
 
+        const campaignDisplaySettings = await Settings.getCampaignDisplaySettings();
+
         for (var i = 0; i < 4; i++) {
             for (var j = 0; j < 7; j++) {
                 let facilityStatus = this.#activeCampaign.getFacilityStatus(i, j, this.#activeCampaign.daysPassed);
                 const icon = this.querySelector(`.facility-icon[data-row="${i}"][data-column="${j}"]`);
                 const spaceIsReachable = this.#activeCampaign.isFacilitySpaceReachable(i, j, this.#activeCampaign.daysPassed);
 
-                // For an unexcavated or empty space, we want to look into the future and show what's planned
-                if (facilityStatus.id === "unexcavated" || (facilityStatus.id === "excavated" && facilityStatus.status === "complete")) {
-                    const futureFacility = this.#activeCampaign.getFacilityStatus(i, j, 100000);
-                    futureFacility.status = "future";
+                if (campaignDisplaySettings.facilities.showPlannedProjects) {
+                    // For an unexcavated or empty space, we want to look into the future and show what's planned
+                    if (facilityStatus.id === "unexcavated" || (facilityStatus.id === "excavated" && facilityStatus.status === "complete")) {
+                        // TODO: it might be better to find the excavation event and show that
+                        const futureFacility = this.#activeCampaign.getFacilityStatus(i, j, 100000);
+                        futureFacility.status = "future";
 
-                    if (futureFacility.id !== facilityStatus.id) {
-                        facilityStatus = futureFacility;
+                        if (futureFacility.id !== facilityStatus.id) {
+                            facilityStatus = futureFacility;
+                        }
                     }
                 }
 
@@ -127,7 +133,7 @@ class FacilityPlanner extends HTMLElement {
         if (event.target.hasAttribute("can-excavate")) {
             this.#activeCampaign.enqueueExcavation(targetRow, targetColumn, this.#activeCampaign.daysPassed);
 
-            this._loadFacilitiesFromCampaign();
+            await this._loadFacilitiesFromCampaign();
 
             const customEvent = new CustomEvent("facilityChanged");
             this.dispatchEvent(customEvent);
@@ -153,7 +159,7 @@ class FacilityPlanner extends HTMLElement {
 
             this.#activeCampaign.cancelConstruction(queueIndex);
 
-            this._loadFacilitiesFromCampaign();
+            await this._loadFacilitiesFromCampaign();
 
             const customEvent = new CustomEvent("facilityChanged");
             this.dispatchEvent(customEvent);
@@ -308,7 +314,7 @@ class FacilityPlanner extends HTMLElement {
         pageContainer.querySelector("#build-end-date").textContent = Utils.formatCampaignDate(endDate);
     }
 
-    _queueBuildingSelectedFacility(pageContainer, row, column) {
+    async _queueBuildingSelectedFacility(pageContainer, row, column) {
         const selectedFacilityId = pageContainer.querySelector("#facility-to-build").selectedItem.dataset.facilityId;
         const isRushJob = pageContainer.querySelector("#build-quickly").checked;
         const startDateElem = pageContainer.querySelector("#build-start-date");
@@ -319,7 +325,7 @@ class FacilityPlanner extends HTMLElement {
 
         Modal.close();
 
-        this._loadFacilitiesFromCampaign();
+        await this._loadFacilitiesFromCampaign();
 
         const event = new CustomEvent("facilityChanged");
         this.dispatchEvent(event);

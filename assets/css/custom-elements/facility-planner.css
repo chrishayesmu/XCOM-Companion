@@ -223,7 +223,7 @@ facility-planner {
 
 /* Media queries for reducing text size automatically */
 
-@media (max-width: 1200px) {
+@media (max-width: 1280px) {
     .facility-planner-container .facility-icon:after,
     .facility-planner-container .facility-icon:before,
     .facility-planner-container .facility-icon[needs-access-lift]:not([data-days-remaining]):not([data-start-date]):hover::after,
@@ -233,7 +233,7 @@ facility-planner {
     }
 }
 
-@media (min-width: 1201px) and (max-width: 1300px) {
+@media (min-width: 1281px) and (max-width: 1300px) {
     .facility-planner-container .facility-icon:after,
     .facility-planner-container .facility-icon:before,
     .facility-planner-container .facility-icon[needs-access-lift]:not([data-days-remaining]):not([data-start-date]):hover::after,
@@ -243,7 +243,7 @@ facility-planner {
     }
 }
 
-@media (min-width: 1301px) and (max-width: 1400px) {
+@media (min-width: 1301px) and (max-width: 1440px) {
     .facility-planner-container .facility-icon:after,
     .facility-planner-container .facility-icon:before,
     .facility-planner-container .facility-icon[needs-access-lift]:not([data-days-remaining]):not([data-start-date]):hover::after,
@@ -253,7 +253,7 @@ facility-planner {
     }
 }
 
-@media (min-width: 1400px) and (max-width: 1600px) {
+@media (min-width: 1441px) and (max-width: 1660px) {
     .facility-planner-container .facility-icon:after,
     .facility-planner-container .facility-icon:before,
     .facility-planner-container .facility-icon[needs-access-lift]:not([data-days-remaining]):not([data-start-date]):hover::after,

@@ -98,6 +98,28 @@ async function setCurrentCampaign(campaignId) {
     return response;
 }
 
+// #region Campaign display settings
+
+const defaultCampaignDisplaySettings = {
+    facilities: {
+        showPlannedProjects: true
+    }
+};
+
+async function getCampaignDisplaySettings() {
+    const current = await get("campaign.display");
+
+    return current ?? defaultCampaignDisplaySettings;
+}
+
+async function setCampaignDisplaySettings(newSettings) {
+    const response = set("campaign.display", newSettings);
+
+    AppEvents.fireEvent("campaignDisplaySettingsChanged");
+    return response;
+}
+
+// #endregion
 
 
 /**** Soldier loadouts ****/
@@ -143,6 +165,10 @@ export { get,
          getCurrentCampaign,
          getCurrentCampaignId,
          setCurrentCampaign,
+
+         // Campaign display
+         getCampaignDisplaySettings,
+         setCampaignDisplaySettings,
 
          // Loadouts
          deleteSoldierLoadout,

@@ -11,11 +11,6 @@
 
         <div id="campaign-planner-active-view-container">
         </div>
-
-        <!--
-        <button id="new-campaign" class="xcom">New Campaign</button>
-        <button id="open-campaign" class="xcom">Open Campaign</button>
-        -->
     </div>
 </template>
 
@@ -29,6 +24,9 @@
             <div>Power: <span id="power-container"> <span id="power-used"></span>/<span id="power-available"></span></span></div>
         </div>
         <facility-planner id="campaign-facilities-planner"></facility-planner>
+        <div id="facility-controls">
+            <label for="show-planned-projects">Show planned projects</label><input id="show-planned-projects" type="checkbox" />
+        </div>
     </div>
 </template>
 
