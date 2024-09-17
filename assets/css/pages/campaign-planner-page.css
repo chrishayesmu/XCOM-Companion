@@ -45,7 +45,6 @@
 #campaign-planner-page #campaign-planner-view-selector #change-campaign {
     display: flex;
     align-items: center;
-    flex-grow: 1;
 
     font-size: 1.1em;
     height: 100%;

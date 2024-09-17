@@ -1,8 +1,11 @@
 import * as AppEvents from "../app-events.js";
 import * as DataHelper from "../data-helper.js";
 import * as Modal from "../modal.js";
+import PageManager from "../page-manager.js";
 import * as Settings from "../settings.js";
 import * as Utils from "../utils.js";
+
+import TechDetailsPage from "../page-controllers/tech-details-page.js";
 
 const relevantCampaignProperties = [ "allData", "daysPassed", "facilityQueue", "satelliteQueue" ];
 
@@ -14,6 +17,7 @@ class ResearchProject extends HTMLElement {
     // DOM elements
     #addToQueueButton;
     #completeLabel;
+    #goToResearchButton;
     #moveDownInQueueButton;
     #moveUpInQueueButton;
     #projectDates;
@@ -79,6 +83,23 @@ class ResearchProject extends HTMLElement {
         this.#queuePosition.classList.add("button-label");
         labelContainer.append(this.#queuePosition);
 
+        // Add to queue
+        this.#addToQueueButton = document.createElement("div");
+        this.#addToQueueButton.id = "project-add-to-queue-button";
+        this.#addToQueueButton.classList.add("button-label");
+        this.#addToQueueButton.classList.add("interactive");
+        this.#addToQueueButton.addEventListener("click", this._onAddToQueueClicked.bind(this));
+        labelContainer.append(this.#addToQueueButton);
+
+        // Go to research
+        this.#goToResearchButton = document.createElement("div");
+        this.#goToResearchButton.id = "project-go-to-research-button";
+        this.#goToResearchButton.title = "Go to research page";
+        this.#goToResearchButton.classList.add("button-label");
+        this.#goToResearchButton.classList.add("interactive");
+        this.#goToResearchButton.addEventListener("click", this._onGoToResearchClicked.bind(this));
+        labelContainer.append(this.#goToResearchButton);
+
         // Move up in queue
         this.#moveUpInQueueButton = document.createElement("div");
         this.#moveUpInQueueButton.id = "project-move-up-in-queue-button";
@@ -108,16 +129,9 @@ class ResearchProject extends HTMLElement {
         this.#removeFromQueueButton.id = "project-remove-from-queue-button";
         this.#removeFromQueueButton.classList.add("button-label");
         this.#removeFromQueueButton.classList.add("interactive");
-        this.#removeFromQueueButton.textContent = "Remove From Queue";
+        this.#removeFromQueueButton.textContent = "Remove";
         this.#removeFromQueueButton.addEventListener("click", this._onRemoveFromQueueClicked.bind(this));
         labelContainer.append(this.#removeFromQueueButton);
-
-        this.#addToQueueButton = document.createElement("div");
-        this.#addToQueueButton.id = "project-add-to-queue-button";
-        this.#addToQueueButton.classList.add("button-label");
-        this.#addToQueueButton.classList.add("interactive");
-        this.#addToQueueButton.addEventListener("click", this._onAddToQueueClicked.bind(this));
-        labelContainer.append(this.#addToQueueButton);
 
         // Force flex break here to a new row
         const hr = document.createElement("hr");
@@ -245,6 +259,10 @@ class ResearchProject extends HTMLElement {
             const event = new CustomEvent("addedToQueue");
             this.dispatchEvent(event);
         }
+    }
+
+    async _onGoToResearchClicked() {
+        PageManager.instance.loadPage(TechDetailsPage.pageId, { techId: this.researchId });
     }
 
     async _onRemoveFromQueueClicked() {

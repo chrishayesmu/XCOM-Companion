@@ -93,9 +93,11 @@
     top: 3px;
 }
 
-:host #project-mark-complete-button::before {
-    background-image: url("../../img/ui-icons/checkmark.png");
-    left: 0;
+:host #project-go-to-research-button::before {
+    content: "\1F50D\FE0E"; /* left-pointing magnifying glass + variant selector for text style */
+    left: 1px;
+    top: 1px;
+    width: 10px;
 }
 
 :host #project-move-down-in-queue-button::before {

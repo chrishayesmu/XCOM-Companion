@@ -329,7 +329,7 @@ class XComCampaign {
         let startingDaysPassed = 0;
 
         if (this.#researchQueue.length > 0) {
-            // TODO: change all of this.#to work with hours
+            // TODO: change all of this to work with hours
             const lastQueueItem = this.#researchQueue.last;
 
             startingDaysPassed = lastQueueItem.endingDaysPassed;

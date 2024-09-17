@@ -332,6 +332,8 @@ class PageManager {
     }
 
     async _loadPageFromHistory(historyIndex) {
+        const previousPageId = this.#currentPage ? this.#currentPage.pageId : "";
+
         this.hideTooltip();
         this._unloadCurrentPage(true);
 
@@ -343,6 +345,11 @@ class PageManager {
 
         this.#currentHistoryIndex = historyIndex;
         this._updateHistoryButtons();
+
+        AppEvents.fireEvent("pageChanged", {
+            previousPageId: previousPageId,
+            currentPageId: historyState.pageId
+        });
     }
 
     async _loadPageDocument(pageDocument) {
