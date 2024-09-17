@@ -29,7 +29,7 @@ class CampaignPlannerPage extends AppPage {
     async load(data) {
         const template = await Templates.instantiateTemplate("assets/html/templates/pages/campaign-planner-page.html", "template-campaign-planner-page");
 
-        this._loadCampaign(template);
+        this._loadCampaign(template, data.currentView);
 
         const viewSelectorItems = [...template.querySelectorAll(".view-selector-item")];
         viewSelectorItems.forEach(item => item.addEventListener("click", this._onViewSelectorItemClicked.bind(this)));
@@ -37,7 +37,7 @@ class CampaignPlannerPage extends AppPage {
         template.querySelector("#change-campaign").addEventListener("click", this._onChangeCampaignClicked.bind(this));
 
         const onActiveCampaignChanged = () => {
-            this._loadCampaign(document);
+            this._loadCampaign(document, this.#currentView);
         };
 
         const onCampaignDataChanged = data => {
@@ -66,11 +66,15 @@ class CampaignPlannerPage extends AppPage {
         };
     }
 
-    async _loadCampaign(pageContainer) {
+    makeHistoryState() {
+        return new PageHistoryState(this, { currentView: this.#currentView });
+    }
+
+    async _loadCampaign(pageContainer, viewToLoad) {
         this.#activeCampaign = await Settings.getCurrentCampaign();
 
         if (this.#activeCampaign) {
-            return this._loadView("research", pageContainer);
+            return this._loadView(viewToLoad ?? "research", pageContainer);
         }
         else {
             const viewContainer = pageContainer.querySelector("#campaign-planner-active-view-container");
@@ -499,7 +503,7 @@ class CampaignPlannerPage extends AppPage {
 
         await Settings.setCurrentCampaign(campaignId);
 
-        this._loadCampaign(document);
+        this._loadCampaign(document, this.#currentView);
         Modal.close();
     }
 
