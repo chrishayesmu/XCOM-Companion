@@ -190,6 +190,16 @@ class XComCampaign {
         this._fireChangeEvent("facilityQueue");
     }
 
+    canEnqueueExcavation(row, column) {
+        return this.whenWillSpaceBeExcavated(row, column) < 0;
+    }
+
+    canEnqueueFacility(facilityId, row, column, daysPassed) {
+        const earliestBuildDaysPassed = this.earliestFacilityBuildDateAsDaysPassed(facilityId, row, column);
+
+        return earliestBuildDaysPassed >= 0 && earliestBuildDaysPassed <= daysPassed;
+    }
+
     canResearch(researchId) {
         const research = DataHelper.technologies[researchId];
 
@@ -228,8 +238,8 @@ class XComCampaign {
     }
 
     earliestFacilityBuildDateAsDaysPassed(facilityId, row, column) {
-        const facility = DataHelper.baseFacilities[facilityId];
-        const prereq = facility.research_prerequisite;
+        const facility = facilityId ? DataHelper.baseFacilities[facilityId] : undefined;
+        const prereq = facility ? facility.research_prerequisite : undefined;
 
         let accessLiftDaysPassed = 0;
         let excavationDaysPassed = 0;
@@ -573,7 +583,7 @@ class XComCampaign {
             money: 0
         };
 
-        // TODO: centralize this.#so we can show it on the satellite screen
+        // TODO: centralize this so we can show it on the satellite screen
         let coveredIncomeMultiplier = 0, uncoveredIncomeMultiplier = 0;
 
         switch (this.#difficulty) {

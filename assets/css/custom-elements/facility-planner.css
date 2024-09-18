@@ -49,6 +49,47 @@ facility-planner {
     width: 100%;
 }
 
+.facility-planner-container .facility-icon[blocked-by-future-project]:hover {
+    border: 2px solid red;
+    z-index: 1000;
+}
+
+.facility-planner-container .facility-icon[blocked-by-future-project]:hover::after {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+
+    background-color: rgba(0, 0, 0, 0.75);
+
+    content: "A future project is planned here.";
+
+    color: red;
+    font-size: 1.35em;
+    font-weight: bold;
+    line-height: 1.3;
+    padding: 4px;
+
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+}
+
+.facility-planner-container .facility-icon[blocked-by-future-project]:hover::before {
+    background-image: url("../../img/misc-icons/warning_icon_red.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+
+    content: "";
+    filter: opacity(0.8);
+
+    height: 100%;
+    width: 100%;
+}
+
 .facility-planner-container .facility-icon[can-build]:hover {
     border: 1px solid var(--color);
     z-index: 1000;

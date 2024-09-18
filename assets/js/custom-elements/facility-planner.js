@@ -81,6 +81,7 @@ class FacilityPlanner extends HTMLElement {
                 icon.setAttribute("data-facility-id", facilityStatus.id);
 
                 // Clear out any previously set attributes
+                icon.removeAttribute("blocked-by-future-project");
                 icon.removeAttribute("can-build");
                 icon.removeAttribute("can-excavate");
                 icon.removeAttribute("data-days-remaining");
@@ -115,10 +116,21 @@ class FacilityPlanner extends HTMLElement {
                     icon.setAttribute("neighbor-unexcavated", "");
                 }
                 else if (facilityStatus.id === "excavated" && facilityStatus.status === "complete") {
-                    icon.setAttribute("can-build", "");
+                    if (this.#activeCampaign.canEnqueueFacility("", i, j, this.#activeCampaign.daysPassed)) {
+                        icon.setAttribute("can-build", "");
+                    }
+                    else {
+                        icon.setAttribute("blocked-by-future-project", "");
+                    }
                 }
                 else if (facilityStatus.id === "unexcavated") {
-                    icon.setAttribute("can-excavate", "");
+                    if (this.#activeCampaign.canEnqueueExcavation(i, j)) {
+                        icon.setAttribute("can-excavate", "");
+                    }
+                    else {
+                        icon.setAttribute("blocked-by-future-project", "");
+                    }
+
                     icon.setAttribute("excavate-cost", this.#activeCampaign.getExcavationCost(i));
                 }
             }
