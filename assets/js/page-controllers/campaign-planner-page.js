@@ -80,11 +80,15 @@ class CampaignPlannerPage extends AppPage {
             const viewContainer = pageContainer.querySelector("#campaign-planner-active-view-container");
 
             if (!viewContainer.querySelector("#create-or-load-campaign-warning")) {
+                viewContainer.innerHTML = "";
                 Utils.appendElement(viewContainer, "div", "You must have an active campaign to use the Campaign Planner tool.<br /><br />Click the \"Change Campaign\" link in the top left.", { attributes: { id: "create-or-load-campaign-warning" }});
             }
 
-            // Present the modal to choose or create a campaign
-            this._onChangeCampaignClicked();
+            // Present the modal to choose or create a campaign. Check if there's already a modal open first, because if
+            // the user deletes the last campaign in their list, it'll lead to trying to open the same modal multiple times.
+            if (!Modal.isAnyModalOpen()) {
+                this._onChangeCampaignClicked();
+            }
         }
     }
 
@@ -116,9 +120,13 @@ class CampaignPlannerPage extends AppPage {
     async _onChangeCampaignClicked() {
         const template = await Templates.instantiateTemplate("assets/html/templates/pages/campaign-planner-page.html", "template-campaign-planner-settings-modal");
 
-        template.querySelector("#delete-campaign").addEventListener("click", this._onDeleteCampaignClicked.bind(this));
-        template.querySelector("#load-campaign").addEventListener("click", this._onLoadCampaignClicked.bind(this));
-        template.querySelector("#new-campaign").addEventListener("click", this._onNewCampaignClicked.bind(this));
+        const deleteCampaignButton = template.querySelector("#delete-campaign");
+        const loadCampaignButton = template.querySelector("#load-campaign");
+        const newCampaignButton = template.querySelector("#new-campaign");
+
+        deleteCampaignButton.addEventListener("click", this._onDeleteCampaignClicked.bind(this));
+        loadCampaignButton.addEventListener("click", this._onLoadCampaignClicked.bind(this));
+        newCampaignButton.addEventListener("click", this._onNewCampaignClicked.bind(this));
 
         const allCampaigns = Object.values(await Settings.getAllCampaigns());
         allCampaigns.sort( (a, b) => a.name.localeCompare(b.name));
@@ -128,6 +136,12 @@ class CampaignPlannerPage extends AppPage {
 
         if (allCampaigns.length === 0) {
             campaignList.replaceWith("You do not have any campaigns saved. Please create a new one to continue.");
+
+            deleteCampaignButton.classList.add("disabled");
+            deleteCampaignButton.setAttribute("disabled", "");
+
+            loadCampaignButton.classList.add("disabled");
+            loadCampaignButton.setAttribute("disabled", "");
         }
         else {
             let selectedItem = null;
@@ -481,7 +495,7 @@ class CampaignPlannerPage extends AppPage {
         }
 
         await Settings.deleteCampaign(campaignList.selectedItem.dataset.campaignId);
-        PageManager.instance.loadPage(CampaignPlannerPage.pageId);
+        await this._onChangeCampaignClicked();
     }
 
     async _onLoadCampaignClicked() {
