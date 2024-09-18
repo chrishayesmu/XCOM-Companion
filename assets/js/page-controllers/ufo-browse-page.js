@@ -26,31 +26,29 @@ class UfoBrowsePage extends AppPage {
         return UfoBrowsePage.sizeToInt(sizeA) - UfoBrowsePage.sizeToInt(sizeB);
     }
 
-    ufoSizeCompareFN(ufoA, ufoB) {
-        return sizeCompareFn(ufoA.size, ufoB.size);
-    }
-
     async load(data) {
         const template = await Templates.instantiateTemplate("assets/html/templates/pages/ufo-browse-page.html", "template-ufo-browse-page");
         const container = template.querySelector("#ufo-browse-cats-container");
 
         const ufos = Object.values(DataHelper.ufos);
 
-        const ufo_groups = {};
+        const ufosBySize = {};
 
         for (let key in ufos) {
-            if (!ufo_groups[ufos[key].size]) {
-                ufo_groups[ufos[key].size] = [];
+            if (!ufosBySize[ufos[key].size]) {
+                ufosBySize[ufos[key].size] = [];
             }
-            ufo_groups[ufos[key].size].push(ufos[key]);
+
+            ufosBySize[ufos[key].size].push(ufos[key]);
         }
 
-        const sizes = Object.keys(ufo_groups);
+        const sizes = Object.keys(ufosBySize);
         sizes.sort(UfoBrowsePage.sizeCompareFn);
 
         for (let size in sizes) {
-            const detail_open = data.expandedIds && data.expandedIds.includes(sizes[size]);
-            container.appendChild(await this._createUfoCat(sizes[size], ufo_groups[sizes[size]], detail_open));
+            // Default categories to open unless they've been manually collapsed
+            const isCategoryOpen = !data.expandedCategories || data.expandedCategories.includes(sizes[size]);
+            container.appendChild(await this._createUfoCat(sizes[size], ufosBySize[sizes[size]], isCategoryOpen));
         }
 
         return {
@@ -62,14 +60,15 @@ class UfoBrowsePage extends AppPage {
         };
     }
 
-    async _createUfoCat(size, ufos, should_open) {
+    async _createUfoCat(size, ufos, shouldBeOpen) {
         const template = await Templates.instantiateTemplate("assets/html/templates/pages/ufo-browse-page.html", "template-ufo-browse-category");
 
         template.setAttribute("data-size", size);
-        if (should_open) {
+        template.querySelector("#ufo-size-name").textContent = Utils.capitalizeEachWord(size);
+
+        if (shouldBeOpen) {
             template.setAttribute("open", "");
         }
-        template.querySelector("#ufo-size-name").textContent = Utils.capitalizeEachWord(size);
 
         const container = template.querySelector("#ufo-browse-entries-container");
 
@@ -100,7 +99,7 @@ class UfoBrowsePage extends AppPage {
         const expandedDetails = document.querySelectorAll("#ufo-browse-cats-container details[open]");
         const ids = Array.prototype.map.call(expandedDetails, e => e.getAttribute("data-size"));
 
-        return new PageHistoryState(this, { expandedIds: ids });
+        return new PageHistoryState(this, { expandedCategories: ids });
     }
 }
 
