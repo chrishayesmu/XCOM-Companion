@@ -96,7 +96,7 @@ Disclaimer: None of these features are guaranteed to be added; they all depend o
 
 # Feedback, bug reports, feature requests
 
-The best way to contact me is by [creating an issue](https://github.com/chrishayesmu/XCOM-Companion/issues/new) on GitHub, but if you don't have a GitHub account, I can also be reached via Discord DM at SwfDelicious#4905.
+The best way to contact me is by [creating an issue](https://github.com/chrishayesmu/XCOM-Companion/issues/new) on GitHub, but if you don't have a GitHub account, I can also be reached via Discord DM at SwfDelicious.
 
 # FAQ
 
