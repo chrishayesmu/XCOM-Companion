@@ -84,7 +84,7 @@ class SoldierLoadoutSelectionPage extends AppPage {
 
         const loadout = {
             classId: classId,
-            equipment: soldierClass.defaultLoadout,
+            equipment: [...soldierClass.defaultLoadout],
             id: uuidv4(),
             name: "New Loadout",
             notes: "",
