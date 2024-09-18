@@ -61,7 +61,7 @@ class CampaignPlannerPage extends AppPage {
             body: template,
             title: {
                 icon: "assets/img/misc-icons/strategy-layer-icon.png",
-                text: "Campaign Planner"
+                text: "Campaign Planner (Beta)"
             }
         };
     }
