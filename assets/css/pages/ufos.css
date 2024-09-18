@@ -8,6 +8,12 @@
     justify-content: space-evenly;
 }
 
+#ufo-browse-cats-container summary {
+    font-size: 1.6em;
+    padding-bottom: 8px;
+    padding-left: 10px;
+}
+
 .ufo-browse-entry {
     display: flex;
     flex-flow: column nowrap;

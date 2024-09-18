@@ -301,7 +301,7 @@
             "base_armament": {
                 "double_plasma": 1
             },
-            "base_hp": 6000,
+            "base_hp": 3500,
             "base_alloy_value": 56,
             "armor_penetration": 15,
             "armor": 100,

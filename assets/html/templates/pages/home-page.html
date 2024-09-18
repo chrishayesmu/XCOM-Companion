@@ -19,17 +19,17 @@
             <h2>Changelog</h2>
             <div class="changelog-version">
                 <details>
-                    <summary>Version 0.8.0-beta</summary>
-                    <div>
-                        <b>Warning:</b> as with any beta software, there is no guarantee that this version is bug-free. Functionality not related to the Campaign Planner should be identical to the non-beta version,
-                        but it's always possible a bug has snuck in. This is also my first time publishing a beta build with this auto-update software; it's possible that you will have to manually install the next
-                        non-beta version before automatic updates work again.
-                    </div>
-                    <h3>Features</h3>
-                    <div>
-                        Includes a beta version of the <a data-page-on-click="campaign-planner-page">Campaign Planner</a> tool. The beta version includes the <b>Facilities</b> and <b>Research</b> planners.
-                    </div>
-                    <h3>Known issues</h3>
+                    <summary>Version 0.8.0 (release date TBD)</summary>
+                    <h3>Features and improvements</h3>
+                    <ul>
+                        <li>The <a data-page-on-click="ufo-browse-page">UFOs</a> page now groups UFOs by size, rather than being an alphabetical listing. Thank you to <a href="https://github.com/chrishayesmu/XCOM-Companion/pull/18">bountygiver</a> for implementing this feature, which was requested by <a href="https://github.com/chrishayesmu/XCOM-Companion/issues/16">TheaKersh</a>.</li>
+                        <li>Includes a beta version of the <a data-page-on-click="campaign-planner-page">Campaign Planner</a> tool. The beta version includes the <b>Facilities</b> and <b>Research</b> planners.</li>
+                    </ul>
+                    <h3>Bug fixes and corrections</h3>
+                    <ul>
+                        <li>Corrected Harvester UFOs: they only have 3500 health, not 6000.</li>
+                    </ul>
+                    <h3>Campaign Planner: known issues</h3>
                     <ul>
                         <li>Some of the UI elements don't play nice on resolutions less than 1700px wide.</li>
                         <li>When creating a campaign, you select its difficulty, starting country, and a few other options. Right now there's no way to view what you selected, so name your campaigns well.</li>
@@ -43,6 +43,22 @@
                         <li>The model for estimating your number of scientists is based on a pretty small dataset. It has proven accurate enough for the first months of the campaign,
                             but it isn't properly validated for later on yet.
                         </li>
+                    </ul>
+                </details>
+            </div>
+            <div class="changelog-version">
+                <details>
+                    <summary>Version 0.7.9 (October 25, 2021)</summary>
+                    <h3>Features and improvements</h3>
+                    <ul>
+                        <li>The page for Flashbang Grenades now mentions which psionic enemies are immune. (The same has not been added for Psi Grenades as I have not yet confirmed the list, but it likely matches regular Flashbangs.)</li>
+                    </ul>
+                    <h3>Bug fixes and corrections</h3>
+                    <ul>
+                        <li>UFO weapon stats were showing armor penetration at 20% of their actual value, making most weapons appear much less deadly against Firestorms than their actual values. This also updates the time-to-kill and DPS values in the Air Combat page for those UFOs.</li>
+                        <li>Fixed a bug on the enemy display page's point-in-time view where enemies with a sufficiently high damage stat would cause the stat box to disappear.</li>
+                        <li>Corrected all dates related to Alien Research, which were off by one day. (The aliens begin the campaign with 1 research, rather than 0.)</li>
+                        <li>Corrected some navigator and leader names and levels for Drones, Outsiders, EXALT units, and Muton Elites.</li>
                     </ul>
                 </details>
             </div>
