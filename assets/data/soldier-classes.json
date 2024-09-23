@@ -398,6 +398,9 @@
                     "mobility": 1,
                     "will": 4
                 },
+                "perk_field_medic": {
+                    "mobility": 1
+                },
                 "perk_rapid_reaction": {
                     "aim": 3
                 },
