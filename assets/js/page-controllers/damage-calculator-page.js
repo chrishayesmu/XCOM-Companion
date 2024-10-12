@@ -281,6 +281,15 @@ class DamageCalculatorPage extends AppPage {
             }.bind(this));
         }.bind(this);
 
+        
+
+        template.querySelectorAll(".cover-option").forEach((c) => {
+            c.addEventListener("click", function () {
+                c.querySelector("input").checked = true;
+                recalculateForm();
+            });
+        });
+
         weapons.sort(([nameA, a], [nameB, b]) => {
             if (a.type_specific_data.weapon_tier && b.type_specific_data.weapon_tier) {
                 return a.type_specific_data.weapon_tier.localeCompare(b.type_specific_data.weapon_tier);
