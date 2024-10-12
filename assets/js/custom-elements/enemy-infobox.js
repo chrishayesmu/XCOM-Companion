@@ -228,9 +228,12 @@ class EnemyInfobox extends HTMLElement {
 
         const damageRangeElement = template.querySelector("#enemy-infobox-damage-range");
         damageRangeElement.textContent = `${damageRange.normal_min} - ${damageRange.normal_max}`;
+        damageRangeElement.setAttribute("data-pagearg-damage", stats.damage);
 
         const critRangeElement = template.querySelector("#enemy-infobox-crit-range");
         critRangeElement.textContent = `${damageRange.crit_min} - ${damageRange.crit_max}`;
+        critRangeElement.setAttribute("data-pagearg-damage", stats.damage);
+        critRangeElement.setAttribute("data-pagearg-crit", 100);
 
         // Hopefully this can be removed one day if I can figure out how much damage Mayhem gives to floaters and such
         if (enemyHasMayhem) {

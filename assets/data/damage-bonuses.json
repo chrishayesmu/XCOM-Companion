@@ -1,0 +1,505 @@
+{
+    "mwd_bonuses": [
+        {
+            "name": "Ranger",
+            "flat": 1,
+            "category": "perk",
+            "icon": "assets/img/perk-icons/ranger.png",
+            "requires": {
+                "type": [
+                    "loadout_primary",
+                    "loadout_secondary"
+                ]
+            }
+        },
+        {
+            "name": "Vital-Point Targeting",
+            "flat": 2,
+            "category": "perk",
+            "icon": "assets/img/perk-icons/vital_point_targeting.png",
+            "requires": {
+                "type": ["loadout_primary"]
+            }
+        },
+        {
+            "name": "Vital-Point Targeting (Sidearms)",
+            "flat": 1,
+            "category": "perk",
+            "icon": "assets/img/perk-icons/vital_point_targeting.png",
+            "requires": {
+                "category": [
+                    "machine_pistol",
+                    "pistol"
+                ]
+            }
+        },
+        {
+            "name": "Mayhem (Explosives/SAW/LMG)",
+            "flat": 2,
+            "category": "perk",
+            "icon": "assets/img/perk-icons/mayhem.png",
+            "requires": {
+                "or": {
+                    "category": [
+                        "saw",
+                        "lmg"
+                    ],
+                    "type": ["loadout_equipment"]
+                }
+            }
+        },
+        {
+            "name": "Mayhem (Strike/Sniper Rifles)",
+            "flat": 4,
+            "category": "perk",
+            "icon": "assets/img/perk-icons/mayhem.png",
+            "requires": {
+                "category": [
+                    "marksman_rifle",
+                    "sniper_rifle"
+                ]
+            }
+        },
+        {
+            "name": "In The Zone (-1 per ITZ proc)",
+            "adjustable": true,
+            "category": "perk",
+            "max": 0,
+            "icon": "assets/img/perk-icons/in_the_zone.png"
+        },
+        {
+            "name": "Sapper (AP/HE)",
+            "flat": 1,
+            "category": "perk",
+            "icon": "assets/img/perk-icons/sapper.png",
+            "requires": {
+                "id": [
+                    "item_he_grenade",
+                    "item_ap_grenade"
+                ]
+            }
+        },
+        {
+            "name": "Sapper (Plasma)",
+            "flat": 2,
+            "category": "perk",
+            "requires": {
+                "id": [
+                    "item_alien_grenade"
+                ]
+            },
+            "icon": "assets/img/perk-icons/sapper.png"
+        },
+        {
+            "name": "Alien Grenades (AP Grenades Only)",
+            "flat": 2,
+            "category": "upgrade",
+            "requires": {
+                "id": [
+                    "item_ap_grenade"
+                ]
+            },
+            "icon": "assets/img/foundry-icons/alien_grenades.png"
+        },
+        {
+            "name": "Weapon Enchancements (Alloy-Jacketed Rounds/Enhanced Beam Optics/Plasma Stellerator)",
+            "flat": 1,
+            "category": "equipment",
+            "requires": {
+                "type": ["loadout_primary"]
+            },
+            "icon": "assets/img/foundry-icons/enhanced_ballistics.png"
+        },
+        {
+            "name": "Reflex Pistols",
+            "flat": 1,
+            "category": "upgrade",
+            "icon": "assets/img/foundry-icons/reflex_pistols.png",
+            "requires": {
+                "category": [
+                    "machine_pistol",
+                    "pistol"
+                ]
+            }
+        },
+        {
+            "name": "Enhanced Plasma",
+            "flat": 1,
+            "category": "upgrade",
+            "icon": "assets/img/foundry-icons/enhanced_plasma.png",
+            "requires": {
+                "weapon_tier": [
+                    "plasma"
+                 ]
+            }
+        },
+        {
+            "name": "Heavy Plasma Rifle (Steadied)",
+            "flat": 1,
+            "category": "weapon",
+            "icon": "assets/img/item-icons/heavy_plasma_rifle.png",
+            "requires": {
+                "id": [
+                    "item_heavy_plasma_rifle"
+                 ]
+            }
+        },
+        {
+            "name": "Plasma Dragon (Flying Targets Only)",
+            "flat": 1,
+            "category": "weapon",
+            "icon": "assets/img/item-icons/plasma_dragon.png",
+            "requires": {
+                "id": [
+                    "item_plasma_dragon"
+                 ]
+            }
+        },
+        {
+            "name": "Particle Cannon (Robotic Targets Only)",
+            "flat": 1,
+            "category": "weapon",
+            "icon": "assets/img/item-icons/particle_cannon.png",
+            "requires": {
+                "id": [
+                    "item_particle_cannon"
+                 ]
+            }
+        }
+    ],
+    "mwd_crit_bonuses": [
+        {
+            "name": "Targeting Module",
+            "flat": 1,
+            "category": "equipment",
+            "icon": "assets/img/item-icons/targeting_module.png"
+        },
+        {
+            "name": "Precision Shot (Ballistics/Laser/Gauss) (Snipers only)",
+            "flat": 2,
+            "category": "actionoverride",
+            "icon": "assets/img/perk-icons/precision_shot.png",
+            "requires": {
+                "id": [
+                    "item_sniper_rifle",
+                    "item_laser_sniper_rifle",
+                    "item_gauss_long_rifle"
+                 ]
+            }
+        },
+        {
+            "name": "Precision Shot (Pulse) (Snipers only)",
+            "flat": 3,
+            "category": "actionoverride",
+            "icon": "assets/img/perk-icons/precision_shot.png",
+            "requires": {
+                "id": [
+                    "item_pulse_sniper_rifle"
+                 ]
+            }
+        },
+        {
+            "name": "Precision Shot (Plasma) (Snipers only)",
+            "flat": 4,
+            "category": "actionoverride",
+            "icon": "assets/img/perk-icons/precision_shot.png",
+            "requires": {
+                "id": [
+                    "item_plasma_sniper_rifle"
+                 ]
+            }
+        },
+        {
+            "name": "Bring em' on (+1 for 1-2 enemies, +2 for 3-4, +3 for 5-6, +4 for 7+)",
+            "adjustable": true,
+            "min": 1,
+            "max": 4,
+            "category": "perk",
+            "icon": "assets/img/perk-icons/bring_em_on.png"
+        },
+        {
+            "name": "Killer Instinct",
+            "mult": 0.34,
+            "round": "up",
+            "category": "perk",
+            "icon": "assets/img/perk-icons/killer_instinct.png"
+        },
+        {
+            "name": "Plasma Rifle (Biological Targets Only)",
+            "flat": 1,
+            "category": "weapon",
+            "icon": "assets/img/item-icons/plasma_rifle.png",
+            "requires": {
+                "id": [
+                    "item_plasma_rifle"
+                 ]
+            }
+        },
+        {
+            "name": "Reflex Cannon (Targets Within 4 Tiles Only)",
+            "flat": 1,
+            "category": "weapon",
+            "icon": "assets/img/item-icons/reflex_cannon.png",
+            "requires": {
+                "id": [
+                    "item_reflex_cannon"
+                 ]
+            }
+        },
+        {
+            "name": "Reflex Rifle (Flanked or Exposed Targets Only)",
+            "flat": 1,
+            "category": "weapon",
+            "icon": "assets/img/item-icons/reflex_rifle.png",
+            "requires": {
+                "id": [
+                    "item_reflex_rifle"
+                 ]
+            }
+        },
+        {
+            "name": "Plasma Sniper Rifle (Targets Further Than 23 Tiles Only)",
+            "flat": 1,
+            "category": "weapon",
+            "icon": "assets/img/item-icons/plasma_sniper_rifle.png",
+            "requires": {
+                "id": [
+                    "item_plasma_sniper_rifle"
+                 ]
+            }
+        }
+    ],
+    "bwd_penalties": [
+        {
+            "name": "Flush",
+            "mult": 0.5,
+            "use_bwd": true,
+            "round": "down",
+            "category": "actionoverride",
+            "icon": "assets/img/perk-icons/flush.png",
+            "requires": {
+                "type": [
+                    "loadout_primary"
+                ]
+            }
+        },
+        {
+            "name": "Shredder Rocket",
+            "mult": 0.6,
+            "use_bwd": true,
+            "round": "down",
+            "category": "actionoverride",
+            "icon": "assets/img/perk-icons/shredder_ammo.png",
+            "requires": {
+                "id": [
+                    "item_rocket_launcher",
+                    "item_recoilless_rifle",
+                    "item_blaster_launcher"
+                 ]
+            }
+        },
+        {
+            "name": "Disabling Shot",
+            "override": 1,
+            "category": "actionoverride",
+            "icon": "assets/img/perk-icons/disabling_shot.png",
+            "requires": {
+                "type": [
+                    "loadout_primary"
+                ]
+            },
+            "disables": [
+                "Mayhem"
+            ]
+        }
+    ],
+    "flat_dr": [
+        {
+            "name": "Iron Skin",
+            "flat": 1.0,
+            "icon": "assets/img/perk-icons/iron_skin.png",
+            "category": "perk"
+        },
+        {
+            "name": "Damage Control",
+            "flat": 1.5,
+            "icon": "assets/img/perk-icons/damage_control.png",
+            "category": "perk"
+        },
+        {
+            "name": "Mind Merge (Caster Will/50)",
+            "adjustable": true,
+            "icon": "assets/img/perk-icons/psi_mind_merge.png",
+            "category": "perk",
+            "min": 0
+        },
+        {
+            "name": "One for All",
+            "flat": 1.0,
+            "icon": "assets/img/perk-icons/one_for_all.png",
+            "category": "perk"
+        }
+    ],
+    "percent_dr": [
+        {
+            "name": "Psi Shield (Mechtoid)",
+            "value": 0.5,
+            "icon": "assets/img/perk-icons/psi_mind_merge.png",
+            "category": "perk"
+        },
+        {
+            "name": "Combat Stims (Requires cover)",
+            "value": 0.6,
+            "negate_by_flanking": true,
+            "icon": "assets/img/item-icons/combat_stims.png",
+            "category": "equipment"
+        },
+        {
+            "name": "Chitin Platins/Chryssalids (Only against Melee)",
+            "value": 0.6,
+            "icon": "assets/img/enemy-icons/chryssalid.png",
+            "category": "equipment"
+        },
+        {
+            "name": "Shock-Absorbent Armor (If source is within 4 tiles)",
+            "value": 0.667,
+            "icon": "assets/img/perk-icons/shock_absorbent_armor.png",
+            "category": "perk"
+        },
+        {
+            "name": "Absorption Fields",
+            "value": 0.667,
+            "dmg_mod": -2,
+            "icon": "assets/img/perk-icons/absorption_fields.png",
+            "category": "perk"
+        }
+    ],
+    "low_cover_dr": 0.667,
+    "full_cover_dr": 1,
+    "cover_dr": [
+        {
+            "name": "Hunker Down",
+            "mult": 1.0,
+            "category": "cover",
+            "icon": "assets/img/perk-icons/low_profile.png"
+        },
+        {
+            "name": "Fortiores Una",
+            "mult": 1.0,
+            "category": "perk",
+            "icon": "assets/img/perk-icons/fortiores_una.png"
+        },
+        {
+            "name": "Will to Survive",
+            "flat": 1.5,
+            "category": "perk",
+            "icon": "assets/img/perk-icons/will_to_survive.png"
+        }
+    ],
+    "dr_pierce": [
+        {
+            "name": "Combined Arms",
+            "flat": 1.0,
+            "category": "perk",
+            "icon": "assets/img/perk-icons/combined_arms.png"
+        },
+        {
+            "name": "Armor-Piercing Ammo",
+            "flat": 2.0,
+            "category": "equipment",
+            "requires": {
+                "type": ["loadout_primary"]
+            },
+            "icon": "assets/img/item-icons/armor_piercing_ammo.png"
+        },
+        {
+            "name": "Gauss Weapons",
+            "flat": 0.34,
+            "category": "passive",
+            "icon": "assets/img/item-icons/gauss_rifle.png",
+            "requires": {
+                "weapon_tier": [
+                    "gauss"
+                 ]
+            }
+        },
+        {
+            "name": "Quenchguns (Only applies to gauss weapons)",
+            "flat": 0.33,
+            "category": "upgrade",
+            "icon": "assets/img/foundry-icons/quenchguns.png",
+            "requires": {
+                "weapon_tier": [
+                    "gauss"
+                 ]
+            }
+        },
+        {
+            "name": "Acided",
+            "min": 3,
+            "percentage": 0.5,
+            "category": "perk",
+            "icon": "assets/img/perk-icons/acid_spit.png"
+        },
+        {
+            "name": "Breaching Ammo",
+            "category": "equipment",
+            "override_shotgun": true,
+            "requires": {
+                "category": [
+                    "shotgun"
+                ]
+            },
+            "icon": "assets/img/item-icons/breaching_ammo.png"
+        }
+    ],
+    "flat_bonuses": [
+        {
+            "name": "Shredder Ammo",
+            "mult": 0.4,
+            "round": "down",
+            "min": 1,
+            "category": "perk",
+            "icon": "assets/img/perk-icons/shredder_ammo.png"
+        },
+        {
+            "name": "HEAT Ammo/Warheads",
+            "mult": 0.5,
+            "use_bwd": true,
+            "round": "down",
+            "ignore_dr": true,
+            "min": 1,
+            "category": "perk",
+            "icon": "assets/img/perk-icons/heat_ammo.png",
+            "requires": {
+                "or": {
+                    "type": ["loadout_primary"],
+                    "category": [
+                        "rocket_launcher"
+                    ],
+                    "id": [
+                        "item_grenade_launcher",
+                        "item_proximity_mine_launcher"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "Flak Ammo",
+            "mult": 0.2,
+            "use_bwd": true,
+            "round": "down",
+            "min": 1,
+            "category": "equipment",
+            "icon": "assets/img/item-icons/flak_ammo.png",
+            "requires": {
+                "or": {
+                    "category": [
+                        "rocket_launcher"
+                    ],
+                    "type": ["loadout_primary"]
+                }
+            }
+        }
+    ]
+}

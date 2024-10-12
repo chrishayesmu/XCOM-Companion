@@ -1,0 +1,197 @@
+<template id="damage-calculator-template">
+    <div class="section-content damage-calculator-section-content">
+        <div id="damage-calculator-options" class="flex-row">
+            <toggle-group id="damage-calculator-mode-toggle" options="Calculation,Simulation"></toggle-group>
+        </div>
+        <div id="damage-calculation-content" class="damage-calculator-content">
+            <table>
+                <tr>
+                    <td>Enter your modified weapon damage (this is the number you see in the preview): </td>
+                    <td><input id="dmg-input" type="number" min="1" value="1" /></td>
+                </tr>    
+                <tr>
+                    <td>Enter your critical chance (in integer): </td>
+                    <td><input id="crit-input" type="number" min="0" max="100" value="0" /></td>
+                </tr> 
+                <tr>
+                    <td>Enter your critical bonuses (before 1.5x multiplier): </td>
+                    <td><input id="crit-bonus-input" type="number" min="0" max="20" value="0" /></td>
+                </tr>
+            </table>
+            <div id="damage-results">
+        
+            </div>
+        </div>
+        <div id="damage-simulation-content" class="damage-calculator-content hidden-collapse">
+            <form id="damage-simulation-form">
+                <input id="is-explosive" type="hidden" name="explosive" value="false" />
+                <div id="damage-form-preview-data" class="damage-cat-form">
+                    <div class="damage-form-preview-column">
+                        <div class="damage-form-preview-label">Base Weapon Damage</div>
+                        <input type="number" id="damage-form-preview-bwd" min="0" value="0"></input>
+                    </div>
+                    <div class="damage-form-preview-column">
+                        <div class="damage-form-preview-label">BWD modifier</div>
+                        <input type="number" id="damage-form-preview-bwd-mod" value="0" readonly></input>
+                    </div>
+                    <div class="damage-form-preview-column">
+                        <div class="damage-form-preview-label">Crit modifier</div>
+                        <input type="number" id="damage-form-preview-mwd-crit-mod" value="0" readonly></input>
+                    </div>
+                    <div class="damage-form-preview-column">
+                        <div class="damage-form-preview-label">Base DR</div>
+                        <input type="number" id="damage-form-preview-base-dr" step="0.1" value="0"></input>
+                    </div>
+                    <div class="damage-form-preview-column">
+                        <div class="damage-form-preview-label">Crit Chance</div>
+                        <input type="number" id="damage-form-preview-crit-chance" step="1" value="0" min="0" max="100"></input>
+                    </div>
+                    <div class="damage-form-preview-column preview-new-row">
+                        <div class="damage-form-preview-label">Perks Selected</div>
+                        <div id="damage-form-preview-perks"></div>
+                    </div>
+                    <div class="damage-preview-actions preview-new-row">
+                        <button type="button" id="damage-simulation-result-btn" class="xcom">Calculate</button>
+                    </div>
+                </div>
+                <div id="damage-form-editor">
+                    <div id="damage-form-weapon" class="damage-cat-form">
+                        <details>
+                            <summary>Select a Weapon</summary>
+                            <div class="item-entries-container"></div>
+                        </details>
+                    </div>
+                    <div id="damage-form-perks" class="damage-cat-form">
+                        <details>
+                            <summary>Select Perks</summary>
+                            <div class="item-entries-container"></div>
+                        </details>
+                    </div>
+                    <div id="damage-form-equipments" class="damage-cat-form">
+                        <details>
+                            <summary>Select Equipments</summary>
+                            <div class="item-entries-container"></div>
+                        </details>
+                    </div>
+                    <div id="damage-form-upgrades" class="damage-cat-form">
+                        <details>
+                            <summary>Select Upgrades</summary>
+                            <div class="item-entries-container"></div>
+                        </details>
+                    </div>
+                    <div id="damage-form-target-armor" class="damage-cat-form">
+                        <details>
+                            <summary>Defender Armor</summary>
+                            <div class="item-entries-container"></div>
+                        </details>
+                    </div>
+                    <div id="damage-form-target-perks" class="damage-cat-form">
+                        <details>
+                            <summary>Defender Perks</summary>
+                            <div class="item-entries-container"></div>
+                        </details>
+                    </div>
+                    <div id="damage-form-target-equipments" class="damage-cat-form">
+                        <details>
+                            <summary>Defender Equipments</summary>
+                            <div class="item-entries-container"></div>
+                        </details>
+                    </div>
+                    <div id="damage-form-target-cover" class="damage-cat-form">
+                        <details>
+                            <summary>Cover Options</summary>
+                            <div class="item-entries-container">
+                                <div class="damage-option" onclick="document.getElementById('damage-cover-option-no').checked = true;">
+                                    <input type="radio" id="damage-cover-option-no" name="damage-cover" value="no" checked />
+                                    <div class="item-container">
+                                        <span class="item-container-name">No Cover</span>
+                                    </div>
+                                </div>
+                                <div class="damage-option" onclick="document.getElementById('damage-cover-option-low').checked = true;">
+                                    <input type="radio" id="damage-cover-option-low" name="damage-cover" value="low" />
+                                    <div class="item-container">
+                                        <span class="item-container-name">Half Cover</span>
+                                    </div>
+                                </div>
+                                <div class="damage-option" onclick="document.getElementById('damage-cover-option-full').checked = true;">
+                                    <input type="radio" id="damage-cover-option-full" name="damage-cover" value="high" />
+                                    <div class="item-container">
+                                        <span class="item-container-name">Full Cover</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </details>
+                    </div>
+                </div>
+            </form>
+        </div> 
+    </div>
+</template>
+
+<template id="damage-weapon-selector">
+    <div class="damage-weapon damage-option-excl">
+        <input type="radio" name="damage-weapon" />
+        <div class="item-container">
+            <button class="item-help-button"></button>
+            <img>
+            <span class="item-container-name"></span>
+            <span class="damage-label">
+                <img class="item-stats-header-img" src="assets/img/item-stat-icons/damage.png"><span class="item-container-bwd"></span>
+            </span>
+        </div>
+    </div>
+</template>
+
+<template id="damage-armor-selector">
+    <div class="damage-armor damage-option-excl">
+        <input type="radio" name="damage-armor" />
+        <div class="item-container">
+            <button class="item-help-button"></button>
+            <img>
+            <span class="item-container-name"></span>
+            <span class="damage-label">
+                <img class="item-stats-header-img" src="assets/img/item-stat-icons/damage_reduction.png"><span class="item-container-dr"></span>
+            </span>
+        </div>
+    </div>
+</template>
+
+<template id="damage-option-selector">
+    <div class="damage-option">
+        <input class="damage-form-dynamic-input" type="checkbox" name="damage-repl-this" />
+        <div class="item-container">
+            <img>
+            <span class="item-container-name"></span>
+        </div>
+    </div>
+</template>
+
+<template id="damage-toggle">
+
+</template>
+
+
+
+<template id="template-damage-result-table">
+    <div class="damage-result-page-mini">
+        <div id="damage-result-container">
+            <div class="column-heading">Damage Simulation</div>
+            <div class="details-column-body">
+                <table id="damage-result-table">
+                    <thead>
+                        <tr>
+                            <td>HP Damage</td>
+                            <td>Damage Rolled</td>
+                            <td>Damage Blocked</td>
+                            <td>Chance</td>
+                            <td>Cumulative Chance</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</template>

@@ -1,0 +1,245 @@
+.damage-calculator-section-content {
+    display: flex;
+    flex-flow: column nowrap;
+
+    padding: 13px 20px 30px 20px;
+    height: 100%;
+    overflow: hidden;
+}
+
+.damage-calculator-content {
+    flex-shrink: 1;
+    min-height: 0;
+    overflow-y: hidden;
+}
+
+#damage-simulation-content > form {
+    height: 100%;
+    display: flex;
+    flex-flow: column;
+}
+
+#damage-form-editor {
+    flex-shrink: 1;
+    overflow-y: auto;
+    padding: 4px;
+}
+
+#damage-calculation-content {
+    overflow-y: auto;
+    gap: 1rem;
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+#damage-calculation-content > table input {
+    width: 100%;
+}
+
+#damage-calculator-options {
+    margin-bottom: 30px;
+    justify-content: center;
+}
+
+.damage-cat-form {
+    border: 1px solid var(--color-subtle);
+    border-top-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 11px;
+    padding: 8px 18px;
+    width: 100%;
+}
+
+.damage-cat-form details > div {
+    display: grid;
+    grid-auto-rows: 1fr;
+    grid-auto-columns: 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(128px, max-content));
+}
+
+#damage-simulation-content .item-container {
+    position: relative;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: center;
+    background-image: url("../../svg/soldier-loadout-equipment-slot-border.svg");
+    cursor: pointer;
+    flex-shrink: 0;
+    padding: 0.5rem 1.25rem;
+    height: 100%;
+    gap: 0.5rem;
+}
+
+.damage-option-excl .item-container img {
+    width: 72px;
+    height: 48px;
+    object-fit: contain;
+}
+
+#damage-simulation-content .item-container img.item-stats-header-img {
+    width: 16px;
+    height: 16px;
+}
+
+#damage-results {
+    padding: 1rem;
+}
+
+.damage-option-excl[data-item-id] .item-help-button {
+    background-image: url("../../svg/soldier-loadout-equipment-slot-help-box.svg");
+    left: 8px;
+
+    cursor: help;
+    background-color: rgba(0, 0, 0, 0.05);
+    background-size: contain;
+    object-fit: contain;
+    border: none;
+    box-shadow: none;
+
+    position: absolute;
+    bottom: 6px;
+
+    display: none;
+    pointer-events: all;
+    width: 48px;
+    height: 16px;
+}
+
+.damage-option-excl[data-item-id]:hover .item-help-button {
+    display: block;
+}
+
+.damage-option-excl[data-item-id] .item-help-button:hover {
+    background-color: rgba(71, 118, 120, 0.6);
+}
+
+.damage-option-excl, .damage-option {
+    padding: 6px 3px;
+}
+
+.damage-option img {
+    background-color: transparent;
+    height: 50px;
+    min-width: 0px;
+    object-fit: contain;
+    margin: 0 auto;
+}
+
+.damage-perk img {
+    background-color: var(--color-strong);
+    height: 50px;
+}
+
+.damage-option-excl > input, .damage-option > input {
+    display: none;
+}
+
+.item-container > .item-container-name {
+    text-align: center;
+    word-break: break-word;
+}
+
+.damage-option .item-container input {
+    width: 75%;
+    margin: 0 auto;
+}
+
+#damage-simulation-content .damage-option-excl .perk-off ~ .item-container, #damage-simulation-content .damage-option .perk-off ~ .item-container {
+    background-color: rgba(100, 0, 0, 0.3);
+}
+
+#damage-simulation-content .damage-perk .perk-off ~ .item-container img {
+    background-color: rgba(255, 0, 0, 0.6);
+}
+
+#damage-simulation-content .damage-option-excl > input:checked ~ .item-container, #damage-simulation-content .damage-option > input:checked ~ .item-container {
+    background-color: rgba(71, 118, 120, 0.3);
+}
+
+#damage-simulation-content .damage-option-excl > input.perk-off:checked ~ .item-container, #damage-simulation-content .damage-option > input.perk-off:checked ~ .item-container {
+    background-color: rgba(255, 118, 120, 0.3);
+}
+
+#damage-simulation-content .item-container .damage-label {
+    display: inline-flex;
+    align-items: center;
+}
+
+#damage-form-preview-data {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+#damage-form-preview-data .damage-preview-actions {
+    display: flex;
+    margin: 1rem;
+    align-items: center;
+    justify-content: center;
+}
+
+#damage-form-preview-data .preview-new-row {
+    width: 100%;
+}
+
+#damage-form-preview-data #damage-form-preview-perks {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+
+#damage-form-preview-data #damage-form-preview-perks img {
+    height: 50px;
+    min-width: 0px;
+    object-fit: contain;
+    margin: 0 auto;
+}
+
+#damage-form-preview-data #damage-form-preview-perks img.perk-icon {
+    background-color: var(--color-strong);
+}
+
+#damage-result-table thead td {
+    background-color: var(--color-bg-subtle);
+
+    border: 1px solid var(--color-border-subtle);
+    padding: 4px 7px;
+
+    /* collapse borders */
+    margin-left: -1px;
+    margin-top: -1px;
+}
+
+#damage-result-table tbody td {
+    border: 1px solid var(--color-border-subtle);
+    padding: 4px 7px;
+
+    /* collapse borders */
+    margin-left: -1px;
+    margin-top: -1px;
+}
+
+#damage-form-preview-data .damage-form-preview-label {
+    font-weight: bold;
+}
+
+#damage-form-preview-data .damage-form-preview-column {
+    margin: 3px 6px;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+}
+
+#damage-form-preview-data input:read-only {
+    border: none;
+    background: transparent;
+    text-align: center;
+    user-select: none;
+    font-size: 1.5rem;
+}
