@@ -350,7 +350,6 @@
         {
             "name": "Combat Stims (Requires cover)",
             "value": 0.4,
-            "negate_by_flanking": true,
             "icon": "assets/img/item-icons/combat_stims.png",
             "category": "equipment"
         },
