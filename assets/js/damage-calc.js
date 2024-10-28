@@ -246,6 +246,7 @@ function damage_dice(dmg) {
           }
         });
 
+        eff_dmg = Math.max(0, eff_dmg);
         if (prev[eff_dmg]) {
           prev[eff_dmg][dr] = (prev[eff_dmg][dr] || 0) + pct;
         } else {

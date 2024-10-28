@@ -348,7 +348,7 @@
             "category": "perk"
         },
         {
-            "name": "Combat Stims (Requires cover)",
+            "name": "Combat Stims",
             "value": 0.4,
             "icon": "assets/img/item-icons/combat_stims.png",
             "category": "equipment"
