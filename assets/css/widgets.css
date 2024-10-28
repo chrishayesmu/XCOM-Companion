@@ -35,3 +35,7 @@
 
     --icon-image-size: calc(100% - 1em);
 }
+
+[data-page-on-click='damage-calculator-page'] {
+    cursor: pointer;
+}

@@ -478,9 +478,14 @@ class ItemDisplayPage extends AppPage {
         const gridTemplate = await Templates.instantiateTemplate("assets/html/templates/pages/item-display-page.html", "template-item-weapon-stats-grid");
 
         gridTemplate.querySelector("#weapon-stats-damage").textContent = weaponData.damage_min_normal + " - " + weaponData.damage_max_normal;
+        gridTemplate.querySelector("#weapon-stats-damage").setAttribute("data-pagearg-damage", (weaponData.damage_min_normal + weaponData.damage_max_normal) / 2);
         gridTemplate.querySelector("#weapon-stats-crit-damage").textContent = weaponData.damage_min_crit + " - " + weaponData.damage_max_crit;
+        gridTemplate.querySelector("#weapon-stats-crit-damage").setAttribute("data-pagearg-damage", (weaponData.damage_min_normal + weaponData.damage_max_normal) / 2);
+        gridTemplate.querySelector("#weapon-stats-crit-damage").setAttribute("data-pagearg-crit", 100);
         gridTemplate.querySelector("#weapon-stats-aim").textContent = weaponData.aim || 0;
         gridTemplate.querySelector("#weapon-stats-crit-chance").textContent = weaponData.crit_chance || 0;
+        gridTemplate.querySelector("#weapon-stats-crit-chance").setAttribute("data-pagearg-damage", (weaponData.damage_min_normal + weaponData.damage_max_normal) / 2);
+        gridTemplate.querySelector("#weapon-stats-crit-chance").setAttribute("data-pagearg-crit", weaponData.crit_chance || 0);
         gridTemplate.querySelector("#weapon-stats-mobility").textContent = weaponData.mobility || 0;
         gridTemplate.querySelector("#weapon-stats-dr-penetration").textContent = weaponData.dr_penetration || 0;
         gridTemplate.querySelector("#weapon-stats-defense").textContent = weaponData.defense || 0;

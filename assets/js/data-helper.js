@@ -3,6 +3,7 @@ import * as Utils from "./utils.js";
 // Load all the JSON data at once
 const baseFacilityData = await fetch("assets/data/base-facilities.json").then(response => response.json());
 const councilRequestData = await fetch("assets/data/council-requests.json").then(response => response.json());
+const damageBonuses = await fetch("assets/data/damage-bonuses.json").then(response => response.json());
 const enemyData = await fetch("assets/data/enemies.json").then(response => response.json());
 const foundryProjectData = await fetch("assets/data/foundry-projects.json").then(response => response.json());
 const geneModData = await fetch("assets/data/gene-mods.json").then(response => response.json());
@@ -625,6 +626,7 @@ export {
     continents,
     councilRequests,
     countries,
+    damageBonuses,
     dataObjectById,
     enemies,
     enemyDamageRanges,

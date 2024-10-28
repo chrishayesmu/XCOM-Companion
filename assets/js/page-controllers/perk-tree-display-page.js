@@ -63,6 +63,9 @@ class PerkTreeDisplayPage extends AppPage {
         else if (data.displayMode == "psi-training") {
             return this._loadPsiTree();
         }
+        else if (data.displayMode == "single-perk" && data.itemId) {
+            return this._loadPerk(data.itemId);
+        }
         else {
             console.error(`Unknown display mode ${data.displayMode}`);
             return null;
@@ -186,6 +189,26 @@ class PerkTreeDisplayPage extends AppPage {
             }
         };
     }
+
+    async _loadPerk(perkId) {
+        const template = await Templates.instantiateTemplate("assets/html/templates/pages/perk-tree-display-page.html", "template-perk-tree-display-page");
+
+        template.querySelector("#perk-tree-tree").classList.add("no-display");
+        template.querySelector("#perk-tree-details-stat-bonuses").classList.add("no-display");
+        const perk = DataHelper.perks[perkId];
+        template.querySelector("#perk-tree-details").classList.remove("hidden");
+        template.querySelector("#perk-tree-details-name").textContent = perk.name;
+        template.querySelector("#perk-tree-details-description").textContent = perk.description;
+
+        return {
+            body: template,
+            title: {
+                icon: perk.icon,
+                text: perk.name
+            }
+        };
+    }
+
 
     _onGeneModClick(event) {
         event.preventDefault();
