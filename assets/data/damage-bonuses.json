@@ -349,26 +349,26 @@
         },
         {
             "name": "Combat Stims (Requires cover)",
-            "value": 0.6,
+            "value": 0.4,
             "negate_by_flanking": true,
             "icon": "assets/img/item-icons/combat_stims.png",
             "category": "equipment"
         },
         {
             "name": "Chitin Platins/Chryssalids (Only against Melee)",
-            "value": 0.6,
+            "value": 0.4,
             "icon": "assets/img/enemy-icons/chryssalid.png",
             "category": "equipment"
         },
         {
             "name": "Shock-Absorbent Armor (If source is within 4 tiles)",
-            "value": 0.667,
+            "value": 0.33,
             "icon": "assets/img/perk-icons/shock_absorbent_armor.png",
             "category": "perk"
         },
         {
             "name": "Absorption Fields",
-            "value": 0.667,
+            "value": 0.40,
             "dmg_mod": -2,
             "icon": "assets/img/perk-icons/absorption_fields.png",
             "category": "perk"
@@ -408,7 +408,13 @@
             "flat": 2.0,
             "category": "equipment",
             "requires": {
-                "type": ["loadout_primary"]
+                "not": {
+                    "category": [
+                        "shotgun",
+                        "machine_pistol",
+                        "pistol"
+                    ]
+                }
             },
             "icon": "assets/img/item-icons/armor_piercing_ammo.png"
         },
@@ -489,7 +495,7 @@
             "mult": 0.2,
             "use_bwd": true,
             "round": "down",
-            "min": 1,
+            "min": 2,
             "category": "equipment",
             "icon": "assets/img/item-icons/flak_ammo.png",
             "requires": {

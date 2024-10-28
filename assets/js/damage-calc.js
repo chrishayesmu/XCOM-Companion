@@ -124,17 +124,6 @@ function damage_dice(dmg) {
     let current_dr = parseFloat(flat_dr);
     const pierce = bonuses.filter(b => b.bonuscat === "dr_pierce" && b.percentage !== undefined);
     const post_pierce = bonuses.filter(b => b.bonuscat === "dr_pierce" && b.percentage === undefined);
-  
-    pierce.forEach(b => {
-      let pierce_amt = current_dr * b.percentage;
-      if (b.min !== undefined) {
-        pierce_amt = Math.max(pierce_amt, b.min);
-      }
-      if (b.max !== undefined) {
-        pierce_amt = Math.min(pierce_amt, b.max);
-      }
-      current_dr = Math.max(0, current_dr - pierce_amt);
-    });
 
     const percent_dr = targetBonuses.filter(b => b.bonuscat === "percent_dr");
     percent_dr.sort((a, b) => {
@@ -155,12 +144,26 @@ function damage_dice(dmg) {
       let net_dmg = Math.max(0, dmg - current_dr);
       percent_dr.forEach((dr) => {
         if (dr.dmg_mod) {
-          if (net_dmg + dr.dmg_mod > 0) {
-            net_dmg = ((net_dmg + dr.dmg_mod) * dr.value) - dr.dmg_mod
+          if (dr.dmg_mod < 0) {
+            net_dmg *= (1 - dr.value) + (dr.value * Math.min((0 - dr.dmg_mod) / net_dmg, 1))
+          } else if (dr.dmg_mod > 0 && net_dmg < dmg) {
+            let ex_dr_net = Math.min(dmg, net_dmg + dr.dmg_mod)
+            net_dmg -= Math.max(0, ex_dr_net * dr.value);
           }
         } else {
-          net_dmg *= dr.value;
+          net_dmg *= 1 - dr.value;
         }
+      });
+
+      pierce.forEach(b => {
+        let pierce_amt = (dmg - net_dmg) * b.percentage;
+        if (b.min !== undefined) {
+          pierce_amt = Math.max(pierce_amt, b.min);
+        }
+        if (b.max !== undefined) {
+          pierce_amt = Math.min(pierce_amt, b.max);
+        }
+        net_dmg = Math.min(net_dmg + pierce_amt, dmg);
       });
 
       if (cover !== "no") {
@@ -178,21 +181,19 @@ function damage_dice(dmg) {
         net_dmg = net_dmg - ((cover_mult * (cover === "low" ? damageBonuses.low_cover_dr : damageBonuses.full_cover_dr)) + cover_add)
       }
 
-      let total_dr = dmg - net_dmg;
-      if (total_dr > 0) {
-        post_pierce.forEach(p => {
-          if (p.flat) {
-            total_dr -= p.flat;
-          }
-        });
-      }
+      post_pierce.forEach(p => {
+        if (p.flat) {
+          net_dmg += p.flat;
+        }
+      });
 
+      net_dmg = Math.min(net_dmg, dmg);
+
+      let total_dr = dmg - net_dmg;
       if (total_dr > 0) {
         if (bonuses.some((b) => b.bonuscat === "shotgun") && !bonuses.some((b) => b.override_shotgun)) {
           total_dr *= 1.5;
         }
-      } else {
-        total_dr = 0;
       }
 
       net_dmg = Math.max(0, dmg - total_dr);

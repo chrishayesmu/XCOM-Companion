@@ -256,6 +256,8 @@ class DamageCalculatorPage extends AppPage {
         const reqChecker = function([reqKey, reqVal]) {
             if (reqKey === "or") {
                 return Object.entries(reqVal).some(reqChecker);
+            } else if (reqKey === "not") {
+                return !Object.entries(reqVal).every(reqChecker);
             }
 
             if (typeof reqVal.some === "function") {
