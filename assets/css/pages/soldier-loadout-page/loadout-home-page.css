@@ -4,7 +4,7 @@
     gap: var(--intra-group-control-gap);
 
     top: 60px;
-    left: 45px;
+    left: 30px;
     position: relative;
     width: fit-content;
 }
@@ -17,10 +17,10 @@
 #loadout-home-page #loadout-main-menu #loadout-main-menu-outline {
     position: absolute;
     top: -45px;
-    left: -50px;
+    left: -42px;
 
     pointer-events: none;
-    width: 375px;
+    width: 365px;
     height: 650px;
 }
 

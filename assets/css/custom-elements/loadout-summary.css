@@ -8,7 +8,9 @@ loadout-summary {
 
 loadout-summary[singleColumn] {
     flex-shrink: 0;
-    width: 470px;
+    min-width: 470px;
+    max-width: 670px;
+    width: 55%;
 }
 
 /* header */
@@ -171,7 +173,7 @@ loadout-summary #loadout-summary-body #loadout-summary-psi-abilities {
 
 loadout-summary #loadout-summary-body #loadout-summary-notes {
     border-bottom: 1px solid var(--color-border-subtle);
-    white-space: pre;
+    white-space: pre-wrap;
 }
 
 loadout-summary #loadout-summary-body #loadout-summary-officer-abilities img[src$="command.png"] {
